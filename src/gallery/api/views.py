@@ -24,7 +24,7 @@ class ImageList(generics.ListCreateAPIView):
         gallery_ct = self.kwargs['gallery_ct']
         if gallery_ct not in serializer.gallery_ct_whitelist:
             raise PermissionDenied(_('Content type {ct} is not supported.').format(
-                ct=gallery_ct
+                ct=gallery_ct,
             ))
         # Future caveat:
         # Querying ContentType only by model name will not work, if there is another
@@ -41,6 +41,8 @@ class ImageList(generics.ListCreateAPIView):
         gallery_id = self.kwargs.get('gallery_id')
 
         if gallery_ct not in ImageSerializer.gallery_ct_whitelist:
-            raise PermissionDenied(_('Content type {} is not supported.').format(gallery_ct))
+            raise PermissionDenied(_('Content type {ct} is not supported.').format(
+                ct=gallery_ct,
+            ))
 
         return Image.objects.filter(gallery_ct__model=gallery_ct, gallery_id=gallery_id)

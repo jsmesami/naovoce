@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-03 12:49+0100\n"
-"PO-Revision-Date: 2015-11-03 12:51+0100\n"
+"POT-Creation-Date: 2016-02-16 00:46+0100\n"
+"PO-Revision-Date: 2016-02-16 00:48+0100\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.7\n"
 
 #: blog/admin.py:19
 msgid "blogs count"
@@ -26,11 +26,7 @@ msgstr "počet blogů"
 msgid "public"
 msgstr "veřejný"
 
-#: blog/admin.py:39 gallery/models.py:39 gallery/models.py:45
-msgid "images"
-msgstr "obrázky"
-
-#: blog/models.py:15 fruit/models.py:32
+#: blog/models.py:15 fruit/models.py:34
 msgid "name"
 msgstr "název"
 
@@ -54,7 +50,7 @@ msgstr "text"
 msgid "public from"
 msgstr "veřejný od"
 
-#: blog/models.py:52 comments/models.py:13
+#: blog/models.py:52 comments/models.py:13 gallery/models.py:34
 msgid "author"
 msgstr "autor"
 
@@ -98,23 +94,31 @@ msgstr "Děkujeme za váš komentář"
 msgid "We are sorry, your comment was not accepted."
 msgstr "Je nám líto, ale váš komentář nebyl přijat."
 
-#: fruit/admin.py:23 fruit/models.py:31
+#: fruit/admin.py:25 fruit/models.py:33
 msgid "class"
 msgstr "třída"
 
-#: fruit/admin.py:29 fruit/models.py:34
+#: fruit/admin.py:31 fruit/models.py:36
 msgid "color"
 msgstr "barva"
 
-#: fruit/admin.py:34
+#: fruit/admin.py:36
 msgid "markers count"
 msgstr "počet značek"
+
+#: fruit/api/serializers.py:32
+msgid "{} is not a valid Kind key."
+msgstr "{} není platný klíč."
+
+#: fruit/api/views.py:102 fruit/api/views.py:115
+msgid "Cannot update once deleted object."
+msgstr "Dříve smazaný objekt nelze aktualizovat."
 
 #: fruit/forms.py:48
 msgid "Nothing selected"
 msgstr "Nic nevybráno"
 
-#: fruit/herbarium/models.py:8 fruit/models.py:59 fruit/models.py:72
+#: fruit/herbarium/models.py:8 fruit/models.py:65 fruit/models.py:78
 msgid "kind"
 msgstr "druh"
 
@@ -126,7 +130,7 @@ msgstr "celé jméno"
 msgid "latin name"
 msgstr "latinský název"
 
-#: fruit/herbarium/models.py:12 fruit/models.py:74
+#: fruit/herbarium/models.py:12 fruit/models.py:80
 msgid "description"
 msgstr "popis"
 
@@ -146,68 +150,68 @@ msgstr "položka herbáře"
 msgid "herbarium items"
 msgstr "položky herbáře"
 
-#: fruit/models.py:25
+#: fruit/models.py:27
 msgid "Trees"
 msgstr "Stromy"
 
-#: fruit/models.py:26
+#: fruit/models.py:28
 msgid "Bushes"
 msgstr "Keře"
 
-#: fruit/models.py:27
+#: fruit/models.py:29
 msgid "Herbs"
 msgstr "Bylinky"
 
-#: fruit/models.py:28
+#: fruit/models.py:30
 msgid "Nuts"
 msgstr "Ořechy"
 
-#: fruit/models.py:37
+#: fruit/models.py:39
 msgid "Hex color triplet for map."
 msgstr "Hexadecimální triplet pro mapu."
 
-#: fruit/models.py:40
+#: fruit/models.py:42
 msgid "key"
 msgstr "klíč"
 
-#: fruit/models.py:44
+#: fruit/models.py:46
 msgid "ID for API and also index in the markers font"
 msgstr "ID pro API a také index ve fontu mapových značek"
 
-#: fruit/models.py:60
+#: fruit/models.py:66
 msgid "kinds"
 msgstr "druhy"
 
-#: fruit/models.py:70
+#: fruit/models.py:76
 msgid "latitude"
 msgstr "šířka"
 
-#: fruit/models.py:71
+#: fruit/models.py:77
 msgid "longitude"
 msgstr "délka"
 
-#: fruit/models.py:76
+#: fruit/models.py:82
 msgid ""
 "Please, provide as many information about the marker as you find relevant."
 msgstr "Prosíme, napište co nejvíce relevantních informací o této značce."
 
-#: fruit/models.py:80
+#: fruit/models.py:86
 msgid "deleted"
 msgstr "smazán"
 
-#: fruit/models.py:82
+#: fruit/models.py:88
 msgid "why deleted"
 msgstr "proč smazán"
 
-#: fruit/models.py:84
+#: fruit/models.py:90
 msgid "The tree has been cut down, not found etc."
 msgstr "Strom byl poražen, nenalezen apod."
 
-#: fruit/models.py:87 user/models.py:74
+#: fruit/models.py:93 user/models.py:74
 msgid "user"
 msgstr "uživatel"
 
-#: fruit/models.py:98 fruit/models.py:99
+#: fruit/models.py:107 fruit/models.py:108
 msgid "fruit"
 msgstr "ovoce"
 
@@ -243,15 +247,24 @@ msgstr ""
 "Jste si jisti, že chcete smazat tuto značku? {fruit.kind.name} ({fruit."
 "latitude:.4f}, {fruit.longitude:.4f})"
 
-#: gallery/models.py:21 gallery/models.py:38
+#: gallery/admin.py:40 gallery/models.py:53 gallery/models.py:59
+msgid "images"
+msgstr "obrázky"
+
+#: gallery/api/views.py:26 gallery/api/views.py:44
+#, python-brace-format
+msgid "Content type {ct} is not supported."
+msgstr "Typ obsahu {ct} není podporován."
+
+#: gallery/models.py:25 gallery/models.py:52
 msgid "image"
 msgstr "obrázek"
 
-#: gallery/models.py:22
+#: gallery/models.py:26
 msgid "caption"
 msgstr "titulek"
 
-#: gallery/models.py:52
+#: gallery/models.py:66
 msgid "cover image"
 msgstr "hlavní obrázek"
 
@@ -534,27 +547,27 @@ msgstr "Pro dokončení registračního procesu navštivte odkaz v těle zprávy
 msgid "site administration"
 msgstr "administrace stránek"
 
-#: naovoce/templates/base.html:46 naovoce/templates/inc/footer.html:8
+#: naovoce/templates/base.html:46 naovoce/templates/inc/footer.html:26
 #: naovoce/templates/map.html:8
 msgid "Map"
 msgstr "Mapa"
 
-#: naovoce/templates/base.html:49 naovoce/templates/inc/footer.html:9
+#: naovoce/templates/base.html:49 naovoce/templates/inc/footer.html:27
 msgid "Add Marker"
 msgstr "Přidávání"
 
-#: naovoce/templates/base.html:52 naovoce/templates/inc/footer.html:10
+#: naovoce/templates/base.html:52 naovoce/templates/inc/footer.html:28
 msgid "Pickers"
 msgstr "Sběrači"
 
 #: naovoce/templates/base.html:55 naovoce/templates/fruit/detail.html:56
 #: naovoce/templates/fruit/herbarium.html:13
 #: naovoce/templates/fruit/herbarium.html:15
-#: naovoce/templates/inc/footer.html:11
+#: naovoce/templates/inc/footer.html:29
 msgid "Herbarium"
 msgstr "Herbář"
 
-#: naovoce/templates/base.html:58 naovoce/templates/inc/footer.html:12
+#: naovoce/templates/base.html:58 naovoce/templates/inc/footer.html:30
 msgid "About Us"
 msgstr "O nás"
 
@@ -575,6 +588,10 @@ msgstr "Více informací"
 msgid "Dismiss"
 msgstr "Pryč s tím"
 
+#: naovoce/templates/base.html:119 naovoce/templates/comments/comments.html:17
+msgid "Add your comment"
+msgstr "Přidejte svůj komentář"
+
 #: naovoce/templates/blog/index.html:9
 msgid ""
 "Loads of information about fruits and its processing, countryside trips, "
@@ -591,10 +608,6 @@ msgstr "Kategorie"
 #: naovoce/templates/fruit/herbarium.html:25
 msgid "all"
 msgstr "vše"
-
-#: naovoce/templates/comments/comments.html:17
-msgid "Add your comment"
-msgstr "Přidejte svůj komentář"
 
 #: naovoce/templates/comments/comments.html:26
 msgid "To add your comment, please first"
@@ -686,23 +699,23 @@ msgstr ""
 msgid "Add marker to the map"
 msgstr "Přidat značku do mapy"
 
-#: naovoce/templates/home.html:50
+#: naovoce/templates/home.html:31
 msgid "Fruit news"
 msgstr "Ovocné novinky"
 
-#: naovoce/templates/home.html:92
+#: naovoce/templates/home.html:63
 msgid "Explore the map"
 msgstr "Prozkoumejte mapu"
 
-#: naovoce/templates/home.html:97
+#: naovoce/templates/home.html:68
 msgid "Latest entries"
 msgstr "Poslední úlovky"
 
-#: naovoce/templates/home.html:105
+#: naovoce/templates/home.html:76
 msgid "Shared by"
 msgstr "Sdílí"
 
-#: naovoce/templates/home.html:110
+#: naovoce/templates/home.html:81
 msgid "Latest comments"
 msgstr "Poslední komentáře"
 
@@ -711,22 +724,26 @@ msgid "Back"
 msgstr "Zpět"
 
 #: naovoce/templates/inc/footer.html:6
-msgid "Quick links"
-msgstr "Rychlé odkazy"
-
-#: naovoce/templates/inc/footer.html:13
-msgid "Picker's Codex"
-msgstr "Kodex sběrače"
-
-#: naovoce/templates/inc/footer.html:18
-msgid "Social networks"
-msgstr "Sociální sítě"
-
-#: naovoce/templates/inc/footer.html:25
 msgid "Contact"
 msgstr "Kontakt"
 
-#: naovoce/templates/inc/mapjs.html:81
+#: naovoce/templates/inc/footer.html:24
+msgid "Quick links"
+msgstr "Rychlé odkazy"
+
+#: naovoce/templates/inc/footer.html:31
+msgid "Picker's Codex"
+msgstr "Kodex sběrače"
+
+#: naovoce/templates/inc/footer.html:36
+msgid "Social networks"
+msgstr "Sociální sítě"
+
+#: naovoce/templates/inc/mapjs.html:20
+msgid "Fruit kind"
+msgstr "Druh ovoce"
+
+#: naovoce/templates/inc/mapjs.html:84
 msgid "Search for places or addresses"
 msgstr "Vyhledávání míst a adres"
 
@@ -898,6 +915,9 @@ msgstr "změněno"
 #: utils/templatetags/truncate.py:16
 msgid "Read more"
 msgstr "Čtěte více"
+
+#~ msgid "Content type {} is not supported."
+#~ msgstr "Typ obsahu {} není podporován."
 
 #, fuzzy
 #~| msgid "Are you sure you want to delete the marker?"
