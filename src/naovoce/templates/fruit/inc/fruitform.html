@@ -1,0 +1,27 @@
+{% load i18n %}
+{% load fruit %}
+{% load bootstrap %}
+
+<form method="post" action="" role="form">{% csrf_token %}
+	<div class="col-sm-4">
+		{{ form.kind|bootstrap }}
+	</div>
+	<div class="col-sm-4">
+		{{ form.latitude|bootstrap }}
+	</div>
+	<div class="col-sm-4">
+		{{ form.longitude|bootstrap }}
+	</div>
+	<div class="col-sm-12">
+		{{ form.description|bootstrap }}
+		<p>
+			<input type="submit" class="btn btn-primary" value="
+                   {% if mode == 'add' %}
+                       {% trans 'Add marker' %}
+                   {% elif mode == 'edit' %}
+                       {% trans 'Save changes' %}
+                   {% endif %}">
+			&nbsp;<a href="{% url 'map' %}">{% trans 'Back to the map' %}</a>
+		</p>
+	</div>
+</form>

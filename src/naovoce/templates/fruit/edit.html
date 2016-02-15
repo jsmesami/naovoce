@@ -1,0 +1,22 @@
+{% extends 'fruit/add.html' %}
+
+{% load i18n l10n %}
+{% load static %}
+
+{% block title %}{% trans "Edit a marker" %} | {{ block.super }}{% endblock %}
+
+{% block add_active %}active{% endblock %}
+
+{% block section %}
+    <h3>{% trans "You can edit your marker here" %}</h3>
+{% endblock %}
+
+{% block form %}
+    {% include "fruit/inc/fruitform.html" with mode="edit" %}
+{% endblock %}
+
+{% block edit %}
+	center = new L.LatLng {{ fruit.latitude|unlocalize }}, {{ fruit.longitude|unlocalize }}
+	marker = new Naovoce.Marker center, '{{ fruit.kind.key }}'
+	map.addLayer(marker).setView center
+{% endblock %}

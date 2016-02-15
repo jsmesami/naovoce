@@ -1,0 +1,30 @@
+{% load endless %}
+{% load markup %}
+{% load i18n %}
+{% load thumbs %}
+{% load typo %}
+{% load truncate %}
+
+{% lazy_paginate blogposts %}
+{% for entry in blogposts %}
+{% with url=entry.get_absolute_url %}
+	<div class="row">
+		<div class="col-xs-12">
+			<hr class="unspaced">
+			<h3>
+				<a href="{{ url }}">{{ entry.title }}</a><br>
+				<span class="small">{{ entry.public_from|date:'SHORT_DATE_FORMAT' }}</span>
+			</h3>
+		</div>
+		<a href="{{ url }}" class="col-xs-12 col-sm-3">
+			<img src="{% get_thumb entry.get_cover_image w=700 h=500 %}"
+			     alt="{{ entry.title }}"
+			     class="img-responsive img-in-text">
+		</a>
+		<div class="col-xs-12 col-sm-9">
+		{% read_more entry.text|strip_thumbs|prepos|markdown length=80 target=url %}
+		</div>
+	</div>
+{% endwith %}
+{% endfor %}
+{% show_more %}

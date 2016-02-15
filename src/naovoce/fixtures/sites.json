@@ -1,0 +1,18 @@
+[
+{
+    "model": "sites.site",
+    "pk": 1,
+    "fields": {
+        "domain": "na-ovoce.cz",
+        "name": "na-ovoce.cz"
+    }
+},
+{
+    "model": "sites.site",
+    "pk": 2,
+    "fields": {
+        "domain": "localhost",
+        "name": "localhost"
+    }
+}
+]

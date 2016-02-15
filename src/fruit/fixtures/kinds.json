@@ -1,0 +1,410 @@
+[
+{
+    "fields": {
+        "key": "a1e4",
+        "name_cs": "Jablo\u0148",
+        "name_en": "Apple Tree",
+        "color": "E73932",
+        "name": "Jablo\u0148",
+        "cls": 1000
+    },
+    "model": "fruit.kind",
+    "pk": 1
+},
+{
+    "fields": {
+        "key": "a3b8",
+        "name_cs": "Hru\u0161e\u0148",
+        "name_en": "Pear Tree",
+        "color": "84B040",
+        "name": "Hru\u0161e\u0148",
+        "cls": 1000
+    },
+    "model": "fruit.kind",
+    "pk": 2
+},
+{
+    "fields": {
+        "key": "a412",
+        "name_cs": "T\u0159e\u0161e\u0148",
+        "name_en": "Cherry Tree",
+        "color": "B81A5A",
+        "name": "T\u0159e\u0161e\u0148",
+        "cls": 1000
+    },
+    "model": "fruit.kind",
+    "pk": 3
+},
+{
+    "fields": {
+        "key": "a3a2",
+        "name_cs": "Vi\u0161e\u0148",
+        "name_en": "Sour Cherry",
+        "color": "95235F",
+        "name": "Vi\u0161e\u0148",
+        "cls": 1000
+    },
+    "model": "fruit.kind",
+    "pk": 4
+},
+{
+    "fields": {
+        "key": "a1d1",
+        "name_cs": "Mirabelka",
+        "name_en": "Yellow Plum",
+        "color": "FFD800",
+        "name": "Mirabelka",
+        "cls": 1000
+    },
+    "model": "fruit.kind",
+    "pk": 5
+},
+{
+    "fields": {
+        "key": "a2c9",
+        "name_cs": "\u0160vestka",
+        "name_en": "Plum Tree",
+        "color": "3973B9",
+        "name": "\u0160vestka",
+        "cls": 1000
+    },
+    "model": "fruit.kind",
+    "pk": 6
+},
+{
+    "fields": {
+        "key": "a13b",
+        "name_cs": "Meru\u0148ka",
+        "name_en": "Apricot Tree",
+        "color": "F7A823",
+        "name": "Meru\u0148ka",
+        "cls": 1000
+    },
+    "model": "fruit.kind",
+    "pk": 7
+},
+{
+    "fields": {
+        "key": "a31a",
+        "name_cs": "Kdoulo\u0148",
+        "name_en": "Quince",
+        "color": "DAC900",
+        "name": "Kdoulo\u0148",
+        "cls": 2000
+    },
+    "model": "fruit.kind",
+    "pk": 8
+},
+{
+    "fields": {
+        "key": "a0d5",
+        "name_cs": "Ostru\u017ein\u00edk",
+        "name_en": "Blackberry",
+        "color": "671565",
+        "name": "Ostru\u017ein\u00edk",
+        "cls": 2000
+    },
+    "model": "fruit.kind",
+    "pk": 9
+},
+{
+    "fields": {
+        "key": "a349",
+        "name_cs": "Malin\u00edk",
+        "name_en": "Raspberry",
+        "color": "CA4F62",
+        "name": "Malin\u00edk",
+        "cls": 2000
+    },
+    "model": "fruit.kind",
+    "pk": 10
+},
+{
+    "fields": {
+        "key": "a430",
+        "name_cs": "Bez \u010dern\u00fd",
+        "name_en": "Elderberry",
+        "color": "482683",
+        "name": "Bez \u010dern\u00fd",
+        "cls": 2000
+    },
+    "model": "fruit.kind",
+    "pk": 11
+},
+{
+    "fields": {
+        "key": "a398",
+        "name_cs": "\u0160\u00edpkov\u00e1 r\u016f\u017ee",
+        "name_en": "Wild Rose",
+        "color": "EC6839",
+        "name": "\u0160\u00edpkov\u00e1 r\u016f\u017ee",
+        "cls": 2000
+    },
+    "model": "fruit.kind",
+    "pk": 13
+},
+{
+    "fields": {
+        "key": "a477",
+        "name_cs": "Bor\u016fvka",
+        "name_en": "Bilberry",
+        "color": "1961AC",
+        "name": "Bor\u016fvka",
+        "cls": 2000
+    },
+    "model": "fruit.kind",
+    "pk": 14
+},
+{
+    "fields": {
+        "key": "a1f4",
+        "name_cs": "Rakytn\u00edk",
+        "name_en": "Sea Buckthorn",
+        "color": "F07E26",
+        "name": "Rakytn\u00edk",
+        "cls": 2000
+    },
+    "model": "fruit.kind",
+    "pk": 15
+},
+{
+    "fields": {
+        "key": "a0a7",
+        "name_cs": "Trnka",
+        "name_en": "Blackthorn",
+        "color": "4565AD",
+        "name": "Trnka",
+        "cls": 2000
+    },
+    "model": "fruit.kind",
+    "pk": 16
+},
+{
+    "fields": {
+        "key": "a272",
+        "name_cs": "Hloh",
+        "name_en": "Hawthorn",
+        "color": "E7344C",
+        "name": "Hloh",
+        "cls": 2000
+    },
+    "model": "fruit.kind",
+    "pk": 17
+},
+{
+    "fields": {
+        "key": "a118",
+        "name_cs": "M\u00e1ta",
+        "name_en": "Mint",
+        "color": "76B82A",
+        "name": "M\u00e1ta",
+        "cls": 3000
+    },
+    "model": "fruit.kind",
+    "pk": 19
+},
+{
+    "fields": {
+        "key": "a324",
+        "name_cs": "Medu\u0148ka",
+        "name_en": "Lemon Balm",
+        "color": "AFCA0B",
+        "name": "Medu\u0148ka",
+        "cls": 3000
+    },
+    "model": "fruit.kind",
+    "pk": 20
+},
+{
+    "fields": {
+        "key": "a3c4",
+        "name_cs": "L\u00edska",
+        "name_en": "Hazel Tree",
+        "color": "CA7D18",
+        "name": "L\u00edska",
+        "cls": 4000
+    },
+    "model": "fruit.kind",
+    "pk": 21
+},
+{
+    "fields": {
+        "key": "a03b",
+        "name_cs": "O\u0159e\u0161\u00e1k",
+        "name_en": "Walnut Tree",
+        "color": "DF9C00",
+        "name": "O\u0159e\u0161\u00e1k",
+        "cls": 4000
+    },
+    "model": "fruit.kind",
+    "pk": 22
+},
+{
+    "fields": {
+        "key": "a08d",
+        "name_cs": "Ka\u0161tanovn\u00edk",
+        "name_en": "Chestnut Tree",
+        "color": "834511",
+        "name": "Ka\u0161tanovn\u00edk",
+        "cls": 4000
+    },
+    "model": "fruit.kind",
+    "pk": 23
+},
+{
+    "fields": {
+        "key": "a205",
+        "name_cs": "Ryb\u00edz (Meruzalka)",
+        "name_en": "Ribes",
+        "color": "C8374E",
+        "name": "Ryb\u00edz (Meruzalka)",
+        "cls": 2000
+    },
+    "model": "fruit.kind",
+    "pk": 24
+},
+{
+    "fields": {
+        "key": "a162",
+        "name_cs": "Moru\u0161ovn\u00edk",
+        "name_en": "Mulberry Tree",
+        "color": "80166F",
+        "name": "Moru\u0161ovn\u00edk",
+        "cls": 1000
+    },
+    "model": "fruit.kind",
+    "pk": 26
+},
+{
+    "fields": {
+        "key": "a11b",
+        "name_cs": "Jahodn\u00edk",
+        "name_en": "Wild Strawberry",
+        "color": "F39476",
+        "name": "Jahodn\u00edk",
+        "cls": 3000
+    },
+    "model": "fruit.kind",
+    "pk": 27
+},
+{
+    "fields": {
+        "key": "a1bb",
+        "name_cs": "Medv\u011bd\u00ed \u010desnek",
+        "name_en": "Wild Garlic",
+        "color": "669D24",
+        "name": "Medv\u011bd\u00ed \u010desnek",
+        "cls": 3000
+    },
+    "model": "fruit.kind",
+    "pk": 28
+},
+{
+    "fields": {
+        "key": "a116",
+        "name_cs": "D\u0159\u00edn",
+        "name_en": "Cornel",
+        "color": "C82254",
+        "name": "D\u0159\u00edn",
+        "cls": 1000
+    },
+    "model": "fruit.kind",
+    "pk": 29
+},
+{
+    "fields": {
+        "key": "a09b",
+        "name_cs": "Ar\u00f3nie",
+        "name_en": "Chokeberry",
+        "color": "21409A",
+        "name": "Ar\u00f3nie",
+        "cls": 1000
+    },
+    "model": "fruit.kind",
+    "pk": 30
+},
+{
+    "fields": {
+        "key": "a0c9",
+        "name_cs": "Mi\u0161pule",
+        "name_en": "Medlar",
+        "color": "9A5625",
+        "name": "Mi\u0161pule",
+        "cls": 1000
+    },
+    "model": "fruit.kind",
+    "pk": 31
+},
+{
+    "fields": {
+        "key": "a277",
+        "name_cs": "Oskeru\u0161e",
+        "name_en": "Service Tree",
+        "color": "EFBC37",
+        "name": "Oskeru\u0161e",
+        "cls": 1000
+    },
+    "model": "fruit.kind",
+    "pk": 32
+},
+{
+    "fields": {
+        "key": "a2b2",
+        "name_cs": "Je\u0159\u00e1b",
+        "name_en": "Rowan",
+        "color": "F15B40",
+        "name": "Je\u0159\u00e1b",
+        "cls": 1000
+    },
+    "model": "fruit.kind",
+    "pk": 33
+},
+{
+    "fields": {
+        "key": "a485",
+        "name_cs": "Mandlo\u0148",
+        "name_en": "Almond tree",
+        "color": "C87643",
+        "name": "Mandlo\u0148",
+        "cls": 4000
+    },
+    "model": "fruit.kind",
+    "pk": 34
+},
+{
+    "fields": {
+        "key": "a43a",
+        "name_cs": "Angre\u0161t",
+        "name_en": "Gooseberry",
+        "color": "9BB33B",
+        "name": "Angre\u0161t",
+        "cls": 2000
+    },
+    "model": "fruit.kind",
+    "pk": 35
+},
+{
+    "fields": {
+        "key": "a382",
+        "name_cs": "Broskvo\u0148",
+        "name_en": "Peach Tree",
+        "color": "F28E00",
+        "name": "Broskvo\u0148",
+        "cls": 1000
+    },
+    "model": "fruit.kind",
+    "pk": 36
+},
+{
+    "fields": {
+        "key": "a3d3",
+        "name_cs": "Hlo\u0161ina",
+        "name_en": "Silverberry",
+        "color": "CC4D41",
+        "name": "Hlo\u0161ina",
+        "cls": 2000
+    },
+    "model": "fruit.kind",
+    "pk": 37
+}
+]

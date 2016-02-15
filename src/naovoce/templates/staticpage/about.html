@@ -1,0 +1,59 @@
+{% extends 'staticpage/page.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block about_active %}active{% endblock %}
+
+{% block content %}
+	{{ block.super }}
+	<hr>
+	<h3>{% trans 'Core Team' %}</h3>
+	<div class="row">
+		<div class="col-sm-2 col-xs-4">
+			<img class="img-responsive" src="{% static 'img/team/katka_kubankova.jpg' %}" alt="Katka Kubánková">
+			<h5>Katka<br>Kubánková</h5>
+		</div>
+		<div class="col-sm-2 col-xs-4">
+			<img class="img-responsive" src="{% static 'img/team/edita_hornova.jpg' %}" alt="Edita Hornová">
+			<h5>Edita<br>Hornová</h5>
+		</div>
+		<div class="col-sm-2 col-xs-4">
+			<img class="img-responsive" src="{% static 'img/team/tomas_dvorak.jpg' %}" alt="Tomáš Dvořák">
+			<h5>Tomáš<br>Dvořák</h5>
+		</div>
+		<div class="col-sm-2 col-xs-4">
+			<img class="img-responsive" src="{% static 'img/team/joerg_koesters.jpg' %}" alt="Jörg Kösters">
+			<h5>Joerg<br>Koesters</h5>
+		</div>
+		<div class="col-sm-2 col-xs-4">
+			<img class="img-responsive" src="{% static 'img/team/monika_krikavova.jpg' %}" alt="Monika Křikavová">
+			<h5>Monika<br>Křikavová</h5>
+		</div>
+		<div class="col-sm-2 col-xs-4">
+			<img class="img-responsive" src="{% static 'img/team/ondra_nejedly.jpg' %}" alt="Ondra Nejedlý">
+			<h5>Ondra<br>Nejedlý</h5>
+		</div>
+	</div>
+	<hr>
+	<h3>{% trans 'Partners' %}</h3>
+	<div class="partners">
+		<a href="http://www.fruitmap.sk/" target="_blank">
+			<img src="{% static 'img/partners/fruitmap.png' %}" alt="Fruitmap.sk">
+		</a>
+		<a href="http://www.kokoza.cz/" target="_blank">
+			<img src="{% static 'img/partners/kokoza.png' %}" alt="Kokoza">
+		</a>
+		<a href="http://www.veronica.cz/" target="_blank">
+			<img src="{% static 'img/partners/veronica.png' %}" alt="Ekologický institut Veronica">
+		</a>
+		<a href="http://www.potravinovezahrady.cz/" target="_blank">
+			<img src="{% static 'img/partners/potravinove_zahrady.png' %}" alt="Potravinové zahrady">
+		</a>
+		<a href="http://www.gengel.webzdarma.cz/" target="_blank">
+			<img src="{% static 'img/partners/gengel.png' %}" alt="Gengel">
+		</a>
+	</div>
+	<hr>
+	<h3>{% trans 'Kudos' %}</h3>
+	<p>{% trans 'Sincere thanks to Maik Allen for helping us with translations.' %}</p>
+{% endblock %}

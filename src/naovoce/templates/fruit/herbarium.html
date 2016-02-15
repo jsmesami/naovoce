@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load markup %}
+{% load thumbs %}
+{% load typo %}
+{% load naturalsort %}
+
+{% block herbarium_active %}active{% endblock %}
+
+{% spaceless %}
+{% block title %}
+	{% if detail %}
+		{{ detail }} | {% trans "Herbarium" %} | {{ block.super }}
+	{% else %}
+		{% trans "Herbarium" %} | {{ block.super }}
+	{% endif %}
+{% endblock %}
+{% endspaceless %}
+
+{% block content %}
+	{% if index %}
+	<p class="pills">
+		{% trans 'Filter' %}:
+		<a href="{% url 'herbarium:index' %}"
+		   class="{% if not filter %}active{% endif %}">{% trans 'all' %}</a>
+	{% for num, name in classes %}
+		<a href="{% url 'herbarium:filter' num name|slugify %}"
+		   class="{% if num == filter %}active{% endif %}">{{ name|lower }}</a>
+	{% endfor %}
+	</p>
+	<hr>
+	<ul class="herbarium-index list-unstyled">
+		{% for item in index|naturalsort %}
+			<li>
+				<span class="fruit-icon-small" style="color:#{{ item.kind.color }}">
+					&#x{{ item.kind.key }}
+				</span>
+				<a href="{{ item.get_absolute_url }}">
+					{{ item }}
+				</a>
+			</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+
+	{% if detail %}
+	<div class="row">
+		<div class="col-xs-12">
+			<h2>{{ detail }}
+			{% if detail.latin_name %}
+				<br><span class="small">{{ detail.latin_name }}</span>
+			{% endif %}
+			</h2>
+		</div>
+
+		<div class="col-xs-12 col-sm-3">
+			<img src="{% get_thumb detail.photo w=700 h=500 %}"
+			     alt="{{ detail }}"
+			     class="img-responsive img-in-text">
+		</div>
+		<div class="col-xs-12 col-sm-9">
+			{{ detail.description|prepos|markdown }}
+		</div>
+	</div>
+	{% endif %}
+{% endblock %}

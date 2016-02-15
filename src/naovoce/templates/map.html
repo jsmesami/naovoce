@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load staticfiles %}
+{% load getitem %}
+{% load naturalsort %}
+
+{% block title %}{% trans 'Map' %} | {{ block.super }}{% endblock %}
+
+{% block meta_description %}
+	{% blocktrans trimmed %}
+		The &quot;Na ovoce&quot; map provides you with views of wild fruit trees, fruit bushes and herbs,
+		whose fruits are available for free picking.
+	{% endblocktrans %}
+{% endblock %}
+
+{% block map_active %}active{% endblock %}
+
+{% block wide_content %}
+<div id="map">
+	<div id="spinner" class="spinning"></div>
+	<div id="filter">
+		<div class="handle">
+			<a href="#" class="canceller">{% include 'inc/svg/cancel.html' %}</a>
+			<a href="#" class="toggler">{% trans 'filter' %}</a>
+		</div>
+		<div id="filter-items">
+		{% for name, text in classes %}
+			<a href="#" class="class-choice {{ name }}" data-target=".{{ name }}">
+				{{ text }}
+			</a>
+			<ul class="kinds-list {{ name }}">
+			{% for kind in kinds_by_class|getitem:name|naturalsort %}
+				<li><a href="#" data-kind="{{ kind.key }}">{{ kind }}</a></li>
+			{% endfor %}
+			</ul>
+		{% endfor %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block css %}
+	{{ block.super }}
+	<link rel="stylesheet" href="{% static 'components/leaflet/dist/leaflet.css' %}">
+	<link rel="stylesheet" href="{% static 'components/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css' %}">
+	<link rel="stylesheet" href="{% static 'components/leaflet.markercluster/dist/MarkerCluster.css' %}">
+	<link rel="stylesheet" href="{% static 'components/leaflet.locatecontrol/dist/L.Control.Locate.css' %}">
+{% endblock %}
+
+{% block scripts %}
+	{{ block.super }}
+	<script src="{% static 'components/leaflet/dist/leaflet.js' %}"></script>
+	<script src="{% static 'components/leaflet.locatecontrol/dist/L.Control.Locate.min.js' %}"></script>
+	<script src="{% static 'components/leaflet.markercluster/dist/leaflet.markercluster.js' %}"></script>
+	<script src="{% static 'components/esri-leaflet/dist/esri-leaflet.js' %}"></script>
+	<script src="{% static 'components/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.js' %}"></script>
+	<script src="{% static 'components/leaflet-hash/leaflet-hash.js' %}"></script>
+	{% include 'inc/mapjs.html' %}
+	<script type="text/coffeescript" charset="utf-8" src="{% static 'coffee/kinds-filter.coffee' %}"></script>
+	<script type="text/coffeescript" charset="utf-8">
+	$('#map').fillViewport()
+
+	$spinner = $('#spinner')
+
+	map = new Naovoce.Map 'map'
+	new L.Hash map
+
+	clusterer = L.markerClusterGroup
+		chunkedLoading: true
+		spiderfyOnMaxZoom: false
+		showCoverageOnHover: false
+		removeOutsideVisibleBounds: true
+		disableClusteringAtZoom: 15
+		maxClusterRadius: 40
+	.addTo map
+
+	class PopupMarker extends Naovoce.Marker
+		constructor: (fruit) ->
+			super [fruit.lat, fruit.lng], fruit.kind
+
+			popup = "<b>#{ @KINDS[fruit.kind].name }</b><br>"+
+					"<a href='/fruit/detail/#{ fruit.id }/'>{% trans 'Detail' %}</a> &raquo;"
+
+			@bindPopup popup, offset: new L.Point(0, -26)
+
+	$.getJSON '{% url 'api:fruit-list' %}', (json) ->
+		markers = (new PopupMarker fruit for fruit in json)
+
+		filter.reload = (kind) ->
+			$spinner.addClass 'spinning'
+
+			clusterer.clearLayers()
+			if not kind?
+				clusterer.addLayers markers
+			else
+				clusterer.addLayers (m for m in markers when m.kind == kind)
+
+			$spinner.removeClass 'spinning'
+
+		filter.reload()
+
+	map.addLocate()
+	# map.addSearch()
+	</script>
+{% endblock %}

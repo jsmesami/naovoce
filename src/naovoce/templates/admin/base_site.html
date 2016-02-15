@@ -1,0 +1,10 @@
+{% extends 'admin/base.html' %}
+
+{% load i18n %}
+
+{% block extrastyle %}
+	<style> .cbox { display:inline-block; width: 10px; height: 10px } </style>
+{% endblock %}
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'home' %}">Naovoce</a> – {% trans 'site administration' %}</h1>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load avatar %}
+
+{% block pickers_active %}active{% endblock %}
+
+{% block content %}
+{% with u=user %}
+
+	<h3>{{ u.username }}</h3>
+	<img src="{% avatar u bg_shade=0.3 %}" title="{{ u.username }}">
+
+{% endwith %}
+{% endblock %}

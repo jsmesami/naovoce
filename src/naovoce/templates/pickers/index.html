@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load avatar %}
+{% load naturalsort %}
+
+{% block pickers_active %}active{% endblock %}
+
+{% block title %}{% trans "Pickers Index" %} | {{ block.super }}{% endblock %}
+
+{% block content %}
+	<h3>{% trans "Hall of fame" %}</h3>
+	<ul class="list-unstyled hall-of-fame">
+	{% for p in pickers|slice:":10" %}
+		<li>
+			{% with name=p.get_short_name %}
+			<a href="{{ p.get_absolute_url }}" title="{{ name }}">
+				<img src="{% avatar p %}" alt={{ name }} class="avatar">{{ name }}
+			</a>
+			{% endwith %}
+			({% trans "markers added" %}: {{ p.fruit_count }})
+		</li>
+	{% endfor %}
+	</ul>
+	<hr>
+	<h3>{% trans "Other pickers" %}</h3>
+	<ul class="list-unstyled other-pickers">
+	{% for p in pickers|slice:"10:"|naturalsort %}
+		<li>
+			{% with name=p.get_short_name %}
+			<a href="{{ p.get_absolute_url }}" title="{{ name }}">
+				<img src="{% avatar p %}" class="avatar" alt="{{ name }}">{{ name }}</a>
+			{% endwith %}
+			({{ p.fruit_count }})
+		</li>
+	{% endfor %}
+	</ul>
+	<hr>
+	<ul class="list-unstyled other-pickers inactive">
+	{% spaceless %}
+	{% for p in others|naturalsort %}
+		<li>
+			{% with name=p.get_short_name %}
+			<a href="{{ p.get_absolute_url }}" title="{{ name }}">{{ name }}</a>
+			{% endwith %}
+		</li>
+	{% endfor %}
+	{% endspaceless %}
+	</ul>
+{% endblock %}

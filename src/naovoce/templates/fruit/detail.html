@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% load i18n l10n %}
+{% load static %}
+{% load fruit %}
+{% load coords %}
+{% load comments %}
+{% load avatar %}
+
+{% block title %}{{ fruit.kind.name|title }} | {{ block.super }}{% endblock %}
+
+{% block meta_description %}
+	{{ fuit.description }}
+{% endblock %}
+
+{% block map_active %}active{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-12">
+        <h3>{{ fruit.kind.name }}</h3>
+    </div>
+	{% if not fruit.deleted %}
+	    <div class="col-sm-12">
+		    <p class="location">
+			    <span class="geo">{% trans "Unknown address" %}</span><br>
+	            {{ fruit.latitude|stringformat:"f" }},&nbsp;{{ fruit.longitude|stringformat:"f" }}
+			    <span class="dms">({% dms_coords fruit.latitude fruit.longitude %})</span>
+		    </p>
+	    </div>
+	    <div class="col-sm-12">
+		    <div id="map-detail"></div>
+		</div>
+	{% else %}
+	    <div class="col-sm-12">
+			<h4>{% trans "This marker has been deleted" %}.</h4>
+		    {% if fruit.why_deleted %}
+	            <p>{% trans 'Reason of deletion' %}: {{ fruit.why_deleted }}</p>
+		    {% endif %}
+	        <hr>
+		</div>
+	{% endif %}
+
+    <div class="col-sm-12">
+        <ul class="map-links">
+	        <li><a href="{% url 'map' %}">{% trans 'Back to the map' %}</a></li>
+            {% if request.user|can_edit:fruit %}
+		        <li><a href="{% url 'fruit:edit' fruit.id %}">{% trans 'Edit' %}</a></li>
+		        <li><a href="{% url 'fruit:delete' fruit.id %}">{% trans 'Delete' %}</a></li>
+	        {% endif %}
+            {% if request.user.is_authenticated %}
+		        <li><a href="{% url 'fruit:add' %}">{% trans 'Add&nbsp;more' %}</a></li>
+            {% endif %}
+            {% with herbarium=fruit.kind.herbarium %}
+	            {% if herbarium %}
+	                <li><a href="{{ herbarium.get_absolute_url }}">{% trans 'Herbarium' %}</a></li>
+	            {% endif %}
+            {% endwith %}
+        </ul>
+        <hr>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-8 media">
+	{% with name=fruit.user.get_short_name %}
+		<img src="{% avatar fruit.user 100 0.3 %}" title="{{ name }}"
+		     class="pull-left media-object avatar">
+		<p class="media-body comment">
+			<span class="author">
+				<a href="{{ fruit.user.get_absolute_url }}">{{ name }}</a>
+				<span class="created">
+					{{ fruit.created|date:'SHORT_DATETIME_FORMAT' }}
+				</span>
+			</span>
+			{{ fruit.description }}
+		</p>
+	{% endwith %}
+    </div>
+</div>
+
+<hr>
+{% comments_for fruit %}
+
+{% endblock %}
+
+{% block css %}
+	{{ block.super }}
+	<link rel="stylesheet" href="{% static 'components/leaflet/dist/leaflet.css' %}">
+{% endblock %}
+
+{% block scripts %}
+	{{ block.super }}
+	{% if not fruit.deleted %}
+	<script src="{% static 'components/leaflet/dist/leaflet.js' %}"></script>
+	<script src="{% static 'components/esri-leaflet/dist/esri-leaflet.js' %}"></script>
+	<script src="{% static 'components/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.js' %}"></script>
+	{% include 'inc/mapjs.html' %}
+	<script type="text/coffeescript" charset="utf-8">
+	center = new L.LatLng({{ fruit.latitude|unlocalize }}, {{ fruit.longitude|unlocalize }})
+
+	map = new Naovoce.Map 'map-detail'
+		.setZoom 14
+		.setView center
+		.addLayer(new Naovoce.Marker(center, '{{ fruit.kind.key }}'))
+
+	map.fetchAddress center, (address) ->
+		$('.geo').text address
+	</script>
+	{% endif %}
+{% endblock %}

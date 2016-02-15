@@ -1,0 +1,14 @@
+{
+  "name": "naovoce",
+  "version": "0.9",
+  "dependencies": {
+    "jquery": "~1",
+    "bootstrap": "~3",
+    "leaflet": "0.7.3",
+    "leaflet-hash": "*",
+    "leaflet.markercluster": "0.4.0",
+    "leaflet.locatecontrol": "0.44.0",
+    "esri-leaflet": "1.0.0",
+    "esri-leaflet-geocoder": "1"
+  }
+}

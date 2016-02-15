@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% load markup %}
+{% load typo %}
+
+{% block title %}{{ staticpage.title }} | {{ block.super }}{% endblock %}
+
+{% block meta_description %}
+	{{ staticpage.meta_description }}
+{% endblock %}
+{% block content %}
+	{{ staticpage.text|prepos|markdown }}
+{% endblock %}

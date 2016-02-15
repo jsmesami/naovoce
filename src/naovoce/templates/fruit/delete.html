@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans 'Delete marker' context 'infinitive' %} | {{ block.super }}{% endblock %}
+
+{% block content %}
+	{% trans 'Delete marker' context 'infinitive' as title %}
+	{% trans 'Delete' as cta %}
+	{% url 'fruit:delete' as action %}
+	{% include 'inc/confirm.html' %}
+{% endblock %}

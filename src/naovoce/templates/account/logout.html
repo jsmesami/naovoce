@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans 'Sign out' %} | {{ block.super }}{% endblock %}
+
+{% block content %}
+	{% trans 'Sign out' as title %}
+	{% trans 'Sign out' context 'infinitive' as cta %}
+	{% trans 'Are you sure you want to sign out?' as message %}
+	{% url 'account_logout' as action %}
+	{% include 'inc/confirm.html' with back=redirect_field_value %}
+{% endblock %}

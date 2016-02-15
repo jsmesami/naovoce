@@ -1,0 +1,547 @@
+@import "bootstrap";
+@import "clusters";
+
+html {
+	overflow-y: scroll;
+}
+
+body {
+	background-image: url("@{base-url}/img/bg.svg");
+	background-position: center -40px;
+	background-repeat: repeat-y;
+}
+
+@media (min-width: 768px) {
+	.container {
+		max-width: 750px;
+	}
+}
+
+textarea {
+	overflow-y: scroll;
+    resize: none;
+}
+
+// honeypot:
+.tamper {
+	display: none;
+}
+
+#cookie-monster {
+	text-align: center;
+	margin: 0;
+	padding: 2px 30px 4px;
+	font-size: 90%;
+	background: white;
+}
+
+.container {
+	padding: 0 30px;
+}
+
+.heading-color(@col) {
+	color: @col;
+	a {
+		color: @col;
+		&:hover { color: darken(@col, 15%); }
+	}
+	.small {
+		color: @brand-primary;
+		font-weight: normal;
+	}
+}
+
+h1, h2 {
+	.heading-color(@brand-secondary);
+}
+
+h3 {
+	.heading-color(@brand-tertiary);
+}
+
+h4, h5, h6 {
+	.heading-color(@brand-primary);
+}
+
+h2.claim {
+	.make-sm-column(8);
+	margin-bottom: 0;
+}
+
+.call {
+	.make-sm-column(4);
+	text-align: center;
+	margin-top: 20px;
+	@media (min-width: @screen-xs-max) {
+		margin-top: 40px;
+	}
+}
+
+.footer {
+	h4 {
+		color: @brand-tertiary;
+	}
+}
+
+form {
+	label small {
+		color: @brand-info;
+		font-weight: normal;
+	}
+	.btn + .btn,
+	.btn + a {
+		margin-left: 10px;
+	}
+	&.comments {
+		display: none;
+	}
+}
+
+hr {
+	border-top: 1px dotted @brand-primary;
+}
+
+.container {
+	background: white;
+}
+
+.unspaced {
+	margin: 0;
+}
+
+#user-info {
+	background: @brand-success;
+	p {
+		margin: 2px 0 4px 0;
+		font-size: 90%;
+		color: @text-success;
+		a {
+			color: @text-success;
+		}
+		.langsel {
+			float: right;
+		}
+	}
+}
+
+#main-content {
+	padding-bottom: 20px;
+}
+
+#main-nav {
+	margin-bottom: 0;
+	border: 0;
+	.navbar-nav {
+		font-family: @headings-font-family;
+		.dropdown-menu {
+			font-family: @font-family-base;
+		}
+	}
+	.navbar-toggle {
+		margin: 8px 0 0 15px;
+	}
+	#brand-logo {
+		display: inline-block;
+		margin: 15px 0 10px;
+		svg {
+			width: 82px;
+			height: 40px;
+		}
+		@media (min-width: @screen-xs-max) {
+			margin: 20px 0 15px;
+			svg {
+				width: 109px;
+				height: 53px;
+			}
+		}
+	}
+	.social {
+		text-align: right;
+		margin: 11px 0 15px;
+		@media (min-width: @screen-xs-max) {
+			margin: 23px 0 3px 0;
+		}
+		a {
+			width: 22px;
+			height: 22px;
+			margin: 14px 0 0 5px;
+			display: inline-block;
+			@media (min-width: @screen-xs-max) {
+				margin: 0 0 0 5px;
+			}
+		}
+	}
+}
+
+#filter {
+	@class-choice-width: 50px;
+	@class-choice-height: @class-choice-width+25;
+	@kinds-list-width: 120px;
+	@kinds-list-height: 4 * @class-choice-height;
+	@filter-width: @class-choice-width + @kinds-list-width;
+
+	position: absolute;
+	top: 10px;
+	right: -@filter-width;
+	width: @filter-width;
+	z-index: 9999;
+
+	.handle {
+		display: block;
+		width: 80px;
+		height: 30px;
+		position: relative;
+		top: 50px;
+
+		line-height: 30px;
+		text-align: center;
+
+		-webkit-transform: rotate(270deg);
+		-moz-transform: rotate(270deg);
+		-ms-transform: rotate(270deg);
+		transform: rotate(270deg);
+
+		-webkit-transform-origin: 0 100%;
+		-moz-transform-origin: 0 100%;
+		-ms-transform-origin: 0 100%;
+		transform-origin: 0 100%;
+
+		border-radius: 3px 3px 0 0;
+
+		background: white;
+		text-transform: uppercase;
+	}
+	a {
+		display: inline-block;
+		color: @brand-secondary;
+		&:hover {
+			cursor: pointer;
+		}
+		&.toggler {
+			width: 100%
+		}
+		&.canceller {
+			width: 30%;
+			svg {
+				width: 9px;
+				height: 9px;
+			}
+			display: none;
+		}
+	}
+	&.filter-active {
+		.toggler {
+			width: 60%;
+		}
+		.canceller {
+			display: inline-block;
+		}
+	}
+	#filter-items {
+		position: absolute;
+		top: 0;
+	}
+	.class-choice {
+		display: block;
+		width: @class-choice-width;
+		height: @class-choice-height;
+		padding-top: @class-choice-height - 20px;
+		background: white url("@{base-url}/img/kinds.svg") no-repeat;
+		text-align: center;
+		&:active {
+			background-color: @brand-success;
+		}
+		&.tree {
+			background-position: 0 0;
+		}
+		&.bush {
+			background-position: -@class-choice-width 0;
+		}
+		&.herb {
+			background-position: -@class-choice-width * 2 0;
+		}
+		&.nut{
+			background-position: -@class-choice-width * 3 0;
+		}
+	}
+	.kinds-list {
+		.list-unstyled;
+		margin: 0;
+		width: @kinds-list-width;
+		height: 4*@class-choice-height;
+		position: absolute;
+		top: 0;
+		left: 50px;
+		background: white;
+		a {
+			display: block;
+			padding: 0 10px;
+			line-height: 20px;
+			&:active {
+				background-color: @brand-success;
+			}
+		}
+		li:first-child a {
+			padding-top: 5px;
+		}
+	}
+}
+
+hr.head-separator {
+	margin: 0;
+}
+
+ul.messages {
+	margin-top: 20px;
+}
+
+a.read-more {
+	display: block;
+}
+
+.panel {
+	margin-top: @grid-gutter-width;
+}
+
+.make-marker(@size) {
+	font-family: 'ff';
+	height: @size;
+	width: @size;
+	font-size: @size;
+	line-height: @size;
+	text-align: center;
+	display: inline-block;
+}
+
+.marker {
+	.make-marker(@marker-size);
+	margin: -@marker-size 0 0 -@marker-size/2;
+}
+
+.fruit-icon-large {
+	.make-marker(40px);
+}
+
+.fruit-icon-small {
+	.make-marker(25px);
+}
+
+.pills {
+	margin: 20px 0;
+	a {
+		.label;
+		line-height: 23px;
+		background-color: @brand-secondary;
+		&.active {
+			background-color: @brand-tertiary;
+		}
+	}
+}
+
+.explore-map {
+	display: block;
+	width: 100%;
+	height: 100px;
+	background: url("@{base-url}/img/screen.jpg") center center;
+	background-size: 720px 149px;
+}
+
+.location {
+	font-weight: bold;
+	.dms {
+		font-weight: normal;
+		font-size: 90%;
+	}
+}
+
+#map-detail {
+	height: 300px;
+	margin-bottom: 20px;
+}
+
+.map-links {
+	padding: 0;
+	margin: 0;
+	li {
+		display: inline;
+		margin: 0 20px 0 0;
+		padding: 0;
+	}
+}
+
+.locator {
+	&:before {
+		font-family: 'ff';
+		content: '\f00d';
+	}
+	&.busy {
+		color: @gray-lighter;
+	}
+}
+
+#spinner {
+	@spinner-size: 60px;
+	height: @spinner-size;
+	width: @spinner-size;
+	border-left: 6px solid fadeout(@brand-secondary, 60%);
+	border-right: 6px solid fadeout(@brand-secondary, 60%);
+	border-bottom: 6px solid fadeout(@brand-secondary, 60%);
+	border-top: 6px solid @brand-secondary;
+	border-radius: 100%;
+	z-index: 9999;
+
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: -@spinner-size 0 0 -@spinner-size/2;
+
+	display: none;
+	&.spinning {
+		display: block;
+		-webkit-animation: rotation .6s infinite linear;
+		animation: rotation .6s infinite linear;
+	}
+	@-webkit-keyframes rotation {
+		from {
+			-webkit-transform: rotate(0deg);
+		}
+		to {
+			-webkit-transform: rotate(359deg);
+		}
+	}
+	@keyframes rotation {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(359deg);
+		}
+	}
+}
+
+.img-in-text {
+	width: 100%;
+	margin: 15px 0;
+	@media (min-width: @screen-xs-max) {
+		margin: 7px @grid-gutter-width 10px 0;
+	}
+}
+
+.blog-preview img {
+	width: 100px;
+}
+
+.thumbs img {
+	.make-sm-column(6);
+	.img-responsive;
+	margin: @grid-gutter-width/2 0;
+}
+
+.columned {
+	@media (min-width: @screen-xs-max) {
+		-webkit-column-count: 2;
+		-moz-column-count: 2;
+		column-count: 2;
+	}
+}
+
+.latest-entries h4 {
+	margin-top: 20px;
+}
+
+.avatar {
+	height: 50px;
+}
+
+.hall-of-fame:extend(.columned) {
+	padding-top: 10px;
+	li {
+		margin: 10px 0;
+		&:first-child {
+			margin: 0;
+		}
+	}
+	.avatar {
+		margin-right: 10px;
+		height: 30px;
+	}
+}
+
+.other-pickers {
+	li {
+		display: inline-block;
+		margin: 10px 10px 10px 0;
+	}
+	&.inactive li {
+		margin: 10px 0 10px 0;
+		&:not(:last-child):after {
+			content: '\00a0|\00a0'
+		}
+	}
+	.avatar {
+		margin-right: 10px;
+		height: 20px;
+	}
+}
+
+.herbarium-index:extend(.columned) {
+	a {
+		vertical-align: top;
+	}
+}
+
+.partners {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+	margin: 0 -10px;
+	a {
+		margin: 10px;
+	}
+}
+
+.social {
+	margin: 0;
+	.facebook, .twitter {
+		float: left;
+		width: 70px;
+	}
+}
+
+.comment {
+	height: 50px;
+	position: relative;
+	padding: 10px;
+	background: @gray-lighter;
+	overflow: visible;
+	font-size: 12px;
+	color: @brand-primary;
+	.author {
+		display: block;
+		border-bottom: 2px solid white;
+		margin-bottom: 5px;
+		padding-bottom: 5px;
+		a, a:hover {
+			color: @brand-tertiary;
+		}
+		font-weight: bold;
+		.created {
+			float: right;
+			color: @brand-primary;
+			font-weight: normal;
+		}
+	}
+	.rejected {
+		color: lighten(@gray-base, 75%);
+	}
+	&:after {
+		content: '';
+		position: absolute;
+		border-style: solid;
+		border-width: 10px 10px 10px 0;
+		border-color: transparent @gray-lighter;
+		display: block;
+		left: -10px;
+		top: 10px;
+	}
+}

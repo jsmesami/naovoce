@@ -1,0 +1,61 @@
+{% load markup %}
+{% load i18n %}
+{% load avatar %}
+{% load typo %}
+{% load bootstrap %}
+
+{% if request.user.is_authenticated %}
+	<form action="{% url 'comments:save' %}" method="post" class="comments row" role="form">
+		{% csrf_token %}
+		<div class="col-sm-8">
+			{{ form.text|bootstrap }}
+			<div class="tamper"> {# honeypot #}
+				<label for="tamper_id">If you are not human, please fill this:</label>
+				<textarea id="tamper_id" name="tamper"></textarea>
+			</div>
+	        <input type="submit" class="btn btn-default" id="id_submit"
+	               value="{% trans 'Add your comment' %}">
+		</div>
+		<input type="hidden" name="token" value="{{ token }}">
+	    <input type="hidden" name="{{ form.content_type.name }}" value="{{ form.content_type.value }}">
+	    <input type="hidden" name="{{ form.object_id.name }}" value="{{ form.object_id.value }}">
+	    <input type="hidden" name="next" value="{{ request.path }}">
+	</form>
+{% else %}
+	<p>
+		{% trans 'To add your comment, please first' %}
+		<a href="{% url 'account_login' %}?next={{ request.path }}">{% trans 'sign in' %}</a>.
+	</p>
+{% endif %}
+
+{% if comments %}
+	<hr>
+	<div class="row">
+	{% for c in comments %}
+		<div class="col-sm-8 media" id="{{ c.anchor }}">
+			<a href="{{ c.author.get_absolute_url }}"
+			   class="pull-left media-object"
+			   title="{{ c.author.get_short_name }}">
+				<img src="{% avatar c.author 100 0.3 %}"
+				     alt="{{ c.author.get_short_name }}"
+					 class="avatar">
+			</a>
+			<p class="media-body comment">
+				<span class="author">
+					<a href="{{ c.author.get_absolute_url }}">{{ c.author }}</a>
+					<span class="created">
+						{{ c.created|date:'SHORT_DATETIME_FORMAT' }}
+					</span>
+				</span>
+				{% if not c.rejected %}
+					{{ c.text|prepos }}
+				{% else %}
+					<span class="rejected">
+						{% trans 'This comment has been rejected by moderator.' %}
+					</span>
+				{% endif %}
+			</p>
+		</div>
+	{% endfor %}
+	</div>
+{% endif %}

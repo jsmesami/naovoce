@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Add a marker" %} | {{ block.super }}{% endblock %}
+
+{% block add_active %}active{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-12">
+    {% block section %}
+        <h3>{% trans "You can add a marker here" %}</h3>
+    {% endblock %}
+    </div>
+    <div class="col-sm-12">
+	    <div id="map-detail"></div>
+	</div>
+    <div class="col-sm-12">
+        <div class="alert alert-warning">
+            <p>
+	            {% trans 'Please place the marker into the map' %}
+	            {% trans 'or enter the coordinates in decimal format, eg.:'%} <code>14.449108</code>
+            </p>
+        </div>
+    </div>
+    {% block form %}
+        {% include "fruit/inc/fruitform.html" with mode="add" %}
+    {% endblock %}
+</div>
+{% endblock %}
+
+{% block css %}
+	{{ block.super }}
+	<link rel="stylesheet" href="{% static 'components/leaflet/dist/leaflet.css' %}">
+    <link rel="stylesheet" href="{% static 'components/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css' %}">
+	<link rel="stylesheet" href="{% static 'components/leaflet.locatecontrol/dist/L.Control.Locate.css' %}">
+{% endblock %}
+
+{% block scripts %}
+	{{ block.super }}
+	<script src="{% static 'components/leaflet/dist/leaflet.js' %}"></script>
+	<script src="{% static 'components/esri-leaflet/dist/esri-leaflet.js' %}"></script>
+	<script src="{% static 'components/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.js' %}"></script>
+	<script src="{% static 'components/leaflet.locatecontrol/dist/L.Control.Locate.min.js' %}"></script>
+	{% include 'inc/mapjs.html' %}
+	<script type="text/coffeescript" charset="utf-8">
+
+	$lat = $('#id_latitude').change -> handleFruitForm()
+	$lng = $('#id_longitude').change -> handleFruitForm()
+	$kind = $('#id_kind').change -> handleFruitForm()
+
+	map = new Naovoce.Map 'map-detail'
+		.on 'click', (e) ->
+			loc = e.latlng
+			marker.setLatLng loc
+			$lat.val loc.lat.toFixed(10)
+			$lng.val loc.lng.toFixed(10)
+
+	{% block edit %}
+	marker = new Naovoce.Marker null, 'F00D'
+	map.on 'click', ->
+		if not map.hasLayer marker
+			map.addLayer marker
+	{% endblock %}
+
+	do handleFruitForm = ->
+		lat = $lat.val()
+		lng = $lng.val()
+		$selected_kind = $kind.find ":selected"
+
+		DECIMAL = /^\d{1,3}\.\d{1,10}$/
+
+		if DECIMAL.test(lat) and DECIMAL.test(lng)
+			marker.setLatLng [lat, lng]
+			if not map.hasLayer marker
+				map.addLayer marker
+			map.setView [lat, lng]
+
+		marker.setIcon($selected_kind.data('key'))
+
+	map.addLocate()
+	# map.addSearch()
+	</script>
+{% endblock %}

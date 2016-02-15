@@ -1,0 +1,42 @@
+{% load i18n %}
+
+<hr>
+<div class="footer row">
+	<div class="col-sm-5">
+		<h4>{% trans 'Contact' %}</h4>
+		<ul class="list-unstyled">
+			<li>
+				Na&nbsp;ovoce,&nbsp;z.&nbsp;s.<br>
+				IČ:&nbsp;04380215
+			</li>
+			<li>
+				Team: <a href="mailto:team@na-ovoce.cz">team@na-ovoce.cz</a><br>
+				Katka&nbsp;Kubánková, Edita&nbsp;Hornová, Tomáš&nbsp;Dvořák,
+				Jörg&nbsp;Kösters, Monika&nbsp;Křikavová, Jana&nbsp;Kosová
+			</li>
+			<li>
+				Software: <a href="mailto:software@na-ovoce.cz">software@na-ovoce.cz</a><br>
+				Ondra&nbsp;Nejedlý <a href="https://twitter.com/jsmesami">@jsmesami</a>
+			</li>
+		</ul>
+	</div>
+	<div class="col-sm-3">
+		<h4>{% trans 'Quick links' %}</h4>
+		<ul class="list-unstyled">
+			<li><a href="{% url 'map' %}">{% trans 'Map' %}</a></li>
+			<li><a href="{% url 'fruit:add' %}">{% trans 'Add Marker' %}</a></li>
+			<li><a href="{% url 'pickers:index' %}">{% trans 'Pickers' %}</a></li>
+			<li><a href="{% url 'herbarium:index' %}">{% trans 'Herbarium' %}</a></li>
+			<li><a href="{% url 'about' %}">{% trans 'About Us' %}</a></li>
+			<li><a href="{% url 'codex' %}">{% trans "Picker's Codex" %}</a></li>
+			<li><a href="{% url 'blog:index' %}">Blog</a></li>
+		</ul>
+	</div>
+	<div class="col-sm-4">
+		<h4>{% trans 'Social networks' %}</h4>
+		<ul class="list-unstyled">
+			<li><a href="https://www.facebook.com/naovoce">Facebook</a></li>
+			<li><a href="https://twitter.com/na_ovoce">Twitter</a></li>
+		</ul>
+	</div>
+</div>

@@ -1,0 +1,99 @@
+{% load i18n %}
+<script type="text/coffeescript" charset="utf-8">
+
+geocodeService = new L.esri.Geocoding.Services.geocoding()
+CENTER_CS = new L.LatLng 49.829896, 15.514818
+
+
+class MarkerIcon extends L.DivIcon
+	constructor: (color, char) ->
+		super
+			className: 'marker',
+			iconSize: null,
+			html: "<span style='color:##{ color }'>&#x#{ char }</span>"
+
+
+class Naovoce.Marker extends L.Marker
+	KINDS:
+		'F00D':
+			icon: new MarkerIcon('555', 'F00D')
+			name: "{% trans 'Fruit kind' %}"
+		{% for k in kinds %}
+		'{{ k.key }}':
+			icon: new MarkerIcon('{{ k.color }}', '{{ k.key }}')
+			name: '{{ k.name }}'
+		{% endfor %}
+
+	constructor: (latlng, @kind) ->
+		super latlng, icon: @KINDS[@kind].icon
+
+	setIcon: (kind) ->
+		super @KINDS[kind].icon
+
+
+class Naovoce.Map extends L.Map
+	constructor: (id) ->
+		params =
+			maxZoom: 18,
+			attribution: 'OpenStreetMap | <a href="http://fruitmap.sk">Fruitmap.sk</a> ' +
+						 '| <a href="http://mundraub.org">Mundraub.org</a>'
+
+		super id,
+			layers: [L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', params)]
+
+		@attributionControl.setPrefix ''  {# do not display Leaflet attribution #}
+
+		@on 'moveend', ->
+			@saveState()
+
+		@loadState()
+
+	{# functions to share map state between page reloads #}
+	saveState: ->
+		center = @getCenter()
+		Naovoce.storage.setObject 'map',
+			pos: [center.lat, center.lng]
+			zoom: @getZoom()
+		@
+
+	loadState: ->
+		map = Naovoce.storage.getObject 'map'
+
+		if map?
+			@setView map.pos, map.zoom
+		else
+			@setView CENTER_CS, 8
+		@
+
+	fetchAddress: (latlng, onSuccess) ->
+		geocodeService.reverse()
+			.latlng latlng
+			.run (error, result) ->
+				if result
+					loc = result.address
+					address = "#{ loc.City }, #{ loc.CountryCode }"
+					if loc.Postal
+						address = "#{ loc.Postal } #{ address }"
+					if loc.Address
+						address = "#{ loc.Address }, #{ address }"
+					onSuccess address
+		@
+
+	addSearch: ->
+		searchControl = new L.esri.Geocoding.Controls.Geosearch
+			placeholder: "{% trans 'Search for places or addresses' %}"
+		.addTo @
+
+		results = new L.LayerGroup().addTo @
+
+		searchControl.on 'results', -> results.clearLayers()
+		@
+
+	addLocate: ->
+		L.control.locate
+			icon: 'locator',
+			iconLoading: 'locator busy'
+		.addTo @
+		@
+
+</script>
