@@ -10,5 +10,4 @@ Project Contributors
 * Tomáš Dvořák
 * Jörg Kösters
 * Monika Křikavová
-* Monika Křikavová
 * Jana Kosová

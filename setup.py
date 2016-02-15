@@ -8,6 +8,6 @@ setup(
     author='Ondra Nejedlý',
     packages=find_packages(),
     scripts=[
-        'src/naovoce/manage.py'
+        'src/manage.py'
     ],
 )
