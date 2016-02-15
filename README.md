@@ -8,13 +8,16 @@ in the landscape. For more info please visit [About Us](https://na-ovoce.cz/en/a
 
 ## Installation
 
-prerequisities:
+Prerequisities:
 
-    * Python3.4
-    * PostgreSQL
-    * CoffeeScript
-    * Less
-    * Bower
+* Python3.4
+* PostgreSQL
+* CoffeeScript
+* Less
+* Bower
+
+
+Local Installation:
 
 	mkdir .env
 	python3.4 -m venv .env/naovoce
