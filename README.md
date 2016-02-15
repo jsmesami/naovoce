@@ -9,6 +9,7 @@ in the landscape. For more info please visit [About Us](https://na-ovoce.cz/en/a
 ## Installation
 
 prerequisities:
+
     * Python3.4
     * PostgreSQL
     * CoffeeScript
