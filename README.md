@@ -22,7 +22,7 @@ Local Installation:
 	mkdir .env
 	python3.4 -m venv .env/naovoce
 	source .env/naovoce/bin/activate
-	git clone git@bitbucket.org:jsmesami/naovoce.git
+	git clone https://github.com/jsmesami/naovoce.git
 	cd naovoce
 	pip3.4 install -r requirements.txt
 	bower install

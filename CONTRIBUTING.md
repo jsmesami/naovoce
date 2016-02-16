@@ -9,11 +9,11 @@ to the list of CONTRIBUTORS.
 There are _many_ things to be done.
 
 * (Py) map performance optimizations ([postGIS](http://postgis.net/)?) 
-* (JS) searching for places in the map
-* (Py) proper user profile 
+* (JS) searching for places in the map by address
+* (Py) proper user profile
 * (Py) comments system notifications
 * (Py) gallery of user-uploadable images in fruit detail
-* (JS) intelligent image uploads with progress and client side downscaling
+* (JS) intelligent image uploads with progress indication and client side downscaling
 * (JS) adding fruit by uploading an image with GPS information in EXIF (client side)
 * (Py) ability to report misuse of the map (with compulsory explanation)
 * (Py) Facebook signup
