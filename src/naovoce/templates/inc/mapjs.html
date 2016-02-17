@@ -35,13 +35,12 @@ class Naovoce.Map extends L.Map
 	constructor: (id) ->
 		params =
 			maxZoom: 18,
-			attribution: 'OpenStreetMap | <a href="http://fruitmap.sk">Fruitmap.sk</a> ' +
-						 '| <a href="http://mundraub.org">Mundraub.org</a>'
 
 		super id,
 			layers: [L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', params)]
 
-		@attributionControl.setPrefix ''  {# do not display Leaflet attribution #}
+		{# Do not display attributions, they are in the footer. #}
+		@attributionControl.setPrefix ''
 
 		@on 'moveend', ->
 			@saveState()
@@ -86,7 +85,10 @@ class Naovoce.Map extends L.Map
 			title: "{% trans 'Location search' %}"
 			providers: [arcgisOnline]
 			useMapBounds: false
-		.addTo @
+
+		{# Do not display attributions, they are in the footer. #}
+		searchControl.getAttribution = -> ''
+		searchControl.addTo @
 
 		results = new L.LayerGroup().addTo @
 

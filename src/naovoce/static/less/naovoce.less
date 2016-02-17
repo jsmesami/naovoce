@@ -369,14 +369,26 @@ a.read-more {
 	}
 }
 
-.locator {
-	&:before {
-		font-family: 'ff';
-		content: '\f00d';
+#map {
+	.locator {
+		display: block;
+		width: 100%;
+		height: 100%;
+		background: url("@{base-url}/img/locate.svg") center no-repeat;
+		background-size: 18px;
 	}
 	&.busy {
-		color: @gray-lighter;
+		background-color: @gray-lighter;
 	}
+	.active .locator {
+		background-color: @brand-info;
+	}
+}
+
+#map .geocoder-control-input {
+	background-image: url("@{base-url}/img/search.svg");
+	background-size: 17px;
+	background-position: right 5px top 5px;
 }
 
 #spinner {
