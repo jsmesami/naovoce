@@ -1,0 +1,4 @@
+-r requirements.txt
+
+ipython>=4.0
+django-debug-toolbar>=1.4

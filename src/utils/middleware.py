@@ -2,7 +2,7 @@ import os
 import psutil
 import logging
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('naovoce')
 
 THRESHOLD = 2 * 1024 * 1024
 
