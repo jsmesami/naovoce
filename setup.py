@@ -6,7 +6,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='naovoce',
-    version='0.9',
+    version='1.0a',
     url='https://github.com/jsmesami/naovoce.git',
     author='Ondra Nejedlý',
     license='MIT',

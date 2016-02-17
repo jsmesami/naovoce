@@ -10,7 +10,7 @@ in the landscape. For more info please visit [About Us](https://na-ovoce.cz/en/a
 
 Prerequisities:
 
-* Python3.4
+* Python3.4+
 * PostgreSQL
 * CoffeeScript
 * Less
@@ -20,7 +20,7 @@ Prerequisities:
 Local Installation:
 
 	mkdir .env
-	python3.4 -m venv .env/naovoce
+	python3 -m venv .env/naovoce
 	source .env/naovoce/bin/activate
 	git clone https://github.com/jsmesami/naovoce.git
 	cd naovoce

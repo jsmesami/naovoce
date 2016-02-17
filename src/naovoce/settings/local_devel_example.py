@@ -59,7 +59,7 @@ TEMPLATES[0]['OPTIONS']['loaders'] = [
 # EXTERNAL_APPS = ('debug_toolbar',) + EXTERNAL_APPS
 
 # on a Mac, syslog sits on a different path
-# LOGGING['handlers']['syslog']['address'] = '/var/run/syslog',
+# LOGGING['handlers']['syslog']['address'] = '/var/run/syslog'
 
 # you may want to enable DRF browsable API
 # REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = (

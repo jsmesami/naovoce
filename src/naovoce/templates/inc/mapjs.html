@@ -1,7 +1,7 @@
 {% load i18n %}
 <script type="text/coffeescript" charset="utf-8">
 
-geocodeService = new L.esri.Geocoding.Services.geocoding()
+geocodeService = new L.esri.Geocoding.geocodeService
 CENTER_CS = new L.LatLng 49.829896, 15.514818
 
 
@@ -80,8 +80,12 @@ class Naovoce.Map extends L.Map
 		@
 
 	addSearch: ->
-		searchControl = new L.esri.Geocoding.Controls.Geosearch
+		arcgisOnline = L.esri.Geocoding.arcgisOnlineProvider()
+		searchControl = new L.esri.Geocoding.geosearch
 			placeholder: "{% trans 'Search for places or addresses' %}"
+			title: "{% trans 'Location search' %}"
+			providers: [arcgisOnline]
+			useMapBounds: false
 		.addTo @
 
 		results = new L.LayerGroup().addTo @
@@ -93,6 +97,10 @@ class Naovoce.Map extends L.Map
 		L.control.locate
 			icon: 'locator',
 			iconLoading: 'locator busy'
+			strings:
+				title: "{% trans 'Show me where I am' %}"
+				metersUnit: "m"
+				popup: "{% trans 'You are within {distance} {unit} from this point' %}"
 		.addTo @
 		@
 
