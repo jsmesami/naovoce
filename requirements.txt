@@ -13,3 +13,4 @@ psycopg2~=2.6
 sorl-thumbnail~=12.3
 python3-memcached~=1.51
 -e git://github.com/hersonls/djamin.git#egg=djamin
+psutil~=3.4
