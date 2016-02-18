@@ -3,7 +3,7 @@ from django.db.models import Count, Case, When
 from django.http import HttpResponsePermanentRedirect, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 
-from fruit.models import Kind
+from fruit.models import Kind, Fruit
 from user.models import FruitUser
 
 fruit_counter = {
@@ -12,16 +12,18 @@ fruit_counter = {
 
 
 def index(request):
-    pickers = FruitUser.objects\
-        .filter(is_active=True, is_email_verified=True)\
-        .exclude(username='fruitmap.sk')\
-        .annotate(**fruit_counter)\
-        .order_by('-fruit_count', 'username')
+    pickers = FruitUser.objects.filter(is_active=True, is_email_verified=True)
 
-    context = {
-        'pickers': pickers.exclude(fruit_count=0),
-        'others': pickers.filter(fruit_count=0),
-    }
+    top_pickers = pickers.exclude(username='fruitmap.sk')\
+        .annotate(**fruit_counter).order_by('-fruit_count', 'username')[:10]
+
+    fruit_count = Fruit.objects.valid().exclude(user__in=top_pickers).count()
+
+    context = dict(
+        top_pickers=top_pickers,
+        pickers_count=pickers.count()-10,
+        fruit_count=fruit_count,
+    )
 
     return render(request, 'pickers/index.html', context)
 

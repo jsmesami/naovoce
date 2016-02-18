@@ -10,7 +10,7 @@
 {% block content %}
 	<h3>{% trans "Hall of fame" %}</h3>
 	<ul class="list-unstyled hall-of-fame">
-	{% for p in pickers|slice:":10" %}
+	{% for p in top_pickers %}
 		<li>
 			{% with name=p.get_short_name %}
 			<a href="{{ p.get_absolute_url }}" title="{{ name }}">
@@ -20,29 +20,8 @@
 		</li>
 	{% endfor %}
 	</ul>
-	<hr>
-	<h3>{% trans "Other pickers" %}</h3>
-	<ul class="list-unstyled other-pickers">
-	{% for p in pickers|slice:"10:"|naturalsort %}
-		<li>
-			{% with name=p.get_short_name %}
-			<a href="{{ p.get_absolute_url }}" title="{{ name }}">
-				<img src="{% avatar p %}" class="avatar" alt="{{ name }}">{{ name }}</a>
-			{% endwith %}
-			({{ p.fruit_count }})
-		</li>
-	{% endfor %}
-	</ul>
-	<hr>
-	<ul class="list-unstyled other-pickers inactive">
-	{% spaceless %}
-	{% for p in others|naturalsort %}
-		<li>
-			{% with name=p.get_short_name %}
-			<a href="{{ p.get_absolute_url }}" title="{{ name }}">{{ name }}</a>
-			{% endwith %}
-		</li>
-	{% endfor %}
-	{% endspaceless %}
-	</ul>
+	<p>{% blocktrans trimmed %}
+		Kudos to other <strong>{{ pickers_count }}</strong> pickers,
+		that contributed <strong>{{ fruit_count }}</strong> markers.
+	{% endblocktrans %}</p>
 {% endblock %}

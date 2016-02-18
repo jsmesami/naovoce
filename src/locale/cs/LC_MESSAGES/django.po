@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-17 23:47+0100\n"
-"PO-Revision-Date: 2016-02-18 09:32+0100\n"
+"POT-Creation-Date: 2016-02-18 15:07+0100\n"
+"PO-Revision-Date: 2016-02-18 15:08+0100\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -780,7 +780,7 @@ msgid "filter"
 msgstr "filtr"
 
 #: naovoce/templates/pickers/detail.html:19
-#: naovoce/templates/pickers/index.html:20
+#: naovoce/templates/pickers/index.html:19
 msgid "markers added"
 msgstr "počet značek"
 
@@ -792,9 +792,14 @@ msgstr "Seznam sběračů"
 msgid "Hall of fame"
 msgstr "Síň slávy"
 
-#: naovoce/templates/pickers/index.html:25
-msgid "Other pickers"
-msgstr "Další sběrači"
+#: naovoce/templates/pickers/index.html:23
+#, python-format
+msgid ""
+"Kudos to other <strong>%(pickers_count)s</strong> pickers, that contributed "
+"<strong>%(fruit_count)s</strong> markers."
+msgstr ""
+"Děkujeme ostatním <strong>%(pickers_count)s</strong> sběračům, kteří "
+"přispěli <strong>%(fruit_count)s</strong> značkami."
 
 #: naovoce/templates/staticpage/about.html:10
 msgid "Core Team"
@@ -932,6 +937,9 @@ msgstr "změněno"
 #: utils/templatetags/truncate.py:16
 msgid "Read more"
 msgstr "Čtěte více"
+
+#~ msgid "Other pickers"
+#~ msgstr "Další sběrači"
 
 #~ msgid "Back to the map"
 #~ msgstr "Zpět do mapy"
