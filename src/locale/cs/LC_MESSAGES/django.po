@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-17 23:47+0100\n"
-"PO-Revision-Date: 2016-02-17 23:49+0100\n"
+"PO-Revision-Date: 2016-02-18 09:32+0100\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -740,7 +740,7 @@ msgstr "Sociální sítě"
 
 #: naovoce/templates/inc/footer.html:41
 msgid "Friends"
-msgstr "Přítelé"
+msgstr "Přátelé"
 
 #: naovoce/templates/inc/mapjs.html:20
 msgid "Fruit kind"

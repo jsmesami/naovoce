@@ -14,8 +14,7 @@
 		<li>
 			{% with name=p.get_short_name %}
 			<a href="{{ p.get_absolute_url }}" title="{{ name }}">
-				<img src="{% avatar p %}" alt={{ name }} class="avatar">{{ name }}
-			</a>
+				<img src="{% avatar p %}" alt={{ name }} class="avatar">{{ name }}</a>
 			{% endwith %}
 			({% trans "markers added" %}: {{ p.fruit_count }})
 		</li>
