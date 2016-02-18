@@ -33,12 +33,15 @@ class Naovoce.Marker extends L.Marker
 
 class PopupMarker extends Naovoce.Marker
 	constructor: (fruit) ->
+		@fruit = fruit
 		super [fruit.lat, fruit.lng], fruit.kind
 
-		popup = "<b>#{ @KINDS[fruit.kind].name }</b><br>"+
-				"<a href='/fruit/detail/#{ fruit.id }/'>{% trans 'Detail' %}</a> &raquo;"
+		popup = "<h4>#{ @KINDS[fruit.kind].name }</h4>"+
+				"<a href='/fruit/detail/#{ fruit.id }/'>{% trans 'Detail' %} &raquo;</a>"
 
-		@bindPopup popup, offset: new L.Point(0, -26)
+		@bindPopup popup,
+			offset: new L.Point(0, -26)
+			maxWidth: 200
 
 
 class Naovoce.Map extends L.Map
@@ -66,6 +69,18 @@ class Naovoce.Map extends L.Map
 			@markerLayerGroup = new L.layerGroup().addTo @
 			@markerLayerGroup.addLayers = (layers) ->
 				@addLayer l for l in layers
+
+		@.on 'popupopen', (ev) -> {# Add  more content to popups when marker clicked. #}
+			$.getJSON ev.popup._source.fruit.url, (json) =>
+				content = ev.popup.getContent()
+				content += " {% trans 'Shared by' %} " +
+					"<a href='/pickers/#{json.user.id}-#{json.user.username.toLowerCase()}/'>"+
+					"#{json.user.username}</a> &raquo;"
+
+				content += "<br><strong>{% trans 'Description' %}:</strong> " +
+					"#{json.description.truncate(150)}" if json.description
+
+				ev.popup.setContent(content)
 
 		@spinner = $ '<div id="spinner">'
 		$("##{id}").prepend(@spinner)

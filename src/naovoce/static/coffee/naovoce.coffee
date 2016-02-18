@@ -24,6 +24,11 @@ class JsonStorage
 @Naovoce.storage = new JsonStorage('naovoce')
 
 
+# Enhance strings with truncete method.
+String::truncate = (n) ->
+	@substr(0, n - 1).trim() + ((if @length > n then "&hellip;" else ""))
+
+
 $.fn.fillViewport = ->
 	###
 	jQuery plugin for stretching an element height to fill down the browser window
