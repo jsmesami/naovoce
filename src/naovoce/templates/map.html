@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% load i18n %}
-{% load staticfiles %}
+{% load static from staticfiles %}
 {% load getitem %}
 {% load naturalsort %}
 
@@ -18,7 +18,6 @@
 
 {% block wide_content %}
 <div id="map">
-	<div id="spinner" class="spinning"></div>
 	<div id="filter">
 		<div class="handle">
 			<a href="#" class="canceller">{% include 'inc/svg/cancel.html' %}</a>
@@ -60,48 +59,24 @@
 	{% include 'inc/mapjs.html' %}
 	<script type="text/coffeescript" charset="utf-8" src="{% static 'coffee/kinds-filter.coffee' %}"></script>
 	<script type="text/coffeescript" charset="utf-8">
-	$('#map').fillViewport()
 
-	$spinner = $('#spinner')
+	$('#map').fillViewport()
 
 	map = new Naovoce.Map 'map'
 	new L.Hash map
 
-	clusterer = L.markerClusterGroup
-		chunkedLoading: true
-		spiderfyOnMaxZoom: false
-		showCoverageOnHover: false
-		removeOutsideVisibleBounds: true
-		disableClusteringAtZoom: 15
-		maxClusterRadius: 40
-	.addTo map
+	map.loadMarkers '{% url 'api:fruit-list' %}'
+		.loadState()
+		.on 'moveend', ->
+			@saveState()
+		.addLocate()
+		.addSearch()
 
-	class PopupMarker extends Naovoce.Marker
-		constructor: (fruit) ->
-			super [fruit.lat, fruit.lng], fruit.kind
+	filter.reload = (kind) ->
+		if not kind?
+			map.showMarkers()
+		else
+			map.filterMarkers(kind)
 
-			popup = "<b>#{ @KINDS[fruit.kind].name }</b><br>"+
-					"<a href='/fruit/detail/#{ fruit.id }/'>{% trans 'Detail' %}</a> &raquo;"
-
-			@bindPopup popup, offset: new L.Point(0, -26)
-
-	$.getJSON '{% url 'api:fruit-list' %}', (json) ->
-		markers = (new PopupMarker fruit for fruit in json)
-
-		filter.reload = (kind) ->
-			$spinner.addClass 'spinning'
-
-			clusterer.clearLayers()
-			if not kind?
-				clusterer.addLayers markers
-			else
-				clusterer.addLayers (m for m in markers when m.kind == kind)
-
-			$spinner.removeClass 'spinning'
-
-		filter.reload()
-
-	map.addLocate()
-	map.addSearch()
 	</script>
 {% endblock %}

@@ -57,6 +57,11 @@
 			marker.setLatLng loc
 			$lat.val loc.lat.toFixed(10)
 			$lng.val loc.lng.toFixed(10)
+		.loadState()
+		.on 'moveend', ->
+			@saveState()
+		.addLocate()
+		.addSearch()
 
 	{% block edit %}
 	marker = new Naovoce.Marker null, 'F00D'
@@ -80,7 +85,5 @@
 
 		marker.setIcon($selected_kind.data('key'))
 
-	map.addLocate()
-	map.addSearch()
 	</script>
 {% endblock %}

@@ -2,7 +2,7 @@
 <script type="text/coffeescript" charset="utf-8">
 
 geocodeService = new L.esri.Geocoding.geocodeService
-CENTER_CS = new L.LatLng 49.829896, 15.514818
+Naovoce.CENTER_CS = new L.LatLng 49.829896, 15.514818
 
 
 class MarkerIcon extends L.DivIcon
@@ -31,10 +31,21 @@ class Naovoce.Marker extends L.Marker
 		super @KINDS[kind].icon
 
 
+class PopupMarker extends Naovoce.Marker
+	constructor: (fruit) ->
+		super [fruit.lat, fruit.lng], fruit.kind
+
+		popup = "<b>#{ @KINDS[fruit.kind].name }</b><br>"+
+				"<a href='/fruit/detail/#{ fruit.id }/'>{% trans 'Detail' %}</a> &raquo;"
+
+		@bindPopup popup, offset: new L.Point(0, -26)
+
+
 class Naovoce.Map extends L.Map
 	constructor: (id) ->
 		params =
 			maxZoom: 18,
+			minZoom: 5,
 
 		super id,
 			layers: [L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', params)]
@@ -42,10 +53,44 @@ class Naovoce.Map extends L.Map
 		{# Do not display attributions, they are in the footer. #}
 		@attributionControl.setPrefix ''
 
-		@on 'moveend', ->
-			@saveState()
+		if L.markerClusterGroup?
+			@markerLayerGroup = L.markerClusterGroup
+				chunkedLoading: true
+				spiderfyOnMaxZoom: false
+				showCoverageOnHover: false
+				removeOutsideVisibleBounds: true
+				disableClusteringAtZoom: 15
+				maxClusterRadius: 40
+			.addTo @
+		else
+			@markerLayerGroup = new L.layerGroup().addTo @
+			@markerLayerGroup.addLayers = (layers) ->
+				@addLayer l for l in layers
 
-		@loadState()
+		@spinner = $ '<div id="spinner">'
+		$("##{id}").prepend(@spinner)
+
+	loadMarkers: (url) ->
+		@spinner.addClass 'spinning'
+		$.getJSON url, (json) =>
+			@markers = (new PopupMarker fruit for fruit in json)
+			@showMarkers()
+			@spinner.removeClass 'spinning'
+		@
+
+	showMarkers: ->
+		@markerLayerGroup.clearLayers()
+		@markerLayerGroup.addLayers @markers
+		@
+
+	filterMarkers: (kind) ->
+		@markerLayerGroup.clearLayers()
+		@markerLayerGroup.addLayers (m for m in @markers when m.kind == kind)
+		@
+
+	clearMarkers: ->
+		@markerLayerGroup.clearLayers()
+		@
 
 	{# functions to share map state between page reloads #}
 	saveState: ->
@@ -61,7 +106,12 @@ class Naovoce.Map extends L.Map
 		if map?
 			@setView map.pos, map.zoom
 		else
-			@setView CENTER_CS, 8
+			@setView Naovoce.CENTER_CS, 8
+		@
+
+	focusTo: (latlng) ->
+		@setView latlng
+		@setZoom 10
 		@
 
 	fetchAddress: (latlng, onSuccess) ->

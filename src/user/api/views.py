@@ -1,17 +1,15 @@
 from rest_framework import generics
-from django.db.models import Count, Case, When
 
 from . import serializers
 from ..models import FruitUser
+from ..views import fruit_counter
 
 
 class UserList(generics.ListAPIView):
-    queryset = FruitUser.objects.all()
+    queryset = FruitUser.objects.iterator()
     serializer_class = serializers.UserSerializer
 
 
 class UserDetail(generics.RetrieveAPIView):
-    queryset = FruitUser.objects.annotate(
-        fruit_count=Count(Case(When(fruits__deleted=False, then=1)))
-    )
+    queryset = FruitUser.objects.annotate(**fruit_counter)
     serializer_class = serializers.VerboseUserSerializer

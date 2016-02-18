@@ -1,13 +1,64 @@
 {% extends 'base.html' %}
+
+{% load i18n %}
 {% load avatar %}
+{% load static from staticfiles %}
+
+{% block title %}{{ user.username }} | {{ block.super }}{% endblock %}
 
 {% block pickers_active %}active{% endblock %}
 
 {% block content %}
-{% with u=user %}
+<div class="row">
+    <div class="col-sm-12 media">
+	    <h3 class="pull-left media-object">
+			<img src="{% avatar user bg_shade=0.3 %}" title="{{ user.username }}" class="avatar">
+	    </h3>
+	    <div class="media-body">
+            <h3>{{ user.username }}</h3>
+			<h4>{% trans "markers added" %}: {{ user.fruit_count }}</h4>
+	    </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+	    <div id="map-detail"></div>
+	</div>
+    <div class="col-sm-12">
+        <ul class="map-links">
+	        <li><a href="{% url 'map' %}">{% trans 'Large map' %}</a></li>
+	        <li><a href="{% url 'fruit:add' %}">{% trans 'Add marker' %}</a></li>
+        </ul>
+    </div>
+</div>
 
-	<h3>{{ u.username }}</h3>
-	<img src="{% avatar u bg_shade=0.3 %}" title="{{ u.username }}">
+{% endblock %}
 
-{% endwith %}
+{% block css %}
+	{{ block.super }}
+	<link rel="stylesheet" href="{% static 'components/leaflet/dist/leaflet.css' %}">
+	<link rel="stylesheet" href="{% static 'components/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css' %}">
+	<link rel="stylesheet" href="{% static 'components/leaflet.markercluster/dist/MarkerCluster.css' %}">
+	<link rel="stylesheet" href="{% static 'components/leaflet.locatecontrol/dist/L.Control.Locate.css' %}">
+{% endblock %}
+
+{% block scripts %}
+	{{ block.super }}
+	<script src="{% static 'components/leaflet/dist/leaflet.js' %}"></script>
+	<script src="{% static 'components/leaflet.locatecontrol/dist/L.Control.Locate.min.js' %}"></script>
+	<script src="{% static 'components/leaflet.markercluster/dist/leaflet.markercluster.js' %}"></script>
+	<script src="{% static 'components/esri-leaflet/dist/esri-leaflet.js' %}"></script>
+	<script src="{% static 'components/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.js' %}"></script>
+	{% include 'inc/mapjs.html' %}
+	<script type="text/coffeescript" charset="utf-8">
+
+	map = new Naovoce.Map 'map-detail'
+
+	map.loadMarkers('{% url 'api:fruit-list' %}?user={{ user.id }}')
+		.setView Naovoce.CENTER_CS
+		.setZoom 7
+		.addLocate()
+		.addSearch()
+
+	</script>
 {% endblock %}

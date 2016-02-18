@@ -98,12 +98,13 @@
 	center = new L.LatLng({{ fruit.latitude|unlocalize }}, {{ fruit.longitude|unlocalize }})
 
 	map = new Naovoce.Map 'map-detail'
-		.setZoom 14
-		.setView center
+		.focusTo center
+		.saveState()
 		.addLayer(new Naovoce.Marker(center, '{{ fruit.kind.key }}'))
 
 	map.fetchAddress center, (address) ->
 		$('.geo').text address
+
 	</script>
 	{% endif %}
 {% endblock %}
