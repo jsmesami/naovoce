@@ -65,7 +65,7 @@ class FruitList(generics.ListCreateAPIView):
             serializer = self.get_serializer(page, many=True)
             return self.get_paginated_response(serializer.data)
 
-        serializer = self.get_serializer(qs, many=True)
+        serializer = self.get_serializer(qs.iterator(), many=True)
 
         if not user:
             # Caching comb. of both kind & user would produce too many cache entries.
@@ -122,5 +122,5 @@ class FruitDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class KindList(generics.ListAPIView):
-    queryset = Kind.objects.all()
+    queryset = Kind.objects.order_by().iterator()
     serializer_class = serializers.KindSerializer

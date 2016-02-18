@@ -41,7 +41,6 @@ class Filter
 
 
 $toggler.on 'click', ->
-	console.log F.classes_pulled
 	if not F.classes_pulled
 		F.pullClasses()
 	else
