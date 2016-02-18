@@ -71,16 +71,19 @@ class Naovoce.Map extends L.Map
 				@addLayer l for l in layers
 
 		@.on 'popupopen', (ev) -> {# Add  more content to popups when marker clicked. #}
-			$.getJSON ev.popup._source.fruit.url, (json) =>
-				content = ev.popup.getContent()
-				content += " {% trans 'Shared by' %} " +
-					"<a href='/pickers/#{json.user.id}-#{json.user.username.toLowerCase()}/'>"+
-					"#{json.user.username}</a> &raquo;"
+			if not ev.popup.contentEnhanced?
+				$.getJSON ev.popup._source.fruit.url, (json) =>
+					content = ev.popup.getContent()
+					content += " {% trans 'Shared by' %} " +
+						"<a href='/pickers/#{json.user.id}-#{json.user.username.toLowerCase()}/'>"+
+						"#{json.user.username}</a> &raquo;"
 
-				content += "<br><strong>{% trans 'Description' %}:</strong> " +
-					"#{json.description.truncate(150)}" if json.description
+					content += "<br><strong>{% trans 'Description' %}:</strong> " +
+						"#{json.description.truncate(150)}" if json.description
 
-				ev.popup.setContent(content)
+					ev.popup.contentEnhanced = true
+					ev.popup.setContent(content)
+			@
 
 		@spinner = $ '<div id="spinner">'
 		$("##{id}").prepend(@spinner)
