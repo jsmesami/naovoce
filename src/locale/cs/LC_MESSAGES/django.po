@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-17 13:47+0100\n"
-"PO-Revision-Date: 2016-02-17 13:52+0100\n"
+"POT-Creation-Date: 2016-02-17 23:47+0100\n"
+"PO-Revision-Date: 2016-02-17 23:49+0100\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -560,7 +560,7 @@ msgstr "Přidávání"
 msgid "Pickers"
 msgstr "Sběrači"
 
-#: naovoce/templates/base.html:55 naovoce/templates/fruit/detail.html:56
+#: naovoce/templates/base.html:55 naovoce/templates/fruit/detail.html:54
 #: naovoce/templates/fruit/herbarium.html:13
 #: naovoce/templates/fruit/herbarium.html:15
 #: naovoce/templates/inc/footer.html:29
@@ -656,32 +656,31 @@ msgstr "Důvod smazání"
 
 #: naovoce/templates/fruit/detail.html:46
 #: naovoce/templates/fruit/inc/fruitform.html:24
-msgid "Back to the map"
-msgstr "Zpět do mapy"
+#: naovoce/templates/pickers/detail.html:29
+msgid "Large map"
+msgstr "Velká mapa"
 
 #: naovoce/templates/fruit/detail.html:48
 msgid "Edit"
 msgstr "Upravit"
 
-#: naovoce/templates/fruit/detail.html:52
-msgid "Add&nbsp;more"
-msgstr "Přidat&nbsp;další"
+#: naovoce/templates/fruit/detail.html:51
+#: naovoce/templates/fruit/inc/fruitform.html:20
+#: naovoce/templates/pickers/detail.html:30
+msgid "Add marker"
+msgstr "Přidat značku"
 
-#: naovoce/templates/fruit/edit.html:6
+#: naovoce/templates/fruit/edit.html:5
 msgid "Edit a marker"
 msgstr "Upravit značku"
 
-#: naovoce/templates/fruit/edit.html:11
+#: naovoce/templates/fruit/edit.html:10
 msgid "You can edit your marker here"
 msgstr "Zde můžete upravit svou značku"
 
 #: naovoce/templates/fruit/herbarium.html:23
 msgid "Filter"
 msgstr "Filtr"
-
-#: naovoce/templates/fruit/inc/fruitform.html:20
-msgid "Add marker"
-msgstr "Přidat značku"
 
 #: naovoce/templates/fruit/inc/fruitform.html:22
 msgid "Save changes"
@@ -739,23 +738,31 @@ msgstr "Kodex sběrače"
 msgid "Social networks"
 msgstr "Sociální sítě"
 
+#: naovoce/templates/inc/footer.html:41
+msgid "Friends"
+msgstr "Přítelé"
+
 #: naovoce/templates/inc/mapjs.html:20
 msgid "Fruit kind"
 msgstr "Druh ovoce"
 
-#: naovoce/templates/inc/mapjs.html:85
+#: naovoce/templates/inc/mapjs.html:39
+msgid "Detail"
+msgstr "Detail"
+
+#: naovoce/templates/inc/mapjs.html:134
 msgid "Search for places or addresses"
 msgstr "Vyhledávání míst a adres"
 
-#: naovoce/templates/inc/mapjs.html:86
+#: naovoce/templates/inc/mapjs.html:135
 msgid "Location search"
 msgstr "Vyhledávání míst"
 
-#: naovoce/templates/inc/mapjs.html:101
+#: naovoce/templates/inc/mapjs.html:153
 msgid "Show me where I am"
 msgstr "Ukaž mi, kde jsem!"
 
-#: naovoce/templates/inc/mapjs.html:103
+#: naovoce/templates/inc/mapjs.html:155
 #, python-brace-format
 msgid "You are within {distance} {unit} from this point"
 msgstr "Od tohoto bodu jste vzdáleni cca {distance}{unit}."
@@ -768,13 +775,14 @@ msgstr ""
 "Mapa &quot;Na ovoce&quot; umožňuje zobrazení volně rostoucích ovocných "
 "stromů, keřů a bylinek, jejichž plody je možné si zdarma natrhat."
 
-#: naovoce/templates/map.html:25
+#: naovoce/templates/map.html:24
 msgid "filter"
 msgstr "filtr"
 
-#: naovoce/templates/map.html:84
-msgid "Detail"
-msgstr "Detail"
+#: naovoce/templates/pickers/detail.html:19
+#: naovoce/templates/pickers/index.html:20
+msgid "markers added"
+msgstr "počet značek"
 
 #: naovoce/templates/pickers/index.html:8
 msgid "Pickers Index"
@@ -783,10 +791,6 @@ msgstr "Seznam sběračů"
 #: naovoce/templates/pickers/index.html:11
 msgid "Hall of fame"
 msgstr "Síň slávy"
-
-#: naovoce/templates/pickers/index.html:20
-msgid "markers added"
-msgstr "počet značek"
 
 #: naovoce/templates/pickers/index.html:25
 msgid "Other pickers"
@@ -928,6 +932,12 @@ msgstr "změněno"
 #: utils/templatetags/truncate.py:16
 msgid "Read more"
 msgstr "Čtěte více"
+
+#~ msgid "Back to the map"
+#~ msgstr "Zpět do mapy"
+
+#~ msgid "Add&nbsp;more"
+#~ msgstr "Přidat&nbsp;další"
 
 #~ msgid "Content type {} is not supported."
 #~ msgstr "Typ obsahu {} není podporován."

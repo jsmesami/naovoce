@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% load i18n l10n %}
-{% load static %}
+{% load static from staticfiles %}
 {% load fruit %}
 {% load coords %}
 {% load comments %}
@@ -10,7 +10,7 @@
 {% block title %}{{ fruit.kind.name|title }} | {{ block.super }}{% endblock %}
 
 {% block meta_description %}
-	{{ fuit.description }}
+	{{ fruit.description }}
 {% endblock %}
 
 {% block map_active %}active{% endblock %}
@@ -43,14 +43,12 @@
 
     <div class="col-sm-12">
         <ul class="map-links">
-	        <li><a href="{% url 'map' %}">{% trans 'Back to the map' %}</a></li>
+	        <li><a href="{% url 'map' %}">{% trans 'Large map' %}</a></li>
             {% if request.user|can_edit:fruit %}
 		        <li><a href="{% url 'fruit:edit' fruit.id %}">{% trans 'Edit' %}</a></li>
 		        <li><a href="{% url 'fruit:delete' fruit.id %}">{% trans 'Delete' %}</a></li>
 	        {% endif %}
-            {% if request.user.is_authenticated %}
-		        <li><a href="{% url 'fruit:add' %}">{% trans 'Add&nbsp;more' %}</a></li>
-            {% endif %}
+	        <li><a href="{% url 'fruit:add' %}">{% trans 'Add marker' %}</a></li>
             {% with herbarium=fruit.kind.herbarium %}
 	            {% if herbarium %}
 	                <li><a href="{{ herbarium.get_absolute_url }}">{% trans 'Herbarium' %}</a></li>
