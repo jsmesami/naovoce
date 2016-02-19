@@ -45,6 +45,11 @@ class UserManager(BaseUserManager):
         return self._create_user(username, email, password, True, True, **extra_fields)
 
 
+class ActiveUserQuerySet(models.QuerySet):
+    def active(self):
+        return self.filter(is_active=True, is_email_verified=True)
+
+
 class FruitUser(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(_('username'), max_length=30, unique=True)
     email = models.EmailField(_('email address'), max_length=254, unique=True)
@@ -65,7 +70,7 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
     is_email_verified = models.BooleanField(_('verified'), default=False)
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
 
-    objects = UserManager()
+    objects = UserManager.from_queryset(ActiveUserQuerySet)()
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = 'email',

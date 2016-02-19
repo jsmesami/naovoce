@@ -11,5 +11,5 @@ class UserList(generics.ListAPIView):
 
 
 class UserDetail(generics.RetrieveAPIView):
-    queryset = FruitUser.objects.annotate(**fruit_counter)
+    queryset = FruitUser.objects.annotate(**fruit_counter())
     serializer_class = serializers.VerboseUserSerializer
