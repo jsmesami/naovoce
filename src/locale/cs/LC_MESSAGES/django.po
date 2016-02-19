@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-18 16:49+0100\n"
-"PO-Revision-Date: 2016-02-18 16:49+0100\n"
+"POT-Creation-Date: 2016-02-19 12:47+0100\n"
+"PO-Revision-Date: 2016-02-19 12:49+0100\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -710,7 +710,7 @@ msgstr "Prozkoumejte mapu"
 msgid "Latest entries"
 msgstr "Poslední úlovky"
 
-#: naovoce/templates/home.html:76 naovoce/templates/inc/mapjs.html:76
+#: naovoce/templates/home.html:76 naovoce/templates/inc/mapjs.html:77
 msgid "Shared by"
 msgstr "Sdílí"
 
@@ -750,23 +750,23 @@ msgstr "Druh ovoce"
 msgid "Detail"
 msgstr "Detail"
 
-#: naovoce/templates/inc/mapjs.html:80
+#: naovoce/templates/inc/mapjs.html:81
 msgid "Description"
 msgstr "Popis"
 
-#: naovoce/templates/inc/mapjs.html:149
+#: naovoce/templates/inc/mapjs.html:152
 msgid "Search for places or addresses"
 msgstr "Vyhledávání míst a adres"
 
-#: naovoce/templates/inc/mapjs.html:150
+#: naovoce/templates/inc/mapjs.html:153
 msgid "Location search"
 msgstr "Vyhledávání míst"
 
-#: naovoce/templates/inc/mapjs.html:168
+#: naovoce/templates/inc/mapjs.html:171
 msgid "Show me where I am"
 msgstr "Ukaž mi, kde jsem!"
 
-#: naovoce/templates/inc/mapjs.html:170
+#: naovoce/templates/inc/mapjs.html:173
 #, python-brace-format
 msgid "You are within {distance} {unit} from this point"
 msgstr "Od tohoto bodu jste vzdáleni cca {distance}{unit}."
@@ -785,6 +785,7 @@ msgstr "filtr"
 
 #: naovoce/templates/pickers/detail.html:19
 #: naovoce/templates/pickers/index.html:19
+#: naovoce/templates/pickers/index.html:33
 msgid "markers added"
 msgstr "počet značek"
 
@@ -793,17 +794,21 @@ msgid "Pickers Index"
 msgstr "Seznam sběračů"
 
 #: naovoce/templates/pickers/index.html:11
-msgid "Hall of fame"
-msgstr "Síň slávy"
+msgid "Top contributors"
+msgstr "Nejaktivnější přispěvatelé"
 
-#: naovoce/templates/pickers/index.html:23
+#: naovoce/templates/pickers/index.html:25
+msgid "Top contributors last month"
+msgstr "Nejaktivnější za poslední měsíc"
+
+#: naovoce/templates/pickers/index.html:39
 #, python-format
 msgid ""
-"Kudos to other <strong>%(pickers_count)s</strong> pickers, that contributed "
+"Kudos to all <strong>%(pickers_count)s</strong> pickers, that contributed "
 "<strong>%(fruit_count)s</strong> markers."
 msgstr ""
-"Děkujeme ostatním <strong>%(pickers_count)s</strong> sběračům, kteří "
-"přispěli <strong>%(fruit_count)s</strong> značkami."
+"Děkujeme všem <strong>%(pickers_count)s</strong> sběračům, kteří přispěli "
+"<strong>%(fruit_count)s</strong> značkami."
 
 #: naovoce/templates/staticpage/about.html:10
 msgid "Core Team"
@@ -941,6 +946,9 @@ msgstr "změněno"
 #: utils/templatetags/truncate.py:16
 msgid "Read more"
 msgstr "Čtěte více"
+
+#~ msgid "Hall of fame"
+#~ msgstr "Síň slávy"
 
 #~ msgid "Other pickers"
 #~ msgstr "Další sběrači"

@@ -37,7 +37,7 @@ class PopupMarker extends Naovoce.Marker
 		super [fruit.lat, fruit.lng], fruit.kind
 
 		popup = "<h4>#{ @KINDS[fruit.kind].name }</h4>"+
-				"<a href='/fruit/detail/#{ fruit.id }/'>{% trans 'Detail' %} &raquo;</a>"
+				"<a href='/fruit/detail/#{ fruit.id }/'>{% trans 'Detail' %}</a> &raquo;"
 
 		@bindPopup popup,
 			offset: new L.Point(0, -26)

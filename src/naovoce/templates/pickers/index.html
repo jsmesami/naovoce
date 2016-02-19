@@ -8,9 +8,9 @@
 {% block title %}{% trans "Pickers Index" %} | {{ block.super }}{% endblock %}
 
 {% block content %}
-	<h3>{% trans "Hall of fame" %}</h3>
+	<h3>{% trans "Top contributors" %}</h3>
 	<ul class="list-unstyled hall-of-fame">
-	{% for p in top_pickers %}
+	{% for p in top_all_time %}
 		<li>
 			{% with name=p.get_short_name %}
 			<a href="{{ p.get_absolute_url }}" title="{{ name }}">
@@ -20,8 +20,24 @@
 		</li>
 	{% endfor %}
 	</ul>
+
+	<hr>
+	<h3>{% trans "Top contributors last month" %}</h3>
+	<ul class="list-unstyled hall-of-fame">
+	{% for p in top_last_month %}
+		<li>
+			{% with name=p.get_short_name %}
+			<a href="{{ p.get_absolute_url }}" title="{{ name }}">
+				<img src="{% avatar p %}" alt={{ name }} class="avatar">{{ name }}</a>
+			{% endwith %}
+			({% trans "markers added" %}: {{ p.fruit_count }})
+		</li>
+	{% endfor %}
+	</ul>
+
+	<hr>
 	<p>{% blocktrans trimmed %}
-		Kudos to other <strong>{{ pickers_count }}</strong> pickers,
+		Kudos to all <strong>{{ pickers_count }}</strong> pickers,
 		that contributed <strong>{{ fruit_count }}</strong> markers.
 	{% endblocktrans %}</p>
 {% endblock %}
