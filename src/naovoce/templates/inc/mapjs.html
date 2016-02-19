@@ -13,22 +13,48 @@ class MarkerIcon extends L.DivIcon
 			html: "<span style='color:##{ color }'>&#x#{ char }</span>"
 
 
-class Naovoce.Marker extends L.Marker
-	KINDS:
-		'F00D':
-			icon: new MarkerIcon('555', 'F00D')
-			name: "{% trans 'Fruit kind' %}"
-		{% for k in kinds %}
-		'{{ k.key }}':
-			icon: new MarkerIcon('{{ k.color }}', '{{ k.key }}')
-			name: '{{ k.name }}'
-		{% endfor %}
+KINDS =
+	'F00D':
+		icon: new MarkerIcon('555', 'F00D')
+		name: "{% trans 'Fruit kind' %}"
+	{% for k in kinds %}
+	'{{ k.key }}':
+		icon: new MarkerIcon('{{ k.color }}', '{{ k.key }}')
+		name: '{{ k.name }}'
+	{% endfor %}
 
+
+getDMSCoords = (lat, lng) ->
+	DD2DMS = (dd) ->
+		d: 0 | (dd = Math.abs(dd))
+		m: 0 | dd % 1 * 60
+		s: (0 | dd * 60 % 1 * 6000) / 100
+
+	fmtDMS = (dms) ->
+		"#{dms.d}&deg;#{dms.m}&prime;#{dms.s}&Prime;"
+
+	"#{fmtDMS DD2DMS(lat)}#{if lat<0 then 'S' else 'N'}&nbsp;" +
+	"#{fmtDMS DD2DMS(lng)}#{if lng<0 then 'W' else 'E'}"
+
+
+class Naovoce.Marker extends L.Marker
 	constructor: (latlng, @kind) ->
-		super latlng, icon: @KINDS[@kind].icon
+		super latlng, icon: KINDS[@kind].icon
 
 	setIcon: (kind) ->
-		super @KINDS[kind].icon
+		super KINDS[kind].icon
+
+
+class FruitPopup extends L.Popup
+	constructor: (fruit, options) ->
+		super options
+		@_header = "<h4><a href='/fruit/detail/#{ fruit.id }/'>#{ KINDS[fruit.kind].name }" +
+			"&nbsp;&nbsp;<small>(#{getDMSCoords fruit.lat, fruit.lng})</small></a></h4>"
+
+	setContent: (content) ->
+		@_content = @_header + content
+		@.update()
+		@
 
 
 class PopupMarker extends Naovoce.Marker
@@ -36,12 +62,9 @@ class PopupMarker extends Naovoce.Marker
 		@fruit = fruit
 		super [fruit.lat, fruit.lng], fruit.kind
 
-		popup = "<h4>#{ @KINDS[fruit.kind].name }</h4>"+
-				"<a href='/fruit/detail/#{ fruit.id }/'>{% trans 'Detail' %}</a> &raquo;"
-
-		@bindPopup popup,
+		@bindPopup new FruitPopup fruit,
 			offset: new L.Point(0, -26)
-			maxWidth: 200
+			maxWidth: 240
 
 
 class Naovoce.Map extends L.Map
@@ -70,23 +93,26 @@ class Naovoce.Map extends L.Map
 			@markerLayerGroup.addLayers = (layers) ->
 				@addLayer l for l in layers
 
-		@.on 'popupopen', (ev) -> {# Add  more content to popups when marker clicked. #}
-			if not ev.popup.contentEnhanced?
-				$.getJSON ev.popup._source.fruit.url, (json) =>
-					content = ev.popup.getContent()
-					content += " {% trans 'Shared by' %} " +
-						"<a href='/pickers/#{json.user.id}-#{json.user.username.toLowerCase()}/'>"+
-						"#{json.user.username}</a> &raquo;"
+		{# Add more content to popups when marker clicked. #}
+		@.on 'popupopen', (ev) ->
+			$.getJSON ev.popup._source.fruit.url, (json) =>
+				content = "<p><strong>{% trans 'Shared by' %}:</strong> " +
+					"<a href='/pickers/#{json.user.id}-#{json.user.username.toLowerCase()}/'>"+
+					"#{json.user.username} &raquo;</a></p>"
 
-					content += "<br><strong>{% trans 'Description' %}:</strong> " +
-						"#{json.description.truncate(150)}" if json.description
+				content += "<p><strong>{% trans 'Description' %}:</strong> " +
+					"#{json.description.truncate(150)}<p>" if json.description
 
-					ev.popup.contentEnhanced = true
-					ev.popup.setContent(content)
+				ev.popup.setContent content
+
+				@fetchAddress [json.lat, json.lng], (address) ->
+					ev.popup.setContent "<p><strong>{% trans 'Address' %}:</strong> " +
+						"#{address}</p>" + content if address
 			@
 
+		{# Add spinned DIV into map container. #}
 		@spinner = $ '<div id="spinner">'
-		$("##{id}").prepend(@spinner)
+		$("##{id}").prepend @spinner
 
 	loadMarkers: (url) ->
 		@spinner.addClass 'spinning'
