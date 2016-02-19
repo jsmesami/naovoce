@@ -49,7 +49,7 @@ class FruitPopup extends L.Popup
 	constructor: (fruit, options) ->
 		super options
 		@_header = "<h4><a href='/fruit/detail/#{ fruit.id }/'>#{ KINDS[fruit.kind].name }" +
-			"&nbsp;&nbsp;<small>(#{getDMSCoords fruit.lat, fruit.lng})</small></a></h4>"
+			"<br><small>(#{getDMSCoords fruit.lat, fruit.lng})</small></a></h4>"
 
 	setContent: (content) ->
 		@_content = @_header + content
@@ -64,7 +64,7 @@ class PopupMarker extends Naovoce.Marker
 
 		@bindPopup new FruitPopup fruit,
 			offset: new L.Point(0, -26)
-			maxWidth: 240
+			maxWidth: 200
 
 
 class Naovoce.Map extends L.Map

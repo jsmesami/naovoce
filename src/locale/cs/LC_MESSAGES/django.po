@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-19 12:47+0100\n"
-"PO-Revision-Date: 2016-02-19 12:49+0100\n"
+"POT-Creation-Date: 2016-02-19 20:00+0100\n"
+"PO-Revision-Date: 2016-02-19 20:02+0100\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -207,7 +207,7 @@ msgstr "proč smazán"
 msgid "The tree has been cut down, not found etc."
 msgstr "Strom byl poražen, nenalezen apod."
 
-#: fruit/models.py:93 user/models.py:74
+#: fruit/models.py:93 user/models.py:79
 msgid "user"
 msgstr "uživatel"
 
@@ -710,7 +710,7 @@ msgstr "Prozkoumejte mapu"
 msgid "Latest entries"
 msgstr "Poslední úlovky"
 
-#: naovoce/templates/home.html:76 naovoce/templates/inc/mapjs.html:77
+#: naovoce/templates/home.html:76 naovoce/templates/inc/mapjs.html:99
 msgid "Shared by"
 msgstr "Sdílí"
 
@@ -742,31 +742,41 @@ msgstr "Sociální sítě"
 msgid "Friends"
 msgstr "Přátelé"
 
-#: naovoce/templates/inc/mapjs.html:20
+#: naovoce/templates/inc/footer.html:57
+msgid ""
+"<strong>Na-ovoce.cz</strong> is built using Open Source Software and is OSS "
+"itself, hosted on <a href=\"https://github.com/jsmesami/naovoce\" target="
+"\"_blank\">GitHub</a>."
+msgstr ""
+"<strong>Na-ovoce.cz</strong> je vytvořeno pomocí otevřeného software a "
+"samotné je OS, hostovaný na <a href=\"https://github.com/jsmesami/naovoce\" "
+"target=\"_blank\">GitHubu</a>."
+
+#: naovoce/templates/inc/mapjs.html:19
 msgid "Fruit kind"
 msgstr "Druh ovoce"
 
-#: naovoce/templates/inc/mapjs.html:40
-msgid "Detail"
-msgstr "Detail"
-
-#: naovoce/templates/inc/mapjs.html:81
+#: naovoce/templates/inc/mapjs.html:103
 msgid "Description"
 msgstr "Popis"
 
-#: naovoce/templates/inc/mapjs.html:152
+#: naovoce/templates/inc/mapjs.html:109
+msgid "Address"
+msgstr "Adresa"
+
+#: naovoce/templates/inc/mapjs.html:178
 msgid "Search for places or addresses"
 msgstr "Vyhledávání míst a adres"
 
-#: naovoce/templates/inc/mapjs.html:153
+#: naovoce/templates/inc/mapjs.html:179
 msgid "Location search"
 msgstr "Vyhledávání míst"
 
-#: naovoce/templates/inc/mapjs.html:171
+#: naovoce/templates/inc/mapjs.html:197
 msgid "Show me where I am"
 msgstr "Ukaž mi, kde jsem!"
 
-#: naovoce/templates/inc/mapjs.html:173
+#: naovoce/templates/inc/mapjs.html:199
 #, python-brace-format
 msgid "You are within {distance} {unit} from this point"
 msgstr "Od tohoto bodu jste vzdáleni cca {distance}{unit}."
@@ -862,7 +872,7 @@ msgstr "Oprávnění"
 msgid "Important dates"
 msgstr "Sůležitá data"
 
-#: user/forms.py:10 user/forms.py:42 user/models.py:49
+#: user/forms.py:10 user/forms.py:42 user/models.py:54
 msgid "username"
 msgstr "uživatelské jméno"
 
@@ -891,31 +901,31 @@ msgstr ""
 msgid "Username or e-mail"
 msgstr "Uživatelské jméno nebo e-mail"
 
-#: user/models.py:50
+#: user/models.py:55
 msgid "email address"
 msgstr "e-mail"
 
-#: user/models.py:52
+#: user/models.py:57
 msgid "first name"
 msgstr "jméno"
 
-#: user/models.py:53
+#: user/models.py:58
 msgid "last name"
 msgstr "příjmení"
 
-#: user/models.py:55
+#: user/models.py:60
 msgid "staff status"
 msgstr "personál"
 
-#: user/models.py:57
+#: user/models.py:62
 msgid "Designates whether the user can sign into this admin site."
 msgstr "Označuje, jestli se uživatel může přihlásit do administrátorské sekce."
 
-#: user/models.py:60
+#: user/models.py:65
 msgid "active"
 msgstr "aktivní"
 
-#: user/models.py:62
+#: user/models.py:67
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
@@ -923,15 +933,15 @@ msgstr ""
 "Označuje, jestli má být uživatel brán jako aktivní. Odškrtněte namísto "
 "mazání účtu."
 
-#: user/models.py:65
+#: user/models.py:70
 msgid "verified"
 msgstr "ověřeno"
 
-#: user/models.py:66
+#: user/models.py:71
 msgid "date joined"
 msgstr "přidal se"
 
-#: user/models.py:75
+#: user/models.py:80
 msgid "users"
 msgstr "uživatelé"
 
@@ -946,6 +956,9 @@ msgstr "změněno"
 #: utils/templatetags/truncate.py:16
 msgid "Read more"
 msgstr "Čtěte více"
+
+#~ msgid "Detail"
+#~ msgstr "Detail"
 
 #~ msgid "Hall of fame"
 #~ msgstr "Síň slávy"
