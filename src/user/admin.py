@@ -2,8 +2,9 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import ugettext_lazy as _
 
-from .forms import UserChangeForm, UserCreationForm
-from .models import FruitUser
+from .forms import UserChangeForm, UserCreationForm, MessageAdminForm
+from .models import FruitUser, Message
+from utils import trim_words
 
 
 class FruitUserAdmin(UserAdmin):
@@ -40,4 +41,17 @@ class FruitUserAdmin(UserAdmin):
     )
 
 
+class MessageAdmin(admin.ModelAdmin):
+    model = Message
+    form = MessageAdminForm
+    list_display = '_text created read system recipient'.split()
+    list_filter = 'read system'.split()
+    search_fields = 'recipient__username recipient__email'.split()
+
+    def _text(self, obj):
+        return trim_words(obj.text, 80)
+    _text.short_description = _('text')
+
+
 admin.site.register(FruitUser, FruitUserAdmin)
+admin.site.register(Message, MessageAdmin)

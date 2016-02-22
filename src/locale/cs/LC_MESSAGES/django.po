@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-22 18:48+0100\n"
-"PO-Revision-Date: 2016-02-22 18:01+0100\n"
+"POT-Creation-Date: 2016-02-22 19:41+0100\n"
+"PO-Revision-Date: 2016-02-22 19:41+0100\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -43,7 +43,7 @@ msgid "title"
 msgstr "titulek"
 
 #: blog/models.py:39 comments/admin.py:16 staticpage/models.py:9
-#: user/models.py:121
+#: user/admin.py:53 user/models.py:121
 msgid "text"
 msgstr "text"
 
@@ -95,24 +95,26 @@ msgstr "Děkujeme za váš komentář"
 msgid "We are sorry, your comment was not accepted."
 msgstr "Je nám líto, ale váš komentář nebyl přijat."
 
-#: fruit/admin.py:26 fruit/models.py:33
+#: fruit/admin.py:25 fruit/models.py:33
 msgid "class"
 msgstr "třída"
 
-#: fruit/admin.py:32 fruit/models.py:36
+#: fruit/admin.py:31 fruit/models.py:36
 msgid "color"
 msgstr "barva"
 
-#: fruit/admin.py:37
+#: fruit/admin.py:36
 msgid "markers count"
 msgstr "počet značek"
 
-#: fruit/admin.py:59
+#: fruit/admin.py:61
 #, python-brace-format
 msgid ""
 "Site administrator deleted your <a href=\"{url}\">marker</a>. Reason of "
 "deletion: {reason}"
 msgstr ""
+"Administrátor smazal vaši <a href=\"{url}\">značku</a>. Důvod smazání: "
+"{reason}"
 
 #: fruit/api/serializers.py:32
 msgid "{} is not a valid Kind key."
@@ -862,6 +864,10 @@ msgstr ""
 "Děkujeme všem <strong>%(pickers_count)s</strong> sběračům, kteří přispěli "
 "<strong>%(fruit_count)s</strong> značkami."
 
+#: naovoce/templates/pickers/messages.html:17
+msgid "You have no messages."
+msgstr "Nemáte žádné zprávy."
+
 #: naovoce/templates/staticpage/about.html:10
 msgid "Core Team"
 msgstr "Základní team"
@@ -902,15 +908,15 @@ msgstr "statická stránka"
 msgid "static pages"
 msgstr "statické stránky"
 
-#: user/admin.py:17
+#: user/admin.py:18
 msgid "Personal info"
 msgstr "Osobní informace"
 
-#: user/admin.py:22
+#: user/admin.py:23
 msgid "Permissions"
 msgstr "Oprávnění"
 
-#: user/admin.py:25
+#: user/admin.py:26
 msgid "Important dates"
 msgstr "Sůležitá data"
 
@@ -939,7 +945,7 @@ msgstr ""
 "Hesla nejsou uchovávána v čitelné podobě, heslo lze změnit <a href="
 "\"password/\">tímto formulářem</a>."
 
-#: user/forms.py:73
+#: user/forms.py:79
 msgid "Username or e-mail"
 msgstr "Uživatelské jméno nebo e-mail"
 
@@ -1004,7 +1010,7 @@ msgstr "systémová"
 
 #: user/models.py:129
 msgid "System messages can be translated and can contain HTML."
-msgstr "Syztémová zpráva může mít překlad a může obsahovat HTML."
+msgstr "Systémová zpráva může mít překlad a může obsahovat HTML."
 
 #: user/models.py:134
 msgid "recipient"

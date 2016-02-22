@@ -13,6 +13,8 @@
 		<li class="alert {% if msg.read %}alert-unimportant{% else %}alert-info{% endif %}">
 			{{ msg.formatted_text }}
 		</li>
+	{% empty %}
+		<li class="alert alert-warning">{% trans 'You have no messages.' %}</li>
 	{% endfor %}
 	</ul>
 {% endblock %}

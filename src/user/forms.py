@@ -1,8 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_noop, ugettext_lazy as _
 
-from .models import FruitUser
+from .models import FruitUser, Message
 
 
 class UserCreationForm(forms.ModelForm):
@@ -68,7 +68,12 @@ class UserChangeForm(forms.ModelForm):
         return self.initial["password"]
 
 
-_ = lambda s: s
-override_wrong_default_translation = (
-    _('Username or e-mail'),
-)
+class MessageAdminForm(forms.ModelForm):
+    class Meta:
+        model = Message
+        fields = '__all__'
+        widgets = {
+            'text': forms.Textarea(attrs={'rows': 5, 'cols': 86, 'maxlength': 255}),
+        }
+
+override_wrong_default_translation = ugettext_noop('Username or e-mail')

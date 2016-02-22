@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_noop, ugettext_lazy as _
 from django import forms
 
