@@ -1,12 +1,20 @@
 {% extends "base.html" %}
 
 {% load i18n %}
+{% load bootstrap %}
 
 {% block title %}{% trans 'Delete marker' context 'infinitive' %} | {{ block.super }}{% endblock %}
 
 {% block content %}
-	{% trans 'Delete marker' context 'infinitive' as title %}
-	{% trans 'Delete' as cta %}
-	{% url 'fruit:delete' as action %}
-	{% include 'inc/confirm.html' %}
+	<div class="row">
+	<div class="col-sm-6 col-sm-offset-3">
+	<div class="row panel panel-default">
+		<div class="panel-heading">{% trans 'Delete marker' %}</div>
+		<form class="panel-body" action='' method="post">{% csrf_token %}
+			{{ form|bootstrap }}
+			<input class="btn btn-danger" value="{% trans 'Delete' context 'infinitive' %}" type="submit">
+		</form>
+	</div>
+	</div>
+	</div>
 {% endblock %}

@@ -57,3 +57,17 @@ class FruitForm(forms.ModelForm):
 
     def clean_description(self):
         return self.cleaned_data['description'].strip()
+
+
+class FruitDeleteForm(forms.Form):
+    reason = forms.CharField(
+        required=True,
+        label=_('Reason'),
+        help_text=_('Please describe reason of why you are deleting the marker.'),
+        widget=forms.Textarea(attrs={'rows': 5}),
+    )
+
+    class Meta:
+        widgets = {
+            'reason': forms.Textarea(attrs={'rows': 5}),
+        }

@@ -7,7 +7,7 @@ from django.http.response import HttpResponseForbidden, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.translation import ugettext_lazy as _
 
-from .forms import FruitForm
+from .forms import FruitForm, FruitDeleteForm
 from .models import Fruit, Kind
 
 
@@ -87,21 +87,19 @@ def edit(request, fruit):
 @login_required
 @_editor
 def delete(request, fruit):
-    redirect_to = reverse('fruit:add')
-
     if request.method == 'POST':
-        fruit.deleted = True
-        fruit.save()
-        messages.success(request, _('The marker has been deleted.'))
-        return redirect(redirect_to)
-
-    message = _('Are you sure you want to delete this marker?'
-                ' {fruit.kind.name} ({fruit.latitude:.4f}, {fruit.longitude:.4f})')
+        form = FruitDeleteForm(request.POST)
+        if form.is_valid():
+            fruit.deleted = True
+            fruit.why_deleted = form.cleaned_data['reason']
+            fruit.save()
+            messages.success(request, _('The marker has been deleted.'))
+            return redirect(fruit)
+    else:
+        form = FruitDeleteForm()
 
     context = {
-        'next': redirect_to,
-        'back': reverse('fruit:detail', args=[fruit.id]),
-        'message': message.format(fruit=fruit)
+        'form': form,
     }
 
     return render(request, 'fruit/delete.html', context)
