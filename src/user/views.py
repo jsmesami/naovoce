@@ -2,7 +2,11 @@ import datetime
 
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count, Case, When
-from django.http import HttpResponsePermanentRedirect, HttpResponseRedirect
+from django.http import (
+    HttpResponsePermanentRedirect,
+    HttpResponseRedirect,
+    Http404,
+)
 from django.shortcuts import get_object_or_404, render
 
 from fruit.models import Kind, Fruit
@@ -55,3 +59,21 @@ def profile(request, pk, slug=None):
 
 # This is here because of Allauth (we don't want two different user profile urls).
 accounts_profile = login_required(lambda r: HttpResponseRedirect(r.user.get_absolute_url()))
+
+
+@login_required
+def messages(request, pk):
+    qs = FruitUser.objects.prefetch_related('messages')
+
+    user = get_object_or_404(qs, pk=pk)
+
+    if user != request.user:
+        raise Http404
+
+    response = render(request, 'pickers/messages.html', {
+        'user': user,
+    })
+    # We have rendered the response to show unread messages,
+    # then marking them read for subsequent pageviews.
+    user.clear_messages()
+    return response

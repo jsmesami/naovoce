@@ -1,16 +1,17 @@
 import hashlib
 
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
-from django.core.mail import mail_managers
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils import timezone
+from django.utils.formats import date_format
 from django.utils.functional import cached_property
+from django.utils.html import format_html
+from django.utils.safestring import mark_safe
 from django.utils.text import slugify
-from django.utils.translation import ugettext_lazy as _
-from django.dispatch import receiver
+from django.utils.translation import ugettext, pgettext_lazy, ugettext_lazy as _
 
-from allauth.account.signals import user_signed_up, email_confirmed
+from utils.models import TimeStampedModel
 
 
 class UserManager(BaseUserManager):
@@ -75,10 +76,6 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = 'email',
 
-    class Meta:
-        verbose_name = _('user')
-        verbose_name_plural = _('users')
-
     def get_full_name(self):
         return ' '.join((self.first_name, self.last_name)).strip() or self.username
 
@@ -87,6 +84,19 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
 
     def get_absolute_url(self):
         return reverse('pickers:detail', args=[self.pk, self.slug])
+
+    def send_message(self, text, system=False):
+        Message.objects.create(
+            text=text,
+            system=system,
+            recipient=self,
+        )
+
+    def get_unread_messages(self):
+        return self.messages.filter(read=False)
+
+    def clear_messages(self):
+        self.messages.filter(read=False).update(read=True)
 
     @cached_property
     def slug(self):
@@ -99,29 +109,43 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return '{}'.format(self.username)
 
-
-@receiver(email_confirmed)
-def sync_email_verified(request, email_address, **kwargs):
-    """
-    Upon email verification, sync allauth's EmailAddress.verified
-    with FruitUser.is_email_verified
-    """
-    fruit_user = email_address.user
-    if fruit_user.email == email_address.email:
-        fruit_user.is_email_verified = True
-        fruit_user.save()
+    class Meta:
+        verbose_name = _('user')
+        verbose_name_plural = _('users')
 
 
-@receiver(user_signed_up)
-def user_signed_up_notification(request, user, **kwargs):
+class Message(TimeStampedModel):
     """
-    Notify managers that another user signed up.
+    Represents simple database-stored messages for users.
     """
-    subject = 'User {} has just registered'.format(user.username)
-    body = 'Users count: {}'.format(
-        FruitUser.objects.filter(
-            is_active=True,
-            is_email_verified=True,
-        ).count()
+    text = models.CharField(_('text'), max_length=255)
+    read = models.BooleanField(
+        pgettext_lazy('read', 'user.Message'),
+        help_text=pgettext_lazy('Has been read or not.', 'user.Message'),
+        default=False,
     )
-    mail_managers(subject, body)
+    system = models.BooleanField(
+        pgettext_lazy('system', 'user.Message'),
+        help_text=_('System messages can be translated and can contain HTML.'),
+        default=False,
+    )
+    recipient = models.ForeignKey(
+        FruitUser,
+        verbose_name=_('recipient'),
+        related_name='messages',
+    )
+
+    @property
+    def formatted_text(self):
+        return format_html('<span class="date">{date}</span> {text}',
+            date=date_format(self.created, 'SHORT_DATE_FORMAT', use_l10n=True),
+            text=mark_safe(ugettext(self.text)) if self.system else self.text,
+        )
+
+    def __str__(self):
+        return self.formatted_text
+
+    class Meta:
+        ordering = '-created',
+        verbose_name = _('message')
+        verbose_name_plural = _('messages')

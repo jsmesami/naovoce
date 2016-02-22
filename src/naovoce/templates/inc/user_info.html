@@ -1,0 +1,33 @@
+{% load i18n %}
+
+<div class="container" id="user-info">
+        <p>
+    {% if request.user.is_authenticated %}
+        <a href="{{ request.user.get_absolute_url }}" title="{% trans 'User profile' %}">
+	        {{ request.user.get_short_name }}</a> |
+        <a href="{% url 'account_logout' %}?next={{ request.path }}" title="{% trans 'Sign out' %}">
+	        {% trans 'Sign out' %}</a>
+	    {% with num_msg=request.user.get_unread_messages.count %}
+	    {% if num_msg %}|
+		    <a href="{% url 'pickers:messages' request.user.id %}" class="messages-count"
+		       title="{% blocktrans %}You have {{ num_msg }} unread messages{% endblocktrans %}.">
+			    {{ num_msg }}
+			    <span class="envelope"></span>
+		    </a>
+	    {% endif %}
+	    {% endwith %}
+    {% else %}
+        <a href="{% url 'account_login' %}?next={{ request.path }}" title="{% trans 'Sign in' %}">
+	        {% trans 'Sign in' %}</a> |
+        <a href="{% url 'account_signup' %}" title="{% trans 'Registration' %}">
+	        {% trans 'Registration' %}</a>
+    {% endif %}
+        <span class="langsel">
+            {% if LANGUAGE_CODE == 'cs' %}
+	            <a href="/en/" title="Change language">English</a>
+            {% else %}
+	            <a href="/cs/" title="Změnit jazyk">Česky</a>
+            {% endif %}
+        </span>
+        </p>
+</div>

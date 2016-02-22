@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-19 20:00+0100\n"
-"PO-Revision-Date: 2016-02-19 20:02+0100\n"
+"POT-Creation-Date: 2016-02-22 15:59+0100\n"
+"PO-Revision-Date: 2016-02-22 15:59+0100\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -43,6 +43,7 @@ msgid "title"
 msgstr "titulek"
 
 #: blog/models.py:39 comments/admin.py:16 staticpage/models.py:9
+#: user/models.py:121
 msgid "text"
 msgstr "text"
 
@@ -207,7 +208,7 @@ msgstr "proč smazán"
 msgid "The tree has been cut down, not found etc."
 msgstr "Strom byl poražen, nenalezen apod."
 
-#: fruit/models.py:93 user/models.py:79
+#: fruit/models.py:93 user/models.py:113
 msgid "user"
 msgstr "uživatel"
 
@@ -384,7 +385,9 @@ msgstr ""
 "adresa uživatele %(user_display)s."
 
 #: naovoce/templates/account/login.html:6
-#: naovoce/templates/account/login.html:12 naovoce/templates/base.html:17
+#: naovoce/templates/account/login.html:12
+#: naovoce/templates/inc/user_info.html:20
+#: naovoce/templates/inc/user_info.html:21
 msgid "Sign in"
 msgstr "Přihlášení"
 
@@ -411,7 +414,9 @@ msgid "Forgot Password?"
 msgstr "Zapomněli jste heslo?"
 
 #: naovoce/templates/account/logout.html:5
-#: naovoce/templates/account/logout.html:8 naovoce/templates/base.html:15
+#: naovoce/templates/account/logout.html:8
+#: naovoce/templates/inc/user_info.html:8
+#: naovoce/templates/inc/user_info.html:9
 msgid "Sign out"
 msgstr "Odhlášení"
 
@@ -506,7 +511,9 @@ msgid "sign in"
 msgstr "přihlásit"
 
 #: naovoce/templates/account/signup.html:6
-#: naovoce/templates/account/signup.html:12 naovoce/templates/base.html:18
+#: naovoce/templates/account/signup.html:12
+#: naovoce/templates/inc/user_info.html:22
+#: naovoce/templates/inc/user_info.html:23
 msgid "Registration"
 msgstr "Registrace"
 
@@ -547,48 +554,20 @@ msgstr "Pro dokončení registračního procesu navštivte odkaz v těle zprávy
 msgid "site administration"
 msgstr "administrace stránek"
 
-#: naovoce/templates/base.html:46 naovoce/templates/inc/footer.html:26
-#: naovoce/templates/map.html:8
-msgid "Map"
-msgstr "Mapa"
-
-#: naovoce/templates/base.html:49 naovoce/templates/inc/footer.html:27
-msgid "Add Marker"
-msgstr "Přidávání"
-
-#: naovoce/templates/base.html:52 naovoce/templates/inc/footer.html:28
-msgid "Pickers"
-msgstr "Sběrači"
-
-#: naovoce/templates/base.html:55 naovoce/templates/fruit/detail.html:54
-#: naovoce/templates/fruit/herbarium.html:13
-#: naovoce/templates/fruit/herbarium.html:15
-#: naovoce/templates/inc/footer.html:29
-msgid "Herbarium"
-msgstr "Herbář"
-
-#: naovoce/templates/base.html:58 naovoce/templates/inc/footer.html:30
-msgid "About Us"
-msgstr "O nás"
-
-#: naovoce/templates/base.html:61
-msgid "Codex"
-msgstr "Kodex"
-
-#: naovoce/templates/base.html:103
+#: naovoce/templates/base.html:46
 msgid "By using this site you agree to the use of cookies for analytics."
 msgstr ""
 "Používáním těchto stránek souhlasíte s využitím souborů cookie k analýzám."
 
-#: naovoce/templates/base.html:104
+#: naovoce/templates/base.html:47
 msgid "More information"
 msgstr "Více informací"
 
-#: naovoce/templates/base.html:105
+#: naovoce/templates/base.html:48
 msgid "Dismiss"
 msgstr "Pryč s tím"
 
-#: naovoce/templates/base.html:119 naovoce/templates/comments/comments.html:17
+#: naovoce/templates/base.html:62 naovoce/templates/comments/comments.html:17
 msgid "Add your comment"
 msgstr "Přidejte svůj komentář"
 
@@ -670,6 +649,14 @@ msgstr "Upravit"
 msgid "Add marker"
 msgstr "Přidat značku"
 
+#: naovoce/templates/fruit/detail.html:54
+#: naovoce/templates/fruit/herbarium.html:13
+#: naovoce/templates/fruit/herbarium.html:15
+#: naovoce/templates/inc/footer.html:29
+#: naovoce/templates/inc/navigation.html:33
+msgid "Herbarium"
+msgstr "Herbář"
+
 #: naovoce/templates/fruit/edit.html:5
 msgid "Edit a marker"
 msgstr "Upravit značku"
@@ -730,6 +717,26 @@ msgstr "Kontakt"
 msgid "Quick links"
 msgstr "Rychlé odkazy"
 
+#: naovoce/templates/inc/footer.html:26
+#: naovoce/templates/inc/navigation.html:24 naovoce/templates/map.html:8
+msgid "Map"
+msgstr "Mapa"
+
+#: naovoce/templates/inc/footer.html:27
+#: naovoce/templates/inc/navigation.html:27
+msgid "Add Marker"
+msgstr "Přidávání"
+
+#: naovoce/templates/inc/footer.html:28
+#: naovoce/templates/inc/navigation.html:30
+msgid "Pickers"
+msgstr "Sběrači"
+
+#: naovoce/templates/inc/footer.html:30
+#: naovoce/templates/inc/navigation.html:36
+msgid "About Us"
+msgstr "O nás"
+
 #: naovoce/templates/inc/footer.html:31
 msgid "Picker's Codex"
 msgstr "Kodex sběrače"
@@ -781,6 +788,19 @@ msgstr "Ukaž mi, kde jsem!"
 msgid "You are within {distance} {unit} from this point"
 msgstr "Od tohoto bodu jste vzdáleni cca {distance}{unit}."
 
+#: naovoce/templates/inc/navigation.html:39
+msgid "Codex"
+msgstr "Kodex"
+
+#: naovoce/templates/inc/user_info.html:6
+msgid "User profile"
+msgstr "Profil uživatele"
+
+#: naovoce/templates/inc/user_info.html:13
+#, python-format
+msgid "You have %(num_msg)s unread messages"
+msgstr "Máte nepřečtené zprávy (%(num_msg)s)"
+
 #: naovoce/templates/map.html:11
 msgid ""
 "The &quot;Na ovoce&quot; map provides you with views of wild fruit trees, "
@@ -798,6 +818,12 @@ msgstr "filtr"
 #: naovoce/templates/pickers/index.html:33
 msgid "markers added"
 msgstr "počet značek"
+
+#: naovoce/templates/pickers/detail.html:32
+#: naovoce/templates/pickers/messages.html:5
+#: naovoce/templates/pickers/messages.html:10
+msgid "Messages"
+msgstr "Zprávy"
 
 #: naovoce/templates/pickers/index.html:8
 msgid "Pickers Index"
@@ -872,7 +898,7 @@ msgstr "Oprávnění"
 msgid "Important dates"
 msgstr "Sůležitá data"
 
-#: user/forms.py:10 user/forms.py:42 user/models.py:54
+#: user/forms.py:10 user/forms.py:42 user/models.py:55
 msgid "username"
 msgstr "uživatelské jméno"
 
@@ -901,31 +927,31 @@ msgstr ""
 msgid "Username or e-mail"
 msgstr "Uživatelské jméno nebo e-mail"
 
-#: user/models.py:55
+#: user/models.py:56
 msgid "email address"
 msgstr "e-mail"
 
-#: user/models.py:57
+#: user/models.py:58
 msgid "first name"
 msgstr "jméno"
 
-#: user/models.py:58
+#: user/models.py:59
 msgid "last name"
 msgstr "příjmení"
 
-#: user/models.py:60
+#: user/models.py:61
 msgid "staff status"
 msgstr "personál"
 
-#: user/models.py:62
+#: user/models.py:63
 msgid "Designates whether the user can sign into this admin site."
 msgstr "Označuje, jestli se uživatel může přihlásit do administrátorské sekce."
 
-#: user/models.py:65
+#: user/models.py:66
 msgid "active"
 msgstr "aktivní"
 
-#: user/models.py:67
+#: user/models.py:68
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
@@ -933,17 +959,57 @@ msgstr ""
 "Označuje, jestli má být uživatel brán jako aktivní. Odškrtněte namísto "
 "mazání účtu."
 
-#: user/models.py:70
+#: user/models.py:71
 msgid "verified"
 msgstr "ověřeno"
 
-#: user/models.py:71
+#: user/models.py:72
 msgid "date joined"
 msgstr "přidal se"
 
-#: user/models.py:80
+#: user/models.py:114
 msgid "users"
 msgstr "uživatelé"
+
+#: user/models.py:123
+msgctxt "read"
+msgid "user.Message"
+msgstr "přečtená"
+
+#: user/models.py:124
+msgctxt "Has been read or not."
+msgid "user.Message"
+msgstr "Byla přečtena nebo ne."
+
+#: user/models.py:128
+msgctxt "system"
+msgid "user.Message"
+msgstr "systémová"
+
+#: user/models.py:129
+msgid "System messages can be translated and can contain HTML."
+msgstr "Syztémová zpráva může mít překlad a může obsahovat HTML."
+
+#: user/models.py:134
+msgid "recipient"
+msgstr "příjemce"
+
+#: user/models.py:150
+msgid "message"
+msgstr "zpráva"
+
+#: user/models.py:151
+msgid "messages"
+msgstr "zprávy"
+
+#: user/signals.py:44
+#, python-brace-format
+msgid ""
+"Welcome! Before you start using this site, please take time to read our <a "
+"href=\"{url}\">codex</a>."
+msgstr ""
+"Vítejte! Před tím, než začnete používat tyto stránky, prosíme, najděte si "
+"čas na přečtení našeho <a href=\"{url}\">kodexu</a>."
 
 #: utils/models.py:13
 msgid "created"
@@ -956,6 +1022,17 @@ msgstr "změněno"
 #: utils/templatetags/truncate.py:16
 msgid "Read more"
 msgstr "Čtěte více"
+
+#~ msgid "View %(num_msg)s unread messages"
+#~ msgstr "Zobrazit nepřečtené zprávy (%(num_msg)s)"
+
+#~ msgid "Has been read or not."
+#~ msgstr "Byla přečtena nebo ne."
+
+#, fuzzy
+#~| msgid "system gallery"
+#~ msgid "system"
+#~ msgstr "systémová galerie"
 
 #~ msgid "Detail"
 #~ msgstr "Detail"
@@ -993,9 +1070,6 @@ msgstr "Čtěte více"
 
 #~ msgid "Gallery"
 #~ msgstr "Galerie"
-
-#~ msgid "system gallery"
-#~ msgstr "systémová galerie"
 
 #~ msgid "photos count"
 #~ msgstr "počet fotek"

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block title %} {% trans 'Messages' %} | {{ user.username }} | {{ block.super }}{% endblock %}
+
+{% block pickers_active %}active{% endblock %}
+
+{% block content %}
+    <h3>{% trans 'Messages' %}</h3>
+	<ul class="messages list-unstyled">
+	{% for msg in user.messages.all %}
+		<li class="alert {% if msg.read %}alert-unimportant{% else %}alert-info{% endif %}">
+			{{ msg.formatted_text }}
+		</li>
+	{% endfor %}
+	</ul>
+{% endblock %}

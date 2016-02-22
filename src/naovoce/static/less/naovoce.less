@@ -122,6 +122,26 @@ hr {
 			float: right;
 		}
 	}
+ 	a.messages-count {
+		display: inline-block;
+		background: @brand-tertiary;
+		color: white;
+		padding: 1px 8px;
+		border-radius: 20px;
+		&:hover,
+		&:active {
+			background: darken(@brand-tertiary, 5%);
+			text-decoration: none;
+		}
+		.envelope {
+			display: inline-block;
+			width: 16px;
+			height: 10px;
+			margin-left: 5px;
+			background: url('@{base-url}/img/envelope.svg') left bottom no-repeat;
+			background-size: 16px;
+		}
+	}
 }
 
 #main-content {
@@ -168,6 +188,12 @@ hr {
 			display: inline-block;
 			@media (min-width: @screen-xs-max) {
 				margin: 0 0 0 5px;
+			}
+			&:hover,
+			&:active {
+				svg path {
+					fill: darken(@brand-tertiary, 5%);
+				}
 			}
 		}
 	}
@@ -293,6 +319,21 @@ hr.head-separator {
 
 ul.messages {
 	margin-top: 20px;
+	.date {
+		opacity: 0.4;
+		margin-right: 10px;
+	}
+	.alert-info {
+		.alert-success;
+	}
+	.alert-unimportant {
+		background-color: @btn-default-bg;
+		border-color: @btn-default-border;
+		color: lighten(@btn-default-color, 50%);
+		a {
+			color: lighten(@btn-default-color, 50%);
+		}
+	}
 }
 
 a.read-more {
