@@ -95,7 +95,7 @@
 	<script src="{% static 'components/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.js' %}"></script>
 	{% include 'inc/mapjs.html' %}
 	<script type="text/coffeescript" charset="utf-8">
-	center = new L.LatLng({{ fruit.latitude|unlocalize }}, {{ fruit.longitude|unlocalize }})
+	center = new L.LatLng({{ fruit.latitude|lower|unlocalize }}, {{ fruit.longitude|lower|unlocalize }})
 
 	map = new Naovoce.Map 'map-detail'
 		.focusTo center

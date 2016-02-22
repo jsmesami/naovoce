@@ -15,7 +15,7 @@
 {% endblock %}
 
 {% block edit %}
-	center = new L.LatLng {{ fruit.latitude|unlocalize }}, {{ fruit.longitude|unlocalize }}
+	center = new L.LatLng {{ fruit.latitude|lower|unlocalize }}, {{ fruit.longitude|lower|unlocalize }}
 	marker = new Naovoce.Marker center, '{{ fruit.kind.key }}'
 	map.addLayer marker
 		.focusTo center
