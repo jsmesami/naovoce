@@ -10,6 +10,7 @@ from django.utils.translation import ugettext_lazy as _
 from utils.tokenizer import Token
 from .models import Comment
 from .forms import CommentForm
+from . import signals
 
 
 @require_POST
@@ -24,11 +25,17 @@ def save(request):
         token = Token(comment_type.id, object_id)
 
         if request.POST.get('token') == str(token) and request.POST.get('tamper') == '':
-            Comment.objects.create(
+            comment = Comment.objects.create(
                 text=form.cleaned_data.get('text'),
                 author=request.user,
                 ip=get_ip(request),
                 content_type=comment_type,
+                object_id=object_id,
+            )
+            signals.comment_created.send(
+                sender=Comment,
+                comment=comment,
+                comment_type=comment_type,
                 object_id=object_id,
             )
             messages.success(request, _('Thank you for your comment.'))

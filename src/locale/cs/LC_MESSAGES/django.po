@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-22 19:41+0100\n"
-"PO-Revision-Date: 2016-02-22 19:41+0100\n"
+"POT-Creation-Date: 2016-02-22 22:06+0100\n"
+"PO-Revision-Date: 2016-02-22 22:07+0100\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -87,11 +87,11 @@ msgstr "zamítnuto"
 msgid "comments"
 msgstr "komentáře"
 
-#: comments/views.py:34
+#: comments/views.py:41
 msgid "Thank you for your comment."
 msgstr "Děkujeme za váš komentář"
 
-#: comments/views.py:39
+#: comments/views.py:46
 msgid "We are sorry, your comment was not accepted."
 msgstr "Je nám líto, ale váš komentář nebyl přijat."
 
@@ -232,6 +232,15 @@ msgstr "uživatel"
 #: fruit/models.py:107 fruit/models.py:108
 msgid "fruit"
 msgstr "ovoce"
+
+#: fruit/signals.py:16
+#, python-brace-format
+msgid ""
+"User <a href=\"{user_url}\">{user_name}</a> posted a <a href="
+"\"{comment_url}\">comment</a> under your <a href=\"{fruit_url}\">marker</a>."
+msgstr ""
+"Uživatel <a href=\"{user_url}\">{user_name}</a> vložil <a href="
+"\"{comment_url}\">komentář</a> pod vaši <a href=\"{fruit_url}\">značku</a>."
 
 #: fruit/views.py:28
 msgid "To add fruit, please first sign in."
