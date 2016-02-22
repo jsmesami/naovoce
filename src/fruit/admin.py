@@ -1,5 +1,6 @@
 from django.contrib import admin
-from django.utils.translation import ugettext_lazy as _
+from django.core.urlresolvers import reverse
+from django.utils.translation import ugettext_noop, ugettext_lazy as _
 from django import forms
 
 from modeltranslation.admin import TranslationAdmin
@@ -44,10 +45,27 @@ class FruitAdmin(GalleryAdminMixin, admin.ModelAdmin):
     form = CoverImageAdminForm
     inlines = ImageAdminInline,
 
+    def get_object(self, request, object_id, from_field=None):
+        fruit = super().get_object(request, object_id)
+        if fruit:
+            fruit._was_deleted = fruit.deleted
+        return fruit
+
     def save_model(self, request, obj, form, change):
         if not obj.user:
             obj.user = request.user
         obj.save()
+
+        if not obj._was_deleted and obj.deleted:
+            # Inform user that we have deleted her marker.
+            deletion_msg = ugettext_noop(
+                'Site administrator deleted your <a href="{url}">marker</a>. '
+                'Reason of deletion: {reason}'.format(
+                    url=obj.get_absolute_url(),
+                    reason=obj.why_deleted,
+                )
+            )
+            obj.user.send_message(deletion_msg, system=True)
 
 
 class HerbariumAdmin(admin.ModelAdmin):

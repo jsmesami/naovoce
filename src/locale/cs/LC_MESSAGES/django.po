@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-22 18:00+0100\n"
+"POT-Creation-Date: 2016-02-22 18:48+0100\n"
 "PO-Revision-Date: 2016-02-22 18:01+0100\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
@@ -95,17 +95,24 @@ msgstr "Děkujeme za váš komentář"
 msgid "We are sorry, your comment was not accepted."
 msgstr "Je nám líto, ale váš komentář nebyl přijat."
 
-#: fruit/admin.py:25 fruit/models.py:33
+#: fruit/admin.py:26 fruit/models.py:33
 msgid "class"
 msgstr "třída"
 
-#: fruit/admin.py:31 fruit/models.py:36
+#: fruit/admin.py:32 fruit/models.py:36
 msgid "color"
 msgstr "barva"
 
-#: fruit/admin.py:36
+#: fruit/admin.py:37
 msgid "markers count"
 msgstr "počet značek"
+
+#: fruit/admin.py:59
+#, python-brace-format
+msgid ""
+"Site administrator deleted your <a href=\"{url}\">marker</a>. Reason of "
+"deletion: {reason}"
+msgstr ""
 
 #: fruit/api/serializers.py:32
 msgid "{} is not a valid Kind key."

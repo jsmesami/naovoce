@@ -66,8 +66,3 @@ class FruitDeleteForm(forms.Form):
         help_text=_('Please describe reason of why you are deleting the marker.'),
         widget=forms.Textarea(attrs={'rows': 5}),
     )
-
-    class Meta:
-        widgets = {
-            'reason': forms.Textarea(attrs={'rows': 5}),
-        }
