@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.http.response import HttpResponseForbidden, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext, ugettext_lazy as _
 
 from .forms import FruitForm, FruitDeleteForm
 from .models import Fruit, Kind
@@ -25,7 +25,7 @@ def detail(request, fruit_id):
 
 def add(request):
     if not request.user.is_authenticated():
-        messages.warning(request, _('To add fruit, please first sign in.'))
+        messages.warning(request, ugettext('To add fruit, please first sign in.'))
         redir = '{}?next={}'.format(reverse('account_login'), reverse('fruit:add'))
         return HttpResponseRedirect(redir)
 
@@ -36,7 +36,7 @@ def add(request):
             data.update(form.cleaned_data)
             fruit = Fruit(**data)
             fruit.save()
-            messages.success(request, _('Thank you, the fruit has been added.'))
+            messages.success(request, ugettext('Thank you, the fruit has been added.'))
             return redirect(fruit)
     else:
         form = FruitForm()
@@ -72,7 +72,7 @@ def edit(request, fruit):
 
     if form.is_valid():
         form.save()
-        messages.success(request, _('Thank you, your changes have been saved.'))
+        messages.success(request, ugettext('Thank you, your changes have been saved.'))
         return redirect(fruit)
 
     context = {
@@ -93,7 +93,7 @@ def delete(request, fruit):
             fruit.deleted = True
             fruit.why_deleted = form.cleaned_data['reason']
             fruit.save()
-            messages.success(request, _('The marker has been deleted.'))
+            messages.success(request, ugettext('The marker has been deleted.'))
             return redirect(fruit)
     else:
         form = FruitDeleteForm()

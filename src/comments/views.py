@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseBadRequest
 from django.shortcuts import redirect
 from django.views.decorators.http import require_POST
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext
 
 from utils.tokenizer import Token
 from .models import Comment
@@ -38,11 +38,11 @@ def save(request):
                 comment_type=comment_type,
                 object_id=object_id,
             )
-            messages.success(request, _('Thank you for your comment.'))
+            messages.success(request, ugettext('Thank you for your comment.'))
         else:
             return HttpResponseBadRequest('Invalid token')
 
     else:
-        messages.error(request, _('We are sorry, your comment was not accepted.'))
+        messages.error(request, ugettext('We are sorry, your comment was not accepted.'))
 
     return redirect(request.POST.get('next', '/'))
