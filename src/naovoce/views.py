@@ -24,6 +24,7 @@ def home_view(request):
             author=c.author.get_short_name(),
             author_url=c.author.get_absolute_url(),
             text=c.text,
+            complaint=c.complaint,
             time=c.created,
         )
         for c in comm_qs

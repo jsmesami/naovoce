@@ -10,7 +10,7 @@
 	      class="comment_form {% if comment_form.errors %}errors{% endif %} row">
 		{% csrf_token %}
 		<div class="col-sm-8">
-		{{ comment_form.non_field_errors }}
+			{{ comment_form.non_field_errors }}
 			{{ comment_form.text|bootstrap }}
 			{% if comment_form.complaint %}
 				{{ comment_form.complaint|bootstrap }}

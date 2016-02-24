@@ -81,7 +81,7 @@
 			<h4>{% trans 'Latest comments' %}</h4>
 			{% for c in comments|slice:'4' %}
 			<div class="media">
-				<p class="media-body comment">
+				<p class="media-body comment {% if c.complaint %}complaint{% endif %}">
 					<span class="author"><a href="{{ c.author_url }}">{{ c.author }}</a></span>
 					<a href="{{ c.url }}">{{ c.text|prepos|truncatewords:10 }}</a>
 				</p>
