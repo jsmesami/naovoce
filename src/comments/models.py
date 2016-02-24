@@ -12,6 +12,7 @@ class Comment(TimeStampedModel):
     text = models.CharField(_('comment'), max_length=1600)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_('author'))
     ip = models.GenericIPAddressField(_("author's IP address"), null=True)
+    complaint = models.BooleanField(_('complaint'), default=False)
     rejected = models.BooleanField(_('rejected'), default=False)
 
     content_type = models.ForeignKey(ContentType)

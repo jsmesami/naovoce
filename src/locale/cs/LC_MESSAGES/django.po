@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-22 22:06+0100\n"
-"PO-Revision-Date: 2016-02-22 22:07+0100\n"
+"POT-Creation-Date: 2016-02-24 18:28+0100\n"
+"PO-Revision-Date: 2016-02-24 18:33+0100\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -67,11 +67,15 @@ msgstr "články"
 msgid "container"
 msgstr "kontejner"
 
-#: comments/forms.py:19
-msgid "Comment cannot be empty."
-msgstr "Komentář nemůže být prázdný."
+#: comments/forms.py:28 comments/utils.py:50
+msgid "Comment not accepted."
+msgstr "Komentář nebyl přijat."
 
-#: comments/models.py:12 comments/models.py:35
+#: comments/forms.py:35
+msgid "You do not want to post empty comment, do you?"
+msgstr "Nechcete přece přidávat prázdný komentář, že ne?"
+
+#: comments/models.py:12 comments/models.py:36
 msgid "comment"
 msgstr "komentář"
 
@@ -80,20 +84,28 @@ msgid "author's IP address"
 msgstr "IP adresa autora"
 
 #: comments/models.py:15
+msgid "complaint"
+msgstr "stížnost"
+
+#: comments/models.py:16
 msgid "rejected"
 msgstr "zamítnuto"
 
-#: comments/models.py:36
+#: comments/models.py:37
 msgid "comments"
 msgstr "komentáře"
 
-#: comments/views.py:41
+#: comments/utils.py:45
+msgid "Your complaint has been sent to site administrators."
+msgstr "Vaše stížnost byla zaslána administrátorům stránek."
+
+#: comments/utils.py:48
 msgid "Thank you for your comment."
 msgstr "Děkujeme za váš komentář"
 
-#: comments/views.py:46
-msgid "We are sorry, your comment was not accepted."
-msgstr "Je nám líto, ale váš komentář nebyl přijat."
+#: comments/utils.py:53
+msgid "You have to be signed-in to post comments."
+msgstr "Abyste mohli posílat komentáře, musíte se přihlásit."
 
 #: fruit/admin.py:25 fruit/models.py:33
 msgid "class"
@@ -233,7 +245,7 @@ msgstr "uživatel"
 msgid "fruit"
 msgstr "ovoce"
 
-#: fruit/signals.py:16
+#: fruit/signals.py:18
 #, python-brace-format
 msgid ""
 "User <a href=\"{user_url}\">{user_name}</a> posted a <a href="
@@ -242,27 +254,51 @@ msgstr ""
 "Uživatel <a href=\"{user_url}\">{user_name}</a> vložil <a href="
 "\"{comment_url}\">komentář</a> pod vaši <a href=\"{fruit_url}\">značku</a>."
 
-#: fruit/views.py:28
+#: fruit/signals.py:24
+#, python-brace-format
+msgid ""
+"User <a href=\"{user_url}\">{user_name}</a> <strong>posted a <a href="
+"\"{comment_url}\">complaint</a></strong> under your <a href="
+"\"{fruit_url}\">marker</a>."
+msgstr ""
+"Uživatel <a href=\"{user_url}\">{user_name}</a> <strong>vložil <a href="
+"\"{comment_url}\">stížnost</a></strong> pod vaši <a href="
+"\"{fruit_url}\">značku</a>."
+
+#: fruit/signals.py:40
+msgid "A complaint has been made."
+msgstr "Byla učiněna stížnost."
+
+#: fruit/signals.py:41
+#, python-brace-format
+msgid "Please review the situation: https://na-ovoce.cz{url}"
+msgstr "Prosíme přezkoumejte situaci: https://na-ovoce.cz{url}"
+
+#: fruit/views.py:29
+msgid "Send comment as a complaint"
+msgstr "Přidat komentář jako stížnost"
+
+#: fruit/views.py:36
 msgid "To add fruit, please first sign in."
 msgstr "K přidávání ovoce je potřeba se přihlásit."
 
-#: fruit/views.py:39
+#: fruit/views.py:47
 msgid "Thank you, the fruit has been added."
 msgstr "Děkujeme, ovoce bylo přidáno."
 
-#: fruit/views.py:58
+#: fruit/views.py:66
 msgid "Only the owner is allowed edit her marker."
 msgstr "Pouze vlastník je oprávněn upravovat své značky."
 
-#: fruit/views.py:61
+#: fruit/views.py:69
 msgid "This marker has been deleted and cannot be edited."
 msgstr "Tato značka byla smazána a nelze ji editovat."
 
-#: fruit/views.py:75
+#: fruit/views.py:83
 msgid "Thank you, your changes have been saved."
 msgstr "Děkujeme, vaše změny byly uloženy."
 
-#: fruit/views.py:96
+#: fruit/views.py:104
 msgid "The marker has been deleted."
 msgstr "Tato značka byla smazána."
 
@@ -402,14 +438,14 @@ msgstr ""
 "Potvrdili jste, že <a href=\"mailto:%(email)s\">%(email)s</a> je e-mailová "
 "adresa uživatele %(user_display)s."
 
-#: naovoce/templates/account/login.html:6
-#: naovoce/templates/account/login.html:12
+#: naovoce/templates/account/login.html:7
+#: naovoce/templates/account/login.html:13
 #: naovoce/templates/inc/user_info.html:20
 #: naovoce/templates/inc/user_info.html:21
 msgid "Sign in"
 msgstr "Přihlášení"
 
-#: naovoce/templates/account/login.html:16
+#: naovoce/templates/account/login.html:17
 #, python-format
 msgid ""
 "If you have not created an account yet, then please <a class=\"alert-link\" "
@@ -418,16 +454,16 @@ msgstr ""
 "Pokud ještě nemáte účet, prosíme, <a class=\"alert-link\" href="
 "\"%(signup_url)s\">zaregistrujte</a> se."
 
-#: naovoce/templates/account/login.html:24
+#: naovoce/templates/account/login.html:25
 msgid "Your username and password didn't match. Please try again."
 msgstr "Nesprávné uživatelské jméno a heslo. Zkuste to laskavě znovu."
 
-#: naovoce/templates/account/login.html:38
+#: naovoce/templates/account/login.html:39
 msgctxt "infinitive"
 msgid "Sign in"
 msgstr "Přihlásit se"
 
-#: naovoce/templates/account/login.html:39
+#: naovoce/templates/account/login.html:40
 msgid "Forgot Password?"
 msgstr "Zapomněli jste heslo?"
 
@@ -524,7 +560,7 @@ msgid "Your password is reset, you may now"
 msgstr "Vaše heslo je obnoveno, nyní se můžete"
 
 #: naovoce/templates/account/password_reset_from_key_done.html:10
-#: naovoce/templates/comments/comments.html:27
+#: naovoce/templates/comments/inc/comments.html:30
 msgid "sign in"
 msgstr "přihlásit"
 
@@ -585,10 +621,6 @@ msgstr "Více informací"
 msgid "Dismiss"
 msgstr "Pryč s tím"
 
-#: naovoce/templates/base.html:62 naovoce/templates/comments/comments.html:17
-msgid "Add your comment"
-msgstr "Přidejte svůj komentář"
-
 #: naovoce/templates/blog/index.html:9
 msgid ""
 "Loads of information about fruits and its processing, countryside trips, "
@@ -606,11 +638,16 @@ msgstr "Kategorie"
 msgid "all"
 msgstr "vše"
 
-#: naovoce/templates/comments/comments.html:26
+#: naovoce/templates/comments/inc/comments.html:23
+#: naovoce/templates/comments/inc/commentsjs.html:7
+msgid "Add your comment"
+msgstr "Přidejte svůj komentář"
+
+#: naovoce/templates/comments/inc/comments.html:29
 msgid "To add your comment, please first"
 msgstr "Abyste mohli přidat komentář, musíte se nejdříve"
 
-#: naovoce/templates/comments/comments.html:54
+#: naovoce/templates/comments/inc/comments.html:57
 msgid "This comment has been rejected by moderator."
 msgstr "Tento komentář byl zamítnut moderátorem."
 
@@ -644,39 +681,39 @@ msgctxt "infinitive"
 msgid "Delete"
 msgstr "Smazat značku"
 
-#: naovoce/templates/fruit/detail.html:26
+#: naovoce/templates/fruit/detail.html:25
 msgid "Unknown address"
 msgstr "Neznámá adresa"
 
-#: naovoce/templates/fruit/detail.html:36
+#: naovoce/templates/fruit/detail.html:35
 msgid "This marker has been deleted"
 msgstr "Tato značka byla smazána"
 
-#: naovoce/templates/fruit/detail.html:38
+#: naovoce/templates/fruit/detail.html:37
 msgid "Reason of deletion"
 msgstr "Důvod smazání"
 
-#: naovoce/templates/fruit/detail.html:46
+#: naovoce/templates/fruit/detail.html:45
 #: naovoce/templates/fruit/inc/fruitform.html:24
 #: naovoce/templates/pickers/detail.html:29
 msgid "Large map"
 msgstr "Velká mapa"
 
-#: naovoce/templates/fruit/detail.html:48
+#: naovoce/templates/fruit/detail.html:47
 msgid "Edit"
 msgstr "Upravit"
 
-#: naovoce/templates/fruit/detail.html:49
+#: naovoce/templates/fruit/detail.html:48
 msgid "Delete"
 msgstr "Smazat"
 
-#: naovoce/templates/fruit/detail.html:51
+#: naovoce/templates/fruit/detail.html:50
 #: naovoce/templates/fruit/inc/fruitform.html:20
 #: naovoce/templates/pickers/detail.html:30
 msgid "Add marker"
 msgstr "Přidat značku"
 
-#: naovoce/templates/fruit/detail.html:54
+#: naovoce/templates/fruit/detail.html:53
 #: naovoce/templates/fruit/herbarium.html:13
 #: naovoce/templates/fruit/herbarium.html:15
 #: naovoce/templates/inc/footer.html:29
@@ -893,15 +930,15 @@ msgstr "Poděkování"
 msgid "Sincere thanks to Maik Allen for helping us with translations."
 msgstr "Srdečné poděkování Maikovi Allenovi za pomoc s překladem stránky."
 
-#: naovoce/urls.py:40
+#: naovoce/urls.py:39
 msgid "^map/$"
 msgstr "^mapa/$"
 
-#: naovoce/urls.py:41
+#: naovoce/urls.py:40
 msgid "^about-us/$"
 msgstr "^o-nas/$"
 
-#: naovoce/urls.py:43
+#: naovoce/urls.py:42
 msgid "^codex/$"
 msgstr "^kodex/$"
 
@@ -1053,6 +1090,9 @@ msgstr "změněno"
 #: utils/templatetags/truncate.py:16
 msgid "Read more"
 msgstr "Čtěte více"
+
+#~ msgid "We are sorry, your comment was not accepted."
+#~ msgstr "Je nám líto, ale váš komentář nebyl přijat."
 
 #~ msgid ""
 #~ "Are you sure you want to delete this marker? {fruit.kind.name} ({fruit."

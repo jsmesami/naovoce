@@ -92,8 +92,16 @@ form {
 	.btn + a {
 		margin-left: 10px;
 	}
-	&.comments {
+	&.comment_form {
 		display: none;
+		&.errors {
+			display: block;
+		}
+		#id_text.complaint {
+			background: @state-danger-bg;
+			color: @state-danger-text;
+			border-color: @state-danger-border;
+		}
 	}
 }
 
@@ -333,6 +341,14 @@ ul.messages {
 		a {
 			color: lighten(@btn-default-color, 50%);
 		}
+	}
+}
+
+ul.errorlist.nonfield {
+	.list-unstyled;
+	li {
+		.alert;
+		.alert-danger;
 	}
 }
 
@@ -591,5 +607,12 @@ a.read-more {
 		display: block;
 		left: -10px;
 		top: 10px;
+	}
+	&.complaint {
+		background: @state-danger-bg;
+		color: @state-danger-text;
+		&:after {
+			border-color: transparent @state-danger-bg;
+		}
 	}
 }

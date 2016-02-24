@@ -4,7 +4,6 @@
 {% load static from staticfiles %}
 {% load fruit %}
 {% load coords %}
-{% load comments %}
 {% load avatar %}
 
 {% block title %}{{ fruit.kind.name|title }} | {{ block.super }}{% endblock %}
@@ -78,7 +77,7 @@
 </div>
 
 <hr>
-{% comments_for fruit %}
+{% include 'comments/inc/comments.html' %}
 
 {% endblock %}
 
@@ -89,6 +88,7 @@
 
 {% block scripts %}
 	{{ block.super }}
+	{% include 'comments/inc/commentsjs.html' %}
 	{% if not fruit.deleted %}
 	<script src="{% static 'components/leaflet/dist/leaflet.js' %}"></script>
 	<script src="{% static 'components/esri-leaflet/dist/esri-leaflet.js' %}"></script>

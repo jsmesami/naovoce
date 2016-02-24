@@ -58,13 +58,6 @@
 		document.cookie = "cookieMonster=fed; Path=/; Domain=.na-ovoce.cz; Expires=#{ year.toUTCString() }; Secure"
 		false
 {% endif %}
-	commentsForm = $ 'form.comments'
-	$ "<p><a href='#'>{% trans 'Add your comment' %}.</a></p>"
-		.insertBefore commentsForm
-		.one 'click', ->
-			this.remove()
-			commentsForm.show()
-			false
 </script>
 
 {% endblock %}

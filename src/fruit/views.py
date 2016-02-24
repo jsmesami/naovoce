@@ -7,6 +7,7 @@ from django.http.response import HttpResponseForbidden, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.translation import ugettext, ugettext_lazy as _
 
+from comments.utils import get_comments_context
 from .forms import FruitForm, FruitDeleteForm
 from .models import Fruit, Kind
 
@@ -16,10 +17,17 @@ def _get_fruit(pk):
 
 
 def detail(request, fruit_id):
+    fruit = _get_fruit(fruit_id)
     context = {
         'kinds': Kind.objects.all(),
-        'fruit': _get_fruit(fruit_id),
+        'fruit': fruit,
     }
+    context.update(get_comments_context(
+        request,
+        container=fruit,
+        with_complaints=True,
+        complaint_label=_('Send comment as a complaint'),
+    ))
     return render(request, 'fruit/detail.html', context)
 
 

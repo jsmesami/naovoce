@@ -1,0 +1,18 @@
+{% load i18n %}
+
+<script type="text/coffeescript">
+	commentsForm = $ 'form.comment_form'
+
+	if not commentsForm.hasClass 'errors'
+		$ "<p><a href='#'>{% trans 'Add your comment' %}.</a></p>"
+			.insertBefore commentsForm
+			.one 'click', ->
+				this.remove()
+				commentsForm.show()
+				false
+
+	complaintCheckbox = commentsForm.find '#id_complaint'
+	complaintText = commentsForm.find '#id_text'
+	complaintCheckbox.change ->
+		complaintText.toggleClass 'complaint'
+</script>

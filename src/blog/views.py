@@ -1,7 +1,8 @@
 from django.http import HttpResponsePermanentRedirect
 from django.shortcuts import get_object_or_404, render
 
-from blog.models import BlogPost, Category
+from comments.utils import get_comments_context
+from .models import BlogPost, Category
 
 
 def index(request, category_pk=None, category_slug=None):
@@ -20,7 +21,6 @@ def index(request, category_pk=None, category_slug=None):
         'category_pk': int(category_pk or 0),
         'blogposts': blogposts,
     }
-
     return render(request, template_name, context)
 
 
@@ -31,4 +31,6 @@ def detail(request, pk, slug=None):
     if entry.slug != slug:
         return HttpResponsePermanentRedirect(entry.get_absolute_url())
 
-    return render(request, 'blog/detail.html', {'entry': entry})
+    context = {'entry': entry}
+    context.update(get_comments_context(request, container=entry))
+    return render(request, 'blog/detail.html', context)

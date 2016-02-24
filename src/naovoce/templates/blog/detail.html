@@ -5,7 +5,6 @@
 {% load thumbs %}
 {% load full_url %}
 {% load typo %}
-{% load comments %}
 
 {% block title %}{{ entry.title }} | {{ block.super }}{% endblock %}
 
@@ -26,11 +25,12 @@
 	<hr>
 	{% include 'inc/social.html' %}
 	<hr>
-	{% comments_for entry %}
+	{% include 'comments/inc/comments.html' %}
 {% endblock %}
 
 {% block scripts %}
 	{{ block.super }}
+	{% include 'comments/inc/commentsjs.html' %}
 	{% include 'inc/facebookjs.html' %}
 	{% include 'inc/twitterjs.html' %}
 {% endblock %}
