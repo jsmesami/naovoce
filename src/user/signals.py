@@ -4,6 +4,7 @@ from django.dispatch import receiver
 from django.utils.translation import ugettext_noop
 
 from allauth.account.signals import user_signed_up, email_confirmed
+from allauth.socialaccount.signals import pre_social_login
 
 from .models import FruitUser
 
@@ -18,6 +19,15 @@ def sync_email_verified(request, email_address, **kwargs):
     if fruit_user.email == email_address.email:
         fruit_user.is_email_verified = True
         fruit_user.save()
+
+
+@receiver(pre_social_login)
+def sync_social_email_verified(request, sociallogin, **kwargs):
+    """
+    We always require email from new social account user,
+    and we naively assume that it is always verified.
+    """
+    sociallogin.user.is_email_verified = True
 
 
 @receiver(user_signed_up)

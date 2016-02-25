@@ -24,15 +24,24 @@
     <div class="col-sm-12">
 	    <div id="map-detail"></div>
 	</div>
+    {% if user.is_authenticated and user == request.user %}
     <div class="col-sm-12">
-        <ul class="map-links">
+        <ul class="quick-links">
 	        <li><a href="{% url 'map' %}">{% trans 'Large map' %}</a></li>
 	        <li><a href="{% url 'fruit:add' %}">{% trans 'Add marker' %}</a></li>
-            {% if user.is_authenticated and user == request.user %}
-			    <li><a href="{% url 'pickers:messages' user.id %}">{% trans 'Messages' %}</a></li>
-            {% endif %}
+        </ul>
+        <hr>
+        <ul class="quick-links">
+		    <li><a href="{% url 'pickers:messages' user.id %}">{% trans 'My messages' %}</a></li>
+	        {% if user.has_usable_password %}
+		        <li><a href="{% url 'account_change_password' %}">{% trans 'Change password' %}</a></li>
+	        {% else %}
+		        <li><a href="{% url 'account_set_password' %}">{% trans 'Set password' %}</a></li>
+	        {% endif %}
+		    <li><a href="{% url 'socialaccount_connections' %}">{% trans 'Account connections' %}</a></li>
         </ul>
     </div>
+    {% endif %}
 </div>
 
 {% endblock %}

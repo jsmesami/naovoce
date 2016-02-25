@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-24 18:28+0100\n"
-"PO-Revision-Date: 2016-02-24 18:33+0100\n"
+"POT-Creation-Date: 2016-02-26 00:05+0100\n"
+"PO-Revision-Date: 2016-02-26 00:05+0100\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -42,7 +42,7 @@ msgstr "kategorie"
 msgid "title"
 msgstr "titulek"
 
-#: blog/models.py:39 comments/admin.py:16 staticpage/models.py:9
+#: blog/models.py:39 comments/admin.py:18 staticpage/models.py:9
 #: user/admin.py:53 user/models.py:121
 msgid "text"
 msgstr "text"
@@ -63,7 +63,7 @@ msgstr "článek"
 msgid "blog posts"
 msgstr "články"
 
-#: comments/admin.py:20
+#: comments/admin.py:22
 msgid "container"
 msgstr "kontejner"
 
@@ -265,11 +265,11 @@ msgstr ""
 "\"{comment_url}\">stížnost</a></strong> pod vaši <a href="
 "\"{fruit_url}\">značku</a>."
 
-#: fruit/signals.py:40
+#: fruit/signals.py:43
 msgid "A complaint has been made."
 msgstr "Byla učiněna stížnost."
 
-#: fruit/signals.py:41
+#: fruit/signals.py:44
 #, python-brace-format
 msgid "Please review the situation: https://na-ovoce.cz{url}"
 msgstr "Prosíme přezkoumejte situaci: https://na-ovoce.cz{url}"
@@ -279,12 +279,12 @@ msgid "Send comment as a complaint"
 msgstr "Přidat komentář jako stížnost"
 
 #: fruit/views.py:36
-msgid "To add fruit, please first sign in."
-msgstr "K přidávání ovoce je potřeba se přihlásit."
+msgid "To add markers, please first sign in."
+msgstr "K přidávání značek je potřeba se přihlásit."
 
 #: fruit/views.py:47
-msgid "Thank you, the fruit has been added."
-msgstr "Děkujeme, ovoce bylo přidáno."
+msgid "Thank you, the marker has been added."
+msgstr "Děkujeme, značka byla přidána."
 
 #: fruit/views.py:66
 msgid "Only the owner is allowed edit her marker."
@@ -439,35 +439,49 @@ msgstr ""
 "adresa uživatele %(user_display)s."
 
 #: naovoce/templates/account/login.html:7
+msgid "Sign In"
+msgstr "Přihlášení"
+
 #: naovoce/templates/account/login.html:13
 #: naovoce/templates/inc/user_info.html:20
 #: naovoce/templates/inc/user_info.html:21
 msgid "Sign in"
 msgstr "Přihlášení"
 
-#: naovoce/templates/account/login.html:17
+#: naovoce/templates/account/login.html:16
+msgid "You can sign in with <strong>Facebook</strong>"
+msgstr "Můžete se přihlásit <strong>Facebookem</strong>"
+
+#: naovoce/templates/account/login.html:23
+msgid "Your username and password didn't match. Please try again."
+msgstr "Nesprávné uživatelské jméno a heslo. Zkuste to laskavě znovu."
+
+#: naovoce/templates/account/login.html:31
+msgctxt "infinitive"
+msgid "Sign in"
+msgstr "Přihlásit se"
+
+#: naovoce/templates/account/login.html:35
+msgid "Remember me on this computer"
+msgstr "Zapamatovat si mě na tomto počítači"
+
+#: naovoce/templates/account/login.html:46
 #, python-format
 msgid ""
 "If you have not created an account yet, then please <a class=\"alert-link\" "
 "href=\"%(signup_url)s\">register</a> first."
 msgstr ""
 "Pokud ještě nemáte účet, prosíme, <a class=\"alert-link\" href="
-"\"%(signup_url)s\">zaregistrujte</a> se."
+"\"%(signup_url)s\">zaregistrujte se</a>."
 
-#: naovoce/templates/account/login.html:25
-msgid "Your username and password didn't match. Please try again."
-msgstr "Nesprávné uživatelské jméno a heslo. Zkuste to laskavě znovu."
-
-#: naovoce/templates/account/login.html:39
-msgctxt "infinitive"
-msgid "Sign in"
-msgstr "Přihlásit se"
-
-#: naovoce/templates/account/login.html:40
-msgid "Forgot Password?"
-msgstr "Zapomněli jste heslo?"
+#: naovoce/templates/account/login.html:51
+msgid "Did you forget your password?"
+msgstr "Zapoměli jste své heslo?"
 
 #: naovoce/templates/account/logout.html:5
+msgid "Sign Out"
+msgstr "Odhlášení"
+
 #: naovoce/templates/account/logout.html:8
 #: naovoce/templates/inc/user_info.html:8
 #: naovoce/templates/inc/user_info.html:9
@@ -482,6 +496,19 @@ msgstr "Odhlásit se"
 #: naovoce/templates/account/logout.html:10
 msgid "Are you sure you want to sign out?"
 msgstr "Opravdu se chcete odhlásit?"
+
+#: naovoce/templates/account/password_change.html:6
+#: naovoce/templates/account/password_reset_from_key.html:6
+#: naovoce/templates/account/password_reset_from_key.html:24
+#: naovoce/templates/account/password_reset_from_key_done.html:5
+msgid "Change Password"
+msgstr "Změnit heslo"
+
+#: naovoce/templates/account/password_change.html:12
+#: naovoce/templates/account/password_change.html:17
+#: naovoce/templates/pickers/detail.html:37
+msgid "Change password"
+msgstr "Změnit heslo"
 
 #: naovoce/templates/account/password_reset.html:16
 msgid ""
@@ -526,12 +553,6 @@ msgstr ""
 "Vezměte v úvahu, že bezplatné e-mailové služby, jako např. Gmail nebo "
 "Seznam, mohou zdržet doručení zprávy."
 
-#: naovoce/templates/account/password_reset_from_key.html:6
-#: naovoce/templates/account/password_reset_from_key.html:24
-#: naovoce/templates/account/password_reset_from_key_done.html:5
-msgid "Change Password"
-msgstr "Změnit heslo"
-
 #: naovoce/templates/account/password_reset_from_key.html:11
 msgid "Bad Token"
 msgstr "Chybný ověřovací kód"
@@ -564,33 +585,38 @@ msgstr "Vaše heslo je obnoveno, nyní se můžete"
 msgid "sign in"
 msgstr "přihlásit"
 
-#: naovoce/templates/account/signup.html:6
-#: naovoce/templates/account/signup.html:12
+#: naovoce/templates/account/password_set.html:6
+msgid "Set Password"
+msgstr "Nastavit heslo"
+
+#: naovoce/templates/account/password_set.html:12
+#: naovoce/templates/account/password_set.html:17
+#: naovoce/templates/pickers/detail.html:39
+msgid "Set password"
+msgstr "Nastavit heslo"
+
+#: naovoce/templates/account/signup.html:7
+#: naovoce/templates/account/signup.html:13
 #: naovoce/templates/inc/user_info.html:22
 #: naovoce/templates/inc/user_info.html:23
 msgid "Registration"
 msgstr "Registrace"
 
 #: naovoce/templates/account/signup.html:16
-#, python-format
-msgid ""
-"Already have an account? Then please <a class=\"alert-link\" href="
-"\"%(login_url)s\">sign in</a>."
-msgstr ""
-"Máte již účet? Prosíme, <a class=\"alert-link\" href=\"%(login_url)s"
-"\">přihlašte se</a>."
+msgid "You can sign up with <strong>Facebook</strong>"
+msgstr "Můžete se zaregistrovat <strong>Facebookem</strong>"
 
-#: naovoce/templates/account/signup.html:22
-msgid "(choose your desired nickname)"
-msgstr "(zvolte si přezdívku)"
-
-#: naovoce/templates/account/signup.html:24
-msgid "(we won't show it to anybody)"
-msgstr "(nikomu ho neukážeme)"
-
-#: naovoce/templates/account/signup.html:32
+#: naovoce/templates/account/signup.html:23
+#: naovoce/templates/socialaccount/signup.html:43
 msgid "Register"
 msgstr "Registrovat"
+
+#: naovoce/templates/account/signup.html:31
+#, python-format
+msgid ""
+"If you already have an account, please <a href=\"%(login_url)s\">sign in</a>."
+msgstr ""
+"Pokud již máte účet, prosíme <a href=\"%(login_url)s\">přihlaste se</a>."
 
 #: naovoce/templates/account/verification_sent.html:5
 msgid "Verify Your Email Address"
@@ -652,8 +678,8 @@ msgid "This comment has been rejected by moderator."
 msgstr "Tento komentář byl zamítnut moderátorem."
 
 #: naovoce/templates/fruit/add.html:6
-msgid "Add a marker"
-msgstr "Přidávání"
+msgid "Add a Marker"
+msgstr "Přidat značku"
 
 #: naovoce/templates/fruit/add.html:14
 msgid "You can add a marker here"
@@ -669,7 +695,7 @@ msgstr "nebo zadejte souřadnice v decimálním formátu, např.:"
 
 #: naovoce/templates/fruit/delete.html:6
 msgctxt "infinitive"
-msgid "Delete marker"
+msgid "Delete Marker"
 msgstr "Smazání značky"
 
 #: naovoce/templates/fruit/delete.html:12
@@ -695,7 +721,7 @@ msgstr "Důvod smazání"
 
 #: naovoce/templates/fruit/detail.html:45
 #: naovoce/templates/fruit/inc/fruitform.html:24
-#: naovoce/templates/pickers/detail.html:29
+#: naovoce/templates/pickers/detail.html:30
 msgid "Large map"
 msgstr "Velká mapa"
 
@@ -709,7 +735,7 @@ msgstr "Smazat"
 
 #: naovoce/templates/fruit/detail.html:50
 #: naovoce/templates/fruit/inc/fruitform.html:20
-#: naovoce/templates/pickers/detail.html:30
+#: naovoce/templates/pickers/detail.html:31
 msgid "Add marker"
 msgstr "Přidat značku"
 
@@ -722,7 +748,7 @@ msgid "Herbarium"
 msgstr "Herbář"
 
 #: naovoce/templates/fruit/edit.html:5
-msgid "Edit a marker"
+msgid "Edit a Marker"
 msgstr "Upravit značku"
 
 #: naovoce/templates/fruit/edit.html:10
@@ -750,15 +776,15 @@ msgid "Add marker to the map"
 msgstr "Přidat značku do mapy"
 
 #: naovoce/templates/home.html:31
-msgid "Fruit news"
+msgid "Fruit News"
 msgstr "Ovocné novinky"
 
 #: naovoce/templates/home.html:63
-msgid "Explore the map"
+msgid "Explore the Map"
 msgstr "Prozkoumejte mapu"
 
 #: naovoce/templates/home.html:68
-msgid "Latest entries"
+msgid "Latest Entries"
 msgstr "Poslední úlovky"
 
 #: naovoce/templates/home.html:76 naovoce/templates/inc/mapjs.html:99
@@ -766,7 +792,7 @@ msgid "Shared by"
 msgstr "Sdílí"
 
 #: naovoce/templates/home.html:81
-msgid "Latest comments"
+msgid "Latest Comments"
 msgstr "Poslední komentáře"
 
 #: naovoce/templates/inc/confirm.html:12
@@ -778,7 +804,7 @@ msgid "Contact"
 msgstr "Kontakt"
 
 #: naovoce/templates/inc/footer.html:24
-msgid "Quick links"
+msgid "Quick Links"
 msgstr "Rychlé odkazy"
 
 #: naovoce/templates/inc/footer.html:26
@@ -806,7 +832,7 @@ msgid "Picker's Codex"
 msgstr "Kodex sběrače"
 
 #: naovoce/templates/inc/footer.html:36
-msgid "Social networks"
+msgid "Social Networks"
 msgstr "Sociální sítě"
 
 #: naovoce/templates/inc/footer.html:41
@@ -883,22 +909,25 @@ msgstr "filtr"
 msgid "markers added"
 msgstr "počet značek"
 
-#: naovoce/templates/pickers/detail.html:32
-#: naovoce/templates/pickers/messages.html:5
-#: naovoce/templates/pickers/messages.html:10
-msgid "Messages"
-msgstr "Zprávy"
+#: naovoce/templates/pickers/detail.html:35
+msgid "My messages"
+msgstr "Mé zprávy"
+
+#: naovoce/templates/pickers/detail.html:41
+#: naovoce/templates/socialaccount/connections.html:12
+msgid "Account connections"
+msgstr "Propojení účtu"
 
 #: naovoce/templates/pickers/index.html:8
 msgid "Pickers Index"
 msgstr "Seznam sběračů"
 
 #: naovoce/templates/pickers/index.html:11
-msgid "Top contributors"
+msgid "Top Contributors"
 msgstr "Nejaktivnější přispěvatelé"
 
 #: naovoce/templates/pickers/index.html:25
-msgid "Top contributors last month"
+msgid "Top Contributors Last Month"
 msgstr "Nejaktivnější za poslední měsíc"
 
 #: naovoce/templates/pickers/index.html:39
@@ -910,9 +939,78 @@ msgstr ""
 "Děkujeme všem <strong>%(pickers_count)s</strong> sběračům, kteří přispěli "
 "<strong>%(fruit_count)s</strong> značkami."
 
+#: naovoce/templates/pickers/messages.html:5
+#: naovoce/templates/pickers/messages.html:10
+msgid "Messages"
+msgstr "Zprávy"
+
 #: naovoce/templates/pickers/messages.html:17
 msgid "You have no messages."
 msgstr "Nemáte žádné zprávy."
+
+#: naovoce/templates/socialaccount/authentication_error.html:5
+#: naovoce/templates/socialaccount/authentication_error.html:8
+msgid "Social Network Sign-in Failure"
+msgstr "Chyba sociální sítě při přihlašování"
+
+#: naovoce/templates/socialaccount/authentication_error.html:10
+msgid ""
+"An error occurred while attempting to sign in with your social network "
+"account."
+msgstr ""
+"Nastala chyba při pokusu o přihlášení pomocí vašeho účtu na sociální síti."
+
+#: naovoce/templates/socialaccount/connections.html:6
+msgid "Account Connections"
+msgstr "Propojení účtu"
+
+#: naovoce/templates/socialaccount/connections.html:15
+msgid "You have no third party account connected"
+msgstr "Není připojen žádný účet třetí strany"
+
+#: naovoce/templates/socialaccount/connections.html:19
+msgid "You can sign in to your account using"
+msgstr "Ke svému účtu se můžete přihlašovat pomocí"
+
+#: naovoce/templates/socialaccount/connections.html:42
+msgid "Remove"
+msgstr "Odstranit"
+
+#: naovoce/templates/socialaccount/connections.html:46
+msgid "Add a third party account"
+msgstr "Přidat účet třetí strany"
+
+#: naovoce/templates/socialaccount/login_cancelled.html:5
+#: naovoce/templates/socialaccount/login_cancelled.html:8
+msgid "Sign-in Cancelled"
+msgstr "Přihlašování zrušeno"
+
+#: naovoce/templates/socialaccount/login_cancelled.html:12
+#, python-format
+msgid ""
+"You cancelled signing in using one of your existing accounts. If this was a "
+"mistake, please proceed to <a href=\"%(login_url)s\">sign in</a>."
+msgstr ""
+"Zrušili jste přihlašování s použitím jednoho z vašich existujících účtů. "
+"Pokud to nebylo záměrem, pokračujte prosím <a href=\"%(login_url)s\">k "
+"přihlášení</a>."
+
+#: naovoce/templates/socialaccount/signup.html:7
+msgid "Facebook Registration"
+msgstr "Facebooková registrace"
+
+#: naovoce/templates/socialaccount/signup.html:13
+msgid "Facebook registration"
+msgstr "Facebooková registrace"
+
+#: naovoce/templates/socialaccount/signup.html:18
+#, python-format
+msgid ""
+"You are about to use your %(provider_name)s account to login to "
+"%(site_name)s. As a final step, please complete the following form."
+msgstr ""
+"Chystáte se použít %(provider_name)s k přihlášení na %(site_name)s. "
+"Posledním krokem je vyplnění následujícího formuláře."
 
 #: naovoce/templates/staticpage/about.html:10
 msgid "Core Team"
@@ -1070,7 +1168,7 @@ msgstr "zpráva"
 msgid "messages"
 msgstr "zprávy"
 
-#: user/signals.py:44
+#: user/signals.py:54
 #, python-brace-format
 msgid ""
 "Welcome! Before you start using this site, please take time to read our <a "
@@ -1090,6 +1188,26 @@ msgstr "změněno"
 #: utils/templatetags/truncate.py:16
 msgid "Read more"
 msgstr "Čtěte více"
+
+#~ msgid ""
+#~ "You currently have no social network accounts connected to this account."
+#~ msgstr "S tímto účtem jste zatím nepropojili žádnou sociální síť."
+
+#~ msgid ""
+#~ "An account already exists with this e-mail address. Please sign in to "
+#~ "that account first, then connect your Facebook account."
+#~ msgstr ""
+#~ "Již existuje účet s touto e-mailovou adresou. Prosíme, nejdříve se k němu "
+#~ "přihlašte a poté jej propojte s vaším Facebookovým profilem."
+
+#~ msgid "(choose your desired nickname)"
+#~ msgstr "(zvolte si přezdívku)"
+
+#~ msgid "(we won't show it to anybody)"
+#~ msgstr "(nikomu ho neukážeme)"
+
+#~ msgid "Forgot Password?"
+#~ msgstr "Zapomněli jste heslo?"
 
 #~ msgid "We are sorry, your comment was not accepted."
 #~ msgstr "Je nám líto, ale váš komentář nebyl přijat."

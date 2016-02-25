@@ -8,7 +8,7 @@
 {% block title %}{% trans "Pickers Index" %} | {{ block.super }}{% endblock %}
 
 {% block content %}
-	<h3>{% trans "Top contributors" %}</h3>
+	<h3>{% trans "Top Contributors" %}</h3>
 	<ul class="list-unstyled hall-of-fame">
 	{% for p in top_all_time %}
 		<li>
@@ -22,7 +22,7 @@
 	</ul>
 
 	<hr>
-	<h3>{% trans "Top contributors last month" %}</h3>
+	<h3>{% trans "Top Contributors Last Month" %}</h3>
 	<ul class="list-unstyled hall-of-fame">
 	{% for p in top_last_month %}
 		<li>

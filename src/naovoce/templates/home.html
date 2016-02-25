@@ -28,7 +28,7 @@
 	<div class="row">
 		{####  Blog Preview ####}
 		<div class="col-sm-8 blog-preview">
-			<h3><a href="{% url 'blog:index' %}">{% trans 'Fruit news' %}</a></h3>
+			<h3><a href="{% url 'blog:index' %}">{% trans 'Fruit News' %}</a></h3>
 			{% for entry in blogposts|slice:'5' %}
 			{% with url=entry.get_absolute_url %}
 			<div class="media">
@@ -60,12 +60,12 @@
 
 		{####  Latest Entries ####}
 		<div class="col-sm-4 latest-entries">
-			<h3><a href="{% url 'map' %}">{% trans 'Explore the map' %}</a></h3>
+			<h3><a href="{% url 'map' %}">{% trans 'Explore the Map' %}</a></h3>
 			<div class="media">
 				<a href="{% url 'map' %}" class="explore-map"></a>
 			</div>
 
-			<h4>{% trans 'Latest entries' %}</h4>
+			<h4>{% trans 'Latest Entries' %}</h4>
 			{% for f in fruits|slice:'6' %}
 			<div class="media">
 				<span class="fruit-icon-large pull-left media-object" style="color:#{{ f.kind.color }}">
@@ -78,7 +78,7 @@
 			</div>
 			{% endfor %}
 
-			<h4>{% trans 'Latest comments' %}</h4>
+			<h4>{% trans 'Latest Comments' %}</h4>
 			{% for c in comments|slice:'4' %}
 			<div class="media">
 				<p class="media-body comment {% if c.complaint %}complaint{% endif %}">

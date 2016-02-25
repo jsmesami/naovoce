@@ -41,7 +41,7 @@
 	{% endif %}
 
     <div class="col-sm-12">
-        <ul class="map-links">
+        <ul class="quick-links">
 	        <li><a href="{% url 'map' %}">{% trans 'Large map' %}</a></li>
             {% if request.user|can_edit:fruit %}
 		        <li><a href="{% url 'fruit:edit' fruit.id %}">{% trans 'Edit' %}</a></li>

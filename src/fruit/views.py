@@ -33,7 +33,7 @@ def detail(request, fruit_id):
 
 def add(request):
     if not request.user.is_authenticated():
-        messages.warning(request, ugettext('To add fruit, please first sign in.'))
+        messages.warning(request, ugettext('To add markers, please first sign in.'))
         redir = '{}?next={}'.format(reverse('account_login'), reverse('fruit:add'))
         return HttpResponseRedirect(redir)
 
@@ -44,7 +44,7 @@ def add(request):
             data.update(form.cleaned_data)
             fruit = Fruit(**data)
             fruit.save()
-            messages.success(request, ugettext('Thank you, the fruit has been added.'))
+            messages.success(request, ugettext('Thank you, the marker has been added.'))
             return redirect(fruit)
     else:
         form = FruitForm()

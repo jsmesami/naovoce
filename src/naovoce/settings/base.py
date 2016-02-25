@@ -105,10 +105,30 @@ AUTHENTICATION_BACKENDS = (
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_USERNAME_MIN_LENGTH = 3
 ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
-SOCIALACCOUNT_EMAIL_REQUIRED = True
-SOCIALACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_SIGNUP_PASSWORD_VERIFICATION = False
+SOCIALACCOUNT_EMAIL_VERIFICATION = 'none'
+SOCIALACCOUNT_AUTO_SIGNUP = False
+SOCIALACCOUNT_ADAPTER = 'user.social.SocialAccountAdapter'
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'METHOD': 'oauth2',
+        'SCOPE': ['email'],
+        'VERIFIED_EMAIL': True,
+        'FIELDS': (
+            'id',
+            'email',
+            'name',
+            'first_name',
+            'last_name',
+            'verified',
+        ),
+        'EXCHANGE_TOKEN': True,
+        'VERSION': 'v2.4'
+    }
+}
 
 COMPRESS_CSS_FILTERS = (
     'compressor.filters.cssmin.CSSMinFilter',
@@ -197,6 +217,7 @@ EXTERNAL_APPS = (
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
     'endless_pagination',
     'rest_framework',
     'rest_framework.authtoken',

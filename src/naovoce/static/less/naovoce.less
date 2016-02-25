@@ -83,6 +83,19 @@ h2.claim {
 	}
 }
 
+.panel-heading {
+	font-weight: bold;
+	&.subheading {
+		background: white;
+		color: @brand-primary;
+		font-weight: normal;
+		padding: 15px;
+		.btn {
+			width: 100%;
+		}
+	}
+}
+
 form {
 	label small {
 		color: @brand-info;
@@ -101,6 +114,12 @@ form {
 			background: @state-danger-bg;
 			color: @state-danger-text;
 			border-color: @state-danger-border;
+		}
+	}
+	&.panel-body .form-group:last-of-type {
+		margin-bottom: 0;
+		.checkbox {
+			margin-bottom: 0;
 		}
 	}
 }
@@ -358,6 +377,9 @@ a.read-more {
 
 .panel {
 	margin-top: @grid-gutter-width;
+	.panel-footer {
+		background: white;
+	}
 }
 
 .make-marker(@size) {
@@ -416,7 +438,7 @@ a.read-more {
 	margin-bottom: 20px;
 }
 
-.map-links {
+.quick-links {
 	padding: 0;
 	margin: 0;
 	li {
