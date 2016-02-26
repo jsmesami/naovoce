@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-26 00:05+0100\n"
-"PO-Revision-Date: 2016-02-26 00:05+0100\n"
+"POT-Creation-Date: 2016-02-26 17:02+0100\n"
+"PO-Revision-Date: 2016-02-26 17:03+0100\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -132,7 +132,7 @@ msgstr ""
 msgid "{} is not a valid Kind key."
 msgstr "{} není platný klíč."
 
-#: fruit/api/views.py:102 fruit/api/views.py:115
+#: fruit/api/views.py:108 fruit/api/views.py:121
 msgid "Cannot update once deleted object."
 msgstr "Dříve smazaný objekt nelze aktualizovat."
 
@@ -306,7 +306,7 @@ msgstr "Tato značka byla smazána."
 msgid "images"
 msgstr "obrázky"
 
-#: gallery/api/views.py:26 gallery/api/views.py:44
+#: gallery/api/views.py:32 gallery/api/views.py:50
 #, python-brace-format
 msgid "Content type {ct} is not supported."
 msgstr "Typ obsahu {ct} není podporován."
@@ -322,6 +322,10 @@ msgstr "titulek"
 #: gallery/models.py:66
 msgid "cover image"
 msgstr "hlavní obrázek"
+
+#: naovoce/api/views.py:22
+msgid "Not found."
+msgstr "Nenalezeno."
 
 #: naovoce/feeds.py:35 naovoce/templates/_base.html:30
 msgid "Fresh fruit"
