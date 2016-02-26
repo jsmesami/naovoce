@@ -46,6 +46,9 @@ class CachedResponse(Response):
 
 
 class FruitList(generics.ListCreateAPIView):
+    """
+    List or create Fruit resources.
+    """
     queryset = Fruit.objects.valid().select_related('kind').order_by('-created')
     permission_classes = IsAuthenticatedOrReadOnly,
 
@@ -86,6 +89,9 @@ class FruitList(generics.ListCreateAPIView):
 
 
 class FruitDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Retreive, update or destroy specific Fruit resource.
+    """
     queryset = Fruit.objects.select_related('kind', 'user')
     permission_classes = IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly
 
@@ -122,5 +128,8 @@ class FruitDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class KindList(generics.ListAPIView):
+    """
+    List fruit Kinds resources.
+    """
     queryset = Kind.objects.order_by()
     serializer_class = serializers.KindSerializer

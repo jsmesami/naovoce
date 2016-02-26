@@ -1,5 +1,5 @@
 from rest_framework import generics
-from rest_framework.exceptions import PermissionDenied
+from rest_framework.exceptions import ValidationError
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import ugettext_lazy as _
@@ -11,19 +11,25 @@ from ..models import Image
 
 
 class ImageDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Retreive, update or destroy specific Image resource.
+    """
     queryset = Image.objects.select_related('author')
     serializer_class = ImageSerializer
     permission_classes = IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly
 
 
 class ImageList(generics.ListCreateAPIView):
+    """
+    List or create Image resources.
+    """
     serializer_class = ImageSerializer
     permission_classes = IsAuthenticatedOrReadOnly,
 
     def perform_create(self, serializer):
         gallery_ct = self.kwargs['gallery_ct']
         if gallery_ct not in serializer.gallery_ct_whitelist:
-            raise PermissionDenied(_('Content type {ct} is not supported.').format(
+            raise ValidationError(_('Content type {ct} is not supported.').format(
                 ct=gallery_ct,
             ))
         # Future caveat:
@@ -41,7 +47,7 @@ class ImageList(generics.ListCreateAPIView):
         gallery_id = self.kwargs.get('gallery_id')
 
         if gallery_ct not in ImageSerializer.gallery_ct_whitelist:
-            raise PermissionDenied(_('Content type {ct} is not supported.').format(
+            raise ValidationError(_('Content type {ct} is not supported.').format(
                 ct=gallery_ct,
             ))
 

@@ -6,10 +6,16 @@ from ..views import fruit_counter
 
 
 class UserList(generics.ListAPIView):
+    """
+    List User resources.
+    """
     queryset = FruitUser.objects.iterator()
     serializer_class = serializers.UserSerializer
 
 
 class UserDetail(generics.RetrieveAPIView):
+    """
+    Retreive specific User resource.
+    """
     queryset = FruitUser.objects.annotate(**fruit_counter())
     serializer_class = serializers.VerboseUserSerializer
