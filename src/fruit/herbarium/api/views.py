@@ -8,5 +8,5 @@ class HerbariumList(generics.ListAPIView):
     """
     List Herbarium resources.
     """
-    queryset = Herbarium.objects.select_related('kind').order_by().iterator()
+    queryset = Herbarium.objects.select_related('kind').order_by()
     serializer_class = serializers.HerbariumSerializer

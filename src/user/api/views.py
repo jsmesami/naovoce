@@ -1,4 +1,6 @@
 from rest_framework import generics
+from rest_framework.response import Response
+
 
 from . import serializers
 from ..models import FruitUser
@@ -9,8 +11,20 @@ class UserList(generics.ListAPIView):
     """
     List User resources.
     """
-    queryset = FruitUser.objects.iterator()
+    queryset = FruitUser.objects.all()
     serializer_class = serializers.UserSerializer
+
+    def list(self, request, *args, **kwargs):
+        qs = self.filter_queryset(self.get_queryset())
+
+        page = self.paginate_queryset(qs)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        # We are not paginating, so we can serialize iterator (saves memory)
+        serializer = self.get_serializer(qs.iterator(), many=True)
+        return Response(serializer.data)
 
 
 class UserDetail(generics.RetrieveAPIView):

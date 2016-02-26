@@ -68,6 +68,7 @@ class FruitList(generics.ListCreateAPIView):
             serializer = self.get_serializer(page, many=True)
             return self.get_paginated_response(serializer.data)
 
+        # We are not paginating, so we can serialize iterator (saves memory)
         serializer = self.get_serializer(qs.iterator(), many=True)
 
         if not user:
