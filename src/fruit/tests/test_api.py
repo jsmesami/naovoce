@@ -72,7 +72,7 @@ class TestFruitCreate(TestFruit):
 
     def test_create_not_authenticated(self):
         response = self.client.post(self.fruit_list_url)
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
     def test_create_bad_data(self):
         self.login(self.yuri)
@@ -125,10 +125,10 @@ class TestFruitDetail(TestFruit):
 
     def test_update_not_authenticated(self):
         response = self.client.put(self.fruit_url)
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
         response = self.client.post(self.fruit_url)
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
     def test_update_bad_user(self):
         self.login(self.lara)
@@ -171,7 +171,7 @@ class TestFruitDestroy(TestFruit):
 
     def test_destroy_not_authenticated(self):
         response = self.client.delete(self.fruit_url)
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
     def test_destroy_bad_user(self):
         self.login(self.lara)

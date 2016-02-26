@@ -102,7 +102,7 @@ class TestImageCreate(TestImage):
 
     def test_create_not_authenticated(self):
         response = self.client.post(self.image_list_url, {})
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
     def test_create_bad_data(self):
         self.login(self.yuri)
@@ -141,10 +141,10 @@ class TestImageDetail(TestImage):
 
     def test_update_not_authenticated(self):
         response = self.client.put(self.image_url, {})
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
         response = self.client.post(self.image_url, {})
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
     def test_update_bad_user(self):
         self.login(self.lara)
@@ -185,7 +185,7 @@ class TestImageDestroy(TestImage):
 
     def test_destroy_not_authenticated(self):
         response = self.client.delete(self.image_url)
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
     def test_destroy_bad_user(self):
         self.login(self.lara)

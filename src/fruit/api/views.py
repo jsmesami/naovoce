@@ -122,5 +122,5 @@ class FruitDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class KindList(generics.ListAPIView):
-    queryset = Kind.objects.order_by().iterator()
+    queryset = Kind.objects.order_by()
     serializer_class = serializers.KindSerializer
