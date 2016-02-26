@@ -110,6 +110,7 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
         return '{}'.format(self.username)
 
     class Meta:
+        ordering = '-date_joined',
         verbose_name = _('user')
         verbose_name_plural = _('users')
 
