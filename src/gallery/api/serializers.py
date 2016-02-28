@@ -1,11 +1,8 @@
 import base64
 import imghdr
 
-from django.core.exceptions import ImproperlyConfigured
 from django.core.files.base import ContentFile
-
 from rest_framework import serializers
-from rest_framework.reverse import reverse
 
 from user.api.serializers import UserSerializer
 from ..models import Image
@@ -51,26 +48,3 @@ class ImageSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Image
         fields = 'id image caption author'.split()
-
-
-class HyperlinkedGalleryField(serializers.HyperlinkedIdentityField):
-
-    view_name = 'api:image-list'
-
-    def __init__(self, **kwargs):
-        gallery_ct = kwargs.pop('gallery_ct')
-        if not gallery_ct:
-            raise ImproperlyConfigured('The `gallery_ct` argument is required.')
-
-        self.gallery_ct = gallery_ct
-        # only galleries referenced by this field can contain new images
-        ImageSerializer.gallery_ct_whitelist.update([gallery_ct])
-
-        super().__init__(self.view_name, **kwargs)
-
-    def get_url(self, obj, view_name, request, format):
-        kwargs = dict(
-            gallery_ct=self.gallery_ct,
-            gallery_id=obj.pk,
-        )
-        return reverse(self.view_name, kwargs=kwargs, request=self.context['request'])

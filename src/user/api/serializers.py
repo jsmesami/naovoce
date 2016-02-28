@@ -1,5 +1,6 @@
 from rest_framework import serializers
 
+from fruit.api.fields import HyperlinkedFruitField
 from utils.avatar import get_avatar
 from ..models import FruitUser
 
@@ -31,9 +32,11 @@ class VerboseUserSerializer(UserSerializer):
         source='is_active',
     )
 
-    fruit_count = serializers.IntegerField()
+    fruit_count = serializers.IntegerField(read_only=True)
+
+    fruit = HyperlinkedFruitField(filter='user')
 
     avatar = AvatarField()
 
     class Meta(UserSerializer.Meta):
-        fields = 'id username url active fruit_count avatar'.split()
+        fields = 'id username url active fruit_count fruit avatar'.split()

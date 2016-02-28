@@ -1,10 +1,8 @@
-from django.utils.translation import ugettext_lazy as _
 from rest_framework import serializers
-from rest_framework import relations
-from rest_framework.exceptions import ValidationError
 
 from user.api.serializers import UserSerializer
-from gallery.api.serializers import HyperlinkedGalleryField
+from gallery.api.fields import HyperlinkedGalleryField
+from .fields import KindRelatedField
 from ..models import Fruit, Kind
 
 
@@ -16,20 +14,6 @@ class KindSerializer(serializers.ModelSerializer):
     class Meta:
         model = Kind
         fields = 'key', 'name', 'col', 'cls'
-
-
-class KindRelatedField(relations.RelatedField):
-
-    queryset = Kind.objects.all()
-
-    def to_representation(self, value):
-        return value.key
-
-    def to_internal_value(self, data):
-        try:
-            return self.get_queryset().get(key=data)
-        except Kind.DoesNotExist:
-            raise ValidationError(_('{} is not a valid Kind key.').format(data))
 
 
 class VerboseFruitSerializer(serializers.HyperlinkedModelSerializer):
@@ -59,11 +43,13 @@ class VerboseFruitSerializer(serializers.HyperlinkedModelSerializer):
 
     user = UserSerializer(read_only=True)
 
+    images_count = serializers.IntegerField(read_only=True)
+
     images = HyperlinkedGalleryField(gallery_ct='fruit')
 
     class Meta:
         model = Fruit
-        fields = 'id lat lng kind time url description user images'.split()
+        fields = 'id lat lng kind time url description user images_count images'.split()
 
 
 class FruitSerializer(VerboseFruitSerializer):

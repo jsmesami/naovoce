@@ -2,6 +2,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.core.cache import caches
 from django.dispatch import receiver
 from django.db.models.signals import post_save, post_delete
+from django.db.models import Count
 from rest_framework import generics, status
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.response import Response
@@ -93,7 +94,9 @@ class FruitDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     Retreive, update or destroy specific Fruit resource.
     """
-    queryset = Fruit.objects.select_related('kind', 'user')
+    queryset = Fruit.objects\
+        .select_related('kind', 'user')\
+        .annotate(images_count=Count('images'))
     permission_classes = IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly
 
     def get_serializer_class(self):
