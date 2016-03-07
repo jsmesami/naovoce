@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, url
 
-
 from .views import FruitList, FruitDetail, KindList, fruit_list_diff
+
 
 urlpatterns = patterns(
     '',

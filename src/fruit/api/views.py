@@ -1,12 +1,12 @@
 from django.utils.translation import ugettext_lazy as _
 from django.core.cache import caches
-from django.core.exceptions import ValidationError as DjangoValidationError
+from django.core.exceptions import ValidationError
 from django.dispatch import receiver
 from django.db.models.signals import post_save, post_delete
 from django.db.models import Count
 from rest_framework import generics, status
 from rest_framework.decorators import api_view
-from rest_framework.exceptions import PermissionDenied, ValidationError
+from rest_framework.exceptions import PermissionDenied
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, SAFE_METHODS
 
@@ -151,7 +151,7 @@ def fruit_list_diff(request, since):
             .filter(created__gte=since)\
             .order_by('-created')\
             .select_related('kind')
-    except DjangoValidationError as e:
+    except ValidationError as e:
         return Response(
             data=dict(detail=e),
             status=status.HTTP_400_BAD_REQUEST,
