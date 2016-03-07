@@ -59,7 +59,7 @@ class FruitSerializer(VerboseFruitSerializer):
         fields = 'id lat lng kind time url'.split()
 
 
-class DeletedFruitSerializer(VerboseFruitSerializer):
+class VerboseDeletedFruitSerializer(VerboseFruitSerializer):
 
     deleted = serializers.BooleanField(read_only=True)
 
@@ -68,3 +68,10 @@ class DeletedFruitSerializer(VerboseFruitSerializer):
     class Meta:
         model = VerboseFruitSerializer.Meta.model
         fields = 'id kind time deleted why_deleted url description user images'.split()
+
+
+class DeletedFruitSerializer(VerboseFruitSerializer):
+
+    class Meta:
+        model = VerboseFruitSerializer.Meta.model
+        fields = 'id kind time url'.split()

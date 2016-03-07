@@ -1,10 +1,12 @@
 from django.utils.translation import ugettext_lazy as _
 from django.core.cache import caches
+from django.core.exceptions import ValidationError as DjangoValidationError
 from django.dispatch import receiver
 from django.db.models.signals import post_save, post_delete
 from django.db.models import Count
 from rest_framework import generics, status
-from rest_framework.exceptions import PermissionDenied
+from rest_framework.decorators import api_view
+from rest_framework.exceptions import PermissionDenied, ValidationError
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, SAFE_METHODS
 
@@ -101,7 +103,7 @@ class FruitDetail(generics.RetrieveUpdateDestroyAPIView):
 
     def get_serializer_class(self):
         if self.get_object().deleted:
-            return serializers.DeletedFruitSerializer
+            return serializers.VerboseDeletedFruitSerializer
 
         return serializers.VerboseFruitSerializer
 
@@ -137,3 +139,31 @@ class KindList(generics.ListAPIView):
     """
     queryset = Kind.objects.order_by()
     serializer_class = serializers.KindSerializer
+
+
+@api_view()
+def fruit_list_diff(request, since):
+    """
+    Get difference since date specified.
+    """
+    try:
+        fruit = Fruit.objects\
+            .filter(created__gte=since)\
+            .order_by('-created')\
+            .select_related('kind')
+    except DjangoValidationError as e:
+        return Response(
+            data=dict(detail=e),
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
+    def serialize(deleted):
+        qs = fruit.filter(deleted=deleted)
+        serializer = serializers.DeletedFruitSerializer if deleted else serializers.FruitSerializer
+
+        return serializer(qs.iterator(), context={'request': request}, many=True).data
+
+    return Response({
+        'created': serialize(deleted=False),
+        'deleted': serialize(deleted=True),
+    })

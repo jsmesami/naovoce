@@ -6,7 +6,7 @@ from rest_framework import status
 from django.utils.translation import ugettext_lazy as _
 
 
-@api_view(('GET',))
+@api_view()
 def api_root(request, format=None):
     return Response({
         'fruit': reverse('api:fruit-list', request=request, format=format),
@@ -16,9 +16,9 @@ def api_root(request, format=None):
     })
 
 
-@api_view(('GET',))
+@api_view()
 def api_handler_404(request, format=None):
     return Response(
         data=dict(detail=_('Not found.')),
-        status=status.HTTP_404_NOT_FOUND
+        status=status.HTTP_404_NOT_FOUND,
     )
