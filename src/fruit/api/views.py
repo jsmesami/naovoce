@@ -142,10 +142,11 @@ class KindList(generics.ListAPIView):
 
 
 @api_view()
-def fruit_list_diff(request, since):
+def fruit_list_diff(request, date, time):
     """
-    Get difference since date specified.
+    Get difference since date and/or time specified.
     """
+    since = ' '.join([date, time or '00:00:00'])
     try:
         fruit = Fruit.objects\
             .filter(created__gte=since)\
