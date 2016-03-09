@@ -11,11 +11,14 @@ class JsonStorage
 			storage = localStorage
 
 			@getObject = (name) ->
-				ns = storage.getItem(namespace)
-				if ns then JSON.parse(ns)[name] else null
+				data = storage.getItem(namespace)
+				if data then JSON.parse(data)[name] else null
 
 			@setObject = (name, val) ->
-				storage.setItem namespace, JSON.stringify "#{ name }": val
+				data = storage.getItem(namespace)
+				data = if data then JSON.parse(data) else {}
+				data[name] = val
+				storage.setItem namespace, JSON.stringify data
 
 		else
 			@getObject = @setObject = -> null
