@@ -20,7 +20,7 @@ class SocialAccountAdapter(DefaultSocialAccountAdapter):
         try:
             email = sociallogin.account.extra_data['email'].lower()
             user = FruitUser.objects.get(email__iexact=email)
-        except FruitUser.DoesNotExist:
+        except (FruitUser.DoesNotExist, KeyError):
             return
 
         sociallogin.connect(request, user)
