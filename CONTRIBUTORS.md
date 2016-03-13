@@ -9,5 +9,6 @@ Project Contributors
 * Edita Hornová
 * Tomáš Dvořák
 * Jörg Kösters
+* František Marčík
 * Monika Křikavová
 * Jana Kosová

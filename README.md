@@ -17,18 +17,33 @@ Prerequisities:
 * Bower
 
 
-Local Installation:
+Installation on shared hosting without Node (and no root privileges):
 
-	mkdir .env
-	python3 -m venv .env/naovoce
-	source .env/naovoce/bin/activate
+	# Create and activate virtualenv with the latest Python 3 you have.
+	mkdir ~/.env
+	python3[.5] -m venv ~/.env/naovoce
+	source ~/.env/naovoce/bin/activate
+
+	# Upgrade pip.
+	pip install --upgrade pip
+	
+	# Install Node prerequisities into your virtualenv.
+	pip install nodeenv
+	nodeenv -p --prebuilt
+	npm install -g coffee-script less bower
+
+	# Install site and dependencies.
 	git clone https://github.com/jsmesami/naovoce.git
 	cd naovoce
-	pip3.4 install -r requirements.txt
+	pip install -r requirements.txt [-b ~/tmp]
 	bower install
+
+	# Create and edit local settings to match your setup. 
 	cd src
 	cp naovoce/settings/local_[deploy|devel]_example.py naovoce/settings/local.py
 	vim naovoce/settings/local.py
+
+	# Prepare database and load initial data.
 	chmod u+x manage.py
 	./manage.py migrate
 	./manage.py loaddata naovoce/fixtures/sites.json
