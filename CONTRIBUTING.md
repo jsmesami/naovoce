@@ -4,20 +4,18 @@ Contributions are welcome!
 If you like the spirit of the project, feel free to fork us and don't forget to add yourself
 to the list of CONTRIBUTORS.
 
+**This project is suitable for beginners** 
+
 ## What's itching right now?
 
-There are _many_ things to be done.
+There are many things to be done (see [issues](https://github.com/jsmesami/naovoce/issues/)).
+Most notably:
 
-* (Py) map performance optimizations ([postGIS](http://postgis.net/)?) 
-* (JS) searching for places in the map by address
-* (Py) proper user profile
-* (Py) comments system notifications
+* (Py) map performance optimizations 
+* (Py) user profile customization
 * (Py) gallery of user-uploadable images in fruit detail
-* (JS) intelligent image uploads with progress indication and client side downscaling
-* (JS) adding fruit by uploading an image with GPS information in EXIF (client side)
-* (Py) ability to report misuse of the map (with compulsory explanation)
-* (Py) Facebook signup
-* (Py) more work on API
+* (JS) intelligent image uploads with progress indication and client-side downscaling
+* (JS) reading fruit coordinates form EXIF of uploaded image
 * (Py) newsletters
 * UX enhancements
 * bug fixes
