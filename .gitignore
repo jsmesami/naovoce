@@ -1,1 +1,4 @@
 __pycache__
+*.pyc
+*.pyo
+src/naovoce/static
