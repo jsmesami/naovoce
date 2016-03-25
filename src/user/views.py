@@ -1,6 +1,8 @@
 import datetime
 
+from django.contrib import messages as contrib_messages
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse_lazy
 from django.db.models import Count, Case, When
 from django.http import (
     HttpResponsePermanentRedirect,
@@ -8,8 +10,11 @@ from django.http import (
     Http404,
 )
 from django.shortcuts import get_object_or_404, render
+from django.views.generic.edit import UpdateView
+from django.utils.translation import ugettext_lazy as _
 
 from fruit.models import Kind, Fruit
+from user.forms import UserSettingsForm
 from user.models import FruitUser
 
 
@@ -77,3 +82,19 @@ def messages(request, pk):
     # then marking them read for subsequent pageviews.
     user.clear_messages()
     return response
+
+
+class UserSettingsView(UpdateView):
+    template_name = "account/profile_settings.html"
+    model = FruitUser
+    form_class = UserSettingsForm
+    success_url = reverse_lazy("account_settings")
+
+    def form_valid(self, form):
+        form.save(commit=False)
+        contrib_messages.success(self.request, _("Settings successfully updated."))
+        return super(UserSettingsView, self).form_valid(form)
+
+    def get_object(self, queryset=None):
+        return self.request.user
+

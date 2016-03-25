@@ -32,6 +32,7 @@
         </ul>
         <hr>
         <ul class="quick-links">
+		    <li><a href="{% url 'account_settings' %}">{% trans 'Account settings' %}</a></li>
 		    <li><a href="{% url 'pickers:messages' user.id %}">{% trans 'My messages' %}</a></li>
 	        {% if user.has_usable_password %}
 		        <li><a href="{% url 'account_change_password' %}">{% trans 'Change password' %}</a></li>

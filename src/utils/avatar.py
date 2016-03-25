@@ -40,8 +40,8 @@ def get_avatar(request, user, size=None, bg_shade=0):
     path = cache.get(cache_key)
 
     if not path:
-        abs_path = AVATARS_ABS_PATH+filename
-        path = AVATARS_PATH+filename
+        abs_path = os.path.join(AVATARS_ABS_PATH, filename)
+        path = os.path.join(AVATARS_PATH, filename)
 
         if not os.path.isfile(abs_path):
             color = col.from_hex(user.hash[:6])

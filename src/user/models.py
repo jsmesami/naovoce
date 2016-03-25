@@ -1,5 +1,6 @@
 import hashlib
 
+from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.core.urlresolvers import reverse
 from django.db import models
@@ -11,6 +12,7 @@ from django.utils.safestring import mark_safe
 from django.utils.text import slugify
 from django.utils.translation import ugettext, pgettext_lazy, ugettext_lazy as _
 
+from utils.fields import ContentTypeRestrictedImageField
 from utils.models import TimeStampedModel
 
 
@@ -70,6 +72,16 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
     )
     is_email_verified = models.BooleanField(_('verified'), default=False)
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
+    motto = models.CharField(_('motto'), max_length=255, blank=True)
+    avatar = ContentTypeRestrictedImageField(
+        _('avatar'),
+        upload_to=settings.AVATARS_URL,
+        blank=True,
+        null=True,
+        help_text=_("User icon"),
+        content_types=['image/png', 'image/jpeg', 'image/gif'],
+        max_upload_size=settings.AVATAR_MAX_FILESIZE
+    )
 
     objects = UserManager.from_queryset(ActiveUserQuerySet)()
 

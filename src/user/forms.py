@@ -1,5 +1,8 @@
 from django import forms
+from django.conf import settings
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
+from django.core.exceptions import ValidationError
+from django.template.defaultfilters import filesizeformat
 from django.utils.translation import ugettext_noop, ugettext_lazy as _
 
 from .models import FruitUser, Message
@@ -77,3 +80,9 @@ class MessageAdminForm(forms.ModelForm):
         }
 
 override_wrong_default_translation = ugettext_noop('Username or e-mail')
+
+
+class UserSettingsForm(forms.ModelForm):
+    class Meta:
+        model = FruitUser
+        fields = ('avatar', 'motto')

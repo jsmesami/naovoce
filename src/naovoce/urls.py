@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^pickers/', include('user.urls', namespace='pickers')),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^accounts/profile/$', user.views.accounts_profile),
+    url(r'^accounts/profile-settings/$', user.views.UserSettingsView.as_view(), name='account_settings'),
     url(r'^feeds/blog/', feeds.BlogFeed(), name='rss-blog'),
     url(r'^feeds/fruit/', feeds.FruitFeed(), name='rss-fruit'),
     url(r'^sitemap\.xml$', sitemap_view, dict(sitemaps=sitemap.sitemaps), name='sitemap'),
