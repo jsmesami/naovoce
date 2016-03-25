@@ -48,7 +48,7 @@ CSRF_COOKIE_SECURE = False
 CSRF_COOKIE_HTTPONLY = False
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-# enable template debugging and disable caching
+# enable template debugging
 TEMPLATES[0]['OPTIONS']['debug'] = DEBUG
 TEMPLATES[0]['OPTIONS']['loaders'] = [
     'django.template.loaders.filesystem.Loader',
