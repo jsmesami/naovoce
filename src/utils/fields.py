@@ -43,7 +43,12 @@ class ContentTypeRestrictedFileField(models.FileField):
             content_type = file.content_type
             if content_type in self.content_types:
                 if file._size > self.max_upload_size:
-                    raise forms.ValidationError(_('Please keep filesize under %s. Current filesize %s') % (filesizeformat(self.max_upload_size), filesizeformat(file._size)))
+                    raise forms.ValidationError(
+                        _('Please keep filesize under {0}. Current filesize {1}').format(
+                            filesizeformat(self.max_upload_size),
+                            filesizeformat(file._size)
+                        )
+                    )
             else:
                 raise forms.ValidationError(_('Filetype not supported.'))
 

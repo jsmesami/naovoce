@@ -2,6 +2,7 @@ import datetime
 
 from django.contrib import messages as contrib_messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.messages.views import SuccessMessageMixin
 from django.core.urlresolvers import reverse_lazy
 from django.db.models import Count, Case, When
 from django.http import (
@@ -84,16 +85,12 @@ def messages(request, pk):
     return response
 
 
-class UserSettingsView(UpdateView):
+class UserSettingsView(SuccessMessageMixin, UpdateView):
     template_name = "account/profile_settings.html"
     model = FruitUser
     form_class = UserSettingsForm
     success_url = reverse_lazy("account_settings")
-
-    def form_valid(self, form):
-        form.save(commit=False)
-        contrib_messages.success(self.request, _("Settings successfully updated."))
-        return super(UserSettingsView, self).form_valid(form)
+    success_message = _('Settings successfully updated.')
 
     def get_object(self, queryset=None):
         return self.request.user

@@ -78,7 +78,7 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
         upload_to=settings.AVATARS_URL,
         blank=True,
         null=True,
-        help_text=_("User icon"),
+        help_text=_("User avatar"),
         content_types=['image/png', 'image/jpeg', 'image/gif'],
         max_upload_size=settings.AVATAR_MAX_FILESIZE
     )

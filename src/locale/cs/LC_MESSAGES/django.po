@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-26 17:02+0100\n"
+"POT-Creation-Date: 2016-03-25 11:09+0100\n"
 "PO-Revision-Date: 2016-02-26 17:03+0100\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
@@ -43,7 +43,7 @@ msgid "title"
 msgstr "titulek"
 
 #: blog/models.py:39 comments/admin.py:18 staticpage/models.py:9
-#: user/admin.py:53 user/models.py:121
+#: user/admin.py:53 user/models.py:134
 msgid "text"
 msgstr "text"
 
@@ -128,11 +128,11 @@ msgstr ""
 "Administrátor smazal vaši <a href=\"{url}\">značku</a>. Důvod smazání: "
 "{reason}"
 
-#: fruit/api/serializers.py:32
+#: fruit/api/fields.py:21
 msgid "{} is not a valid Kind key."
 msgstr "{} není platný klíč."
 
-#: fruit/api/views.py:108 fruit/api/views.py:121
+#: fruit/api/views.py:114 fruit/api/views.py:127
 msgid "Cannot update once deleted object."
 msgstr "Dříve smazaný objekt nelze aktualizovat."
 
@@ -237,7 +237,7 @@ msgstr "proč smazán"
 msgid "The tree has been cut down, not found etc."
 msgstr "Strom byl poražen, nenalezen apod."
 
-#: fruit/models.py:93 user/models.py:113
+#: fruit/models.py:93 user/models.py:126
 msgid "user"
 msgstr "uživatel"
 
@@ -510,7 +510,7 @@ msgstr "Změnit heslo"
 
 #: naovoce/templates/account/password_change.html:12
 #: naovoce/templates/account/password_change.html:17
-#: naovoce/templates/pickers/detail.html:37
+#: naovoce/templates/pickers/detail.html:38
 msgid "Change password"
 msgstr "Změnit heslo"
 
@@ -595,9 +595,19 @@ msgstr "Nastavit heslo"
 
 #: naovoce/templates/account/password_set.html:12
 #: naovoce/templates/account/password_set.html:17
-#: naovoce/templates/pickers/detail.html:39
+#: naovoce/templates/pickers/detail.html:40
 msgid "Set password"
 msgstr "Nastavit heslo"
+
+#: naovoce/templates/account/profile_settings.html:7
+#: naovoce/templates/account/profile_settings.html:13
+#: naovoce/templates/account/profile_settings.html:44
+msgid "Change settings"
+msgstr "Zmenit nastavení"
+
+#: naovoce/templates/account/profile_settings.html:32
+msgid "No user avatar yet."
+msgstr "Žádný avatar nenastaven."
 
 #: naovoce/templates/account/signup.html:7
 #: naovoce/templates/account/signup.html:13
@@ -914,10 +924,14 @@ msgid "markers added"
 msgstr "počet značek"
 
 #: naovoce/templates/pickers/detail.html:35
+msgid "Account settings"
+msgstr "Nastavení"
+
+#: naovoce/templates/pickers/detail.html:36
 msgid "My messages"
 msgstr "Mé zprávy"
 
-#: naovoce/templates/pickers/detail.html:41
+#: naovoce/templates/pickers/detail.html:42
 #: naovoce/templates/socialaccount/connections.html:12
 msgid "Account connections"
 msgstr "Propojení účtu"
@@ -1024,23 +1038,23 @@ msgstr "Základní team"
 msgid "Partners"
 msgstr "Partneři"
 
-#: naovoce/templates/staticpage/about.html:57
+#: naovoce/templates/staticpage/about.html:60
 msgid "Kudos"
 msgstr "Poděkování"
 
-#: naovoce/templates/staticpage/about.html:58
+#: naovoce/templates/staticpage/about.html:61
 msgid "Sincere thanks to Maik Allen for helping us with translations."
 msgstr "Srdečné poděkování Maikovi Allenovi za pomoc s překladem stránky."
 
-#: naovoce/urls.py:39
+#: naovoce/urls.py:40
 msgid "^map/$"
 msgstr "^mapa/$"
 
-#: naovoce/urls.py:40
+#: naovoce/urls.py:41
 msgid "^about-us/$"
 msgstr "^o-nas/$"
 
-#: naovoce/urls.py:42
+#: naovoce/urls.py:43
 msgid "^codex/$"
 msgstr "^kodex/$"
 
@@ -1068,23 +1082,23 @@ msgstr "Oprávnění"
 msgid "Important dates"
 msgstr "Sůležitá data"
 
-#: user/forms.py:10 user/forms.py:42 user/models.py:55
+#: user/forms.py:13 user/forms.py:45 user/models.py:57
 msgid "username"
 msgstr "uživatelské jméno"
 
-#: user/forms.py:13 user/forms.py:45
+#: user/forms.py:16 user/forms.py:48
 msgid "Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."
 msgstr "Vyžadováno. 30 znaků a méně. Pouze písmena, čísla a znaky @/./+/-/_."
 
-#: user/forms.py:15 user/forms.py:47
+#: user/forms.py:18 user/forms.py:50
 msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
 msgstr "Tato hodnota smí obsahovat pouze písmena, čísla a znaky @/./+/-/_."
 
-#: user/forms.py:51
+#: user/forms.py:54
 msgid "Password"
 msgstr "Heslo"
 
-#: user/forms.py:52
+#: user/forms.py:55
 msgid ""
 "Raw passwords are not stored, so there is no way to see this user's "
 "password, but you can change the password using <a href=\"password/\">this "
@@ -1093,35 +1107,35 @@ msgstr ""
 "Hesla nejsou uchovávána v čitelné podobě, heslo lze změnit <a href="
 "\"password/\">tímto formulářem</a>."
 
-#: user/forms.py:79
+#: user/forms.py:82
 msgid "Username or e-mail"
 msgstr "Uživatelské jméno nebo e-mail"
 
-#: user/models.py:56
+#: user/models.py:58
 msgid "email address"
 msgstr "e-mail"
 
-#: user/models.py:58
+#: user/models.py:60
 msgid "first name"
 msgstr "jméno"
 
-#: user/models.py:59
+#: user/models.py:61
 msgid "last name"
 msgstr "příjmení"
 
-#: user/models.py:61
+#: user/models.py:63
 msgid "staff status"
 msgstr "personál"
 
-#: user/models.py:63
+#: user/models.py:65
 msgid "Designates whether the user can sign into this admin site."
 msgstr "Označuje, jestli se uživatel může přihlásit do administrátorské sekce."
 
-#: user/models.py:66
+#: user/models.py:68
 msgid "active"
 msgstr "aktivní"
 
-#: user/models.py:68
+#: user/models.py:70
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
@@ -1129,46 +1143,59 @@ msgstr ""
 "Označuje, jestli má být uživatel brán jako aktivní. Odškrtněte namísto "
 "mazání účtu."
 
-#: user/models.py:71
+#: user/models.py:73
 msgid "verified"
 msgstr "ověřeno"
 
-#: user/models.py:72
+#: user/models.py:74
 msgid "date joined"
 msgstr "přidal se"
 
-#: user/models.py:114
+#: user/models.py:75
+msgid "motto"
+msgstr ""
+
+#: user/models.py:77
+msgid "avatar"
+msgstr ""
+
+#: user/models.py:81
+#| msgid "No user avatar yet."
+msgid "User avatar"
+msgstr "Avatar uživatele"
+
+#: user/models.py:127
 msgid "users"
 msgstr "uživatelé"
 
-#: user/models.py:123
+#: user/models.py:136
 msgctxt "read"
 msgid "user.Message"
 msgstr "přečtená"
 
-#: user/models.py:124
+#: user/models.py:137
 msgctxt "Has been read or not."
 msgid "user.Message"
 msgstr "Byla přečtena nebo ne."
 
-#: user/models.py:128
+#: user/models.py:141
 msgctxt "system"
 msgid "user.Message"
 msgstr "systémová"
 
-#: user/models.py:129
+#: user/models.py:142
 msgid "System messages can be translated and can contain HTML."
 msgstr "Systémová zpráva může mít překlad a může obsahovat HTML."
 
-#: user/models.py:134
+#: user/models.py:147
 msgid "recipient"
 msgstr "příjemce"
 
-#: user/models.py:150
+#: user/models.py:163
 msgid "message"
 msgstr "zpráva"
 
-#: user/models.py:151
+#: user/models.py:164
 msgid "messages"
 msgstr "zprávy"
 
@@ -1180,6 +1207,19 @@ msgid ""
 msgstr ""
 "Vítejte! Před tím, než začnete používat tyto stránky, prosíme, najděte si "
 "čas na přečtení našeho <a href=\"{url}\">kodexu</a>."
+
+#: user/views.py:93
+msgid "Settings successfully updated."
+msgstr "Nastavení úspěšně upraveno."
+
+#: utils/fields.py:47
+#, python-brace-format
+msgid "Please keep filesize under {0}. Current filesize {1}"
+msgstr "Je povoleno nahrávat soubory do velikosti {0}. Váš soubor má ale {1}."
+
+#: utils/fields.py:53
+msgid "Filetype not supported."
+msgstr "Tento typ souboru není podporován."
 
 #: utils/models.py:13
 msgid "created"
@@ -1248,9 +1288,6 @@ msgstr "Čtěte více"
 
 #~ msgid "Add&nbsp;more"
 #~ msgstr "Přidat&nbsp;další"
-
-#~ msgid "Content type {} is not supported."
-#~ msgstr "Typ obsahu {} není podporován."
 
 #, fuzzy
 #~| msgid "Are you sure you want to delete the marker?"

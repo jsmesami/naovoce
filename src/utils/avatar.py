@@ -7,6 +7,8 @@ from django.core.cache import cache
 from django.template import loader, Context
 from django.conf import settings
 
+from sorl.thumbnail import get_thumbnail
+
 from . import colors as col
 from .full_url import get_full_url
 
@@ -24,6 +26,7 @@ if not os.path.exists(AVATARS_ABS_PATH):
 
 
 def get_avatar(request, user, size=None, bg_shade=0):
+
     if size is None:
         size = AVATAR_SIZE_DEFAULT
     else:
@@ -31,10 +34,16 @@ def get_avatar(request, user, size=None, bg_shade=0):
         if AVATAR_SIZE_MAX < size < AVATAR_SIZE_MIN:
             size = AVATAR_SIZE_DEFAULT
 
+    # use user-defined avatar
+    if user.avatar:
+        im = get_thumbnail(user.avatar.file, '%dx%d' % (size, size), crop='center', quality=90)
+        return im.url
+
+    # user cached gravatar
     filename = cache_key = '{pk:08d}-{size:03d}-{bg:03d}.png'.format(
         size=size,
         pk=user.pk,
-        bg=int(bg_shade*100)
+        bg=int(bg_shade * 100)
     )
 
     path = cache.get(cache_key)
