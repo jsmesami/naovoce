@@ -83,7 +83,7 @@ class Fruit(TimeStampedModel, GalleryModel):
                     'as you find relevant.')
     )
 
-    deleted = models.BooleanField(_('deleted'), default=False)
+    deleted = models.BooleanField(_('deleted'), default=False, db_index=True)
     why_deleted = models.TextField(
         _('why deleted'),
         blank=True,
