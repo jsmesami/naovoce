@@ -12,7 +12,6 @@ There are many things to be done (see [issues](https://github.com/jsmesami/naovo
 Most notably:
 
 * (Py) map performance optimizations 
-* (Py) user profile customization
 * (Py) gallery of user-uploadable images in fruit detail
 * (JS) intelligent image uploads with progress indication and client-side downscaling
 * (JS) reading fruit coordinates form EXIF of uploaded image
@@ -23,11 +22,15 @@ Most notably:
 * any advice, recommendation, code review will be appreciated
 
 Please [contact us](mailto:software@na-ovoce.cz) with any questions.  
-You are very welcome to bring your own feature proposals, we are open to any discussion.
+You are very welcome to bring your own feature proposals, we are open to discussion.
 
 ## Coding style
 
-If you make pull request, please make sure your code has some grace. 
+If you make pull request, please make sure your code style has some _grace_.
+
+We adhere to pep8, with some exceptions: line length can be (not too much) longer than 79 chars,
+We prefer 4-space indented hanging indents with closing brace lined up under the first 
+character of the line that starts the multi-line construct.
 
 Please take the favored tools into account:  
 Python 3, HTML5, Bootstrap 3, Less, CoffeeScript, JQuery

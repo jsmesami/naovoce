@@ -25,7 +25,7 @@ class ContentTypeRestrictedFileField(models.FileField):
             10MB - 10485760
             20MB - 20971520
             50MB - 5242880
-            100MB 104857600
+            100MB - 104857600
             250MB - 214958080
             500MB - 429916160
     """
@@ -33,7 +33,7 @@ class ContentTypeRestrictedFileField(models.FileField):
         self.content_types = kwargs.pop("content_types", [])
         self.max_upload_size = kwargs.pop("max_upload_size", [])
 
-        super(ContentTypeRestrictedFileField, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def clean(self, *args, **kwargs):
         data = super(ContentTypeRestrictedFileField, self).clean(*args, **kwargs)
@@ -44,7 +44,7 @@ class ContentTypeRestrictedFileField(models.FileField):
             if content_type in self.content_types:
                 if file._size > self.max_upload_size:
                     raise forms.ValidationError(
-                        _('Please keep filesize under {0}. Current filesize {1}').format(
+                        _('Please upload file up to {}. Your file size is {}.').format(
                             filesizeformat(self.max_upload_size),
                             filesizeformat(file._size)
                         )

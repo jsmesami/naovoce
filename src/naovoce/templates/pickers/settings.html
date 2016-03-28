@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load bootstrap %}
+{% load avatar %}
+
+{% block title %}{% trans 'Change account settings' %} | {{ block.super }}{% endblock %}
+
+{% block content %}
+	<div class="row">
+	<div class="col-sm-6 col-sm-offset-3">
+		<div class="row panel panel-default">
+			<div class="panel-heading">{% trans 'Change account settings' %}</div>
+
+		    <form class="panel-body" method="post" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+		        {% with field=form.avatar %}
+	                <div class="form-group avatar-group {% if field.errors %}has-error{% endif %}">
+		                {% for error in field.errors %}
+	                        <span class="help-block {{ form.error_css_class }}">{{ error }}</span>
+	                    {% endfor %}
+
+	                    <div class="media">
+		                    <img src="{% avatar user 120 0.3 %}"
+		                         alt="{{ field.label }}" title="{{ field.label }}"
+		                         class="pull-left media-object avatar">
+		                    <p class="media-body help-block">
+		                        {{ field.help_text|safe }}
+		                    </p>
+	                    </div>
+	                </div>
+	                <div class="form-group">
+						<label for="{{ field.id_for_label }}">{% trans 'Change avatar' %}</label>
+						<input type="file" name="{{ field.html_name }}" id="{{ field.id_for_label }}">
+
+	                    {% if user.avatar %}
+		                <div class="checkbox">
+			                <label class="" for="avatar-clear_id">
+		                        <input id="avatar-clear_id" type="checkbox" name="avatar-clear">
+		                        {% trans 'Delete avatar' %}
+			                </label>
+		                </div>
+                        {% endif %}
+	                </div>
+		        {% endwith %}
+                {{ form.motto|bootstrap }}
+				<div class="form-group">
+					<input class="btn btn-primary" value="{% trans "Save changes" %}" type="submit">
+					{% url 'pickers:detail' user.id as user_detail%}
+					<a href="{{ user_detail }}">{% trans 'Back' %}</a>
+					<input name="next" value="{{ user_detail }}" type="hidden">
+				</div>
+		    </form>
+		</div>
+	</div>
+	</div>
+{% endblock %}

@@ -1,6 +1,5 @@
 import datetime
 
-from django.contrib import messages as contrib_messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.urlresolvers import reverse_lazy
@@ -17,6 +16,7 @@ from django.utils.translation import ugettext_lazy as _
 from fruit.models import Kind, Fruit
 from user.forms import UserSettingsForm
 from user.models import FruitUser
+from utils.mixins import LoginRequiredMixin
 
 
 def fruit_counter(**filters):
@@ -85,13 +85,16 @@ def messages(request, pk):
     return response
 
 
-class UserSettingsView(SuccessMessageMixin, UpdateView):
-    template_name = "account/profile_settings.html"
+class UserSettingsView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
+    template_name = 'pickers/settings.html'
     model = FruitUser
     form_class = UserSettingsForm
-    success_url = reverse_lazy("account_settings")
     success_message = _('Settings successfully updated.')
 
     def get_object(self, queryset=None):
         return self.request.user
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user'] = self.request.user
+        return context

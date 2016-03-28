@@ -41,7 +41,7 @@ def complaint_notification(comment, *args, **kwargs):
     """
     if comment.complaint:
         subject = _('A complaint has been made.')
-        body = _('Please review the situation: https://na-ovoce.cz{url}'.format(
+        body = _('Please review the situation: https://na-ovoce.cz{url}').format(
             url=comment.get_absolute_url(),
-        ))
+        )
         mail_managers(subject, body)

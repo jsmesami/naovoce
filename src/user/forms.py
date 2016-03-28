@@ -1,8 +1,5 @@
 from django import forms
-from django.conf import settings
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
-from django.core.exceptions import ValidationError
-from django.template.defaultfilters import filesizeformat
 from django.utils.translation import ugettext_noop, ugettext_lazy as _
 
 from .models import FruitUser, Message
@@ -79,10 +76,20 @@ class MessageAdminForm(forms.ModelForm):
             'text': forms.Textarea(attrs={'rows': 5, 'cols': 86, 'maxlength': 255}),
         }
 
-override_wrong_default_translation = ugettext_noop('Username or e-mail')
-
 
 class UserSettingsForm(forms.ModelForm):
     class Meta:
         model = FruitUser
         fields = ('avatar', 'motto')
+        widgets = {
+            'motto': forms.Textarea(attrs={'rows': 4, 'cols': 86, 'maxlength': 255}),
+        }
+        help_texts = {
+            'motto': _('Short text about you, that will appear in your profile.'),
+            'avatar': _('You can change your profile picture by uploading custom image '
+                        '(up to 1 MB), or alternatively via '
+                        '<a href="http://gravatar.com" target="_blank">gravatar.com</a> service.')
+        }
+
+
+override_wrong_default_translation = ugettext_noop('Username or e-mail')

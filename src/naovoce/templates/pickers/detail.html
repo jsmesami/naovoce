@@ -19,13 +19,13 @@
 			<h4>{% trans "markers added" %}: {{ user.fruit_count }}</h4>
 	    </div>
     </div>
+	{% if user.motto %}
     <div class="col-sm-8">
-        <div class="pull-right">
-            {%if user.motto%}
-                <blockquote class="blockquote-reverse"><p>{{user.motto}}</p></blockquote>
-            {%endif%}
-        </div>
+	    <div class="motto">
+            <p>{{ user.motto }}</p>
+	    </div>
     </div>
+	{% endif %}
 </div>
 <div class="row">
     <div class="col-sm-12">
@@ -39,7 +39,7 @@
         </ul>
         <hr>
         <ul class="quick-links">
-		    <li><a href="{% url 'account_settings' %}">{% trans 'Account settings' %}</a></li>
+		    <li><a href="{% url 'pickers:settings' user.id %}">{% trans 'Account settings' %}</a></li>
 		    <li><a href="{% url 'pickers:messages' user.id %}">{% trans 'My messages' %}</a></li>
 	        {% if user.has_usable_password %}
 		        <li><a href="{% url 'account_change_password' %}">{% trans 'Change password' %}</a></li>

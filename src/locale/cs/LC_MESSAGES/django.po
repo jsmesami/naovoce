@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-25 11:09+0100\n"
-"PO-Revision-Date: 2016-02-26 17:03+0100\n"
+"POT-Creation-Date: 2016-03-28 21:04+0200\n"
+"PO-Revision-Date: 2016-03-28 21:05+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -510,7 +510,7 @@ msgstr "Změnit heslo"
 
 #: naovoce/templates/account/password_change.html:12
 #: naovoce/templates/account/password_change.html:17
-#: naovoce/templates/pickers/detail.html:38
+#: naovoce/templates/pickers/detail.html:45
 msgid "Change password"
 msgstr "Změnit heslo"
 
@@ -595,19 +595,9 @@ msgstr "Nastavit heslo"
 
 #: naovoce/templates/account/password_set.html:12
 #: naovoce/templates/account/password_set.html:17
-#: naovoce/templates/pickers/detail.html:40
+#: naovoce/templates/pickers/detail.html:47
 msgid "Set password"
 msgstr "Nastavit heslo"
-
-#: naovoce/templates/account/profile_settings.html:7
-#: naovoce/templates/account/profile_settings.html:13
-#: naovoce/templates/account/profile_settings.html:44
-msgid "Change settings"
-msgstr "Zmenit nastavení"
-
-#: naovoce/templates/account/profile_settings.html:32
-msgid "No user avatar yet."
-msgstr "Žádný avatar nenastaven."
 
 #: naovoce/templates/account/signup.html:7
 #: naovoce/templates/account/signup.html:13
@@ -735,7 +725,7 @@ msgstr "Důvod smazání"
 
 #: naovoce/templates/fruit/detail.html:45
 #: naovoce/templates/fruit/inc/fruitform.html:24
-#: naovoce/templates/pickers/detail.html:30
+#: naovoce/templates/pickers/detail.html:37
 msgid "Large map"
 msgstr "Velká mapa"
 
@@ -749,7 +739,7 @@ msgstr "Smazat"
 
 #: naovoce/templates/fruit/detail.html:50
 #: naovoce/templates/fruit/inc/fruitform.html:20
-#: naovoce/templates/pickers/detail.html:31
+#: naovoce/templates/pickers/detail.html:38
 msgid "Add marker"
 msgstr "Přidat značku"
 
@@ -774,6 +764,7 @@ msgid "Filter"
 msgstr "Filtr"
 
 #: naovoce/templates/fruit/inc/fruitform.html:22
+#: naovoce/templates/pickers/settings.html:48
 msgid "Save changes"
 msgstr "Uložit změny"
 
@@ -810,6 +801,7 @@ msgid "Latest Comments"
 msgstr "Poslední komentáře"
 
 #: naovoce/templates/inc/confirm.html:12
+#: naovoce/templates/pickers/settings.html:50
 msgid "Back"
 msgstr "Zpět"
 
@@ -923,15 +915,15 @@ msgstr "filtr"
 msgid "markers added"
 msgstr "počet značek"
 
-#: naovoce/templates/pickers/detail.html:35
+#: naovoce/templates/pickers/detail.html:42
 msgid "Account settings"
-msgstr "Nastavení"
+msgstr "Nastavení účtu"
 
-#: naovoce/templates/pickers/detail.html:36
+#: naovoce/templates/pickers/detail.html:43
 msgid "My messages"
 msgstr "Mé zprávy"
 
-#: naovoce/templates/pickers/detail.html:42
+#: naovoce/templates/pickers/detail.html:49
 #: naovoce/templates/socialaccount/connections.html:12
 msgid "Account connections"
 msgstr "Propojení účtu"
@@ -965,6 +957,19 @@ msgstr "Zprávy"
 #: naovoce/templates/pickers/messages.html:17
 msgid "You have no messages."
 msgstr "Nemáte žádné zprávy."
+
+#: naovoce/templates/pickers/settings.html:7
+#: naovoce/templates/pickers/settings.html:13
+msgid "Change account settings"
+msgstr "Změna nastavení účtu"
+
+#: naovoce/templates/pickers/settings.html:33
+msgid "Change avatar"
+msgstr "Změnit avatar"
+
+#: naovoce/templates/pickers/settings.html:40
+msgid "Delete avatar"
+msgstr "Smazat avatar"
 
 #: naovoce/templates/socialaccount/authentication_error.html:5
 #: naovoce/templates/socialaccount/authentication_error.html:8
@@ -1046,15 +1051,15 @@ msgstr "Poděkování"
 msgid "Sincere thanks to Maik Allen for helping us with translations."
 msgstr "Srdečné poděkování Maikovi Allenovi za pomoc s překladem stránky."
 
-#: naovoce/urls.py:40
+#: naovoce/urls.py:39
 msgid "^map/$"
 msgstr "^mapa/$"
 
-#: naovoce/urls.py:41
+#: naovoce/urls.py:40
 msgid "^about-us/$"
 msgstr "^o-nas/$"
 
-#: naovoce/urls.py:43
+#: naovoce/urls.py:42
 msgid "^codex/$"
 msgstr "^kodex/$"
 
@@ -1082,23 +1087,23 @@ msgstr "Oprávnění"
 msgid "Important dates"
 msgstr "Sůležitá data"
 
-#: user/forms.py:13 user/forms.py:45 user/models.py:57
+#: user/forms.py:10 user/forms.py:42 user/models.py:57
 msgid "username"
 msgstr "uživatelské jméno"
 
-#: user/forms.py:16 user/forms.py:48
+#: user/forms.py:13 user/forms.py:45
 msgid "Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."
 msgstr "Vyžadováno. 30 znaků a méně. Pouze písmena, čísla a znaky @/./+/-/_."
 
-#: user/forms.py:18 user/forms.py:50
+#: user/forms.py:15 user/forms.py:47
 msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
 msgstr "Tato hodnota smí obsahovat pouze písmena, čísla a znaky @/./+/-/_."
 
-#: user/forms.py:54
+#: user/forms.py:51
 msgid "Password"
 msgstr "Heslo"
 
-#: user/forms.py:55
+#: user/forms.py:52
 msgid ""
 "Raw passwords are not stored, so there is no way to see this user's "
 "password, but you can change the password using <a href=\"password/\">this "
@@ -1107,7 +1112,21 @@ msgstr ""
 "Hesla nejsou uchovávána v čitelné podobě, heslo lze změnit <a href="
 "\"password/\">tímto formulářem</a>."
 
-#: user/forms.py:82
+#: user/forms.py:88
+msgid "Short text about you, that will appear in your profile."
+msgstr "Krátký text o vás, který se zobrazí na vašem profilu."
+
+#: user/forms.py:89
+msgid ""
+"You can change your profile picture by uploading custom image (up to 1 MB), "
+"or alternatively via <a href=\"http://gravatar.com\" target=\"_blank"
+"\">gravatar.com</a> service."
+msgstr ""
+"Svůj profilový obrázek můžete změnit nahráním vlastního obrázku (do 1MB), "
+"nebo prostřednictvím služby <a href=\"http://gravatar.com\" target=\"_blank"
+"\">gravatar.com</a>."
+
+#: user/forms.py:95
 msgid "Username or e-mail"
 msgstr "Uživatelské jméno nebo e-mail"
 
@@ -1153,14 +1172,13 @@ msgstr "přidal se"
 
 #: user/models.py:75
 msgid "motto"
-msgstr ""
+msgstr "motto"
 
 #: user/models.py:77
 msgid "avatar"
-msgstr ""
+msgstr "avatar"
 
 #: user/models.py:81
-#| msgid "No user avatar yet."
 msgid "User avatar"
 msgstr "Avatar uživatele"
 
@@ -1208,14 +1226,13 @@ msgstr ""
 "Vítejte! Před tím, než začnete používat tyto stránky, prosíme, najděte si "
 "čas na přečtení našeho <a href=\"{url}\">kodexu</a>."
 
-#: user/views.py:93
+#: user/views.py:92
 msgid "Settings successfully updated."
 msgstr "Nastavení úspěšně upraveno."
 
 #: utils/fields.py:47
-#, python-brace-format
-msgid "Please keep filesize under {0}. Current filesize {1}"
-msgstr "Je povoleno nahrávat soubory do velikosti {0}. Váš soubor má ale {1}."
+msgid "Please upload file up to {}. Your file size is {}."
+msgstr "Je povoleno nahrávat soubory do velikosti {}. Váš soubor má ale {}."
 
 #: utils/fields.py:53
 msgid "Filetype not supported."
@@ -1232,6 +1249,15 @@ msgstr "změněno"
 #: utils/templatetags/truncate.py:16
 msgid "Read more"
 msgstr "Čtěte více"
+
+#, fuzzy
+#~| msgid "Save changes"
+#~ msgctxt "infinitive"
+#~ msgid "Save changes"
+#~ msgstr "Uložit změny"
+
+#~ msgid "No user avatar yet."
+#~ msgstr "Žádný avatar nenastaven."
 
 #~ msgid ""
 #~ "You currently have no social network accounts connected to this account."

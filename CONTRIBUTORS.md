@@ -2,7 +2,8 @@ Project Contributors
 ====================
 
 ## Software
-* Ondra Nejedlý ([@jsmesami](https://twitter.com/jsmesami/)) 
+* Ondra Nejedlý ([@jsmesami](https://twitter.com/jsmesami/)) - project maintainer
+* [flaiming](https://github.com/flaiming)
 
 ## Ideas, events, design, copy...
 * Katka Kubánková
