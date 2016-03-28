@@ -1,4 +1,6 @@
 import hashlib
+import os
+from uuid import uuid4
 
 from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
@@ -73,9 +75,17 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
     is_email_verified = models.BooleanField(_('verified'), default=False)
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
     motto = models.CharField(_('motto'), max_length=255, blank=True)
+
+    def _upload_avatar_to(self, filename):
+        return '{base}/custom/{id}/{file}'.format(
+            base=settings.AVATARS_URL,
+            id=self.id,
+            file=self._mangle_avatar_name(filename),
+        )
+
     avatar = ContentTypeRestrictedImageField(
         _('avatar'),
-        upload_to=settings.AVATARS_URL,
+        upload_to=_upload_avatar_to,
         blank=True,
         null=True,
         help_text=_("User avatar"),
@@ -96,6 +106,10 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
 
     def get_absolute_url(self):
         return reverse('pickers:detail', args=[self.pk, self.slug])
+
+    @staticmethod
+    def _mangle_avatar_name(filename):
+        return uuid4().hex[:8] + os.path.splitext(filename)[1]
 
     def send_message(self, text, system=False):
         Message.objects.create(

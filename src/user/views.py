@@ -2,7 +2,6 @@ import datetime
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
-from django.core.urlresolvers import reverse_lazy
 from django.db.models import Count, Case, When
 from django.http import (
     HttpResponsePermanentRedirect,
