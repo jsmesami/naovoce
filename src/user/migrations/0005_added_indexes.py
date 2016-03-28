@@ -8,7 +8,7 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('user', '0003_alter_fields'),
+        ('user', '0004_auto_20160324_1431'),
     ]
 
     operations = [
