@@ -1,4 +1,3 @@
-from django.core.urlresolvers import reverse
 from rest_framework import serializers
 
 from user.api.serializers import UserSerializer
@@ -40,19 +39,13 @@ class VerboseFruitSerializer(serializers.HyperlinkedModelSerializer):
         read_only=True,
     )
 
-    # do not use HyperlinkedModelSerializer because of slowness
-    url = serializers.SerializerMethodField()
+    url = serializers.HyperlinkedIdentityField(view_name='api:fruit-detail')
 
     user = UserSerializer(read_only=True)
 
     images_count = serializers.IntegerField(read_only=True)
 
     images = HyperlinkedGalleryField(gallery_ct='fruit')
-
-    def get_url(self, obj):
-        if not hasattr(self, '_cached_url'):
-            self._cached_url = self.context['request'].build_absolute_uri(reverse('api:fruit-detail', args=(obj.pk,)))
-        return self._cached_url
 
     class Meta:
         model = Fruit
