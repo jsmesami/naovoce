@@ -4,6 +4,7 @@ from rest_framework import serializers
 
 from user.api.serializers import UserSerializer
 from gallery.api.fields import HyperlinkedGalleryField
+from utils.serializer_fields import CachedHyperlinkedIdentityField
 from .fields import KindRelatedField
 from ..models import Fruit, Kind
 
@@ -19,12 +20,6 @@ class KindSerializer(serializers.ModelSerializer):
 
 
 class VerboseFruitSerializer(serializers.HyperlinkedModelSerializer):
-    PLACEHOLDER_ID = 0
-
-    def __init__(self, *args, **kwargs):
-        super(VerboseFruitSerializer, self).__init__(*args, **kwargs)
-        # pre-load identity URL with placeholder ID
-        self.identity_url_pattern = self.context['request'].build_absolute_uri(reverse('api:fruit-detail', args=(self.PLACEHOLDER_ID,)))
 
     lat = serializers.DecimalField(
         max_digits=13,
@@ -48,17 +43,13 @@ class VerboseFruitSerializer(serializers.HyperlinkedModelSerializer):
     )
 
     # do not use HyperlinkedIdentityField because of slowness
-    url = serializers.SerializerMethodField()
+    url = CachedHyperlinkedIdentityField(view_name='api:fruit-detail')
 
     user = UserSerializer(read_only=True)
 
     images_count = serializers.IntegerField(read_only=True)
 
     images = HyperlinkedGalleryField(gallery_ct='fruit')
-
-    def get_url(self, obj):
-        # replace placeholder ID with real object ID
-        return self.identity_url_pattern.replace('/%d/' % self.PLACEHOLDER_ID, '/%d/' % obj.pk)
 
     class Meta:
         model = Fruit
