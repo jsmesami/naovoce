@@ -1,3 +1,5 @@
+from django.core.urlresolvers import reverse
+
 from rest_framework import serializers
 
 from user.api.serializers import UserSerializer
@@ -17,6 +19,12 @@ class KindSerializer(serializers.ModelSerializer):
 
 
 class VerboseFruitSerializer(serializers.HyperlinkedModelSerializer):
+    PLACEHOLDER_ID = 0
+
+    def __init__(self, *args, **kwargs):
+        super(VerboseFruitSerializer, self).__init__(*args, **kwargs)
+        # pre-load identity URL with placeholder ID
+        self.identity_url_pattern = self.context['request'].build_absolute_uri(reverse('api:fruit-detail', args=(self.PLACEHOLDER_ID,)))
 
     lat = serializers.DecimalField(
         max_digits=13,
@@ -39,13 +47,18 @@ class VerboseFruitSerializer(serializers.HyperlinkedModelSerializer):
         read_only=True,
     )
 
-    url = serializers.HyperlinkedIdentityField(view_name='api:fruit-detail')
+    # do not use HyperlinkedIdentityField because of slowness
+    url = serializers.SerializerMethodField()
 
     user = UserSerializer(read_only=True)
 
     images_count = serializers.IntegerField(read_only=True)
 
     images = HyperlinkedGalleryField(gallery_ct='fruit')
+
+    def get_url(self, obj):
+        # replace placeholder ID with real object ID
+        return self.identity_url_pattern.replace('/%d/' % self.PLACEHOLDER_ID, '/%d/' % obj.pk)
 
     class Meta:
         model = Fruit
