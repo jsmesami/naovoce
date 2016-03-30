@@ -340,7 +340,8 @@ Available options are `cs` or `en`, `en` is default.
             "active": true,
             "fruit_count": 10,
             "fruit": "https://na-ovoce.cz/api/v1/fruit/?user=1093",
-            "avatar": "https://secure.gravatar.com/avatar/361b7df6a40de3051439f645f54b7714?d=https%3A%2F%2Fna-ovoce.cz%2Fmedia%2Favatars%2F00001093-060-030.png&s=60"
+            "avatar": "https://secure.gravatar.com/avatar/361b7df6a40de3051439f645f54b7714?d=https%3A%2F%2Fna-ovoce.cz%2Fmedia%2Favatars%2F00001093-060-030.png&s=60",
+            "motto": ""
         }
 
 # Group Images Rersource
