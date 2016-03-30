@@ -15,8 +15,9 @@ from .full_url import get_full_url
 
 AVATAR_SIZE_MIN = getattr(settings, 'AVATAR_SIZE_MIN', 20)
 AVATAR_SIZE_MAX = getattr(settings, 'AVATAR_SIZE_MAX', 200)
-AVATAR_SIZE_DEFAULT = getattr(settings, 'AVATAR_SIZE_DEFAULT', 60)
-AVATARS_URL = getattr(settings, 'AVATARS_URL', 'avatars/')
+AVATAR_SIZE_DEFAULT = getattr(settings, 'AVATAR_SIZE_DEFAULT', 120)
+AVATARS_URL = getattr(settings, 'AVATARS_URL', 'avatars')
+AVATAR_MAX_FILESIZE = getattr(settings, 'AVATAR_MAX_FILESIZE', 1 * 1024 * 1024)  # 1 MB
 
 AVATARS_PATH = str(os.path.join(settings.MEDIA_URL, AVATARS_URL))
 AVATARS_ABS_PATH = str(os.path.join(settings.MEDIA_ROOT, AVATARS_URL))
@@ -36,8 +37,8 @@ def get_avatar(request, user, size=None, bg_shade=0):
 
     # use user-defined avatar
     if user.avatar:
-        im = get_thumbnail(user.avatar.file, '%dx%d' % (size, size), crop='center', quality=90)
-        return im.url
+        img = get_thumbnail(user.avatar.file, '%dx%d' % (size, size), crop='center', quality=90)
+        return get_full_url(request, img.url)
 
     # user cached gravatar
     filename = cache_key = '{pk:08d}-{size:03d}-{bg:03d}.png'.format(

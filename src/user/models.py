@@ -2,7 +2,6 @@ import hashlib
 import os
 from uuid import uuid4
 
-from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.core.urlresolvers import reverse
 from django.db import models
@@ -14,6 +13,7 @@ from django.utils.safestring import mark_safe
 from django.utils.text import slugify
 from django.utils.translation import ugettext, pgettext_lazy, ugettext_lazy as _
 
+from utils.avatar import AVATAR_MAX_FILESIZE, AVATARS_URL
 from utils.fields import ContentTypeRestrictedImageField
 from utils.models import TimeStampedModel
 
@@ -78,7 +78,7 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
 
     def _upload_avatar_to(self, filename):
         return '{base}/custom/{id}/{file}'.format(
-            base=settings.AVATARS_URL,
+            base=AVATARS_URL,
             id=self.id,
             file=self._mangle_avatar_name(filename),
         )
@@ -90,7 +90,7 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
         null=True,
         help_text=_("User avatar"),
         content_types=['image/png', 'image/jpeg', 'image/gif'],
-        max_upload_size=settings.AVATAR_MAX_FILESIZE
+        max_upload_size=AVATAR_MAX_FILESIZE
     )
 
     objects = UserManager.from_queryset(ActiveUserQuerySet)()

@@ -39,4 +39,4 @@ class VerboseUserSerializer(UserSerializer):
     avatar = AvatarField()
 
     class Meta(UserSerializer.Meta):
-        fields = 'id username url active fruit_count fruit avatar'.split()
+        fields = 'id username url active fruit_count fruit avatar motto'.split()

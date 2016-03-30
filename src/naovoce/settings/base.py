@@ -290,6 +290,3 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     )
 }
-
-AVATARS_URL = 'avatars'
-AVATAR_MAX_FILESIZE = 1 * 1024 * 1024  # 1 MB
