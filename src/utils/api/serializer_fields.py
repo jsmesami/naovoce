@@ -1,9 +1,7 @@
 import sys
 
+from django.core.cache import caches
 from rest_framework.serializers import HyperlinkedIdentityField
-
-# used to cache URLS in CachedHyperlinkedIdentityField
-URL_CACHE = {}
 
 
 class CachedHyperlinkedIdentityField(HyperlinkedIdentityField):
@@ -14,19 +12,15 @@ class CachedHyperlinkedIdentityField(HyperlinkedIdentityField):
     per request.
     """
     ID_TOKEN = str(sys.maxsize)
+    cache = caches['fruit']
 
     def to_representation(self, value):
-        global URL_CACHE
-        try:
-            url = URL_CACHE[self.view_name]
-        except KeyError:
+        cache_key = self.view_name
+        url = self.cache.get(cache_key)
+        if not url:
             real_id = value.id
             value.id = self.ID_TOKEN
-            url = super(CachedHyperlinkedIdentityField, self).to_representation(value)
-            URL_CACHE[self.view_name] = url
+            url = super().to_representation(value)
+            self.cache.set(cache_key, url)
             value.id = real_id
         return url.replace(self.ID_TOKEN, str(value.id))
-
-
-
-

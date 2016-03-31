@@ -10,7 +10,7 @@ from rest_framework.exceptions import PermissionDenied
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, SAFE_METHODS
 
-from naovoce.api.permissions import IsOwnerOrReadOnly
+from utils.api.permissions import IsOwnerOrReadOnly
 from . import serializers
 from ..models import Fruit, Kind
 
