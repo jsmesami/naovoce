@@ -1,7 +1,10 @@
+from django.core.urlresolvers import reverse
+
 from rest_framework import serializers
 
 from user.api.serializers import UserSerializer
 from gallery.api.fields import HyperlinkedGalleryField
+from utils.serializer_fields import CachedHyperlinkedIdentityField
 from .fields import KindRelatedField
 from ..models import Fruit, Kind
 
@@ -39,7 +42,8 @@ class VerboseFruitSerializer(serializers.HyperlinkedModelSerializer):
         read_only=True,
     )
 
-    url = serializers.HyperlinkedIdentityField(view_name='api:fruit-detail')
+    # do not use HyperlinkedIdentityField because of slowness
+    url = CachedHyperlinkedIdentityField(view_name='api:fruit-detail')
 
     user = UserSerializer(read_only=True)
 
