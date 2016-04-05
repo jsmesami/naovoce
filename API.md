@@ -20,7 +20,8 @@ Na-ovoce.cz, public API
 + Response 200
 
         {
-            "token": "eb3e2b0367c2f99cf0380ef88127c2bf129c26a8"
+            "token": "eb3e2b0367c2f99cf0380ef88127c2bf129c26a8",
+            "id": 630
         }
 
 # Group Fruit Resource
