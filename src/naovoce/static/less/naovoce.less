@@ -181,17 +181,6 @@ hr {
 	}
 }
 
-.motto {
-	background: #ffea80;
-	padding: 10px 20px;
-	margin: 20px 0 10px;
-	min-height: 50px;
-	font-size: 90%;
-	p {
-		margin-bottom: 0;
-	}
-}
-
 #main-content {
 	padding-bottom: 20px;
 }
@@ -418,6 +407,10 @@ a.read-more {
 	margin: -@marker-size 0 0 -@marker-size/2;
 }
 
+.fruit-icon-huge {
+	.make-marker(55px);
+}
+
 .fruit-icon-large {
 	.make-marker(40px);
 }
@@ -446,17 +439,26 @@ a.read-more {
 	background-size: 720px 149px;
 }
 
-.location {
-	font-weight: bold;
-	.dms {
-		font-weight: normal;
-		font-size: 90%;
+.detail-info {
+	padding: 20px 0;
+	h3, p {
+		margin: 0;
+	}
+	.geo {
+		font-weight: bold;
+	}
+	.fruit-description,
+	.motto {
+		background: #ffea80;
+		border: 1px solid darken(#ffea80, 20%);
+		padding: 15px;
+		margin-top: 20px;
 	}
 }
 
 #map-detail {
 	height: 300px;
-	margin: 10px 0 20px;
+	margin-bottom: 20px;
 }
 
 .quick-links {

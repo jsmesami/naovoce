@@ -9,20 +9,21 @@
 {% block pickers_active %}active{% endblock %}
 
 {% block content %}
-<div class="row">
-    <div class="col-sm-4 media">
-	    <h3 class="pull-left media-object">
-			<img src="{% avatar user bg_shade=0.3 %}" title="{{ user.username }}" class="avatar">
-	    </h3>
+<div class="row detail-info">
+    <div class="col-sm-6 media">
+		<img class="pull-left media-object avatar"
+		     src="{% avatar user bg_shade=0.3 %}"
+		     title="{{ user.username }}">
 	    <div class="media-body">
             <h3>{{ user.username }}</h3>
-			<h4>{% trans "markers added" %}: {{ user.fruit_count }}</h4>
+		    <p>{% trans "Joined" %}: <strong>{{ user.date_joined }}</strong></p>
+			<p>{% trans "Markers added" %}: <strong>{{ user.fruit_count }}</strong></p>
 	    </div>
     </div>
 	{% if user.motto %}
-    <div class="col-sm-8">
+    <div class="col-sm-12">
 	    <div class="motto">
-            <p>{{ user.motto }}</p>
+            <p><strong>Motto:</strong> {{ user.motto }}</p>
 	    </div>
     </div>
 	{% endif %}
@@ -31,12 +32,12 @@
     <div class="col-sm-12">
 	    <div id="map-detail"></div>
 	</div>
-    {% if user.is_authenticated and user == request.user %}
     <div class="col-sm-12">
         <ul class="quick-links">
 	        <li><a href="{% url 'map' %}">{% trans 'Large map' %}</a></li>
 	        <li><a href="{% url 'fruit:add' %}">{% trans 'Add marker' %}</a></li>
         </ul>
+    {% if user.is_authenticated and user == request.user %}
         <hr>
         <ul class="quick-links">
 		    <li><a href="{% url 'pickers:settings' user.id %}">{% trans 'Account settings' %}</a></li>
@@ -48,8 +49,8 @@
 	        {% endif %}
 		    <li><a href="{% url 'socialaccount_connections' %}">{% trans 'Account connections' %}</a></li>
         </ul>
-    </div>
     {% endif %}
+    </div>
 </div>
 
 {% endblock %}

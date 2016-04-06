@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-28 21:04+0200\n"
-"PO-Revision-Date: 2016-03-28 21:05+0200\n"
+"POT-Creation-Date: 2016-04-06 12:20+0200\n"
+"PO-Revision-Date: 2016-04-06 12:24+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -43,7 +43,7 @@ msgid "title"
 msgstr "titulek"
 
 #: blog/models.py:39 comments/admin.py:18 staticpage/models.py:9
-#: user/admin.py:53 user/models.py:134
+#: user/admin.py:53 user/models.py:148
 msgid "text"
 msgstr "text"
 
@@ -237,7 +237,7 @@ msgstr "proč smazán"
 msgid "The tree has been cut down, not found etc."
 msgstr "Strom byl poražen, nenalezen apod."
 
-#: fruit/models.py:93 user/models.py:126
+#: fruit/models.py:93 user/models.py:140
 msgid "user"
 msgstr "uživatel"
 
@@ -306,7 +306,7 @@ msgstr "Tato značka byla smazána."
 msgid "images"
 msgstr "obrázky"
 
-#: gallery/api/views.py:32 gallery/api/views.py:50
+#: gallery/api/views.py:31 gallery/api/views.py:49
 #, python-brace-format
 msgid "Content type {ct} is not supported."
 msgstr "Typ obsahu {ct} není podporován."
@@ -323,7 +323,7 @@ msgstr "titulek"
 msgid "cover image"
 msgstr "hlavní obrázek"
 
-#: naovoce/api/views.py:22
+#: naovoce/api/views.py:24
 msgid "Not found."
 msgstr "Nenalezeno."
 
@@ -510,7 +510,7 @@ msgstr "Změnit heslo"
 
 #: naovoce/templates/account/password_change.html:12
 #: naovoce/templates/account/password_change.html:17
-#: naovoce/templates/pickers/detail.html:45
+#: naovoce/templates/pickers/detail.html:46
 msgid "Change password"
 msgstr "Změnit heslo"
 
@@ -595,7 +595,7 @@ msgstr "Nastavit heslo"
 
 #: naovoce/templates/account/password_set.html:12
 #: naovoce/templates/account/password_set.html:17
-#: naovoce/templates/pickers/detail.html:47
+#: naovoce/templates/pickers/detail.html:48
 msgid "Set password"
 msgstr "Nastavit heslo"
 
@@ -711,39 +711,52 @@ msgctxt "infinitive"
 msgid "Delete"
 msgstr "Smazat značku"
 
-#: naovoce/templates/fruit/detail.html:25
+#: naovoce/templates/fruit/detail.html:26 naovoce/templates/home.html:76
+#: naovoce/templates/inc/mapjs.html:99
+msgid "Shared by"
+msgstr "Sdílí"
+
+#: naovoce/templates/fruit/detail.html:31
+msgid "Added"
+msgstr "Přidáno"
+
+#: naovoce/templates/fruit/detail.html:36
 msgid "Unknown address"
 msgstr "Neznámá adresa"
 
-#: naovoce/templates/fruit/detail.html:35
+#: naovoce/templates/fruit/detail.html:42
 msgid "This marker has been deleted"
 msgstr "Tato značka byla smazána"
 
-#: naovoce/templates/fruit/detail.html:37
+#: naovoce/templates/fruit/detail.html:44
 msgid "Reason of deletion"
 msgstr "Důvod smazání"
 
-#: naovoce/templates/fruit/detail.html:45
+#: naovoce/templates/fruit/detail.html:52 naovoce/templates/inc/mapjs.html:103
+msgid "Description"
+msgstr "Popis"
+
+#: naovoce/templates/fruit/detail.html:65
 #: naovoce/templates/fruit/inc/fruitform.html:24
-#: naovoce/templates/pickers/detail.html:37
+#: naovoce/templates/pickers/detail.html:38
 msgid "Large map"
 msgstr "Velká mapa"
 
-#: naovoce/templates/fruit/detail.html:47
+#: naovoce/templates/fruit/detail.html:67
 msgid "Edit"
 msgstr "Upravit"
 
-#: naovoce/templates/fruit/detail.html:48
+#: naovoce/templates/fruit/detail.html:68
 msgid "Delete"
 msgstr "Smazat"
 
-#: naovoce/templates/fruit/detail.html:50
+#: naovoce/templates/fruit/detail.html:70
 #: naovoce/templates/fruit/inc/fruitform.html:20
-#: naovoce/templates/pickers/detail.html:38
+#: naovoce/templates/pickers/detail.html:39
 msgid "Add marker"
 msgstr "Přidat značku"
 
-#: naovoce/templates/fruit/detail.html:53
+#: naovoce/templates/fruit/detail.html:73
 #: naovoce/templates/fruit/herbarium.html:13
 #: naovoce/templates/fruit/herbarium.html:15
 #: naovoce/templates/inc/footer.html:29
@@ -791,10 +804,6 @@ msgstr "Prozkoumejte mapu"
 #: naovoce/templates/home.html:68
 msgid "Latest Entries"
 msgstr "Poslední úlovky"
-
-#: naovoce/templates/home.html:76 naovoce/templates/inc/mapjs.html:99
-msgid "Shared by"
-msgstr "Sdílí"
 
 #: naovoce/templates/home.html:81
 msgid "Latest Comments"
@@ -859,10 +868,6 @@ msgstr ""
 msgid "Fruit kind"
 msgstr "Druh ovoce"
 
-#: naovoce/templates/inc/mapjs.html:103
-msgid "Description"
-msgstr "Popis"
-
 #: naovoce/templates/inc/mapjs.html:109
 msgid "Address"
 msgstr "Adresa"
@@ -910,20 +915,22 @@ msgid "filter"
 msgstr "filtr"
 
 #: naovoce/templates/pickers/detail.html:19
-#: naovoce/templates/pickers/index.html:19
-#: naovoce/templates/pickers/index.html:33
-msgid "markers added"
-msgstr "počet značek"
+msgid "Joined"
+msgstr "Mapuje od"
 
-#: naovoce/templates/pickers/detail.html:42
+#: naovoce/templates/pickers/detail.html:20
+msgid "Markers added"
+msgstr "Počet značek"
+
+#: naovoce/templates/pickers/detail.html:43
 msgid "Account settings"
 msgstr "Nastavení účtu"
 
-#: naovoce/templates/pickers/detail.html:43
+#: naovoce/templates/pickers/detail.html:44
 msgid "My messages"
 msgstr "Mé zprávy"
 
-#: naovoce/templates/pickers/detail.html:49
+#: naovoce/templates/pickers/detail.html:50
 #: naovoce/templates/socialaccount/connections.html:12
 msgid "Account connections"
 msgstr "Propojení účtu"
@@ -935,6 +942,11 @@ msgstr "Seznam sběračů"
 #: naovoce/templates/pickers/index.html:11
 msgid "Top Contributors"
 msgstr "Nejaktivnější přispěvatelé"
+
+#: naovoce/templates/pickers/index.html:19
+#: naovoce/templates/pickers/index.html:33
+msgid "markers added"
+msgstr "počet značek"
 
 #: naovoce/templates/pickers/index.html:25
 msgid "Top Contributors Last Month"
@@ -1087,7 +1099,7 @@ msgstr "Oprávnění"
 msgid "Important dates"
 msgstr "Sůležitá data"
 
-#: user/forms.py:10 user/forms.py:42 user/models.py:57
+#: user/forms.py:10 user/forms.py:42 user/models.py:59
 msgid "username"
 msgstr "uživatelské jméno"
 
@@ -1130,31 +1142,31 @@ msgstr ""
 msgid "Username or e-mail"
 msgstr "Uživatelské jméno nebo e-mail"
 
-#: user/models.py:58
+#: user/models.py:60
 msgid "email address"
 msgstr "e-mail"
 
-#: user/models.py:60
+#: user/models.py:62
 msgid "first name"
 msgstr "jméno"
 
-#: user/models.py:61
+#: user/models.py:63
 msgid "last name"
 msgstr "příjmení"
 
-#: user/models.py:63
+#: user/models.py:65
 msgid "staff status"
 msgstr "personál"
 
-#: user/models.py:65
+#: user/models.py:67
 msgid "Designates whether the user can sign into this admin site."
 msgstr "Označuje, jestli se uživatel může přihlásit do administrátorské sekce."
 
-#: user/models.py:68
+#: user/models.py:70
 msgid "active"
 msgstr "aktivní"
 
-#: user/models.py:70
+#: user/models.py:72
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
@@ -1162,58 +1174,58 @@ msgstr ""
 "Označuje, jestli má být uživatel brán jako aktivní. Odškrtněte namísto "
 "mazání účtu."
 
-#: user/models.py:73
+#: user/models.py:75
 msgid "verified"
 msgstr "ověřeno"
 
-#: user/models.py:74
+#: user/models.py:76
 msgid "date joined"
 msgstr "přidal se"
 
-#: user/models.py:75
+#: user/models.py:77
 msgid "motto"
 msgstr "motto"
 
-#: user/models.py:77
+#: user/models.py:87
 msgid "avatar"
 msgstr "avatar"
 
-#: user/models.py:81
+#: user/models.py:91
 msgid "User avatar"
 msgstr "Avatar uživatele"
 
-#: user/models.py:127
+#: user/models.py:141
 msgid "users"
 msgstr "uživatelé"
 
-#: user/models.py:136
+#: user/models.py:150
 msgctxt "read"
 msgid "user.Message"
 msgstr "přečtená"
 
-#: user/models.py:137
+#: user/models.py:151
 msgctxt "Has been read or not."
 msgid "user.Message"
 msgstr "Byla přečtena nebo ne."
 
-#: user/models.py:141
+#: user/models.py:155
 msgctxt "system"
 msgid "user.Message"
 msgstr "systémová"
 
-#: user/models.py:142
+#: user/models.py:156
 msgid "System messages can be translated and can contain HTML."
 msgstr "Systémová zpráva může mít překlad a může obsahovat HTML."
 
-#: user/models.py:147
+#: user/models.py:161
 msgid "recipient"
 msgstr "příjemce"
 
-#: user/models.py:163
+#: user/models.py:177
 msgid "message"
 msgstr "zpráva"
 
-#: user/models.py:164
+#: user/models.py:178
 msgid "messages"
 msgstr "zprávy"
 
@@ -1226,7 +1238,7 @@ msgstr ""
 "Vítejte! Před tím, než začnete používat tyto stránky, prosíme, najděte si "
 "čas na přečtení našeho <a href=\"{url}\">kodexu</a>."
 
-#: user/views.py:92
+#: user/views.py:91
 msgid "Settings successfully updated."
 msgstr "Nastavení úspěšně upraveno."
 
@@ -1249,6 +1261,12 @@ msgstr "změněno"
 #: utils/templatetags/truncate.py:16
 msgid "Read more"
 msgstr "Čtěte více"
+
+#~ msgid "shared by"
+#~ msgstr "sdílí"
+
+#~ msgid "by"
+#~ msgstr "sdílí"
 
 #, fuzzy
 #~| msgid "Save changes"

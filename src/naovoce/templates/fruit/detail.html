@@ -15,28 +15,50 @@
 {% block map_active %}active{% endblock %}
 
 {% block content %}
-<div class="row">
-    <div class="col-sm-12">
-        <h3>{{ fruit.kind.name }}</h3>
-    </div>
-	{% if not fruit.deleted %}
-	    <div class="col-sm-12">
-		    <p class="location">
-			    <span class="geo">{% trans "Unknown address" %}</span><br>
-	            {{ fruit.latitude|stringformat:"f" }},&nbsp;{{ fruit.longitude|stringformat:"f" }}
-			    <span class="dms">({% dms_coords fruit.latitude fruit.longitude %})</span>
+<div class="row detail-info">
+	<div class="col-sm-6 media">
+		<span class="fruit-icon-huge pull-left media-object"
+		      style="color:#{{ fruit.kind.color }}">
+			&#x{{ fruit.kind.key }};
+		</span>
+	    <div class="media-body">
+            <h3>{{ fruit.kind.name }}</h3>
+		    <p>{% trans "Shared by" %}
+			    <strong>
+	                <a href="{% url 'pickers:detail' fruit.user.id %}">{{ fruit.user.username }}</a>
+			    </strong>
 		    </p>
+		    <p>{% trans "Added" %}: <strong>{{ fruit.created }}</strong></p>
 	    </div>
-	    <div class="col-sm-12">
-		    <div id="map-detail"></div>
+	</div>
+
+	{% if not fruit.deleted %}
+		<div class="col-sm-6">
+		    <p class="geo">{% trans "Unknown address" %}</p>
+		    <p>{{ fruit.latitude|stringformat:"f" }},&nbsp;{{ fruit.longitude|stringformat:"f" }}</p>
+		    <p>({% dms_coords fruit.latitude fruit.longitude %})</p>
 		</div>
 	{% else %}
-	    <div class="col-sm-12">
-			<h4>{% trans "This marker has been deleted" %}.</h4>
+	    <div class="col-sm-6">
+			<h3>{% trans "This marker has been deleted" %}.</h3>
 		    {% if fruit.why_deleted %}
-	            <p>{% trans 'Reason of deletion' %}: {{ fruit.why_deleted }}</p>
+	            <p>{% trans 'Reason of deletion' %}: <strong>{{ fruit.why_deleted }}</strong></p>
 		    {% endif %}
-	        <hr>
+		</div>
+	{% endif %}
+
+	{% if fruit.description %}
+	    <div class="col-sm-12">
+		    <div class="fruit-description">
+	            <p><strong>{% trans "Description" %}:</strong> {{ fruit.description }}</p>
+		    </div>
+	    </div>
+	{% endif %}
+</div>
+<div class="row">
+	{% if not fruit.deleted %}
+	    <div class="col-sm-12">
+		    <div id="map-detail"></div>
 		</div>
 	{% endif %}
 
@@ -58,25 +80,6 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-sm-8 media">
-	{% with name=fruit.user.get_short_name %}
-		<img src="{% avatar fruit.user 100 0.3 %}" title="{{ name }}"
-		     class="pull-left media-object avatar">
-		<p class="media-body comment">
-			<span class="author">
-				<a href="{{ fruit.user.get_absolute_url }}">{{ name }}</a>
-				<span class="created">
-					{{ fruit.created|date:'SHORT_DATETIME_FORMAT' }}
-				</span>
-			</span>
-			{{ fruit.description }}
-		</p>
-	{% endwith %}
-    </div>
-</div>
-
-<hr>
 {% include 'comments/inc/comments.html' %}
 
 {% endblock %}
