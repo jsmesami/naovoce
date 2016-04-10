@@ -22,10 +22,16 @@
 			&#x{{ fruit.kind.key }};
 		</span>
 	    <div class="media-body">
-            <h3>{{ fruit.kind.name }}</h3>
+            {% with herbarium=fruit.kind.herbarium %}
+	            {% if herbarium %}
+	                <h3><a href="{{ herbarium.get_absolute_url }}">{{ fruit.kind.name }}</a></h3>
+	            {% else %}
+		            <h3>{{ fruit.kind.name }}</h3>
+	            {% endif %}
+            {% endwith %}
 		    <p>{% trans "Shared by" %}
 			    <strong>
-	                <a href="{% url 'pickers:detail' fruit.user.id %}">{{ fruit.user.username }}</a>
+	                <a href="{% url 'pickers:detail' fruit.user.id fruit.user.slug %}">{{ fruit.user.username }}</a>
 			    </strong>
 		    </p>
 		    <p>{% trans "Added" %}: <strong>{{ fruit.created }}</strong></p>
@@ -80,7 +86,10 @@
     </div>
 </div>
 
-{% include 'comments/inc/comments.html' %}
+<div class="row">
+	{% include 'comments/inc/comments.html' %}
+	{% include 'gallery/inc/images.html' %}
+</div>
 
 {% endblock %}
 
@@ -92,6 +101,7 @@
 {% block scripts %}
 	{{ block.super }}
 	{% include 'comments/inc/commentsjs.html' %}
+	{% include 'gallery/inc/imagesjs.html' %}
 	{% if not fruit.deleted %}
 	<script src="{% static 'components/leaflet/dist/leaflet.js' %}"></script>
 	<script src="{% static 'components/esri-leaflet/dist/esri-leaflet.js' %}"></script>

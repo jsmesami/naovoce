@@ -1,0 +1,41 @@
+{% load i18n %}
+{% load bootstrap %}
+{% load thumbs %}
+
+<div class="col-sm-4">
+{% if request.user.is_authenticated %}
+	<form action="" method="post" enctype="multipart/form-data" role="form"
+	      class="image_form {% if image_form.errors %}errors{% endif %}">
+		{% csrf_token %}
+			{{ image_form.non_field_errors }}
+			{{ image_form.image|bootstrap }}
+			{{ image_form.caption|bootstrap }}
+			<div class="tamper">
+				{{ image_form.tamper.errors }}
+				{{ image_form.tamper|bootstrap }}
+			</div>
+	        <input type="submit" class="btn btn-default" id="id_submit"
+	               value="{% trans 'Add a photo' %}">
+		<input type="hidden" name="token" value="{{ token }}">
+		<input type="hidden" name="image_form" value="image_form">
+	</form>
+{% else %}
+
+	<a href="{% url 'account_login' %}?next={{ request.path }}">
+		{% trans 'Sign in' context 'imperative' %}</a>
+	{% trans 'to add a photo' %}.
+
+{% endif %}
+{% if images %}
+	<hr>
+	<div class="img-cover">
+		<img src="{% get_thumb cover.image w=384 h=288 %}"
+		     alt="{{ cover.caption }}"
+		     class="img-responsive">
+		{% comment %}
+		Caption: {{ cover.caption }}
+		Photos in gallery: {{ images.count }}
+		{% endcomment %}
+	</div>
+{% endif %}
+</div>

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-06 12:20+0200\n"
-"PO-Revision-Date: 2016-04-06 12:24+0200\n"
+"POT-Creation-Date: 2016-04-07 15:30+0200\n"
+"PO-Revision-Date: 2016-04-07 15:34+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -51,7 +51,7 @@ msgstr "text"
 msgid "public from"
 msgstr "veřejný od"
 
-#: blog/models.py:52 comments/models.py:13 gallery/models.py:34
+#: blog/models.py:52 comments/models.py:13 gallery/models.py:42
 msgid "author"
 msgstr "autor"
 
@@ -67,11 +67,11 @@ msgstr "články"
 msgid "container"
 msgstr "kontejner"
 
-#: comments/forms.py:28 comments/utils.py:50
+#: comments/forms.py:20 comments/utils.py:50
 msgid "Comment not accepted."
 msgstr "Komentář nebyl přijat."
 
-#: comments/forms.py:35
+#: comments/forms.py:27
 msgid "You do not want to post empty comment, do you?"
 msgstr "Nechcete přece přidávat prázdný komentář, že ne?"
 
@@ -101,7 +101,7 @@ msgstr "Vaše stížnost byla zaslána administrátorům stránek."
 
 #: comments/utils.py:48
 msgid "Thank you for your comment."
-msgstr "Děkujeme za váš komentář"
+msgstr "Děkujeme za váš komentář."
 
 #: comments/utils.py:53
 msgid "You have to be signed-in to post comments."
@@ -274,35 +274,35 @@ msgstr "Byla učiněna stížnost."
 msgid "Please review the situation: https://na-ovoce.cz{url}"
 msgstr "Prosíme přezkoumejte situaci: https://na-ovoce.cz{url}"
 
-#: fruit/views.py:29
+#: fruit/views.py:30
 msgid "Send comment as a complaint"
 msgstr "Přidat komentář jako stížnost"
 
-#: fruit/views.py:36
+#: fruit/views.py:42
 msgid "To add markers, please first sign in."
 msgstr "K přidávání značek je potřeba se přihlásit."
 
-#: fruit/views.py:47
+#: fruit/views.py:53
 msgid "Thank you, the marker has been added."
 msgstr "Děkujeme, značka byla přidána."
 
-#: fruit/views.py:66
+#: fruit/views.py:72
 msgid "Only the owner is allowed edit her marker."
 msgstr "Pouze vlastník je oprávněn upravovat své značky."
 
-#: fruit/views.py:69
+#: fruit/views.py:75
 msgid "This marker has been deleted and cannot be edited."
 msgstr "Tato značka byla smazána a nelze ji editovat."
 
-#: fruit/views.py:83
+#: fruit/views.py:89
 msgid "Thank you, your changes have been saved."
 msgstr "Děkujeme, vaše změny byly uloženy."
 
-#: fruit/views.py:104
+#: fruit/views.py:110
 msgid "The marker has been deleted."
 msgstr "Tato značka byla smazána."
 
-#: gallery/admin.py:40 gallery/models.py:53 gallery/models.py:59
+#: gallery/admin.py:40 gallery/models.py:61 gallery/models.py:67
 msgid "images"
 msgstr "obrázky"
 
@@ -311,17 +311,29 @@ msgstr "obrázky"
 msgid "Content type {ct} is not supported."
 msgstr "Typ obsahu {ct} není podporován."
 
-#: gallery/models.py:25 gallery/models.py:52
+#: gallery/forms.py:20 gallery/utils.py:40
+msgid "Image not accepted."
+msgstr "Obrázek nebyl přijat."
+
+#: gallery/models.py:28 gallery/models.py:60
 msgid "image"
 msgstr "obrázek"
 
-#: gallery/models.py:26
+#: gallery/models.py:34
 msgid "caption"
 msgstr "titulek"
 
-#: gallery/models.py:66
+#: gallery/models.py:74
 msgid "cover image"
 msgstr "hlavní obrázek"
+
+#: gallery/utils.py:38
+msgid "Thank you for adding an image."
+msgstr "Děkujeme za přidání obrázku."
+
+#: gallery/utils.py:43
+msgid "You have to be signed-in to ad images."
+msgstr "Abyste mohli přidávat obrázky, musíte se přihlásit."
 
 #: naovoce/api/views.py:24
 msgid "Not found."
@@ -585,7 +597,6 @@ msgid "Your password is reset, you may now"
 msgstr "Vaše heslo je obnoveno, nyní se můžete"
 
 #: naovoce/templates/account/password_reset_from_key_done.html:10
-#: naovoce/templates/comments/inc/comments.html:30
 msgid "sign in"
 msgstr "přihlásit"
 
@@ -668,16 +679,22 @@ msgstr "Kategorie"
 msgid "all"
 msgstr "vše"
 
-#: naovoce/templates/comments/inc/comments.html:23
+#: naovoce/templates/comments/inc/comments.html:21
 #: naovoce/templates/comments/inc/commentsjs.html:7
 msgid "Add your comment"
 msgstr "Přidejte svůj komentář"
 
-#: naovoce/templates/comments/inc/comments.html:29
-msgid "To add your comment, please first"
-msgstr "Abyste mohli přidat komentář, musíte se nejdříve"
+#: naovoce/templates/comments/inc/comments.html:28
+#: naovoce/templates/gallery/inc/images.html:25
+msgctxt "imperative"
+msgid "Sign in"
+msgstr "Přihlašte se"
 
-#: naovoce/templates/comments/inc/comments.html:57
+#: naovoce/templates/comments/inc/comments.html:29
+msgid "to add your comment"
+msgstr "k přidání komentáře"
+
+#: naovoce/templates/comments/inc/comments.html:54
 msgid "This comment has been rejected by moderator."
 msgstr "Tento komentář byl zamítnut moderátorem."
 
@@ -720,43 +737,43 @@ msgstr "Sdílí"
 msgid "Added"
 msgstr "Přidáno"
 
-#: naovoce/templates/fruit/detail.html:36
+#: naovoce/templates/fruit/detail.html:37
 msgid "Unknown address"
 msgstr "Neznámá adresa"
 
-#: naovoce/templates/fruit/detail.html:42
+#: naovoce/templates/fruit/detail.html:43
 msgid "This marker has been deleted"
 msgstr "Tato značka byla smazána"
 
-#: naovoce/templates/fruit/detail.html:44
+#: naovoce/templates/fruit/detail.html:45
 msgid "Reason of deletion"
 msgstr "Důvod smazání"
 
-#: naovoce/templates/fruit/detail.html:52 naovoce/templates/inc/mapjs.html:103
+#: naovoce/templates/fruit/detail.html:53 naovoce/templates/inc/mapjs.html:103
 msgid "Description"
 msgstr "Popis"
 
-#: naovoce/templates/fruit/detail.html:65
+#: naovoce/templates/fruit/detail.html:67
 #: naovoce/templates/fruit/inc/fruitform.html:24
-#: naovoce/templates/pickers/detail.html:38
+#: naovoce/templates/pickers/detail.html:37
 msgid "Large map"
 msgstr "Velká mapa"
 
-#: naovoce/templates/fruit/detail.html:67
+#: naovoce/templates/fruit/detail.html:69
 msgid "Edit"
 msgstr "Upravit"
 
-#: naovoce/templates/fruit/detail.html:68
+#: naovoce/templates/fruit/detail.html:70
 msgid "Delete"
 msgstr "Smazat"
 
-#: naovoce/templates/fruit/detail.html:70
+#: naovoce/templates/fruit/detail.html:72
 #: naovoce/templates/fruit/inc/fruitform.html:20
-#: naovoce/templates/pickers/detail.html:39
+#: naovoce/templates/pickers/detail.html:38
 msgid "Add marker"
 msgstr "Přidat značku"
 
-#: naovoce/templates/fruit/detail.html:73
+#: naovoce/templates/fruit/detail.html:75
 #: naovoce/templates/fruit/herbarium.html:13
 #: naovoce/templates/fruit/herbarium.html:15
 #: naovoce/templates/inc/footer.html:29
@@ -780,6 +797,15 @@ msgstr "Filtr"
 #: naovoce/templates/pickers/settings.html:48
 msgid "Save changes"
 msgstr "Uložit změny"
+
+#: naovoce/templates/gallery/inc/images.html:18
+#: naovoce/templates/gallery/inc/imagesjs.html:7
+msgid "Add a photo"
+msgstr "Přidejte fotku"
+
+#: naovoce/templates/gallery/inc/images.html:26
+msgid "to add a photo"
+msgstr "k přidání fotky"
 
 #: naovoce/templates/home.html:10
 msgid ""
@@ -1247,7 +1273,7 @@ msgid "Please upload file up to {}. Your file size is {}."
 msgstr "Je povoleno nahrávat soubory do velikosti {}. Váš soubor má ale {}."
 
 #: utils/fields.py:53
-msgid "Filetype not supported."
+msgid "File type not supported."
 msgstr "Tento typ souboru není podporován."
 
 #: utils/models.py:13
@@ -1261,6 +1287,9 @@ msgstr "změněno"
 #: utils/templatetags/truncate.py:16
 msgid "Read more"
 msgstr "Čtěte více"
+
+#~ msgid "To add your comment, please first"
+#~ msgstr "Abyste mohli přidat komentář, musíte se nejdříve"
 
 #~ msgid "shared by"
 #~ msgstr "sdílí"
