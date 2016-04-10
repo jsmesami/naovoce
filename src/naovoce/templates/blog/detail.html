@@ -13,7 +13,7 @@
 	<meta property="og:url" content="{% full_url entry.get_absolute_url %}">
 	<meta property="og:type" content="article">
 	<meta property="og:title" content="{{ entry.title }}">
-	{% cache_thumb entry.get_cover_image w=700 h=500 as cover_image %}
+	{% cache_thumb entry.get_cover_image.image w=700 h=500 as cover_image %}
 	<meta property="og:image" content="{% full_url cover_image %}">
 {% endblock %}
 
@@ -25,7 +25,9 @@
 	<hr>
 	{% include 'inc/social.html' %}
 	<hr>
-	{% include 'comments/inc/comments.html' %}
+	<div class="row">
+		{% include 'comments/inc/comments.html' %}
+	</div>
 {% endblock %}
 
 {% block scripts %}

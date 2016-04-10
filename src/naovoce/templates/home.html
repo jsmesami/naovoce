@@ -33,7 +33,7 @@
 			{% with url=entry.get_absolute_url %}
 			<div class="media">
 				<a href="{{ url }}" class="pull-left">
-					<img src="{% get_thumb entry.get_cover_image w=100 %}"
+					<img src="{% get_thumb entry.get_cover_image.image w=100 %}"
 					     alt="{{ entry.title }}"
 					     class="media-object">
 				</a>
@@ -81,7 +81,7 @@
 			<h4>{% trans 'Latest Comments' %}</h4>
 			{% for c in comments|slice:'4' %}
 			<div class="media">
-				<p class="media-body comment {% if c.complaint %}complaint{% endif %}">
+				<p class="media-body comment-text {% if c.complaint %}complaint{% endif %}">
 					<span class="author"><a href="{{ c.author_url }}">{{ c.author }}</a></span>
 					<a href="{{ c.url }}">{{ c.text|prepos|truncatewords:10 }}</a>
 				</p>

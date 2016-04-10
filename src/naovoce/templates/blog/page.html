@@ -13,11 +13,11 @@
 			<hr class="unspaced">
 			<h3>
 				<a href="{{ url }}">{{ entry.title }}</a><br>
-				<span class="small">{{ entry.public_from|date:'SHORT_DATE_FORMAT' }}</span>
+				<small>{{ entry.public_from|date:'SHORT_DATE_FORMAT' }}</small>
 			</h3>
 		</div>
 		<a href="{{ url }}" class="col-xs-12 col-sm-3">
-			<img src="{% get_thumb entry.get_cover_image w=700 h=500 %}"
+			<img src="{% get_thumb entry.get_cover_image.image w=700 h=500 %}"
 			     alt="{{ entry.title }}"
 			     class="img-responsive img-in-text">
 		</a>

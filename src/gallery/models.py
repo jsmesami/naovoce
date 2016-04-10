@@ -7,11 +7,13 @@ from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import ugettext_lazy as _
 
-from sorl.thumbnail import ImageField
-
+from utils.fields import ContentTypeRestrictedImageField
 from utils.models import TimeStampedModel
 
 from .managers import GalleryManager
+
+
+IMAGE_MAX_FILESIZE = getattr(settings, 'IMAGE_MAX_FILESIZE', 5 * 1024 * 1024)  # 5 MB
 
 
 class Image(TimeStampedModel):
@@ -22,7 +24,13 @@ class Image(TimeStampedModel):
             file=self._mangle_name(filename),
         )
 
-    image = ImageField(_('image'), upload_to=_upload_to)
+    image = ContentTypeRestrictedImageField(
+        _('image'),
+        upload_to=_upload_to,
+        content_types=['image/jpeg'],
+        max_upload_size=IMAGE_MAX_FILESIZE
+    )
+
     caption = models.CharField(_('caption'), max_length=140, blank=True)
 
     gallery_ct = models.ForeignKey(ContentType)
@@ -73,8 +81,8 @@ class GalleryModel(models.Model):
     objects = GalleryManager()
 
     def get_cover_image(self):
-        image = self.cover_image or self.images.first()
-        return image.image if image else None
+        image = self.cover_image or self.images.order_by('created').first()
+        return image or None
 
     class Meta:
         abstract = True
