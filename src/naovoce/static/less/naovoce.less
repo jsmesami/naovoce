@@ -39,15 +39,16 @@ textarea {
 	padding: 0 30px;
 }
 
+small {
+	color: @brand-primary;
+	font-weight: normal;
+}
+
 .heading-color(@col) {
 	color: @col;
 	a {
 		color: @col;
 		&:hover { color: darken(@col, 15%); }
-	}
-	.small {
-		color: @brand-primary;
-		font-weight: normal;
 	}
 }
 
@@ -105,6 +106,7 @@ form {
 	.btn + a {
 		margin-left: 10px;
 	}
+	&.image_form,
 	&.comment_form {
 		display: none;
 		&.errors {
@@ -618,7 +620,11 @@ a.read-more {
 	}
 }
 
-.comment {
+.comment:last-of-type {
+	margin-bottom: 20px;
+}
+
+.comment-text {
 	height: 50px;
 	position: relative;
 	padding: 10px;

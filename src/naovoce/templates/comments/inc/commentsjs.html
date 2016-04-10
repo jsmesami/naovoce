@@ -4,7 +4,7 @@
 	commentsForm = $ 'form.comment_form'
 
 	if not commentsForm.hasClass 'errors'
-		$ "<p><a href='#'>{% trans 'Add your comment' %}.</a></p>"
+		$ "<a href='#'>{% trans 'Add your comment' %}.</a>"
 			.insertBefore commentsForm
 			.one 'click', ->
 				this.remove()

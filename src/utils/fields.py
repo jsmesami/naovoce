@@ -36,7 +36,7 @@ class ContentTypeRestrictedFileField(models.FileField):
         super().__init__(*args, **kwargs)
 
     def clean(self, *args, **kwargs):
-        data = super(ContentTypeRestrictedFileField, self).clean(*args, **kwargs)
+        data = super().clean(*args, **kwargs)
 
         file = data.file
         if file and hasattr(file, 'content_type'):
@@ -50,7 +50,7 @@ class ContentTypeRestrictedFileField(models.FileField):
                         )
                     )
             else:
-                raise forms.ValidationError(_('Filetype not supported.'))
+                raise forms.ValidationError(_('File type not supported.'))
 
         return data
 

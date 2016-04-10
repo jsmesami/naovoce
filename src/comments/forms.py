@@ -5,20 +5,12 @@ from .models import Comment
 
 
 class CommentForm(forms.ModelForm):
-    # honeypot
     tamper = forms.CharField(
         required=False,
         label='If you are not human, please fill this',
         max_length=255,
         widget=forms.Textarea(),
     )
-
-    class Meta:
-        model = Comment
-        fields = 'text', 'tamper'
-        widgets = {
-            'text': forms.Textarea(attrs={'rows': 3}),
-        }
 
     def clean(self):
         cleaned_data = super().clean()
@@ -35,6 +27,13 @@ class CommentForm(forms.ModelForm):
             raise forms.ValidationError(_('You do not want to post empty comment, do you?'))
 
         return text
+
+    class Meta:
+        model = Comment
+        fields = 'text', 'tamper'
+        widgets = {
+            'text': forms.Textarea(attrs={'rows': 3}),
+        }
 
 
 def comment_form_factory(with_complaints=False, complaint_label=None):
