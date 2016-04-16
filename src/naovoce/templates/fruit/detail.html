@@ -88,7 +88,7 @@
 
 <div class="row">
 	{% include 'comments/inc/comments.html' %}
-	{% include 'gallery/inc/images.html' %}
+	{% include 'gallery/inc/link.html' %}
 </div>
 
 {% endblock %}
@@ -100,8 +100,8 @@
 
 {% block scripts %}
 	{{ block.super }}
-	{% include 'comments/inc/commentsjs.html' %}
-	{% include 'gallery/inc/imagesjs.html' %}
+	{% include 'comments/inc/formjs.html' %}
+	{% include 'gallery/inc/formjs.html' %}
 	{% if not fruit.deleted %}
 	<script src="{% static 'components/leaflet/dist/leaflet.js' %}"></script>
 	<script src="{% static 'components/esri-leaflet/dist/esri-leaflet.js' %}"></script>

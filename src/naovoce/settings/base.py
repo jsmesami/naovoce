@@ -290,3 +290,5 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     )
 }
+
+GALLERY_PUBLIC_CONTAINERS = 'fruit',

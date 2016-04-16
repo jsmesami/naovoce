@@ -8,7 +8,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.translation import ugettext, ugettext_lazy as _
 
 from comments.utils import get_comments_context
-from gallery.utils import get_images_context
+from gallery.utils import get_gallery_context
 from .forms import FruitForm, FruitDeleteForm
 from .models import Fruit, Kind
 
@@ -29,7 +29,7 @@ def detail(request, fruit_id):
         with_complaints=True,
         complaint_label=_('Send comment as a complaint'),
     ))
-    context.update(get_images_context(
+    context.update(get_gallery_context(
         request,
         container=fruit,
     ))

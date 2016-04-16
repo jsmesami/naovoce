@@ -1,10 +1,10 @@
 {% load i18n %}
 
 <script type="text/coffeescript">
-	imageForm = $ 'form.image_form'
+	imageForm = $ 'form.image-form'
 
 	if not imageForm.hasClass 'errors'
-		$ "<a href='#'>{% trans 'Add a photo' %}.</a>"
+		$ "<a href='#'>{% trans 'Add a photo' %}</a>"
 			.insertBefore imageForm
 			.one 'click', ->
 				this.remove()

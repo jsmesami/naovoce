@@ -106,8 +106,8 @@ form {
 	.btn + a {
 		margin-left: 10px;
 	}
-	&.image_form,
-	&.comment_form {
+	&.image-form,
+	&.comment-form {
 		display: none;
 		&.errors {
 			display: block;
@@ -560,12 +560,6 @@ a.read-more {
 	width: 100px;
 }
 
-.thumbs img {
-	.make-sm-column(6);
-	.img-responsive;
-	margin: @grid-gutter-width/2 0;
-}
-
 .columned {
 	@media (min-width: @screen-xs-max) {
 		-webkit-column-count: 2;
@@ -666,5 +660,61 @@ a.read-more {
 		&:after {
 			border-color: transparent @state-danger-bg;
 		}
+	}
+}
+
+.gallery-link {
+	display: block;
+	color: white;
+	&:active,
+	&:hover {
+		color: white;
+	}
+	span {
+		background: @brand-secondary;
+		line-height: 2em;
+		display: block;
+		padding: 0 0.8em 0.1em;
+		width: 100%;
+	}
+}
+
+.thumb-large {
+	.make-sm-column(6);
+	margin: @grid-gutter-width/2 0;
+	display: block;
+	img {
+		.img-responsive;
+	}
+	.caption {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		padding: 5px 10px;
+		margin: 0 @grid-gutter-width/2;
+		background: rgba(0, 0, 0, 0.4);
+		color: white;
+		font-size: 90%;
+		font-style: italic;
+		opacity: 1;
+		transition: opacity 1s;
+	}
+	&:active,
+	&:hover {
+		.caption {
+			opacity: 0;
+		}
+	}
+}
+
+.browser {
+	margin: @grid-gutter-width/2 0;
+	max-height: 600px;
+	.img-current {
+		display: block;
+		margin: 0 auto;
+		max-width: 100%;
+		max-height: 600px;
 	}
 }

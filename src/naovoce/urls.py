@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^herbarium/', include('fruit.herbarium.urls', namespace='herbarium')),
     url(r'^fruit/', include('fruit.urls', namespace='fruit')),
     url(r'^blog/', include('blog.urls', namespace='blog')),
+    url(r'^gallery/', include('gallery.urls', namespace='gallery')),
     url(r'^pickers/', include('user.urls', namespace='pickers')),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^accounts/profile/$', user.views.accounts_profile),

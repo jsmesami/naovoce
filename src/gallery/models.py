@@ -2,18 +2,18 @@ import os
 from uuid import uuid4
 
 from django.conf import settings
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
+from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
 from utils.fields import ContentTypeRestrictedImageField
 from utils.models import TimeStampedModel
 
+from .settings import GALLERY_PUBLIC_CONTAINERS, GALLERY_IMAGE_MAX_FILESIZE
 from .managers import GalleryManager
-
-
-IMAGE_MAX_FILESIZE = getattr(settings, 'IMAGE_MAX_FILESIZE', 5 * 1024 * 1024)  # 5 MB
 
 
 class Image(TimeStampedModel):
@@ -28,7 +28,7 @@ class Image(TimeStampedModel):
         _('image'),
         upload_to=_upload_to,
         content_types=['image/jpeg'],
-        max_upload_size=IMAGE_MAX_FILESIZE
+        max_upload_size=GALLERY_IMAGE_MAX_FILESIZE
     )
 
     caption = models.CharField(_('caption'), max_length=140, blank=True)
@@ -50,6 +50,9 @@ class Image(TimeStampedModel):
     @staticmethod
     def _mangle_name(filename):
         return uuid4().hex + os.path.splitext(filename)[1]
+
+    def get_absolute_url(self):
+        return reverse('gallery:browser', args=[self.gallery_ct.model, self.gallery_id, self.id])
 
     def __str__(self):
         filename, ext = os.path.splitext(os.path.basename(self.image.path))
@@ -83,6 +86,14 @@ class GalleryModel(models.Model):
     def get_cover_image(self):
         image = self.cover_image or self.images.order_by('created').first()
         return image or None
+
+    @cached_property
+    def images_index_url(self):
+        gallery_ct = ContentType.objects.get_for_model(self)
+        return reverse('gallery:index', args=[gallery_ct.model, self.id])
+
+    def is_gallery_public(self):
+        return self.__class__.__name__.lower() in GALLERY_PUBLIC_CONTAINERS
 
     class Meta:
         abstract = True

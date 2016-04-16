@@ -1,0 +1,27 @@
+{% load i18n %}
+{% load thumbs %}
+
+<div class="col-sm-4">
+{% include 'gallery/inc/form.html' %}
+
+{% if images %}
+	<hr>
+	{% with cover=container.get_cover_image %}
+		{% if images|length == 1 %}
+			<a href="{{ cover.get_absolute_url }}" class="gallery-link">
+		{% else %}
+			<a href="{{ container.images_index_url }}" class="gallery-link">
+		{% endif %}
+				<img src="{% get_thumb cover.image w=384 h=288 %}"
+				     alt="{{ cover.caption }}" class="img-responsive">
+	{% endwith %}
+				<span>
+				{% blocktrans count images_count=images|length trimmed %}
+					Open in gallery
+				{% plural %}
+					{{ images_count }} photos in gallery
+				{% endblocktrans %}
+				</span>
+			</a>
+{% endif %}
+</div>

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-07 15:30+0200\n"
-"PO-Revision-Date: 2016-04-07 15:34+0200\n"
+"POT-Creation-Date: 2016-04-15 18:45+0200\n"
+"PO-Revision-Date: 2016-04-15 18:09+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -302,7 +302,7 @@ msgstr "Děkujeme, vaše změny byly uloženy."
 msgid "The marker has been deleted."
 msgstr "Tato značka byla smazána."
 
-#: gallery/admin.py:40 gallery/models.py:61 gallery/models.py:67
+#: gallery/admin.py:40 gallery/models.py:64 gallery/models.py:70
 msgid "images"
 msgstr "obrázky"
 
@@ -311,11 +311,11 @@ msgstr "obrázky"
 msgid "Content type {ct} is not supported."
 msgstr "Typ obsahu {ct} není podporován."
 
-#: gallery/forms.py:20 gallery/utils.py:40
+#: gallery/forms.py:20 gallery/utils.py:41
 msgid "Image not accepted."
 msgstr "Obrázek nebyl přijat."
 
-#: gallery/models.py:28 gallery/models.py:60
+#: gallery/models.py:28 gallery/models.py:63
 msgid "image"
 msgstr "obrázek"
 
@@ -323,16 +323,16 @@ msgstr "obrázek"
 msgid "caption"
 msgstr "titulek"
 
-#: gallery/models.py:74
+#: gallery/models.py:77
 msgid "cover image"
 msgstr "hlavní obrázek"
 
-#: gallery/utils.py:38
+#: gallery/utils.py:39
 msgid "Thank you for adding an image."
 msgstr "Děkujeme za přidání obrázku."
 
-#: gallery/utils.py:43
-msgid "You have to be signed-in to ad images."
+#: gallery/utils.py:44
+msgid "You have to be signed-in to add images."
 msgstr "Abyste mohli přidávat obrázky, musíte se přihlásit."
 
 #: naovoce/api/views.py:24
@@ -679,24 +679,24 @@ msgstr "Kategorie"
 msgid "all"
 msgstr "vše"
 
-#: naovoce/templates/comments/inc/comments.html:21
-#: naovoce/templates/comments/inc/commentsjs.html:7
+#: naovoce/templates/comments/inc/comments.html:30
+msgid "This comment has been rejected by moderator."
+msgstr "Tento komentář byl zamítnut moderátorem."
+
+#: naovoce/templates/comments/inc/form.html:18
+#: naovoce/templates/comments/inc/formjs.html:7
 msgid "Add your comment"
 msgstr "Přidejte svůj komentář"
 
-#: naovoce/templates/comments/inc/comments.html:28
-#: naovoce/templates/gallery/inc/images.html:25
+#: naovoce/templates/comments/inc/form.html:24
+#: naovoce/templates/gallery/inc/form.html:22
 msgctxt "imperative"
 msgid "Sign in"
 msgstr "Přihlašte se"
 
-#: naovoce/templates/comments/inc/comments.html:29
+#: naovoce/templates/comments/inc/form.html:25
 msgid "to add your comment"
 msgstr "k přidání komentáře"
-
-#: naovoce/templates/comments/inc/comments.html:54
-msgid "This comment has been rejected by moderator."
-msgstr "Tento komentář byl zamítnut moderátorem."
 
 #: naovoce/templates/fruit/add.html:6
 msgid "Add a Marker"
@@ -728,52 +728,52 @@ msgctxt "infinitive"
 msgid "Delete"
 msgstr "Smazat značku"
 
-#: naovoce/templates/fruit/detail.html:26 naovoce/templates/home.html:76
+#: naovoce/templates/fruit/detail.html:32 naovoce/templates/home.html:76
 #: naovoce/templates/inc/mapjs.html:99
 msgid "Shared by"
 msgstr "Sdílí"
 
-#: naovoce/templates/fruit/detail.html:31
+#: naovoce/templates/fruit/detail.html:37
 msgid "Added"
 msgstr "Přidáno"
 
-#: naovoce/templates/fruit/detail.html:37
+#: naovoce/templates/fruit/detail.html:43
 msgid "Unknown address"
 msgstr "Neznámá adresa"
 
-#: naovoce/templates/fruit/detail.html:43
+#: naovoce/templates/fruit/detail.html:49
 msgid "This marker has been deleted"
 msgstr "Tato značka byla smazána"
 
-#: naovoce/templates/fruit/detail.html:45
+#: naovoce/templates/fruit/detail.html:51
 msgid "Reason of deletion"
 msgstr "Důvod smazání"
 
-#: naovoce/templates/fruit/detail.html:53 naovoce/templates/inc/mapjs.html:103
+#: naovoce/templates/fruit/detail.html:59 naovoce/templates/inc/mapjs.html:103
 msgid "Description"
 msgstr "Popis"
 
-#: naovoce/templates/fruit/detail.html:67
+#: naovoce/templates/fruit/detail.html:73
 #: naovoce/templates/fruit/inc/fruitform.html:24
 #: naovoce/templates/pickers/detail.html:37
 msgid "Large map"
 msgstr "Velká mapa"
 
-#: naovoce/templates/fruit/detail.html:69
+#: naovoce/templates/fruit/detail.html:75
 msgid "Edit"
 msgstr "Upravit"
 
-#: naovoce/templates/fruit/detail.html:70
+#: naovoce/templates/fruit/detail.html:76
 msgid "Delete"
 msgstr "Smazat"
 
-#: naovoce/templates/fruit/detail.html:72
+#: naovoce/templates/fruit/detail.html:78
 #: naovoce/templates/fruit/inc/fruitform.html:20
 #: naovoce/templates/pickers/detail.html:38
 msgid "Add marker"
 msgstr "Přidat značku"
 
-#: naovoce/templates/fruit/detail.html:75
+#: naovoce/templates/fruit/detail.html:81
 #: naovoce/templates/fruit/herbarium.html:13
 #: naovoce/templates/fruit/herbarium.html:15
 #: naovoce/templates/inc/footer.html:29
@@ -798,14 +798,44 @@ msgstr "Filtr"
 msgid "Save changes"
 msgstr "Uložit změny"
 
-#: naovoce/templates/gallery/inc/images.html:18
-#: naovoce/templates/gallery/inc/imagesjs.html:7
+#: naovoce/templates/gallery/browser.html:7
+#: naovoce/templates/gallery/browser.html:51
+#: naovoce/templates/gallery/index.html:6
+msgid "Gallery"
+msgstr "Galerie"
+
+#: naovoce/templates/gallery/browser.html:33
+msgid "Author"
+msgstr "Autor"
+
+#: naovoce/templates/gallery/browser.html:35
+msgid "added"
+msgstr "přidáno"
+
+#: naovoce/templates/gallery/browser.html:42
+msgid "Previous"
+msgstr "Předchozí"
+
+#: naovoce/templates/gallery/browser.html:47
+msgid "Next"
+msgstr "Následující"
+
+#: naovoce/templates/gallery/inc/form.html:16
+#: naovoce/templates/gallery/inc/formjs.html:7
 msgid "Add a photo"
 msgstr "Přidejte fotku"
 
-#: naovoce/templates/gallery/inc/images.html:26
+#: naovoce/templates/gallery/inc/form.html:23
 msgid "to add a photo"
 msgstr "k přidání fotky"
+
+#: naovoce/templates/gallery/inc/link.html:18
+#, python-format
+msgid "Open in gallery"
+msgid_plural "%(images_count)s photos in gallery"
+msgstr[0] "Otevřít v galerii"
+msgstr[1] "%(images_count)s fotky v galerii"
+msgstr[2] "%(images_count)s fotek v galerii"
 
 #: naovoce/templates/home.html:10
 msgid ""
@@ -1089,15 +1119,15 @@ msgstr "Poděkování"
 msgid "Sincere thanks to Maik Allen for helping us with translations."
 msgstr "Srdečné poděkování Maikovi Allenovi za pomoc s překladem stránky."
 
-#: naovoce/urls.py:39
+#: naovoce/urls.py:40
 msgid "^map/$"
 msgstr "^mapa/$"
 
-#: naovoce/urls.py:40
+#: naovoce/urls.py:41
 msgid "^about-us/$"
 msgstr "^o-nas/$"
 
-#: naovoce/urls.py:42
+#: naovoce/urls.py:43
 msgid "^codex/$"
 msgstr "^kodex/$"
 
@@ -1288,6 +1318,15 @@ msgstr "změněno"
 msgid "Read more"
 msgstr "Čtěte více"
 
+#, fuzzy
+#~| msgid "%(images_count)s photos in gallery"
+#~| msgid_plural "%(images_count)s photos in gallery"
+#~ msgid "%(images_count)s photos in gallery"
+#~ msgid_plural "%(images_count)s photos in gallery"
+#~ msgstr[0] "%(images_count)s fotka v galerii"
+#~ msgstr[1] "%(images_count)s fotky v galerii"
+#~ msgstr[2] "%(images_count)s fotek v galerii"
+
 #~ msgid "To add your comment, please first"
 #~ msgstr "Abyste mohli přidat komentář, musíte se nejdříve"
 
@@ -1374,12 +1413,6 @@ msgstr "Čtěte více"
 #~ msgctxt "add comment"
 #~ msgid "sign in"
 #~ msgstr "přihlásit"
-
-#~ msgid "gallery"
-#~ msgstr "galerie"
-
-#~ msgid "Gallery"
-#~ msgstr "Galerie"
 
 #~ msgid "photos count"
 #~ msgstr "počet fotek"

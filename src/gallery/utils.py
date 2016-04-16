@@ -8,15 +8,16 @@ from .forms import ImageUploadForm
 from . import signals
 
 
-def get_images_context(request, container):
+def get_gallery_context(request, container):
     """
     Returns additional context for image-uploading views.
     """
 
     gallery_ct = ContentType.objects.get_for_model(container)
     token = str(Token(gallery_ct.id, container.id))
+    public = container.is_gallery_public()
 
-    if request.method == 'POST' and 'image_form' in request.POST:
+    if public and request.method == 'POST' and 'image_form' in request.POST:
         if request.user.is_authenticated():
             form = ImageUploadForm(request.POST, request.FILES)
             if form.is_valid():
@@ -42,7 +43,7 @@ def get_images_context(request, container):
             form = ImageUploadForm()
             messages.error(request, ugettext('You have to be signed-in to add images.'))
     else:
-        form = ImageUploadForm()
+        form = ImageUploadForm() if public else None
 
     return {
         'image_form': form,
@@ -50,6 +51,6 @@ def get_images_context(request, container):
         'images': Image.objects.filter(
             gallery_ct=gallery_ct,
             gallery_id=container.id,
-        ).prefetch_related('author'),
-        'cover': container.get_cover_image(),
+        ).select_related('author'),
+        'container': container,
     }

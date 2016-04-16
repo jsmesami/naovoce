@@ -3,6 +3,7 @@ import re
 
 from django.utils.encoding import force_str
 from django.utils.safestring import mark_safe
+from django.template.loader import get_template
 from django.template.base import Library
 from django.conf import settings
 from django.template.defaultfilters import stringfilter
@@ -50,23 +51,16 @@ _IMG_PKS_RE = re.compile(r'(\d+)')
 
 
 @register.simple_tag(takes_context=True)
-def text_with_thumbs(context, text, w=None, h=None):
+def text_with_thumbs(context, text, template_name='gallery/inc/thumbs.html'):
 
     def img_tag_replace(match):
         # get list of primary keys:
         pks = [int(pk) for pk in _IMG_PKS_RE.findall(match.group(0))]
-        images = Image.objects.filter(pk__in=pks).values_list('image', 'caption', 'id')
+        images = list(Image.objects.filter(pk__in=pks))
         # sort qs to maintain pks order:
-        images = sorted(images, key=lambda i: pks.index(i[2]))
+        context['images'] = sorted(images, key=lambda i: pks.index(i.id))
 
-        return '<div class="row thumbs">{images}</div>'.format(
-            images=''.join(
-                '<img src="{src}" alt="{alt}">'.format(
-                    src=get_thumb(context, image, w, h),
-                    alt=caption
-                ) for (image, caption, pk) in images
-            )
-        )
+        return get_template(template_name).render(context)
 
     return mark_safe(_IMG_TAG_RE.sub(img_tag_replace, force_str(text)))
 

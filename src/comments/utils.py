@@ -60,5 +60,5 @@ def get_comments_context(request, container, with_complaints=False, complaint_la
         'comments': Comment.objects.filter(
             content_type=comment_type,
             object_id=container.id,
-        ).prefetch_related('author'),
+        ).select_related('author'),
     }

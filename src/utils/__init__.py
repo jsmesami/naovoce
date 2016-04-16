@@ -1,5 +1,6 @@
 import locale
 from operator import itemgetter, attrgetter
+from itertools import tee, islice, chain
 
 
 def naturalsort(iterable, key=None):
@@ -21,6 +22,16 @@ def trim_words(s, max_chars, separator=' '):
     """
     if max_chars and len(s) >= max_chars:
         head, sep, tail = s[:max_chars].rpartition(separator)
-        return (head or tail)+'...'
+        return (head or tail) + '...'
     else:
         return s
+
+
+def to_linkedlist(iterable):
+    """
+    Convert iterable into (prev, current, next) triplets
+    """
+    prevs, items, nexts = tee(iterable, 3)
+    prevs = chain([None], prevs)
+    nexts = chain(islice(nexts, 1, None), [None])
+    return zip(prevs, items, nexts)
