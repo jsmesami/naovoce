@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-15 18:45+0200\n"
-"PO-Revision-Date: 2016-04-15 18:09+0200\n"
+"POT-Creation-Date: 2016-04-16 16:09+0200\n"
+"PO-Revision-Date: 2016-04-16 16:09+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -683,18 +683,18 @@ msgstr "vše"
 msgid "This comment has been rejected by moderator."
 msgstr "Tento komentář byl zamítnut moderátorem."
 
-#: naovoce/templates/comments/inc/form.html:18
+#: naovoce/templates/comments/inc/form.html:17
 #: naovoce/templates/comments/inc/formjs.html:7
 msgid "Add your comment"
 msgstr "Přidejte svůj komentář"
 
-#: naovoce/templates/comments/inc/form.html:24
-#: naovoce/templates/gallery/inc/form.html:22
+#: naovoce/templates/comments/inc/form.html:23
+#: naovoce/templates/gallery/inc/form.html:29
 msgctxt "imperative"
 msgid "Sign in"
 msgstr "Přihlašte se"
 
-#: naovoce/templates/comments/inc/form.html:25
+#: naovoce/templates/comments/inc/form.html:24
 msgid "to add your comment"
 msgstr "k přidání komentáře"
 
@@ -799,7 +799,6 @@ msgid "Save changes"
 msgstr "Uložit změny"
 
 #: naovoce/templates/gallery/browser.html:7
-#: naovoce/templates/gallery/browser.html:51
 #: naovoce/templates/gallery/index.html:6
 msgid "Gallery"
 msgstr "Galerie"
@@ -820,16 +819,20 @@ msgstr "Předchozí"
 msgid "Next"
 msgstr "Následující"
 
-#: naovoce/templates/gallery/inc/form.html:16
+#: naovoce/templates/gallery/inc/form.html:13
+msgid "Choose a photo"
+msgstr "Vyberte fotku"
+
+#: naovoce/templates/gallery/inc/form.html:23
 #: naovoce/templates/gallery/inc/formjs.html:7
 msgid "Add a photo"
 msgstr "Přidejte fotku"
 
-#: naovoce/templates/gallery/inc/form.html:23
+#: naovoce/templates/gallery/inc/form.html:30
 msgid "to add a photo"
 msgstr "k přidání fotky"
 
-#: naovoce/templates/gallery/inc/link.html:18
+#: naovoce/templates/gallery/inc/link.html:19
 #, python-format
 msgid "Open in gallery"
 msgid_plural "%(images_count)s photos in gallery"

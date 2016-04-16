@@ -45,4 +45,17 @@ $.fn.fillViewport = ->
 	.trigger 'resize'
 
 
+$('.inputfile').each ->
+	$input = $ @
+	$label = $input.next 'label'
+	labelVal = $label.html()
+
+	$input.on 'change', (e) ->
+
+		if e.target.value
+			fileName = e.target.value.split('\\').pop()
+
+		$label.html if fileName? then fileName else labelVal
+
+
 $('#main-content').fillViewport()

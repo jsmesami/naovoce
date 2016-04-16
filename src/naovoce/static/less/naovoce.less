@@ -129,11 +129,31 @@ form {
 			height: 60px;
 		}
 	}
-}
-
-::-webkit-file-upload-button {
-	.btn;
-	.btn-default;
+	.inputfile {
+		width: 0.1px;
+		height: 0.1px;
+		opacity: 0;
+		overflow: hidden;
+		position: absolute;
+		z-index: -1;
+		& + label {
+			.btn;
+			.btn-default;
+			color: @text-color;
+			width: 100%;
+			text-align: center;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+		& + label:hover {
+			color: @text-color;
+		}
+	}
+	.has-error .inputfile + label {
+		color: #a94442;
+		border-color: #a94442;
+	}
 }
 
 hr {
