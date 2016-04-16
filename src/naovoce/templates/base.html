@@ -10,7 +10,54 @@
 
 {% include 'inc/user_info.html' %}
 
-{% include 'inc/navigation.html' %}
+{% block navigation %}
+<nav class="navbar navbar-default navbar-static-top" id="main-nav" role="navigation">
+	<div class="container">
+		<div class="row">
+            <div class="col-xs-5 col-sm-2">
+                <a id="brand-logo" href="{% url 'home' %}">
+                    {% include 'inc/svg/logo.html' %}
+                </a>
+            </div>
+            <div class="col-xs-7 col-sm-10 social">
+                <a href="https://www.facebook.com/naovoce">{% include 'inc/svg/facebook.html' %}</a>
+                <a href="https://twitter.com/na_ovoce">{% include 'inc/svg/twitter.html' %}</a>
+                <button class="navbar-toggle" data-target=".navbar-collapse"
+                        data-toggle="collapse" type="button">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="col-xs-12 col-sm-10">
+                <ul class="nav navbar-nav navbar-right collapse navbar-collapse">
+                    <li class="{% block map_active %}{% endblock %}">
+                        <a href="{% url 'map' %}">{% trans 'Map' %}</a>
+                    </li>
+                    <li class="{% block add_active %}{% endblock %}">
+                        <a href="{% url 'fruit:add' %}">{% trans 'Add Marker' %}</a>
+                    </li>
+                    <li class="{% block pickers_active %}{% endblock %}">
+                        <a href="{% url 'pickers:index' %}">{% trans 'Pickers' %}</a>
+                    </li>
+                    <li class="{% block herbarium_active %}{% endblock %}">
+                        <a href="{% url 'herbarium:index' %}">{% trans 'Herbarium' %}</a>
+                    </li>
+                    <li class="{% block about_active %}{% endblock %}">
+                        <a href="{% url 'about' %}">{% trans 'About Us' %}</a>
+                    </li>
+                    <li class="{% block codex_active %}{% endblock %}">
+                        <a href="{% url 'codex' %}">{% trans "Codex" %}</a>
+                    </li>
+                    <li class="{% block blog_active %}{% endblock %}">
+                        <a href="{% url 'blog:index' %}">Blog</a>
+                    </li>
+                </ul>
+            </div>
+		</div>
+	</div>
+</nav>
+{% endblock %}
 
 {% block wide_content %}
 <div class="container" id="main-content">
