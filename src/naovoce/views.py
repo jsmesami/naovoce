@@ -1,10 +1,12 @@
 from collections import defaultdict
 
+from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import render
 
 from blog.models import BlogPost
 from fruit.models import Kind, Fruit
 from comments.models import Comment
+from gallery.models import Image
 
 
 def home_view(request):
@@ -44,7 +46,8 @@ def home_view(request):
     context = {
         'blogposts': BlogPost.objects.public(),
         'fruits': fruits_qs,
-        'comments': sorted(comm+desc, key=lambda x: x['time'], reverse=True)
+        'comments': sorted(comm + desc, key=lambda x: x['time'], reverse=True),
+        'images': Image.objects.filter(gallery_ct=ContentType.objects.get_for_model(Fruit)),
     }
 
     return render(request, 'home.html', context)

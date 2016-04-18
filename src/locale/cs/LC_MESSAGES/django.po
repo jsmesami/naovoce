@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-16 16:09+0200\n"
-"PO-Revision-Date: 2016-04-16 16:09+0200\n"
+"POT-Creation-Date: 2016-04-18 18:15+0200\n"
+"PO-Revision-Date: 2016-04-18 18:16+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -649,16 +649,44 @@ msgstr "Pro dokončení registračního procesu navštivte odkaz v těle zprávy
 msgid "site administration"
 msgstr "administrace stránek"
 
-#: naovoce/templates/base.html:46
+#: naovoce/templates/base.html:35 naovoce/templates/inc/footer.html:26
+#: naovoce/templates/map.html:8
+msgid "Map"
+msgstr "Mapa"
+
+#: naovoce/templates/base.html:38 naovoce/templates/inc/footer.html:27
+msgid "Add Marker"
+msgstr "Přidávání"
+
+#: naovoce/templates/base.html:41 naovoce/templates/inc/footer.html:28
+msgid "Pickers"
+msgstr "Sběrači"
+
+#: naovoce/templates/base.html:44 naovoce/templates/fruit/detail.html:81
+#: naovoce/templates/fruit/herbarium.html:13
+#: naovoce/templates/fruit/herbarium.html:15
+#: naovoce/templates/inc/footer.html:29
+msgid "Herbarium"
+msgstr "Herbář"
+
+#: naovoce/templates/base.html:47 naovoce/templates/inc/footer.html:30
+msgid "About Us"
+msgstr "O nás"
+
+#: naovoce/templates/base.html:50
+msgid "Codex"
+msgstr "Kodex"
+
+#: naovoce/templates/base.html:93
 msgid "By using this site you agree to the use of cookies for analytics."
 msgstr ""
 "Používáním těchto stránek souhlasíte s využitím souborů cookie k analýzám."
 
-#: naovoce/templates/base.html:47
+#: naovoce/templates/base.html:94
 msgid "More information"
 msgstr "Více informací"
 
-#: naovoce/templates/base.html:48
+#: naovoce/templates/base.html:95
 msgid "Dismiss"
 msgstr "Pryč s tím"
 
@@ -689,7 +717,7 @@ msgid "Add your comment"
 msgstr "Přidejte svůj komentář"
 
 #: naovoce/templates/comments/inc/form.html:23
-#: naovoce/templates/gallery/inc/form.html:29
+#: naovoce/templates/gallery/inc/form.html:22
 msgctxt "imperative"
 msgid "Sign in"
 msgstr "Přihlašte se"
@@ -773,14 +801,6 @@ msgstr "Smazat"
 msgid "Add marker"
 msgstr "Přidat značku"
 
-#: naovoce/templates/fruit/detail.html:81
-#: naovoce/templates/fruit/herbarium.html:13
-#: naovoce/templates/fruit/herbarium.html:15
-#: naovoce/templates/inc/footer.html:29
-#: naovoce/templates/inc/navigation.html:33
-msgid "Herbarium"
-msgstr "Herbář"
-
 #: naovoce/templates/fruit/edit.html:5
 msgid "Edit a Marker"
 msgstr "Upravit značku"
@@ -794,7 +814,7 @@ msgid "Filter"
 msgstr "Filtr"
 
 #: naovoce/templates/fruit/inc/fruitform.html:22
-#: naovoce/templates/pickers/settings.html:48
+#: naovoce/templates/pickers/settings.html:47
 msgid "Save changes"
 msgstr "Uložit změny"
 
@@ -819,16 +839,16 @@ msgstr "Předchozí"
 msgid "Next"
 msgstr "Následující"
 
-#: naovoce/templates/gallery/inc/form.html:13
+#: naovoce/templates/gallery/inc/form.html:8
 msgid "Choose a photo"
 msgstr "Vyberte fotku"
 
-#: naovoce/templates/gallery/inc/form.html:23
+#: naovoce/templates/gallery/inc/form.html:16
 #: naovoce/templates/gallery/inc/formjs.html:7
 msgid "Add a photo"
 msgstr "Přidejte fotku"
 
-#: naovoce/templates/gallery/inc/form.html:30
+#: naovoce/templates/gallery/inc/form.html:23
 msgid "to add a photo"
 msgstr "k přidání fotky"
 
@@ -868,8 +888,12 @@ msgstr "Poslední úlovky"
 msgid "Latest Comments"
 msgstr "Poslední komentáře"
 
+#: naovoce/templates/home.html:95
+msgid "Latest photos"
+msgstr "Poslední fotky"
+
 #: naovoce/templates/inc/confirm.html:12
-#: naovoce/templates/pickers/settings.html:50
+#: naovoce/templates/pickers/settings.html:49
 msgid "Back"
 msgstr "Zpět"
 
@@ -880,26 +904,6 @@ msgstr "Kontakt"
 #: naovoce/templates/inc/footer.html:24
 msgid "Quick Links"
 msgstr "Rychlé odkazy"
-
-#: naovoce/templates/inc/footer.html:26
-#: naovoce/templates/inc/navigation.html:24 naovoce/templates/map.html:8
-msgid "Map"
-msgstr "Mapa"
-
-#: naovoce/templates/inc/footer.html:27
-#: naovoce/templates/inc/navigation.html:27
-msgid "Add Marker"
-msgstr "Přidávání"
-
-#: naovoce/templates/inc/footer.html:28
-#: naovoce/templates/inc/navigation.html:30
-msgid "Pickers"
-msgstr "Sběrači"
-
-#: naovoce/templates/inc/footer.html:30
-#: naovoce/templates/inc/navigation.html:36
-msgid "About Us"
-msgstr "O nás"
 
 #: naovoce/templates/inc/footer.html:31
 msgid "Picker's Codex"
@@ -947,10 +951,6 @@ msgstr "Ukaž mi, kde jsem!"
 #, python-brace-format
 msgid "You are within {distance} {unit} from this point"
 msgstr "Od tohoto bodu jste vzdáleni cca {distance}{unit}."
-
-#: naovoce/templates/inc/navigation.html:39
-msgid "Codex"
-msgstr "Kodex"
 
 #: naovoce/templates/inc/user_info.html:6
 msgid "User profile"
@@ -1038,7 +1038,7 @@ msgstr "Změna nastavení účtu"
 msgid "Change avatar"
 msgstr "Změnit avatar"
 
-#: naovoce/templates/pickers/settings.html:40
+#: naovoce/templates/pickers/settings.html:39
 msgid "Delete avatar"
 msgstr "Smazat avatar"
 

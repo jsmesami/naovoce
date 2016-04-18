@@ -89,7 +89,18 @@
 			{% endfor %}
 		</div>
 	</div>
-
+	{% block spaceless %}
+	<div class="row latest-images">
+		<hr>
+		<h3>{% trans 'Latest photos' %}</h3>
+		{% for img in images|slice:'7' %}
+			<a href="{{ img.get_absolute_url }}">
+				<img src="{% get_thumb img.image w=100 %}"
+				     alt="{{ img.caption }}" title="{{ img.caption }}">
+			</a>
+		{% endfor %}
+	</div>
+	{% endblock %}
 {% endblock %}
 
 {% block scripts %}
