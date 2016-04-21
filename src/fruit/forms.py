@@ -1,3 +1,4 @@
+from collections import OrderedDict
 from itertools import chain
 from django import forms
 from django.utils.encoding import force_text
@@ -17,9 +18,14 @@ class KindSelect(forms.Select):
         selected_choices = set(force_text(v) for v in selected_choices)
         output = []
 
-        for option_key, option_value, option_label in chain(self.choices, choices):
-            output.append(self.render_option(selected_choices,
-                                             option_value, option_label, option_key))
+        for option_value, option_label, option_key in chain(self.choices, choices):
+            if isinstance(option_label, (list, tuple)):
+                output.append(format_html('<optgroup label="{}">', force_text(option_value)))
+                for option in option_label:
+                    output.append(self.render_option(selected_choices, *option))
+                output.append('</optgroup>')
+            else:
+                output.append(self.render_option(selected_choices, option_value, option_label, option_key))
 
         return '\n'.join(output)
 
@@ -44,8 +50,12 @@ class FruitForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        kinds = Kind.objects.values_list('key', 'pk', 'name')
-        self.fields['kind'].choices = [('F00D', '', _('Nothing selected'))] + list(kinds)
+        groups = OrderedDict()
+        for kind in Kind.objects.all():
+            cls_name = Kind.CLS.text_of(kind.cls)
+            groups.setdefault(cls_name, [])
+            groups[cls_name].append((kind.pk, kind.name, kind.key))
+        self.fields['kind'].choices = [('', _('Nothing selected'), 'F00D')] + [(cls, kind, '') for cls, kind in groups.items()]
 
     class Meta:
         model = Fruit
