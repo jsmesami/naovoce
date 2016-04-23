@@ -1,10 +1,11 @@
 from rest_framework import serializers
 from rest_framework import fields
 
+from utils.api.fields import MarkdownField
 from ..models import Herbarium
 
 
-class HerbariumSerializer(serializers.ModelSerializer):
+class HerbariumRawSerializer(serializers.ModelSerializer):
 
     name = fields.ReadOnlyField(
         source='kind.__str__',
@@ -17,3 +18,7 @@ class HerbariumSerializer(serializers.ModelSerializer):
     class Meta:
         model = Herbarium
         fields = 'name latin_name description photo kind_key'.split()
+
+
+class HerbariumSerializer(HerbariumRawSerializer):
+    description = MarkdownField()

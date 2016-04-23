@@ -5,5 +5,5 @@ from .views import HerbariumList
 
 urlpatterns = patterns(
     '',
-    url(r'^$', HerbariumList.as_view(), name='herbarium-list'),
+    url(r'^(?:(?P<raw>raw)/)?$', HerbariumList.as_view(), name='herbarium-list'),
 )

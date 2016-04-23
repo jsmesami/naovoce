@@ -2,7 +2,7 @@ from rest_framework import serializers
 
 from user.api.serializers import UserSerializer
 from gallery.api.fields import HyperlinkedGalleryField
-from utils.api.serializer_fields import CachedHyperlinkedIdentityField
+from utils.api.fields import CachedHyperlinkedIdentityField
 from .fields import KindRelatedField
 from ..models import Fruit, Kind
 

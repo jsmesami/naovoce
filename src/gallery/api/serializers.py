@@ -24,7 +24,7 @@ class Base64ImageField(serializers.ImageField):
             except TypeError:
                 self.fail('invalid_image')
 
-            file_name = 'uploaded_image.'+self.guess_file_extension(decoded_data)
+            file_name = 'uploaded_image.' + self.guess_file_extension(decoded_data)
 
             data = ContentFile(decoded_data, name=file_name)
 
