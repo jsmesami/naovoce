@@ -246,7 +246,7 @@ Response contains JSON payload with updated object.
 ### Delete Fruit [DELETE]
 
 Deleted fruit remains in the database. 
-With "why_deleted" field you can specify the reason why you are deleting it.
+With `why_deleted` field you can specify the reason why you are deleting it.
 You should encourage users to do so, although it's optional.
 You can still GET the fruit to know the reason of deletion, 
 but it no longer appears in listings.
@@ -263,6 +263,32 @@ but it no longer appears in listings.
         Authorization: Token eb3e2b0367c2f99cf0380ef88127c2bf129c26a8
 
 + Response 204
+
+### Send a Complaint [POST https://na-ovoce.cz/api/v1/fruit/{fruit}/complaint/]
+
+To send a complaint on invalid Fruit marker.
+Reason of complaint (`text` field) must be specified. 
+Response contains JSON payload with created object.
+
++ Authenticated
+
++ Parameters
+    + fruit: `31980` (number) - ID of the Fruit (integer)
+
++ Request (application/json)
+
+        {
+            "text": "I hereby make a complaint!"
+        }
+    + Headers
+
+        Authorization: Token eb3e2b0367c2f99cf0380ef88127c2bf129c26a8
+
++ Response 201 (application/json)
+
+        {
+            "text": "I hereby make a complaint!"
+        }
 
 ## Fruit Kinds [https://na-ovoce.cz/api/v1/fruit/kinds/]
 
@@ -434,18 +460,18 @@ Description is HTML formatted.
 + Response 200 (application/json)
 
         [
-		    {
-		        "name": "Apricot Tree", 
-		        "latin_name": "Prunus armeniaca ", 
-		        "description": "<p>Meruňka pochází z Číny. V našich končinách mnoho zástupců tohoto ovocného stromu nenajdeme. Meruňka vyžaduje teplejší podnebí, proto se s ní můžeme setkat spíše na jihu Moravy (odrůda Velkopavlovická) a v krajích, kde se daří vinné révě. </p>\n\n<p><strong>Identifikace:</strong> Strom dorůstá výšky 6&nbsp;m. Kvete ještě před olistěním. Jeho květy jsou bílé, lehce narůžovělé, rostou jednotlivě. Plody jsou kulaté, 4–8 cm velké peckovice s výrazným dělícím švem, pokožka drsná až sametová, zbarvená do žluta až oranžova, na straně přivrácené ke slunci může být načervenalá.</p>\n\n<p><strong>Užití:</strong> Plody se podobně jako ostatní plody rodu slivoní uplatňují při kompotování, výrobě džemů a marmelád, pečení buchet a koláčů, sušení či výrobě destilátů. U meruněk využíváme i jejich pecky, ze kterých se lisuje olej nebo se užívají jejich jadérka.</p>\n\n<p><strong>Léčitelství:</strong> Plody jsou velmi bohaté na vitamin A (proto oranžová barva) a draslík. Jsou oblíbeným pomocníkem při brzdění procesů stárnutí, regenerují buňky v našem těle. Podporují náš imunitní systém, slouží jako vysoký zdroj železa. Pecky meruněk by se neměly konzumovat ve větším množství. Malé množství má ale velmi pozitivní vliv na náš organismus, díky vitaminu B17 působí proti rakovině.</p>\n\n<p><strong>Kalendář sběru:</strong> červenec, srpen</p>\n", 
-		        "photo": "http://127.0.0.1:9000/media/herbarium/merunka_2_UPR.jpg",
-		        "kind_key": "a13b" 
-		    }, 
-		    {
-		        "name": "Yellow Plum", 
-		        "latin_name": "Prunus domestica syriaca, Prunus domestica", 
-		        "description": "<p>Tyto dva různé ovocné stromy u nás většinou označujeme pojmem „špendlík“, ve skutečnosti ale jde o různé poddruhy slivoně švestky, které se především liší barvou a dužninou plodu. U nás rostoucí mirabelka nancyská je odolní proti virovému onemocnění zvanému šárka a proto se vyskytuje častěji, než její příbuzný špendík.</p>\n\n<p><strong>Identifikace:</strong> Stromy jsou nižší, silně rozvětvené a rostou na světlých a teplých místech, často jsou vysázeny okolo venkovských cest, hojně je nalezneme i ve městech. Větve jsou bez trní. Plody mirabelky jsou sladké a aromatické, tvarem zakulacené a mají zlatožlutou barvu, kterou doplňuje ze strany, jež byla vystavena slunci, karmínové tečkování. Slupku lze jednoduše sloupnout. Naopak plody špendlíků jsou protáhlé, podobně jako u švestky, dužnina je měkká. Barva plodu je žlutá až oranžová. U obou druhů lze dužninu lehce oddělit od pecky.</p>\n\n<p><strong>Užití:</strong> Jak mirabelka, tak špendlík se pro svou sladkou aromatickou chuť hodí do koláčů, díky jemné kyselosti jsou výborné pro výrobu marmelád, džemů a povidel a kompotů. Vysoký obsah cukrů předurčuje jejich použití při pálení destilátů. </p>\n\n<p><strong>Léčitelství:</strong> Plodům špendlíků se někdy přezdívá „koště pro naše střeva“, jelikož jsou známy jejich projímavé účinky na zažívací ústrojí. Obsahují organické kyseliny, minerální látky a vitamíny.</p>\n\n<p><strong>Kalendář sběru:</strong> <br />\n Mirabelka – konec července <br />\n Špendlík – polovina srpna</p>\n", 
-		        "photo": "http://127.0.0.1:9000/media/herbarium/mirabelka_UPR.jpg",
-		        "kind_key": "a1d1"
-		    }, 
+            {
+                "name": "Apricot Tree",
+                "latin_name": "Prunus armeniaca",
+                "description": "<p>Meruňka pochází z Číny. V našich končinách mnoho zástupců tohoto ovocného stromu nenajdeme. Meruňka vyžaduje teplejší podnebí, proto se s ní můžeme setkat spíše na jihu Moravy (odrůda Velkopavlovická) a v krajích, kde se daří vinné révě. </p>\n\n<p><strong>Identifikace:</strong> Strom dorůstá výšky 6&nbsp;m. Kvete ještě před olistěním. Jeho květy jsou bílé, lehce narůžovělé, rostou jednotlivě. Plody jsou kulaté, 4–8 cm velké peckovice s výrazným dělícím švem, pokožka drsná až sametová, zbarvená do žluta až oranžova, na straně přivrácené ke slunci může být načervenalá.</p>\n\n<p><strong>Užití:</strong> Plody se podobně jako ostatní plody rodu slivoní uplatňují při kompotování, výrobě džemů a marmelád, pečení buchet a koláčů, sušení či výrobě destilátů. U meruněk využíváme i jejich pecky, ze kterých se lisuje olej nebo se užívají jejich jadérka.</p>\n\n<p><strong>Léčitelství:</strong> Plody jsou velmi bohaté na vitamin A (proto oranžová barva) a draslík. Jsou oblíbeným pomocníkem při brzdění procesů stárnutí, regenerují buňky v našem těle. Podporují náš imunitní systém, slouží jako vysoký zdroj železa. Pecky meruněk by se neměly konzumovat ve větším množství. Malé množství má ale velmi pozitivní vliv na náš organismus, díky vitaminu B17 působí proti rakovině.</p>\n\n<p><strong>Kalendář sběru:</strong> červenec, srpen</p>\n",
+                "photo": "http://127.0.0.1:9000/media/herbarium/merunka_2_UPR.jpg",
+                "kind_key": "a13b"
+            },
+            {
+                "name": "Yellow Plum",
+                "latin_name": "Prunus domestica syriaca, Prunus domestica",
+                "description": "<p>Tyto dva různé ovocné stromy u nás většinou označujeme pojmem „špendlík“, ve skutečnosti ale jde o různé poddruhy slivoně švestky, které se především liší barvou a dužninou plodu. U nás rostoucí mirabelka nancyská je odolní proti virovému onemocnění zvanému šárka a proto se vyskytuje častěji, než její příbuzný špendík.</p>\n\n<p><strong>Identifikace:</strong> Stromy jsou nižší, silně rozvětvené a rostou na světlých a teplých místech, často jsou vysázeny okolo venkovských cest, hojně je nalezneme i ve městech. Větve jsou bez trní. Plody mirabelky jsou sladké a aromatické, tvarem zakulacené a mají zlatožlutou barvu, kterou doplňuje ze strany, jež byla vystavena slunci, karmínové tečkování. Slupku lze jednoduše sloupnout. Naopak plody špendlíků jsou protáhlé, podobně jako u švestky, dužnina je měkká. Barva plodu je žlutá až oranžová. U obou druhů lze dužninu lehce oddělit od pecky.</p>\n\n<p><strong>Užití:</strong> Jak mirabelka, tak špendlík se pro svou sladkou aromatickou chuť hodí do koláčů, díky jemné kyselosti jsou výborné pro výrobu marmelád, džemů a povidel a kompotů. Vysoký obsah cukrů předurčuje jejich použití při pálení destilátů. </p>\n\n<p><strong>Léčitelství:</strong> Plodům špendlíků se někdy přezdívá „koště pro naše střeva“, jelikož jsou známy jejich projímavé účinky na zažívací ústrojí. Obsahují organické kyseliny, minerální látky a vitamíny.</p>\n\n<p><strong>Kalendář sběru:</strong> <br />\n Mirabelka – konec července <br />\n Špendlík – polovina srpna</p>\n",
+                "photo": "http://127.0.0.1:9000/media/herbarium/mirabelka_UPR.jpg",
+                "kind_key": "a1d1"
+            },
         ]

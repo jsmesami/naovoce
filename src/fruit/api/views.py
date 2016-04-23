@@ -1,15 +1,19 @@
+from ipware.ip import get_ip
+
+from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import ugettext_lazy as _
 from django.core.cache import caches
 from django.core.exceptions import ValidationError
 from django.dispatch import receiver
 from django.db.models.signals import post_save, post_delete
 from django.db.models import Count
-from rest_framework import generics, status
+from rest_framework import generics, status, permissions
 from rest_framework.decorators import api_view
 from rest_framework.exceptions import PermissionDenied
+from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, SAFE_METHODS
 
+from comments.api.serializers import CommentSerializer
 from utils.api.permissions import IsOwnerOrReadOnly
 from . import serializers
 from ..models import Fruit, Kind
@@ -53,7 +57,7 @@ class FruitList(generics.ListCreateAPIView):
     List or create Fruit resources.
     """
     queryset = Fruit.objects.valid().select_related('kind').order_by('-created')
-    permission_classes = IsAuthenticatedOrReadOnly,
+    permission_classes = permissions.IsAuthenticatedOrReadOnly,
 
     def list(self, request, *args, **kwargs):
         qs = self.filter_queryset(self.get_queryset())
@@ -81,7 +85,7 @@ class FruitList(generics.ListCreateAPIView):
             return Response(serializer.data)
 
     def get_serializer_class(self):
-        if self.request.method in SAFE_METHODS:
+        if self.request.method in permissions.SAFE_METHODS:
             return serializers.FruitSerializer
 
         return serializers.VerboseFruitSerializer
@@ -99,7 +103,7 @@ class FruitDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Fruit.objects\
         .select_related('kind', 'user')\
         .annotate(images_count=Count('images'))
-    permission_classes = IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly
+    permission_classes = permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly
 
     def get_serializer_class(self):
         if self.get_object().deleted:
@@ -131,6 +135,25 @@ class FruitDetail(generics.RetrieveUpdateDestroyAPIView):
         self.perform_update(serializer)
 
         return Response(serializer.data)
+
+
+class FruitComplaint(generics.CreateAPIView):
+    """
+    Use comment system to send a complaint on invalid Fruit marker
+    """
+    serializer_class = CommentSerializer
+    permission_classes = permissions.IsAuthenticated,
+
+    def perform_create(self, serializer):
+        fruit = get_object_or_404(Fruit, pk=self.kwargs.get('pk'))
+
+        serializer.save(
+            author=self.request.user,
+            ip=get_ip(self.request),
+            complaint=True,
+            content_type=ContentType.objects.get_for_model(fruit),
+            object_id=fruit.id,
+        )
 
 
 class KindList(generics.ListAPIView):
