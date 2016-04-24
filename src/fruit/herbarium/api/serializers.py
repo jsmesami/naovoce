@@ -2,7 +2,13 @@ from rest_framework import serializers
 from rest_framework import fields
 
 from utils.api.fields import MarkdownField
-from ..models import Herbarium
+from ..models import Herbarium, Season
+
+
+class SeasonSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Season
+        fields = 'part start duration'.split()
 
 
 class HerbariumRawSerializer(serializers.ModelSerializer):
@@ -15,9 +21,13 @@ class HerbariumRawSerializer(serializers.ModelSerializer):
         source='kind.key',
     )
 
+    seasons = SeasonSerializer(
+        many=True,
+    )
+
     class Meta:
         model = Herbarium
-        fields = 'name latin_name description photo kind_key'.split()
+        fields = 'name latin_name description seasons photo kind_key'.split()
 
 
 class HerbariumSerializer(HerbariumRawSerializer):

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-18 18:15+0200\n"
-"PO-Revision-Date: 2016-04-18 18:16+0200\n"
+"POT-Creation-Date: 2016-04-24 15:34+0200\n"
+"PO-Revision-Date: 2016-04-24 15:37+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -132,53 +132,81 @@ msgstr ""
 msgid "{} is not a valid Kind key."
 msgstr "{} není platný klíč."
 
-#: fruit/api/views.py:114 fruit/api/views.py:127
+#: fruit/api/views.py:118 fruit/api/views.py:131
 msgid "Cannot update once deleted object."
 msgstr "Dříve smazaný objekt nelze aktualizovat."
 
-#: fruit/forms.py:48
+#: fruit/forms.py:58
 msgid "Nothing selected"
 msgstr "Nic nevybráno"
 
-#: fruit/forms.py:65
+#: fruit/forms.py:75
 msgid "Reason"
 msgstr "Důvod"
 
-#: fruit/forms.py:66
+#: fruit/forms.py:76
 msgid "Please describe reason of why you are deleting the marker."
 msgstr "Prosíme, popište důvody, které máte k smazání této značky."
 
-#: fruit/herbarium/models.py:8 fruit/models.py:65 fruit/models.py:78
+#: fruit/herbarium/models.py:13 fruit/models.py:65 fruit/models.py:78
 msgid "kind"
 msgstr "druh"
 
-#: fruit/herbarium/models.py:10
+#: fruit/herbarium/models.py:15
 msgid "full name"
 msgstr "celé jméno"
 
-#: fruit/herbarium/models.py:11
+#: fruit/herbarium/models.py:16
 msgid "latin name"
 msgstr "latinský název"
 
-#: fruit/herbarium/models.py:12 fruit/models.py:80
+#: fruit/herbarium/models.py:17 fruit/models.py:80
 msgid "description"
 msgstr "popis"
 
-#: fruit/herbarium/models.py:14
+#: fruit/herbarium/models.py:19
 msgid "photo"
 msgstr "fotka"
 
-#: fruit/herbarium/models.py:18
+#: fruit/herbarium/models.py:23
 msgid "Illustrational photo"
 msgstr "Ilustrační fotka"
 
-#: fruit/herbarium/models.py:33
+#: fruit/herbarium/models.py:38 fruit/herbarium/models.py:49
 msgid "herbarium item"
 msgstr "položka herbáře"
 
-#: fruit/herbarium/models.py:34
+#: fruit/herbarium/models.py:39
 msgid "herbarium items"
 msgstr "položky herbáře"
+
+#: fruit/herbarium/models.py:51
+msgid "ripening plant part"
+msgstr "dozrávající část rostliny"
+
+#: fruit/herbarium/models.py:54
+msgid "ripening start"
+msgstr "začátek dozrávání"
+
+#: fruit/herbarium/models.py:55
+msgid "Month when specified plant part ripening starts."
+msgstr "Měsíc, kdy určená část rostliny dozrává."
+
+#: fruit/herbarium/models.py:58
+msgid "ripening duration"
+msgstr "trvání zralosti"
+
+#: fruit/herbarium/models.py:59
+msgid "Duration of ripening in months."
+msgstr "Trvání zralosti v měsících."
+
+#: fruit/herbarium/models.py:65
+msgid "ripening season"
+msgstr "sezóna dozrávání"
+
+#: fruit/herbarium/models.py:66
+msgid "ripening seasons"
+msgstr "sezóny dozrávání"
 
 #: fruit/models.py:27
 msgid "Trees"
@@ -831,11 +859,11 @@ msgstr "Autor"
 msgid "added"
 msgstr "přidáno"
 
-#: naovoce/templates/gallery/browser.html:42
+#: naovoce/templates/gallery/browser.html:41
 msgid "Previous"
 msgstr "Předchozí"
 
-#: naovoce/templates/gallery/browser.html:47
+#: naovoce/templates/gallery/browser.html:46
 msgid "Next"
 msgstr "Následující"
 
@@ -1301,11 +1329,11 @@ msgstr ""
 msgid "Settings successfully updated."
 msgstr "Nastavení úspěšně upraveno."
 
-#: utils/fields.py:47
+#: utils/fields.py:48
 msgid "Please upload file up to {}. Your file size is {}."
 msgstr "Je povoleno nahrávat soubory do velikosti {}. Váš soubor má ale {}."
 
-#: utils/fields.py:53
+#: utils/fields.py:54
 msgid "File type not supported."
 msgstr "Tento typ souboru není podporován."
 
@@ -1320,6 +1348,12 @@ msgstr "změněno"
 #: utils/templatetags/truncate.py:16
 msgid "Read more"
 msgstr "Čtěte více"
+
+#~ msgid "ripes from"
+#~ msgstr "dozrává od"
+
+#~ msgid "ripes until"
+#~ msgstr "dozrává do"
 
 #, fuzzy
 #~| msgid "%(images_count)s photos in gallery"

@@ -2,12 +2,12 @@ from django.contrib import admin
 from django.utils.translation import ugettext_noop, ugettext_lazy as _
 from django import forms
 
-from modeltranslation.admin import TranslationAdmin
+from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 
 from gallery.admin import ImageAdminInline, GalleryAdminMixin
 from gallery.forms import CoverImageAdminForm
 from .models import Kind, Fruit
-from .herbarium.models import Herbarium
+from .herbarium.models import Herbarium, Season
 
 
 class KindModelForm(forms.ModelForm):
@@ -67,9 +67,16 @@ class FruitAdmin(GalleryAdminMixin, admin.ModelAdmin):
             obj.user.send_message(deletion_msg, system=True)
 
 
+class SeasonAdminInline(TranslationTabularInline):
+    model = Season
+    allow_add = True
+    extra = 0
+
+
 class HerbariumAdmin(admin.ModelAdmin):
     model = Herbarium
     list_display = 'kind full_name latin_name'.split()
+    inlines = SeasonAdminInline,
 
 
 admin.site.register(Herbarium, HerbariumAdmin)
