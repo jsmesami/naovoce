@@ -372,6 +372,33 @@ hr {
 	}
 }
 
+@keyframes popout {
+    from {
+		box-shadow: none;
+    }
+    50% {
+		box-shadow: 0 0 20px 10px white;
+    }
+    to {
+		box-shadow: none;
+    }
+}
+
+#add-to-map {
+	animation: popout 1s normal forwards ease-in;
+	animation-iteration-count: 3;
+	z-index: 9999;
+	position: absolute;
+	bottom: 15px;
+	right: 15px;
+	font-size: 14px;
+	padding: 10px 15px;
+	border: 1px solid gray;
+	border-radius: 3px;
+	color: @brand-secondary;
+	background: white;
+}
+
 hr.head-separator {
 	margin: 0;
 }
