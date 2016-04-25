@@ -5,6 +5,10 @@ html {
 	overflow-y: scroll;
 }
 
+@-ms-viewport {
+	width: device-width;
+}
+
 body {
 	background-image: url("@{base-url}/img/bg.svg");
 	background-position: center -40px;
@@ -392,11 +396,17 @@ hr {
 	bottom: 15px;
 	right: 15px;
 	font-size: 14px;
-	padding: 10px 15px;
+	line-height: 45px;
+	padding: 0 15px;
 	border: 1px solid gray;
 	border-radius: 3px;
 	color: @brand-secondary;
 	background: white;
+	.fruit-icon-small {
+		position: relative;
+		top: 5px;
+		left: -5px;
+	}
 }
 
 hr.head-separator {
@@ -538,6 +548,8 @@ a.read-more {
 		background-image: url("@{base-url}/img/search.svg");
 		background-size: 17px !important;
 		background-position: right 5px top 5px;
+		height: 26px;
+		min-width: 26px;
 	}
 }
 

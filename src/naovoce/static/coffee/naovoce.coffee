@@ -38,10 +38,12 @@ $.fn.fillViewport = ->
 	###
 	$window = $(window)
 	$elem = this
-	navigation_h = $('#main-nav').outerHeight() + $('#user-info').outerHeight()
+	$mainNav = $ '#main-nav'
+	$userInfo = $ '#user-info'
 
 	$window.resize ->
-		$elem.css 'min-height', "#{ Math.max $window.height() - navigation_h, 320 }px"
+		navHeight = $mainNav.outerHeight() + $userInfo.outerHeight()
+		$elem.css 'min-height', "#{ Math.max $window.height() - navHeight, 320 }px"
 	.trigger 'resize'
 
 
