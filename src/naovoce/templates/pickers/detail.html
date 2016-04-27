@@ -3,6 +3,7 @@
 {% load i18n %}
 {% load avatar %}
 {% load static from staticfiles %}
+{% load compress %}
 
 {% block title %}{{ user.username }} | {{ block.super }}{% endblock %}
 
@@ -70,7 +71,10 @@
 	<script src="{% static 'components/leaflet.markercluster/dist/leaflet.markercluster.js' %}"></script>
 	<script src="{% static 'components/esri-leaflet/dist/esri-leaflet.js' %}"></script>
 	<script src="{% static 'components/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.js' %}"></script>
+
 	{% include 'inc/mapjs.html' %}
+
+	{% compress js inline %}
 	<script type="text/coffeescript" charset="utf-8">
 
 	map = new Naovoce.Map 'map-detail'
@@ -82,4 +86,5 @@
 		.addSearch()
 
 	</script>
+	{% endcompress %}
 {% endblock %}

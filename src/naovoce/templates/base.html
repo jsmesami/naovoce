@@ -81,11 +81,16 @@
 
 {% block scripts %}
 <script src="{% static 'components/jquery/dist/jquery.min.js' %}"></script>
-<script src="{% static 'coffee/naovoce.coffee' %}" type="text/coffeescript" charset="utf-8"></script>
 <script src="{% static 'components/bootstrap/js/transition.js' %}"></script>
 <script src="{% static 'components/bootstrap/js/collapse.js' %}"></script>
-<script type="text/coffeescript">
+
+{% compress js %}
+	<script src="{% static 'coffee/naovoce.coffee' %}" type="text/coffeescript" charset="utf-8"></script>
+{% endcompress %}
+
 {% if not DEBUG %}
+{% compress js inline %}
+<script type="text/coffeescript">
 	cookieHTML = $ "
 		<p id='cookie-monster'>{% trans 'By using this site you agree to the use of cookies for analytics.' %}
 		|&nbsp;<a href='https://www.google.com/policies/technologies/cookies/' target='_blank'>{% trans 'More information' %}</a>
@@ -101,8 +106,9 @@
 		year.setTime(year.getTime() + 365*24*60*60*1000)
 		document.cookie = "cookieMonster=fed; Path=/; Domain=.na-ovoce.cz; Expires=#{ year.toUTCString() }; Secure"
 		false
+	</script>
+{% endcompress %}
 {% endif %}
-</script>
 
 {% endblock %}
 

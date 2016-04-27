@@ -1,4 +1,7 @@
 {% load i18n %}
+{% load compress %}
+
+{% compress js inline %}
 <script type="text/coffeescript" charset="utf-8">
 
 geocodeService = new L.esri.Geocoding.geocodeService
@@ -201,3 +204,4 @@ class Naovoce.Map extends L.Map
 		@
 
 </script>
+{% endcompress %}

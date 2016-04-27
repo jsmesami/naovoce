@@ -4,6 +4,7 @@
 {% load static from staticfiles %}
 {% load getitem %}
 {% load naturalsort %}
+{% load compress %}
 
 {% block title %}{% trans 'Map' %} | {{ block.super }}{% endblock %}
 
@@ -60,27 +61,30 @@
 	<script src="{% static 'components/esri-leaflet/dist/esri-leaflet.js' %}"></script>
 	<script src="{% static 'components/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.js' %}"></script>
 	<script src="{% static 'components/leaflet-hash/leaflet-hash.js' %}"></script>
-	{% include 'inc/mapjs.html' %}
-	<script type="text/coffeescript" charset="utf-8" src="{% static 'coffee/kinds-filter.coffee' %}"></script>
-	<script type="text/coffeescript" charset="utf-8">
+	{% compress js inline %}
+		<script src="{% static 'coffee/kinds-filter.coffee' %}" type="text/coffeescript" charset="utf-8"></script>
 
-	$('#map').fillViewport()
+		{% include 'inc/mapjs.html' %}
 
-	map = new Naovoce.Map 'map'
-	new L.Hash map
+		<script type="text/coffeescript" charset="utf-8">
 
-	map.loadMarkers '{% url 'api:fruit-list' %}'
-		.loadState()
-		.on 'moveend', ->
-			@saveState()
-		.addLocate()
-		.addSearch()
+		$('#map').fillViewport()
 
-	filter.reload = (kind) ->
-		if not kind?
-			map.showMarkers()
-		else
-			map.filterMarkers(kind)
+		map = new Naovoce.Map 'map'
+		new L.Hash map
 
-	</script>
+		map.loadMarkers '{% url 'api:fruit-list' %}'
+			.loadState()
+			.on 'moveend', ->
+				@saveState()
+			.addLocate()
+			.addSearch()
+
+		filter.reload = (kind) ->
+			if not kind?
+				map.showMarkers()
+			else
+				map.filterMarkers(kind)
+		</script>
+	{% endcompress %}
 {% endblock %}

@@ -1,5 +1,7 @@
 {% load i18n %}
+{% load compress %}
 
+{% compress js inline %}
 <script type="text/coffeescript">
 	imageForm = $ 'form.image-form'
 
@@ -11,3 +13,4 @@
 				imageForm.show()
 				false
 </script>
+{% endcompress %}

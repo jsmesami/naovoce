@@ -2,6 +2,7 @@
 
 {% load i18n %}
 {% load static from staticfiles %}
+{% load compress %}
 
 {% block title %}{% trans "Add a Marker" %} | {{ block.super }}{% endblock %}
 
@@ -44,7 +45,10 @@
 	<script src="{% static 'components/esri-leaflet/dist/esri-leaflet.js' %}"></script>
 	<script src="{% static 'components/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.js' %}"></script>
 	<script src="{% static 'components/leaflet.locatecontrol/dist/L.Control.Locate.min.js' %}"></script>
+
 	{% include 'inc/mapjs.html' %}
+
+	{% compress js inline %}
 	<script type="text/coffeescript" charset="utf-8">
 
 	$lat = $('#id_latitude').change -> handleFruitForm()
@@ -86,4 +90,5 @@
 		marker.setIcon($selected_kind.data('key'))
 
 	</script>
+	{% endcompress %}
 {% endblock %}
