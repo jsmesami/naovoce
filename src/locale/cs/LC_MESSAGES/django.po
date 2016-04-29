@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-24 15:34+0200\n"
-"PO-Revision-Date: 2016-04-24 15:37+0200\n"
+"POT-Creation-Date: 2016-04-29 20:10+0200\n"
+"PO-Revision-Date: 2016-04-29 20:09+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -367,7 +367,7 @@ msgstr "Abyste mohli přidávat obrázky, musíte se přihlásit."
 msgid "Not found."
 msgstr "Nenalezeno."
 
-#: naovoce/feeds.py:35 naovoce/templates/_base.html:30
+#: naovoce/feeds.py:35 naovoce/templates/_base.html:31
 msgid "Fresh fruit"
 msgstr "Čerstvé ovoce"
 
@@ -550,7 +550,7 @@ msgstr "Změnit heslo"
 
 #: naovoce/templates/account/password_change.html:12
 #: naovoce/templates/account/password_change.html:17
-#: naovoce/templates/pickers/detail.html:46
+#: naovoce/templates/pickers/detail.html:47
 msgid "Change password"
 msgstr "Změnit heslo"
 
@@ -634,7 +634,7 @@ msgstr "Nastavit heslo"
 
 #: naovoce/templates/account/password_set.html:12
 #: naovoce/templates/account/password_set.html:17
-#: naovoce/templates/pickers/detail.html:48
+#: naovoce/templates/pickers/detail.html:49
 msgid "Set password"
 msgstr "Nastavit heslo"
 
@@ -678,43 +678,47 @@ msgid "site administration"
 msgstr "administrace stránek"
 
 #: naovoce/templates/base.html:35 naovoce/templates/inc/footer.html:26
-#: naovoce/templates/map.html:8
+#: naovoce/templates/map.html:9
 msgid "Map"
 msgstr "Mapa"
 
-#: naovoce/templates/base.html:38 naovoce/templates/inc/footer.html:27
-msgid "Add Marker"
-msgstr "Přidávání"
-
-#: naovoce/templates/base.html:41 naovoce/templates/inc/footer.html:28
+#: naovoce/templates/base.html:38 naovoce/templates/inc/footer.html:28
 msgid "Pickers"
 msgstr "Sběrači"
 
-#: naovoce/templates/base.html:44 naovoce/templates/fruit/detail.html:81
+#: naovoce/templates/base.html:41 naovoce/templates/fruit/detail.html:82
 #: naovoce/templates/fruit/herbarium.html:13
 #: naovoce/templates/fruit/herbarium.html:15
 #: naovoce/templates/inc/footer.html:29
 msgid "Herbarium"
 msgstr "Herbář"
 
-#: naovoce/templates/base.html:47 naovoce/templates/inc/footer.html:30
+#: naovoce/templates/base.html:44
 msgid "About Us"
 msgstr "O nás"
 
-#: naovoce/templates/base.html:50
+#: naovoce/templates/base.html:46 naovoce/templates/inc/footer.html:30
+msgid "Our Team"
+msgstr "Náš team"
+
+#: naovoce/templates/base.html:47 naovoce/templates/inc/footer.html:31
+msgid "Support Us"
+msgstr "Podpořte nás"
+
+#: naovoce/templates/base.html:51
 msgid "Codex"
 msgstr "Kodex"
 
-#: naovoce/templates/base.html:93
+#: naovoce/templates/base.html:100
 msgid "By using this site you agree to the use of cookies for analytics."
 msgstr ""
 "Používáním těchto stránek souhlasíte s využitím souborů cookie k analýzám."
 
-#: naovoce/templates/base.html:94
+#: naovoce/templates/base.html:101
 msgid "More information"
 msgstr "Více informací"
 
-#: naovoce/templates/base.html:95
+#: naovoce/templates/base.html:102
 msgid "Dismiss"
 msgstr "Pryč s tím"
 
@@ -740,7 +744,7 @@ msgid "This comment has been rejected by moderator."
 msgstr "Tento komentář byl zamítnut moderátorem."
 
 #: naovoce/templates/comments/inc/form.html:17
-#: naovoce/templates/comments/inc/formjs.html:7
+#: naovoce/templates/comments/inc/formjs.html:9
 msgid "Add your comment"
 msgstr "Přidejte svůj komentář"
 
@@ -754,19 +758,19 @@ msgstr "Přihlašte se"
 msgid "to add your comment"
 msgstr "k přidání komentáře"
 
-#: naovoce/templates/fruit/add.html:6
+#: naovoce/templates/fruit/add.html:7
 msgid "Add a Marker"
 msgstr "Přidat značku"
 
-#: naovoce/templates/fruit/add.html:14
+#: naovoce/templates/fruit/add.html:15
 msgid "You can add a marker here"
 msgstr "Zde můžete přidat značku"
 
-#: naovoce/templates/fruit/add.html:23
+#: naovoce/templates/fruit/add.html:24
 msgid "Please place the marker into the map"
 msgstr "Prosíme, přidejte značku do mapy,"
 
-#: naovoce/templates/fruit/add.html:24
+#: naovoce/templates/fruit/add.html:25
 msgid "or enter the coordinates in decimal format, eg.:"
 msgstr "nebo zadejte souřadnice v decimálním formátu, např.:"
 
@@ -784,48 +788,48 @@ msgctxt "infinitive"
 msgid "Delete"
 msgstr "Smazat značku"
 
-#: naovoce/templates/fruit/detail.html:32 naovoce/templates/home.html:76
-#: naovoce/templates/inc/mapjs.html:99
+#: naovoce/templates/fruit/detail.html:33 naovoce/templates/home.html:76
+#: naovoce/templates/inc/mapjs.html:102
 msgid "Shared by"
 msgstr "Sdílí"
 
-#: naovoce/templates/fruit/detail.html:37
+#: naovoce/templates/fruit/detail.html:38
 msgid "Added"
 msgstr "Přidáno"
 
-#: naovoce/templates/fruit/detail.html:43
+#: naovoce/templates/fruit/detail.html:44
 msgid "Unknown address"
 msgstr "Neznámá adresa"
 
-#: naovoce/templates/fruit/detail.html:49
+#: naovoce/templates/fruit/detail.html:50
 msgid "This marker has been deleted"
 msgstr "Tato značka byla smazána"
 
-#: naovoce/templates/fruit/detail.html:51
+#: naovoce/templates/fruit/detail.html:52
 msgid "Reason of deletion"
 msgstr "Důvod smazání"
 
-#: naovoce/templates/fruit/detail.html:59 naovoce/templates/inc/mapjs.html:103
+#: naovoce/templates/fruit/detail.html:60 naovoce/templates/inc/mapjs.html:106
 msgid "Description"
 msgstr "Popis"
 
-#: naovoce/templates/fruit/detail.html:73
+#: naovoce/templates/fruit/detail.html:74
 #: naovoce/templates/fruit/inc/fruitform.html:24
-#: naovoce/templates/pickers/detail.html:37
+#: naovoce/templates/pickers/detail.html:38
 msgid "Large map"
 msgstr "Velká mapa"
 
-#: naovoce/templates/fruit/detail.html:75
+#: naovoce/templates/fruit/detail.html:76
 msgid "Edit"
 msgstr "Upravit"
 
-#: naovoce/templates/fruit/detail.html:76
+#: naovoce/templates/fruit/detail.html:77
 msgid "Delete"
 msgstr "Smazat"
 
-#: naovoce/templates/fruit/detail.html:78
+#: naovoce/templates/fruit/detail.html:79
 #: naovoce/templates/fruit/inc/fruitform.html:20
-#: naovoce/templates/pickers/detail.html:38
+#: naovoce/templates/pickers/detail.html:39
 msgid "Add marker"
 msgstr "Přidat značku"
 
@@ -872,7 +876,7 @@ msgid "Choose a photo"
 msgstr "Vyberte fotku"
 
 #: naovoce/templates/gallery/inc/form.html:16
-#: naovoce/templates/gallery/inc/formjs.html:7
+#: naovoce/templates/gallery/inc/formjs.html:9
 msgid "Add a photo"
 msgstr "Přidejte fotku"
 
@@ -933,19 +937,23 @@ msgstr "Kontakt"
 msgid "Quick Links"
 msgstr "Rychlé odkazy"
 
-#: naovoce/templates/inc/footer.html:31
+#: naovoce/templates/inc/footer.html:27 naovoce/templates/map.html:42
+msgid "Add Marker"
+msgstr "Přidávání"
+
+#: naovoce/templates/inc/footer.html:32
 msgid "Picker's Codex"
 msgstr "Kodex sběrače"
 
-#: naovoce/templates/inc/footer.html:36
+#: naovoce/templates/inc/footer.html:37
 msgid "Social Networks"
 msgstr "Sociální sítě"
 
-#: naovoce/templates/inc/footer.html:41
+#: naovoce/templates/inc/footer.html:42
 msgid "Friends"
 msgstr "Přátelé"
 
-#: naovoce/templates/inc/footer.html:57
+#: naovoce/templates/inc/footer.html:58
 msgid ""
 "<strong>Na-ovoce.cz</strong> is built using Open Source Software and is OSS "
 "itself, hosted on <a href=\"https://github.com/jsmesami/naovoce\" target="
@@ -955,27 +963,27 @@ msgstr ""
 "samotné je OS, hostovaný na <a href=\"https://github.com/jsmesami/naovoce\" "
 "target=\"_blank\">GitHubu</a>."
 
-#: naovoce/templates/inc/mapjs.html:19
+#: naovoce/templates/inc/mapjs.html:22
 msgid "Fruit kind"
 msgstr "Druh ovoce"
 
-#: naovoce/templates/inc/mapjs.html:109
+#: naovoce/templates/inc/mapjs.html:112
 msgid "Address"
 msgstr "Adresa"
 
-#: naovoce/templates/inc/mapjs.html:178
+#: naovoce/templates/inc/mapjs.html:181
 msgid "Search for places or addresses"
 msgstr "Vyhledávání míst a adres"
 
-#: naovoce/templates/inc/mapjs.html:179
+#: naovoce/templates/inc/mapjs.html:182
 msgid "Location search"
 msgstr "Vyhledávání míst"
 
-#: naovoce/templates/inc/mapjs.html:197
+#: naovoce/templates/inc/mapjs.html:200
 msgid "Show me where I am"
 msgstr "Ukaž mi, kde jsem!"
 
-#: naovoce/templates/inc/mapjs.html:199
+#: naovoce/templates/inc/mapjs.html:202
 #, python-brace-format
 msgid "You are within {distance} {unit} from this point"
 msgstr "Od tohoto bodu jste vzdáleni cca {distance}{unit}."
@@ -989,7 +997,7 @@ msgstr "Profil uživatele"
 msgid "You have %(num_msg)s unread messages"
 msgstr "Máte nepřečtené zprávy (%(num_msg)s)"
 
-#: naovoce/templates/map.html:11
+#: naovoce/templates/map.html:12
 msgid ""
 "The &quot;Na ovoce&quot; map provides you with views of wild fruit trees, "
 "fruit bushes and herbs, whose fruits are available for free picking."
@@ -997,27 +1005,27 @@ msgstr ""
 "Mapa &quot;Na ovoce&quot; umožňuje zobrazení volně rostoucích ovocných "
 "stromů, keřů a bylinek, jejichž plody je možné si zdarma natrhat."
 
-#: naovoce/templates/map.html:24
+#: naovoce/templates/map.html:25
 msgid "filter"
 msgstr "filtr"
 
-#: naovoce/templates/pickers/detail.html:19
+#: naovoce/templates/pickers/detail.html:20
 msgid "Joined"
 msgstr "Mapuje od"
 
-#: naovoce/templates/pickers/detail.html:20
+#: naovoce/templates/pickers/detail.html:21
 msgid "Markers added"
 msgstr "Počet značek"
 
-#: naovoce/templates/pickers/detail.html:43
+#: naovoce/templates/pickers/detail.html:44
 msgid "Account settings"
 msgstr "Nastavení účtu"
 
-#: naovoce/templates/pickers/detail.html:44
+#: naovoce/templates/pickers/detail.html:45
 msgid "My messages"
 msgstr "Mé zprávy"
 
-#: naovoce/templates/pickers/detail.html:50
+#: naovoce/templates/pickers/detail.html:51
 #: naovoce/templates/socialaccount/connections.html:12
 msgid "Account connections"
 msgstr "Propojení účtu"
@@ -1134,31 +1142,39 @@ msgstr ""
 "Chystáte se použít %(provider_name)s k přihlášení na %(site_name)s. "
 "Posledním krokem je vyplnění následujícího formuláře."
 
-#: naovoce/templates/staticpage/about.html:10
+#: naovoce/templates/staticpage/team.html:10
 msgid "Core Team"
 msgstr "Základní team"
 
-#: naovoce/templates/staticpage/about.html:38
+#: naovoce/templates/staticpage/team.html:38
 msgid "Partners"
 msgstr "Partneři"
 
-#: naovoce/templates/staticpage/about.html:60
+#: naovoce/templates/staticpage/team.html:60
 msgid "Kudos"
 msgstr "Poděkování"
 
-#: naovoce/templates/staticpage/about.html:61
+#: naovoce/templates/staticpage/team.html:61
 msgid "Sincere thanks to Maik Allen for helping us with translations."
 msgstr "Srdečné poděkování Maikovi Allenovi za pomoc s překladem stránky."
 
-#: naovoce/urls.py:40
+#: naovoce/urls.py:41
 msgid "^map/$"
 msgstr "^mapa/$"
 
-#: naovoce/urls.py:41
+#: naovoce/urls.py:42
 msgid "^about-us/$"
 msgstr "^o-nas/$"
 
 #: naovoce/urls.py:43
+msgid "^our-team/$"
+msgstr "^nas-team/$"
+
+#: naovoce/urls.py:45
+msgid "^support-us/$"
+msgstr "^podporte-nas/$"
+
+#: naovoce/urls.py:46
 msgid "^codex/$"
 msgstr "^kodex/$"
 

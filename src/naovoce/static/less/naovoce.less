@@ -217,7 +217,23 @@ hr {
 	.navbar-nav {
 		font-family: @headings-font-family;
 		.dropdown-menu {
-			font-family: @font-family-base;
+			min-width: 0;
+			box-shadow: none;
+			right: -10px;
+			border: none;
+			@media (min-width: @screen-xs-max) {
+				border: 1px dotted @brand-primary;
+				border-top: 1px solid white;
+			}
+			> li > a {
+				padding: 5px 20px;
+				color: @brand-primary;
+				&:active,
+				&:hover {
+					color: @brand-secondary;
+					background-color: transparent;
+				}
+			}
 		}
 	}
 	.navbar-toggle {
