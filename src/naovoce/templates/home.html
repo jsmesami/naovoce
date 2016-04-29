@@ -5,6 +5,7 @@
 {% load thumbs %}
 {% load truncate %}
 {% load typo %}
+{% load static %}
 
 {% block meta_description %}
 	{% blocktrans trimmed %}
@@ -23,6 +24,17 @@
 				{% trans 'Add marker to the map' %}
 			</button>
 		</form>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="thumb-large">
+			<img src="{% static 'img/banner_application.png' %}">
+		</div>
+		<div class="thumb-large">
+			<a href="{% url 'support' %}">
+				<img src="{% static 'img/banner_support_us.jpg' %}">
+			</a>
+		</div>
 	</div>
 	<hr>
 	<div class="row">
