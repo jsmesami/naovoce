@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-29 20:10+0200\n"
-"PO-Revision-Date: 2016-04-29 20:09+0200\n"
+"POT-Creation-Date: 2016-05-05 23:46+0200\n"
+"PO-Revision-Date: 2016-05-05 23:48+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -132,7 +132,7 @@ msgstr ""
 msgid "{} is not a valid Kind key."
 msgstr "{} není platný klíč."
 
-#: fruit/api/views.py:118 fruit/api/views.py:131
+#: fruit/api/views.py:116 fruit/api/views.py:129
 msgid "Cannot update once deleted object."
 msgstr "Dříve smazaný objekt nelze aktualizovat."
 
@@ -788,7 +788,7 @@ msgctxt "infinitive"
 msgid "Delete"
 msgstr "Smazat značku"
 
-#: naovoce/templates/fruit/detail.html:33 naovoce/templates/home.html:76
+#: naovoce/templates/fruit/detail.html:33 naovoce/templates/home.html:88
 #: naovoce/templates/inc/mapjs.html:102
 msgid "Shared by"
 msgstr "Sdílí"
@@ -892,7 +892,7 @@ msgstr[0] "Otevřít v galerii"
 msgstr[1] "%(images_count)s fotky v galerii"
 msgstr[2] "%(images_count)s fotek v galerii"
 
-#: naovoce/templates/home.html:10
+#: naovoce/templates/home.html:11
 msgid ""
 "The web community platform &quot;Na ovoce&quot; aims to map fruit trees, "
 "fruit bushes and herbs in wild and public spaces."
@@ -900,27 +900,27 @@ msgstr ""
 "Webová komunitní platforma &quot;Na ovoce&quot; si klade za cíl mapovat "
 "ovocné stromy, keře a bylinky ve volné přírodě a veřejném prostoru."
 
-#: naovoce/templates/home.html:23
+#: naovoce/templates/home.html:24
 msgid "Add marker to the map"
 msgstr "Přidat značku do mapy"
 
-#: naovoce/templates/home.html:31
+#: naovoce/templates/home.html:43
 msgid "Fruit News"
 msgstr "Ovocné novinky"
 
-#: naovoce/templates/home.html:63
+#: naovoce/templates/home.html:75
 msgid "Explore the Map"
 msgstr "Prozkoumejte mapu"
 
-#: naovoce/templates/home.html:68
+#: naovoce/templates/home.html:80
 msgid "Latest Entries"
 msgstr "Poslední úlovky"
 
-#: naovoce/templates/home.html:81
+#: naovoce/templates/home.html:93
 msgid "Latest Comments"
 msgstr "Poslední komentáře"
 
-#: naovoce/templates/home.html:95
+#: naovoce/templates/home.html:107
 msgid "Latest photos"
 msgstr "Poslední fotky"
 
@@ -957,11 +957,11 @@ msgstr "Přátelé"
 msgid ""
 "<strong>Na-ovoce.cz</strong> is built using Open Source Software and is OSS "
 "itself, hosted on <a href=\"https://github.com/jsmesami/naovoce\" target="
-"\"_blank\">GitHub</a>."
+"\"_blank\" rel=\"noopener noreferrer\">GitHub</a>."
 msgstr ""
 "<strong>Na-ovoce.cz</strong> je vytvořeno pomocí otevřeného software a "
 "samotné je OS, hostovaný na <a href=\"https://github.com/jsmesami/naovoce\" "
-"target=\"_blank\">GitHubu</a>."
+"target=\"_blank\" rel=\"noopener noreferrer\">GitHubu</a>."
 
 #: naovoce/templates/inc/mapjs.html:22
 msgid "Fruit kind"
@@ -1174,7 +1174,7 @@ msgstr "^nas-team/$"
 msgid "^support-us/$"
 msgstr "^podporte-nas/$"
 
-#: naovoce/urls.py:46
+#: naovoce/urls.py:47
 msgid "^codex/$"
 msgstr "^kodex/$"
 
@@ -1234,14 +1234,14 @@ msgstr "Krátký text o vás, který se zobrazí na vašem profilu."
 #: user/forms.py:89
 msgid ""
 "You can change your profile picture by uploading custom image (up to 1 MB), "
-"or alternatively via <a href=\"http://gravatar.com\" target=\"_blank"
-"\">gravatar.com</a> service."
+"or alternatively via <a href=\"http://gravatar.com\" rel=\"noopener "
+"noreferrer\" target=\"_blank\">gravatar.com</a> service."
 msgstr ""
 "Svůj profilový obrázek můžete změnit nahráním vlastního obrázku (do 1MB), "
-"nebo prostřednictvím služby <a href=\"http://gravatar.com\" target=\"_blank"
-"\">gravatar.com</a>."
+"nebo prostřednictvím služby <a href=\"http://gravatar.com\" rel=\"noopener "
+"noreferrer\" target=\"_blank\">gravatar.com</a>."
 
-#: user/forms.py:95
+#: user/forms.py:96
 msgid "Username or e-mail"
 msgstr "Uživatelské jméno nebo e-mail"
 

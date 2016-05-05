@@ -88,7 +88,8 @@ class UserSettingsForm(forms.ModelForm):
             'motto': _('Short text about you, that will appear in your profile.'),
             'avatar': _('You can change your profile picture by uploading custom image '
                         '(up to 1 MB), or alternatively via '
-                        '<a href="http://gravatar.com" target="_blank">gravatar.com</a> service.')
+                        '<a href="http://gravatar.com" rel="noopener noreferrer" '
+                        'target="_blank">gravatar.com</a> service.')
         }
 
 
