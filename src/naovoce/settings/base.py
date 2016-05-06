@@ -52,7 +52,7 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-TIME_ZONE = None  # set the TZ to system value (on Unix)
+TIME_ZONE = 'Europe/Prague'
 
 LANGUAGE_CODE = 'en'
 

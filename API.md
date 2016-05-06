@@ -103,10 +103,11 @@ Na-ovoce.cz, public API
             ]
         }
 
-### Differences Listing [GET https://na-ovoce.cz/api/v1/fruit/since/{date}/]
+### Differences Listing [GET https://na-ovoce.cz/api/v1/fruit/since/{date}/{time}/]
 
 + Parameters
-    + date: `2016-03-07` (string) - since when you want the diff (YYYY-MM-DD)
+    + date: `2016-03-07` (string) - date since when you want the diff (YYYY-MM-DD)
+    + time: `14:28:59` (string) - time since when you want the diff (hh:mm:ss)
 
 + Response 200 (applicetion/json)
 
@@ -142,7 +143,8 @@ Na-ovoce.cz, public API
                     "time": "2016-03-07 12:16:00",
                     "url": "https://na-ovoce.cz/api/v1/fruit/32112/"
                 }
-            ]
+            ],
+            "modified": []
         }
 
 
