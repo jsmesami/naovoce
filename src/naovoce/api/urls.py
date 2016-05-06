@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, url, include
 
-from .views import api_root, api_handler_404, GetAuthToken
+from .views import api_root, api_handler_404
 
 
 urlpatterns = patterns(
@@ -10,6 +10,6 @@ urlpatterns = patterns(
     url(r'^herbarium/', include('fruit.herbarium.api.urls')),
     url(r'^users/', include('user.api.urls')),
     url(r'^images/', include('gallery.api.urls')),
-    url(r'^token/', GetAuthToken.as_view()),
+    url(r'^token/', include('user.api.token_auth.urls')),
     url(r'^.*', api_handler_404),
 )
