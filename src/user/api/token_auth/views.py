@@ -2,6 +2,8 @@ from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.response import Response
 
+from .serializers import AuthTokenFacebookSerializer
+
 
 class GetAuthToken(ObtainAuthToken):
     """
@@ -16,3 +18,10 @@ class GetAuthToken(ObtainAuthToken):
             'token': token.key,
             'id': user.id,
         })
+
+
+class GetAuthTokenFacebook(GetAuthToken):
+    """
+    Returns Auth token for user email and Facebook ID.
+    """
+    serializer_class = AuthTokenFacebookSerializer

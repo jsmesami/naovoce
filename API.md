@@ -24,6 +24,22 @@ Na-ovoce.cz, public API
             "id": 630
         }
 
+## Obtain Token for existing Facebook account [POST https://na-ovoce.cz/api/v1/token/facebook/]
+
++ Request (application/json)
+
+        {
+            "email": "email@example.com",
+            "fcbid": "10204683629790171"
+        }
+
++ Response 200
+
+        {
+            "token": "eb3e2b0367c2f99cf0380ef88127c2bf129c26a8",
+            "id": 630
+        }
+
 # Group Fruit Resource
 
 ## Fruit [https://na-ovoce.cz/api/v1/fruit/]

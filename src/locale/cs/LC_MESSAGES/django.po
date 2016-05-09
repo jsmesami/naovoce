@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-05 23:46+0200\n"
-"PO-Revision-Date: 2016-05-05 23:48+0200\n"
+"POT-Creation-Date: 2016-05-09 15:26+0200\n"
+"PO-Revision-Date: 2016-05-09 15:29+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -132,7 +132,7 @@ msgstr ""
 msgid "{} is not a valid Kind key."
 msgstr "{} není platný klíč."
 
-#: fruit/api/views.py:116 fruit/api/views.py:129
+#: fruit/api/views.py:119 fruit/api/views.py:132
 msgid "Cannot update once deleted object."
 msgstr "Dříve smazaný objekt nelze aktualizovat."
 
@@ -363,7 +363,7 @@ msgstr "Děkujeme za přidání obrázku."
 msgid "You have to be signed-in to add images."
 msgstr "Abyste mohli přidávat obrázky, musíte se přihlásit."
 
-#: naovoce/api/views.py:24
+#: naovoce/api/views.py:22
 msgid "Not found."
 msgstr "Nenalezeno."
 
@@ -1201,6 +1201,22 @@ msgstr "Oprávnění"
 #: user/admin.py:26
 msgid "Important dates"
 msgstr "Sůležitá data"
+
+#: user/api/token_auth/serializers.py:18
+msgid "Facebook account does not exist."
+msgstr "Facebookový účet neexistuje."
+
+#: user/api/token_auth/serializers.py:22
+msgid "Facebook ID does not match."
+msgstr "Facebook ID neodpovídá."
+
+#: user/api/token_auth/serializers.py:26
+msgid "User account is disabled."
+msgstr "Uživatelský účet je zakázán."
+
+#: user/api/token_auth/serializers.py:31
+msgid "Must include \"username\" and Facebook ID \"fcbid\"."
+msgstr "Musí obsahovat \"username\" a facebookové ID \"fcbid\"."
 
 #: user/forms.py:10 user/forms.py:42 user/models.py:59
 msgid "username"
