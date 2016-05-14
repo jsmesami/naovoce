@@ -17,7 +17,7 @@ Prerequisities:
 * Bower
 
 
-Installation on shared hosting without Node (and no root privileges):
+Very basic local installation without Node (and no root privileges):
 
 	# Create and activate virtualenv with the latest Python 3 you have.
 	mkdir ~/.env

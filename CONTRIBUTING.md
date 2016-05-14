@@ -9,24 +9,17 @@ to the list of CONTRIBUTORS.
 ## What's itching right now?
 
 There are many things to be done (see [issues](https://github.com/jsmesami/naovoce/issues/)).
-Most notably:
-
-* (Py) map performance optimizations 
-* (Py) gallery of user-uploadable images in fruit detail
-* (JS) intelligent image uploads with progress indication and client-side downscaling
-* (JS) reading fruit coordinates form EXIF of uploaded image
-* (Py) newsletters
-* UX enhancements
-* bug fixes
-* more tests and documentation
-* any advice, recommendation, code review will be appreciated
+Besides that, any advice, recommendation, code review will be appreciated.
 
 Please [contact us](mailto:software@na-ovoce.cz) with any questions.  
-You are very welcome to bring your own feature proposals, we are open to discussion.
+You are very welcome to bring your own proposals, we are open to discussion.
 
 ## Coding style
 
 If you make pull request, please make sure your code style has some _grace_.
+
+If contributing features that visually affect UI, please minimise styling and leave 
+the work to our graphics design peer.
 
 We adhere to pep8, with some exceptions: line length can be (not too much) longer than 79 chars,
 We prefer 4-space indented hanging indents with closing brace lined up under the first 
