@@ -18,7 +18,7 @@ You are very welcome to bring your own proposals, we are open to discussion.
 
 If you make pull request, please make sure your code style has some _grace_.
 
-If contributing features that visually affect UI, please minimise styling and leave 
+If contributing features that visually affect UI, please minimize styling and leave 
 the work to our graphics design peer.
 
 We adhere to pep8, with some exceptions: line length can be (not too much) longer than 79 chars,
@@ -43,4 +43,5 @@ You can still contribute!
 
 ## Join the community
 
+* help with [the fieldwork](https://na-ovoce.cz/cs/podporte-nas/)
 * add some fruit to the map:)
