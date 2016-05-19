@@ -7,6 +7,7 @@ from blog.models import BlogPost
 from fruit.models import Kind, Fruit
 from comments.models import Comment
 from gallery.models import Image
+from user.utils import pickers_counts_context
 
 
 def home_view(request):
@@ -49,6 +50,8 @@ def home_view(request):
         'comments': sorted(comm + desc, key=lambda x: x['time'], reverse=True),
         'images': Image.objects.filter(gallery_ct=ContentType.objects.get_for_model(Fruit)),
     }
+
+    context.update(pickers_counts_context())
 
     return render(request, 'home.html', context)
 

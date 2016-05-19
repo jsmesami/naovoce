@@ -101,6 +101,18 @@ h2.claim {
 	}
 }
 
+.avatar {
+	height: 50px;
+	width: 50px;
+	color: transparent;
+	display: inline-block;
+}
+
+.media .avatar {
+	padding: 0;
+	margin-right: 10px;
+}
+
 form {
 	label small {
 		color: @brand-info;
@@ -130,6 +142,7 @@ form {
 	}
 	.avatar-group {
 		.avatar {
+			width: 60px;
 			height: 60px;
 		}
 	}
@@ -665,10 +678,6 @@ a.read-more {
 	}
 }
 
-.avatar {
-	height: 50px;
-}
-
 .hall-of-fame:extend(.columned) {
 	padding-top: 10px;
 	li {
@@ -679,6 +688,7 @@ a.read-more {
 	}
 	.avatar {
 		margin-right: 10px;
+		width: 30px;
 		height: 30px;
 	}
 }

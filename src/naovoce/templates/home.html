@@ -6,6 +6,7 @@
 {% load truncate %}
 {% load typo %}
 {% load static %}
+{% load avatar %}
 
 {% block meta_description %}
 	{% blocktrans trimmed %}
@@ -38,12 +39,12 @@
 	</div>
 	<hr>
 	<div class="row">
-		{####  Blog Preview ####}
-		<div class="col-sm-8 blog-preview">
+		<div class="col-sm-8">
+			{####  Blog Preview ####}
 			<h3><a href="{% url 'blog:index' %}">{% trans 'Fruit News' %}</a></h3>
-			{% for entry in blogposts|slice:'5' %}
+			{% for entry in blogposts|slice:'3' %}
 			{% with url=entry.get_absolute_url %}
-			<div class="media">
+			<div class="media blog-preview">
 				<a href="{{ url }}" class="pull-left">
 					<img src="{% get_thumb entry.get_cover_image.image w=100 %}"
 					     alt="{{ entry.title }}"
@@ -57,6 +58,49 @@
 			{% endwith %}
 			{% endfor %}
 
+			{####  Top Pickers ####}
+			<hr>
+			<h3>{% trans "Top Contributors" %}</h3>
+			<ul class="list-unstyled hall-of-fame">
+			{% for p in top_pickers_all_time %}
+				<li>
+					{% with name=p.get_short_name %}
+					<a href="{{ p.get_absolute_url }}" title="{{ name }}">
+						<img src="{% avatar p %}" alt={{ name }} class="avatar">{{ name }}</a>
+					{% endwith %}
+					{% blocktrans count picker_fruit_count=p.fruit_count trimmed %}
+						(one marker)
+					{% plural %}
+						({{ picker_fruit_count }} markers)
+					{% endblocktrans %}
+				</li>
+			{% endfor %}
+			</ul>
+
+			<h3>{% trans "Top Contributors Last Month" %}</h3>
+			<ul class="list-unstyled hall-of-fame">
+			{% for p in top_pickers_last_month %}
+				<li>
+					{% with name=p.get_short_name %}
+					<a href="{{ p.get_absolute_url }}" title="{{ name }}">
+						<img src="{% avatar p %}" alt={{ name }} class="avatar">{{ name }}</a>
+					{% endwith %}
+					{% blocktrans count picker_fruit_count=p.fruit_count trimmed %}
+						(one marker)
+					{% plural %}
+						({{ picker_fruit_count }} markers)
+					{% endblocktrans %}
+				</li>
+			{% endfor %}
+			</ul>
+
+			<hr>
+			<p>{% blocktrans trimmed %}
+				Kudos to all <strong>{{ pickers_count }}</strong> pickers,
+				that contributed <strong>{{ fruit_count }}</strong> markers.
+			{% endblocktrans %}</p>
+
+			{####  Facebook box ####}
 			<hr>
 			<div class="fb-page" data-href="https://www.facebook.com/naovoce"
 			     data-small-header="false" data-adapt-container-width="true"
