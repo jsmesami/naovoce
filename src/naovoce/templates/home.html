@@ -77,7 +77,7 @@
 			{% endfor %}
 			</ul>
 
-			<h4>{% trans "Top Contributors Last Month" %}</h4>
+			<h3>{% trans "Top Contributors Last Month" %}</h3>
 			<ul class="list-unstyled hall-of-fame">
 			{% for p in top_pickers_last_month %}
 				<li>
@@ -121,26 +121,32 @@
 				<a href="{% url 'map' %}" class="explore-map"></a>
 			</div>
 
-			<h4>{% trans 'Latest Entries' %}</h4>
-			{% for f in fruits|slice:'6' %}
+			<h3>{% trans 'Latest Entries' %}</h3>
+			{% for f in fruit|slice:'7' %}
 			<div class="media">
 				<span class="fruit-icon-large pull-left media-object" style="color:#{{ f.kind.color }}">
 					&#x{{ f.kind.key }};
 				</span>
-			    <p class="media-body">
-				    <a href="{{ f.get_absolute_url }}"><strong>{{ f.kind.name }}</strong><br></a>
-				    {% trans 'Shared by' %} <a href="{{ f.user.get_absolute_url }}">{{ f.user.get_short_name }}</a>
-			    </p>
-			</div>
-			{% endfor %}
+				<div class="media-body">
+				    <p>
+					    <a href="{{ f.get_absolute_url }}"><strong>{{ f.kind.name }}</strong></a><br>
+					    {% trans 'Shared by' %} <a href="{{ f.user.get_absolute_url }}">{{ f.user.get_short_name }}</a>
+				    </p>
 
-			<h4>{% trans 'Latest Comments' %}</h4>
-			{% for c in comments|slice:'4' %}
-			<div class="media">
-				<p class="media-body comment-text {% if c.complaint %}complaint{% endif %}">
-					<span class="author"><a href="{{ c.author_url }}">{{ c.author }}</a></span>
-					<a href="{{ c.url }}">{{ c.text|prepos|truncatewords:10 }}</a>
-				</p>
+					{% if f.description %}
+				    <p class="fruit-description">
+					    <a href="{{ f.get_absolute_url }}">{{ f.description|prepos|truncatewords:10 }}</a>
+				    </p>
+					{% endif %}
+
+					{% with images_count=f.images.count %}
+						{% if images_count %}
+							<p class="images-count">
+								<a href="{{ f.images_index_url }}">&#x1F4F7; {{ images_count }}</a>
+							</p>
+						{% endif %}
+					{% endwith %}
+				</div>
 			</div>
 			{% endfor %}
 		</div>
