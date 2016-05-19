@@ -34,8 +34,11 @@
                     <li class="{% block map_active %}{% endblock %}">
                         <a href="{% url 'map' %}">{% trans 'Map' %}</a>
                     </li>
-                    <li class="{% block herbarium_active %}{% endblock %}">
-                        <a href="{% url 'herbarium:index' %}">{% trans 'Herbarium' %}</a>
+                    <li class="{% block blog_active %}{% endblock %}">
+                        <a href="{% url 'blog:index' %}">Blog</a>
+                    </li>
+                    <li class="{% block codex_active %}{% endblock %}">
+                        <a href="{% url 'codex' %}">{% trans "Codex" %}</a>
                     </li>
                     <li class="dropdown {% block about_active %}{% endblock %}">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'About Us' %}<span class="caret"></span></a>
@@ -44,11 +47,8 @@
 							<li><a href="{% url 'support' %}">{% trans 'Support Us' %}</a></li>
 						</ul>
                     </li>
-                    <li class="{% block codex_active %}{% endblock %}">
-                        <a href="{% url 'codex' %}">{% trans "Codex" %}</a>
-                    </li>
-                    <li class="{% block blog_active %}{% endblock %}">
-                        <a href="{% url 'blog:index' %}">Blog</a>
+                    <li class="{% block herbarium_active %}{% endblock %}">
+                        <a href="{% url 'herbarium:index' %}">{% trans 'Herbarium' %}</a>
                     </li>
                 </ul>
             </div>

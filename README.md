@@ -4,7 +4,7 @@ Na-ovoce.cz
 Na ovoce aims to become a web community platform that maps fruit trees, fruit bushes and 
 herbs in wild and public spaces. At the same time its activities increase awareness 
 of traditional varieties among the general public and contribute to their retention 
-in the landscape. For more info please visit [About Us](https://na-ovoce.cz/en/about-us/).
+in the landscape. For more info please visit [About Us](https://na-ovoce.cz/en/our-team/).
 
 ## Installation
 
