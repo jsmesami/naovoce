@@ -462,7 +462,7 @@ Response contains JSON payload with created object.
             }
         }
 
-# Group Herbarium Rersource
+# Group Herbarium Resource
 
 ## Herbarium [https://na-ovoce.cz/api/v1/herbarium/]
 

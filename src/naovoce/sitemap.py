@@ -25,10 +25,6 @@ class IndexesSitemap(Sitemap):
             'priority': 0.9,
             'changefreq': 'weekly',
         },
-        'pickers:index': {
-            'priority': 0.3,
-            'changefreq': 'weekly',
-        },
     }
 
     def items(self):
