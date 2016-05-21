@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-19 12:50+0200\n"
-"PO-Revision-Date: 2016-05-19 12:54+0200\n"
+"POT-Creation-Date: 2016-05-21 13:21+0200\n"
+"PO-Revision-Date: 2016-05-21 13:22+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -682,28 +682,29 @@ msgstr "administrace stránek"
 msgid "Map"
 msgstr "Mapa"
 
-#: naovoce/templates/base.html:38 naovoce/templates/fruit/detail.html:82
-#: naovoce/templates/fruit/herbarium.html:13
-#: naovoce/templates/fruit/herbarium.html:15
-#: naovoce/templates/inc/footer.html:28
-msgid "Herbarium"
-msgstr "Herbář"
-
 #: naovoce/templates/base.html:41
+msgid "Codex"
+msgstr "Kodex"
+
+#: naovoce/templates/base.html:44
 msgid "About Us"
 msgstr "O nás"
 
-#: naovoce/templates/base.html:43 naovoce/templates/inc/footer.html:29
+#: naovoce/templates/base.html:46 naovoce/templates/inc/footer.html:30
 msgid "Our Team"
 msgstr "Náš team"
 
-#: naovoce/templates/base.html:44 naovoce/templates/inc/footer.html:30
+#: naovoce/templates/base.html:47 naovoce/templates/home.html:37
+#: naovoce/templates/inc/footer.html:31
 msgid "Support Us"
 msgstr "Podpořte nás"
 
-#: naovoce/templates/base.html:48
-msgid "Codex"
-msgstr "Kodex"
+#: naovoce/templates/base.html:51 naovoce/templates/fruit/detail.html:82
+#: naovoce/templates/fruit/herbarium.html:13
+#: naovoce/templates/fruit/herbarium.html:15
+#: naovoce/templates/inc/footer.html:32
+msgid "Herbarium"
+msgstr "Herbář"
 
 #: naovoce/templates/base.html:97
 msgid "By using this site you agree to the use of cookies for analytics."
@@ -784,7 +785,7 @@ msgctxt "infinitive"
 msgid "Delete"
 msgstr "Smazat značku"
 
-#: naovoce/templates/fruit/detail.html:33 naovoce/templates/home.html:130
+#: naovoce/templates/fruit/detail.html:33 naovoce/templates/home.html:135
 #: naovoce/templates/inc/mapjs.html:102
 msgid "Shared by"
 msgstr "Sdílí"
@@ -900,15 +901,19 @@ msgstr ""
 msgid "Add marker to the map"
 msgstr "Přidat značku do mapy"
 
-#: naovoce/templates/home.html:44
+#: naovoce/templates/home.html:32 naovoce/templates/inc/footer.html:33
+msgid "Mobile Application"
+msgstr "Mobilní aplikace"
+
+#: naovoce/templates/home.html:46
 msgid "Fruit News"
 msgstr "Ovocné novinky"
 
-#: naovoce/templates/home.html:63
+#: naovoce/templates/home.html:65
 msgid "Top Contributors"
 msgstr "Nejaktivnější přispěvatelé"
 
-#: naovoce/templates/home.html:71 naovoce/templates/home.html.py:88
+#: naovoce/templates/home.html:73 naovoce/templates/home.html.py:90
 #, python-format
 msgid "(one marker)"
 msgid_plural "(%(picker_fruit_count)s markers)"
@@ -916,11 +921,11 @@ msgstr[0] "(jedna značka)"
 msgstr[1] "(%(picker_fruit_count)s značky)"
 msgstr[2] "(%(picker_fruit_count)s značek)"
 
-#: naovoce/templates/home.html:80
+#: naovoce/templates/home.html:82
 msgid "Top Contributors Last Month"
 msgstr "Nejaktivnější za poslední měsíc"
 
-#: naovoce/templates/home.html:97
+#: naovoce/templates/home.html:100
 #, python-format
 msgid ""
 "Kudos to all <strong>%(pickers_count)s</strong> pickers, that contributed "
@@ -929,19 +934,15 @@ msgstr ""
 "Děkujeme všem <strong>%(pickers_count)s</strong> sběračům, kteří přispěli "
 "<strong>%(fruit_count)s</strong> značkami."
 
-#: naovoce/templates/home.html:117
+#: naovoce/templates/home.html:121
 msgid "Explore the Map"
 msgstr "Prozkoumejte mapu"
 
-#: naovoce/templates/home.html:122
+#: naovoce/templates/home.html:126
 msgid "Latest Entries"
 msgstr "Poslední úlovky"
 
-#: naovoce/templates/home.html:135
-msgid "Latest Comments"
-msgstr "Poslední komentáře"
-
-#: naovoce/templates/home.html:149
+#: naovoce/templates/home.html:159
 msgid "Latest photos"
 msgstr "Poslední fotky"
 
@@ -962,19 +963,19 @@ msgstr "Rychlé odkazy"
 msgid "Add Marker"
 msgstr "Přidávání"
 
-#: naovoce/templates/inc/footer.html:31
+#: naovoce/templates/inc/footer.html:29
 msgid "Picker's Codex"
 msgstr "Kodex sběrače"
 
-#: naovoce/templates/inc/footer.html:36
+#: naovoce/templates/inc/footer.html:37
 msgid "Social Networks"
 msgstr "Sociální sítě"
 
-#: naovoce/templates/inc/footer.html:41
+#: naovoce/templates/inc/footer.html:42
 msgid "Friends"
 msgstr "Přátelé"
 
-#: naovoce/templates/inc/footer.html:57
+#: naovoce/templates/inc/footer.html:58
 msgid ""
 "<strong>Na-ovoce.cz</strong> is built using Open Source Software and is OSS "
 "itself, hosted on <a href=\"https://github.com/jsmesami/naovoce\" target="
@@ -1172,6 +1173,10 @@ msgstr "^podporte-nas/$"
 #: naovoce/urls.py:47
 msgid "^codex/$"
 msgstr "^kodex/$"
+
+#: naovoce/urls.py:49
+msgid "^mobile-application/$"
+msgstr "^mobilni-aplikace/$"
 
 #: staticpage/models.py:10
 msgid "meta description"
@@ -1375,6 +1380,9 @@ msgstr "změněno"
 #: utils/templatetags/truncate.py:16
 msgid "Read more"
 msgstr "Čtěte více"
+
+#~ msgid "Latest Comments"
+#~ msgstr "Poslední komentáře"
 
 #~ msgid "Pickers"
 #~ msgstr "Sběrači"

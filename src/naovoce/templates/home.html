@@ -29,10 +29,12 @@
 	<hr>
 	<div class="row">
 		<div class="thumb-large">
-			<img src="{% static 'img/banner_application.png' %}">
+			<a href="{% url 'application' %}" title="{% trans 'Mobile Application' %}">
+				<img src="{% static 'img/banner_application.png' %}">
+			</a>
 		</div>
 		<div class="thumb-large">
-			<a href="{% url 'support' %}">
+			<a href="{% url 'support' %}" title="{% trans 'Support Us' %}">
 				<img src="{% static 'img/banner_support_us.jpg' %}">
 			</a>
 		</div>
