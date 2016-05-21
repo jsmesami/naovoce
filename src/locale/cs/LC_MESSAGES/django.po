@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-21 13:21+0200\n"
-"PO-Revision-Date: 2016-05-21 13:22+0200\n"
+"POT-Creation-Date: 2016-05-21 14:32+0200\n"
+"PO-Revision-Date: 2016-05-21 14:33+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -694,28 +694,36 @@ msgstr "O nás"
 msgid "Our Team"
 msgstr "Náš team"
 
-#: naovoce/templates/base.html:47 naovoce/templates/home.html:37
+#: naovoce/templates/base.html:47 naovoce/templates/staticpage/partners.html:10
+msgid "Partners"
+msgstr "Partneři"
+
+#: naovoce/templates/base.html:48
+msgid "Media"
+msgstr "Média"
+
+#: naovoce/templates/base.html:49 naovoce/templates/home.html:37
 #: naovoce/templates/inc/footer.html:31
 msgid "Support Us"
 msgstr "Podpořte nás"
 
-#: naovoce/templates/base.html:51 naovoce/templates/fruit/detail.html:82
+#: naovoce/templates/base.html:53 naovoce/templates/fruit/detail.html:82
 #: naovoce/templates/fruit/herbarium.html:13
 #: naovoce/templates/fruit/herbarium.html:15
 #: naovoce/templates/inc/footer.html:32
 msgid "Herbarium"
 msgstr "Herbář"
 
-#: naovoce/templates/base.html:97
+#: naovoce/templates/base.html:99
 msgid "By using this site you agree to the use of cookies for analytics."
 msgstr ""
 "Používáním těchto stránek souhlasíte s využitím souborů cookie k analýzám."
 
-#: naovoce/templates/base.html:98
+#: naovoce/templates/base.html:100
 msgid "More information"
 msgstr "Více informací"
 
-#: naovoce/templates/base.html:99
+#: naovoce/templates/base.html:101
 msgid "Dismiss"
 msgstr "Pryč s tím"
 
@@ -1138,43 +1146,47 @@ msgstr ""
 "Chystáte se použít %(provider_name)s k přihlášení na %(site_name)s. "
 "Posledním krokem je vyplnění následujícího formuláře."
 
-#: naovoce/templates/staticpage/team.html:10
-msgid "Core Team"
-msgstr "Základní team"
-
-#: naovoce/templates/staticpage/team.html:38
-msgid "Partners"
-msgstr "Partneři"
-
-#: naovoce/templates/staticpage/team.html:60
+#: naovoce/templates/staticpage/partners.html:32
 msgid "Kudos"
 msgstr "Poděkování"
 
-#: naovoce/templates/staticpage/team.html:61
+#: naovoce/templates/staticpage/partners.html:33
 msgid "Sincere thanks to Maik Allen for helping us with translations."
 msgstr "Srdečné poděkování Maikovi Allenovi za pomoc s překladem stránky."
+
+#: naovoce/templates/staticpage/team.html:10
+msgid "Core Team"
+msgstr "Základní team"
 
 #: naovoce/urls.py:41
 msgid "^map/$"
 msgstr "^mapa/$"
 
 #: naovoce/urls.py:42
-msgid "^about-us/$"
-msgstr "^o-nas/$"
-
-#: naovoce/urls.py:43
-msgid "^our-team/$"
-msgstr "^nas-team/$"
-
-#: naovoce/urls.py:45
-msgid "^support-us/$"
-msgstr "^podporte-nas/$"
-
-#: naovoce/urls.py:47
 msgid "^codex/$"
 msgstr "^kodex/$"
 
+#: naovoce/urls.py:44
+msgid "^about-us/$"
+msgstr "^o-nas/$"
+
+#: naovoce/urls.py:45
+msgid "^our-team/$"
+msgstr "^nas-team/$"
+
+#: naovoce/urls.py:47
+msgid "^partners/$"
+msgstr "^partneri/$"
+
 #: naovoce/urls.py:49
+msgid "^media/$"
+msgstr "^media/$"
+
+#: naovoce/urls.py:51
+msgid "^support-us/$"
+msgstr "^podporte-nas/$"
+
+#: naovoce/urls.py:53
 msgid "^mobile-application/$"
 msgstr "^mobilni-aplikace/$"
 
