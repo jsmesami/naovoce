@@ -45,12 +45,12 @@ sitemaps = {
     'blogs': GenericSitemap(dict(
         queryset=BlogPost.objects.public()),
         priority=1,
-        changefreq='yearly',
+        changefreq='monthly',
     ),
     'herbarium': GenericSitemap(dict(
         queryset=Herbarium.objects.all()),
         priority=0.6,
-        changefreq='yearly',
+        changefreq='monthly',
     ),
     'staticpages': GenericSitemap(dict(
         queryset=StaticPage.objects.all()),
@@ -60,7 +60,7 @@ sitemaps = {
     'pickers': GenericSitemap(dict(
         queryset=FruitUser.objects.filter(is_active=True)),
         priority=0.4,
-        changefreq='weekly',
+        changefreq='monthly',
     ),
     'fruit': GenericSitemap(dict(
         queryset=Fruit.objects.order_by('-created')[:10000]),
