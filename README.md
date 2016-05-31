@@ -11,7 +11,7 @@ in the landscape. For more info please visit [About Us](https://na-ovoce.cz/en/o
 Prerequisities:
 
 * Python3.4+
-* PostgreSQL
+* PostgreSQL 9+
 * CoffeeScript
 * Less
 * Bower
@@ -44,6 +44,8 @@ Very basic local installation without Node (and no root privileges):
 	vim naovoce/settings/local.py
 
 	# Prepare database and load initial data.
+	# If your DB user is not superuser, you my have to install HStore extension by hand
+	# if it does not exist yet: CREATE EXTENSION IF NOT EXISTS hstore;
 	chmod u+x manage.py
 	./manage.py migrate
 	./manage.py loaddata naovoce/fixtures/sites.json

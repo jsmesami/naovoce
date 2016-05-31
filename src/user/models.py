@@ -3,6 +3,7 @@ import os
 from uuid import uuid4
 
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+from django.contrib.postgres.fields import HStoreField
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils import timezone
@@ -111,10 +112,11 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
     def _mangle_avatar_name(filename):
         return uuid4().hex[:8] + os.path.splitext(filename)[1]
 
-    def send_message(self, text, system=False):
+    def send_message(self, text, system=False, context=None):
         Message.objects.create(
             text=text,
             system=system,
+            context=context,
             recipient=self,
         )
 
@@ -146,13 +148,17 @@ class Message(TimeStampedModel):
     Represents simple database-stored messages for users.
     """
     text = models.CharField(_('text'), max_length=255)
+    context = HStoreField(
+        _('context'), blank=True, null=True,
+        help_text=_('Translation context for system messages')
+    )
     read = models.BooleanField(
-        pgettext_lazy('read', 'user.Message'),
+        pgettext_lazy('user.Message', 'read'),
         help_text=pgettext_lazy('Has been read or not.', 'user.Message'),
         default=False,
     )
     system = models.BooleanField(
-        pgettext_lazy('system', 'user.Message'),
+        pgettext_lazy('user.Message', 'system'),
         help_text=_('System messages can be translated and can contain HTML.'),
         default=False,
     )
@@ -164,9 +170,20 @@ class Message(TimeStampedModel):
 
     @property
     def formatted_text(self):
-        return format_html('<span class="date">{date}</span> {text}',
+        text = ugettext(self.text)
+        if self.system:
+            if self.context:
+                try:
+                    text = format_html(text, **self.context)
+                except KeyError:
+                    pass
+            else:
+                text = mark_safe(text)
+
+        return format_html(
+            '<span class="date">{date}</span> {text}',
             date=date_format(self.created, 'SHORT_DATE_FORMAT', use_l10n=True),
-            text=mark_safe(ugettext(self.text)) if self.system else self.text,
+            text=text,
         )
 
     def __str__(self):

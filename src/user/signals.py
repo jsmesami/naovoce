@@ -50,10 +50,11 @@ def send_welcome_message(request, email_address, **kwargs):
     """
     Successful verification means user is logged in for the 1st time, send her a message.
     """
-    welcome_msg = (ugettext_noop(
+    msg_template = ugettext_noop(
         'Welcome! Before you start using this site, '
-        'please take time to read our <a href="{url}">codex</a>.'.format(
-            url=reverse('codex')
-        )
-    ))
-    email_address.user.send_message(welcome_msg, system=True)
+        'please take time to read our <a href="{url}">codex</a>.'
+    )
+
+    context = {'url': reverse('codex')}
+
+    email_address.user.send_message(msg_template, context=context, system=True)

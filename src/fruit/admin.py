@@ -57,14 +57,15 @@ class FruitAdmin(GalleryAdminMixin, admin.ModelAdmin):
 
         if not obj._was_deleted and obj.deleted:
             # Inform user that we have deleted her marker.
-            deletion_msg = ugettext_noop(
+            msg_template = ugettext_noop(
                 'Site administrator deleted your <a href="{url}">marker</a>. '
-                'Reason of deletion: {reason}'.format(
-                    url=obj.get_absolute_url(),
-                    reason=obj.why_deleted,
-                )
+                'Reason of deletion: {reason}'
             )
-            obj.user.send_message(deletion_msg, system=True)
+            context = dict(
+                url=obj.get_absolute_url(),
+                reason=obj.why_deleted,
+            )
+            obj.user.send_message(msg_template, context=context, system=True)
 
 
 class SeasonAdminInline(TranslationTabularInline):

@@ -26,13 +26,13 @@ def somebody_commented_your_fruit(comment, comment_type, object_id, **kwargs):
                     '<strong>posted a <a href="{comment_url}">complaint</a></strong> '
                     'under your <a href="{fruit_url}">marker</a>.'
                 )
-            msg = msg_template.format(
+            context = dict(
                 user_name=comment.author.username,
                 user_url=comment.author.get_absolute_url(),
                 comment_url=comment.get_absolute_url(),
                 fruit_url=fruit.get_absolute_url(),
             )
-            fruit.user.send_message(msg, system=True)
+            fruit.user.send_message(msg_template, context=context, system=True)
 
 
 @receiver(comment_created)
@@ -61,10 +61,10 @@ def somebody_added_image_to_your_fruit(image, gallery_ct, gallery_id, **kwargs):
                 'added a <a href="{image_url}">photo</a> '
                 'under your <a href="{fruit_url}">marker</a>.'
             )
-            msg = msg_template.format(
+            context = dict(
                 user_name=image.author.username,
                 user_url=image.author.get_absolute_url(),
                 image_url=image.get_absolute_url(),
                 fruit_url=fruit.get_absolute_url(),
             )
-            fruit.user.send_message(msg, system=True)
+            fruit.user.send_message(msg_template, context=context, system=True)

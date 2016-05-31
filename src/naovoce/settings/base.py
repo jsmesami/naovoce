@@ -194,6 +194,7 @@ DJANGO_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.sitemaps',
+    'django.contrib.postgres',
 )
 
 LOCAL_APPS = (

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-21 14:32+0200\n"
-"PO-Revision-Date: 2016-05-21 14:33+0200\n"
+"POT-Creation-Date: 2016-05-31 17:18+0200\n"
+"PO-Revision-Date: 2016-05-31 17:21+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -43,7 +43,7 @@ msgid "title"
 msgstr "titulek"
 
 #: blog/models.py:39 comments/admin.py:18 staticpage/models.py:9
-#: user/admin.py:53 user/models.py:148
+#: user/admin.py:53 user/models.py:150
 msgid "text"
 msgstr "text"
 
@@ -265,7 +265,7 @@ msgstr "proč smazán"
 msgid "The tree has been cut down, not found etc."
 msgstr "Strom byl poražen, nenalezen apod."
 
-#: fruit/models.py:93 user/models.py:140
+#: fruit/models.py:93 user/models.py:142
 msgid "user"
 msgstr "uživatel"
 
@@ -273,7 +273,7 @@ msgstr "uživatel"
 msgid "fruit"
 msgstr "ovoce"
 
-#: fruit/signals.py:18
+#: fruit/signals.py:19
 #, python-brace-format
 msgid ""
 "User <a href=\"{user_url}\">{user_name}</a> posted a <a href="
@@ -282,7 +282,7 @@ msgstr ""
 "Uživatel <a href=\"{user_url}\">{user_name}</a> vložil <a href="
 "\"{comment_url}\">komentář</a> pod vaši <a href=\"{fruit_url}\">značku</a>."
 
-#: fruit/signals.py:24
+#: fruit/signals.py:25
 #, python-brace-format
 msgid ""
 "User <a href=\"{user_url}\">{user_name}</a> <strong>posted a <a href="
@@ -293,14 +293,23 @@ msgstr ""
 "\"{comment_url}\">stížnost</a></strong> pod vaši <a href="
 "\"{fruit_url}\">značku</a>."
 
-#: fruit/signals.py:43
+#: fruit/signals.py:44
 msgid "A complaint has been made."
 msgstr "Byla učiněna stížnost."
 
-#: fruit/signals.py:44
+#: fruit/signals.py:45
 #, python-brace-format
 msgid "Please review the situation: https://na-ovoce.cz{url}"
 msgstr "Prosíme přezkoumejte situaci: https://na-ovoce.cz{url}"
+
+#: fruit/signals.py:60
+#, python-brace-format
+msgid ""
+"User <a href=\"{user_url}\">{user_name}</a> added a <a href="
+"\"{image_url}\">photo</a> under your <a href=\"{fruit_url}\">marker</a>."
+msgstr ""
+"Uživatel <a href=\"{user_url}\">{user_name}</a> přidal <a "
+"href=“{image_url}\">fotku</a> pod vaši <a href=\"{fruit_url}\">značku</a>."
 
 #: fruit/views.py:30
 msgid "Send comment as a complaint"
@@ -694,7 +703,7 @@ msgstr "O nás"
 msgid "Our Team"
 msgstr "Náš team"
 
-#: naovoce/templates/base.html:47 naovoce/templates/staticpage/partners.html:10
+#: naovoce/templates/base.html:47
 msgid "Partners"
 msgstr "Partneři"
 
@@ -1146,15 +1155,15 @@ msgstr ""
 "Chystáte se použít %(provider_name)s k přihlášení na %(site_name)s. "
 "Posledním krokem je vyplnění následujícího formuláře."
 
-#: naovoce/templates/staticpage/partners.html:32
+#: naovoce/templates/staticpage/partners.html:30
 msgid "Kudos"
 msgstr "Poděkování"
 
-#: naovoce/templates/staticpage/partners.html:33
+#: naovoce/templates/staticpage/partners.html:31
 msgid "Sincere thanks to Maik Allen for helping us with translations."
 msgstr "Srdečné poděkování Maikovi Allenovi za pomoc s překladem stránky."
 
-#: naovoce/templates/staticpage/team.html:10
+#: naovoce/templates/staticpage/team.html:9
 msgid "Core Team"
 msgstr "Základní team"
 
@@ -1230,7 +1239,7 @@ msgstr "Uživatelský účet je zakázán."
 msgid "Must include \"username\" and Facebook ID \"fcbid\"."
 msgstr "Musí obsahovat \"username\" a facebookové ID \"fcbid\"."
 
-#: user/forms.py:10 user/forms.py:42 user/models.py:59
+#: user/forms.py:10 user/forms.py:42 user/models.py:60
 msgid "username"
 msgstr "uživatelské jméno"
 
@@ -1273,31 +1282,31 @@ msgstr ""
 msgid "Username or e-mail"
 msgstr "Uživatelské jméno nebo e-mail"
 
-#: user/models.py:60
+#: user/models.py:61
 msgid "email address"
 msgstr "e-mail"
 
-#: user/models.py:62
+#: user/models.py:63
 msgid "first name"
 msgstr "jméno"
 
-#: user/models.py:63
+#: user/models.py:64
 msgid "last name"
 msgstr "příjmení"
 
-#: user/models.py:65
+#: user/models.py:66
 msgid "staff status"
 msgstr "personál"
 
-#: user/models.py:67
+#: user/models.py:68
 msgid "Designates whether the user can sign into this admin site."
 msgstr "Označuje, jestli se uživatel může přihlásit do administrátorské sekce."
 
-#: user/models.py:70
+#: user/models.py:71
 msgid "active"
 msgstr "aktivní"
 
-#: user/models.py:72
+#: user/models.py:73
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
@@ -1305,58 +1314,66 @@ msgstr ""
 "Označuje, jestli má být uživatel brán jako aktivní. Odškrtněte namísto "
 "mazání účtu."
 
-#: user/models.py:75
+#: user/models.py:76
 msgid "verified"
 msgstr "ověřeno"
 
-#: user/models.py:76
+#: user/models.py:77
 msgid "date joined"
 msgstr "přidal se"
 
-#: user/models.py:77
+#: user/models.py:78
 msgid "motto"
 msgstr "motto"
 
-#: user/models.py:87
+#: user/models.py:88
 msgid "avatar"
 msgstr "avatar"
 
-#: user/models.py:91
+#: user/models.py:92
 msgid "User avatar"
 msgstr "Avatar uživatele"
 
-#: user/models.py:141
+#: user/models.py:143
 msgid "users"
 msgstr "uživatelé"
 
-#: user/models.py:150
-msgctxt "read"
-msgid "user.Message"
+#: user/models.py:152
+msgid "context"
+msgstr "kontext"
+
+#: user/models.py:153
+msgid "Translation context for system messages"
+msgstr "Kontext pro překlad systémových zpráv"
+
+#: user/models.py:156
+msgctxt "user.Message"
+msgid "read"
 msgstr "přečtená"
 
-#: user/models.py:151
+#: user/models.py:157
 msgctxt "Has been read or not."
 msgid "user.Message"
 msgstr "Byla přečtena nebo ne."
 
-#: user/models.py:155
-msgctxt "system"
-msgid "user.Message"
+#: user/models.py:161
+msgctxt "user.Message"
+msgid "system"
 msgstr "systémová"
 
-#: user/models.py:156
+#: user/models.py:162
 msgid "System messages can be translated and can contain HTML."
 msgstr "Systémová zpráva může mít překlad a může obsahovat HTML."
 
-#: user/models.py:161
+#: user/models.py:167
 msgid "recipient"
 msgstr "příjemce"
 
-#: user/models.py:177
+#: user/models.py:194
 msgid "message"
 msgstr "zpráva"
 
-#: user/models.py:178
+#: user/models.py:195
 msgid "messages"
 msgstr "zprávy"
 
@@ -1392,6 +1409,14 @@ msgstr "změněno"
 #: utils/templatetags/truncate.py:16
 msgid "Read more"
 msgstr "Čtěte více"
+
+#~ msgctxt "read"
+#~ msgid "user.Message"
+#~ msgstr "přečtená"
+
+#~ msgctxt "system"
+#~ msgid "user.Message"
+#~ msgstr "systémová"
 
 #~ msgid "Latest Comments"
 #~ msgstr "Poslední komentáře"
@@ -1473,11 +1498,6 @@ msgstr "Čtěte více"
 
 #~ msgid "Has been read or not."
 #~ msgstr "Byla přečtena nebo ne."
-
-#, fuzzy
-#~| msgid "system gallery"
-#~ msgid "system"
-#~ msgstr "systémová galerie"
 
 #~ msgid "Detail"
 #~ msgstr "Detail"
