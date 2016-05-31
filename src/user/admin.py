@@ -17,7 +17,7 @@ class FruitUserAdmin(UserAdmin):
         }),
         (_('Personal info'), {
             'fields': [
-                'first_name', 'last_name', ('email', 'is_email_verified')
+                'first_name', 'last_name', ('email', 'is_email_verified'), 'motto', 'avatar',
             ],
         }),
         (_('Permissions'), {
