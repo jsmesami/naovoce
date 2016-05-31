@@ -45,7 +45,7 @@ Very basic local installation without Node (and no root privileges):
 
 	# Prepare database and load initial data.
 	# If your DB user is not superuser, you my have to install HStore extension by hand
-	# if it does not exist yet: CREATE EXTENSION IF NOT EXISTS hstore;
+	# in case it does not exist yet: CREATE EXTENSION IF NOT EXISTS hstore;
 	chmod u+x manage.py
 	./manage.py migrate
 	./manage.py loaddata naovoce/fixtures/sites.json
