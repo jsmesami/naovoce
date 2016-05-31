@@ -21,9 +21,10 @@ If you make pull request, please make sure your code style has some _grace_.
 If contributing features that visually affect UI, please minimize styling and leave 
 the work to our graphics design peer.
 
-We adhere to pep8, with some exceptions: line length can be (not too much) longer than 79 chars,
-We prefer 4-space indented hanging indents with closing brace lined up under the first 
-character of the line that starts the multi-line construct.
+We adhere to [pycodestyle](https://pycodestyle.readthedocs.io/en/latest/) 
+(formely known as pep8), with some exceptions: line length can be (not too much) longer 
+than 79 chars, we prefer 4-space indented hanging indents with closing brace lined up 
+under the first character of the line that starts the multi-line construct.
 
 Please take the favored tools into account:  
 Python 3, HTML5, Bootstrap 3, Less, CoffeeScript, JQuery
