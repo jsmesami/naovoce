@@ -1,4 +1,5 @@
 from django.http import HttpResponsePermanentRedirect
+from django.http.response import Http404
 from django.shortcuts import get_object_or_404, render
 
 from comments.utils import get_comments_context
@@ -25,8 +26,11 @@ def index(request, category_pk=None, category_slug=None):
 
 
 def detail(request, pk, slug=None):
-    qs = BlogPost.objects.public().filter(id=pk)
-    entry = get_object_or_404(qs)
+    entry = get_object_or_404(BlogPost, id=pk)
+
+    # Unpublished blog entries, invisible to others, can be previewed by staff members:
+    if not (entry.is_public or (request.user.is_authenticated() and request.user.is_staff)):
+        raise Http404
 
     if entry.slug != slug:
         return HttpResponsePermanentRedirect(entry.get_absolute_url())
