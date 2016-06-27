@@ -208,6 +208,7 @@ LOCAL_APPS = (
     'utils.i18n',
     'comments',
     'naovoce',
+    'donate',
 )
 
 EXTERNAL_APPS = (
