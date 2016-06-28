@@ -55,6 +55,12 @@ TEMPLATES[0]['OPTIONS']['loaders'] = [
     'django.template.loaders.app_directories.Loader',
 ]
 
+PAYPAL = {
+    'client_id': '',
+    'client_secret': '',
+    'development': True,
+}
+
 # pip install django-debug-toolbar
 # EXTERNAL_APPS = ('debug_toolbar',) + EXTERNAL_APPS
 
