@@ -4,6 +4,7 @@ from unittest.mock import patch, Mock
 
 from .models import Donation
 
+DONATED_AMOUNT = 1000
 
 class DonateViewTest(TestCase):
 
@@ -13,14 +14,14 @@ class DonateViewTest(TestCase):
         self.assertTemplateUsed(response, 'donate/donate.html')
 
     def test_save_donation_form(self):
-        response = self.client.post(reverse('donate:index'), {'amount': '10'})
-        donation = Donation.objects.get(amount=10)
+        response = self.client.post(reverse('donate:index'), {'amount': DONATED_AMOUNT})
+        donation = Donation.objects.get(amount=DONATED_AMOUNT)
         self.assertRedirects(response, reverse('donate:init-paypal', kwargs = { 'donation_id': donation.id}), fetch_redirect_response = False)
 
     @patch('donate.views.PayPal', new=Mock(return_value=Mock(gateway_url=Mock(return_value='http://example.com/'),
                                                              create_payment=Mock(return_value=True))))
     def test_init_payment(self):
-        donation = Donation.objects.create(amount=10)
+        donation = Donation.objects.create(amount=DONATED_AMOUNT)
         response = self.client.get(reverse('donate:init-paypal', kwargs = { 'donation_id': donation.id}))
         self.assertRedirects(response, 'http://example.com/')
 
