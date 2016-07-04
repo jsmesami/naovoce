@@ -8,12 +8,15 @@ from fruit.models import Kind, Fruit
 from gallery.models import Image
 from user.utils import pickers_counts_context
 
+def latest_images_for_existing_fruit():
+    existing_fruits = Fruit.objects.filter(deleted=False).values_list('id', flat=True)
+    return Image.objects.filter(gallery_ct=ContentType.objects.get_for_model(Fruit), gallery_id__in=existing_fruits)
 
 def home_view(request):
     context = {
         'blogposts': BlogPost.objects.public(),
         'fruit': Fruit.objects.valid().order_by('-created').select_related('kind', 'user'),
-        'images': Image.objects.filter(gallery_ct=ContentType.objects.get_for_model(Fruit)),
+        'images': latest_images_for_existing_fruit(),
     }
 
     context.update(pickers_counts_context())
