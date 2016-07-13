@@ -46,12 +46,14 @@
 							<li><a href="{% url 'team' %}">{% trans 'Our Team' %}</a></li>
 							<li><a href="{% url 'partners' %}">{% trans 'Partners' %}</a></li>
 							<li><a href="{% url 'media' %}">{% trans 'Media' %}</a></li>
-							<li><a href="{% url 'support' %}">{% trans 'Support Us' %}</a></li>
 						</ul>
                     </li>
                     <li class="{% block herbarium_active %}{% endblock %}">
                         <a href="{% url 'herbarium:index' %}">{% trans 'Herbarium' %}</a>
                     </li>
+					<li class="{% block support_active %}{% endblock %}">
+						<a href="{% url 'support' %}">{% trans 'Support Us' %}</a>
+					</li>
                 </ul>
             </div>
 		</div>
