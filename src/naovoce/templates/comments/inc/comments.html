@@ -24,7 +24,7 @@
 					</span>
 				</span>
 				{% if not c.rejected %}
-					{{ c.text|prepos }}
+					{{ c.text|prepos|linebreaksbr }}
 				{% else %}
 					<span class="rejected">
 						{% trans 'This comment has been rejected by moderator.' %}
