@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-14 19:33+0200\n"
-"PO-Revision-Date: 2016-07-14 19:37+0200\n"
+"POT-Creation-Date: 2016-07-14 19:48+0200\n"
+"PO-Revision-Date: 2016-07-14 19:49+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -727,28 +727,32 @@ msgstr "Partneři"
 msgid "Media"
 msgstr "Média"
 
-#: naovoce/templates/base.html:52 naovoce/templates/fruit/detail.html:82
+#: naovoce/templates/base.html:49
+msgid "Downloads"
+msgstr "Ke stažení"
+
+#: naovoce/templates/base.html:53 naovoce/templates/fruit/detail.html:82
 #: naovoce/templates/fruit/herbarium.html:13
 #: naovoce/templates/fruit/herbarium.html:15
 #: naovoce/templates/inc/footer.html:32
 msgid "Herbarium"
 msgstr "Herbář"
 
-#: naovoce/templates/base.html:55 naovoce/templates/home.html:37
+#: naovoce/templates/base.html:56 naovoce/templates/home.html:37
 #: naovoce/templates/inc/footer.html:31
 msgid "Support Us"
 msgstr "Podpořte nás"
 
-#: naovoce/templates/base.html:101
+#: naovoce/templates/base.html:102
 msgid "By using this site you agree to the use of cookies for analytics."
 msgstr ""
 "Používáním těchto stránek souhlasíte s využitím souborů cookie k analýzám."
 
-#: naovoce/templates/base.html:102
+#: naovoce/templates/base.html:103
 msgid "More information"
 msgstr "Více informací"
 
-#: naovoce/templates/base.html:103
+#: naovoce/templates/base.html:104
 msgid "Dismiss"
 msgstr "Pryč s tím"
 
@@ -1207,13 +1211,17 @@ msgstr "^partneri/$"
 msgid "^media/$"
 msgstr "^media/$"
 
-#: naovoce/urls.py:51
+#: naovoce/urls.py:50
 msgid "^support-us/$"
 msgstr "^podporte-nas/$"
 
-#: naovoce/urls.py:53
+#: naovoce/urls.py:52
 msgid "^mobile-application/$"
 msgstr "^mobilni-aplikace/$"
+
+#: naovoce/urls.py:54
+msgid "^downloads/$"
+msgstr "^ke-stazeni/$"
 
 #: staticpage/models.py:10
 msgid "meta description"

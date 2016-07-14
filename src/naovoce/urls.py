@@ -46,12 +46,12 @@ urlpatterns += i18n_patterns(
         dict(template_name='staticpage/team.html'), name='team'),
     url(_(r'^partners/$'), staticpage.views.static_view,
         dict(template_name='staticpage/partners.html'), name='partners'),
-    url(_(r'^media/$'), staticpage.views.static_view,
-        dict(template_name='staticpage/page.html'), name='media'),
+    url(_(r'^media/$'), staticpage.views.static_view, name='media'),
     url(_(r'^support-us/$'), staticpage.views.static_view,
         dict(template_name='staticpage/support.html'), name='support'),
     url(_(r'^mobile-application/$'), staticpage.views.static_view,
         dict(template_name='staticpage/application.html'), name='application'),
+    url(_(r'^downloads/$'), staticpage.views.static_view, name='downloads'),
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

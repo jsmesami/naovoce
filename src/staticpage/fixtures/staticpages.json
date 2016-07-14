@@ -118,5 +118,25 @@
         "url": "/en/media/"
     },
     "model": "staticpage.staticpage"
+},
+{
+    "pk": 13,
+    "fields": {
+        "meta_description": "",
+        "text": "",
+        "title": "Ke sta\u017een\u00ed",
+        "url": "/cs/ke-stazeni/"
+    },
+    "model": "staticpage.staticpage"
+},
+{
+    "pk": 14,
+    "fields": {
+        "meta_description": "",
+        "text": "",
+        "title": "Downloads",
+        "url": "/en/downloads/"
+    },
+    "model": "staticpage.staticpage"
 }
 ]
