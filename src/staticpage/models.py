@@ -13,7 +13,7 @@ class StaticPage(models.Model):
         verbose_name = _('static page')
         verbose_name_plural = _('static pages')
 
-    def __unicode__(self):
+    def __str__(self):
         return '{page.title}: {page.url}'.format(page=self)
 
     def get_absolute_url(self):

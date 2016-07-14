@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-31 17:18+0200\n"
-"PO-Revision-Date: 2016-05-31 17:21+0200\n"
+"POT-Creation-Date: 2016-07-14 19:33+0200\n"
+"PO-Revision-Date: 2016-07-14 19:37+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 1.8.8\n"
 
 #: blog/admin.py:19
 msgid "blogs count"
@@ -38,7 +38,7 @@ msgstr "kategorie"
 msgid "categories"
 msgstr "kategorie"
 
-#: blog/models.py:38 staticpage/models.py:8
+#: blog/models.py:38 naovoce/models.py:11 staticpage/models.py:8
 msgid "title"
 msgstr "titulek"
 
@@ -380,6 +380,22 @@ msgstr "Nenalezeno."
 msgid "Fresh fruit"
 msgstr "Čerstvé ovoce"
 
+#: naovoce/models.py:10
+msgid "file"
+msgstr "soubor"
+
+#: naovoce/models.py:12
+msgid "You can assign a title for future reference."
+msgstr "Můžete přiřadit titulek pro pozdější referenci."
+
+#: naovoce/models.py:15
+msgid "upload"
+msgstr "nahraný soubor"
+
+#: naovoce/models.py:16
+msgid "uploads"
+msgstr "nahrané soubory"
+
 #: naovoce/templates/404.html:8
 msgid "We are sorry, but there is no fruit here."
 msgstr "Je nám líto, ale zde žádné ovoce není."
@@ -413,7 +429,7 @@ msgid ""
 msgstr ""
 "Vítejte na %(site_name)s, %(user_display)s!\n"
 "\n"
-"K ověření e-mailové adresy navšitevte tento odkaz: %(activate_url)s\n"
+"K ověření e-mailové adresy navštivte tento odkaz: %(activate_url)s\n"
 
 #: naovoce/templates/account/email/email_confirmation_subject.txt:1
 msgid "Email Address Confirmation"
@@ -711,28 +727,28 @@ msgstr "Partneři"
 msgid "Media"
 msgstr "Média"
 
-#: naovoce/templates/base.html:49 naovoce/templates/home.html:37
-#: naovoce/templates/inc/footer.html:31
-msgid "Support Us"
-msgstr "Podpořte nás"
-
-#: naovoce/templates/base.html:53 naovoce/templates/fruit/detail.html:82
+#: naovoce/templates/base.html:52 naovoce/templates/fruit/detail.html:82
 #: naovoce/templates/fruit/herbarium.html:13
 #: naovoce/templates/fruit/herbarium.html:15
 #: naovoce/templates/inc/footer.html:32
 msgid "Herbarium"
 msgstr "Herbář"
 
-#: naovoce/templates/base.html:99
+#: naovoce/templates/base.html:55 naovoce/templates/home.html:37
+#: naovoce/templates/inc/footer.html:31
+msgid "Support Us"
+msgstr "Podpořte nás"
+
+#: naovoce/templates/base.html:101
 msgid "By using this site you agree to the use of cookies for analytics."
 msgstr ""
 "Používáním těchto stránek souhlasíte s využitím souborů cookie k analýzám."
 
-#: naovoce/templates/base.html:100
+#: naovoce/templates/base.html:102
 msgid "More information"
 msgstr "Více informací"
 
-#: naovoce/templates/base.html:101
+#: naovoce/templates/base.html:103
 msgid "Dismiss"
 msgstr "Pryč s tím"
 

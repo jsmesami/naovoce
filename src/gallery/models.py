@@ -56,7 +56,7 @@ class Image(TimeStampedModel):
 
     def __str__(self):
         filename, ext = os.path.splitext(os.path.basename(self.image.path))
-        return filename+ext if len(filename) < 19 else '...{}'.format(filename[-16:]+ext)
+        return filename + ext if len(filename) < 19 else '...{}'.format(filename[-16:] + ext)
 
     class Meta:
         ordering = '-created',
