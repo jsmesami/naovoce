@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load markup %}
+{% load typo %}
+
+{% block title %}{% trans 'Support Us' %}{% endblock %}
+
+{% block content %}
+  <h1>{% trans 'Donate using PayPal' %}</h1>
+  <form action="{% url 'donate:index' %}" method="post">
+    {{ form.amount }}
+    <p>
+      {% for error in form.amount.errors %}
+        <strong>{{ error|escape }}</strong>
+      {% endfor %}
+    </p>
+    {% csrf_token %}
+    <button type="submit" class="button">{% trans 'Donate using PayPal' %}</button>
+  </form>
+{% endblock %}

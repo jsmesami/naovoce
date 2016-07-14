@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-31 17:18+0200\n"
+"POT-Creation-Date: 2016-06-28 15:30+0200\n"
 "PO-Revision-Date: 2016-05-31 17:21+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
@@ -106,6 +106,28 @@ msgstr "Děkujeme za váš komentář."
 #: comments/utils.py:53
 msgid "You have to be signed-in to post comments."
 msgstr "Abyste mohli posílat komentáře, musíte se přihlásit."
+
+#: donate/forms.py:10
+#, python-brace-format
+msgid "We accept only donations higher than {0} CZK"
+msgstr "Přijímáme příspěvky pouze od {0} CZK"
+
+#: donate/views.py:55
+#, python-brace-format
+msgid "Na-ovoce donation number {donation.id}"
+msgstr "Příspěvek Na-ovoce číslo {donation.id}"
+
+#: donate/views.py:63
+msgid "We were unable to start a PayPal transaction. Please try again."
+msgstr "Nepodařilo se nám vytvořit PayPal transakci. Zkuste to prosím později."
+
+#: donate/views.py:80 donate/views.py:88
+msgid ""
+"We were unable to complete the transaction. Your card has not been charged. "
+"Please try again."
+msgstr ""
+"Nepodařilo se nám dokončit transakci. Z vaší karty jsme nic nestrhli. Zkuste "
+"to prosím později."
 
 #: fruit/admin.py:25 fruit/models.py:33
 msgid "class"
@@ -626,6 +648,7 @@ msgstr "změnit heslo"
 
 #: naovoce/templates/account/password_reset_from_key_done.html:8
 #: naovoce/templates/account/verification_sent.html:8
+#: naovoce/templates/donate/thank-you.html:7
 msgid "Thank you!"
 msgstr "Děkujeme!"
 
@@ -711,8 +734,8 @@ msgstr "Partneři"
 msgid "Media"
 msgstr "Média"
 
-#: naovoce/templates/base.html:49 naovoce/templates/home.html:37
-#: naovoce/templates/inc/footer.html:31
+#: naovoce/templates/base.html:49 naovoce/templates/donate/donate.html:7
+#: naovoce/templates/home.html:37 naovoce/templates/inc/footer.html:31
 msgid "Support Us"
 msgstr "Podpořte nás"
 
@@ -771,6 +794,15 @@ msgstr "Přihlašte se"
 #: naovoce/templates/comments/inc/form.html:24
 msgid "to add your comment"
 msgstr "k přidání komentáře"
+
+#: naovoce/templates/donate/donate.html:10
+#: naovoce/templates/donate/donate.html:19
+msgid "Donate using PayPal"
+msgstr "Podpořte nás pomocí PayPal"
+
+#: naovoce/templates/donate/thank-you.html:10
+msgid "Thank you four your donation!"
+msgstr "Děkujeme za vaši podporu!"
 
 #: naovoce/templates/fruit/add.html:7
 msgid "Add a Marker"
@@ -1167,35 +1199,35 @@ msgstr "Srdečné poděkování Maikovi Allenovi za pomoc s překladem stránky.
 msgid "Core Team"
 msgstr "Základní team"
 
-#: naovoce/urls.py:41
+#: naovoce/urls.py:42
 msgid "^map/$"
 msgstr "^mapa/$"
 
-#: naovoce/urls.py:42
+#: naovoce/urls.py:43
 msgid "^codex/$"
 msgstr "^kodex/$"
 
-#: naovoce/urls.py:44
+#: naovoce/urls.py:45
 msgid "^about-us/$"
 msgstr "^o-nas/$"
 
-#: naovoce/urls.py:45
+#: naovoce/urls.py:46
 msgid "^our-team/$"
 msgstr "^nas-team/$"
 
-#: naovoce/urls.py:47
+#: naovoce/urls.py:48
 msgid "^partners/$"
 msgstr "^partneri/$"
 
-#: naovoce/urls.py:49
+#: naovoce/urls.py:50
 msgid "^media/$"
 msgstr "^media/$"
 
-#: naovoce/urls.py:51
+#: naovoce/urls.py:52
 msgid "^support-us/$"
 msgstr "^podporte-nas/$"
 
-#: naovoce/urls.py:53
+#: naovoce/urls.py:54
 msgid "^mobile-application/$"
 msgstr "^mobilni-aplikace/$"
 
