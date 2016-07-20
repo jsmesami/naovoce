@@ -78,9 +78,7 @@ class Naovoce.Map extends L.Map
 
 		super id,
 			layers: [L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', params)]
-
-		{# Do not display attributions, they are in the footer. #}
-		@attributionControl.setPrefix ''
+			attributionControl: false  {# Disable default attributions #}
 
 		if L.markerClusterGroup?
 			@markerLayerGroup = L.markerClusterGroup
@@ -202,6 +200,11 @@ class Naovoce.Map extends L.Map
 				popup: "{% trans 'You are within {distance} {unit} from this point' %}"
 		.addTo @
 		@
+
+	addAttribution: ->
+		@addControl L.control.attribution
+			prefix: 'Map data &copy; OpenStreetMap contributors'
+			position: 'bottomleft'
 
 </script>
 {% endcompress %}
