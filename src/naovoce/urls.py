@@ -52,6 +52,7 @@ urlpatterns += i18n_patterns(
     url(_(r'^mobile-application/$'), staticpage.views.static_view,
         dict(template_name='staticpage/application.html'), name='application'),
     url(_(r'^downloads/$'), staticpage.views.static_view, name='downloads'),
+    url(_(r'^privacy-policy/$'), staticpage.views.static_view, name='privacy'),
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

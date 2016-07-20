@@ -138,5 +138,25 @@
         "url": "/en/downloads/"
     },
     "model": "staticpage.staticpage"
+},
+{
+    "pk": 15,
+    "model": "staticpage.staticpage",
+    "fields": {
+        "url": "/cs/ochrana-osobnich-udaju/",
+        "text": "",
+        "title": "Z\u00e1sady ochrany osobn\u00edch \u00fadaj\u016f",
+        "meta_description": ""
+    }
+},
+{
+    "pk": 16,
+    "model": "staticpage.staticpage",
+    "fields": {
+        "url": "/en/privacy-policy/",
+        "text": "",
+        "title": "Privacy Policy",
+        "meta_description": ""
+    }
 }
 ]

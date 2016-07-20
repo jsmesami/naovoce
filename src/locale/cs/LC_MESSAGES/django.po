@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-14 19:48+0200\n"
-"PO-Revision-Date: 2016-07-14 19:49+0200\n"
+"POT-Creation-Date: 2016-07-20 15:10+0200\n"
+"PO-Revision-Date: 2016-07-20 15:12+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -823,7 +823,7 @@ msgid "Delete"
 msgstr "Smazat značku"
 
 #: naovoce/templates/fruit/detail.html:33 naovoce/templates/home.html:135
-#: naovoce/templates/inc/mapjs.html:102
+#: naovoce/templates/inc/mapjs.html:100
 msgid "Shared by"
 msgstr "Sdílí"
 
@@ -843,7 +843,7 @@ msgstr "Tato značka byla smazána"
 msgid "Reason of deletion"
 msgstr "Důvod smazání"
 
-#: naovoce/templates/fruit/detail.html:60 naovoce/templates/inc/mapjs.html:106
+#: naovoce/templates/fruit/detail.html:60 naovoce/templates/inc/mapjs.html:104
 msgid "Description"
 msgstr "Popis"
 
@@ -1004,15 +1004,19 @@ msgstr "Přidávání"
 msgid "Picker's Codex"
 msgstr "Kodex sběrače"
 
-#: naovoce/templates/inc/footer.html:37
+#: naovoce/templates/inc/footer.html:34
+msgid "Privacy Policy"
+msgstr "Ochrana os. údajů"
+
+#: naovoce/templates/inc/footer.html:38
 msgid "Social Networks"
 msgstr "Sociální sítě"
 
-#: naovoce/templates/inc/footer.html:42
+#: naovoce/templates/inc/footer.html:43
 msgid "Friends"
 msgstr "Přátelé"
 
-#: naovoce/templates/inc/footer.html:58
+#: naovoce/templates/inc/footer.html:59
 msgid ""
 "<strong>Na-ovoce.cz</strong> is built using Open Source Software and is OSS "
 "itself, hosted on <a href=\"https://github.com/jsmesami/naovoce\" target="
@@ -1026,23 +1030,23 @@ msgstr ""
 msgid "Fruit kind"
 msgstr "Druh ovoce"
 
-#: naovoce/templates/inc/mapjs.html:112
+#: naovoce/templates/inc/mapjs.html:110
 msgid "Address"
 msgstr "Adresa"
 
-#: naovoce/templates/inc/mapjs.html:181
+#: naovoce/templates/inc/mapjs.html:179
 msgid "Search for places or addresses"
 msgstr "Vyhledávání míst a adres"
 
-#: naovoce/templates/inc/mapjs.html:182
+#: naovoce/templates/inc/mapjs.html:180
 msgid "Location search"
 msgstr "Vyhledávání míst"
 
-#: naovoce/templates/inc/mapjs.html:200
+#: naovoce/templates/inc/mapjs.html:198
 msgid "Show me where I am"
 msgstr "Ukaž mi, kde jsem!"
 
-#: naovoce/templates/inc/mapjs.html:202
+#: naovoce/templates/inc/mapjs.html:200
 #, python-brace-format
 msgid "You are within {distance} {unit} from this point"
 msgstr "Od tohoto bodu jste vzdáleni cca {distance}{unit}."
@@ -1222,6 +1226,10 @@ msgstr "^mobilni-aplikace/$"
 #: naovoce/urls.py:54
 msgid "^downloads/$"
 msgstr "^ke-stazeni/$"
+
+#: naovoce/urls.py:55
+msgid "^privacy-policy/$"
+msgstr "^ochrana-osobnich-udaju/$"
 
 #: staticpage/models.py:10
 msgid "meta description"
