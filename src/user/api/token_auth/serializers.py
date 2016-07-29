@@ -5,20 +5,20 @@ from rest_framework import serializers
 
 class AuthTokenFacebookSerializer(serializers.Serializer):
     email = serializers.CharField(style={'input_type': 'email'})
-    fcbid = serializers.CharField(style={'input_type': 'password'})
+    fcb_id = serializers.CharField(style={'input_type': 'password'})
 
     def validate(self, attrs):
         email = attrs.get('email')
-        fcbid = attrs.get('fcbid')
+        fcb_id = attrs.get('fcb_id')
 
-        if email and fcbid:
+        if email and fcb_id:
             try:
                 account = SocialAccount.objects.get(user__email__iexact=email)
             except SocialAccount.DoesNotExist:
                 msg = _('Facebook account does not exist.')
                 raise serializers.ValidationError(msg)
 
-            if account.uid != fcbid:
+            if account.uid != fcb_id:
                 msg = _('Facebook ID does not match.')
                 raise serializers.ValidationError(msg)
 
@@ -28,7 +28,7 @@ class AuthTokenFacebookSerializer(serializers.Serializer):
 
             attrs['user'] = account.user
         else:
-            msg = _('Must include "username" and Facebook ID "fcbid".')
+            msg = _('Must include "username" and Facebook ID "fcb_id".')
             raise serializers.ValidationError(msg)
 
         return attrs

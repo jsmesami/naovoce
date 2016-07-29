@@ -1276,8 +1276,8 @@ msgid "Facebook ID does not match."
 msgstr "Facebook ID neodpovídá."
 
 #: user/api/token_auth/serializers.py:31
-msgid "Must include \"username\" and Facebook ID \"fcbid\"."
-msgstr "Musí obsahovat \"username\" a facebookové ID \"fcbid\"."
+msgid "Must include \"username\" and Facebook ID \"fcb_id\"."
+msgstr "Musí obsahovat \"username\" a facebookové ID \"fcb_id\"."
 
 #: user/forms.py:10 user/forms.py:42 user/models.py:60
 msgid "username"
