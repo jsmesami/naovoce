@@ -40,6 +40,28 @@ Na-ovoce.cz, public API
             "id": 630
         }
 
+# Group Sign Up Resource
+
+## Sign Up via Facebook [POST https://na-ovoce.cz/api/v1/signup/facebook/]
+
+The client has to first obtain `fcb_token` (User Access Token) from Facebook.
+Token obtained in response (along with user ID) can be used for further authentication.
+This API endpoint can be used for both signing up and signing in.
+
++ Request (application/json)
+
+        {
+            "email": "email@example.com",
+            "fcb_token": "EAAGlZBTH339QBAFCy5N8JMeErVCMHI5sNNOxgk3rK9gh1WhM2pru8LdhS9..."
+        }
+
++ Response 200
+
+        {
+            "token": "eb3e2b0367c2f99cf0380ef88127c2bf129c26a8",
+            "id": 2067
+        }
+
 # Group Fruit Resource
 
 ## Fruit [https://na-ovoce.cz/api/v1/fruit/]
