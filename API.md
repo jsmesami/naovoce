@@ -44,7 +44,7 @@ Na-ovoce.cz, public API
 
 ## Sign Up via Facebook [POST https://na-ovoce.cz/api/v1/signup/facebook/]
 
-The client has to first obtain `fcb_token` (User Access Token) from Facebook.
+The client has to first obtain `fcb_id` and `fcb_token` (User Access Token) from Facebook.
 Token obtained in response (along with user ID) can be used for further authentication.
 This API endpoint can be used for both signing up and signing in.
 
@@ -52,6 +52,7 @@ This API endpoint can be used for both signing up and signing in.
 
         {
             "email": "email@example.com",
+            "fcb_id": "10204683629790171",
             "fcb_token": "EAAGlZBTH339QBAFCy5N8JMeErVCMHI5sNNOxgk3rK9gh1WhM2pru8LdhS9..."
         }
 

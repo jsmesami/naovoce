@@ -10,6 +10,7 @@ from allauth.socialaccount.models import SocialAccount, SocialLogin, SocialToken
 
 class SignupFacebookSerializer(serializers.Serializer):
     email = serializers.CharField(style={'input_type': 'email'})
+    fcb_id = serializers.CharField(style={'input_type': 'password'})
     fcb_token = serializers.CharField(style={'input_type': 'password'})
 
     def validate(self, attrs):
@@ -18,19 +19,11 @@ class SignupFacebookSerializer(serializers.Serializer):
         assert request is not None, \
             'Must provide "request" in a "context" dict when instantiating the serializer.'
 
-        email = attrs.get('email')
-        fcb_token = attrs.get('fcb_token')
-
-        if not (email and fcb_token):
-            raise serializers.ValidationError(
-                _('Must include "email" and User Access Token "fcb_token".')
-            )
-
         try:
-            account = SocialAccount.objects.get(user__email__iexact=email)
+            account = SocialAccount.objects.get(user__email__iexact=attrs.get('email'))
         except SocialAccount.DoesNotExist:
             app = SocialApp.objects.get(provider='facebook')
-            social_token = SocialToken(app=app, token=fcb_token)
+            social_token = SocialToken(app=app, token=attrs.get('fcb_token'))
 
             try:
                 # Check token against Facebook
@@ -45,6 +38,10 @@ class SignupFacebookSerializer(serializers.Serializer):
                 raise serializers.ValidationError(
                     _('Facebook authentication failed.')
                 )
+
+        if account.uid != attrs.get('fcb_id'):
+            msg = _('Facebook ID does not match.')
+            raise serializers.ValidationError(msg)
 
         if not account.user.is_active:
             raise serializers.ValidationError(
