@@ -1,10 +1,9 @@
 from rest_framework import generics
 from rest_framework.exceptions import ValidationError
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import ugettext_lazy as _
 
-from utils.api.permissions import IsOwnerOrReadOnly
+from utils.api.permissions import IsOwnerOrReadOnly, IsAuthenticatedOrReadOnly
 from .serializers import ImageSerializer
 from ..models import Image
 

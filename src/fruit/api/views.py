@@ -15,7 +15,7 @@ from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 
 from comments.api.serializers import CommentSerializer
-from utils.api.permissions import IsOwnerOrReadOnly
+from utils.api.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly
 from . import serializers
 from ..models import Fruit, Kind
 
@@ -58,7 +58,7 @@ class FruitList(generics.ListCreateAPIView):
     List or create Fruit resources.
     """
     queryset = Fruit.objects.valid().select_related('kind').order_by('-created')
-    permission_classes = permissions.IsAuthenticatedOrReadOnly,
+    permission_classes = IsAuthenticatedOrReadOnly,
 
     def list(self, request, *args, **kwargs):
         qs = self.filter_queryset(self.get_queryset())
@@ -104,7 +104,7 @@ class FruitDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Fruit.objects\
         .select_related('kind', 'user')\
         .annotate(images_count=Count('images'))
-    permission_classes = permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly
+    permission_classes = IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly
 
     def get_serializer_class(self):
         if self.get_object().deleted:
@@ -143,7 +143,7 @@ class FruitComplaint(generics.CreateAPIView):
     Use comment system to send a complaint on invalid Fruit marker
     """
     serializer_class = CommentSerializer
-    permission_classes = permissions.IsAuthenticated,
+    permission_classes = IsAuthenticated,
 
     def perform_create(self, serializer):
         fruit = get_object_or_404(Fruit, pk=self.kwargs.get('pk'))

@@ -10,6 +10,9 @@ Na-ovoce.cz, public API
 
 ## Obtain Token [POST https://na-ovoce.cz/api/v1/token/]
 
+IMPORTANT: User registered with e-mail and password has to confirm her email address by
+visiting a link that hes been sent to her. Before that, she cannot obtain auth token.
+
 + Request (application/json)
 
         {
@@ -42,7 +45,28 @@ Na-ovoce.cz, public API
 
 # Group Sign Up Resource
 
-## Sign Up via Facebook [POST https://na-ovoce.cz/api/v1/signup/facebook/]
+## Sign Up With E-mail [POST https://na-ovoce.cz/api/v1/signup/]
+
+IMPORTANT: User registered with this method has to verify her email address by visiting
+a link that hes been sent to her. Before that, she cannot be authenticated.
+
++ Request (application/json)
+
+        {
+            "email": "email@example.com",
+            "username": "MasterPicker",
+            "password": "letmein"
+        }
+
++ Response 200
+
+        {
+            "id": 2066,
+            "email": "email@example.com",
+            "username": "MasterPicker"
+        }
+
+## Sign Up With Facebook [POST https://na-ovoce.cz/api/v1/signup/facebook/]
 
 The client has to first obtain required user info (namely User Access Token) from Facebook.
 Token obtained in response (along with user ID) can be used for further authentication.
