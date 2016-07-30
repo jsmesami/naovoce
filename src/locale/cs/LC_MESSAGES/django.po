@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-29 16:43+0200\n"
-"PO-Revision-Date: 2016-07-29 16:53+0200\n"
+"POT-Creation-Date: 2016-07-30 17:00+0200\n"
+"PO-Revision-Date: 2016-07-30 17:02+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -1255,29 +1255,33 @@ msgstr "Oprávnění"
 msgid "Important dates"
 msgstr "Sůležitá data"
 
-#: user/api/signup/serializers.py:26
-msgid "Must include \"email\" and User Access Token \"fcb_token\"."
-msgstr "Musí obsahovat “email” a uživatelský přístupový token \"fcb_token\"."
+#: user/api/signup/serializers.py:40
+msgid "A user is already registered with this e-mail address."
+msgstr "Uživatel s touto e-mailovou adresou je již registrován."
 
-#: user/api/signup/serializers.py:46
-msgid "Facebook authentication failed."
-msgstr "Autentikace facebookem selhala."
+#: user/api/signup/serializers.py:74 user/api/token_auth/serializers.py:22
+msgid "Facebook ID does not match."
+msgstr "Facebook ID neodpovídá."
 
-#: user/api/signup/serializers.py:51 user/api/token_auth/serializers.py:26
+#: user/api/signup/serializers.py:79 user/api/token_auth/serializers.py:26
 msgid "User account is disabled."
 msgstr "Uživatelský účet je zakázán."
+
+#: user/api/signup/serializers.py:106
+msgid "Facebook authentication failed."
+msgstr "Autentikace facebookem selhala."
 
 #: user/api/token_auth/serializers.py:18
 msgid "Facebook account does not exist."
 msgstr "Facebookový účet neexistuje."
 
-#: user/api/token_auth/serializers.py:22
-msgid "Facebook ID does not match."
-msgstr "Facebook ID neodpovídá."
-
 #: user/api/token_auth/serializers.py:31
 msgid "Must include \"username\" and Facebook ID \"fcb_id\"."
 msgstr "Musí obsahovat \"username\" a facebookové ID \"fcb_id\"."
+
+#: user/api/token_auth/views.py:21
+msgid "User's email is not verified."
+msgstr "Uživatelův e-mail není ověřen."
 
 #: user/forms.py:10 user/forms.py:42 user/models.py:60
 msgid "username"
@@ -1449,6 +1453,10 @@ msgstr "změněno"
 #: utils/templatetags/truncate.py:16
 msgid "Read more"
 msgstr "Čtěte více"
+
+#~ msgid "Must include \"email\" and User Access Token \"fcb_token\"."
+#~ msgstr ""
+#~ "Musí obsahovat “email” a uživatelský přístupový token \"fcb_token\"."
 
 #~ msgctxt "read"
 #~ msgid "user.Message"

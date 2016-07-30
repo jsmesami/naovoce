@@ -5,16 +5,32 @@ from rest_framework.authtoken.models import Token
 from . import serializers
 
 
+class UserSignup(APIView):
+    serializer_class = serializers.SignupSerializer
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        user = serializer.save(self.request)
+
+        return Response({
+            'id': user.id,
+            'username': user.username,
+            'email': user.email,
+        })
+
+
 class UserSignupFacebook(APIView):
     serializer_class = serializers.SignupFacebookSerializer
 
     def post(self, request, *args, **kwargs):
-        serializer = self.serializer_class(data=request.data, context=dict(request=request))
+        serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        user = serializer.validated_data['user']
+        user = serializer.save(self.request)
 
-        token, reated = Token.objects.get_or_create(user=user)
+        token, created = Token.objects.get_or_create(user=user)
 
         return Response({
             'token': token.key,

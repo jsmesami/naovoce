@@ -1,11 +1,62 @@
 from django.utils.translation import ugettext_lazy as _
+
 from requests.exceptions import HTTPError
 
 from rest_framework import serializers
+from rest_framework import exceptions
 
+from allauth.account import app_settings as allauth_settings
+from allauth.account.adapter import get_adapter
+from allauth.account.utils import setup_user_email, complete_signup
 from allauth.socialaccount.helpers import complete_social_login
-from allauth.socialaccount.providers.facebook.views import fb_complete_login
 from allauth.socialaccount.models import SocialAccount, SocialLogin, SocialToken, SocialApp
+from allauth.socialaccount.providers.facebook.views import fb_complete_login
+from allauth.utils import email_address_exists, get_username_max_length
+
+
+class SignupSerializer(serializers.Serializer):
+    username = serializers.CharField(
+        max_length=get_username_max_length(),
+        min_length=allauth_settings.USERNAME_MIN_LENGTH,
+        required=allauth_settings.USERNAME_REQUIRED
+    )
+    email = serializers.EmailField(
+        required=allauth_settings.EMAIL_REQUIRED,
+        style={'input_type': 'email'},
+    )
+    password = serializers.CharField(
+        write_only=True,
+        style={'input_type': 'password'}
+    )
+
+    def validate_username(self, username):
+        return get_adapter().clean_username(username)
+
+    def validate_email(self, email):
+        email = get_adapter().clean_email(email)
+        if allauth_settings.UNIQUE_EMAIL:
+            if email and email_address_exists(email):
+                raise serializers.ValidationError(
+                    _("A user is already registered with this e-mail address."))
+        return email
+
+    def validate_password(self, password):
+        return get_adapter().clean_password(password)
+
+    def validate(self, attrs):
+        attrs['password1'] = attrs['password']  # Needed by save_user()
+        return attrs
+
+    def save(self, request):
+        self.cleaned_data = self.validated_data  # Needed by new_user()
+        user = get_adapter().new_user(request)
+        original_request = request._request
+
+        get_adapter().save_user(request, user, self)
+        setup_user_email(request, user, [])
+        complete_signup(original_request, user, allauth_settings.EMAIL_VERIFICATION, None)
+
+        return user
 
 
 class SignupFacebookSerializer(serializers.Serializer):
@@ -14,16 +65,32 @@ class SignupFacebookSerializer(serializers.Serializer):
     fcb_token = serializers.CharField(style={'input_type': 'password'})
 
     def validate(self, attrs):
-        request = self.context.get('request')
-
-        assert request is not None, \
-            'Must provide "request" in a "context" dict when instantiating the serializer.'
-
         try:
             account = SocialAccount.objects.get(user__email__iexact=attrs.get('email'))
         except SocialAccount.DoesNotExist:
+            attrs['user'] = None
+        else:
+            if account.uid != attrs.get('fcb_id'):
+                msg = _('Facebook ID does not match.')
+                raise serializers.ValidationError(msg)
+
+            if not account.user.is_active:
+                raise serializers.ValidationError(
+                    _('User account is disabled.')
+                )
+
+            attrs['user'] = account.user
+
+        return attrs
+
+    def save(self, request):
+        user = self.validated_data['user']
+
+        if user:
+            return user
+        else:
             app = SocialApp.objects.get(provider='facebook')
-            social_token = SocialToken(app=app, token=attrs.get('fcb_token'))
+            social_token = SocialToken(app=app, token=self.validated_data['fcb_token'])
 
             try:
                 # Check token against Facebook
@@ -35,19 +102,8 @@ class SignupFacebookSerializer(serializers.Serializer):
                 account = login.account
             except HTTPError:
                 # 400 Client Error
-                raise serializers.ValidationError(
+                raise exceptions.AuthenticationFailed(
                     _('Facebook authentication failed.')
                 )
 
-        if account.uid != attrs.get('fcb_id'):
-            msg = _('Facebook ID does not match.')
-            raise serializers.ValidationError(msg)
-
-        if not account.user.is_active:
-            raise serializers.ValidationError(
-                _('User account is disabled.')
-            )
-
-        attrs['user'] = account.user
-
-        return attrs
+            return account.user

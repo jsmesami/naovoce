@@ -1,12 +1,23 @@
+from allauth.account.adapter import DefaultAccountAdapter
 from allauth.socialaccount.adapter import DefaultSocialAccountAdapter
+
+from rest_framework.reverse import reverse
 
 from user.models import FruitUser
 
 
+class AccountAdapter(DefaultAccountAdapter):
+    """
+    Allauth account adapter that does not use 'django.contrib.messages' if used by API.
+    """
+    def add_message(self, request, *args, **kwargs):
+        if not request.path.startswith(reverse('api:root')):
+            super().add_message(request, *args, **kwargs)
+
+
 class SocialAccountAdapter(DefaultSocialAccountAdapter):
     """
-    Override Allauth 's default behaviour, so that we can automatically connect
-    social accounts to existing accounts.
+    Allauth account adapter that automatically connects social accounts to existing accounts.
     """
     def pre_social_login(self, request, sociallogin):
         """
