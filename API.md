@@ -11,7 +11,7 @@ Na-ovoce.cz, public API
 ## Obtain Token [POST https://na-ovoce.cz/api/v1/token/]
 
 IMPORTANT: User registered with e-mail and password has to confirm her email address by
-visiting a link that hes been sent to her. Before that, she cannot obtain auth token.
+visiting a link that has been sent to her. Before that, she cannot obtain auth token.
 
 + Request (application/json)
 
@@ -48,7 +48,7 @@ visiting a link that hes been sent to her. Before that, she cannot obtain auth t
 ## Sign Up With E-mail [POST https://na-ovoce.cz/api/v1/signup/]
 
 IMPORTANT: User registered with this method has to verify her email address by visiting
-a link that hes been sent to her. Before that, she cannot be authenticated.
+a link that has been sent to her. Before that, she cannot be authenticated.
 
 + Request (application/json)
 
