@@ -12,5 +12,6 @@ urlpatterns = patterns(
     url(r'^images/', include('gallery.api.urls')),
     url(r'^signup/', include('user.api.signup.urls')),
     url(r'^token/', include('user.api.token_auth.urls')),
+    url(r'^staticpages/', include('staticpage.api.urls')),
     url(r'^.*', api_handler_404),
 )

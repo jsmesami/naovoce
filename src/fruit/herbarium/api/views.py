@@ -11,5 +11,5 @@ class HerbariumList(generics.ListAPIView):
     queryset = Herbarium.objects.select_related('kind').order_by()
 
     def get_serializer_class(self):
-        raw = self.kwargs.get('raw') or self.request.query_params.get('raw') is not None
+        raw = self.request.query_params.get('raw') is not None
         return serializers.HerbariumRawSerializer if raw else serializers.HerbariumSerializer
