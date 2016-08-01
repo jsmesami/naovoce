@@ -6,7 +6,8 @@ from rest_framework import serializers
 from rest_framework import exceptions
 
 from allauth.account import app_settings as allauth_settings
-from allauth.account.adapter import get_adapter
+from allauth.account.adapter import get_adapter as get_account_adapter
+from allauth.socialaccount.adapter import get_adapter as get_socialaccount_adapter
 from allauth.account.utils import setup_user_email, complete_signup
 from allauth.socialaccount.helpers import complete_social_login
 from allauth.socialaccount.models import SocialAccount, SocialLogin, SocialToken, SocialApp
@@ -30,10 +31,10 @@ class SignupSerializer(serializers.Serializer):
     )
 
     def validate_username(self, username):
-        return get_adapter().clean_username(username)
+        return get_account_adapter().clean_username(username)
 
     def validate_email(self, email):
-        email = get_adapter().clean_email(email)
+        email = get_account_adapter().clean_email(email)
         if allauth_settings.UNIQUE_EMAIL:
             if email and email_address_exists(email):
                 raise serializers.ValidationError(
@@ -41,7 +42,7 @@ class SignupSerializer(serializers.Serializer):
         return email
 
     def validate_password(self, password):
-        return get_adapter().clean_password(password)
+        return get_account_adapter().clean_password(password)
 
     def validate(self, attrs):
         attrs['password1'] = attrs['password']  # Needed by save_user()
@@ -49,10 +50,10 @@ class SignupSerializer(serializers.Serializer):
 
     def save(self, request):
         self.cleaned_data = self.validated_data  # Needed by new_user()
-        user = get_adapter().new_user(request)
+        user = get_account_adapter().new_user(request)
         original_request = request._request
 
-        get_adapter().save_user(request, user, self)
+        get_account_adapter().save_user(request, user, self)
         setup_user_email(request, user, [])
         complete_signup(original_request, user, allauth_settings.EMAIL_VERIFICATION, None)
 
@@ -99,11 +100,11 @@ class SignupFacebookSerializer(serializers.Serializer):
                 login.token = social_token
                 login.state = SocialLogin.state_from_request(original_request)
                 complete_social_login(original_request, login)
-                account = login.account
             except HTTPError:
                 # 400 Client Error
                 raise exceptions.AuthenticationFailed(
                     _('Facebook authentication failed.')
                 )
-
-            return account.user
+            else:
+                self.cleaned_data = self.validated_data  # Needed by save_user()
+                return get_socialaccount_adapter().save_user(request, login, self)
