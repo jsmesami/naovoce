@@ -851,6 +851,63 @@ a.read-more {
 	}
 }
 
+.media-coverage {
+	.media-item {
+		padding: 15px;
+		border: 1px dotted @brand-primary;
+		height: 420px;
+		overflow: hidden;
+		margin-bottom: 20px;
+		@media (max-width: @screen-xs-max) {
+			max-width: 210px;
+		}
+	}
+	.media-logo {
+		display: block;
+		max-height: 120px;
+		overflow: hidden;
+	}
+	.media-date {
+		float: right;
+	}
+	.media-perex {
+		a {
+			color: @brand-primary;
+		}
+		a:active,
+		a:hover {
+			color: darken(@brand-primary, 15%)
+		}
+	}
+	.online {
+		a {
+			color: @brand-secondary;
+		}
+		a:active,
+		a:hover {
+			color: darken(@brand-secondary, 15%)
+		}
+	}
+	.printed {
+		a {
+			color: @brand-quaternary;
+		}
+		a:active,
+		a:hover {
+			color: darken(@brand-quaternary, 15%)
+		}
+	}
+	.broadcast {
+		a {
+			color: @brand-tertiary;
+		}
+		a:active,
+		a:hover {
+			color: darken(@brand-tertiary, 15%)
+		}
+	}
+}
+
 input.donate {
 	width: 95px;
 	border: 1px solid #ddd;

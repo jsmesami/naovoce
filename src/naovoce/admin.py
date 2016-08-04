@@ -13,3 +13,9 @@ class UploadAdmin(admin.ModelAdmin):
 
     def _url(self, obj):
         return obj.file.url
+
+
+@admin.register(models.Media)
+class MediaAdmin(admin.ModelAdmin):
+    model = models.Media
+    list_display = 'name', 'date', 'type'

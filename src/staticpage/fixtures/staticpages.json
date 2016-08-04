@@ -103,26 +103,6 @@
     "pk": 11,
     "fields": {
         "meta_description": "",
-        "text": "## M\u00e9dia\r\n\r\n---\r\n",
-        "title": "M\u00e9dia",
-        "url": "/cs/media/"
-    },
-    "model": "staticpage.staticpage"
-},
-{
-    "pk": 12,
-    "fields": {
-        "meta_description": "",
-        "text": "## Media\r\n\r\n---\r\n",
-        "title": "Media",
-        "url": "/en/media/"
-    },
-    "model": "staticpage.staticpage"
-},
-{
-    "pk": 13,
-    "fields": {
-        "meta_description": "",
         "text": "",
         "title": "Ke sta\u017een\u00ed",
         "url": "/cs/ke-stazeni/"
@@ -130,7 +110,7 @@
     "model": "staticpage.staticpage"
 },
 {
-    "pk": 14,
+    "pk": 12,
     "fields": {
         "meta_description": "",
         "text": "",
@@ -140,7 +120,7 @@
     "model": "staticpage.staticpage"
 },
 {
-    "pk": 15,
+    "pk": 13,
     "model": "staticpage.staticpage",
     "fields": {
         "url": "/cs/ochrana-osobnich-udaju/",
@@ -150,7 +130,7 @@
     }
 },
 {
-    "pk": 16,
+    "pk": 14,
     "model": "staticpage.staticpage",
     "fields": {
         "url": "/en/privacy-policy/",

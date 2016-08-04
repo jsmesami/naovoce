@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-30 17:00+0200\n"
-"PO-Revision-Date: 2016-07-30 17:02+0200\n"
+"POT-Creation-Date: 2016-08-04 16:54+0200\n"
+"PO-Revision-Date: 2016-08-04 16:57+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -26,7 +26,7 @@ msgstr "počet blogů"
 msgid "public"
 msgstr "veřejný"
 
-#: blog/models.py:15 fruit/models.py:34
+#: blog/models.py:15 fruit/models.py:34 naovoce/models.py:39
 msgid "name"
 msgstr "název"
 
@@ -38,7 +38,8 @@ msgstr "kategorie"
 msgid "categories"
 msgstr "kategorie"
 
-#: blog/models.py:38 naovoce/models.py:11 staticpage/models.py:8
+#: blog/models.py:38 naovoce/models.py:17 naovoce/models.py:44
+#: staticpage/models.py:8
 msgid "title"
 msgstr "titulek"
 
@@ -343,7 +344,7 @@ msgstr "Tato značka byla smazána."
 msgid "images"
 msgstr "obrázky"
 
-#: gallery/api/views.py:31 gallery/api/views.py:49
+#: gallery/api/views.py:30 gallery/api/views.py:48
 #, python-brace-format
 msgid "Content type {ct} is not supported."
 msgstr "Typ obsahu {ct} není podporován."
@@ -372,7 +373,7 @@ msgstr "Děkujeme za přidání obrázku."
 msgid "You have to be signed-in to add images."
 msgstr "Abyste mohli přidávat obrázky, musíte se přihlásit."
 
-#: naovoce/api/views.py:22
+#: naovoce/api/views.py:23
 msgid "Not found."
 msgstr "Nenalezeno."
 
@@ -380,21 +381,57 @@ msgstr "Nenalezeno."
 msgid "Fresh fruit"
 msgstr "Čerstvé ovoce"
 
-#: naovoce/models.py:10
+#: naovoce/models.py:16
 msgid "file"
 msgstr "soubor"
 
-#: naovoce/models.py:12
+#: naovoce/models.py:18
 msgid "You can assign a title for future reference."
 msgstr "Můžete přiřadit titulek pro pozdější referenci."
 
-#: naovoce/models.py:15
+#: naovoce/models.py:21
 msgid "upload"
 msgstr "nahraný soubor"
 
-#: naovoce/models.py:16
+#: naovoce/models.py:22
 msgid "uploads"
 msgstr "nahrané soubory"
+
+#: naovoce/models.py:34
+msgid "Online media"
+msgstr "Online média"
+
+#: naovoce/models.py:35
+msgid "Printed media"
+msgstr "Tištěná média"
+
+#: naovoce/models.py:36
+msgid "TV / Radio"
+msgstr "TV / Rádio"
+
+#: naovoce/models.py:40
+msgid "date published"
+msgstr "datum publikování"
+
+#: naovoce/models.py:41
+msgid "logo"
+msgstr "logo"
+
+#: naovoce/models.py:42
+msgid "type"
+msgstr "typ"
+
+#: naovoce/models.py:45
+msgid "perex"
+msgstr "perex"
+
+#: naovoce/models.py:46
+msgid "link"
+msgstr "odkaz"
+
+#: naovoce/models.py:53 naovoce/models.py:54
+msgid "media"
+msgstr "média"
 
 #: naovoce/templates/404.html:8
 msgid "We are sorry, but there is no fruit here."
@@ -769,7 +806,7 @@ msgid "Categories"
 msgstr "Kategorie"
 
 #: naovoce/templates/blog/index.html:22
-#: naovoce/templates/fruit/herbarium.html:25
+#: naovoce/templates/fruit/herbarium.html:25 naovoce/templates/media.html:13
 msgid "all"
 msgstr "vše"
 
@@ -1072,6 +1109,10 @@ msgstr ""
 msgid "filter"
 msgstr "filtr"
 
+#: naovoce/templates/media.html:11
+msgid "Media types"
+msgstr "Typy médií"
+
 #: naovoce/templates/pickers/detail.html:20
 msgid "Joined"
 msgstr "Mapuje od"
@@ -1196,24 +1237,24 @@ msgid "^map/$"
 msgstr "^mapa/$"
 
 #: naovoce/urls.py:42
+msgid "^media(?:/(?P<type_slug>[^/]+))?/$"
+msgstr "^media(?:/(?P<type_slug>[^/]+))?/$"
+
+#: naovoce/urls.py:43
 msgid "^codex/$"
 msgstr "^kodex/$"
 
-#: naovoce/urls.py:44
+#: naovoce/urls.py:45
 msgid "^about-us/$"
 msgstr "^o-nas/$"
 
-#: naovoce/urls.py:45
+#: naovoce/urls.py:46
 msgid "^our-team/$"
 msgstr "^nas-team/$"
 
-#: naovoce/urls.py:47
+#: naovoce/urls.py:48
 msgid "^partners/$"
 msgstr "^partneri/$"
-
-#: naovoce/urls.py:49
-msgid "^media/$"
-msgstr "^media/$"
 
 #: naovoce/urls.py:50
 msgid "^support-us/$"
@@ -1255,15 +1296,15 @@ msgstr "Oprávnění"
 msgid "Important dates"
 msgstr "Sůležitá data"
 
-#: user/api/signup/serializers.py:40
+#: user/api/signup/serializers.py:41
 msgid "A user is already registered with this e-mail address."
 msgstr "Uživatel s touto e-mailovou adresou je již registrován."
 
-#: user/api/signup/serializers.py:74 user/api/token_auth/serializers.py:22
+#: user/api/signup/serializers.py:75 user/api/token_auth/serializers.py:22
 msgid "Facebook ID does not match."
 msgstr "Facebook ID neodpovídá."
 
-#: user/api/signup/serializers.py:79 user/api/token_auth/serializers.py:26
+#: user/api/signup/serializers.py:80 user/api/token_auth/serializers.py:26
 msgid "User account is disabled."
 msgstr "Uživatelský účet je zakázán."
 
@@ -1453,6 +1494,9 @@ msgstr "změněno"
 #: utils/templatetags/truncate.py:16
 msgid "Read more"
 msgstr "Čtěte více"
+
+#~ msgid "^media/$"
+#~ msgstr "^media/$"
 
 #~ msgid "Must include \"email\" and User Access Token \"fcb_token\"."
 #~ msgstr ""

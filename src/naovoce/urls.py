@@ -10,9 +10,9 @@ from django.views.generic import TemplateView
 
 import staticpage.views
 import utils.views
-
 import user.views
-from . import views
+import naovoce.views
+
 from . import feeds
 from . import sitemap
 
@@ -20,7 +20,7 @@ from . import sitemap
 urlpatterns = [
     url(r'^fruitadmin/', include(admin.site.urls)),
     url(r'^i18n/', include('django.conf.urls.i18n')),
-    url(r'^$', views.home_view, name='home'),
+    url(r'^$', naovoce.views.home_view, name='home'),
     url(r'^api/v1/', include('naovoce.api.urls', namespace='api')),
     url(r'^herbarium/', include('fruit.herbarium.urls', namespace='herbarium')),
     url(r'^fruit/', include('fruit.urls', namespace='fruit')),
@@ -37,8 +37,9 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     '',
-    url(r'^$', views.home_view, name='home'),
-    url(_(r'^map/$'), views.map_view, name='map'),
+    url(r'^$', naovoce.views.home_view, name='home'),
+    url(_(r'^map/$'), naovoce.views.map_view, name='map'),
+    url(_(r'^media(?:/(?P<type_slug>[^/]+))?/$'), naovoce.views.media_view, name='media'),
     url(_(r'^codex/$'), staticpage.views.static_view,
         dict(template_name='staticpage/codex.html'), name='codex'),
     url(_(r'^about-us/$'), RedirectView.as_view(permanent=True, pattern_name='team')),
@@ -46,7 +47,6 @@ urlpatterns += i18n_patterns(
         dict(template_name='staticpage/team.html'), name='team'),
     url(_(r'^partners/$'), staticpage.views.static_view,
         dict(template_name='staticpage/partners.html'), name='partners'),
-    url(_(r'^media/$'), staticpage.views.static_view, name='media'),
     url(_(r'^support-us/$'), staticpage.views.static_view,
         dict(template_name='staticpage/support.html'), name='support'),
     url(_(r'^mobile-application/$'), staticpage.views.static_view,
