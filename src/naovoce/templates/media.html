@@ -28,17 +28,19 @@
 				<span class="media-date small">{{ item.date }}</span>
 				<hr>
 				{% with link=item.link|default:'#' %}
-					<a href="{{ link }}" class="media-logo">
+					<a href="{{ link }}" target="_blank" rel="noopener noreferrer" class="media-logo">
 						<img class="img-responsive"
 						     alt="{{ item.name }}"
 						     src="{% get_thumb item.logo w=180 h=120 %}">
 					</a>
 					<hr>
 					<h4 class="media-title">
-						<a href="{{ link }}">{{ item.title }}</a>
+						<a href="{{ link }}" target="_blank" rel="noopener noreferrer">
+							{{ item.title }}</a>
 					</h4>
 					<p class="media-perex">
-						<a href="{{ link }}">{{ item.perex|truncatewords:20 }}</a>
+						<a href="{{ link }}" target="_blank" rel="noopener noreferrer">
+							{{ item.perex|truncatewords:20 }}</a>
 					</p>
 				{% endwith %}
 			</div>
