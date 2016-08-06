@@ -55,7 +55,7 @@ class FruitAdmin(GalleryAdminMixin, admin.ModelAdmin):
             obj.user = request.user
         obj.save()
 
-        if not obj._was_deleted and obj.deleted:
+        if not getattr(obj, '_was_deleted', False) and obj.deleted:
             # Inform user that we have deleted her marker.
             msg_template = ugettext_noop(
                 'Site administrator deleted your <a href="{url}">marker</a>. '
