@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-04 16:54+0200\n"
-"PO-Revision-Date: 2016-08-04 16:57+0200\n"
+"POT-Creation-Date: 2016-08-06 19:06+0200\n"
+"PO-Revision-Date: 2016-08-06 19:07+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -120,7 +120,7 @@ msgstr "barva"
 msgid "markers count"
 msgstr "počet značek"
 
-#: fruit/admin.py:61
+#: fruit/admin.py:62
 #, python-brace-format
 msgid ""
 "Site administrator deleted your <a href=\"{url}\">marker</a>. Reason of "
@@ -1283,6 +1283,18 @@ msgstr "statická stránka"
 #: staticpage/models.py:14
 msgid "static pages"
 msgstr "statické stránky"
+
+#: user/adapters.py:29
+msgid "Confirmation email has NOT been sent to {} (recipient refused)."
+msgstr "Potvrzovací e-mail NEBYL odeslán {} (adresát odmítnut)."
+
+#: user/adapters.py:35
+msgid ""
+"\n"
+"Administrators have been notified."
+msgstr ""
+"\n"
+"Administrátoři byli informováni."
 
 #: user/admin.py:18
 msgid "Personal info"
