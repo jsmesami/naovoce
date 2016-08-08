@@ -42,13 +42,46 @@ urlpatterns += i18n_patterns(
     url(_(r'^media(?:/(?P<type_slug>[^/]+))?/$'), naovoce.views.media_view, name='media'),
     url(_(r'^codex/$'), staticpage.views.static_view,
         dict(template_name='staticpage/codex.html'), name='codex'),
+
+    # TODO: Orphaneded URL, remove in mid 2017:
     url(_(r'^about-us/$'), RedirectView.as_view(permanent=True, pattern_name='team')),
+
     url(_(r'^our-team/$'), staticpage.views.static_view,
         dict(template_name='staticpage/team.html'), name='team'),
     url(_(r'^partners/$'), staticpage.views.static_view,
         dict(template_name='staticpage/partners.html'), name='partners'),
-    url(_(r'^support-us/$'), staticpage.views.static_view,
-        dict(template_name='staticpage/support.html'), name='support'),
+
+    url(
+        _(r'^support-us/financially/$'),
+        staticpage.views.static_view,
+        dict(
+            template_name='staticpage/support.html',
+            additional_context=dict(section='financially'),
+        ),
+        name='support-financially',
+    ),
+    url(
+        _(r'^support-us/engage/$'),
+        staticpage.views.static_view,
+        dict(
+            template_name='staticpage/support.html',
+            additional_context=dict(section='engage'),
+        ),
+        name='support-engage',
+    ),
+    url(
+        _(r'^support-us/zoot/$'),
+        staticpage.views.static_view,
+        dict(
+            template_name='staticpage/support.html',
+            additional_context=dict(section='zoot'),
+        ),
+        name='support-zoot',
+    ),
+
+    # TODO: Orphaneded URL, remove in mid 2017:
+    url(_(r'^support-us/$'), RedirectView.as_view(permanent=True, pattern_name='support-financially')),
+
     url(_(r'^mobile-application/$'), staticpage.views.static_view,
         dict(template_name='staticpage/application.html'), name='application'),
     url(_(r'^downloads/$'), staticpage.views.static_view, name='downloads'),

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-06 19:06+0200\n"
-"PO-Revision-Date: 2016-08-06 19:07+0200\n"
+"POT-Creation-Date: 2016-08-06 21:53+0200\n"
+"PO-Revision-Date: 2016-08-06 21:54+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -120,7 +120,7 @@ msgstr "barva"
 msgid "markers count"
 msgstr "počet značek"
 
-#: fruit/admin.py:62
+#: fruit/admin.py:61
 #, python-brace-format
 msgid ""
 "Site administrator deleted your <a href=\"{url}\">marker</a>. Reason of "
@@ -548,7 +548,7 @@ msgstr ""
 msgid "Sign In"
 msgstr "Přihlášení"
 
-#: naovoce/templates/account/login.html:13
+#: naovoce/templates/account/login.html:13 naovoce/templates/inc/footer.html:74
 #: naovoce/templates/inc/user_info.html:20
 #: naovoce/templates/inc/user_info.html:21
 msgid "Sign in"
@@ -588,7 +588,7 @@ msgstr "Zapoměli jste své heslo?"
 msgid "Sign Out"
 msgstr "Odhlášení"
 
-#: naovoce/templates/account/logout.html:8
+#: naovoce/templates/account/logout.html:8 naovoce/templates/inc/footer.html:70
 #: naovoce/templates/inc/user_info.html:8
 #: naovoce/templates/inc/user_info.html:9
 msgid "Sign out"
@@ -702,7 +702,7 @@ msgstr "Nastavit heslo"
 
 #: naovoce/templates/account/signup.html:7
 #: naovoce/templates/account/signup.html:13
-#: naovoce/templates/inc/user_info.html:22
+#: naovoce/templates/inc/footer.html:77 naovoce/templates/inc/user_info.html:22
 #: naovoce/templates/inc/user_info.html:23
 msgid "Registration"
 msgstr "Registrace"
@@ -739,7 +739,7 @@ msgstr "Pro dokončení registračního procesu navštivte odkaz v těle zprávy
 msgid "site administration"
 msgstr "administrace stránek"
 
-#: naovoce/templates/base.html:35 naovoce/templates/inc/footer.html:26
+#: naovoce/templates/base.html:35 naovoce/templates/inc/footer.html:43
 #: naovoce/templates/map.html:9
 msgid "Map"
 msgstr "Mapa"
@@ -752,44 +752,56 @@ msgstr "Kodex"
 msgid "About Us"
 msgstr "O nás"
 
-#: naovoce/templates/base.html:46 naovoce/templates/inc/footer.html:30
+#: naovoce/templates/base.html:46 naovoce/templates/inc/footer.html:52
 msgid "Our Team"
 msgstr "Náš team"
 
-#: naovoce/templates/base.html:47
+#: naovoce/templates/base.html:47 naovoce/templates/inc/footer.html:53
 msgid "Partners"
 msgstr "Partneři"
 
-#: naovoce/templates/base.html:48
+#: naovoce/templates/base.html:48 naovoce/templates/inc/footer.html:54
 msgid "Media"
 msgstr "Média"
 
-#: naovoce/templates/base.html:49
+#: naovoce/templates/base.html:49 naovoce/templates/inc/footer.html:55
 msgid "Downloads"
 msgstr "Ke stažení"
 
-#: naovoce/templates/base.html:53 naovoce/templates/fruit/detail.html:82
-#: naovoce/templates/fruit/herbarium.html:13
-#: naovoce/templates/fruit/herbarium.html:15
-#: naovoce/templates/inc/footer.html:32
-msgid "Herbarium"
-msgstr "Herbář"
-
-#: naovoce/templates/base.html:56 naovoce/templates/home.html:37
-#: naovoce/templates/inc/footer.html:31
+#: naovoce/templates/base.html:53 naovoce/templates/home.html:37
+#: naovoce/templates/inc/footer.html:81
 msgid "Support Us"
 msgstr "Podpořte nás"
 
-#: naovoce/templates/base.html:102
+#: naovoce/templates/base.html:55 naovoce/templates/inc/footer.html:83
+msgid "Financially"
+msgstr "Finančně"
+
+#: naovoce/templates/base.html:56 naovoce/templates/inc/footer.html:84
+msgid "Engage"
+msgstr "Zapojte se"
+
+#: naovoce/templates/base.html:57 naovoce/templates/inc/footer.html:85
+msgid "Zoot Goodness"
+msgstr "Dobro na Zootu"
+
+#: naovoce/templates/base.html:61 naovoce/templates/fruit/detail.html:82
+#: naovoce/templates/fruit/herbarium.html:13
+#: naovoce/templates/fruit/herbarium.html:15
+#: naovoce/templates/inc/footer.html:47
+msgid "Herbarium"
+msgstr "Herbář"
+
+#: naovoce/templates/base.html:107
 msgid "By using this site you agree to the use of cookies for analytics."
 msgstr ""
 "Používáním těchto stránek souhlasíte s využitím souborů cookie k analýzám."
 
-#: naovoce/templates/base.html:103
+#: naovoce/templates/base.html:108
 msgid "More information"
 msgstr "Více informací"
 
-#: naovoce/templates/base.html:104
+#: naovoce/templates/base.html:109
 msgid "Dismiss"
 msgstr "Pryč s tím"
 
@@ -975,7 +987,7 @@ msgstr ""
 msgid "Add marker to the map"
 msgstr "Přidat značku do mapy"
 
-#: naovoce/templates/home.html:32 naovoce/templates/inc/footer.html:33
+#: naovoce/templates/home.html:32 naovoce/templates/inc/footer.html:56
 msgid "Mobile Application"
 msgstr "Mobilní aplikace"
 
@@ -1029,31 +1041,43 @@ msgstr "Zpět"
 msgid "Contact"
 msgstr "Kontakt"
 
-#: naovoce/templates/inc/footer.html:24
+#: naovoce/templates/inc/footer.html:28
+msgid "Mobile App"
+msgstr "Mobilní aplikace"
+
+#: naovoce/templates/inc/footer.html:39
 msgid "Quick Links"
 msgstr "Rychlé odkazy"
 
-#: naovoce/templates/inc/footer.html:27 naovoce/templates/map.html:42
+#: naovoce/templates/inc/footer.html:44 naovoce/templates/map.html:42
 msgid "Add Marker"
 msgstr "Přidávání"
 
-#: naovoce/templates/inc/footer.html:29
+#: naovoce/templates/inc/footer.html:46
 msgid "Picker's Codex"
 msgstr "Kodex sběrače"
 
-#: naovoce/templates/inc/footer.html:34
+#: naovoce/templates/inc/footer.html:57
 msgid "Privacy Policy"
 msgstr "Ochrana os. údajů"
 
-#: naovoce/templates/inc/footer.html:38
+#: naovoce/templates/inc/footer.html:63
+msgid "User"
+msgstr "Uživatel"
+
+#: naovoce/templates/inc/footer.html:67
+msgid "My Account"
+msgstr "Můj účet"
+
+#: naovoce/templates/inc/footer.html:89
 msgid "Social Networks"
 msgstr "Sociální sítě"
 
-#: naovoce/templates/inc/footer.html:43
+#: naovoce/templates/inc/footer.html:94
 msgid "Friends"
 msgstr "Přátelé"
 
-#: naovoce/templates/inc/footer.html:59
+#: naovoce/templates/inc/footer.html:110
 msgid ""
 "<strong>Na-ovoce.cz</strong> is built using Open Source Software and is OSS "
 "itself, hosted on <a href=\"https://github.com/jsmesami/naovoce\" target="
@@ -1244,31 +1268,43 @@ msgstr "^media(?:/(?P<type_slug>[^/]+))?/$"
 msgid "^codex/$"
 msgstr "^kodex/$"
 
-#: naovoce/urls.py:45
+#: naovoce/urls.py:47
 msgid "^about-us/$"
 msgstr "^o-nas/$"
 
-#: naovoce/urls.py:46
+#: naovoce/urls.py:49
 msgid "^our-team/$"
 msgstr "^nas-team/$"
 
-#: naovoce/urls.py:48
+#: naovoce/urls.py:51
 msgid "^partners/$"
 msgstr "^partneri/$"
 
-#: naovoce/urls.py:50
+#: naovoce/urls.py:55
+msgid "^support-us/financially/$"
+msgstr "^podporte-nas/financne/$"
+
+#: naovoce/urls.py:64
+msgid "^support-us/engage/$"
+msgstr "^podporte-nas/zapojte-se/$"
+
+#: naovoce/urls.py:73
+msgid "^support-us/zoot/$"
+msgstr "^podporte-nas/zoot/$"
+
+#: naovoce/urls.py:83
 msgid "^support-us/$"
 msgstr "^podporte-nas/$"
 
-#: naovoce/urls.py:52
+#: naovoce/urls.py:85
 msgid "^mobile-application/$"
 msgstr "^mobilni-aplikace/$"
 
-#: naovoce/urls.py:54
+#: naovoce/urls.py:87
 msgid "^downloads/$"
 msgstr "^ke-stazeni/$"
 
-#: naovoce/urls.py:55
+#: naovoce/urls.py:88
 msgid "^privacy-policy/$"
 msgstr "^ochrana-osobnich-udaju/$"
 

@@ -2,8 +2,8 @@
 {
     "pk": 1,
     "fields": {
-        "meta_description": "Motivace a c\u00edle projektu Na ovoce, k \u010demu mohou b\u00fdt str\u00e1nky u\u017eite\u010dn\u00e9, doporu\u010den\u00ed p\u0159isp\u011bvatel\u016fm.",
-        "text": "##O n\u00e1s\r\n\r\n---\r\n\r\nSt\u00e1v\u00e1 se v\u00e1m, \u017ee na cest\u00e1ch po \u010desk\u00e9m venkov\u011b proj\u00ed\u017ed\u00edte silnic\u00ed lemovanou \u0159adou ovocn\u00fdch strom\u016f, jejich\u017e shnil\u00e9 plody se hromad\u00ed v p\u0159\u00edkopech? \u017de ve m\u011bst\u011b naraz\u00edte na t\u0159e\u0161e\u0148 \u010di moru\u0161i, o kterou se nikdo nestar\u00e1, nebo dokonce na sad zarostl\u00fd k nepozn\u00e1n\u00ed? U\u017e jste n\u011bkdy \u010desali ovoce ze stromu u cesty, a m\u011bli p\u0159i tom nedobr\u00fd pocit, \u017ee d\u011bl\u00e1te n\u011bco \u0161patn\u00e9ho? Zaj\u00edm\u00e1te se o p\u0159\u00edrodu a jej\u00ed okol\u00ed? R\u00e1di se zapojujete do obecn\u011b prosp\u011b\u0161n\u00fdch aktivit? Chcete j\u00edst zdrav\u011b? Neradi pl\u00fdtv\u00e1te?\r\n\r\nPokud jste si na n\u011bkter\u00e9 z v\u00fd\u0161e uveden\u00fdch dotaz\u016f odpov\u011bd\u011bli kladn\u011b, jste na tom podobn\u011b, jako my. V\u0161echny zm\u00edn\u011bn\u00e9 a dal\u0161\u00ed ot\u00e1zky vedly ke vzniku iniciativy __Na ovoce.__ \r\n\r\nDonuceni \u017eivotem ve m\u011bst\u011b a inspirov\u00e1ni  n\u011bmeckou organizac\u00ed [Mundraub.org](http://mundraub.org) a slovenskou [Fruitmap.sk](http://www.fruitmap.sk) jsme se rozhodli vybudovat v \u010cech\u00e1ch webovou z\u00e1kladnu, funguj\u00edc\u00ed na podobn\u00fdch principech.\r\n__Na ovoce__ slou\u017e\u00ed jako komunitn\u00ed platforma lidem, kte\u0159\u00ed cht\u011bj\u00ed zodpov\u011bdn\u011b vyu\u017e\u00edvat p\u0159\u00edrodn\u00ed bohatstv\u00ed v podob\u011b voln\u011b rostouc\u00edch ovocn\u00fdch strom\u016f, ke\u0159\u016f \u010di bylinek.\r\n\r\nSnahou je spole\u010dn\u011b takov\u00e1to m\u00edsta nejen mapovat, ale tak\u00e9 p\u0159isp\u00edvat k jejich udr\u017eitelnosti, zakl\u00e1dat nov\u00e1 a db\u00e1t na hodnoty, kter\u00e9 rostliny pro \u010dlov\u011bka p\u0159edstavuj\u00ed. P\u0159isp\u00edvat k n\u00e1r\u016fstu modern\u00ed dobou ch\u0159adnouc\u00ed biodiverzity a udr\u017eovat pozitiva kulturn\u00ed krajiny, ve kter\u00e9 \u010dlov\u011bk \u017eije. \r\n\r\nSou\u010dasn\u011b je pro n\u00e1s d\u016fle\u017eit\u00e9, aby web __Na ovoce__ byl prost\u0159ed\u00edm, ve kter\u00e9m je z\u00e1bavn\u00e9 se pohybovat. M\u016f\u017eete se seznamovat, m\u016f\u017eete diskutovat, najdete zde odpov\u011bdi na sv\u00e9 ot\u00e1zky. Chceme, aby __Na ovoce__ \u017eilo dnem i noc\u00ed, aby v\u00e1m nov\u00e9 objevy nedaly sp\u00e1t. Abyste byli inspirov\u00e1ni a inspirovali druh\u00e9, podobn\u011b jako to d\u011bl\u00e1 p\u0159\u00edroda s n\u00e1mi.\r\n",
+        "meta_description": "",
+        "text": "",
         "title": "N\u00e1\u0161 team",
         "url": "/cs/nas-team/"
     },
@@ -12,8 +12,8 @@
 {
     "pk": 2,
     "fields": {
-        "meta_description": "Na ovoce project aims and motivations, how the site can be useful, contribution guidelines.",
-        "text": "##About us\r\n\r\n---\r\n\r\nDoes it ever happen to you that while travelling around the Czech countryside you pass along a road lined with fruit trees whose rotten produce is piling up in the ditch? Or that in the city you come across a cherry tree or mulberry bush that no one is looking after, or even a whole orchard so overgrown as to be unrecognisable? Have you ever picked fruit from a tree by the road and had a guilty feeling that you were doing something wrong? Are you interested in nature and its surroundings? Do you like to get involved in good causes? Do you want to eat healthily? Do you not like waste?\r\n\r\nIf you answered \"Yes\" to any of these questions, you're in the same boat as us. All these questions and more led us to launch the initiative __Na Ovoce.__\r\n\r\nForced by the circumstances of city life and inspired by the German organisation [Mundraub.org](http://mundraub.org/) and Slovak [Fruitmap.sk](http://www.fruitmap.sk) we decided to build a Czech site that works on similar principles. __Na Ovoce__ acts as a community platform for people that want to make responsible use of nature's bounty in the form of wild fruit trees, bushes or herbs.\r\n\r\nIt is our goal not only to map out such places, but also to contribute to their sustainability, to establish new ones and to heed the values that plants represent for people. We also strive to contribute to the growth of biodiversity that has been withering in our modern times and to uphold the positives of the cultural landscape in which we live.\r\n\r\nAt the same time it is important for us that __Na Ovoce__ be an environment which is fun to be in. You can get to know people, have discussions and find answers to your questions. We want __Na Ovoce__ to be alive day and night, with new discoveries keeping you from falling asleep. We want you to be inspired and to inspire others, just as nature does to us.\r\n",
+        "meta_description": "",
+        "text": "",
         "title": "Our team",
         "url": "/en/our-team/"
     },
@@ -22,8 +22,8 @@
 {
     "pk": 3,
     "fields": {
-        "meta_description": "Pravidla pro skl\u00edzen\u00ed a sb\u011br ovoce, o\u0159ech\u016f a bylinek. Podpora rozv\u00edjen\u00ed zodpov\u011bdn\u00e9ho a citliv\u00e9ho vztahu \u010dlov\u011bka k p\u0159\u00edrod\u011b.",
-        "text": "##Pravidla pro u\u017eivatele webu Na ovoce\r\n\r\n---\r\n\r\nSnahou iniciativy __Na Ovoce__ je p\u0159iv\u00e9st do v\u0161eobecn\u00e9ho pov\u011bdom\u00ed opom\u00edjen\u00fd v\u00fdznam ovocn\u00fdch strom\u016f, ke\u0159\u016f a bylinek a upozornit na jejich hodnotu pro sou\u010dasn\u00e9ho \u010dlov\u011bka. Tak\u00e9 n\u00e1m jde o zachov\u00e1n\u00ed ovocn\u00fdch strom\u016f jako trval\u00e9 sou\u010d\u00e1sti na\u0161\u00ed kulturn\u00ed krajiny a biodiverzity.\r\n\r\nIkony strom\u016f, ke\u0159\u016f a bylinek uve\u0159ejn\u011bn\u00fdch na webu __Na Ovoce__ ozna\u010duj\u00ed rostliny, kter\u00e9 zde dle sv\u00e9ho nejlep\u0161\u00edho v\u011bdom\u00ed a sv\u011bdom\u00ed vlo\u017eili registrovan\u00ed u\u017eivatel\u00e9. Takt\u00e9\u017e zde publikuj\u00ed n\u011bkter\u00e9 ve\u0159ejn\u011b spr\u00e1vn\u00ed org\u00e1ny, pr\u00e1vnick\u00e9 a soukrom\u00e9 osoby, kter\u00e9 se cht\u011bj\u00ed pod\u011blit o sv\u00e9 nevyu\u017eit\u00e9 ovocn\u00e9 zdroje.\r\n\r\nPlatforma __Na Ovoce__ vych\u00e1z\u00ed z toho, \u017ee se jej\u00ed u\u017eivatel\u00e9 chovaj\u00ed zodpov\u011bdn\u011b jak v\u016f\u010di p\u0159\u00edrod\u011b, tak v\u016f\u010di z\u00e1kon\u016fm, kter\u00e9 vymezuj\u00ed zach\u00e1zen\u00ed s voln\u011b rostouc\u00edmi stromy.\r\n\r\n__\u0158i\u010fme se proto n\u00ed\u017ee uveden\u00fdmi pravidly:__\r\n\r\n1. Prim\u00e1rn\u011b zji\u0161\u0165ujeme, zda sb\u011brem plod\u016f neporu\u0161ujeme \u017e\u00e1dn\u00e1 vlastnick\u00e1 pr\u00e1va.\r\n2. Pe\u010dujeme nejen o stromy, ale i okoln\u00ed p\u0159\u00edrodu a zv\u00ed\u0159ata, kter\u00e1 v n\u00ed \u017eij\u00ed.\r\n3. O sv\u00e9 objevy se d\u011bl\u00edme s ostatn\u00edmi u\u017eivateli.\r\n4. Zapojujeme se do \u00fadr\u017eby a v\u00fdsadby nov\u00fdch ovocn\u00fdch strom\u016f.\r\n\r\n---\r\n\r\nAd 1. _Prim\u00e1rn\u011b zji\u0161\u0165ujeme, zda sb\u011brem plod\u016f neporu\u0161ujeme \u017e\u00e1dn\u00e1 vlastnick\u00e1 pr\u00e1va._\r\nPokud se rozhodnete sb\u00edrat ovoce voln\u011b rostouc\u00edch strom\u016f, m\u011bli byste se prvn\u011b obr\u00e1tit na p\u0159\u00edslu\u0161n\u00fd org\u00e1n (obecn\u00ed \u00fa\u0159ad, magistr\u00e1t, vlastn\u00edka \u010di spr\u00e1vce pozemn\u00ed komunikace atp.) a zjistit, zda je sklize\u0148 povolen\u00e1. Stoj\u00ed to tro\u0161ku n\u00e1mahy a p\u00e1r telefon\u00e1t\u016f, ale jedin\u011b tak budete v\u011bd\u011bt, \u017ee neporu\u0161ujete \u017e\u00e1dn\u00e1 pravidla a o sv\u016fj objev se m\u016f\u017eete leg\u00e1ln\u011b pod\u011blit s ostatn\u00edmi.\r\n\r\nDejte si pozor, i kdy\u017e sb\u00edr\u00e1te ovoce na stromech pod\u00e9l cest \u010di ve zd\u00e1nliv\u011b opu\u0161t\u011bn\u00fdch sadech. Tato m\u00edsta mohou b\u00fdt nap\u0159\u00edklad pronajata nebo sv\u011b\u0159ena do spr\u00e1vy jin\u00fdm organizac\u00edm \u010di subjekt\u016fm a nelze tak toto ovoce samovoln\u011b sb\u00edrat.\r\n\r\nM\u016f\u017ee se st\u00e1t, \u017ee v\u00e1mi uve\u0159ejn\u011bn\u00fd strom n\u011bkdo zpochybn\u00ed nebo naopak vy odhal\u00edte, \u017ee jin\u00fdm u\u017eivatelem p\u0159idan\u00fd strom nen\u00ed mo\u017en\u00e9 leg\u00e1ln\u011b \u010desat. Co v takov\u00e9m p\u0159\u00edpad\u011b d\u011blat?\r\n\r\n* _N\u011bkdo zpochybnil tebou p\u0159idan\u00fd strom:_ Ov\u011b\u0159 si u dan\u00e9 osoby, kter\u00e1 zpochybnila tv\u016fj n\u00e1lez, odkud \u010derpala informace a porovnej je s informacemi tob\u011b dostupn\u00fdmi. Pokud se prov\u011b\u0159\u00ed, \u017ee ze stromu opravdu nelze \u010desat ovoce, strom ze sv\u00fdch objev\u016f vyma\u017e.\r\n\r\n* _Zpochyb\u0148uje\u0161 strom zve\u0159ejn\u011bn\u00fd jin\u00fdm u\u017eivatelem:_ Klikni na uveden\u00fd strom a o sv\u00e9 pochybnosti napi\u0161 do koment\u00e1\u0159e, uve\u010f d\u016fvody, pro\u010d si tak mysl\u00ed\u0161. Po\u017e\u00e1dej o jeho smaz\u00e1n\u00ed. Pokud u\u017eivatel strom nesma\u017ee a neuvedl ani d\u016fvody, pro\u010d se tak nestalo, obra\u0165 se p\u0159\u00edmo na n\u00e1s: __team@na-ovoce.cz__\r\n\r\n---\r\n\r\nAd 2. _Pe\u010dujeme nejen o stromy, ale i okoln\u00ed p\u0159\u00edrodu a zv\u00ed\u0159ata, kter\u00e1 v n\u00ed \u017eij\u00ed._\r\nPokud se o stromy spr\u00e1vn\u011b a s respektem pe\u010duje, mohou n\u011bkter\u00e9 z nich dos\u00e1hnout i v\u011bku 120 let.\r\n\r\nPokud \u0161plh\u00e1te na stromy, d\u00e1vejte p\u0159i tom pozor nejen na sebe, ale tak\u00e9 na strom. V\u017edy si p\u0159edem zkontrolujte, zda v\u011btev, o kterou se chcete op\u0159\u00edt, je dostate\u010dn\u011b pevn\u00e1 a unese v\u00e1s. Pokud se v\u011btev zlom\u00ed, usnadn\u00edte tak p\u0159\u00edstup d\u0159evokazn\u00fdm houb\u00e1m, \u0161kodliv\u00fdm bakteri\u00edm \u010di jin\u00fdm \u0161k\u016fdc\u016fm, kte\u0159\u00ed strom oslabuj\u00ed a mohou jej p\u0159ipravit o n\u011bkolik let \u017eivota. Uv\u011bdomte si, \u017ee stromy jsou \u017eiv\u00e9 organismy a jak\u00fdkoliv nep\u0159irozen\u00fd a nep\u0159im\u011b\u0159en\u00fd z\u00e1sah jim \u0161kod\u00ed. Byla by \u0161koda, pokud by se z mapy musel umazat strom, kter\u00fd p\u0159estal plodit pr\u00e1v\u011b kv\u016fli neopatrn\u00e9mu zach\u00e1zen\u00ed n\u011bkter\u00e9ho z u\u017eivatel\u016f iniciativy __Na Ovoce.__\r\n\r\nOvoce je zdrojem \u017eivin nejen n\u00e1s, ale tak\u00e9 mnoha r\u016fzn\u00fdch zv\u00ed\u0159at a hmyzu. Na ovoci si pochutn\u00e1vaj\u00ed vosy, mravenci, mouchy, mot\u00fdli, pt\u00e1ci, my\u0161i \u010di je\u017eci. P\u0159i \u010des\u00e1n\u00ed ovoce proto dbejme na to, aby jak na strom\u011b, tak na zemi v\u017edy p\u00e1r plod\u016f z\u016fstalo.\r\n\r\n---\r\n\r\nAd 3. _O sv\u00e9 objevy se d\u011bl\u00edme s ostatn\u00edmi u\u017eivateli._\r\nWeb __Na Ovoce__ \u017eije d\u00edky spole\u010dn\u00e9mu sd\u00edlen\u00ed. To znamen\u00e1, \u017ee se d\u011bl\u00edme o sv\u00e9 n\u00e1lezy s ostatn\u00edmi a n\u00e1lezy ostatn\u00edch tak\u00e9 vyu\u017e\u00edv\u00e1me. Pokud bydl\u00edme v bl\u00edzkosti stromu rostouc\u00edho ve ve\u0159ejn\u00e9m prostoru, neznamen\u00e1 to, \u017ee plody onoho stromu pat\u0159\u00ed jen n\u00e1m. Plody voln\u011b rostouc\u00edch strom\u016f mohou u\u017e\u00edvat v\u0161ichni, kte\u0159\u00ed o n\u011b projev\u00ed z\u00e1jem. Pom\u00e1hejme tedy rozv\u00edjet mapu __Na Ovoce__ p\u0159id\u00e1v\u00e1n\u00edm nov\u00fdch m\u00edst.\r\n\r\nPokud se na map\u011b objev\u00ed strom, kter\u00fd tam nepat\u0159\u00ed, a nen\u00ed dovolen\u00e9 z n\u011bj plody sb\u00edrat, nechte jej z mapy odstranit \u010di jeho vymaz\u00e1n\u00ed konzultujte s n\u00e1mi.\r\n\r\n---\r\n\r\nAd 4. _Zapojujeme se do \u00fadr\u017eby a v\u00fdsadby nov\u00fdch strom\u016f._\r\nKa\u017ed\u00fd, kdo vyu\u017e\u00edv\u00e1 web __Na Ovoce,__ m\u016f\u017ee n\u00e9st ur\u010ditou zodpov\u011bdnost za stromy zde ozna\u010den\u00e9, a to nejen v obdob\u00ed sklizn\u011b, ale v pr\u016fb\u011bhu cel\u00e9ho roku. Pokud strom nav\u0161t\u00edv\u00edte i v jin\u00fdch obdob\u00edch, m\u016f\u017eete si ud\u011blat lep\u0161\u00ed obr\u00e1zek o tom, v jak\u00e9m stavu se strom nach\u00e1z\u00ed, zda je zdrav\u00fd, oslaben\u00fd nebo m\u016f\u017eete p\u0159ij\u00edt na to, \u017ee strom na m\u00edst\u011b u\u017e nen\u00ed. O kondici stromu m\u016f\u017eete napsat do koment\u00e1\u0159e p\u0159\u00edslu\u0161n\u00e9ho stromu.\r\n\r\nPokud chcete dobrovoln\u011b o strom pe\u010dovat, kontaktujte p\u0159\u00edslu\u0161n\u00fd \u00fa\u0159ad (viz. bod 1) nebo se o p\u00e9\u010di zmi\u0148te v koment\u00e1\u0159i u p\u0159\u00edslu\u0161n\u00e9ho stromu. Je dobr\u00e9, pokud svou p\u00e9\u010di n\u011bjak zdokumentujete a sv\u00e9 v\u00fdsledky \u00fa\u0159adu prezentujete.\r\n\r\n",
+        "meta_description": "",
+        "text": "",
         "title": "Kodex sb\u011bra\u010de",
         "url": "/cs/kodex/"
     },
@@ -32,8 +32,8 @@
 {
     "pk": 4,
     "fields": {
-        "meta_description": "The rules for harvesting fruits, nuts and herbs. Supporting the development of a responsible and sensitive human relationship towards nature.",
-        "text": "##Rules for users of the Na Ovoce website\r\n\r\n---\r\n\r\nIt is the aspiration of the __Na Ovoce__ initiative to bring the neglected importance of fruit trees, bushes and herbs back into the general consciousness and to draw attention to their value for people today. We are also concerned about the preservation of fruit trees as a permanent part of our cultural landscape and biodiversity.\r\n\r\nThe icons for trees, bushes and herbs published on the __Na Ovoce__ website designate plants that registered users have input to the best of their knowledge and conscience. Also publishing here are certain public bodies, businesses and private citizens who want to share their unused sources of fruit.\r\n\r\n__Na Ovoce__ assumes that its users act responsibly both to nature and to the laws that dictate the treatment of wild trees.\r\n\r\n__For this reason let us abide by the following rules:__\r\n\r\n1. Above all we ensure that we are not violating any ownership rights by collecting fruit.\r\n2. We take care of the trees and the surrounding nature and animals that live in them.\r\n3. We share our discoveries with other users.\r\n4. We get involved in maintaining and planting new fruit trees.\r\n\r\n---\r\n\r\nAd 1. _Above all we ensure that we are not violating any ownership rights by collecting fruit._ \r\nIf you decide to pick fruit from wildly growing trees, you should first turn to the competent authority (municipal authority, city hall, road owner or administrator, etc.) and find out if such harvest is permitted. It takes a bit of effort and a couple of phone calls, but that's the only way you'll know that you are not violating any regulations and that you can share your find with others legally.\r\n\r\nBe careful, even if you are collecting fruit on trees alongside paths or in seemingly abandoned orchards. Such sites may be leased out or entrusted to other organisations or entities and thus the fruit cannot be freely picked.\r\nIt could happen that someone calls into doubt the legality of a tree you published or you discover that a tree added by a different user may not be legally picked. What should you do in such a case?\r\n\r\n* _Someone calls into doubt a tree you added:_ Find out from the person in question where they got their information and compare it with the information available to you. If it turns out that fruit really can't be picked from that tree, delete it from your finds.\r\n* _You call into doubt a tree published by someone else:_ Click on the tree and write your doubts in the comments, stating the reasons you have to think so. Ask for it to be deleted. If the user does not delete the tree and fails to state their reasons for it, come directly to us: __team@na-ovoce.cz__\r\n\r\n---\r\n\r\nAd 2. _We take care of the trees and the surrounding nature and animals that live in them._ \r\nIf trees are taken care of properly and with respect, some of them can live as long as 120 years.\r\nIf you are climbing trees, be careful \u2013 not only yourself but also of the tree. Always check whether the branch you want to place your weight on is firm enough and can take it. If you break off a branch you clear a path for wood-rotting fungi, harmful bacteria and other pests that weaken the tree and can shorten its life by several years. Be aware that trees are living organisms and any unnatural and inappropriate intervention can damage them. It would be a shame if we had to take a tree off the map that stopped bearing fruit due to careless actions by __Na Ovoce__ users.\r\n\r\nFruit is a source of nutrients not only for us but also for various animals and insects. Fruit is food for wasps, ants, flies, butterflies, birds, mice and hedgehogs. When picking fruit we should therefore make sure to always leave a few pieces of fruit on the tree and on the ground.\r\n\r\n---\r\n\r\nAd 3. _We share our discoveries with other users._ \r\nThe __Na Ovoce__ website lives off sharing. That means that we share our finds with others and others share theirs with us. If we live near a tree growing in public space, that doesn't mean its fruits belong only to us. Everyone can who expresses an interest can use the fruit of wild trees. Let's help expand the __Na Ovoce__ map by adding new sites.\r\nIf you find a tree on the map that doesn't belong there and it is not permitted to pick fruit from it, have it removed from the map or consult such removal with us.\r\n\r\n---\r\n\r\nAd _4. We get involved in maintaining and planting new fruit trees._ \r\nEveryone who uses the __Na Ovoce__ website can bear a certain amount of responsibility for the trees marked there, not just at harvest time, but over the whole year. If you visit a tree at other times of year you can get a better sense of what condition the tree is in \u2013 whether it is healthy or sick or whether it suddenly isn't there anymore. You can write a comment on the condition of the given tree.\r\n\r\nIf you want to volunteer to take care of a tree, contact the competent authority (see point 1) or mention the care in the comments on the tree in question. It is good if you document your care somehow and present your results to the relevant authority.",
+        "meta_description": "",
+        "text": "",
         "title": "Picker's Codex",
         "url": "/en/codex/"
     },
@@ -43,26 +43,6 @@
     "pk": 5,
     "fields": {
         "meta_description": "",
-        "text": "## Podpo\u0159te n\u00e1s\r\n\r\n---\r\n",
-        "title": "Podpo\u0159te n\u00e1s",
-        "url": "/cs/podporte-nas/"
-    },
-    "model": "staticpage.staticpage"
-},
-{
-    "pk": 6,
-    "fields": {
-        "meta_description": "",
-        "text": "## Podpo\u0159te n\u00e1s\r\n\r\n---\r\n",
-        "title": "Support Us",
-        "url": "/en/support-us/"
-    },
-    "model": "staticpage.staticpage"
-},
-{
-    "pk": 7,
-    "fields": {
-        "meta_description": "",
         "text": "",
         "title": "Mobiln\u00ed aplikace",
         "url": "/cs/mobilni-aplikace/"
@@ -70,7 +50,7 @@
     "model": "staticpage.staticpage"
 },
 {
-    "pk": 8,
+    "pk": 6,
     "fields": {
         "meta_description": "",
         "text": "",
@@ -80,7 +60,7 @@
     "model": "staticpage.staticpage"
 },
 {
-    "pk": 9,
+    "pk": 7,
     "fields": {
         "meta_description": "",
         "text": "## Partne\u0159i\r\n\r\n---\r\n",
@@ -90,7 +70,7 @@
     "model": "staticpage.staticpage"
 },
 {
-    "pk": 10,
+    "pk": 8,
     "fields": {
         "meta_description": "",
         "text": "## Partners\r\n\r\n---\r\n",
@@ -100,7 +80,7 @@
     "model": "staticpage.staticpage"
 },
 {
-    "pk": 11,
+    "pk": 9,
     "fields": {
         "meta_description": "",
         "text": "",
@@ -110,7 +90,7 @@
     "model": "staticpage.staticpage"
 },
 {
-    "pk": 12,
+    "pk": 10,
     "fields": {
         "meta_description": "",
         "text": "",
@@ -120,7 +100,7 @@
     "model": "staticpage.staticpage"
 },
 {
-    "pk": 13,
+    "pk": 11,
     "model": "staticpage.staticpage",
     "fields": {
         "url": "/cs/ochrana-osobnich-udaju/",
@@ -130,7 +110,7 @@
     }
 },
 {
-    "pk": 14,
+    "pk": 12,
     "model": "staticpage.staticpage",
     "fields": {
         "url": "/en/privacy-policy/",
@@ -138,5 +118,65 @@
         "title": "Privacy Policy",
         "meta_description": ""
     }
+},
+{
+    "model": "staticpage.staticpage",
+    "fields": {
+        "url": "/cs/podporte-nas/financne/",
+        "text": "",
+        "title": "Podpo\u0159te n\u00e1s finan\u010dn\u011b",
+        "meta_description": ""
+    },
+    "pk": 17
+},
+{
+    "model": "staticpage.staticpage",
+    "fields": {
+        "url": "/en/support-us/financially/",
+        "text": "",
+        "title": "Support Us Financially",
+        "meta_description": ""
+    },
+    "pk": 18
+},
+{
+    "model": "staticpage.staticpage",
+    "fields": {
+        "url": "/cs/podporte-nas/zapojte-se/",
+        "text": "",
+        "title": "Zapojte se",
+        "meta_description": ""
+    },
+    "pk": 19
+},
+{
+    "model": "staticpage.staticpage",
+    "fields": {
+        "url": "/en/support-us/engage/",
+        "text": "",
+        "title": "Engage",
+        "meta_description": ""
+    },
+    "pk": 20
+},
+{
+    "model": "staticpage.staticpage",
+    "fields": {
+        "url": "/cs/podporte-nas/zoot/",
+        "text": "",
+        "title": "Dobro na Zootu",
+        "meta_description": ""
+    },
+    "pk": 21
+},
+{
+    "model": "staticpage.staticpage",
+    "fields": {
+        "url": "/en/support-us/zoot/",
+        "text": "",
+        "title": "Zoot Goodness",
+        "meta_description": ""
+    },
+    "pk": 22
 }
 ]

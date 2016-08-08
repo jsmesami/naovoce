@@ -49,12 +49,17 @@
 							<li><a href="{% url 'downloads' %}">{% trans 'Downloads' %}</a></li>
 						</ul>
                     </li>
+					<li class="{% block support_active %}{% endblock %}">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Support Us' %}<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+							<li><a href="{% url 'support-financially' %}">{% trans 'Financially' %}</a></li>
+							<li><a href="{% url 'support-engage' %}">{% trans 'Engage' %}</a></li>
+							<li><a href="{% url 'support-zoot' %}">{% trans 'Zoot Goodness' %}</a></li>
+                        </ul>
+					</li>
                     <li class="{% block herbarium_active %}{% endblock %}">
                         <a href="{% url 'herbarium:index' %}">{% trans 'Herbarium' %}</a>
                     </li>
-					<li class="{% block support_active %}{% endblock %}">
-						<a href="{% url 'support' %}">{% trans 'Support Us' %}</a>
-					</li>
                 </ul>
             </div>
 		</div>

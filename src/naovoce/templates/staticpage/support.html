@@ -7,6 +7,7 @@
 
 {% block content %}
 	{{ block.super }}
+	{% if section == 'zoot' %}
 	<div class="row">
 		<div class="thumb-large">
 			<img src="{% static 'img/zoot/zoot1.jpg' %}" alt="Zoot Dobro">
@@ -15,4 +16,5 @@
 			<img src="{% static 'img/zoot/zoot2.jpg' %}" alt="Zoot Dobro">
 		</div>
 	</div>
+	{% endif %}
 {% endblock %}
