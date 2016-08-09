@@ -78,7 +78,6 @@ class Naovoce.Map extends L.Map
 
 		super id,
 			layers: [L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', params)]
-			attributionControl: false  {# Disable default attributions #}
 
 		if L.markerClusterGroup?
 			@markerLayerGroup = L.markerClusterGroup
@@ -205,6 +204,7 @@ class Naovoce.Map extends L.Map
 		@addControl L.control.attribution
 			prefix: 'Map data &copy; OpenStreetMap contributors'
 			position: 'bottomleft'
+		@
 
 </script>
 {% endcompress %}
