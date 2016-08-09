@@ -48,6 +48,9 @@ $.fn.fillViewport = ->
 
 
 $('.inputfile').each ->
+	###
+    File input field masquerade
+	###
 	$input = $ @
 	$label = $input.next 'label'
 	labelVal = $label.html()

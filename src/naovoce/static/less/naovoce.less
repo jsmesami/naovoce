@@ -918,3 +918,53 @@ a.read-more {
 	transform: rotate(270deg);
 	transform-origin: 9px 9px 0;
 }
+
+.donation {
+	text-align: center;
+	h3 {
+		color: @brand-primary;
+	}
+	.form-group {
+		margin: 20px 0;
+	}
+	.donation-amount {
+		label {
+			width: 75px;
+			height: 100px;
+			position: relative;
+			overflow: hidden;
+			input {
+				width: 100%;
+				height: 100%;
+			}
+			&:after {
+				content: ' ';
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				cursor: pointer;
+				background: white url("@{base-url}/img/donate-buttons.svg");
+			}
+			&#amount_300:after {
+				background-position: -75px 0;
+			}
+			&#amount_600:after {
+				background-position: -150px 0;
+			}
+			&#amount_1000:after {
+				background-position: -225px 0;
+			}
+		}
+	}
+	.donation-amount-custom {
+		input {
+			width: 100px;
+			display: inline-block;
+		}
+		button {
+			margin-left: 20px;
+		}
+	}
+}
