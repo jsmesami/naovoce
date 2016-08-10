@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-08-10 17:40+0200\n"
-"PO-Revision-Date: 2016-08-10 17:41+0200\n"
+"PO-Revision-Date: 2016-08-10 18:36+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -143,11 +143,11 @@ msgstr "Nic nevybráno"
 
 #: fruit/forms.py:74
 msgid "Latitude must be a number between -90 and 90."
-msgstr "Zeměpisná délka musí být číslo mezi -90 a 90."
+msgstr "Zeměpisná šířka musí být číslo mezi -90 a 90."
 
 #: fruit/forms.py:81
 msgid "Longitude must be a number between -180 and 180."
-msgstr "Zeměpisná šířka musí být číslo mezi -180 a 180."
+msgstr "Zeměpisná délka musí být číslo mezi -180 a 180."
 
 #: fruit/forms.py:90
 msgid "Reason"
