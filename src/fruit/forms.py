@@ -63,6 +63,8 @@ class FruitForm(forms.ModelForm):
         fields = 'latitude', 'longitude', 'kind', 'description'
         widgets = {
             'description': forms.Textarea(attrs={'rows': 5}),
+            'latitude': forms.NumberInput(attrs={'min': -90, 'max': 90}),
+            'longitude': forms.NumberInput(attrs={'min': -180, 'max': 180}),
             'kind': KindSelect(),
         }
 
