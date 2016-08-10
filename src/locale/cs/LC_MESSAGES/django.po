@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-09 17:57+0200\n"
-"PO-Revision-Date: 2016-08-09 17:57+0200\n"
+"POT-Creation-Date: 2016-08-10 17:40+0200\n"
+"PO-Revision-Date: 2016-08-10 17:41+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -137,15 +137,23 @@ msgstr "{} není platný klíč."
 msgid "Cannot update once deleted object."
 msgstr "Dříve smazaný objekt nelze aktualizovat."
 
-#: fruit/forms.py:58
+#: fruit/forms.py:59
 msgid "Nothing selected"
 msgstr "Nic nevybráno"
 
-#: fruit/forms.py:75
+#: fruit/forms.py:74
+msgid "Latitude must be a number between -90 and 90."
+msgstr "Zeměpisná délka musí být číslo mezi -90 a 90."
+
+#: fruit/forms.py:81
+msgid "Longitude must be a number between -180 and 180."
+msgstr "Zeměpisná šířka musí být číslo mezi -180 a 180."
+
+#: fruit/forms.py:90
 msgid "Reason"
 msgstr "Důvod"
 
-#: fruit/forms.py:76
+#: fruit/forms.py:91
 msgid "Please describe reason of why you are deleting the marker."
 msgstr "Prosíme, popište důvody, které máte k smazání této značky."
 
@@ -872,7 +880,7 @@ msgid "Delete"
 msgstr "Smazat značku"
 
 #: naovoce/templates/fruit/detail.html:33 naovoce/templates/home.html:135
-#: naovoce/templates/inc/mapjs.html:100
+#: naovoce/templates/inc/mapjs.html:102
 msgid "Shared by"
 msgstr "Sdílí"
 
@@ -892,7 +900,7 @@ msgstr "Tato značka byla smazána"
 msgid "Reason of deletion"
 msgstr "Důvod smazání"
 
-#: naovoce/templates/fruit/detail.html:60 naovoce/templates/inc/mapjs.html:104
+#: naovoce/templates/fruit/detail.html:60 naovoce/templates/inc/mapjs.html:106
 msgid "Description"
 msgstr "Popis"
 
@@ -1091,23 +1099,23 @@ msgstr ""
 msgid "Fruit kind"
 msgstr "Druh ovoce"
 
-#: naovoce/templates/inc/mapjs.html:110
+#: naovoce/templates/inc/mapjs.html:112
 msgid "Address"
 msgstr "Adresa"
 
-#: naovoce/templates/inc/mapjs.html:179
+#: naovoce/templates/inc/mapjs.html:181
 msgid "Search for places or addresses"
 msgstr "Vyhledávání míst a adres"
 
-#: naovoce/templates/inc/mapjs.html:180
+#: naovoce/templates/inc/mapjs.html:182
 msgid "Location search"
 msgstr "Vyhledávání míst"
 
-#: naovoce/templates/inc/mapjs.html:198
+#: naovoce/templates/inc/mapjs.html:200
 msgid "Show me where I am"
 msgstr "Ukaž mi, kde jsem!"
 
-#: naovoce/templates/inc/mapjs.html:200
+#: naovoce/templates/inc/mapjs.html:202
 #, python-brace-format
 msgid "You are within {distance} {unit} from this point"
 msgstr "Od tohoto bodu jste vzdáleni cca {distance}{unit}."

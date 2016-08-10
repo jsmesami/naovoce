@@ -54,6 +54,8 @@
 	$lat = $('#id_latitude').change -> handleFruitForm()
 	$lng = $('#id_longitude').change -> handleFruitForm()
 	$kind = $('#id_kind').change -> handleFruitForm()
+	$latFormGroup = $lat.closest('.form-group')
+	$lngFormGroup = $lng.closest('.form-group')
 
 	map = new Naovoce.Map 'map-detail'
 		.on 'click', (e) ->
@@ -79,7 +81,16 @@
 		lng = $lng.val()
 		$selectedKind = $kind.find ":selected"
 
-		if $.isNumeric(lat) and $.isNumeric(lng)
+		validLat = $.isNumeric(lat) and (lat >= -90) and (lat <= 90)
+		validLng = $.isNumeric(lng) and (lng >= -180) and (lng <= 180)
+
+		if not validLat
+			$latFormGroup.addClass('has-error')
+		else if not validLng
+			$lngFormGroup.addClass('has-error')
+		else
+			$latFormGroup.removeClass('has-error')
+			$lngFormGroup.removeClass('has-error')
 			marker.setLatLng [lat, lng]
 			if not map.hasLayer marker
 				map.addLayer marker

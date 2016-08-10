@@ -1,6 +1,7 @@
 from collections import OrderedDict
 from itertools import chain
 from django import forms
+from django.core.exceptions import ValidationError
 from django.utils.encoding import force_text
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
@@ -64,6 +65,20 @@ class FruitForm(forms.ModelForm):
             'description': forms.Textarea(attrs={'rows': 5}),
             'kind': KindSelect(),
         }
+
+    def clean_latitude(self):
+        lat = self.cleaned_data['latitude']
+        if -90 <= lat <= 90:
+            return lat
+        else:
+            raise ValidationError(_('Latitude must be a number between -90 and 90.'))
+
+    def clean_longitude(self):
+        lng = self.cleaned_data['longitude']
+        if -180 <= lng <= 180:
+            return lng
+        else:
+            raise ValidationError(_('Longitude must be a number between -180 and 180.'))
 
     def clean_description(self):
         return self.cleaned_data['description'].strip()
