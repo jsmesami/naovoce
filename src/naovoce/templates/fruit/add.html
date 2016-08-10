@@ -84,11 +84,11 @@
 		validLat = $.isNumeric(lat) and (lat >= -90) and (lat <= 90)
 		validLng = $.isNumeric(lng) and (lng >= -180) and (lng <= 180)
 
-		if not validLat
+		if lat and not validLat
 			$latFormGroup.addClass('has-error')
-		else if not validLng
+		else if lng and not validLng
 			$lngFormGroup.addClass('has-error')
-		else
+		else if lat and lng
 			$latFormGroup.removeClass('has-error')
 			$lngFormGroup.removeClass('has-error')
 			marker.setLatLng [lat, lng]
