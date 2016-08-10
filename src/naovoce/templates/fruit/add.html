@@ -81,16 +81,13 @@
 		lng = $lng.val()
 		$selectedKind = $kind.find ":selected"
 
-		validLat = $.isNumeric(lat) and (lat >= -90) and (lat <= 90)
-		validLng = $.isNumeric(lng) and (lng >= -180) and (lng <= 180)
+		validLat = lat and $.isNumeric(lat) and (lat >= -90) and (lat <= 90)
+		validLng = lng and $.isNumeric(lng) and (lng >= -180) and (lng <= 180)
 
-		if lat and not validLat
-			$latFormGroup.addClass('has-error')
-		else if lng and not validLng
-			$lngFormGroup.addClass('has-error')
-		else if lat and lng
-			$latFormGroup.removeClass('has-error')
-			$lngFormGroup.removeClass('has-error')
+		$latFormGroup.toggleClass('has-error', validLat is false)
+		$lngFormGroup.toggleClass('has-error', validLng is false)
+
+		if validLat and validLng
 			marker.setLatLng [lat, lng]
 			if not map.hasLayer marker
 				map.addLayer marker
