@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% load i18n %}
+{% load i18n l10n %}
 {% load static from staticfiles %}
 {% load compress %}
 
@@ -22,7 +22,7 @@
         <div class="alert alert-warning">
             <p>
 	            {% trans 'Please place the marker into the map' %}
-	            {% trans 'or enter the coordinates in decimal format, eg.:'%} <code>14.449108</code>
+	            {% trans 'or enter the coordinates in decimal format, eg.:'%} <code>{{ 14.449108|localize }}</code>
             </p>
         </div>
     </div>
@@ -77,17 +77,15 @@
 	do handleFruitForm = ->
 		lat = $lat.val()
 		lng = $lng.val()
-		$selected_kind = $kind.find ":selected"
+		$selectedKind = $kind.find ":selected"
 
-		DECIMAL = /^\d{1,3}\.\d{1,10}$/
-
-		if DECIMAL.test(lat) and DECIMAL.test(lng)
+		if $.isNumeric(lat) and $.isNumeric(lng)
 			marker.setLatLng [lat, lng]
 			if not map.hasLayer marker
 				map.addLayer marker
 			map.setView [lat, lng]
 
-		marker.setIcon($selected_kind.data('key'))
+		marker.setIcon($selectedKind.data('key'))
 
 	</script>
 	{% endcompress %}

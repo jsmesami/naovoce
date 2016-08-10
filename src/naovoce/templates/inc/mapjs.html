@@ -93,6 +93,9 @@ class Naovoce.Map extends L.Map
 			@markerLayerGroup.addLayers = (layers) ->
 				@addLayer l for l in layers
 
+		{# Remove default attributions. #}
+		@.attributionControl.setPrefix('');
+
 		{# Add more content to popups when marker clicked. #}
 		@.on 'popupopen', (ev) ->
 			$.getJSON ev.popup._source.fruit.url, (json) =>
@@ -200,9 +203,9 @@ class Naovoce.Map extends L.Map
 		.addTo @
 		@
 
-	addAttribution: ->
+	addAttribution: (text) ->
 		@addControl L.control.attribution
-			prefix: 'Map data &copy; OpenStreetMap contributors'
+			prefix: text or 'Map data &copy; OpenStreetMap contributors'
 			position: 'bottomleft'
 		@
 
