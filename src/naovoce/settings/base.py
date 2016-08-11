@@ -18,6 +18,8 @@ ADMINS = MANAGERS = (
     ('Ondra Nejedlý', 'software@na-ovoce.cz'),
 )
 
+EMAIL_SUBJECT_PREFIX = 'Na ovoce'
+
 DEFAULT_FROM_EMAIL = 'registration@na-ovoce.cz'
 
 DATABASES = {
