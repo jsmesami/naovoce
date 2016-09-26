@@ -14,7 +14,7 @@ def fruit_counter(**filters):
 
 def _get_pickers(**filters):
     return FruitUser.objects.active()\
-        .exclude(username='fruitmap.sk')\
+        .filter(resolution=FruitUser.RESOLUTION.picker)\
         .filter(**filters)\
         .annotate(**fruit_counter(**filters))\
         .order_by('-fruit_count', 'username')

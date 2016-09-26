@@ -15,6 +15,7 @@ from django.utils.text import slugify
 from django.utils.translation import ugettext, pgettext_lazy, ugettext_lazy as _
 
 from utils.avatar import AVATAR_MAX_FILESIZE, AVATARS_URL
+from utils.choices import Choices
 from utils.fields import ContentTypeRestrictedImageField
 from utils.models import TimeStampedModel
 
@@ -62,6 +63,16 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
 
     first_name = models.CharField(_('first name'), max_length=30, blank=True)
     last_name = models.CharField(_('last name'), max_length=30, blank=True)
+
+    RESOLUTION = Choices(
+        picker=(1000, _('picker')),
+        source=(2000, _('external source')),
+    )
+    resolution = models.IntegerField(
+        _('resolution'),
+        choices=RESOLUTION.choices,
+        default=RESOLUTION.picker,
+    )
     is_staff = models.BooleanField(
         _('staff status'),
         default=False,

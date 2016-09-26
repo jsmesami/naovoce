@@ -21,7 +21,7 @@ class FruitUserAdmin(UserAdmin):
             ],
         }),
         (_('Permissions'), {
-            'fields': 'is_active is_staff is_superuser groups user_permissions'.split(),
+            'fields': 'resolution is_active is_staff is_superuser groups user_permissions'.split(),
         }),
         (_('Important dates'), {
             'fields': 'last_login date_joined'.split(),
@@ -31,7 +31,7 @@ class FruitUserAdmin(UserAdmin):
     list_display = 'username email first_name last_name is_staff is_active ' \
                    'is_email_verified date_joined'.split()
 
-    list_filter = 'is_staff is_superuser is_active is_email_verified groups'.split()
+    list_filter = 'resolution is_staff is_superuser is_active is_email_verified groups'.split()
 
     add_fieldsets = (
         (None, {
@@ -39,6 +39,8 @@ class FruitUserAdmin(UserAdmin):
             'fields': ['username email password1 password2'.split()]
         }),
     )
+
+    ordering = '-date_joined',
 
 
 class MessageAdmin(admin.ModelAdmin):
