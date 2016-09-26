@@ -43,26 +43,6 @@
     "pk": 5,
     "fields": {
         "meta_description": "",
-        "text": "",
-        "title": "Mobiln\u00ed aplikace",
-        "url": "/cs/mobilni-aplikace/"
-    },
-    "model": "staticpage.staticpage"
-},
-{
-    "pk": 6,
-    "fields": {
-        "meta_description": "",
-        "text": "",
-        "title": "Mobile Application",
-        "url": "/en/mobile-application/"
-    },
-    "model": "staticpage.staticpage"
-},
-{
-    "pk": 7,
-    "fields": {
-        "meta_description": "",
         "text": "## Partne\u0159i\r\n\r\n---\r\n",
         "title": "Partne\u0159i",
         "url": "/cs/partneri/"
@@ -70,7 +50,7 @@
     "model": "staticpage.staticpage"
 },
 {
-    "pk": 8,
+    "pk": 6,
     "fields": {
         "meta_description": "",
         "text": "## Partners\r\n\r\n---\r\n",
@@ -80,7 +60,7 @@
     "model": "staticpage.staticpage"
 },
 {
-    "pk": 9,
+    "pk": 7,
     "fields": {
         "meta_description": "",
         "text": "",
@@ -90,7 +70,7 @@
     "model": "staticpage.staticpage"
 },
 {
-    "pk": 10,
+    "pk": 8,
     "fields": {
         "meta_description": "",
         "text": "",
@@ -100,7 +80,7 @@
     "model": "staticpage.staticpage"
 },
 {
-    "pk": 11,
+    "pk": 9,
     "model": "staticpage.staticpage",
     "fields": {
         "url": "/cs/ochrana-osobnich-udaju/",
@@ -110,7 +90,7 @@
     }
 },
 {
-    "pk": 12,
+    "pk": 10,
     "model": "staticpage.staticpage",
     "fields": {
         "url": "/en/privacy-policy/",
@@ -120,63 +100,123 @@
     }
 },
 {
+    "pk": 11,
     "model": "staticpage.staticpage",
     "fields": {
         "url": "/cs/podporte-nas/financne/",
         "text": "",
         "title": "Podpo\u0159te n\u00e1s finan\u010dn\u011b",
         "meta_description": ""
-    },
-    "pk": 17
+    }
 },
 {
+    "pk": 12,
     "model": "staticpage.staticpage",
     "fields": {
         "url": "/en/support-us/financially/",
         "text": "",
         "title": "Support Us Financially",
         "meta_description": ""
-    },
-    "pk": 18
+    }
 },
 {
+    "pk": 13,
     "model": "staticpage.staticpage",
     "fields": {
         "url": "/cs/podporte-nas/zapojte-se/",
         "text": "",
         "title": "Zapojte se",
         "meta_description": ""
-    },
-    "pk": 19
+    }
 },
 {
+    "pk": 14,
     "model": "staticpage.staticpage",
     "fields": {
         "url": "/en/support-us/engage/",
         "text": "",
         "title": "Engage",
         "meta_description": ""
-    },
-    "pk": 20
+    }
 },
 {
+    "pk": 15,
     "model": "staticpage.staticpage",
     "fields": {
         "url": "/cs/podporte-nas/zoot/",
         "text": "",
         "title": "Dobro na Zootu",
         "meta_description": ""
-    },
-    "pk": 21
+    }
 },
 {
+    "pk": 16,
     "model": "staticpage.staticpage",
     "fields": {
         "url": "/en/support-us/zoot/",
         "text": "",
         "title": "Zoot Goodness",
         "meta_description": ""
+    }
+},
+{
+    "pk": 17,
+    "model": "staticpage.staticpage",
+    "fields": {
+        "url": "/cs/popularizace-prazskych-ovocnych-sadu/",
+        "text": "",
+        "title": "Popularizace pražských ovocných sadů",
+        "meta_description": ""
+    }
+},
+{
+    "pk": 18,
+    "model": "staticpage.staticpage",
+    "fields": {
+        "url": "/en/prague-orchards-popularization/",
+        "text": "",
+        "title": "Prague orchards Popularization",
+        "meta_description": ""
+    }
+},
+{
+    "pk": 19,
+    "model": "staticpage.staticpage",
+    "fields": {
+        "url": "/cs/vyvoj-mapovaci-aplikace/",
+        "text": "",
+        "title": "Vývoj mapovací aplikace",
+        "meta_description": ""
+    }
+},
+{
+    "pk": 20,
+    "model": "staticpage.staticpage",
+    "fields": {
+        "url": "/en/mapping-application-development/",
+        "text": "",
+        "title": "Mapping application development",
+        "meta_description": ""
     },
-    "pk": 22
+},
+{
+    "pk": 21,
+    "model": "staticpage.staticpage",
+    "fields": {
+        "url": "/cs/vzdelavaci-workshopy/",
+        "text": "",
+        "title": "Vzdělávací workshopy",
+        "meta_description": ""
+    }
+},
+{
+    "pk": 22,
+    "model": "staticpage.staticpage",
+    "fields": {
+        "url": "/en/training-workshops/",
+        "text": "",
+        "title": "Training workshops",
+        "meta_description": ""
+    }
 }
 ]

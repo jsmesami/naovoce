@@ -27,19 +27,28 @@
 		</form>
 	</div>
 	<hr>
+	<h3>{% trans 'Our projects' %}</h3>
 	<div class="row">
-		<div class="thumb-large">
-			<a href="{% url 'application' %}" title="{% trans 'Mobile Application' %}">
-				<img src="{% static 'img/banner_application.png?download' %}">
+		<div class="col-sm-4 banner">
+			<a href="{% url 'popularization' %}">
+				<img src="{% static 'img/banner_popularization.jpg' %}" class="img-responsive">
+				<h4>{% trans 'Prague orchards popularization' %}</h4>
 			</a>
 		</div>
-		<div class="thumb-large">
-			<a href="{% url 'support-financially' %}" title="{% trans 'Support Us' %}">
-				<img src="{% static 'img/banner_support_us.jpg?generic' %}">
+		<div class="col-sm-4 banner">
+			<a href="{% url 'app-devel' %}">
+				<img src="{% static 'img/banner_app_devel.jpg' %}" class="img-responsive">
+				<h4>{% trans 'Mobile application development' %}</h4>
+			</a>
+		</div>
+		<div class="col-sm-4 banner">
+			<a href="{% url 'workshops' %}">
+				<img src="{% static 'img/banner_workshops.jpg' %}" class="img-responsive">
+				<h4>{% trans 'Training workshops' %}</h4>
 			</a>
 		</div>
 	</div>
-	<hr>
+	<hr style="margin-bottom: 0;">
 	<div class="row">
 		<div class="col-sm-8">
 			{####  Blog Preview ####}
