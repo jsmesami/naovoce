@@ -761,9 +761,33 @@ a.read-more {
 
 .social {
 	margin: 0;
-	.facebook, .twitter {
+	.facebook, .twitter, div.donate {
 		float: left;
 		width: 70px;
+	}
+	div.donate a {
+		background: @brand-secondary;
+		color: white;
+		line-height: 21px;
+		display: block;
+		padding: 0 8px;
+		font-size: 12px;
+		margin: 0 10px 0 4px;
+		border-radius: 3px;
+		&:active,
+		&:hover {
+			background: darken(@brand-secondary, 5%);
+		}
+	}
+	span.donate {
+		display: block;
+		clear: left;
+		float: left;
+		margin-top: 10px;
+		@media (min-width: @screen-xs-max) {
+			display: inline;
+			float: none;
+		}
 	}
 }
 

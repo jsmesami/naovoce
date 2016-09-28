@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-28 19:32+0200\n"
-"PO-Revision-Date: 2016-09-28 19:33+0200\n"
+"POT-Creation-Date: 2016-09-28 22:25+0200\n"
+"PO-Revision-Date: 2016-09-28 22:26+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -133,7 +133,7 @@ msgstr ""
 msgid "{} is not a valid Kind key."
 msgstr "{} není platný klíč."
 
-#: fruit/api/views.py:124 fruit/api/views.py:137
+#: fruit/api/views.py:123 fruit/api/views.py:136
 msgid "Cannot update once deleted object."
 msgstr "Dříve smazaný objekt nelze aktualizovat."
 
@@ -1146,6 +1146,15 @@ msgstr "Ukaž mi, kde jsem!"
 #, python-brace-format
 msgid "You are within {distance} {unit} from this point"
 msgstr "Od tohoto bodu jste vzdáleni cca {distance}{unit}."
+
+#: naovoce/templates/inc/social.html:22
+#, python-format
+msgid ""
+"Do you like what we do? Please consider a little <a href=\"%(url)s"
+"\">donation</a> to keep us going."
+msgstr ""
+"Líbí se vám, co děláme? Zvažte prosím malý <a href=\"%(url)s\">příspěvek</a> "
+"na naši práci."
 
 #: naovoce/templates/inc/user_info.html:6
 msgid "User profile"
