@@ -32,9 +32,15 @@
             {% endwith %}
 	        {% if fruit.catalogue == fruit.CATALOGUE.revival %}
                 <p>
-			        <a href="http://eshop.na-ovoce.cz" target="_blank" rel="noopener noreferrer">
+		        {% with url=fruit.user.external_url %}
+			        {% if url %}
+			        <a href="{{ url }}" target="_blank" rel="noopener noreferrer">
 				        {% trans 'Returned to the land' %}
 			        </a>
+			        {% else %}
+			            {% trans 'Returned to the land' %}
+			        {% endif %}
+                {% endwith %}
 		        </p>
 	        {% else %}
 			    <p>{% trans "Shared by" %}

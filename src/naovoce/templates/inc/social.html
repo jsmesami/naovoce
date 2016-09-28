@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <div class="social row">
 	<div class="facebook">
 		<div class="fb-share-button"
@@ -12,4 +14,13 @@
 		   data-count="none">Tweet
 		</a>
 	</div>
+	{% url 'support-financially' as url %}
+	<div class="donate">
+		<a href="{{ url }}">{% trans 'Donate' %}</a>
+	</div>
+	<span class="donate">
+		{% blocktrans trimmed %}
+			Do you like what we do? Please consider a little <a href="{{ url }}">donation</a> to keep us going.
+		{% endblocktrans %}
+	</span>
 </div>

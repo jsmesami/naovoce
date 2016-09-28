@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-28 20:53+0200\n"
-"PO-Revision-Date: 2016-09-28 20:53+0200\n"
+"POT-Creation-Date: 2016-09-29 00:15+0200\n"
+"PO-Revision-Date: 2016-09-29 00:17+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -133,7 +133,7 @@ msgstr ""
 msgid "{} is not a valid Kind key."
 msgstr "{} není platný klíč."
 
-#: fruit/api/views.py:124 fruit/api/views.py:137
+#: fruit/api/views.py:123 fruit/api/views.py:136
 msgid "Cannot update once deleted object."
 msgstr "Dříve smazaný objekt nelze aktualizovat."
 
@@ -784,39 +784,55 @@ msgstr "Média"
 msgid "Downloads"
 msgstr "Ke stažení"
 
-#: naovoce/templates/base.html:53 naovoce/templates/inc/footer.html:82
+#: naovoce/templates/base.html:53
+msgid "Projects"
+msgstr "Projekty"
+
+#: naovoce/templates/base.html:55
+msgid "Orchards Popularization"
+msgstr "Popularizace sadů"
+
+#: naovoce/templates/base.html:56 naovoce/templates/inc/footer.html:48
+msgid "Mobile Application"
+msgstr "Mobilní aplikace"
+
+#: naovoce/templates/base.html:57
+msgid "Training Workshops"
+msgstr "Vzdělávací workshopy"
+
+#: naovoce/templates/base.html:61 naovoce/templates/inc/footer.html:82
 msgid "Support Us"
 msgstr "Podpořte nás"
 
-#: naovoce/templates/base.html:55 naovoce/templates/inc/footer.html:84
+#: naovoce/templates/base.html:63 naovoce/templates/inc/footer.html:84
 msgid "Financially"
 msgstr "Finančně"
 
-#: naovoce/templates/base.html:56 naovoce/templates/inc/footer.html:85
+#: naovoce/templates/base.html:64 naovoce/templates/inc/footer.html:85
 msgid "Engage"
 msgstr "Zapojte se"
 
-#: naovoce/templates/base.html:57 naovoce/templates/inc/footer.html:86
+#: naovoce/templates/base.html:65 naovoce/templates/inc/footer.html:86
 msgid "Zoot Goodness"
 msgstr "Dobro na Zootu"
 
-#: naovoce/templates/base.html:61 naovoce/templates/fruit/detail.html:90
+#: naovoce/templates/base.html:69 naovoce/templates/fruit/detail.html:96
 #: naovoce/templates/fruit/herbarium.html:13
 #: naovoce/templates/fruit/herbarium.html:15
 #: naovoce/templates/inc/footer.html:47
 msgid "Herbarium"
 msgstr "Herbář"
 
-#: naovoce/templates/base.html:107
+#: naovoce/templates/base.html:115
 msgid "By using this site you agree to the use of cookies for analytics."
 msgstr ""
 "Používáním těchto stránek souhlasíte s využitím souborů cookie k analýzám."
 
-#: naovoce/templates/base.html:108
+#: naovoce/templates/base.html:116
 msgid "More information"
 msgstr "Více informací"
 
-#: naovoce/templates/base.html:109
+#: naovoce/templates/base.html:117
 msgid "Dismiss"
 msgstr "Pryč s tím"
 
@@ -886,50 +902,51 @@ msgctxt "infinitive"
 msgid "Delete"
 msgstr "Smazat značku"
 
-#: naovoce/templates/fruit/detail.html:36
+#: naovoce/templates/fruit/detail.html:38
+#: naovoce/templates/fruit/detail.html:41
 msgid "Returned to the land"
 msgstr "Vráceno krajině"
 
-#: naovoce/templates/fruit/detail.html:40 naovoce/templates/home.html:156
+#: naovoce/templates/fruit/detail.html:46 naovoce/templates/home.html:156
 #: naovoce/templates/inc/mapjs.html:104
 msgid "Shared by"
 msgstr "Sdílí"
 
-#: naovoce/templates/fruit/detail.html:46
+#: naovoce/templates/fruit/detail.html:52
 msgid "Added"
 msgstr "Přidáno"
 
-#: naovoce/templates/fruit/detail.html:52
+#: naovoce/templates/fruit/detail.html:58
 msgid "Unknown address"
 msgstr "Neznámá adresa"
 
-#: naovoce/templates/fruit/detail.html:58
+#: naovoce/templates/fruit/detail.html:64
 msgid "This marker has been deleted"
 msgstr "Tato značka byla smazána"
 
-#: naovoce/templates/fruit/detail.html:60
+#: naovoce/templates/fruit/detail.html:66
 msgid "Reason of deletion"
 msgstr "Důvod smazání"
 
-#: naovoce/templates/fruit/detail.html:68 naovoce/templates/inc/mapjs.html:108
+#: naovoce/templates/fruit/detail.html:74 naovoce/templates/inc/mapjs.html:108
 msgid "Description"
 msgstr "Popis"
 
-#: naovoce/templates/fruit/detail.html:82
+#: naovoce/templates/fruit/detail.html:88
 #: naovoce/templates/fruit/inc/fruitform.html:24
 #: naovoce/templates/pickers/detail.html:48
 msgid "Large map"
 msgstr "Velká mapa"
 
-#: naovoce/templates/fruit/detail.html:84
+#: naovoce/templates/fruit/detail.html:90
 msgid "Edit"
 msgstr "Upravit"
 
-#: naovoce/templates/fruit/detail.html:85
+#: naovoce/templates/fruit/detail.html:91
 msgid "Delete"
 msgstr "Smazat"
 
-#: naovoce/templates/fruit/detail.html:87
+#: naovoce/templates/fruit/detail.html:93
 #: naovoce/templates/fruit/inc/fruitform.html:20
 #: naovoce/templates/pickers/detail.html:49
 msgid "Add marker"
@@ -1092,10 +1109,6 @@ msgstr "Přidávání"
 msgid "Picker's Codex"
 msgstr "Kodex sběrače"
 
-#: naovoce/templates/inc/footer.html:48
-msgid "Mobile Application"
-msgstr "Mobilní aplikace"
-
 #: naovoce/templates/inc/footer.html:49
 msgid "Beneficial Eshop"
 msgstr "Benefiční eshop"
@@ -1154,6 +1167,20 @@ msgstr "Ukaž mi, kde jsem!"
 #, python-brace-format
 msgid "You are within {distance} {unit} from this point"
 msgstr "Od tohoto bodu jste vzdáleni cca {distance}{unit}."
+
+#: naovoce/templates/inc/social.html:19
+#: naovoce/templates/staticpage/support.html:48
+msgid "Donate"
+msgstr "Darujte"
+
+#: naovoce/templates/inc/social.html:22
+#, python-format
+msgid ""
+"Do you like what we do? Please consider a little <a href=\"%(url)s"
+"\">donation</a> to keep us going."
+msgstr ""
+"Líbí se vám, co děláme? Zvažte prosím malý <a href=\"%(url)s\">příspěvek</a> "
+"na naši práci."
 
 #: naovoce/templates/inc/user_info.html:6
 msgid "User profile"
@@ -1320,10 +1347,6 @@ msgstr "Jednorázově"
 msgid "Monthly"
 msgstr "Měsíčně"
 
-#: naovoce/templates/staticpage/support.html:48
-msgid "Donate"
-msgstr "Darujte"
-
 #: naovoce/templates/staticpage/team.html:9
 msgid "Core Team"
 msgstr "Základní team"
@@ -1384,11 +1407,11 @@ msgstr "^ochrana-osobnich-udaju/$"
 msgid "^prague-orchards-popularization/$"
 msgstr "^popularizace-prazskych-ovocnych-sadu/$"
 
-#: naovoce/urls.py:89
+#: naovoce/urls.py:90
 msgid "^training-workshops/$"
 msgstr "^vzdelavaci-workshopy/$"
 
-#: naovoce/urls.py:90
+#: naovoce/urls.py:92
 msgid "^mapping-application-development/$"
 msgstr "^vyvoj-mapovaci-aplikace/$"
 

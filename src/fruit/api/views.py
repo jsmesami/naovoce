@@ -64,7 +64,6 @@ class FruitList(generics.ListCreateAPIView):
         qs = self.filter_queryset(self.get_queryset())
 
         catalogue = request.query_params.get('catalogue')
-        print(catalogue)
         if catalogue:
             qs = qs.filter(catalogue=int(catalogue))
 
