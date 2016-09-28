@@ -63,6 +63,7 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
 
     first_name = models.CharField(_('first name'), max_length=30, blank=True)
     last_name = models.CharField(_('last name'), max_length=30, blank=True)
+    external_url = models.URLField(_('external URL'), blank=True)
 
     RESOLUTION = Choices(
         picker=(1000, _('picker')),

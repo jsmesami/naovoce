@@ -16,8 +16,18 @@
 		     src="{% avatar user bg_shade=0.3 %}"
 		     title="{{ user.username }}">
 	    <div class="media-body">
-            <h3>{{ user.username }}</h3>
-		    <p>{% trans "Joined" %}: <strong>{{ user.date_joined }}</strong></p>
+            {% if user.resolution == user.RESOLUTION.picker %}
+	            <h3>{{ user.username }}</h3>
+			    <p>{% trans "Joined" %}: <strong>{{ user.date_joined }}</strong></p>
+            {% else %}
+	            {% if user.external_url %}
+	                <h3><a href="{{ user.external_url }}" target="_blank" rel="noopener noreferrer">{{ user.username }}</a></h3>
+                    <p>(<a href="{{ user.external_url }}" target="_blank" rel="noopener noreferrer">{% trans 'external source of markers' %}</a>)</p>
+	            {% else %}
+		            <h3>{{ user.username }}</h3>
+                    <p>({% trans 'external source of markers' %})</p>
+	            {% endif %}
+            {% endif %}
 			<p>{% trans "Markers added" %}: <strong>{{ user.fruit_count }}</strong></p>
 	    </div>
     </div>

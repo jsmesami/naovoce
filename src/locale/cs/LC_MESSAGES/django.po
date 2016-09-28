@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-26 21:37+0200\n"
-"PO-Revision-Date: 2016-09-26 21:39+0200\n"
+"POT-Creation-Date: 2016-09-28 15:03+0200\n"
+"PO-Revision-Date: 2016-09-28 15:04+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -44,7 +44,7 @@ msgid "title"
 msgstr "titulek"
 
 #: blog/models.py:39 comments/admin.py:18 staticpage/models.py:9
-#: user/admin.py:53 user/models.py:150
+#: user/admin.py:55 user/models.py:162
 msgid "text"
 msgstr "text"
 
@@ -274,7 +274,7 @@ msgstr "proč smazán"
 msgid "The tree has been cut down, not found etc."
 msgstr "Strom byl poražen, nenalezen apod."
 
-#: fruit/models.py:93 user/models.py:142
+#: fruit/models.py:93 user/models.py:154
 msgid "user"
 msgstr "uživatel"
 
@@ -620,7 +620,7 @@ msgstr "Změnit heslo"
 
 #: naovoce/templates/account/password_change.html:12
 #: naovoce/templates/account/password_change.html:17
-#: naovoce/templates/pickers/detail.html:47
+#: naovoce/templates/pickers/detail.html:57
 msgid "Change password"
 msgstr "Změnit heslo"
 
@@ -704,7 +704,7 @@ msgstr "Nastavit heslo"
 
 #: naovoce/templates/account/password_set.html:12
 #: naovoce/templates/account/password_set.html:17
-#: naovoce/templates/pickers/detail.html:49
+#: naovoce/templates/pickers/detail.html:59
 msgid "Set password"
 msgstr "Nastavit heslo"
 
@@ -905,7 +905,7 @@ msgstr "Popis"
 
 #: naovoce/templates/fruit/detail.html:74
 #: naovoce/templates/fruit/inc/fruitform.html:24
-#: naovoce/templates/pickers/detail.html:38
+#: naovoce/templates/pickers/detail.html:48
 msgid "Large map"
 msgstr "Velká mapa"
 
@@ -919,7 +919,7 @@ msgstr "Smazat"
 
 #: naovoce/templates/fruit/detail.html:79
 #: naovoce/templates/fruit/inc/fruitform.html:20
-#: naovoce/templates/pickers/detail.html:39
+#: naovoce/templates/pickers/detail.html:49
 msgid "Add marker"
 msgstr "Přidat značku"
 
@@ -1160,23 +1160,28 @@ msgstr "filtr"
 msgid "Media types"
 msgstr "Typy médií"
 
-#: naovoce/templates/pickers/detail.html:20
+#: naovoce/templates/pickers/detail.html:21
 msgid "Joined"
 msgstr "Mapuje od"
 
-#: naovoce/templates/pickers/detail.html:21
+#: naovoce/templates/pickers/detail.html:25
+#: naovoce/templates/pickers/detail.html:28
+msgid "external source of markers"
+msgstr "externí zdroj značek"
+
+#: naovoce/templates/pickers/detail.html:31
 msgid "Markers added"
 msgstr "Počet značek"
 
-#: naovoce/templates/pickers/detail.html:44
+#: naovoce/templates/pickers/detail.html:54
 msgid "Account settings"
 msgstr "Nastavení účtu"
 
-#: naovoce/templates/pickers/detail.html:45
+#: naovoce/templates/pickers/detail.html:55
 msgid "My messages"
 msgstr "Mé zprávy"
 
-#: naovoce/templates/pickers/detail.html:51
+#: naovoce/templates/pickers/detail.html:61
 #: naovoce/templates/socialaccount/connections.html:12
 msgid "Account connections"
 msgstr "Propojení účtu"
@@ -1296,8 +1301,8 @@ msgid "Core Team"
 msgstr "Základní team"
 
 #: naovoce/urls.py:41
-msgid "^map/$"
-msgstr "^mapa/$"
+msgid "^map(?:/(?P<type_slug>[^/]+))?/$"
+msgstr "^mapa(?:/(?P<type_slug>[^/]+))?/$"
 
 #: naovoce/urls.py:42
 msgid "^media(?:/(?P<type_slug>[^/]+))?/$"
@@ -1423,7 +1428,7 @@ msgstr "Musí obsahovat \"username\" a facebookové ID \"fcb_id\"."
 msgid "User's email is not verified."
 msgstr "Uživatelův e-mail není ověřen."
 
-#: user/forms.py:10 user/forms.py:42 user/models.py:60
+#: user/forms.py:10 user/forms.py:42 user/models.py:61
 msgid "username"
 msgstr "uživatelské jméno"
 
@@ -1466,31 +1471,47 @@ msgstr ""
 msgid "Username or e-mail"
 msgstr "Uživatelské jméno nebo e-mail"
 
-#: user/models.py:61
+#: user/models.py:62
 msgid "email address"
 msgstr "e-mail"
 
-#: user/models.py:63
+#: user/models.py:64
 msgid "first name"
 msgstr "jméno"
 
-#: user/models.py:64
+#: user/models.py:65
 msgid "last name"
 msgstr "příjmení"
 
 #: user/models.py:66
+msgid "external URL"
+msgstr "externí URL"
+
+#: user/models.py:69
+msgid "picker"
+msgstr "sběrač"
+
+#: user/models.py:70
+msgid "external source"
+msgstr "externí zdroj"
+
+#: user/models.py:73
+msgid "resolution"
+msgstr "rozlišení"
+
+#: user/models.py:78
 msgid "staff status"
 msgstr "personál"
 
-#: user/models.py:68
+#: user/models.py:80
 msgid "Designates whether the user can sign into this admin site."
 msgstr "Označuje, jestli se uživatel může přihlásit do administrátorské sekce."
 
-#: user/models.py:71
+#: user/models.py:83
 msgid "active"
 msgstr "aktivní"
 
-#: user/models.py:73
+#: user/models.py:85
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
@@ -1498,66 +1519,66 @@ msgstr ""
 "Označuje, jestli má být uživatel brán jako aktivní. Odškrtněte namísto "
 "mazání účtu."
 
-#: user/models.py:76
+#: user/models.py:88
 msgid "verified"
 msgstr "ověřeno"
 
-#: user/models.py:77
+#: user/models.py:89
 msgid "date joined"
 msgstr "přidal se"
 
-#: user/models.py:78
+#: user/models.py:90
 msgid "motto"
 msgstr "motto"
 
-#: user/models.py:88
+#: user/models.py:100
 msgid "avatar"
 msgstr "avatar"
 
-#: user/models.py:92
+#: user/models.py:104
 msgid "User avatar"
 msgstr "Avatar uživatele"
 
-#: user/models.py:143
+#: user/models.py:155
 msgid "users"
 msgstr "uživatelé"
 
-#: user/models.py:152
+#: user/models.py:164
 msgid "context"
 msgstr "kontext"
 
-#: user/models.py:153
+#: user/models.py:165
 msgid "Translation context for system messages"
 msgstr "Kontext pro překlad systémových zpráv"
 
-#: user/models.py:156
+#: user/models.py:168
 msgctxt "user.Message"
 msgid "read"
 msgstr "přečtená"
 
-#: user/models.py:157
+#: user/models.py:169
 msgctxt "Has been read or not."
 msgid "user.Message"
 msgstr "Byla přečtena nebo ne."
 
-#: user/models.py:161
+#: user/models.py:173
 msgctxt "user.Message"
 msgid "system"
 msgstr "systémová"
 
-#: user/models.py:162
+#: user/models.py:174
 msgid "System messages can be translated and can contain HTML."
 msgstr "Systémová zpráva může mít překlad a může obsahovat HTML."
 
-#: user/models.py:167
+#: user/models.py:179
 msgid "recipient"
 msgstr "příjemce"
 
-#: user/models.py:194
+#: user/models.py:206
 msgid "message"
 msgstr "zpráva"
 
-#: user/models.py:195
+#: user/models.py:207
 msgid "messages"
 msgstr "zprávy"
 
@@ -1594,6 +1615,9 @@ msgstr "změněno"
 msgid "Read more"
 msgstr "Čtěte více"
 
+#~ msgid "^map/$"
+#~ msgstr "^mapa/$"
+
 #~ msgid "or"
 #~ msgstr "nebo"
 
@@ -1614,9 +1638,6 @@ msgstr "Čtěte více"
 
 #~ msgid "Latest Comments"
 #~ msgstr "Poslední komentáře"
-
-#~ msgid "Pickers"
-#~ msgstr "Sběrači"
 
 #~ msgid "Pickers Index"
 #~ msgstr "Seznam sběračů"
