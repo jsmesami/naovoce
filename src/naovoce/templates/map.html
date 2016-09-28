@@ -97,28 +97,28 @@
 				map.filterMarkers kind, markers_cache_key
 
 		$catalogue_naovoce
-			.click ->
-				if $catalogue_naovoce.hasClass 'active'
-					false
-				else
+			.on 'click', (e) ->
+				e.preventDefault()
+				if not $catalogue_naovoce.hasClass 'active'
 					$catalogue_revival.removeClass 'active'
 					$catalogue_naovoce.addClass 'active'
-					map.clearMarkers()
 					markers_cache_key = '{{ catalogue.naovoce }}'
-					map.loadMarkers '{% url 'api:fruit-list' %}', markers_cache_key
-					false
+					map.clearMarkers()
+						.loadMarkers '{% url 'api:fruit-list' %}', markers_cache_key
+
+				false
 
 		$catalogue_revival
-			.click ->
-				if $catalogue_revival.hasClass 'active'
-					false
-				else
+			.on 'click', (e) ->
+				e.preventDefault()
+				if not $catalogue_revival.hasClass 'active'
 					$catalogue_naovoce.removeClass 'active'
 					$catalogue_revival.addClass 'active'
-					map.clearMarkers()
 					markers_cache_key = '{{ catalogue.revival }}'
-					map.loadMarkers '{% url 'api:fruit-list' %}?catalogue={{ catalogue.revival }}', markers_cache_key
-					false
+					map.clearMarkers()
+						.loadMarkers '{% url 'api:fruit-list' %}?catalogue={{ catalogue.revival }}', markers_cache_key
+
+				false
 
 		</script>
 	{% endcompress %}
