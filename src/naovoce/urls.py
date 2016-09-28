@@ -85,8 +85,10 @@ urlpatterns += i18n_patterns(
 
     url(_(r'^downloads/$'), staticpage.views.static_view, name='downloads'),
     url(_(r'^privacy-policy/$'), staticpage.views.static_view, name='privacy'),
-    url(_(r'^prague-orchards-popularization/$'), staticpage.views.static_view, name='popularization'),
-    url(_(r'^training-workshops/$'), staticpage.views.static_view, name='workshops'),
+    url(_(r'^prague-orchards-popularization/$'), staticpage.views.static_view,
+        dict(template_name='staticpage/projects.html'), name='popularization'),
+    url(_(r'^training-workshops/$'), staticpage.views.static_view,
+        dict(template_name='staticpage/projects.html'), name='workshops'),
     url(_(r'^mapping-application-development/$'), staticpage.views.static_view,
         dict(template_name='staticpage/application.html'), name='app-devel'),
 )
