@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-28 23:50+0200\n"
-"PO-Revision-Date: 2016-09-28 23:51+0200\n"
+"POT-Creation-Date: 2016-09-29 00:02+0200\n"
+"PO-Revision-Date: 2016-09-29 00:03+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -797,8 +797,6 @@ msgid "Mobile Application"
 msgstr "Mobilní aplikace"
 
 #: naovoce/templates/base.html:57
-#, fuzzy
-#| msgid "Training workshops"
 msgid "Training Workshops"
 msgstr "Vzdělávací workshopy"
 
@@ -1401,11 +1399,11 @@ msgstr "^ochrana-osobnich-udaju/$"
 msgid "^prague-orchards-popularization/$"
 msgstr "^popularizace-prazskych-ovocnych-sadu/$"
 
-#: naovoce/urls.py:89
+#: naovoce/urls.py:90
 msgid "^training-workshops/$"
 msgstr "^vzdelavaci-workshopy/$"
 
-#: naovoce/urls.py:90
+#: naovoce/urls.py:92
 msgid "^mapping-application-development/$"
 msgstr "^vyvoj-mapovaci-aplikace/$"
 
