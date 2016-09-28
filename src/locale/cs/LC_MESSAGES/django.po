@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-28 15:03+0200\n"
-"PO-Revision-Date: 2016-09-28 15:04+0200\n"
+"POT-Creation-Date: 2016-09-28 19:32+0200\n"
+"PO-Revision-Date: 2016-09-28 19:33+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -133,7 +133,7 @@ msgstr ""
 msgid "{} is not a valid Kind key."
 msgstr "{} není platný klíč."
 
-#: fruit/api/views.py:119 fruit/api/views.py:132
+#: fruit/api/views.py:124 fruit/api/views.py:137
 msgid "Cannot update once deleted object."
 msgstr "Dříve smazaný objekt nelze aktualizovat."
 
@@ -169,7 +169,7 @@ msgstr "celé jméno"
 msgid "latin name"
 msgstr "latinský název"
 
-#: fruit/herbarium/models.py:17 fruit/models.py:80
+#: fruit/herbarium/models.py:17 fruit/models.py:90
 msgid "description"
 msgstr "popis"
 
@@ -257,28 +257,36 @@ msgstr "šířka"
 msgid "longitude"
 msgstr "délka"
 
-#: fruit/models.py:82
+#: fruit/models.py:81
+msgid "revival"
+msgstr "vracíme"
+
+#: fruit/models.py:84 user/models.py:73
+msgid "resolution"
+msgstr "rozlišení"
+
+#: fruit/models.py:92
 msgid ""
 "Please, provide as many information about the marker as you find relevant."
 msgstr "Prosíme, napište co nejvíce relevantních informací o této značce."
 
-#: fruit/models.py:86
+#: fruit/models.py:96
 msgid "deleted"
 msgstr "smazán"
 
-#: fruit/models.py:88
+#: fruit/models.py:98
 msgid "why deleted"
 msgstr "proč smazán"
 
-#: fruit/models.py:90
+#: fruit/models.py:100
 msgid "The tree has been cut down, not found etc."
 msgstr "Strom byl poražen, nenalezen apod."
 
-#: fruit/models.py:93 user/models.py:154
+#: fruit/models.py:103 user/models.py:154
 msgid "user"
 msgstr "uživatel"
 
-#: fruit/models.py:107 fruit/models.py:108
+#: fruit/models.py:117 fruit/models.py:118
 msgid "fruit"
 msgstr "ovoce"
 
@@ -792,7 +800,7 @@ msgstr "Zapojte se"
 msgid "Zoot Goodness"
 msgstr "Dobro na Zootu"
 
-#: naovoce/templates/base.html:61 naovoce/templates/fruit/detail.html:82
+#: naovoce/templates/base.html:61 naovoce/templates/fruit/detail.html:90
 #: naovoce/templates/fruit/herbarium.html:13
 #: naovoce/templates/fruit/herbarium.html:15
 #: naovoce/templates/inc/footer.html:47
@@ -878,46 +886,50 @@ msgctxt "infinitive"
 msgid "Delete"
 msgstr "Smazat značku"
 
-#: naovoce/templates/fruit/detail.html:33 naovoce/templates/home.html:144
-#: naovoce/templates/inc/mapjs.html:102
+#: naovoce/templates/fruit/detail.html:36
+msgid "Returned to the land"
+msgstr "Vráceno krajině"
+
+#: naovoce/templates/fruit/detail.html:40 naovoce/templates/home.html:144
+#: naovoce/templates/inc/mapjs.html:104
 msgid "Shared by"
 msgstr "Sdílí"
 
-#: naovoce/templates/fruit/detail.html:38
+#: naovoce/templates/fruit/detail.html:46
 msgid "Added"
 msgstr "Přidáno"
 
-#: naovoce/templates/fruit/detail.html:44
+#: naovoce/templates/fruit/detail.html:52
 msgid "Unknown address"
 msgstr "Neznámá adresa"
 
-#: naovoce/templates/fruit/detail.html:50
+#: naovoce/templates/fruit/detail.html:58
 msgid "This marker has been deleted"
 msgstr "Tato značka byla smazána"
 
-#: naovoce/templates/fruit/detail.html:52
+#: naovoce/templates/fruit/detail.html:60
 msgid "Reason of deletion"
 msgstr "Důvod smazání"
 
-#: naovoce/templates/fruit/detail.html:60 naovoce/templates/inc/mapjs.html:106
+#: naovoce/templates/fruit/detail.html:68 naovoce/templates/inc/mapjs.html:108
 msgid "Description"
 msgstr "Popis"
 
-#: naovoce/templates/fruit/detail.html:74
+#: naovoce/templates/fruit/detail.html:82
 #: naovoce/templates/fruit/inc/fruitform.html:24
 #: naovoce/templates/pickers/detail.html:48
 msgid "Large map"
 msgstr "Velká mapa"
 
-#: naovoce/templates/fruit/detail.html:76
+#: naovoce/templates/fruit/detail.html:84
 msgid "Edit"
 msgstr "Upravit"
 
-#: naovoce/templates/fruit/detail.html:77
+#: naovoce/templates/fruit/detail.html:85
 msgid "Delete"
 msgstr "Smazat"
 
-#: naovoce/templates/fruit/detail.html:79
+#: naovoce/templates/fruit/detail.html:87
 #: naovoce/templates/fruit/inc/fruitform.html:20
 #: naovoce/templates/pickers/detail.html:49
 msgid "Add marker"
@@ -1068,7 +1080,7 @@ msgstr "Mobilní aplikace"
 msgid "Quick Links"
 msgstr "Rychlé odkazy"
 
-#: naovoce/templates/inc/footer.html:44 naovoce/templates/map.html:42
+#: naovoce/templates/inc/footer.html:44 naovoce/templates/map.html:45
 msgid "Add Marker"
 msgstr "Přidávání"
 
@@ -1114,23 +1126,23 @@ msgstr ""
 msgid "Fruit kind"
 msgstr "Druh ovoce"
 
-#: naovoce/templates/inc/mapjs.html:112
+#: naovoce/templates/inc/mapjs.html:114
 msgid "Address"
 msgstr "Adresa"
 
-#: naovoce/templates/inc/mapjs.html:181
+#: naovoce/templates/inc/mapjs.html:188
 msgid "Search for places or addresses"
 msgstr "Vyhledávání míst a adres"
 
-#: naovoce/templates/inc/mapjs.html:182
+#: naovoce/templates/inc/mapjs.html:189
 msgid "Location search"
 msgstr "Vyhledávání míst"
 
-#: naovoce/templates/inc/mapjs.html:200
+#: naovoce/templates/inc/mapjs.html:207
 msgid "Show me where I am"
 msgstr "Ukaž mi, kde jsem!"
 
-#: naovoce/templates/inc/mapjs.html:202
+#: naovoce/templates/inc/mapjs.html:209
 #, python-brace-format
 msgid "You are within {distance} {unit} from this point"
 msgstr "Od tohoto bodu jste vzdáleni cca {distance}{unit}."
@@ -1152,7 +1164,15 @@ msgstr ""
 "Mapa &quot;Na ovoce&quot; umožňuje zobrazení volně rostoucích ovocných "
 "stromů, keřů a bylinek, jejichž plody je možné si zdarma natrhat."
 
-#: naovoce/templates/map.html:25
+#: naovoce/templates/map.html:23
+msgid "mapping"
+msgstr "mapujeme"
+
+#: naovoce/templates/map.html:23
+msgid "planting"
+msgstr "sázíme"
+
+#: naovoce/templates/map.html:28
 msgid "filter"
 msgstr "filtr"
 
@@ -1301,8 +1321,8 @@ msgid "Core Team"
 msgstr "Základní team"
 
 #: naovoce/urls.py:41
-msgid "^map(?:/(?P<type_slug>[^/]+))?/$"
-msgstr "^mapa(?:/(?P<type_slug>[^/]+))?/$"
+msgid "^map/$"
+msgstr "^mapa/$"
 
 #: naovoce/urls.py:42
 msgid "^media(?:/(?P<type_slug>[^/]+))?/$"
@@ -1495,10 +1515,6 @@ msgstr "sběrač"
 msgid "external source"
 msgstr "externí zdroj"
 
-#: user/models.py:73
-msgid "resolution"
-msgstr "rozlišení"
-
 #: user/models.py:78
 msgid "staff status"
 msgstr "personál"
@@ -1615,8 +1631,8 @@ msgstr "změněno"
 msgid "Read more"
 msgstr "Čtěte více"
 
-#~ msgid "^map/$"
-#~ msgstr "^mapa/$"
+#~ msgid "^map(?:/(?P<type_slug>[^/]+))?/$"
+#~ msgstr "^mapa(?:/(?P<type_slug>[^/]+))?/$"
 
 #~ msgid "or"
 #~ msgstr "nebo"

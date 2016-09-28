@@ -19,6 +19,9 @@
 
 {% block wide_content %}
 <div id="map">
+	<div id="catalogue">
+		<a id="naovoce" href="#" class="active">{% trans 'mapping' %}</a><a id="revival" href="#">{% trans 'planting' %}</a>
+	</div>
 	<div id="filter">
 		<div class="handle">
 			<a href="#" class="canceller">{% include 'inc/svg/cancel.html' %}</a>
@@ -73,7 +76,13 @@
 		map = new Naovoce.Map 'map'
 		new L.Hash map
 
-		map.loadMarkers '{% url 'api:fruit-list' %}'
+		markers_cache_key = '{{ catalogue.naovoce }}'
+		$catalogue = $ '#catalogue'
+		$catalogue_naovoce = $catalogue.find '#naovoce'
+		$catalogue_revival = $catalogue.find '#revival'
+
+		map.loadMarkers '{% url 'api:fruit-list' %}', markers_cache_key, ->
+				$catalogue.addClass 'visible'
 			.loadState()
 			.on 'moveend', ->
 				@saveState()
@@ -83,9 +92,34 @@
 
 		filter.reload = (kind) ->
 			if not kind?
-				map.showMarkers()
+				map.showMarkers markers_cache_key
 			else
-				map.filterMarkers(kind)
+				map.filterMarkers kind, markers_cache_key
+
+		$catalogue_naovoce
+			.click ->
+				if $catalogue_naovoce.hasClass 'active'
+					false
+				else
+					$catalogue_revival.removeClass 'active'
+					$catalogue_naovoce.addClass 'active'
+					map.clearMarkers()
+					markers_cache_key = '{{ catalogue.naovoce }}'
+					map.loadMarkers '{% url 'api:fruit-list' %}', markers_cache_key
+					false
+
+		$catalogue_revival
+			.click ->
+				if $catalogue_revival.hasClass 'active'
+					false
+				else
+					$catalogue_naovoce.removeClass 'active'
+					$catalogue_revival.addClass 'active'
+					map.clearMarkers()
+					markers_cache_key = '{{ catalogue.revival }}'
+					map.loadMarkers '{% url 'api:fruit-list' %}?catalogue={{ catalogue.revival }}', markers_cache_key
+					false
+
 		</script>
 	{% endcompress %}
 {% endblock %}

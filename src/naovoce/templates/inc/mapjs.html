@@ -96,6 +96,8 @@ class Naovoce.Map extends L.Map
 		{# Remove default attributions. #}
 		@.attributionControl.setPrefix('');
 
+		@markers = {}
+
 		{# Add more content to popups when marker clicked. #}
 		@.on 'popupopen', (ev) ->
 			$.getJSON ev.popup._source.fruit.url, (json) =>
@@ -113,26 +115,31 @@ class Naovoce.Map extends L.Map
 						"#{address}</p>" + content if address
 			@
 
-		{# Add spinned DIV into map container. #}
+		{# Add spinner DIV into map container. #}
 		@spinner = $ '<div id="spinner">'
 		$("##{id}").prepend @spinner
 
-	loadMarkers: (url) ->
-		@spinner.addClass 'spinning'
-		$.getJSON url, (json) =>
-			@markers = (new PopupMarker fruit for fruit in json)
-			@showMarkers()
-			@spinner.removeClass 'spinning'
+	loadMarkers: (url, key='default', onReload) ->
+		if key of @markers
+			@showMarkers key
+			onReload()
+		else
+			@spinner.addClass 'spinning'
+			$.getJSON url, (json) =>
+				@markers[key] = (new PopupMarker fruit for fruit in json)
+				@showMarkers key
+				@spinner.removeClass 'spinning'
+				onReload()
+			@
+
+	showMarkers: (key='default') ->
+		@markerLayerGroup.clearLayers()
+		@markerLayerGroup.addLayers @markers[key]
 		@
 
-	showMarkers: ->
+	filterMarkers: (kind, key='default') ->
 		@markerLayerGroup.clearLayers()
-		@markerLayerGroup.addLayers @markers
-		@
-
-	filterMarkers: (kind) ->
-		@markerLayerGroup.clearLayers()
-		@markerLayerGroup.addLayers (m for m in @markers when m.kind == kind)
+		@markerLayerGroup.addLayers (m for m in @markers[key] when m.kind == kind)
 		@
 
 	clearMarkers: ->

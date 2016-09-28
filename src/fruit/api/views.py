@@ -63,6 +63,11 @@ class FruitList(generics.ListCreateAPIView):
     def list(self, request, *args, **kwargs):
         qs = self.filter_queryset(self.get_queryset())
 
+        catalogue = request.query_params.get('catalogue')
+        print(catalogue)
+        if catalogue:
+            qs = qs.filter(catalogue=int(catalogue))
+
         user = request.query_params.get('user')
         if user:
             qs = qs.filter(user__id=int(user))
@@ -79,7 +84,7 @@ class FruitList(generics.ListCreateAPIView):
         # We are not paginating, so we can serialize iterator (saves memory)
         serializer = self.get_serializer(qs.iterator(), many=True)
 
-        if not user:
+        if not (user or catalogue):
             # Caching comb. of both kind & user would produce too many cache entries.
             return CachedResponse(kind or 'all', serializer.data)
         else:

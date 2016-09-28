@@ -45,6 +45,7 @@ def map_view(request):
         'kinds': kinds,
         'kinds_by_class': kinds_by_class,
         'classes': classes,
+        'catalogue': Fruit.CATALOGUE,
     }
 
     return render(request, 'map.html', context)

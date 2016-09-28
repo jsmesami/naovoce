@@ -37,9 +37,9 @@ class KindAdmin(TranslationAdmin):
 
 
 class FruitAdmin(GalleryAdminMixin, admin.ModelAdmin):
-    fields = 'latitude longitude kind description user deleted why_deleted cover_image'.split()
+    fields = 'latitude longitude kind catalogue description user deleted why_deleted cover_image'.split()
     list_display = 'id __str__ latitude longitude user deleted images_count created'.split()
-    list_filter = 'kind__name_cs deleted'.split()
+    list_filter = 'kind__name_cs deleted catalogue'.split()
     search_fields = 'id user__username user__email'.split()
     form = CoverImageAdminForm
     inlines = ImageAdminInline,

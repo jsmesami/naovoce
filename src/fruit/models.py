@@ -76,6 +76,16 @@ class Fruit(TimeStampedModel, GalleryModel):
     latitude = models.DecimalField(_('latitude'), max_digits=13, decimal_places=10)
     longitude = models.DecimalField(_('longitude'), max_digits=13, decimal_places=10)
     kind = models.ForeignKey(Kind, verbose_name=_('kind'), related_name='fruits')
+    CATALOGUE = Choices(
+        naovoce=(1000, 'naovoce'),
+        revival=(2000, _('revival')),
+    )
+    catalogue = models.IntegerField(
+        _('resolution'),
+        choices=CATALOGUE.choices,
+        default=CATALOGUE.naovoce,
+    )
+
     description = models.TextField(
         _('description'),
         blank=True,

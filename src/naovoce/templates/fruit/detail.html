@@ -30,11 +30,19 @@
 		            <h3>{{ fruit.kind.name }}</h3>
 	            {% endif %}
             {% endwith %}
-		    <p>{% trans "Shared by" %}
-			    <strong>
-	                <a href="{% url 'pickers:detail' fruit.user.id fruit.user.slug %}">{{ fruit.user.username }}</a>
-			    </strong>
-		    </p>
+	        {% if fruit.catalogue == fruit.CATALOGUE.revival %}
+                <p>
+			        <a href="http://eshop.na-ovoce.cz" target="_blank" rel="noopener noreferrer">
+				        {% trans 'Returned to the land' %}
+			        </a>
+		        </p>
+	        {% else %}
+			    <p>{% trans "Shared by" %}
+				    <strong>
+		                <a href="{% url 'pickers:detail' fruit.user.id fruit.user.slug %}">{{ fruit.user.username }}</a>
+				    </strong>
+			    </p>
+	        {% endif %}
 		    <p>{% trans "Added" %}: <strong>{{ fruit.created }}</strong></p>
 	    </div>
 	</div>

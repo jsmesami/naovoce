@@ -295,6 +295,37 @@ hr {
 	}
 }
 
+#catalogue {
+	position: absolute;
+	top: 10px;
+	left: 60px;
+	z-index: 9999;
+	display: none;
+	a {
+		display: inline-block;
+		line-height: 25px;
+		padding: 0 10px;
+		background: white;
+		color: @brand-secondary;
+		&.active {
+			background: @brand-secondary;
+			color: white;
+			text-decoration: none;
+			&:active,
+			&:hover {
+				text-decoration: none;
+				cursor: default;
+			}
+		}
+	}
+	p {
+		margin: 0;
+	}
+	&.visible {
+		display: block;
+	}
+}
+
 #filter {
 	@class-choice-width: 50px;
 	@class-choice-height: @class-choice-width+25;
