@@ -17,14 +17,26 @@
 
 {% block content %}
 	<div class="row">
-		<h2 class="claim">
-			Mapujme přírodní bohatství v&nbsp;podobě volně rostoucích ovocných stromů, keřů a&nbsp;bylinek.
-		</h2>
-		<form class="call" action="{% url 'fruit:add' %}" method="get">
-			<button type="submit" class="btn btn-success">
-				{% trans 'Add marker to the map' %}
-			</button>
-		</form>
+		<div class="col-sm-6">
+			<h2 class="claim">
+				Mapujme přírodní<br>bohatství v&nbsp;podobě volně<br>rostoucích ovocných stromů,<br>keřů a&nbsp;bylinek.
+			</h2>
+			<form class="call" action="{% url 'fruit:add' %}" method="get">
+				<button type="submit" class="btn btn-success">
+					{% trans 'Add marker to the map' %}
+				</button>
+			</form>
+		</div>
+		<div class="col-sm-6">
+			<h2 class="claim">
+				Vracíme zapomenuté<br>odrůdy ovocných<br>stromů zpět do krajiny a&nbsp;na<br>české zahrádky.
+			</h2>
+			<form class="call" action="http://eshop.na-ovoce.cz" method="get">
+				<button type="submit" class="btn btn-success">
+					{% trans 'Plant a tree' %}
+				</button>
+			</form>
+		</div>
 	</div>
 	<hr>
 	<h3>{% trans 'Our projects' %}</h3>
