@@ -2,6 +2,7 @@ from collections import OrderedDict
 from itertools import chain
 from django import forms
 from django.core.exceptions import ValidationError
+from django.forms import CheckboxInput
 from django.utils.encoding import force_text
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
@@ -47,6 +48,14 @@ class KindSelect(forms.Select):
                            force_text(option_label))
 
 
+class CatalogueWidget(CheckboxInput):
+    def __init__(self):
+        super().__init__(check_test=lambda val: val == Fruit.CATALOGUE.revival)
+
+    def value_from_datadict(self, data, *args):
+        return Fruit.CATALOGUE.revival if data.get('catalogue') else Fruit.CATALOGUE.naovoce
+
+
 class FruitForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -60,12 +69,18 @@ class FruitForm(forms.ModelForm):
 
     class Meta:
         model = Fruit
-        fields = 'latitude', 'longitude', 'kind', 'description'
+        fields = 'latitude', 'longitude', 'kind', 'description', 'catalogue'
+
         widgets = {
             'description': forms.Textarea(attrs={'rows': 5}),
             'latitude': forms.NumberInput(attrs={'min': -90, 'max': 90}),
             'longitude': forms.NumberInput(attrs={'min': -180, 'max': 180}),
             'kind': KindSelect(),
+            'catalogue': CatalogueWidget(),
+        }
+
+        labels = {
+            'catalogue': _('Is it a tree that you planted yourself?')
         }
 
     def clean_latitude(self):

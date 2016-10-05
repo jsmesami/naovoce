@@ -32,15 +32,9 @@
             {% endwith %}
 	        {% if fruit.catalogue == fruit.CATALOGUE.revival %}
                 <p>
-		        {% with url=fruit.user.external_url %}
-			        {% if url %}
-			        <a href="{{ url }}" target="_blank" rel="noopener noreferrer">
-				        {% trans 'Returned to the land' %}
-			        </a>
-			        {% else %}
-			            {% trans 'Returned to the land' %}
-			        {% endif %}
-                {% endwith %}
+                {% blocktrans with url=user.get_absolute_url username=fruit.user.username trimmed %}
+	                Returned to the land by <a href="{{ url }}">{{ username }}</a>
+                {% endblocktrans %}
 		        </p>
 	        {% else %}
 			    <p>{% trans "Shared by" %}

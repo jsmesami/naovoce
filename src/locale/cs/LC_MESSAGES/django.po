@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-29 00:15+0200\n"
-"PO-Revision-Date: 2016-09-29 00:17+0200\n"
+"POT-Creation-Date: 2016-10-05 22:49+0200\n"
+"PO-Revision-Date: 2016-10-05 22:50+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -137,23 +137,27 @@ msgstr "{} není platný klíč."
 msgid "Cannot update once deleted object."
 msgstr "Dříve smazaný objekt nelze aktualizovat."
 
-#: fruit/forms.py:59
+#: fruit/forms.py:68
 msgid "Nothing selected"
 msgstr "Nic nevybráno"
 
-#: fruit/forms.py:76
+#: fruit/forms.py:83
+msgid "Is it a tree that you planted yourself?"
+msgstr "Jedná se o strom, který jste zasadili?"
+
+#: fruit/forms.py:91
 msgid "Latitude must be a number between -90 and 90."
 msgstr "Zeměpisná šířka musí být číslo mezi -90 a 90."
 
-#: fruit/forms.py:83
+#: fruit/forms.py:98
 msgid "Longitude must be a number between -180 and 180."
 msgstr "Zeměpisná délka musí být číslo mezi -180 a 180."
 
-#: fruit/forms.py:92
+#: fruit/forms.py:107
 msgid "Reason"
 msgstr "Důvod"
 
-#: fruit/forms.py:93
+#: fruit/forms.py:108
 msgid "Please describe reason of why you are deleting the marker."
 msgstr "Prosíme, popište důvody, které máte k smazání této značky."
 
@@ -816,7 +820,7 @@ msgstr "Zapojte se"
 msgid "Zoot Goodness"
 msgstr "Dobro na Zootu"
 
-#: naovoce/templates/base.html:69 naovoce/templates/fruit/detail.html:96
+#: naovoce/templates/base.html:69 naovoce/templates/fruit/detail.html:90
 #: naovoce/templates/fruit/herbarium.html:13
 #: naovoce/templates/fruit/herbarium.html:15
 #: naovoce/templates/inc/footer.html:47
@@ -902,52 +906,52 @@ msgctxt "infinitive"
 msgid "Delete"
 msgstr "Smazat značku"
 
-#: naovoce/templates/fruit/detail.html:38
-#: naovoce/templates/fruit/detail.html:41
-msgid "Returned to the land"
-msgstr "Vráceno krajině"
+#: naovoce/templates/fruit/detail.html:35
+#, python-format
+msgid "Returned to the land by <a href=\"%(url)s\">%(username)s</a>"
+msgstr "Váceno zemi uživatelem <a href=\"%(url)s\">%(username)s</a>"
 
-#: naovoce/templates/fruit/detail.html:46 naovoce/templates/home.html:156
+#: naovoce/templates/fruit/detail.html:40 naovoce/templates/home.html:156
 #: naovoce/templates/inc/mapjs.html:104
 msgid "Shared by"
 msgstr "Sdílí"
 
-#: naovoce/templates/fruit/detail.html:52
+#: naovoce/templates/fruit/detail.html:46
 msgid "Added"
 msgstr "Přidáno"
 
-#: naovoce/templates/fruit/detail.html:58
+#: naovoce/templates/fruit/detail.html:52
 msgid "Unknown address"
 msgstr "Neznámá adresa"
 
-#: naovoce/templates/fruit/detail.html:64
+#: naovoce/templates/fruit/detail.html:58
 msgid "This marker has been deleted"
 msgstr "Tato značka byla smazána"
 
-#: naovoce/templates/fruit/detail.html:66
+#: naovoce/templates/fruit/detail.html:60
 msgid "Reason of deletion"
 msgstr "Důvod smazání"
 
-#: naovoce/templates/fruit/detail.html:74 naovoce/templates/inc/mapjs.html:108
+#: naovoce/templates/fruit/detail.html:68 naovoce/templates/inc/mapjs.html:108
 msgid "Description"
 msgstr "Popis"
 
-#: naovoce/templates/fruit/detail.html:88
-#: naovoce/templates/fruit/inc/fruitform.html:24
+#: naovoce/templates/fruit/detail.html:82
+#: naovoce/templates/fruit/inc/fruitform.html:27
 #: naovoce/templates/pickers/detail.html:48
 msgid "Large map"
 msgstr "Velká mapa"
 
-#: naovoce/templates/fruit/detail.html:90
+#: naovoce/templates/fruit/detail.html:84
 msgid "Edit"
 msgstr "Upravit"
 
-#: naovoce/templates/fruit/detail.html:91
+#: naovoce/templates/fruit/detail.html:85
 msgid "Delete"
 msgstr "Smazat"
 
-#: naovoce/templates/fruit/detail.html:93
-#: naovoce/templates/fruit/inc/fruitform.html:20
+#: naovoce/templates/fruit/detail.html:87
+#: naovoce/templates/fruit/inc/fruitform.html:23
 #: naovoce/templates/pickers/detail.html:49
 msgid "Add marker"
 msgstr "Přidat značku"
@@ -964,7 +968,7 @@ msgstr "Zde můžete upravit svou značku"
 msgid "Filter"
 msgstr "Filtr"
 
-#: naovoce/templates/fruit/inc/fruitform.html:22
+#: naovoce/templates/fruit/inc/fruitform.html:25
 #: naovoce/templates/pickers/settings.html:47
 msgid "Save changes"
 msgstr "Uložit změny"
@@ -1661,6 +1665,9 @@ msgstr "změněno"
 #: utils/templatetags/truncate.py:16
 msgid "Read more"
 msgstr "Čtěte více"
+
+#~ msgid "Returned to the land"
+#~ msgstr "Vráceno krajině"
 
 #~ msgid "^map(?:/(?P<type_slug>[^/]+))?/$"
 #~ msgstr "^mapa(?:/(?P<type_slug>[^/]+))?/$"
