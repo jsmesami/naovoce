@@ -32,7 +32,7 @@
             {% endwith %}
 	        {% if fruit.catalogue == fruit.CATALOGUE.revival %}
                 <p>
-                {% blocktrans with url=user.get_absolute_url username=fruit.user.username trimmed %}
+                {% blocktrans with url=fruit.user.get_absolute_url username=fruit.user.username trimmed %}
 	                Returned to the land by <a href="{{ url }}">{{ username }}</a>
                 {% endblocktrans %}
 		        </p>
