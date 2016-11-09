@@ -19,6 +19,8 @@ from utils.choices import Choices
 from utils.fields import ContentTypeRestrictedImageField
 from utils.models import TimeStampedModel
 
+import newsletter.models as newsletter
+
 
 class UserManager(BaseUserManager):
     def _create_user(self, username, email, password, is_staff, is_superuser, **extra_fields):
@@ -119,6 +121,10 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
 
     def get_absolute_url(self):
         return reverse('pickers:detail', args=[self.pk, self.slug])
+
+    def has_newsletter(self):
+        mailing_list = newsletter.List.get_default()
+        return mailing_list.is_subscribed(self)
 
     @staticmethod
     def _mangle_avatar_name(filename):

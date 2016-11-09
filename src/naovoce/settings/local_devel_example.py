@@ -27,6 +27,9 @@ DATABASES = {
     }
 }
 
+NEWSLETTER_API_KEY = '****'
+NEWSLETTER_DEFAULT_LIST_ID = '****'
+
 # disable cache
 CACHES = {
     'default': {

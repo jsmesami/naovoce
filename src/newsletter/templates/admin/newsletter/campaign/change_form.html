@@ -1,0 +1,18 @@
+{% extends "admin/change_form.html" %}
+{% load i18n admin_static admin_modify %}
+
+{% block admin_change_form_document_ready %}
+    {{ block.super }}
+
+    <script type="text/javascript">
+        (function($) {
+            $(document).ready(function() {
+                var $save_and_send = $('<input value="{% trans 'Save and send' %}" class="default" name="save_and_send" type="submit">');
+                $save_and_send.click(function(ev) {
+                    return confirm("{% trans 'Ready to send the campaign draft to the mailing list?' %}");
+                });
+                $('.submit-row').prepend($save_and_send)
+            });
+        })(django.jQuery);
+    </script>
+{% endblock %}

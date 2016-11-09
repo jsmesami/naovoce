@@ -206,6 +206,7 @@ LOCAL_APPS = (
     'blog',
     'fruit',
     'fruit.herbarium',
+    'newsletter',
     'staticpage',
     'utils',
     'utils.i18n',
@@ -298,3 +299,10 @@ REST_FRAMEWORK = {
 GALLERY_PUBLIC_CONTAINERS = 'fruit',
 
 STATICPAGE_API_ALLOWED_URLPATTERNS = 'codex', 'team', 'privacy'
+
+NEWSLETTER_INSTALLATION_URL = 'http://newsletter.na-ovoce.cz'
+NEWSLETTER_API_KEY = None           # must be set in instance-specific settings/local.py
+NEWSLETTER_BRAND_ID = 1             # must be set in instance-specific settings/local.py
+NEWSLETTER_DEFAULT_LIST_ID = None   # must be set in instance-specific settings/local.py
+NEWSLETTER_DEFAULT_FROM_EMAIL = 'newsletter@na-ovoce.cz'
+NEWSLETTER_DEFAULT_FROM_NAME = 'Na ovoce newsletter'

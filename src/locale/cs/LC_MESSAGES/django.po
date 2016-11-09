@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-05 22:49+0200\n"
-"PO-Revision-Date: 2016-10-05 22:50+0200\n"
+"POT-Creation-Date: 2016-11-09 12:57+0100\n"
+"PO-Revision-Date: 2016-11-09 13:09+0100\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 1.8.8\n"
 
 #: blog/admin.py:19
 msgid "blogs count"
@@ -27,6 +27,7 @@ msgid "public"
 msgstr "veřejný"
 
 #: blog/models.py:15 fruit/models.py:34 naovoce/models.py:39
+#: newsletter/models.py:32
 msgid "name"
 msgstr "název"
 
@@ -44,7 +45,7 @@ msgid "title"
 msgstr "titulek"
 
 #: blog/models.py:39 comments/admin.py:18 staticpage/models.py:9
-#: user/admin.py:55 user/models.py:162
+#: user/admin.py:55 user/models.py:168
 msgid "text"
 msgstr "text"
 
@@ -265,7 +266,7 @@ msgstr "délka"
 msgid "revival"
 msgstr "vracíme"
 
-#: fruit/models.py:84 user/models.py:73
+#: fruit/models.py:84 user/models.py:75
 msgid "resolution"
 msgstr "rozlišení"
 
@@ -286,7 +287,7 @@ msgstr "proč smazán"
 msgid "The tree has been cut down, not found etc."
 msgstr "Strom byl poražen, nenalezen apod."
 
-#: fruit/models.py:103 user/models.py:154
+#: fruit/models.py:103 user/models.py:160
 msgid "user"
 msgstr "uživatel"
 
@@ -401,7 +402,7 @@ msgstr "Nenalezeno."
 msgid "Fresh fruit"
 msgstr "Čerstvé ovoce"
 
-#: naovoce/models.py:16
+#: naovoce/models.py:16 newsletter/models.py:159
 msgid "file"
 msgstr "soubor"
 
@@ -1267,6 +1268,22 @@ msgstr "Změnit avatar"
 msgid "Delete avatar"
 msgstr "Smazat avatar"
 
+#: naovoce/templates/pickers/settings.html:55
+msgid "You are subscribed to newsletter."
+msgstr "Odebíráte náš newsletter."
+
+#: naovoce/templates/pickers/settings.html:56
+msgid "Unsubscribe"
+msgstr "Odhlásit"
+
+#: naovoce/templates/pickers/settings.html:60
+msgid "Not subscribed to our newsletter?"
+msgstr "Neodebíráte náš newsletter?"
+
+#: naovoce/templates/pickers/settings.html:61
+msgid "Subscribe"
+msgstr "Přihlašte se"
+
 #: naovoce/templates/socialaccount/authentication_error.html:5
 #: naovoce/templates/socialaccount/authentication_error.html:8
 msgid "Social Network Sign-in Failure"
@@ -1355,69 +1372,157 @@ msgstr "Měsíčně"
 msgid "Core Team"
 msgstr "Základní team"
 
-#: naovoce/urls.py:41
+#: naovoce/urls.py:42
 msgid "^map/$"
 msgstr "^mapa/$"
 
-#: naovoce/urls.py:42
+#: naovoce/urls.py:43
 msgid "^media(?:/(?P<type_slug>[^/]+))?/$"
 msgstr "^media(?:/(?P<type_slug>[^/]+))?/$"
 
-#: naovoce/urls.py:43
+#: naovoce/urls.py:44
 msgid "^codex/$"
 msgstr "^kodex/$"
 
-#: naovoce/urls.py:47
+#: naovoce/urls.py:48
 msgid "^about-us/$"
 msgstr "^o-nas/$"
 
-#: naovoce/urls.py:49
+#: naovoce/urls.py:50
 msgid "^our-team/$"
 msgstr "^nas-team/$"
 
-#: naovoce/urls.py:51
+#: naovoce/urls.py:52
 msgid "^partners/$"
 msgstr "^partneri/$"
 
-#: naovoce/urls.py:55
+#: naovoce/urls.py:56
 msgid "^support-us/financially/$"
 msgstr "^podporte-nas/financne/$"
 
-#: naovoce/urls.py:64
+#: naovoce/urls.py:65
 msgid "^support-us/engage/$"
 msgstr "^podporte-nas/zapojte-se/$"
 
-#: naovoce/urls.py:73
+#: naovoce/urls.py:74
 msgid "^support-us/zoot/$"
 msgstr "^podporte-nas/zoot/$"
 
-#: naovoce/urls.py:83
+#: naovoce/urls.py:84
 msgid "^support-us/$"
 msgstr "^podporte-nas/$"
 
-#: naovoce/urls.py:84
+#: naovoce/urls.py:85
 msgid "^mobile-application/$"
 msgstr "^mobilni-aplikace/$"
 
-#: naovoce/urls.py:86
+#: naovoce/urls.py:87
 msgid "^downloads/$"
 msgstr "^ke-stazeni/$"
 
-#: naovoce/urls.py:87
+#: naovoce/urls.py:88
 msgid "^privacy-policy/$"
 msgstr "^ochrana-osobnich-udaju/$"
 
-#: naovoce/urls.py:88
+#: naovoce/urls.py:89
 msgid "^prague-orchards-popularization/$"
 msgstr "^popularizace-prazskych-ovocnych-sadu/$"
 
-#: naovoce/urls.py:90
+#: naovoce/urls.py:91
 msgid "^training-workshops/$"
 msgstr "^vzdelavaci-workshopy/$"
 
-#: naovoce/urls.py:92
+#: naovoce/urls.py:93
 msgid "^mapping-application-development/$"
 msgstr "^vyvoj-mapovaci-aplikace/$"
+
+#: newsletter/admin.py:32 newsletter/models.py:163
+msgid "assets"
+msgstr "součásti"
+
+#: newsletter/admin.py:41
+msgid "Campaign has been sent to the mailing list."
+msgstr "Kampaň byla odeslána do seznamu příjemců."
+
+#: newsletter/admin.py:43
+msgid "Campaign has not been sent to the mailing list"
+msgstr "Kampaň nebyla odeslána do seznamu příjemců."
+
+#: newsletter/models.py:33
+msgid "hash"
+msgstr "hash"
+
+#: newsletter/models.py:80
+msgid "recipient list"
+msgstr "seznam příjemců"
+
+#: newsletter/models.py:81
+msgid "recipient lists"
+msgstr "seznamy příjemců"
+
+#: newsletter/models.py:86
+msgid "subject"
+msgstr "předmět"
+
+#: newsletter/models.py:87
+msgid "plain text"
+msgstr "prostý text"
+
+#: newsletter/models.py:88
+msgid "html text"
+msgstr "html text"
+
+#: newsletter/models.py:90
+msgid "sent"
+msgstr "odesláno"
+
+#: newsletter/models.py:94
+msgid "subscraber lists"
+msgstr "seznamy odběratelů"
+
+#: newsletter/models.py:99
+msgid "from name"
+msgstr "jméno odesilatele"
+
+#: newsletter/models.py:105
+msgid "from email"
+msgstr "email odesilatele"
+
+#: newsletter/models.py:145 newsletter/models.py:151
+msgid "campaign"
+msgstr "kampaň"
+
+#: newsletter/models.py:146
+msgid "campaigns"
+msgstr "kampaně"
+
+#: newsletter/models.py:162
+msgid "asset"
+msgstr "součást"
+
+#: newsletter/templates/admin/newsletter/campaign/change_form.html:10
+msgid "Save and send"
+msgstr "Uložit a poslat"
+
+#: newsletter/templates/admin/newsletter/campaign/change_form.html:12
+msgid "Ready to send the campaign draft to the mailing list?"
+msgstr "Je kampaň připravena k odeslání do mailing listu?"
+
+#: newsletter/views.py:30
+msgid "You have been successfully subscribed to our newsletter."
+msgstr "Byli jste úspěšně přihlášeni k odběru našeho newsletteru."
+
+#: newsletter/views.py:32
+msgid "There has been an error subscribing you to our newsletter."
+msgstr "Stala se chyba při přihlašování k odběru newsletteru."
+
+#: newsletter/views.py:38
+msgid "You have been successfully unsubscribed from our newsletter."
+msgstr "Byli jste odhlášeni z odběru našeho newsletteru."
+
+#: newsletter/views.py:40
+msgid "There has been an error unsubscribing you from our newsletter."
+msgstr "Stala se chyba při odhlašování z odběru newsletteru."
 
 #: staticpage/models.py:10
 msgid "meta description"
@@ -1453,7 +1558,7 @@ msgstr "Oprávnění"
 
 #: user/admin.py:26
 msgid "Important dates"
-msgstr "Sůležitá data"
+msgstr "Důležitá data"
 
 #: user/api/signup/serializers.py:41
 msgid "A user is already registered with this e-mail address."
@@ -1483,7 +1588,7 @@ msgstr "Musí obsahovat \"username\" a facebookové ID \"fcb_id\"."
 msgid "User's email is not verified."
 msgstr "Uživatelův e-mail není ověřen."
 
-#: user/forms.py:10 user/forms.py:42 user/models.py:61
+#: user/forms.py:10 user/forms.py:42 user/models.py:63
 msgid "username"
 msgstr "uživatelské jméno"
 
@@ -1526,43 +1631,43 @@ msgstr ""
 msgid "Username or e-mail"
 msgstr "Uživatelské jméno nebo e-mail"
 
-#: user/models.py:62
+#: user/models.py:64
 msgid "email address"
 msgstr "e-mail"
 
-#: user/models.py:64
+#: user/models.py:66
 msgid "first name"
 msgstr "jméno"
 
-#: user/models.py:65
+#: user/models.py:67
 msgid "last name"
 msgstr "příjmení"
 
-#: user/models.py:66
+#: user/models.py:68
 msgid "external URL"
 msgstr "externí URL"
 
-#: user/models.py:69
+#: user/models.py:71
 msgid "picker"
 msgstr "sběrač"
 
-#: user/models.py:70
+#: user/models.py:72
 msgid "external source"
 msgstr "externí zdroj"
 
-#: user/models.py:78
+#: user/models.py:80
 msgid "staff status"
 msgstr "personál"
 
-#: user/models.py:80
+#: user/models.py:82
 msgid "Designates whether the user can sign into this admin site."
 msgstr "Označuje, jestli se uživatel může přihlásit do administrátorské sekce."
 
-#: user/models.py:83
+#: user/models.py:85
 msgid "active"
 msgstr "aktivní"
 
-#: user/models.py:85
+#: user/models.py:87
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
@@ -1570,66 +1675,66 @@ msgstr ""
 "Označuje, jestli má být uživatel brán jako aktivní. Odškrtněte namísto "
 "mazání účtu."
 
-#: user/models.py:88
+#: user/models.py:90
 msgid "verified"
 msgstr "ověřeno"
 
-#: user/models.py:89
+#: user/models.py:91
 msgid "date joined"
 msgstr "přidal se"
 
-#: user/models.py:90
+#: user/models.py:92
 msgid "motto"
 msgstr "motto"
 
-#: user/models.py:100
+#: user/models.py:102
 msgid "avatar"
 msgstr "avatar"
 
-#: user/models.py:104
+#: user/models.py:106
 msgid "User avatar"
 msgstr "Avatar uživatele"
 
-#: user/models.py:155
+#: user/models.py:161
 msgid "users"
 msgstr "uživatelé"
 
-#: user/models.py:164
+#: user/models.py:170
 msgid "context"
 msgstr "kontext"
 
-#: user/models.py:165
+#: user/models.py:171
 msgid "Translation context for system messages"
 msgstr "Kontext pro překlad systémových zpráv"
 
-#: user/models.py:168
+#: user/models.py:174
 msgctxt "user.Message"
 msgid "read"
 msgstr "přečtená"
 
-#: user/models.py:169
+#: user/models.py:175
 msgctxt "Has been read or not."
 msgid "user.Message"
 msgstr "Byla přečtena nebo ne."
 
-#: user/models.py:173
+#: user/models.py:179
 msgctxt "user.Message"
 msgid "system"
 msgstr "systémová"
 
-#: user/models.py:174
+#: user/models.py:180
 msgid "System messages can be translated and can contain HTML."
 msgstr "Systémová zpráva může mít překlad a může obsahovat HTML."
 
-#: user/models.py:179
+#: user/models.py:185
 msgid "recipient"
 msgstr "příjemce"
 
-#: user/models.py:206
+#: user/models.py:212
 msgid "message"
 msgstr "zpráva"
 
-#: user/models.py:207
+#: user/models.py:213
 msgid "messages"
 msgstr "zprávy"
 

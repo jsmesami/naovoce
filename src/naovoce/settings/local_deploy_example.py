@@ -19,3 +19,6 @@ DATABASES = {
         'PORT': '',
     }
 }
+
+NEWSLETTER_API_KEY = '****'
+NEWSLETTER_DEFAULT_LIST_ID = '****'

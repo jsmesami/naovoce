@@ -6,6 +6,7 @@ from django.utils.translation import ugettext_noop
 from allauth.account.signals import user_signed_up, email_confirmed
 from allauth.socialaccount.signals import pre_social_login
 
+from newsletter.models import List, ClientError
 from .models import FruitUser
 
 
@@ -58,3 +59,11 @@ def send_welcome_message(request, email_address, **kwargs):
     context = {'url': reverse('codex')}
 
     email_address.user.send_message(msg_template, context=context, system=True)
+
+
+@receiver(user_signed_up)
+def newsletter_autosubscribe(request, user, **kwargs):
+    try:
+        List.get_default().subscribe(user)
+    except ClientError:
+        pass

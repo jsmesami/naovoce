@@ -50,6 +50,17 @@
 					<input name="next" value="{{ user_detail }}" type="hidden">
 				</div>
 		    </form>
+            {% if user.has_newsletter %}
+                <form class="panel-body" method="post" action="{% url 'newsletter:unsubscribe' user.id %}">{% csrf_token %}
+                    {% trans 'You are subscribed to newsletter.' %}
+                    <input class="btn btn-link" name="unsubscribe" value="{% trans "Unsubscribe" %}" type="submit">
+                </form>
+            {% else %}
+                <form class="panel-body" method="post" action="{% url 'newsletter:subscribe' user.id %}">{% csrf_token %}
+                    {% trans 'Not subscribed to our newsletter?' %}
+                    <input class="btn btn-link" name="subscribe" value="{% trans "Subscribe" %}" type="submit">
+                </form>
+            {% endif %}
 		</div>
 	</div>
 	</div>

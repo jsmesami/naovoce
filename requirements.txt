@@ -10,6 +10,7 @@ django-modeltranslation>=0.10
 djangorestframework>=3.3
 markdown2>=2.3
 psycopg2>=2.6
+requests>=2.11
 sorl-thumbnail>=12.3
 python3-memcached>=1.51
 -e git://github.com/hersonls/djamin.git#egg=djamin
