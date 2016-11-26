@@ -77,7 +77,7 @@ class Naovoce.Map extends L.Map
 			minZoom: 5,
 
 		super id,
-			layers: [L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', params)]
+			layers: [L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', params)]
 
 		if L.markerClusterGroup?
 			@markerLayerGroup = L.markerClusterGroup
