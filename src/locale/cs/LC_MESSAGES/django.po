@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-09 12:57+0100\n"
-"PO-Revision-Date: 2016-11-09 13:09+0100\n"
+"POT-Creation-Date: 2016-12-07 13:24+0100\n"
+"PO-Revision-Date: 2016-12-07 13:26+0100\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #: blog/admin.py:19
 msgid "blogs count"
@@ -402,7 +402,7 @@ msgstr "Nenalezeno."
 msgid "Fresh fruit"
 msgstr "Čerstvé ovoce"
 
-#: naovoce/models.py:16 newsletter/models.py:159
+#: naovoce/models.py:16 newsletter/models.py:163
 msgid "file"
 msgstr "soubor"
 
@@ -1028,9 +1028,9 @@ msgstr ""
 msgid "Add marker to the map"
 msgstr "Přidej značku do mapy"
 
-#: naovoce/templates/home.html:36
-msgid "Plant a tree"
-msgstr "Zasaď strom"
+#: naovoce/templates/home.html:36 naovoce/templates/inc/footer.html:49
+msgid "Beneficial Eshop"
+msgstr "Benefiční eshop"
 
 #: naovoce/templates/home.html:42
 msgid "Our projects"
@@ -1113,10 +1113,6 @@ msgstr "Přidávání"
 #: naovoce/templates/inc/footer.html:46
 msgid "Picker's Codex"
 msgstr "Kodex sběrače"
-
-#: naovoce/templates/inc/footer.html:49
-msgid "Beneficial Eshop"
-msgstr "Benefiční eshop"
 
 #: naovoce/templates/inc/footer.html:58
 msgid "Privacy Policy"
@@ -1436,7 +1432,7 @@ msgstr "^vzdelavaci-workshopy/$"
 msgid "^mapping-application-development/$"
 msgstr "^vyvoj-mapovaci-aplikace/$"
 
-#: newsletter/admin.py:32 newsletter/models.py:163
+#: newsletter/admin.py:32 newsletter/models.py:167
 msgid "assets"
 msgstr "součásti"
 
@@ -1452,51 +1448,51 @@ msgstr "Kampaň nebyla odeslána do seznamu příjemců."
 msgid "hash"
 msgstr "hash"
 
-#: newsletter/models.py:80
+#: newsletter/models.py:84
 msgid "recipient list"
 msgstr "seznam příjemců"
 
-#: newsletter/models.py:81
+#: newsletter/models.py:85
 msgid "recipient lists"
 msgstr "seznamy příjemců"
 
-#: newsletter/models.py:86
+#: newsletter/models.py:90
 msgid "subject"
 msgstr "předmět"
 
-#: newsletter/models.py:87
+#: newsletter/models.py:91
 msgid "plain text"
 msgstr "prostý text"
 
-#: newsletter/models.py:88
+#: newsletter/models.py:92
 msgid "html text"
 msgstr "html text"
 
-#: newsletter/models.py:90
+#: newsletter/models.py:94
 msgid "sent"
 msgstr "odesláno"
 
-#: newsletter/models.py:94
-msgid "subscraber lists"
+#: newsletter/models.py:98
+msgid "subscriber lists"
 msgstr "seznamy odběratelů"
 
-#: newsletter/models.py:99
+#: newsletter/models.py:103
 msgid "from name"
 msgstr "jméno odesilatele"
 
-#: newsletter/models.py:105
+#: newsletter/models.py:109
 msgid "from email"
 msgstr "email odesilatele"
 
-#: newsletter/models.py:145 newsletter/models.py:151
+#: newsletter/models.py:149 newsletter/models.py:155
 msgid "campaign"
 msgstr "kampaň"
 
-#: newsletter/models.py:146
+#: newsletter/models.py:150
 msgid "campaigns"
 msgstr "kampaně"
 
-#: newsletter/models.py:162
+#: newsletter/models.py:166
 msgid "asset"
 msgstr "součást"
 
@@ -1738,7 +1734,7 @@ msgstr "zpráva"
 msgid "messages"
 msgstr "zprávy"
 
-#: user/signals.py:54
+#: user/signals.py:52
 #, python-brace-format
 msgid ""
 "Welcome! Before you start using this site, please take time to read our <a "
@@ -1770,6 +1766,9 @@ msgstr "změněno"
 #: utils/templatetags/truncate.py:16
 msgid "Read more"
 msgstr "Čtěte více"
+
+#~ msgid "Plant a tree"
+#~ msgstr "Zasaď strom"
 
 #~ msgid "Returned to the land"
 #~ msgstr "Vráceno krajině"
