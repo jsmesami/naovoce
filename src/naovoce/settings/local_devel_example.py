@@ -58,6 +58,11 @@ TEMPLATES[0]['OPTIONS']['loaders'] = [
     'django.template.loaders.app_directories.Loader',
 ]
 
+# These are allways-passing reCaptcha v2 keys for testing purposes
+RECAPTCHA_PUBLIC_KEY = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
+RECAPTCHA_PRIVATE_KEY = '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'
+RECAPTCHA_USE_SSL = False
+
 # pip install django-debug-toolbar
 # EXTERNAL_APPS = ('debug_toolbar',) + EXTERNAL_APPS
 

@@ -223,6 +223,7 @@ EXTERNAL_APPS = (
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
+    'captcha',
     'endless_pagination',
     'rest_framework',
     'rest_framework.authtoken',
@@ -299,6 +300,13 @@ REST_FRAMEWORK = {
 GALLERY_PUBLIC_CONTAINERS = 'fruit',
 
 STATICPAGE_API_ALLOWED_URLPATTERNS = 'codex', 'team', 'privacy'
+
+RECAPTCHA_PUBLIC_KEY = None     # must be set in instance-specific settings/local.py
+RECAPTCHA_PRIVATE_KEY = None    # must be set in instance-specific settings/local.py
+RECAPTCHA_USE_SSL = True
+NOCAPTCHA = True
+
+ACCOUNT_SIGNUP_FORM_CLASS = 'user.forms.CaptchaSignupForm'
 
 NEWSLETTER_INSTALLATION_URL = 'http://newsletter.na-ovoce.cz'
 NEWSLETTER_API_KEY = None           # must be set in instance-specific settings/local.py
