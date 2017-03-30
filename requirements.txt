@@ -9,6 +9,7 @@ django-ipware>=1.1
 django-modeltranslation>=0.10
 django-recaptcha>=1.2.1
 djangorestframework>=3.3
+django-cors-headers>=2.0.2
 markdown2>=2.3
 psycopg2>=2.6
 requests>=2.11

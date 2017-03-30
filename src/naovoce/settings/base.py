@@ -179,6 +179,7 @@ TEMPLATES = [
 ]
 
 MIDDLEWARE_CLASSES = (
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -225,6 +226,7 @@ EXTERNAL_APPS = (
     'allauth.socialaccount.providers.facebook',
     'captcha',
     'endless_pagination',
+    'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
 )
@@ -296,6 +298,15 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     )
 }
+
+CORS_ORIGIN_WHITELIST = (
+    'na-ovoce.cz',
+    'naovoce.devel-2046.cz',
+    'localhost:8000',
+    '127.0.0.1:8000'
+)
+
+CORS_URLS_REGEX = r'^/api/.*$'
 
 GALLERY_PUBLIC_CONTAINERS = 'fruit',
 
