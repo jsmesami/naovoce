@@ -63,23 +63,6 @@
 	<hr style="margin-bottom: 0;">
 	<div class="row">
 		<div class="col-sm-8">
-			{####  Blog Preview ####}
-			<h3><a href="{% url 'blog:index' %}">{% trans 'Fruit News' %}</a></h3>
-			{% for entry in blogposts|slice:'3' %}
-			{% with url=entry.get_absolute_url %}
-			<div class="media blog-preview">
-				<a href="{{ url }}" class="pull-left">
-					<img src="{% get_thumb entry.get_cover_image.image w=100 %}"
-					     alt="{{ entry.title }}"
-					     class="media-object">
-				</a>
-				<div class="media-body">
-					<h4 class="media-heading"><a href="{{ url }}">{{ entry.title }}</a></h4>
-					{% read_more entry.text|strip_thumbs|prepos|markdown length=20 target=url %}
-				</div>
-			</div>
-			{% endwith %}
-			{% endfor %}
 
 			{####  Top Pickers ####}
 			<hr>

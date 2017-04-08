@@ -6,7 +6,6 @@ from django.http.response import Http404
 from django.shortcuts import render
 from django.utils.text import slugify
 
-from blog.models import BlogPost
 from fruit.models import Kind, Fruit
 from user.utils import pickers_counts_context
 
@@ -22,7 +21,6 @@ def home_view(request):
     fruit_qs = Fruit.objects.valid().order_by('-created').select_related('kind', 'user')
 
     context = {
-        'blogposts': BlogPost.objects.public(),
         'fruit': fruit_qs,
         'images': get_latest_images(fruit_qs, limit=7),
     }

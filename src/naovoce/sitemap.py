@@ -1,7 +1,6 @@
 from django.contrib.sitemaps import GenericSitemap, Sitemap
 from django.core.urlresolvers import reverse
 
-from blog.models import BlogPost
 from fruit.models import Fruit
 from fruit.herbarium.models import Herbarium
 from user.models import FruitUser
@@ -21,10 +20,6 @@ class IndexesSitemap(Sitemap):
             'priority': 0.8,
             'changefreq': 'monthly',
         },
-        'blog:index': {
-            'priority': 0.9,
-            'changefreq': 'weekly',
-        },
     }
 
     def items(self):
@@ -42,11 +37,6 @@ class IndexesSitemap(Sitemap):
 
 sitemaps = {
     'indexes': IndexesSitemap(),
-    'blogs': GenericSitemap(dict(
-        queryset=BlogPost.objects.public()),
-        priority=1,
-        changefreq='monthly',
-    ),
     'herbarium': GenericSitemap(dict(
         queryset=Herbarium.objects.all()),
         priority=0.6,

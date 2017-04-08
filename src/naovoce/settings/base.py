@@ -204,7 +204,6 @@ DJANGO_APPS = (
 LOCAL_APPS = (
     'user',
     'gallery',
-    'blog',
     'fruit',
     'fruit.herbarium',
     'newsletter',
