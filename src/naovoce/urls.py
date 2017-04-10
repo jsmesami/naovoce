@@ -92,6 +92,8 @@ urlpatterns += i18n_patterns(
         dict(template_name='staticpage/projects.html'), name='workshops'),
     url(_(r'^mapping-application-development/$'), staticpage.views.static_view,
         dict(template_name='staticpage/application.html'), name='app-devel'),
+    url(_(r'^conferences/$'), staticpage.views.static_view,
+        dict(template_name='staticpage/projects.html'), name='conferences'),
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
