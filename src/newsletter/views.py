@@ -28,7 +28,7 @@ def subscribtion(request, user_pk):
         try:
             mailing_list.subscribe(user)
             messages.info(request, _('You have been successfully subscribed to our newsletter.'))
-        except ClientError as e:
+        except (ClientError, AttributeError) as e:
             messages.error(request, _('There has been an error subscribing you to our newsletter.'))
             logger.error('Error subscribing {} to the newsletter ({}).'.format(user.email, e))
 
@@ -36,7 +36,7 @@ def subscribtion(request, user_pk):
         try:
             mailing_list.unsubscribe(user)
             messages.info(request, _('You have been successfully unsubscribed from our newsletter.'))
-        except ClientError as e:
+        except (ClientError, AttributeError) as e:
             messages.error(request, _('There has been an error unsubscribing you from our newsletter.'))
             logger.error('Error unsubscribing {} from the newsletter ({}).'.format(user.email, e))
 

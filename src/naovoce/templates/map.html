@@ -17,7 +17,9 @@
 
 {% block map_active %}active{% endblock %}
 
-{% block wide_content %}
+{% block body %}
+{% include 'inc/user_info.html' %}
+
 <div id="map">
 	<div id="catalogue">
 		<a id="naovoce" href="#" class="active">{% trans 'mapping' %}</a><a id="revival" href="#">{% trans 'planting' %}</a>
@@ -46,7 +48,7 @@
     </a>
 </div>
 
-{% endblock %}
+{% endblock body %}
 
 {% block css %}
 	{{ block.super }}
