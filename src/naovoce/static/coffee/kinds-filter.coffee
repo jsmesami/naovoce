@@ -1,10 +1,10 @@
 $filter = $('#filter')
-$toggler = $filter.find '.toggler'
-$canceller = $filter.find '.canceller'
+$toggler = $('.toggler')
+$handle = $('.handle')
 $class_choices = $('.class-choice')
 $kinds_lists = $('.kinds-list')
 $kind_choices = $kinds_lists.find 'a'
-
+$canceller = $filter.find '.canceller'
 
 class Filter
 	constructor: ->
@@ -23,13 +23,17 @@ class Filter
 
 	pullKinds: ->
 		if not @kinds_pulled
-			$filter.animate right: "0px",
-				duration: @speed
-				complete: =>
+			# $filter.animate right: "0px",
+			#
+			#	duration: @speed
+			#	complete: =>
 					@kinds_pulled = true
+			$filter.addClass('open')
+			$handle.addClass('open')
 
 	hideFilter: (onComplete) ->
-		$filter.animate right: "-170px",
+		$filter.removeClass('open')
+		$handle.removeClass('open')
 			duration: @speed
 			complete: =>
 				@classes_pulled = false
@@ -41,20 +45,21 @@ class Filter
 
 
 $toggler.on 'click', ->
-	if not F.classes_pulled
-		F.pullClasses()
-	else
-		F.hideFilter()
-
-	false
+	$filter.toggleClass('open')
+	$handle.toggleClass('open')
+	
 
 $class_choices.on 'click', ->
 	target = $(@).data 'target'
 
 	$kinds_lists.hide()
 	$kinds_lists.siblings(target).show()
+	$class_choices.removeClass('active')
+	$(this).addClass('active')
+	
 
 	F.pullKinds()
+
 
 	false
 
@@ -67,10 +72,10 @@ $kind_choices.on 'click', ->
 
 	false
 
-$canceller.on 'click', ->
-	$filter.removeClass 'filter-active'
+ $canceller.on 'click', ->
+ 	$filter.removeClass 'filter-active'
 
-	F.hideFilter ->
-		F.reload()
+ 	F.hideFilter ->
+ 		F.reload()
 
-	false
+ 	false

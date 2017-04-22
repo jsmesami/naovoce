@@ -6,7 +6,9 @@
 {% load naturalsort %}
 {% load compress %}
 
-{% block title %}{% trans 'Map' %} | {{ block.super }}{% endblock %}
+{% block title %}
+	{% trans 'Map' %} | {{ block.super }}
+{% endblock %}
 
 {% block meta_description %}
 	{% blocktrans trimmed %}
@@ -17,111 +19,126 @@
 
 {% block map_active %}active{% endblock %}
 
+{% block body_class %}map{% endblock %}
+
 {% block body %}
-{% include 'inc/user_info.html' %}
+	{% include 'inc/user_info.html' %}
 
-<div id="map">
-	<div id="catalogue">
-		<a id="naovoce" href="#" class="active">{% trans 'mapping' %}</a><a id="revival" href="#">{% trans 'planting' %}</a>
-	</div>
-	<div id="filter">
-		<div class="handle">
-			<a href="#" class="canceller">{% include 'inc/svg/cancel.html' %}</a>
-			<a href="#" class="toggler">{% trans 'filter' %}</a>
+	<div id="map">
+		<div id="catalogue">
+			<a id="naovoce" href="#" class="active">{% trans 'mapping' %}</a><a id="revival" href="#">{% trans 'planting' %}</a>
 		</div>
-		<div id="filter-items">
-		{% for name, text in classes %}
-			<a href="#" class="class-choice {{ name }}" data-target=".{{ name }}">
-				{{ text }}
-			</a>
-			<ul class="kinds-list {{ name }}">
-			{% for kind in kinds_by_class|getitem:name|naturalsort %}
-				<li><a href="#" data-kind="{{ kind.key }}">{{ kind }}</a></li>
-			{% endfor %}
-			</ul>
-		{% endfor %}
+		<div id="filter">
+			<div id="filter-items">
+
+				{# build types #}
+				<div class="kinds">
+					{% for name, text in classes %}
+						<a href="#" class="class-choice {{ name }} {% if forloop.first %}active{% endif %}" data-target=".{{ name }}">
+							{{ text }}
+						</a>
+					{% endfor %}
+				</div>
+
+				{# build kinds #}
+				{% for name, text in classes %}
+					<ul class="kinds-list {{ name }} {% if forloop.first %}active{% endif %}">
+						{% for kind in kinds_by_class|getitem:name|naturalsort %}
+							<li>
+								<a href="#" data-kind="{{ kind.key }}">
+									{{ kind }}<span class="fruit-icon-small" style="color:#{{ kind.color }}">&#x{{ kind.key }}</span>
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				{% endfor %}
+
+			</div>
 		</div>
+
+	    <a href="{% url 'fruit:add' %}" id="add-to-map">
+		    <span class="fruit-icon-small">&#xF00D;</span>{% trans 'Add Marker' %}
+	    </a>
 	</div>
 
-    <a href="{% url 'fruit:add' %}" id="add-to-map">
-	    <span class="fruit-icon-small">&#xF00D;</span>{% trans 'Add Marker' %}
-    </a>
-</div>
+	{% endblock body %}
 
-{% endblock body %}
+	{% block css %}
+		<link rel="stylesheet" href="{% static 'components/leaflet/dist/leaflet.css' %}">
+		<link rel="stylesheet" href="{% static 'components/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css' %}">
+		<link rel="stylesheet" href="{% static 'components/leaflet.markercluster/dist/MarkerCluster.css' %}">
+		<link rel="stylesheet" href="{% static 'components/leaflet.locatecontrol/dist/L.Control.Locate.css' %}">
 
-{% block css %}
-	{{ block.super }}
-	<link rel="stylesheet" href="{% static 'components/leaflet/dist/leaflet.css' %}">
-	<link rel="stylesheet" href="{% static 'components/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css' %}">
-	<link rel="stylesheet" href="{% static 'components/leaflet.markercluster/dist/MarkerCluster.css' %}">
-	<link rel="stylesheet" href="{% static 'components/leaflet.locatecontrol/dist/L.Control.Locate.css' %}">
-{% endblock %}
+		{# our css after the leaflet bro #}
+		{{ block.super }}
+	{% endblock %}
 
-{% block scripts %}
-	{{ block.super }}
-	<script src="{% static 'components/leaflet/dist/leaflet.js' %}"></script>
-	<script src="{% static 'components/leaflet.locatecontrol/dist/L.Control.Locate.min.js' %}"></script>
-	<script src="{% static 'components/leaflet.markercluster/dist/leaflet.markercluster.js' %}"></script>
-	<script src="{% static 'components/esri-leaflet/dist/esri-leaflet.js' %}"></script>
-	<script src="{% static 'components/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.js' %}"></script>
-	<script src="{% static 'components/leaflet-hash/leaflet-hash.js' %}"></script>
-	{% compress js inline %}
-		<script src="{% static 'coffee/kinds-filter.coffee' %}" type="text/coffeescript" charset="utf-8"></script>
+	{% block scripts %}
+		{{ block.super }}
+		<script src="{% static 'components/leaflet/dist/leaflet.js' %}"></script>
+		<script src="{% static 'components/leaflet.locatecontrol/dist/L.Control.Locate.min.js' %}"></script>
+		<script src="{% static 'components/leaflet.markercluster/dist/leaflet.markercluster.js' %}"></script>
+		<script src="{% static 'components/esri-leaflet/dist/esri-leaflet.js' %}"></script>
+		<script src="{% static 'components/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.js' %}"></script>
+		<script src="{% static 'components/leaflet-hash/leaflet-hash.js' %}"></script>
 
-		{% include 'inc/mapjs.html' %}
+		{% compress js inline %}
+			<script src="{% static 'coffee/kinds-filter.coffee' %}" type="text/coffeescript" charset="utf-8"></script>
 
-		<script type="text/coffeescript" charset="utf-8">
+			{% include 'inc/mapjs.html' %}
 
-		$('#map').fillViewport()
+			<script type="text/coffeescript" charset="utf-8">
 
-		map = new Naovoce.Map 'map'
-		new L.Hash map
+			$('#map').fillViewport()
 
-		markers_cache_key = '{{ catalogue.naovoce }}'
-		$catalogue = $ '#catalogue'
-		$catalogue_naovoce = $catalogue.find '#naovoce'
-		$catalogue_revival = $catalogue.find '#revival'
+			map = new Naovoce.Map 'map'
+			new L.Hash map
 
-		map.loadMarkers '{% url 'api:fruit-list' %}', markers_cache_key, ->
-				$catalogue.addClass 'visible'
-			.loadState()
-			.on 'moveend', ->
-				@saveState()
-			.addAttribution()
-			.addLocate()
-			.addSearch()
+			markers_cache_key = '{{ catalogue.naovoce }}'
+			$catalogue = $ '#catalogue'
+			$catalogue_naovoce = $catalogue.find '#naovoce'
+			$catalogue_revival = $catalogue.find '#revival'
 
-		filter.reload = (kind) ->
-			if not kind?
-				map.showMarkers markers_cache_key
-			else
-				map.filterMarkers kind, markers_cache_key
+			map.loadMarkers '{% url 'api:fruit-list' %}', markers_cache_key, ->
+					$catalogue.addClass 'visible'
+				.loadState()
+				.on 'moveend', ->
+					@saveState()
+				.addAttribution()
+				.addLocate()
+				.addSearch()
 
-		$catalogue_naovoce
-			.on 'click', (e) ->
-				e.preventDefault()
-				if not $catalogue_naovoce.hasClass 'active'
-					$catalogue_revival.removeClass 'active'
-					$catalogue_naovoce.addClass 'active'
-					markers_cache_key = '{{ catalogue.naovoce }}'
-					map.clearMarkers()
-						.loadMarkers '{% url 'api:fruit-list' %}', markers_cache_key
+			filter.reload = (kind) ->
+				if not kind?
+					map.showMarkers markers_cache_key
+				else
+					map.filterMarkers kind, markers_cache_key
 
-				false
+			$catalogue_naovoce
+				.on 'click', (e) ->
+					e.preventDefault()
+					if not $catalogue_naovoce.hasClass 'active'
+						$catalogue_revival.removeClass 'active'
+						$catalogue_naovoce.addClass 'active'
+						markers_cache_key = '{{ catalogue.naovoce }}'
+						map.clearMarkers()
+							.loadMarkers '{% url 'api:fruit-list' %}', markers_cache_key
 
-		$catalogue_revival
-			.on 'click', (e) ->
-				e.preventDefault()
-				if not $catalogue_revival.hasClass 'active'
-					$catalogue_naovoce.removeClass 'active'
-					$catalogue_revival.addClass 'active'
-					markers_cache_key = '{{ catalogue.revival }}'
-					map.clearMarkers()
-						.loadMarkers '{% url 'api:fruit-list' %}?catalogue={{ catalogue.revival }}', markers_cache_key
+					false
 
-				false
+			$catalogue_revival
+				.on 'click', (e) ->
+					e.preventDefault()
+					if not $catalogue_revival.hasClass 'active'
+						$catalogue_naovoce.removeClass 'active'
+						$catalogue_revival.addClass 'active'
+						markers_cache_key = '{{ catalogue.revival }}'
+						map.clearMarkers()
+							.loadMarkers '{% url 'api:fruit-list' %}?catalogue={{ catalogue.revival }}', markers_cache_key
 
+					false
+			
+				
 		</script>
 	{% endcompress %}
 {% endblock %}
