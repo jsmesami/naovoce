@@ -3,6 +3,8 @@
 
 <div id="user-info">
 	<a href="/" rel="home" class="logo"><img src="{% static 'img/na-ovoce.svg' %}" alt="na-ovoce"></a>
+	
+	<a href="/map" class="back-to-map btn">{% trans 'back to map' %}</a>
 
     <p>
 		{% if request.user.is_authenticated %}
@@ -23,10 +25,12 @@
     </p>
 
     <div class="handle">
-		{# <a href="#" class="canceller">{% static 'img/na-ovoce.svg' %}</a> #}
 		<a href="#" class="toggler">
 			<img src="{% static 'img/toggle.svg' %}">
 		</a>
+		<div class="canceller_holder">
+			<a href="#" class="canceller"><b>×</b></a>
+		</div>
 	</div>
     
 </div>

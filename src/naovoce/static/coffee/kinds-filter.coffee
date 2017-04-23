@@ -4,78 +4,63 @@ $handle = $('.handle')
 $class_choices = $('.class-choice')
 $kinds_lists = $('.kinds-list')
 $kind_choices = $kinds_lists.find 'a'
-$canceller = $filter.find '.canceller'
+$canceller = $('.canceller')
 
 class Filter
 	constructor: ->
-		@speed = 200
-		@classes_pulled = false
-		@kinds_pulled = false
+
 
 	reload: (kind) ->
 		@
+	
+	showFilter: ->
+		$filter.addClass 'open'
+		$handle.addClass 'open'
 
-	pullClasses: ->
-		$filter.animate right: "-120px",
-			duration: @speed
-			complete: =>
-				@classes_pulled = true
-
-	pullKinds: ->
-		if not @kinds_pulled
-			# $filter.animate right: "0px",
-			#
-			#	duration: @speed
-			#	complete: =>
-					@kinds_pulled = true
-			$filter.addClass('open')
-			$handle.addClass('open')
+	pullKinds: (e, target) ->
+		$kinds_lists.hide()
+		$kinds_lists.siblings(target).show()
+		$class_choices.removeClass('active')
+		$(e).addClass 'active'
 
 	hideFilter: (onComplete) ->
-		$filter.removeClass('open')
-		$handle.removeClass('open')
-			duration: @speed
-			complete: =>
-				@classes_pulled = false
-				@kinds_pulled = false
-				onComplete?()
-
+		$filter.removeClass 'open' 
+		$handle.removeClass 'open'
+	
+	toggleFilter: ->
+		$filter.toggleClass 'open' 
+		$handle.toggleClass 'open'
 
 @filter = F = new Filter()
 
 
 $toggler.on 'click', ->
-	$filter.toggleClass('open')
-	$handle.toggleClass('open')
+	F.toggleFilter()
 	
 
 $class_choices.on 'click', ->
 	target = $(@).data 'target'
+	F.pullKinds(this, target)
 
-	$kinds_lists.hide()
-	$kinds_lists.siblings(target).show()
-	$class_choices.removeClass('active')
-	$(this).addClass('active')
 	
-
-	F.pullKinds()
-
+	
 
 	false
 
 $kind_choices.on 'click', ->
 	kind = $(@).data('kind')
+	$filter.addClass 'filter-active'
+	$handle.addClass 'filter-active' 
 
-	F.hideFilter ->
-		$filter.addClass 'filter-active'
-		F.reload kind
+	F.hideFilter()
+	F.reload kind
 
 	false
 
  $canceller.on 'click', ->
  	$filter.removeClass 'filter-active'
+ 	$handle.removeClass 'filter-active'
 
- 	F.hideFilter ->
- 		F.reload()
+ 	F.reload()
 
  	false
