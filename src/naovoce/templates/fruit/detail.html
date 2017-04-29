@@ -6,98 +6,18 @@
 {% load coords %}
 {% load avatar %}
 {% load compress %}
+{% load thumbs %}
 
-{% block title %}{{ fruit.kind.name|title }} | {{ block.super }}{% endblock %}
-
-{% block meta_description %}
-	{{ fruit.description }}
-{% endblock %}
-
-{% block map_active %}active{% endblock %}
-
-{% block content %}
-<div class="row detail-info">
-	<div class="col-sm-6 media">
-		<span class="fruit-icon-huge pull-left media-object"
-		      style="color:#{{ fruit.kind.color }}">
-			&#x{{ fruit.kind.key }};
-		</span>
-	    <div class="media-body">
-            <h3>{{ fruit.kind.name }}</h3>
-	        {% if fruit.catalogue == fruit.CATALOGUE.revival %}
-                <p>
-                {% blocktrans with url=fruit.user.get_absolute_url username=fruit.user.username trimmed %}
-	                Returned to the land by <a href="{{ url }}">{{ username }}</a>
-                {% endblocktrans %}
-		        </p>
-	        {% else %}
-			    <p>{% trans "Shared by" %}
-				    <strong>
-		                <a href="{% url 'pickers:detail' fruit.user.id fruit.user.slug %}">{{ fruit.user.username }}</a>
-				    </strong>
-			    </p>
-	        {% endif %}
-		    <p>{% trans "Added" %}: <strong>{{ fruit.created }}</strong></p>
-	    </div>
-	</div>
-
-	{% if not fruit.deleted %}
-		<div class="col-sm-6">
-		    <p class="geo">{% trans "Unknown address" %}</p>
-		    <p>{{ fruit.latitude|floatformat:6|localize }};&nbsp;{{ fruit.longitude|floatformat:6|localize }}</p>
-		    <p>({% dms_coords fruit.latitude fruit.longitude %})</p>
-		</div>
-	{% else %}
-	    <div class="col-sm-6">
-			<h3>{% trans "This marker has been deleted" %}.</h3>
-		    {% if fruit.why_deleted %}
-	            <p>{% trans 'Reason of deletion' %}: <strong>{{ fruit.why_deleted }}</strong></p>
-		    {% endif %}
-		</div>
-	{% endif %}
-
-	{% if fruit.description %}
-	    <div class="col-sm-12">
-		    <div class="fruit-description">
-	            <p><strong>{% trans "Description" %}:</strong> {{ fruit.description }}</p>
-		    </div>
-	    </div>
-	{% endif %}
-</div>
-<div class="row">
-	{% if not fruit.deleted %}
-	    <div class="col-sm-12">
-		    <div id="map-detail"></div>
-		</div>
-	{% endif %}
-
-    <div class="col-sm-12">
-        <ul class="quick-links">
-	        <li><a href="{% url 'map' %}">{% trans 'Large map' %}</a></li>
-            {% if request.user|can_edit:fruit %}
-		        <li><a href="{% url 'fruit:edit' fruit.id %}">{% trans 'Edit' %}</a></li>
-		        <li><a href="{% url 'fruit:delete' fruit.id %}">{% trans 'Delete' %}</a></li>
-	        {% endif %}
-	        <li><a href="{% url 'fruit:add' %}">{% trans 'Add marker' %}</a></li>
-        </ul>
-        <hr>
-    </div>
-</div>
-
-<div class="row">
-	{% include 'comments/inc/comments.html' %}
-	{% include 'gallery/inc/link.html' %}
-</div>
-
-{% endblock %}
 
 {% block css %}
+	<link rel="stylesheet" href="{% static 'components/nanoscroller/css/nanoscroller.css' %}" type="text/less" media="screen, projection" charset="utf-8">
 	{{ block.super }}
 	<link rel="stylesheet" href="{% static 'components/leaflet/dist/leaflet.css' %}">
 {% endblock %}
 
 {% block scripts %}
 	{{ block.super }}
+	<script src="{% static 'components/nanoscroller/js/jquery.nanoscroller.min.js' %}"></script>
 	{% include 'comments/inc/formjs.html' %}
 	{% include 'gallery/inc/formjs.html' %}
 
@@ -110,6 +30,12 @@
 		{% include 'inc/mapjs.html' %}
 		{% compress js inline %}
 			<script type="text/coffeescript" charset="utf-8">
+			# initialize map
+			$('#map-detail').fillViewport()
+
+			# map = new Naovoce.Map 'map'
+			# new L.Hash map
+
 			center = new L.LatLng({{ fruit.latitude|lower|unlocalize }}, {{ fruit.longitude|lower|unlocalize }})
 
 			map = new Naovoce.Map 'map-detail'
@@ -119,8 +45,151 @@
 
 			map.fetchAddress center, (address) ->
 				$('.geo').text address
-
+			
+			# run nanoscroller
+			$('.nano').height($(window).height() - $('#user-info').height())
+			$('.nano').nanoScroller({
+				sliderMinHeight: 40
+			});
 			</script>
 		{% endcompress %}
 	{% endif %}
 {% endblock %}
+
+{% block title %}{{ fruit.kind.name|title }} | {{ block.super }}{% endblock %}
+
+{% block meta_description %}
+	{{ fruit.description }}
+{% endblock %}
+
+{% block map_active %}active{% endblock %}
+
+
+
+
+
+{# salat & tomatos #}
+
+{% block body %}
+	<div class="container-fluid fruit_detail">
+		{# get header #}
+		{% include 'inc/user_info.html' %}
+		<div class="row gold">
+			{# map object #}
+			<div id="map-detail" class="col-md-9 col-sm-7 col-xs-12"></div>
+
+
+			<div class="col-md-3 col-sm-5 nano">
+				<div class="nano-content">
+					{% if images %}
+						{% with cover=container.get_cover_image %}
+
+							{% if images|length == 1 %}
+								<a href="{{ cover.get_absolute_url }}" class="gallery-link">
+							{% else %}
+								<a href="{{ container.images_index_url }}" class="gallery-link">
+								
+							{% endif %}
+								<img src="{% get_thumb cover.image w=384 h=288 %}" alt="{{ cover.caption }}" class="img-responsive">
+
+								{% if images|length > 1 %}
+								<span class="number">{{ images|length }}</span>
+								{% endif %}								
+							</a>
+							
+						{% endwith %}
+									
+					{% endif %}
+
+					<div class="inner_minor">
+						
+						<div class="detail-info">
+							<span class="fruit-icon-huge media-object" style="color:#{{ fruit.kind.color }}">
+								&#x{{ fruit.kind.key }};
+							</span>
+
+				            <h1>
+				            	{{ fruit.kind.name }}
+				            </h1>
+
+							{% if fruit.description %}
+							    <div class="fruit-description">
+						            {{ fruit.description }}
+							    </div>
+							{% endif %}
+						</div>
+					    <div class="media-body">
+					        {% if fruit.catalogue == fruit.CATALOGUE.revival %}
+				                <div class="user">
+					                {% blocktrans with url=fruit.user.get_absolute_url username=fruit.user.username trimmed %}
+						                Returned to the land by <a href="{{ url }}">{{ username }}</a>
+					                {% endblocktrans %}
+						        </div>
+
+					        {% else %}
+							    <div class="user">
+							    	{% trans "Shared by" %}
+								    <strong>
+						                <a href="{% url 'pickers:detail' fruit.user.id fruit.user.slug %}">{{ fruit.user.username }}</a>
+								    </strong>
+							    </div>
+					        {% endif %}
+
+						    <div class="created">
+						    	{% trans "Added" %}: <strong>{{ fruit.created }}</strong>
+						    </div>
+					    </div>
+
+						{% if not fruit.deleted %}
+						    <div class="geo">
+						    	{% trans "Unknown address" %}
+						    	{{ fruit.latitude|floatformat:6|localize }};# &nbsp;{{ fruit.longitude|floatformat:6|localize }}
+						    	({% dms_coords fruit.latitude fruit.longitude %})
+						    </div>
+					
+						{% else %}
+							<h3>{% trans "This marker has been deleted" %}.</h3>
+						    {% if fruit.why_deleted %}
+					            <p>{% trans 'Reason of deletion' %}: <strong>{{ fruit.why_deleted }}</strong></p>
+						    {% endif %}
+					
+						{% endif %}
+						
+						 <ul class="list">
+					        <li>
+					        	<a href="{% url 'map' %}">
+					        		{% trans 'Large map' %}
+					        	</a>
+					        </li>
+
+				            {% with herbarium=fruit.kind.herbarium %}
+					            {% if herbarium %}
+					                <li><a href="{{ herbarium.get_absolute_url }}">{% trans 'Herbarium' %}</a></li>
+					            {% endif %}
+				            {% endwith %}
+
+					        {% if request.user|can_edit:fruit %}
+						        <li>
+						        	<a href="{% url 'fruit:edit' fruit.id %}">
+						        		{% trans 'Edit' %}
+						        	</a>
+						        </li>
+						        <li>
+						        	<a href="{% url 'fruit:delete' fruit.id %}">
+						        		{% trans 'Delete' %}
+						        	</a>
+						        </li>
+					        {% endif %}
+					        <li><a href="{% url 'fruit:add' %}">{% trans 'Add marker' %}</a></li>
+					    </ul>
+					  
+						{% include 'comments/inc/comments.html' %}
+						{% include 'gallery/inc/link.html' %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+

@@ -37,7 +37,18 @@ body{
 }
 
 
-
+input:focus,
+select:focus,
+textarea:focus,
+button:focus,
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus{
+    outline: none;
+}
 
 textarea {
     resize: none;
@@ -73,18 +84,19 @@ small {
 	}
 }
 
-h1, h2 {
-	.heading-color(@brand-secondary);
+h1, h2, h3 {
+	.heading-color(@ground);
 }
 
-h3 {
-	.heading-color(@brand-tertiary);
-}
+// h3 {
+// 	.heading-color(@brand-tertiary);
+// }
 
 h4, h5, h6 {
 	.heading-color(@brand-primary);
 }
 .panel-default{
+	padding:2rem;
 	border:0;
 	.panel-heading {
 		font-weight: bold;
@@ -116,39 +128,143 @@ h4, h5, h6 {
 		color:@green;
 		margin-left:1rem;
 	}
-	input[type="text"], input[type="password"], input[type="email"]{
-		.rounded_input;
+	
+}
+input[type="text"], input[type="password"], input[type="email"], textarea, textarea.form-control{
+	.rounded_input;
+}
+input[type="submit"]{
+	.btn;	
+	width: 100%;
+	margin-top: 2.65rem;
+}
+
+.social_connection{
+	text-align:center;
+}
+
+// 
+// input decorations
+// 
+input[type="text"], input[type="password"], input[type="email"], textarea, input#id_caption{
+	background-repeat:no-repeat;
+	background-size: 14px auto;
+	padding-left: 4rem;
+}
+input[name="username"], input[name="login"]{
+	background-image:url('@{base-url}/img/inputs_decoration.svg') !important;
+	background-position: 15px -172px;	
+}
+
+input[type="text"]{}
+input[type="password"]{
+	background-image:url('@{base-url}/img/inputs_decoration.svg') !important; // lock icon
+	background-position: 15px -144px;	
+	&:-webkit-autofill{
+		background-image:url('@{base-url}/img/inputs_decoration.svg') !important;
 	}
-	input[type="submit"]{
-		width: 100%;
-    	margin-top: 2.65rem;
+}
+input[type="email"]{}
+textarea{
+	background-image:url('@{base-url}/img/inputs_decoration.svg') !important; // email icon
+	background-position: 15px -229px;	
+	text-indent: 3rem;
+}
+.cover_image_box label[for="id_image"], .user_settings label[for="id_avatar"]{
+	.btn_inverse;
+	background-image:url('@{base-url}/img/inputs_decoration.svg') !important; // cam icon
+	background-position: 15px -132px;	
+	background-repeat:no-repeat;
+	background-size:14px auto;
+	border:1px solid @green;
+}
+input#id_caption{
+	background-image:url('@{base-url}/img/inputs_decoration.svg') !important;
+	background-position: 15px -200px;
+	text-indent: 1rem;	
+}
+.add_photo{
+	width:100%;
+	border:1px solid @green !important;
+}
+
+// so this hell adds to a label a checkmark like object to it, which reacts to the check mark :D
+// the label has lay behind the checkmark, not around the checkbox/input
+label.mark, label[for="avatar-clear_id"]{
+	margin-left:0.8rem;
+	&:before{
+		.anim;
+		content: '\25CF';
+	    width: 21px;
+	    height: 21px;
+	    border-radius: 50%;
+	    border: 1px solid #82B241;
+	    display: inline-block;
+	    position: absolute;
+	    left:0;
+	    top: 0;
+	    line-height: 17px;
+	    color: transparent;
+	    font-size: 2rem;
+	    padding-left: 4px;
 	}
-	.help-block{
-		margin:0.5rem 1rem;
+	input{
+		display:none;
 	}
+}
+:checked + label {
+   &:before{
+   		.anim;
+   		color:@green;
+   }
+}
+// let do it manually, as good knows how the structure is implementet throughout the app
+input#avatar-clear_id{
+	display:none;
+}
+// end of check mark substitution
+
+// error messages and such
+.help-block{
+	margin:0.5rem 1rem 0 1rem;
 }
 
 .avatar {
-	height: 50px;
-	width: 50px;
+	height: 80px;
+	width: 80px;
 	color: transparent;
 	display: inline-block;
+	border-radius:50%;
 }
 
 .media .avatar {
 	padding: 0;
 	margin-right: 10px;
 }
+.nano{
+	.nano-content{
+		padding-bottom: 1rem;
+	}
+	.btn{
+		border:1px solid @green;
+	}
+}
+.nano > .nano-pane > .nano-slider{
+	background-color: @green;
+}
 
 form {
+	input{
+		border:1px solid @green;
+	}
 	label small {
 		color: @brand-info;
 		font-weight: normal;
 	}
-	.btn + .btn,
-	.btn + a {
-		margin-left: 10px;
-	}
+	// .btn + .btn,
+	// .btn + a {
+	// 	 margin-top: 1rem;
+	// }
 	&.image-form,
 	&.comment-form {
 		display: none;
@@ -168,6 +284,8 @@ form {
 		}
 	}
 	.avatar-group {
+		text-align:center;
+		font-style-size:1.3rem;
 		.avatar {
 			width: 60px;
 			height: 60px;
@@ -182,10 +300,8 @@ form {
 		z-index: -1;
 		& + label {
 			.btn;
-			.btn-default;
-			color: @text-color;
+			border:1px solid @green;
 			width: 100%;
-			text-align: center;
 			text-overflow: ellipsis;
 			white-space: nowrap;
 			overflow: hidden;
@@ -197,6 +313,11 @@ form {
 	.has-error .inputfile + label {
 		color: #a94442;
 		border-color: #a94442;
+	}
+	.back_text{
+		display: block;
+	    text-align: center;
+	    margin-top: 1rem;
 	}
 }
 
@@ -216,45 +337,66 @@ hr {
 		a{
 			.btn;
 			color:#fff;
-		}
-		a:first-child{
-			border-top-right-radius: 0;
-			border-bottom-right-radius: 0;
-		}
-		a:last-child{
-			border-top-left-radius: 0;
-			border-bottom-left-radius: 0;
+		
+			&.user_name, &.sign_in{
+				border-top-right-radius: 0;
+				border-bottom-right-radius: 0;
+			}
+			&.inout, &.register{
+				border-top-left-radius: 0;
+				border-bottom-left-radius: 0;
+			}
 		}
 		.slash{
 			display:none;
 		}
 	}
- 	a.messages-count {
+}
+a.messages-count {
+	display: inline-block;
+	background-color: @brand-tertiary !important;
+	color: white;
+	padding: .8rem 1.45rem;
+    border-radius: 50%;
+    margin-left: 1rem;
+	&:hover,
+	&:active,
+	&.active {
+		background: darken(@brand-tertiary, 5%);
+		text-decoration: none;
+		color:#fff;
+	}
+	.envelope {
 		display: inline-block;
-		background: @brand-tertiary;
-		color: white;
-		padding: 1px 8px;
-		border-radius: 20px;
-		&:hover,
-		&:active,
-		&.active {
-			background: darken(@brand-tertiary, 5%);
-			text-decoration: none;
-		}
-		.envelope {
-			display: inline-block;
-			width: 16px;
-			height: 10px;
-			margin-left: 5px;
-			background: url('@{base-url}/img/envelope.svg') left bottom no-repeat;
-			background-size: 16px;
-		}
+		width: 16px;
+		height: 10px;
+		margin-left: 5px;
+		background: url('@{base-url}/img/envelope.svg') left bottom no-repeat;
+		background-size: 16px;
+	}
+}
+.detail-info{
+	a.messages-count{
+		padding: 0.2rem 0.6rem;
+	    float: right;
+	    font-size: 1rem;
+	    margin-top: 1px;
+	}
+}
+.user_settings{
+	.newsletter{
+		text-align:center;
+		padding-top: 0;
 	}
 }
 
-.leaflet-bar{
+.leaflet-bar,
+.leaflet-touch .leaflet-control-layers,
+.leaflet-touch .leaflet-bar{
 	box-shadow:0 0 0 rgba(255, 255, 255, 0);
+	border:0 !important;
 }
+
 .leaflet-container{
 	.leaflet-control-attribution{
 		background-color:transparent;
@@ -273,8 +415,8 @@ hr {
 			background-color:#fff;
 			border:0;
 			border-radius: 2rem !important;
-			width:3.6rem;
-			height:3.6rem;
+			width:3.6rem !important;
+			height:3.6rem !important;
 			color:@green;
 			&:hover, &:active, &:focus{
 				box-shadow:0 0 1rem rgba(55, 55, 55, 0.5);		
@@ -528,23 +670,31 @@ body.map{
     	font-size: 16px;
     }
 }
-
+.messages_panel{
+	h1{
+		text-align:center;
+	}
+}
 ul.messages {
+	font-size:1.3rem;
 	margin-top: 20px;
 	.date {
-		opacity: 0.4;
-		margin-right: 10px;
+		color:@ground;
+		text-align:center;
+		margin-bottom:1rem;
+	}
+	p{
+		background-color: @beige;
+		background-image:url("@{base-url}/img/inputs_decoration.svg");
+		background-position:15px -57px;
+		background-repeat:no-repeat;
+		background-size: 15px auto;
+		text-indent:4rem;
+		border-radius:2rem;
+		padding:1.5rem;
 	}
 	.alert-info {
 		.alert-success;
-	}
-	.alert-unimportant {
-		background-color: @btn-default-bg;
-		border-color: @btn-default-border;
-		color: lighten(@btn-default-color, 50%);
-		a {
-			color: lighten(@btn-default-color, 50%);
-		}
 	}
 }
 
@@ -589,36 +739,83 @@ ul.errorlist.nonfield {
 .fruit-icon-small {
 	.make-marker(20px);
 }
+.gold{
+	background-color:#fff;
+	display:flex;
+}
+.inner{
+	padding:4rem 5rem;
+}
+.inner_minor{
+	margin:2rem 2.5rem;
+}
+.geo {
+	font-weight: bold;
+	margin:2rem 0;	
+}
+.detail-info, .user_detail {	
+	.inner;
+	text-align:center;
 
-.detail-info {
-	padding: 20px 0;
-	h3, p {
-		margin: 0;
+	h1{
+		color:@ground;
 	}
-	.geo {
-		font-weight: bold;
-	}
+
 	.fruit-description,
 	.motto {
-		background: #ffea80;
-		border: 1px solid darken(#ffea80, 20%);
-		padding: 15px;
-		margin-top: 20px;
+		font-style:italic;
+		color:@green;
+	}
+	.markers_added{
+		margin:2rem 0;
+		label, strong{
+			display:block;
+		}
+		label{
+			font-weight:normal;
+		}
+		strong{
+			font-size:4rem;
+			color:@green;
+		}
+	}
+
+}
+.list{
+	border-top:1px solid @green;
+	padding:0;
+	margin-bottom:4rem;
+	li{
+		list-style: none;
+		border-bottom:1px solid @green;
+		text-align:left;
+	}
+	.joined{
+		color:@ground;
 	}
 }
-
-#map-detail {
-	height: 300px;
-	margin-bottom: 20px;
+.comments, .cover_image_box{
+	margin-bottom:2rem;
+	.btn{
+		width:100%;
+	}
+}
+.label[for="id_avatar"]{
+	.btn;
 }
 
+
 .quick-links {
+	position:absolute;
+	z-index:999;
+	bottom:4rem;
+	left:@left_gutter;
 	padding: 0;
 	margin: 0;
 	li {
-		display: inline;
-		margin: 0 20px 0 0;
+		margin: 0 2rem 0 0;
 		padding: 0;
+		display:inline-block;
 	}
 }
 .leaflet-left .leaflet-control{
@@ -695,22 +892,22 @@ ul.errorlist.nonfield {
 }
 
 .comment-text {
-	height: 50px;
-	position: relative;
-	padding: 10px;
+	min-height: 50px;
 	background: @gray-lighter;
 	overflow: visible;
-	font-size: 12px;
+	font-size: 1.2rem;
 	color: @brand-primary;
+	border-radius:2rem;
+	padding:1rem 2rem;
+	background-image:url('@{base-url}/img/inputs_decoration.svg') !important;
+	background-repeat:no-repeat;
+	background-position: 15px -200px;	
+	background-size:14px auto;
+	text-indent: 1rem;
 	.author {
 		display: block;
-		border-bottom: 2px solid white;
 		margin-bottom: 5px;
 		padding-bottom: 5px;
-		a, a:hover {
-			color: @brand-tertiary;
-		}
-		font-weight: bold;
 		.created {
 			float: right;
 			color: @brand-primary;
@@ -746,12 +943,24 @@ ul.errorlist.nonfield {
 	&:hover {
 		color: white;
 	}
-	span {
-		background: @brand-secondary;
+	// span {
+	// 	background: @brand-secondary;
+	// 	line-height: 2em;
+	// 	display: block;
+	// 	padding: 0 0.8em 0.1em;
+	// 	width: 100%;
+	// }
+	.number{
+		background: #b32e2e;
 		line-height: 2em;
-		display: block;
+		display: inline-block;
 		padding: 0 0.8em 0.1em;
-		width: 100%;
+		/* width: 100%; */
+		border-radius: 50%;
+		position: relative;
+		margin:0 1rem 0 0;
+		float:right;
+		top:-4rem;
 	}
 }
 
@@ -817,7 +1026,6 @@ ul.errorlist.nonfield {
   .anim_q;
   background-color:@green;
   color:#fff;
-  border-radius:1rem;
   letter-spacing: 0.01rem;
   padding: 0.8rem 1.6rem;
   border-radius: 2rem;

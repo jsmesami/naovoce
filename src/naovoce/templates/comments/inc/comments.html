@@ -2,36 +2,31 @@
 {% load avatar %}
 {% load typo %}
 
-<div class="col-sm-8">
-{% include 'comments/inc/form.html' %}
+<div class="comments">
 
-{% if comments %}
-	<hr>
-	{% for c in comments %}
-		<div class="media comment" id="{{ c.anchor }}">
-			<a href="{{ c.author.get_absolute_url }}"
-			   class="pull-left media-object"
-			   title="{{ c.author.get_short_name }}">
-				<img src="{% avatar c.author 100 0.3 %}"
-				     alt="{{ c.author.get_short_name }}"
-					 class="avatar">
-			</a>
-			<p class="media-body comment-text {% if c.complaint %}complaint{% endif %}">
-				<span class="author">
-					<a href="{{ c.author.get_absolute_url }}">{{ c.author }}</a>
-					<span class="created">
-						{{ c.created|date:'SHORT_DATETIME_FORMAT' }}
+	{% include 'comments/inc/form.html' %}
+
+	{% if comments %}
+		{% for c in comments %}
+			<div class="media comment" id="{{ c.anchor }}">
+				<p class="media-body comment-text {% if c.complaint %}complaint{% endif %}">
+					<span class="author">
+						<a href="{{ c.author.get_absolute_url }}">{{ c.author }}</a>
+						<span class="created">
+							{{ c.created|date:'SHORT_DATETIME_FORMAT' }}
+						</span>
 					</span>
-				</span>
-				{% if not c.rejected %}
-					{{ c.text|prepos|linebreaksbr }}
-				{% else %}
-					<span class="rejected">
-						{% trans 'This comment has been rejected by moderator.' %}
-					</span>
-				{% endif %}
-			</p>
-		</div>
-	{% endfor %}
-{% endif %}
+					{% if not c.rejected %}
+						{{ c.text|prepos|linebreaksbr }}
+					{% else %}
+						<span class="rejected">
+							{% trans 'This comment has been rejected by moderator.' %}
+						</span>
+					{% endif %}
+				</p>
+			</div>
+		{% endfor %}
+		
+	{% endif %}
+
 </div>

@@ -910,7 +910,7 @@ msgstr "Smazat značku"
 #: naovoce/templates/fruit/detail.html:35
 #, python-format
 msgid "Returned to the land by <a href=\"%(url)s\">%(username)s</a>"
-msgstr "Váceno zemi uživatelem <a href=\"%(url)s\">%(username)s</a>"
+msgstr "Vráceno zemi uživatelem <a href=\"%(url)s\">%(username)s</a>"
 
 #: naovoce/templates/fruit/detail.html:40 naovoce/templates/home.html:156
 #: naovoce/templates/inc/mapjs.html:104
