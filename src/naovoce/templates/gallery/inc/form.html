@@ -2,11 +2,13 @@
 {% load bootstrap %}
 
 {% if request.user.is_authenticated %}
-	<form action="" method="post" enctype="multipart/form-data" role="form"
-	      class="image-form {% if image_form.errors %}errors{% endif %}">{% csrf_token %}
+	<form action="" method="post" enctype="multipart/form-data" role="form" class="image-form {% if image_form.errors %}errors{% endif %}">
+	{% csrf_token %}
 
-		{{ image_form.caption|bootstrap }}
-
+		{# {{ image_form.caption|bootstrap }} #}
+		<p>
+			<input class=" form-control" id="id_caption" maxlength="140" name="caption" type="text" placeholder="{% trans 'title' %}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;">
+		</p>
 		{{ image_form.non_field_errors }}
 		{% trans 'Choose a photo' as label %}
 		{% include 'inc/fileinput.html' with field=image_form.image %}

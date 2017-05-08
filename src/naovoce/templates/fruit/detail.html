@@ -6,35 +6,86 @@
 {% load coords %}
 {% load avatar %}
 {% load compress %}
-{% load thumbs %}
+{% load thumbnail %}
 
 
 {% block css %}
-	<link rel="stylesheet" href="{% static 'components/nanoscroller/css/nanoscroller.css' %}" type="text/less" media="screen, projection" charset="utf-8">
-	{{ block.super }}
 	<link rel="stylesheet" href="{% static 'components/leaflet/dist/leaflet.css' %}">
+	<link rel="stylesheet" href="{% static 'components/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css' %}">
+	<link rel="stylesheet" href="{% static 'components/leaflet.markercluster/dist/MarkerCluster.css' %}">
+	<link rel="stylesheet" href="{% static 'components/leaflet.locatecontrol/dist/L.Control.Locate.css' %}">
+
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css">
+	{{ block.super }}
 {% endblock %}
 
 {% block scripts %}
 	{{ block.super }}
-	<script src="{% static 'components/nanoscroller/js/jquery.nanoscroller.min.js' %}"></script>
 	{% include 'comments/inc/formjs.html' %}
 	{% include 'gallery/inc/formjs.html' %}
 
 	{% if not fruit.deleted %}
 		<script src="{% static 'components/leaflet/dist/leaflet.js' %}"></script>
+		<script src="{% static 'components/leaflet.locatecontrol/dist/L.Control.Locate.min.js' %}"></script>
 		<script src="{% static 'components/esri-leaflet/dist/esri-leaflet.js' %}"></script>
 		<script src="{% static 'components/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.js' %}"></script>
-		<script src="{% static 'components/leaflet.locatecontrol/dist/L.Control.Locate.min.js' %}"></script>
+
+		<script src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
 
 		{% include 'inc/mapjs.html' %}
+
+		<script>
+			// lookbook stuff
+			$(document).ready(function(){
+				var lookbook = $('.lookbook')
+
+				$('a.gallery-link,a.close_lookbook').click(function (e) {
+					e.preventDefault();
+					$('#map-detail,.lookbook,.close_lookbook_holder').toggleClass('swap')
+					// as the slick loads the content dynamically and the lookbook is hidden first,
+					// we have to refresh its memory a bit
+					lookbook.slick('refresh')
+				});
+
+				var next_text = '{% trans "Next" %}'
+				var prev_text = '{% trans "Previous" %}'
+				function fix_carousel(){
+					$('.lookbook,.lookbook img').css({
+						'max-height': $(window).height() - $('#user-info').height() + 'px'
+					})
+				}
+				
+				fix_carousel()
+			
+				$(window).bind('resize', function(e){
+				    window.resizeEvt;
+				    $(window).resize(function(){
+				        clearTimeout(window.resizeEvt);
+				        window.resizeEvt = setTimeout(function(){
+				        fix_carousel()
+				        }, 250);
+				    });
+				});
+
+				// run carousel
+			  	lookbook.slick({
+				  	dots: false,
+					infinite: true,
+					speed: 300,
+					slidesToShow: 1,
+					slidesToScroll: 1,
+					lazyLoad: 'ondemand',
+					nextArrow : '<button type="button" class="slick-next">' + next_text + '</button>',
+					prevArrow: '<button type="button" class="slick-prev">' + prev_text + '</button>'
+				});
+
+			});
+		</script>
+
 		{% compress js inline %}
 			<script type="text/coffeescript" charset="utf-8">
 			# initialize map
 			$('#map-detail').fillViewport()
-
-			# map = new Naovoce.Map 'map'
-			# new L.Hash map
 
 			center = new L.LatLng({{ fruit.latitude|lower|unlocalize }}, {{ fruit.longitude|lower|unlocalize }})
 
@@ -42,15 +93,12 @@
 				.focusTo center
 				.saveState()
 				.addLayer(new Naovoce.Marker(center, '{{ fruit.kind.key }}'))
+				.addLocate()
+				.addSearch()
 
 			map.fetchAddress center, (address) ->
 				$('.geo').text address
 			
-			# run nanoscroller
-			$('.nano').height($(window).height() - $('#user-info').height())
-			$('.nano').nanoScroller({
-				sliderMinHeight: 40
-			});
 			</script>
 		{% endcompress %}
 	{% endif %}
@@ -71,53 +119,62 @@
 {# salat & tomatos #}
 
 {% block body %}
+	{# get header #}
+	{% include 'inc/user_info.html' %}
+	
 	<div class="container-fluid fruit_detail">
-		{# get header #}
-		{% include 'inc/user_info.html' %}
 		<div class="row gold">
 			{# map object #}
 			<div id="map-detail" class="col-md-9 col-sm-7 col-xs-12"></div>
+			
+			{# cast the light in the box #}
+			{% if images %}
+				{% include 'gallery/inc/lookbook.html' %}
+			{% endif %}
+			{# end of - lighbox #}
 
 
 			<div class="col-md-3 col-sm-5 nano">
 				<div class="nano-content">
+					{# frit image/s #}
 					{% if images %}
 						{% with cover=container.get_cover_image %}
-
+							
 							{% if images|length == 1 %}
 								<a href="{{ cover.get_absolute_url }}" class="gallery-link">
 							{% else %}
 								<a href="{{ container.images_index_url }}" class="gallery-link">
 								
 							{% endif %}
-								<img src="{% get_thumb cover.image w=384 h=288 %}" alt="{{ cover.caption }}" class="img-responsive">
+
+							{% thumbnail cover.image "400" as thumb %}
+								<img src="{{ thumb.url }}" alt="{{ thumb.caption }}" title="{{ thumb.caption }}" class="img-responsive">
+							{% endthumbnail %}
 
 								{% if images|length > 1 %}
 								<span class="number">{{ images|length }}</span>
 								{% endif %}								
 							</a>
-							
 						{% endwith %}
-									
+					
 					{% endif %}
 
 					<div class="inner_minor">
-						
+						{# fruit elementary info #}
 						<div class="detail-info">
 							<span class="fruit-icon-huge media-object" style="color:#{{ fruit.kind.color }}">
 								&#x{{ fruit.kind.key }};
 							</span>
-
 				            <h1>
 				            	{{ fruit.kind.name }}
 				            </h1>
-
 							{% if fruit.description %}
 							    <div class="fruit-description">
 						            {{ fruit.description }}
 							    </div>
 							{% endif %}
 						</div>
+
 					    <div class="media-body">
 					        {% if fruit.catalogue == fruit.CATALOGUE.revival %}
 				                <div class="user">
@@ -139,7 +196,8 @@
 						    	{% trans "Added" %}: <strong>{{ fruit.created }}</strong>
 						    </div>
 					    </div>
-
+						
+						{# fruit geo data #}
 						{% if not fruit.deleted %}
 						    <div class="geo">
 						    	{% trans "Unknown address" %}
@@ -155,13 +213,8 @@
 					
 						{% endif %}
 						
+						{# user links #}
 						 <ul class="list">
-					        <li>
-					        	<a href="{% url 'map' %}">
-					        		{% trans 'Large map' %}
-					        	</a>
-					        </li>
-
 				            {% with herbarium=fruit.kind.herbarium %}
 					            {% if herbarium %}
 					                <li><a href="{{ herbarium.get_absolute_url }}">{% trans 'Herbarium' %}</a></li>
@@ -180,7 +233,6 @@
 						        	</a>
 						        </li>
 					        {% endif %}
-					        <li><a href="{% url 'fruit:add' %}">{% trans 'Add marker' %}</a></li>
 					    </ul>
 					  
 						{% include 'comments/inc/comments.html' %}
@@ -190,6 +242,7 @@
 			</div>
 		</div>
 	</div>
+
 {% endblock %}
 
 

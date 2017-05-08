@@ -35,21 +35,27 @@ body{
 	font-family: 'Source Sans Pro', sans-serif;
     -webkit-font-smoothing: antialiased;
 }
-
-
-input:focus,
-select:focus,
-textarea:focus,
-button:focus,
-.btn:focus,
-.btn:active:focus,
-.btn.active:focus,
-.btn.focus,
-.btn:active.focus,
-.btn.active.focus{
-    outline: none;
+.nooutline{
+	outline: none !important;
+	box-shadow:none !important;
 }
-
+input[type="submit"]:focus, input[type="submit"]:active:focus,
+input[type="submit"].active:focus, input[type="submit"].focus,
+input[type="submit"]:active.focus, input[type="submit"].active.focus,
+*{
+    .nooutline;
+    &:focus, &:active, &:hover{
+		.nooutline;
+    }
+}
+input[type="submit"]:focus, input[type="submit"]:active:focus,
+input[type="submit"].active:focus, input[type="submit"].focus,
+input[type="submit"]:active.focus, input[type="submit"].active.focus, .form-control:focus{
+	border-color:@green;
+}
+input[type="submit"]:active, input[type="submit"].active{
+	.nooutline;
+}
 textarea {
     resize: none;
 }
@@ -124,13 +130,15 @@ h4, h5, h6 {
 		border:0;
 	}
 	.control-label{
-		font-weight:normal;
-		color:@green;
 		margin-left:1rem;
 	}
-	
 }
-input[type="text"], input[type="password"], input[type="email"], textarea, textarea.form-control{
+.control-label{
+	font-weight:normal;
+	color:@green;
+}
+input[type="text"], input[type="password"], input[type="email"],
+textarea, textarea.form-control, input.form-control{
 	.rounded_input;
 }
 input[type="submit"]{
@@ -146,13 +154,16 @@ input[type="submit"]{
 // 
 // input decorations
 // 
-input[type="text"], input[type="password"], input[type="email"], textarea, input#id_caption{
+.decorations{
 	background-repeat:no-repeat;
 	background-size: 14px auto;
 	padding-left: 4rem;
 }
-input[name="username"], input[name="login"]{
-	background-image:url('@{base-url}/img/inputs_decoration.svg') !important;
+input[type="text"], input[type="password"], input[type="email"], textarea, input#id_caption{
+	.decorations;
+}
+input[name="username"], input[name="login"], input.add_comment{
+	background-image:url('@{base-url}/img/inputs_decoration.svg') !important; //
 	background-position: 15px -172px;	
 }
 
@@ -165,18 +176,48 @@ input[type="password"]{
 	}
 }
 input[type="email"]{}
-textarea{
+textarea, 
+textarea#id_text{
 	background-image:url('@{base-url}/img/inputs_decoration.svg') !important; // email icon
 	background-position: 15px -229px;	
 	text-indent: 3rem;
 }
-.cover_image_box label[for="id_image"], .user_settings label[for="id_avatar"]{
+.cover_image_box label[for="id_image"], .user_settings label[for="id_avatar"], .add_photo, #id_submit:hover{
 	.btn_inverse;
 	background-image:url('@{base-url}/img/inputs_decoration.svg') !important; // cam icon
 	background-position: 15px -132px;	
 	background-repeat:no-repeat;
 	background-size:14px auto;
 	border:1px solid @green;
+}
+.add_photo{
+	&:hover, &.active{
+		background-image:url('@{base-url}/img/inputs_decoration_inverse.svg') !important; // cam icon inverse
+	}
+}
+#id_submit{
+	.add_photo;
+}
+a.add_comment{
+	.decorations;
+	background-image:url('@{base-url}/img/inputs_decoration.svg') !important; //
+	background-position: 15px -223px;	
+	background-color:#fff;
+	color:@green;
+}
+input{
+	&::placeholder {
+	  color: @green;
+	  text-transform:uppercase;
+	  text-align:center;
+	}
+}
+input#id_submit.add_comment{
+	.btn;
+	background-image:none !important;
+	&:hover, &:active, &:focus{
+		background-image:none !important;
+	}
 }
 input#id_caption{
 	background-image:url('@{base-url}/img/inputs_decoration.svg') !important;
@@ -186,6 +227,12 @@ input#id_caption{
 .add_photo{
 	width:100%;
 	border:1px solid @green !important;
+}
+textarea#id_text{
+	.decorations;
+	text-indent:2rem;
+	padding-top: 0.8rem;
+	padding-bottom: 0.8rem;
 }
 
 // so this hell adds to a label a checkmark like object to it, which reacts to the check mark :D
@@ -224,6 +271,24 @@ input#avatar-clear_id{
 }
 // end of check mark substitution
 
+.add_fruit{
+	.nano{
+		text-align:center;
+	}
+	h1{
+		margin-top:4rem;
+		
+	}
+	.description{
+		padding:4rem 0 2rem 0;
+	}
+	#id_description{
+		margin:2rem 0;
+	}
+	.form-group{
+		margin-bottom:1.8rem;
+	}
+}
 // error messages and such
 .help-block{
 	margin:0.5rem 1rem 0 1rem;
@@ -242,6 +307,7 @@ input#avatar-clear_id{
 	margin-right: 10px;
 }
 .nano{
+	padding-left:0;
 	.nano-content{
 		padding-bottom: 1rem;
 	}
@@ -254,6 +320,9 @@ input#avatar-clear_id{
 }
 
 form {
+	input, textarea{
+		max-width:100%;
+	}
 	input{
 		border:1px solid @green;
 	}
@@ -272,7 +341,7 @@ form {
 			display: block;
 		}
 		#id_text.complaint {
-			background: @state-danger-bg;
+			background-color: @state-danger-bg;
 			color: @state-danger-text;
 			border-color: @state-danger-border;
 		}
@@ -415,7 +484,7 @@ a.messages-count {
 			background-color:#fff;
 			border:0;
 			border-radius: 2rem !important;
-			width:3.6rem !important;
+			width:3.6rem;
 			height:3.6rem !important;
 			color:@green;
 			&:hover, &:active, &:focus{
@@ -497,46 +566,16 @@ a.messages-count {
 	align-items:center;
 	img{
 		width:3.5rem;
+		transform: rotate(-180deg);
+		.anim_q_;
 	}
 	.anim_q_;
 	&.open{
-		.anim_q_;
-		width:25rem
-	}
-	.canceller_holder{
-		position:relative;
-		width:0;
-		.canceller{
-			opacity:0;
+		.anim_q;
+		width:25rem;
+		img{
+			transform: rotate(0deg);
 			.anim_q_;
-			position: absolute;
-			left: -10px;
-    		top: -22px;
-		    z-index: 1000;
-		    background: @ground;
-		    width: 2rem;
-		    text-align: center;
-		    color: #fff;
-		    border-radius: 50%;
-		    line-height: 2.2rem;
-		    display: flex;
-		    align-items: center;
-		    justify-content: center;
-		    b{
-		    	margin-top:-2px;
-		    }
-		    &:hover, &:active, &:focus{
-		    	text-decoration:none;
-		    	background: lighten(@ground, 10%)
-		    }
-		}
-	}
-	&.filter-active{
-		.canceller_holder{
-			.canceller {
-				.anim_q_;
-				opacity:1;
-			}
 		}
 	}
 }
@@ -558,7 +597,6 @@ body.map{
 	z-index: 999;
 	top:0;
 	right:-25rem;
-	// right:0rem;
 	background:@beige;
 	width:25rem;
 	&.open{
@@ -630,43 +668,51 @@ body.map{
 				display: block;
 				line-height: 20px;
 				border-bottom:1px solid #ccc;
-				&:active {
-					background-color: @brand-success;
+				&.active {
+					color:@ground;
+					text-decoration:none;
 				}
 			}
+
 			li{
 				padding:0.1rem 1.5rem;
+				&:last-child{
+					a{
+						border:0;
+					}
+				}
 			}
+		}
+	}
+	.canceller_holder{
+		opacity:0;
+		max-height:0;
+		.canceller{
+			color:@ground;
+			padding-left:1rem;
+		}
+	}
+	&.filter-active{
+		.canceller_holder{
+			margin: 0 0 0 30%;
+			padding: 0.5rem 0 0.5rem 0;
+			opacity:1;
+			max-height:200px;
 		}
 	}
 }
 
-@keyframes popout {
-    from {
-		box-shadow: none;
-    }
-    50% {
-		box-shadow: 0 0 20px 10px white;
-    }
-    to {
-		box-shadow: none;
-    }
-}
-
 #add-to-map{
-	.btn_inverse;
+	margin-left:1rem;
+	.btn;
 	.shadow;
-	position:absolute;
-	z-index:999;
-	bottom: 29px;
-    padding: 1rem 2rem 1rem 3.4rem;
-    left: 291px;
-    right:auto;
+	transition: padding 0;
+    padding-left:1.4rem;
     line-height:1.6rem;
     .fruit-icon-small{
-    	position:absolute;
-    	left:9px;
-    	top:8px;
+    	position: relative;
+		left: -2px;
+		top: 1px;
     	font-size: 16px;
     }
 }
@@ -754,7 +800,6 @@ ul.errorlist.nonfield {
 	margin:2rem 0;	
 }
 .detail-info, .user_detail {	
-	.inner;
 	text-align:center;
 
 	h1{
@@ -819,7 +864,7 @@ ul.errorlist.nonfield {
 	}
 }
 .leaflet-left .leaflet-control{
-	margin-left:0;
+	margin-left:0 !important;
 }
 
 .leaflet-popup-content {
@@ -871,10 +916,10 @@ ul.errorlist.nonfield {
 	}
 	@-webkit-keyframes rotation {
 		from {
-			-webkit-transform: rotate(0deg);
+			transform: rotate(0deg);
 		}
 		to {
-			-webkit-transform: rotate(359deg);
+			transform: rotate(359deg);
 		}
 	}
 	@keyframes rotation {
@@ -928,7 +973,7 @@ ul.errorlist.nonfield {
 		top: 10px;
 	}
 	&.complaint {
-		background: @state-danger-bg;
+		background-color: @state-danger-bg;
 		color: @state-danger-text;
 		&:after {
 			border-color: transparent @state-danger-bg;
@@ -1018,9 +1063,109 @@ ul.errorlist.nonfield {
 .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar{
 	border: 0;
 }
+#map-detail, .lookbook{
+	&.swap{
+		display:none;
+	}
+}
+// lookbook
+.close_lookbook_holder{
+	position: relative;
+	z-index: 9999;
+	height:0px;
+	width:0px;
+	float:right;
+	a.close_lookbook{
+		position:absolute;
+		width: 36px;
+    	height: 36px;
+	    float: right;
+	    margin-top: 1rem;
+	    display:flex;
+	    align-items:center;
+	    justify-content:center;
+	    margin-left: -18px;
+	}
+	&.swap{
+		display:none;
+	}
+}
+.lookbook{
+	background-color:#8c8c8c;
+	overflow:hidden;
+	padding:0;
+	img{
+		max-width:100%;
+		max-height:100%;
+		height:auto;
+	}
+}
+
+/* Arrows */
+.slick-track{
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	text-align:center;
+	img{
+		display:inline-block;
+	}
+}
+.slick-prev,
+.slick-next{
+	.btn;
+    position: absolute;
+    z-index:10;
+    width:36px;
+    height:36px;
+    top: 50%;
+    margin-top: -10px;
+    cursor: pointer;
+    overflow:hidden;
+    color:transparent;
+	background-image:url('@{base-url}/img/arrow.svg');
+	background-color:@green;
+	background-size:50%;
+	background-repeat:no-repeat;
+    background-position: 50% 55%;
+    &:hover, &:active, &:focus{
+		color:transparent;
+		background-image:url('@{base-url}/img/arrow.svg');
+		background-color:@green;
+    }
+}
+.slick-prev{
+    left: 3rem;
+    transform:rotate(90deg;)
+}
+.slick-next{
+    right: 3rem;
+    transform:rotate(-90deg);
+
+}
+ 
+#wurst{
+	display:inline-block;
+	.toggle{
+		display:none;
+	}
+	#ham{
+		display:inline-block;
+	}
+}
+.mobile_toggle{	
+	position:absolute;
+	width:50px;
+	height:50px;
+}
 // fancy 
 .slash{
 	margin:0 0.4rem;
+}
+.elipsis{
+	white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .btn{
   .anim_q;
@@ -1033,11 +1178,16 @@ ul.errorlist.nonfield {
   display: inline-block;
   text-decoration: none;
   text-transform:uppercase;
-  &.active, &:hover, &:focus, &:active{
+	.elipsis;
+  &.active, &:hover, &:active{
     .anim_q;
     text-decoration: none;
     background-color:#fff;
     color:@green;
+  }
+  &:focus{
+  	background-color:@green;
+  	color:#fff;
   }
 }
 .btn_inverse{
@@ -1069,10 +1219,199 @@ ul.errorlist.nonfield {
    // transition: all 0.6s cubic-bezier(0.610, 1.330, 0.825, 0.825);
    transition: all 0.6s ease-in-out;
 }
+
+
 // MEDIA QUERY 
 
 @media (min-width: 768px) {
 	.container {
 		max-width: 750px;
+	}
+	#user-info{
+		
+	}
+}
+@media (max-width: 768px) {
+	#map-detail, #map, .nano{
+		position:absolute;
+	}
+	#map-detail, #map{
+		left:0;
+		width:100vw;
+	}
+	body{
+		&.mobile_menu_open{
+			.leaflet-top, #filter, .nano{
+				display:none;
+			}
+		}
+		.nano{
+			position:absolute;
+			z-index:333;
+			right:0;
+			width: 41.66666667%;
+			margin-right:0;
+			background-color: #fff;
+		    z-index: 9333;
+			.anim_q;
+		}
+		&.mobile_panel_closed{
+			.nano{
+			    right: 0;
+				margin-right:-41.66666667%;
+				.anim_q;
+			}
+		}
+	}
+	body.map .handle {
+		.mobile_toggle;
+	    display: flex;
+	    top: 0;
+	    right: 0;
+	    img{
+	    	width: 2.8rem;
+	    }
+	    .panel_toggle{
+	    	display:none; // hide on big map
+	    }
+	}
+	#filter{
+		width:26rem;
+		right: -26rem;
+		#filter-items .kinds-list{
+			width: 19rem;
+		}
+	}
+	#user-info{
+		height:50px;
+		.logo{
+			margin:0.65rem;
+			img{
+				height:3rem;
+				width:auto;
+			}
+		}
+		p{
+			padding:0;
+			margin:0;
+			display:block;
+			a{	
+				background-color: transparent;
+				color:@green;
+				display:block;
+				text-align:left;
+				padding:0.8rem 1rem;
+				&:hover{
+					color:@ground;
+					background-color: transparent;
+				}
+			}
+		}
+	}
+
+	.ham_toggle{
+		.mobile_toggle;
+		right:50px;
+		top:0;
+		background-color:#fff;
+		background-image:url('@{base-url}/img/ham.svg');
+		background-size: 44%;
+		background-repeat:no-repeat;
+		background-position:center center;
+	}
+	.panel_toggle{
+		.mobile_toggle;
+		right:0;
+		top:0;
+		background-color:@green;
+		background-image:url('@{base-url}/img/x.svg');
+		background-size: 44%;
+		background-repeat:no-repeat;
+		background-position:center center;
+	}
+	.mobile_panel_closed{
+		.panel_toggle{
+			background-image:url('@{base-url}/img/arrow.svg');
+		}
+	}
+	#wurst{
+		position:relative;
+		a{
+			padding: 0.3rem;
+			background-image:none;
+			&#add-to-map{
+				background: none;
+				color:@green;
+				padding:0.8rem 1rem;
+				margin-left:0;
+				.fruit-icon-small{
+					display:none;
+				}
+			}
+			&.back-to-map{
+				background-color: transparent;
+				color:@green;
+				display:block;
+				text-align:left;
+				padding:0.8rem 1rem;
+				&:hover{
+					color:@ground;
+					background-color: transparent;
+				}
+			}
+		}
+		#ham{
+			max-height:0;
+			overflow:hidden;
+			position:fixed;
+			z-index: 999;
+			top:50px;
+			left:0;
+			width:100vw;
+			background-color: #fff;
+		}
+		&.open{
+			#ham{
+				max-height:500px;
+				padding-bottom:1rem;
+			}
+		}
+	}
+	.leaflet-touch .leaflet-left {
+	    margin-left: 1rem;
+	    .leaflet-control-zoom{
+	    	margin-top:1rem;
+	    }
+	}
+	#catalogue{
+		bottom:1rem;
+		left:1rem;
+	}
+	// roteate made by
+	.leaflet-control-attribution{
+		transform:rotate(-90deg);
+		right:-10rem;
+		bottom:1rem;
+	}
+
+}
+@media (max-width: 680px) {
+	body{
+		.nano{	
+			width: 26rem;
+		}
+		&.mobile_panel_closed{
+			.nano{
+				margin-right:-26rem;
+			}
+		}
+	}
+	.lookbook{
+		width:100vw;
+		z-index:9998;
+		
+	}
+	.close_lookbook_holder a.close_lookbook{
+		margin-left:-43px;
 	}
 }

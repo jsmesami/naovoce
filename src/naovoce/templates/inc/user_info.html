@@ -2,34 +2,48 @@
 {% load static from staticfiles %}
 
 <div id="user-info">
-	<a href="/" rel="home" class="logo"><img src="{% static 'img/na-ovoce.svg' %}" alt="na-ovoce"></a>
-	
-	<a href="/map" class="back-to-map btn">{% trans 'back to map' %}</a>
+	<div id="wurst">
+		{# the logo #}
+		<a href="/" rel="home" class="logo"><img src="{% static 'img/na-ovoce.svg' %}" alt="na-ovoce"></a>
+		
+		<div id="ham">
+			
+			<a href="/map" class="back-to-map btn">{% trans 'back to map' %}</a>
 
-    <p>
-		{% if request.user.is_authenticated %}
-		    <a href="{{ request.user.get_absolute_url }}" title="{% trans 'User profile' %}" class="user_name">{{ request.user.get_short_name }}</a><span class="slash">|</span><a href="{% url 'account_logout' %}?next={{ request.path }}" title="{% trans 'Sign out' %}" class="inout">{% trans 'Sign out' %}</a>
+		    <p>
+				{% if request.user.is_authenticated %}
+				    <a href="{{ request.user.get_absolute_url }}" title="{% trans 'User profile' %}" class="user_name">{{ request.user.get_short_name }}</a><span class="slash">|</span><a href="{% url 'account_logout' %}?next={{ request.path }}" title="{% trans 'Sign out' %}" class="inout">{% trans 'Sign out' %}</a>
+				    
+				    {% with num_msg=request.user.get_unread_messages.count %}
+					    {% if num_msg %}
+						    <a href="{% url 'pickers:messages' request.user.id %}" class="messages-count" title="{% blocktrans %}You have {{ num_msg }} unread messages{% endblocktrans %}.">
+							    {{ num_msg }}
+						    </a>
+					    {% endif %}
+				    {% endwith %}
+
+				{% else %}
+				    <a href="{% url 'account_login' %}?next={{ request.path }}" title="{% trans 'Sign in' %}" class="sign_in">{% trans 'Sign in' %}</a><span class="slash">|</span><a href="{% url 'account_signup' %}" title="{% trans 'Registration' %}" class="register">{% trans 'Registration' %}</a>
+				{% endif %}
+		    </p>
 		    
-		    {% with num_msg=request.user.get_unread_messages.count %}
-			    {% if num_msg %}
-				    <a href="{% url 'pickers:messages' request.user.id %}" class="messages-count" title="{% blocktrans %}You have {{ num_msg }} unread messages{% endblocktrans %}.">
-					    {{ num_msg }}
-				    </a>
-			    {% endif %}
-		    {% endwith %}
+			<a href="{% url 'fruit:add' %}" id="add-to-map">
+			    <span class="fruit-icon-small">&#xF00D;</span>{% trans 'Add Marker' %}
+		    </a>
+	    </div>
+    </div>
+	
+	{# mobile menu toggler #}
+	<a href="#" class="ham_toggle"></a>
+	
+	{# mobile menu toggler #}
+	<a href="#" class="panel_toggle"></a>
 
-		{% else %}
-		    <a href="{% url 'account_login' %}?next={{ request.path }}" title="{% trans 'Sign in' %}" class="sign_in">{% trans 'Sign in' %}</a><span class="slash">|</span><a href="{% url 'account_signup' %}" title="{% trans 'Registration' %}" class="register">{% trans 'Registration' %}</a>
-		{% endif %}
-    </p>
-
+	{# filter toggler #}
     <div class="handle">
 		<a href="#" class="toggler">
 			<img src="{% static 'img/toggle.svg' %}">
 		</a>
-		<div class="canceller_holder">
-			<a href="#" class="canceller"><b>×</b></a>
-		</div>
 	</div>
     
 </div>

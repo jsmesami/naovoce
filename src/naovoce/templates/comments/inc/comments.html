@@ -3,9 +3,6 @@
 {% load typo %}
 
 <div class="comments">
-
-	{% include 'comments/inc/form.html' %}
-
 	{% if comments %}
 		{% for c in comments %}
 			<div class="media comment" id="{{ c.anchor }}">
@@ -28,5 +25,8 @@
 		{% endfor %}
 		
 	{% endif %}
+	
+	{# comment form #}
+	{% include 'comments/inc/form.html' %}
 
 </div>

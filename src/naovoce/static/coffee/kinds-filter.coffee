@@ -17,6 +17,9 @@ class Filter
 		$filter.addClass 'open'
 		$handle.addClass 'open'
 
+	sneakPeek: ->
+		$filter.addClass 'sneakPeek' 
+
 	pullKinds: (e, target) ->
 		$kinds_lists.hide()
 		$kinds_lists.siblings(target).show()
@@ -33,34 +36,29 @@ class Filter
 
 @filter = F = new Filter()
 
-
 $toggler.on 'click', ->
 	F.toggleFilter()
 	
-
 $class_choices.on 'click', ->
 	target = $(@).data 'target'
 	F.pullKinds(this, target)
-
-	
-	
-
 	false
 
+# filter the pins
 $kind_choices.on 'click', ->
 	kind = $(@).data('kind')
 	$filter.addClass 'filter-active'
 	$handle.addClass 'filter-active' 
+	$kind_choices.removeClass('active')
+	$(@).addClass 'active' 
 
-	F.hideFilter()
 	F.reload kind
-
 	false
 
+# clean up the filter
  $canceller.on 'click', ->
  	$filter.removeClass 'filter-active'
  	$handle.removeClass 'filter-active'
-
+ 	$kind_choices.removeClass('active')
  	F.reload()
-
  	false
