@@ -26,3 +26,8 @@ __pycache__/
 .Trashes
 thumbs.db
 Thumbs.db
+
+src/naovoce/static/admin/
+src/naovoce/static/modeltranslation/
+src/naovoce/static/rest_framework/
+src/naovoce/static/facebook/
