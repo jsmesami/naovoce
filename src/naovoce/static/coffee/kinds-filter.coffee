@@ -1,76 +1,64 @@
 $filter = $('#filter')
-$toggler = $filter.find '.toggler'
-$canceller = $filter.find '.canceller'
+$toggler = $('.toggler')
+$handle = $('.handle')
 $class_choices = $('.class-choice')
 $kinds_lists = $('.kinds-list')
 $kind_choices = $kinds_lists.find 'a'
-
+$canceller = $('.canceller')
 
 class Filter
 	constructor: ->
-		@speed = 200
-		@classes_pulled = false
-		@kinds_pulled = false
+
 
 	reload: (kind) ->
 		@
+	
+	showFilter: ->
+		$filter.addClass 'open'
+		$handle.addClass 'open'
 
-	pullClasses: ->
-		$filter.animate right: "-120px",
-			duration: @speed
-			complete: =>
-				@classes_pulled = true
+	sneakPeek: ->
+		$filter.addClass 'sneakPeek' 
 
-	pullKinds: ->
-		if not @kinds_pulled
-			$filter.animate right: "0px",
-				duration: @speed
-				complete: =>
-					@kinds_pulled = true
+	pullKinds: (e, target) ->
+		$kinds_lists.hide()
+		$kinds_lists.siblings(target).show()
+		$class_choices.removeClass('active')
+		$(e).addClass 'active'
 
 	hideFilter: (onComplete) ->
-		$filter.animate right: "-170px",
-			duration: @speed
-			complete: =>
-				@classes_pulled = false
-				@kinds_pulled = false
-				onComplete?()
-
+		$filter.removeClass 'open' 
+		$handle.removeClass 'open'
+	
+	toggleFilter: ->
+		$filter.toggleClass 'open' 
+		$handle.toggleClass 'open'
 
 @filter = F = new Filter()
 
-
 $toggler.on 'click', ->
-	if not F.classes_pulled
-		F.pullClasses()
-	else
-		F.hideFilter()
-
-	false
-
+	F.toggleFilter()
+	
 $class_choices.on 'click', ->
 	target = $(@).data 'target'
-
-	$kinds_lists.hide()
-	$kinds_lists.siblings(target).show()
-
-	F.pullKinds()
-
+	F.pullKinds(this, target)
 	false
 
+# filter the pins
 $kind_choices.on 'click', ->
 	kind = $(@).data('kind')
+	$filter.addClass 'filter-active'
+	$handle.addClass 'filter-active' 
+	$kind_choices.removeClass('active')
+	$(@).addClass 'active' 
 
-	F.hideFilter ->
-		$filter.addClass 'filter-active'
-		F.reload kind
-
+	F.reload kind
 	false
 
-$canceller.on 'click', ->
-	$filter.removeClass 'filter-active'
-
-	F.hideFilter ->
-		F.reload()
-
-	false
+# clean up the filter
+ $canceller.on 'click', ->
+ 	$filter.removeClass 'filter-active'
+ 	$handle.removeClass 'filter-active'
+ 	$kind_choices.removeClass('active')
+ 	F.reload()
+ 	false

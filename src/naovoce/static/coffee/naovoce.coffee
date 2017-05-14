@@ -39,9 +39,12 @@ $.fn.fillViewport = ->
 	$window = $(window)
 	$elem = this
 	$userInfoHeight = $('#user-info').innerHeight()
+	$nano = $('.nano')
 
 	$window.resize ->
 		$elem.css 'min-height', "#{ Math.max $window.outerHeight() - $userInfoHeight, 320 }px"
+		$('.gold,.nano').css('min-height', ($(window).height() - $('#user-info').height()) + 'px')
+		$nano.nanoScroller()
 	.trigger 'resize'
 
 
@@ -62,3 +65,16 @@ $('.inputfile').each ->
 
 
 $('#main-content').fillViewport()
+
+# open || close mobile menu & panel & stuff
+$ham_toggle = $('.ham_toggle')
+$panel_toggle = $('.panel_toggle')
+$wurst = $('#wurst')
+$body = $('body')
+
+$ham_toggle.on 'click', ->
+	$wurst.toggleClass 'open'
+	$body.toggleClass 'mobile_menu_open'
+	
+$panel_toggle.on 'click', ->
+	$body.toggleClass 'mobile_panel_closed'

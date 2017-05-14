@@ -2,219 +2,218 @@
 {% load compress %}
 
 {% compress js inline %}
-<script type="text/coffeescript" charset="utf-8">
+	<script type="text/coffeescript" charset="utf-8">
 
-geocodeService = new L.esri.Geocoding.geocodeService
-Naovoce.CENTER_CS = new L.LatLng 49.829896, 15.514818
-
-
-class MarkerIcon extends L.DivIcon
-	constructor: (color, char) ->
-		super
-			className: 'marker',
-			iconSize: null,
-			html: "<span style='color:##{ color }'>&#x#{ char }</span>"
+	geocodeService = new L.esri.Geocoding.geocodeService
+	Naovoce.CENTER_CS = new L.LatLng 49.829896, 15.514818
 
 
-KINDS =
-	'F00D':
-		icon: new MarkerIcon('555', 'F00D')
-		name: "{% trans 'Fruit kind' %}"
-	{% for k in kinds %}
-	'{{ k.key }}':
-		icon: new MarkerIcon('{{ k.color }}', '{{ k.key }}')
-		name: '{{ k.name }}'
-	{% endfor %}
+	class MarkerIcon extends L.DivIcon
+		constructor: (color, char) ->
+			super
+				className: 'marker',
+				iconSize: null,
+				html: "<span style='color:##{ color }'>&#x#{ char }</span>"
+				
+	KINDS =
+		'F00D':
+			icon: new MarkerIcon('555', 'F00D')
+			name: "{% trans 'Fruit kind' %}"
+		{% for k in kinds %}
+		'{{ k.key }}':
+			icon: new MarkerIcon('{{ k.color }}', '{{ k.key }}')
+			name: '{{ k.name }}'
+		{% endfor %}
 
 
-getDMSCoords = (lat, lng) ->
-	DD2DMS = (dd) ->
-		d: 0 | (dd = Math.abs(dd))
-		m: 0 | dd % 1 * 60
-		s: (0 | dd * 60 % 1 * 6000) / 100
+	getDMSCoords = (lat, lng) ->
+		DD2DMS = (dd) ->
+			d: 0 | (dd = Math.abs(dd))
+			m: 0 | dd % 1 * 60
+			s: (0 | dd * 60 % 1 * 6000) / 100
 
-	fmtDMS = (dms) ->
-		"#{dms.d}&deg;#{dms.m}&prime;#{dms.s}&Prime;"
+		fmtDMS = (dms) ->
+			"#{dms.d}&deg;#{dms.m}&prime;#{dms.s}&Prime;"
 
-	"#{fmtDMS DD2DMS(lat)}#{if lat<0 then 'S' else 'N'}&nbsp;" +
-	"#{fmtDMS DD2DMS(lng)}#{if lng<0 then 'W' else 'E'}"
-
-
-class Naovoce.Marker extends L.Marker
-	constructor: (latlng, @kind) ->
-		super latlng, icon: KINDS[@kind].icon
-
-	setIcon: (kind) ->
-		super KINDS[kind].icon
+		"#{fmtDMS DD2DMS(lat)}#{if lat<0 then 'S' else 'N'}&nbsp;" +
+		"#{fmtDMS DD2DMS(lng)}#{if lng<0 then 'W' else 'E'}"
 
 
-class FruitPopup extends L.Popup
-	constructor: (fruit, options) ->
-		super options
-		@_header = "<h4><a href='/fruit/detail/#{ fruit.id }/'>#{ KINDS[fruit.kind].name }" +
-			"<br><small>(#{getDMSCoords fruit.lat, fruit.lng})</small></a></h4>"
+	class Naovoce.Marker extends L.Marker
+		constructor: (latlng, @kind) ->
+			super latlng, icon: KINDS[@kind].icon
 
-	setContent: (content) ->
-		@_content = @_header + content
-		@.update()
-		@
+		setIcon: (kind) ->
+			super KINDS[kind].icon
 
 
-class PopupMarker extends Naovoce.Marker
-	constructor: (fruit) ->
-		@fruit = fruit
-		super [fruit.lat, fruit.lng], fruit.kind
+	class FruitPopup extends L.Popup
+		constructor: (fruit, options) ->
+			super options
+			@_header = "<h4><a href='/fruit/detail/#{ fruit.id }/'>#{ KINDS[fruit.kind].name }" +
+				"<br><small>(#{getDMSCoords fruit.lat, fruit.lng})</small></a></h4>"
 
-		@bindPopup new FruitPopup fruit,
-			offset: new L.Point(0, -26)
-			maxWidth: 200
-
-
-class Naovoce.Map extends L.Map
-	constructor: (id) ->
-		params =
-			maxZoom: 18,
-			minZoom: 5,
-
-		super id,
-			layers: [L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', params)]
-
-		if L.markerClusterGroup?
-			@markerLayerGroup = L.markerClusterGroup
-				chunkedLoading: true
-				spiderfyOnMaxZoom: false
-				showCoverageOnHover: false
-				removeOutsideVisibleBounds: true
-				disableClusteringAtZoom: 15
-				maxClusterRadius: 40
-			.addTo @
-		else
-			@markerLayerGroup = new L.layerGroup().addTo @
-			@markerLayerGroup.addLayers = (layers) ->
-				@addLayer l for l in layers
-
-		{# Remove default attributions. #}
-		@.attributionControl.setPrefix('');
-
-		@markers = {}
-
-		{# Add more content to popups when marker clicked. #}
-		@.on 'popupopen', (ev) ->
-			$.getJSON ev.popup._source.fruit.url, (json) =>
-				content = "<p><strong>{% trans 'Shared by' %}:</strong> " +
-					"<a href='/pickers/#{json.user.id}-#{json.user.username.toLowerCase()}/'>"+
-					"#{json.user.username} &raquo;</a></p>"
-
-				content += "<p><strong>{% trans 'Description' %}:</strong> " +
-					"#{json.description.truncate(150)}<p>" if json.description
-
-				ev.popup.setContent content
-
-				@fetchAddress [json.lat, json.lng], (address) ->
-					ev.popup.setContent "<p><strong>{% trans 'Address' %}:</strong> " +
-						"#{address}</p>" + content if address
+		setContent: (content) ->
+			@_content = @_header + content
+			@.update()
 			@
 
-		{# Add spinner DIV into map container. #}
-		@spinner = $ '<div id="spinner">'
-		$("##{id}").prepend @spinner
 
-	loadMarkers: (url, key='default', onReload) ->
-		if key of @markers
-			@showMarkers key
-			onReload?()
-		else
-			@spinner.addClass 'spinning'
-			$.getJSON url, (json) =>
-				@markers[key] = (new PopupMarker fruit for fruit in json)
+	class PopupMarker extends Naovoce.Marker
+		constructor: (fruit) ->
+			@fruit = fruit
+			super [fruit.lat, fruit.lng], fruit.kind
+
+			@bindPopup new FruitPopup fruit,
+				offset: new L.Point(0, -26)
+				maxWidth: 200
+
+
+	class Naovoce.Map extends L.Map
+		constructor: (id) ->
+			params =
+				maxZoom: 18,
+				minZoom: 5,
+
+			super id,
+				layers: [L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', params)]
+
+			if L.markerClusterGroup?
+				@markerLayerGroup = L.markerClusterGroup
+					chunkedLoading: true
+					spiderfyOnMaxZoom: false
+					showCoverageOnHover: false
+					removeOutsideVisibleBounds: true
+					disableClusteringAtZoom: 15
+					maxClusterRadius: 40
+				.addTo @
+			else
+				@markerLayerGroup = new L.layerGroup().addTo @
+				@markerLayerGroup.addLayers = (layers) ->
+					@addLayer l for l in layers
+
+			{# Remove default attributions. #}
+			@.attributionControl.setPrefix('');
+
+			@markers = {}
+
+			{# Add more content to popups when marker clicked. #}
+			@.on 'popupopen', (ev) ->
+				$.getJSON ev.popup._source.fruit.url, (json) =>
+					content = "<p><strong>{% trans 'Shared by' %}:</strong> " +
+						"<a href='/pickers/#{json.user.id}-#{json.user.username.toLowerCase()}/'>"+
+						"#{json.user.username} &raquo;</a></p>"
+
+					content += "<p><strong>{% trans 'Description' %}:</strong> " +
+						"#{json.description.truncate(150)}<p>" if json.description
+
+					ev.popup.setContent content
+
+					@fetchAddress [json.lat, json.lng], (address) ->
+						ev.popup.setContent "<p><strong>{% trans 'Address' %}:</strong> " +
+							"#{address}</p>" + content if address
+				@
+
+			{# Add spinner DIV into map container. #}
+			@spinner = $ '<div id="spinner">'
+			$("##{id}").prepend @spinner
+
+		loadMarkers: (url, key='default', onReload) ->
+			if key of @markers
 				@showMarkers key
-				@spinner.removeClass 'spinning'
 				onReload?()
+			else
+				@spinner.addClass 'spinning'
+				$.getJSON url, (json) =>
+					@markers[key] = (new PopupMarker fruit for fruit in json)
+					@showMarkers key
+					@spinner.removeClass 'spinning'
+					onReload?()
+				@
+
+		showMarkers: (key='default') ->
+			@markerLayerGroup.clearLayers()
+			@markerLayerGroup.addLayers @markers[key]
 			@
 
-	showMarkers: (key='default') ->
-		@markerLayerGroup.clearLayers()
-		@markerLayerGroup.addLayers @markers[key]
-		@
+		filterMarkers: (kind, key='default') ->
+			@markerLayerGroup.clearLayers()
+			@markerLayerGroup.addLayers (m for m in @markers[key] when m.kind == kind)
+			@
 
-	filterMarkers: (kind, key='default') ->
-		@markerLayerGroup.clearLayers()
-		@markerLayerGroup.addLayers (m for m in @markers[key] when m.kind == kind)
-		@
+		clearMarkers: ->
+			@markerLayerGroup.clearLayers()
+			@
 
-	clearMarkers: ->
-		@markerLayerGroup.clearLayers()
-		@
+		{# functions to share map state between page reloads #}
+		saveState: ->
+			center = @getCenter()
+			Naovoce.storage.setObject 'map',
+				pos: [center.lat, center.lng]
+				zoom: @getZoom()
+			@
 
-	{# functions to share map state between page reloads #}
-	saveState: ->
-		center = @getCenter()
-		Naovoce.storage.setObject 'map',
-			pos: [center.lat, center.lng]
-			zoom: @getZoom()
-		@
+		loadState: ->
+			map = Naovoce.storage.getObject 'map'
 
-	loadState: ->
-		map = Naovoce.storage.getObject 'map'
+			if map?
+				@setView map.pos, map.zoom
+			else
+				@setView Naovoce.CENTER_CS, 8
+			@
 
-		if map?
-			@setView map.pos, map.zoom
-		else
-			@setView Naovoce.CENTER_CS, 8
-		@
+		focusTo: (latlng) ->
+			@setView latlng
+			@setZoom 10
+			@
 
-	focusTo: (latlng) ->
-		@setView latlng
-		@setZoom 10
-		@
+		fetchAddress: (latlng, onSuccess) ->
+			geocodeService.reverse()
+				.latlng latlng
+				.run (error, result) ->
+					if result
+						loc = result.address
+						address = "#{ loc.City }, #{ loc.CountryCode }"
+						if loc.Postal
+							address = "#{ loc.Postal } #{ address }"
+						if loc.Address
+							address = "#{ loc.Address }, #{ address }"
+						onSuccess address
+			@
 
-	fetchAddress: (latlng, onSuccess) ->
-		geocodeService.reverse()
-			.latlng latlng
-			.run (error, result) ->
-				if result
-					loc = result.address
-					address = "#{ loc.City }, #{ loc.CountryCode }"
-					if loc.Postal
-						address = "#{ loc.Postal } #{ address }"
-					if loc.Address
-						address = "#{ loc.Address }, #{ address }"
-					onSuccess address
-		@
+		addSearch: ->
+			arcgisOnline = L.esri.Geocoding.arcgisOnlineProvider()
+			searchControl = new L.esri.Geocoding.geosearch
+				placeholder: "{% trans 'Search for places or addresses' %}"
+				title: "{% trans 'Location search' %}"
+				providers: [arcgisOnline]
+				useMapBounds: false
 
-	addSearch: ->
-		arcgisOnline = L.esri.Geocoding.arcgisOnlineProvider()
-		searchControl = new L.esri.Geocoding.geosearch
-			placeholder: "{% trans 'Search for places or addresses' %}"
-			title: "{% trans 'Location search' %}"
-			providers: [arcgisOnline]
-			useMapBounds: false
+			{# Do not display attributions, they are in the footer. #}
+			searchControl.getAttribution = -> ''
+			searchControl.addTo @
 
-		{# Do not display attributions, they are in the footer. #}
-		searchControl.getAttribution = -> ''
-		searchControl.addTo @
+			results = new L.LayerGroup().addTo @
 
-		results = new L.LayerGroup().addTo @
+			searchControl.on 'results', -> results.clearLayers()
+			@
 
-		searchControl.on 'results', -> results.clearLayers()
-		@
+		addLocate: ->
+			L.control.locate
+				icon: 'locator',
+				iconLoading: 'locator busy'
+				strings:
+					title: "{% trans 'Show me where I am' %}"
+					metersUnit: "m"
+					popup: "{% trans 'You are within {distance} {unit} from this point' %}"
+			.addTo @
+			@
 
-	addLocate: ->
-		L.control.locate
-			icon: 'locator',
-			iconLoading: 'locator busy'
-			strings:
-				title: "{% trans 'Show me where I am' %}"
-				metersUnit: "m"
-				popup: "{% trans 'You are within {distance} {unit} from this point' %}"
-		.addTo @
-		@
-
-	addAttribution: (text) ->
-		@addControl L.control.attribution
-			prefix: text or 'Map data &copy; OpenStreetMap contributors'
-			position: 'bottomleft'
-		@
+		addAttribution: (text) ->
+			@addControl L.control.attribution
+				prefix: text or 'Map data &copy; OpenStreetMap contributors'
+				position: 'bottomleft'
+			@
 
 </script>
 {% endcompress %}
