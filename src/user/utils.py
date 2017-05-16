@@ -12,7 +12,7 @@ def fruit_counter(**filters):
     }
 
 
-def _get_pickers(**filters):
+def top_pickers(**filters):
     return FruitUser.objects.active()\
         .filter(resolution=FruitUser.RESOLUTION.picker)\
         .filter(**filters)\
@@ -21,10 +21,10 @@ def _get_pickers(**filters):
 
 
 def pickers_counts_context():
-    top_all_time = _get_pickers()
+    top_all_time = top_pickers()
 
     last_month = datetime.date.today() - datetime.timedelta(365 / 12)
-    top_last_month = _get_pickers(fruits__created__gte=last_month).exclude(fruit_count=0)
+    top_last_month = top_pickers(fruits__created__gte=last_month).exclude(fruit_count=0)
 
     return dict(
         top_pickers_all_time=top_all_time[:10],
