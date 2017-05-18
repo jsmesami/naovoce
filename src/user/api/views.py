@@ -1,10 +1,11 @@
+import datetime
+
 from rest_framework import generics
 from rest_framework.response import Response
 
-
 from . import serializers
 from ..models import FruitUser
-from ..views import fruit_counter
+from ..utils import fruit_counter, top_pickers
 
 
 class UserList(generics.ListAPIView):
@@ -25,6 +26,16 @@ class UserList(generics.ListAPIView):
         # We are not paginating, so we can serialize iterator (saves memory)
         serializer = self.get_serializer(qs.iterator(), many=True)
         return Response(serializer.data)
+
+
+class UserListTop(UserList):
+    queryset = top_pickers()
+
+
+class UserListTopLastMonth(UserList):
+    def get_queryset(self):
+        last_month = datetime.date.today() - datetime.timedelta(365 / 12)
+        return top_pickers(fruits__created__gte=last_month).exclude(fruit_count=0)
 
 
 class UserDetail(generics.RetrieveAPIView):
