@@ -9,6 +9,8 @@
 
 {% block pickers_active %}active{% endblock %}
 
+{% block body_class %}panel_open{% endblock %}
+
 {% block body %}
 	{# get header #}
 	{% include 'inc/user_info.html' %}
@@ -19,86 +21,91 @@
 			{# map object #}
 			<div id="map-detail" class="col-md-9 col-sm-7 col-xs-12"></div>
 
-			<div class="col-md-3 col-sm-5 col-xs-12 nano">
-			    <div class="nano-content">
-			    	<div class="detail-info inner_minor">
-						<img class="avatar" src="{% avatar user bg_shade=0.3 %}" title="{{ user.username }}">
+			<div class="col-md-3 col-sm-5 the_panel">
+				{# arrow back to map #}
+				<a href="/map" class="back_to_map_quick"></a>
 
-					    <div class="media-body">
-				            {% if user.resolution == user.RESOLUTION.picker %}
-					            <h1>{{ user.username }}</h1>
+				<div class="nano">
+				    <div class="nano-content">
+				    	<div class="detail-info inner_minor">
+							<img class="avatar" src="{% avatar user bg_shade=0.3 %}" title="{{ user.username }}">
 
-					            {% if user.motto %}
-								    <div class="motto">
-							            "{{ user.motto }}"
-								    </div>
-								{% endif %}
-								
-								<div class="markers_added">
-									<label>{% trans "Markers added" %}</label>
-									<strong>{{ user.fruit_count }}</strong>
-								</div>
+						    <div class="media-body">
+					            {% if user.resolution == user.RESOLUTION.picker %}
+						            <h1>{{ user.username }}</h1>
 
-				            {% else %}
-					            {% if user.external_url %}
-					                <h3>
-					                	<a href="{{ user.external_url }}" target="_blank" rel="noopener noreferrer">
-					                		{{ user.username }}
-					                	</a>
-					                </h3>
-				                    <p>
-				                    	(<a href="{{ user.external_url }}" target="_blank" rel="noopener noreferrer">
-				                    		{% trans 'external source of markers' %}
-				                   		</a>)
-				                   	</p>
+						            {% if user.motto %}
+									    <div class="motto">
+								            "{{ user.motto }}"
+									    </div>
+									{% endif %}
+									
+									<div class="markers_added">
+										<label>{% trans "Markers added" %}</label>
+										<strong>{{ user.fruit_count }}</strong>
+									</div>
 
 					            {% else %}
-						            <h3>
-						            	{{ user.username }}
-						            </h3>
-				                    <p>
-				                    	({% trans 'external source of markers' %})
-				                    </p>
+						            {% if user.external_url %}
+						                <h3>
+						                	<a href="{{ user.external_url }}" target="_blank" rel="noopener noreferrer">
+						                		{{ user.username }}
+						                	</a>
+						                </h3>
+					                    <p>
+					                    	(<a href="{{ user.external_url }}" target="_blank" rel="noopener noreferrer">
+					                    		{% trans 'external source of markers' %}
+					                   		</a>)
+					                   	</p>
+
+						            {% else %}
+							            <h3>
+							            	{{ user.username }}
+							            </h3>
+					                    <p>
+					                    	({% trans 'external source of markers' %})
+					                    </p>
+
+						            {% endif %}
 
 					            {% endif %}
+								
+								{% if user.is_authenticated and user == request.user %}
+							        <ul class="list">
+									    <li>
+									    	<a href="{% url 'pickers:settings' user.id %}">{% trans 'Account settings' %}</a>
+									    </li>
+									    <li>
+									    	<a href="{% url 'pickers:messages' user.id %}">{% trans 'My messages' %}</a>
+									    	{# message infobox #}
+									    	{% with num_msg=request.user.get_unread_messages.count %}
+											    {% if num_msg %}
+												    <a href="{% url 'pickers:messages' request.user.id %}" class="messages-count" title="{% blocktrans %}You have {{ num_msg }} unread messages{% endblocktrans %}.">
+													    {{ num_msg }}
+												    </a>
+											    {% endif %}
+										    {% endwith %}
+									    </li>
+								        {% if user.has_usable_password %}
+									        <li>
+									        	<a href="{% url 'account_change_password' %}">{% trans 'Change password' %}</a>
+									        </li>
+								        {% else %}
+									        <li>
+									        	<a href="{% url 'account_set_password' %}">{% trans 'Set password' %}</a>
+									        </li>
+								        {% endif %}
+									    <li><a href="{% url 'socialaccount_connections' %}">{% trans 'Account connections' %}</a></li>
+							        </ul>
+							    {% endif %}
 
-				            {% endif %}
-							
-							{% if user.is_authenticated and user == request.user %}
-						        <ul class="list">
-								    <li>
-								    	<a href="{% url 'pickers:settings' user.id %}">{% trans 'Account settings' %}</a>
-								    </li>
-								    <li>
-								    	<a href="{% url 'pickers:messages' user.id %}">{% trans 'My messages' %}</a>
-								    	{# message infobox #}
-								    	{% with num_msg=request.user.get_unread_messages.count %}
-										    {% if num_msg %}
-											    <a href="{% url 'pickers:messages' request.user.id %}" class="messages-count" title="{% blocktrans %}You have {{ num_msg }} unread messages{% endblocktrans %}.">
-												    {{ num_msg }}
-											    </a>
-										    {% endif %}
-									    {% endwith %}
-								    </li>
-							        {% if user.has_usable_password %}
-								        <li>
-								        	<a href="{% url 'account_change_password' %}">{% trans 'Change password' %}</a>
-								        </li>
-							        {% else %}
-								        <li>
-								        	<a href="{% url 'account_set_password' %}">{% trans 'Set password' %}</a>
-								        </li>
-							        {% endif %}
-								    <li><a href="{% url 'socialaccount_connections' %}">{% trans 'Account connections' %}</a></li>
-						        </ul>
-						    {% endif %}
-
-							<p class="joined">
-								{% trans "Joined" %}: {{ user.date_joined }}
-							</p>
+								<p class="joined">
+									{% trans "Joined" %}: {{ user.date_joined }}
+								</p>
+							</div>
 						</div>
-					</div>
-			    </div>
+				    </div>
+				</div>
 			</div>
 		</div>
 	 

@@ -27,37 +27,58 @@
 	<div id="map">
 		{# floating buttons #}
 		<div id="catalogue">
-			<a id="naovoce" href="#" class="active">{% trans 'mapping' %}</a><a id="revival" href="#">{% trans 'planting' %}</a>
+			<div class="btn trigger active">
+				<a id="naovoce" href="#">
+					{% trans 'mapping' %}
+				</a>
+			</div>
+			<div class="btn info">
+				<i>i<span class="tip">{% trans 'Do you know about a freely accessible fruit tree in your neighborhood?<br>Add it to our map.' %}</span></i>
+			</div>
+
+			<div class="btn trigger">
+				<a id="revival" href="#">
+					{% trans 'planting' %}
+				</a>
+			</div>
+			<div class="btn info">
+				<i>i<span class="tip">{% trans 'Have you planted a tree in public space?<br>Share it with others.' %}</span></i>
+			</div>
 		</div>
+
 		{# kind filter #}
 		<div id="filter">
-			<div id="filter-items">
+			<div class="nano">
+				<div class="nano-content">
+					<div id="filter-items">
 
-				{# build types #}
-				<div class="kinds">
-					{% for name, text in classes %}
-						<a href="#" class="class-choice {{ name }} {% if forloop.first %}active{% endif %}" data-target=".{{ name }}">
-							{{ text }}
-						</a>
-					{% endfor %}
-				</div>
-
-				{# build kinds #}
-				{% for name, text in classes %}
-					<ul class="kinds-list {{ name }} {% if forloop.first %}active{% endif %}">
-						{% for kind in kinds_by_class|getitem:name|naturalsort %}
-							<li>
-								<a href="#" data-kind="{{ kind.key }}">
-									{{ kind }}<span class="fruit-icon-small" style="color:#{{ kind.color }}">&#x{{ kind.key }}</span>
+						{# build types #}
+						<div class="kinds">
+							{% for name, text in classes %}
+								<a href="#" class="class-choice {{ name }} {% if forloop.first %}active{% endif %}" data-target=".{{ name }}">
+									{{ text }}
 								</a>
-							</li>
-						{% endfor %}
-					</ul>
-				{% endfor %}
+							{% endfor %}
+						</div>
 
-			</div>
-			<div class="canceller_holder">
-				<a href="#" class="canceller">{% trans 'Turn off filter' %}</a>
+						{# build kinds #}
+						{% for name, text in classes %}
+							<ul class="kinds-list {{ name }} {% if forloop.first %}active{% endif %}">
+								{% for kind in kinds_by_class|getitem:name|naturalsort %}
+									<li>
+										<a href="#" data-kind="{{ kind.key }}">
+											{{ kind }}<span class="fruit-icon-small" style="color:#{{ kind.color }}">&#x{{ kind.key }}</span>
+										</a>
+									</li>
+								{% endfor %}
+							</ul>
+						{% endfor %}
+
+					</div>
+					<div class="canceller_holder">
+						<a href="#" class="canceller"><span class="x"></span>{% trans 'Turn off filter' %}</a>
+					</div>
+				</div>
 			</div>
 		</div>
 		
@@ -117,12 +138,13 @@
 				else
 					map.filterMarkers kind, markers_cache_key
 
+			# ON MAP buttons
 			$catalogue_naovoce
 				.on 'click', (e) ->
 					e.preventDefault()
+					$('#catalogue .btn').removeClass('active')
 					if not $catalogue_naovoce.hasClass 'active'
-						$catalogue_revival.removeClass 'active'
-						$catalogue_naovoce.addClass 'active'
+						$(this).parent('.btn').addClass 'active'
 						markers_cache_key = '{{ catalogue.naovoce }}'
 						map.clearMarkers()
 							.loadMarkers '{% url 'api:fruit-list' %}', markers_cache_key
@@ -132,16 +154,16 @@
 			$catalogue_revival
 				.on 'click', (e) ->
 					e.preventDefault()
+					$('#catalogue .btn').removeClass('active')
 					if not $catalogue_revival.hasClass 'active'
-						$catalogue_naovoce.removeClass 'active'
-						$catalogue_revival.addClass 'active'
+						$(this).parent('.btn').addClass 'active'
 						markers_cache_key = '{{ catalogue.revival }}'
 						map.clearMarkers()
 							.loadMarkers '{% url 'api:fruit-list' %}?catalogue={{ catalogue.revival }}', markers_cache_key
 
 					false
-			
-				
+		
+		
 		</script>
 	{% endcompress %}
 {% endblock %}
