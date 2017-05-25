@@ -9,7 +9,7 @@
 
 {% block pickers_active %}active{% endblock %}
 
-{% block body_class %}panel_open{% endblock %}
+{% block body_class %}panel_open picker_detail{% endblock %}
 
 {% block body %}
 	{# get header #}
@@ -96,6 +96,8 @@
 									        </li>
 								        {% endif %}
 									    <li><a href="{% url 'socialaccount_connections' %}">{% trans 'Account connections' %}</a></li>
+									    {# picker codex #}
+									    <li><a href="http://wordpress.na-ovoce.cz/kodex">{% trans 'Picker codex' %}</a></li>
 							        </ul>
 							    {% endif %}
 

@@ -8,7 +8,7 @@
 
 {% block map_active %}active{% endblock %}
 
-{% block body_class %}add_fruit{% endblock %}
+{% block body_class %}add_fruit panel_open{% endblock %}
 
 {% block body %}
 	{# header #}
@@ -22,24 +22,26 @@
 			<div id="map-detail" class="col-md-9 col-sm-7 col-xs-12">
 			</div>
 
-		    <div class="col-md-3 col-sm-5 nano">
-		    	<div class="nano-content">
-			    	<div class="inner_minor">
-					    <h1>
-					    	{% trans "You can add a marker here" %}
-					   	</h1>
-						
-			            <p class="description">
-				            {% trans 'Please place the marker into the map' %}
-				            {% trans 'or enter the coordinates in decimal format, eg.:'%} <code>{{ 14.449108|localize }}</code>
-			            </p>
-				        
+		    <div class="col-md-3 col-sm-5 the_panel">
+			    <div class="nano">
+			    	<div class="nano-content">
+				    	<div class="inner_minor">
+						    <h1>
+						    	{% trans "You can add a marker here" %}
+						   	</h1>
+							
+				            <p class="description">
+					            {% trans 'Please place the marker into the map' %}
+					            {% trans 'or enter the coordinates in decimal format, eg.:'%} <code>{{ 14.449108|localize }}</code>
+				            </p>
+					        
 
-				        {% block form %}
-				        	{% include "fruit/inc/fruitform.html" with mode="add" %}
-				    	{% endblock %}
-					</div>
-			    </div>
+					        {% block form %}
+					        	{% include "fruit/inc/fruitform.html" with mode="add" %}
+					    	{% endblock %}
+						</div>
+				    </div>
+				 </div>
 		    </div>    
 		</div>
 	</div>

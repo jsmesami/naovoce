@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-23 18:16+0200\n"
-"PO-Revision-Date: 2017-05-23 18:20+0200\n"
+"POT-Creation-Date: 2017-05-25 14:32+0200\n"
+"PO-Revision-Date: 2017-05-25 14:33+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -484,7 +484,8 @@ msgid "Sign In"
 msgstr "Přihlášení"
 
 #: naovoce/templates/account/login.html:13
-#: naovoce/templates/inc/user_info.html:29
+#: naovoce/templates/inc/user_info.html:35
+#: naovoce/templates/inc/user_info.html:36
 msgid "Sign in"
 msgstr "Přihlášení"
 
@@ -522,17 +523,17 @@ msgstr "Zapoměli jste své heslo?"
 msgid "Sign Out"
 msgstr "Odhlášení"
 
-#: naovoce/templates/account/logout.html:8
-#: naovoce/templates/inc/user_info.html:18
+#: naovoce/templates/account/logout.html:10
+#: naovoce/templates/inc/user_info.html:24
 msgid "Sign out"
 msgstr "Odhlášení"
 
-#: naovoce/templates/account/logout.html:9
+#: naovoce/templates/account/logout.html:11
 msgctxt "infinitive"
 msgid "Sign out"
 msgstr "Odhlásit se"
 
-#: naovoce/templates/account/logout.html:10
+#: naovoce/templates/account/logout.html:12
 msgid "Are you sure you want to sign out?"
 msgstr "Opravdu se chcete odhlásit?"
 
@@ -545,7 +546,7 @@ msgstr "Změnit heslo"
 
 #: naovoce/templates/account/password_change.html:12
 #: naovoce/templates/account/password_change.html:17
-#: naovoce/templates/pickers/detail.html:85
+#: naovoce/templates/pickers/detail.html:91
 msgid "Change password"
 msgstr "Změnit heslo"
 
@@ -629,13 +630,14 @@ msgstr "Nastavit heslo"
 
 #: naovoce/templates/account/password_set.html:12
 #: naovoce/templates/account/password_set.html:17
-#: naovoce/templates/pickers/detail.html:89
+#: naovoce/templates/pickers/detail.html:95
 msgid "Set password"
 msgstr "Nastavit heslo"
 
 #: naovoce/templates/account/signup.html:7
 #: naovoce/templates/account/signup.html:13
-#: naovoce/templates/inc/user_info.html:29
+#: naovoce/templates/inc/user_info.html:39
+#: naovoce/templates/inc/user_info.html:40
 msgid "Registration"
 msgstr "Registrace"
 
@@ -644,11 +646,23 @@ msgid "You can sign up with <strong>Facebook</strong>"
 msgstr "Můžete se zaregistrovat <strong>Facebookem</strong>"
 
 #: naovoce/templates/account/signup.html:23
+msgid "By clicking on the register button you agree with the"
+msgstr "Kliknutím na tlačítko registrovat zároveň potvrzujete, že souhlasíte s"
+
+#: naovoce/templates/account/signup.html:23
+#: naovoce/templates/inc/user_info.html:53
+#: naovoce/templates/pickers/detail.html:100
+#, fuzzy
+#| msgid "Picker's Codex"
+msgid "Picker codex"
+msgstr "Kodex sběrače"
+
+#: naovoce/templates/account/signup.html:27
 #: naovoce/templates/socialaccount/signup.html:43
 msgid "Register"
 msgstr "Registrovat"
 
-#: naovoce/templates/account/signup.html:31
+#: naovoce/templates/account/signup.html:35
 #, python-format
 msgid ""
 "If you already have an account, please <a href=\"%(login_url)s\">sign in</a>."
@@ -709,15 +723,15 @@ msgstr "k přidání komentáře"
 msgid "Add a Marker"
 msgstr "Přidat značku"
 
-#: naovoce/templates/fruit/add.html:29
+#: naovoce/templates/fruit/add.html:30
 msgid "You can add a marker here"
 msgstr "Zde můžete přidat značku"
 
-#: naovoce/templates/fruit/add.html:33
+#: naovoce/templates/fruit/add.html:34
 msgid "Please place the marker into the map"
 msgstr "Prosíme, přidejte značku do mapy,"
 
-#: naovoce/templates/fruit/add.html:34
+#: naovoce/templates/fruit/add.html:35
 msgid "or enter the coordinates in decimal format, eg.:"
 msgstr "nebo zadejte souřadnice v decimálním formátu, např.:"
 
@@ -726,14 +740,19 @@ msgctxt "infinitive"
 msgid "Delete Marker"
 msgstr "Smazání značky"
 
-#: naovoce/templates/fruit/delete.html:12
+#: naovoce/templates/fruit/delete.html:14
 msgid "Delete marker"
 msgstr "Smazání značky"
 
-#: naovoce/templates/fruit/delete.html:15
+#: naovoce/templates/fruit/delete.html:17
 msgctxt "infinitive"
 msgid "Delete"
 msgstr "Smazat značku"
+
+#: naovoce/templates/fruit/delete.html:19 naovoce/templates/inc/confirm.html:12
+#: naovoce/templates/pickers/settings.html:48
+msgid "Back"
+msgstr "Zpět"
 
 #: naovoce/templates/fruit/detail.html:48
 #: naovoce/templates/gallery/browser.html:46
@@ -745,40 +764,41 @@ msgstr "Následující"
 msgid "Previous"
 msgstr "Předchozí"
 
-#: naovoce/templates/fruit/detail.html:180
+#: naovoce/templates/fruit/detail.html:181
 #, python-format
 msgid "Returned to the land by <a href=\"%(url)s\">%(username)s</a>"
 msgstr "Vráceno zemi uživatelem <a href=\"%(url)s\">%(username)s</a>"
 
-#: naovoce/templates/fruit/detail.html:187 naovoce/templates/inc/mapjs.html:103
+#: naovoce/templates/fruit/detail.html:188 naovoce/templates/inc/mapjs.html:103
 msgid "Shared by"
 msgstr "Sdílí"
 
-#: naovoce/templates/fruit/detail.html:195
+#: naovoce/templates/fruit/detail.html:196
 msgid "Added"
 msgstr "Přidáno"
 
-#: naovoce/templates/fruit/detail.html:202
+#: naovoce/templates/fruit/detail.html:203
 msgid "Unknown address"
 msgstr "Neznámá adresa"
 
-#: naovoce/templates/fruit/detail.html:208
+#: naovoce/templates/fruit/detail.html:209
 msgid "This marker has been deleted"
 msgstr "Tato značka byla smazána"
 
-#: naovoce/templates/fruit/detail.html:210
+#: naovoce/templates/fruit/detail.html:211
 msgid "Reason of deletion"
 msgstr "Důvod smazání"
 
-#: naovoce/templates/fruit/detail.html:219
+#: naovoce/templates/fruit/detail.html:220
+#: naovoce/templates/inc/user_info.html:59
 msgid "Herbarium"
 msgstr "Herbář"
 
-#: naovoce/templates/fruit/detail.html:226
+#: naovoce/templates/fruit/detail.html:227
 msgid "Edit"
 msgstr "Upravit"
 
-#: naovoce/templates/fruit/detail.html:231
+#: naovoce/templates/fruit/detail.html:232
 msgid "Delete"
 msgstr "Smazat"
 
@@ -817,9 +837,9 @@ msgstr "Autor"
 msgid "added"
 msgstr "přidáno"
 
-#: naovoce/templates/gallery/inc/form.html:10 staticpage/models.py:8
-msgid "title"
-msgstr "titulek"
+#: naovoce/templates/gallery/inc/form.html:10
+msgid "Photo title"
+msgstr "Titulek fotky"
 
 #: naovoce/templates/gallery/inc/form.html:13
 msgid "Choose a photo"
@@ -833,11 +853,6 @@ msgstr "Přidejte fotku"
 #: naovoce/templates/gallery/inc/form.html:29
 msgid "to add a photo"
 msgstr "k přidání fotky"
-
-#: naovoce/templates/inc/confirm.html:12
-#: naovoce/templates/pickers/settings.html:48
-msgid "Back"
-msgstr "Zpět"
 
 #: naovoce/templates/inc/mapjs.html:21
 msgid "Fruit kind"
@@ -877,27 +892,27 @@ msgstr ""
 "Líbí se vám, co děláme? Zvažte prosím malý <a href=\"%(url)s\">příspěvek</a> "
 "na naši práci."
 
-#: naovoce/templates/inc/user_info.html:11
+#: naovoce/templates/inc/user_info.html:14
 #, fuzzy
 #| msgid "back to map"
 msgid "back to website"
 msgstr "zpět do mapy"
 
-#: naovoce/templates/inc/user_info.html:14
+#: naovoce/templates/inc/user_info.html:19
 msgid "back to map"
 msgstr "zpět do mapy"
 
-#: naovoce/templates/inc/user_info.html:18
+#: naovoce/templates/inc/user_info.html:24
 msgid "User profile"
 msgstr "Profil uživatele"
 
-#: naovoce/templates/inc/user_info.html:22
-#: naovoce/templates/pickers/detail.html:77
+#: naovoce/templates/inc/user_info.html:28
+#: naovoce/templates/pickers/detail.html:83
 #, python-format
 msgid "You have %(num_msg)s unread messages"
 msgstr "Máte nepřečtené zprávy (%(num_msg)s)"
 
-#: naovoce/templates/inc/user_info.html:35
+#: naovoce/templates/inc/user_info.html:47
 msgid "Add Marker"
 msgstr "Přidat značku"
 
@@ -939,29 +954,29 @@ msgstr ""
 msgid "Turn off filter"
 msgstr "Zrušit filtr"
 
-#: naovoce/templates/pickers/detail.html:38
+#: naovoce/templates/pickers/detail.html:44
 msgid "Markers added"
 msgstr "Počet značek"
 
-#: naovoce/templates/pickers/detail.html:51
-#: naovoce/templates/pickers/detail.html:60
+#: naovoce/templates/pickers/detail.html:57
+#: naovoce/templates/pickers/detail.html:66
 msgid "external source of markers"
 msgstr "externí zdroj značek"
 
-#: naovoce/templates/pickers/detail.html:70
+#: naovoce/templates/pickers/detail.html:76
 msgid "Account settings"
 msgstr "Nastavení účtu"
 
-#: naovoce/templates/pickers/detail.html:73
+#: naovoce/templates/pickers/detail.html:79
 msgid "My messages"
 msgstr "Mé zprávy"
 
-#: naovoce/templates/pickers/detail.html:92
+#: naovoce/templates/pickers/detail.html:98
 #: naovoce/templates/socialaccount/connections.html:12
 msgid "Account connections"
 msgstr "Propojení účtu"
 
-#: naovoce/templates/pickers/detail.html:97
+#: naovoce/templates/pickers/detail.html:105
 msgid "Joined"
 msgstr "Mapuje od"
 
@@ -1158,6 +1173,10 @@ msgstr "Byli jste odhlášeni z odběru našeho newsletteru."
 #: newsletter/views.py:40
 msgid "There has been an error unsubscribing you from our newsletter."
 msgstr "Stala se chyba při odhlašování z odběru newsletteru."
+
+#: staticpage/models.py:8
+msgid "title"
+msgstr "titulek"
 
 #: staticpage/models.py:10
 msgid "meta description"
@@ -1597,9 +1616,6 @@ msgstr "Čtěte více"
 
 #~ msgid "Quick Links"
 #~ msgstr "Rychlé odkazy"
-
-#~ msgid "Picker's Codex"
-#~ msgstr "Kodex sběrače"
 
 #~ msgid "Privacy Policy"
 #~ msgstr "Ochrana os. údajů"

@@ -4,6 +4,8 @@
 
 {% block title %}{% trans 'Sign Out' %} | {{ block.super }}{% endblock %}
 
+{% block body_class %}logout{% endblock %}
+
 {% block content %}
 	{% trans 'Sign out' as title %}
 	{% trans 'Sign out' context 'infinitive' as cta %}

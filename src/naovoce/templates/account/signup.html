@@ -18,6 +18,10 @@
 		</div>
 		<form class="panel-body" method="post" action="{% url 'account_signup' %}" role="form">{% csrf_token %}
 			{{ form|bootstrap }}
+			
+			<p>
+				{% trans 'By clicking on the register button you agree with the' %} <a href="http://wordpress.na-ovoce.cz/kodex">{% trans 'Picker codex' %}</a>.
+			</p>
 
 			<div class="form-group">
 				<input class="btn btn-primary" value="{% trans 'Register' %}" type="submit">
