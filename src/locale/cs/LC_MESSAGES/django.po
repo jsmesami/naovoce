@@ -893,7 +893,6 @@ msgstr ""
 "na naši práci."
 
 #: naovoce/templates/inc/user_info.html:14
-#, fuzzy
 #| msgid "back to map"
 msgid "back to website"
 msgstr "zpět do mapy"

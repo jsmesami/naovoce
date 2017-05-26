@@ -11,6 +11,8 @@
 
     <div class="container" id="main-content">
 
+    {% comment %}
+        {# Messages are broken in current design #}
         {% if messages %}
           <ul class="messages list-unstyled">
               {% for message in messages %}
@@ -18,9 +20,9 @@
                   {{ message }}
                 </li>
               {% endfor %}
-
           </ul>
         {% endif %}
+    {% endcomment %}
 
         {% block content %}
         {% endblock %}
