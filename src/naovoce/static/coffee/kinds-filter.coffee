@@ -1,21 +1,14 @@
-$filter = $('#filter')
-$toggler = $('.toggler')
-$handle = $('.handle')
 $class_choices = $('.class-choice')
 $kinds_lists = $('.kinds-list')
 $kind_choices = $kinds_lists.find 'a'
 $canceller = $('.canceller')
-
+$filter = $('#filter')
+$handle = $('.handle');
 class Filter
 	constructor: ->
 
-
 	reload: (kind) ->
 		@
-	
-	showFilter: ->
-		$filter.addClass 'open'
-		$handle.addClass 'open'
 
 	sneakPeek: ->
 		$filter.addClass 'sneakPeek' 
@@ -25,19 +18,10 @@ class Filter
 		$kinds_lists.siblings(target).show()
 		$class_choices.removeClass('active')
 		$(e).addClass 'active'
-
-	hideFilter: (onComplete) ->
-		$filter.removeClass 'open' 
-		$handle.removeClass 'open'
-	
-	toggleFilter: ->
-		$filter.toggleClass 'open' 
-		$handle.toggleClass 'open'
+		
 
 @filter = F = new Filter()
 
-$toggler.on 'click', ->
-	F.toggleFilter()
 	
 $class_choices.on 'click', ->
 	target = $(@).data 'target'
@@ -62,3 +46,5 @@ $kind_choices.on 'click', ->
  	$kind_choices.removeClass('active')
  	F.reload()
  	false
+
+	

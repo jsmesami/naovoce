@@ -6,7 +6,7 @@
 	imageForm = $ 'form.image-form'
 
 	if not imageForm.hasClass 'errors'
-		$ "<a href='#' class='btn_inverse add_photo'>{% trans 'Add a photo' %}</a>"
+		$ "<a href='#' class='add_photo'>{% trans 'Add a photo' %}</a>"
 			.insertBefore imageForm
 			.one 'click', ->
 				this.remove()

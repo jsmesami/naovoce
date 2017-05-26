@@ -46,5 +46,17 @@
 
 		{% block scripts %}
 		{% endblock %}
+
+		{# create an info object for old mobiles, Samsungs etc. #}
+		<div id="getApp">
+			<a href="http://na-ovoce.cz">
+				<img src="{% static 'img/na-ovoce.svg' %}" alt="Na Ovoce">
+			</a>
+			<p>
+				{% trans 'Hi Armstrong, install our fruit app.' %}
+			</p>
+			<a class="isSamsung" href="https://play.google.com/store/apps/details?id=com.naovoce.naovoce"><img src="{% static 'img/android.png' %}" alt="get app"></a>
+		</div>
+
 	</body>
 </html>

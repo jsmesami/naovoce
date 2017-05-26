@@ -13,6 +13,7 @@
     "esri-leaflet-geocoder": "~2",
     "nanoscroller": "^0.8.7",
     "prefixfree": "*",
-    "slick": "*"
+    "slick-carousel": "*",
+    "mobile-detect" : "*"
   }
 }
