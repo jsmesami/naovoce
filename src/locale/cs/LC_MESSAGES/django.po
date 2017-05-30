@@ -895,7 +895,7 @@ msgstr ""
 #: naovoce/templates/inc/user_info.html:14
 #| msgid "back to map"
 msgid "back to website"
-msgstr "zpět do mapy"
+msgstr "zpět na stránku"
 
 #: naovoce/templates/inc/user_info.html:19
 msgid "back to map"
