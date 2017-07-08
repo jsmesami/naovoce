@@ -56,7 +56,7 @@ USE_TZ = True
 
 TIME_ZONE = 'Europe/Prague'
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'cs'
 
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'cs'
 
@@ -187,7 +187,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'utils.i18n.middleware.SessionBasedLocaleMiddleware',
+    'utils.i18n.middleware.ForceDefaultLanguageMiddleware',
 )
 
 DJANGO_APPS = (
@@ -197,14 +197,12 @@ DJANGO_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'django.contrib.sitemaps',
     'django.contrib.postgres',
 )
 
 LOCAL_APPS = (
     'user',
     'gallery',
-    'blog',
     'fruit',
     'fruit.herbarium',
     'newsletter',
@@ -225,7 +223,6 @@ EXTERNAL_APPS = (
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     'captcha',
-    'endless_pagination',
     'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',

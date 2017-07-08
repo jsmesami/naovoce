@@ -124,7 +124,7 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
 
     def has_newsletter(self):
         mailing_list = newsletter.List.get_default()
-        return mailing_list.is_subscribed(self)
+        return mailing_list.is_subscribed(self) if mailing_list else False
 
     @staticmethod
     def _mangle_avatar_name(filename):

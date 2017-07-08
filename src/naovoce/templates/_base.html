@@ -8,7 +8,6 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-	<meta name="description" content="{% block meta_description %}{% endblock %}">
 	<meta name="author" content="Na-ovoce.cz">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="mobile-web-app-capable" content="yes">
@@ -27,8 +26,7 @@
 			<link rel="stylesheet" href="{% static 'less/naovoce.less' %}" type="text/less" media="screen, projection" charset="utf-8">
 		{% endcompress %}
 	{% endblock %}
-    <link rel="alternate" type="application/rss+xml" href="{% url 'rss-blog' %}" title="Blog">
-    <link rel="alternate" type="application/rss+xml" href="{% url 'rss-fruit' %}" title="{% trans 'Fresh fruit' %}">
+    <link rel="stylesheet" href="https://naovoce.devel-2046.cz/style.css" type="text/css" media="screen, projection" charset="utf-8">
 
 	{% block head %}
 	{% endblock %}
@@ -39,7 +37,6 @@
 	{% endblock %}
 </head>
 <body>
-<div id="fb-root"></div>
 {% block body %}
 {% endblock %}
 

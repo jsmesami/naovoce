@@ -23,13 +23,7 @@
 			&#x{{ fruit.kind.key }};
 		</span>
 	    <div class="media-body">
-            {% with herbarium=fruit.kind.herbarium %}
-	            {% if herbarium %}
-	                <h3><a href="{{ herbarium.get_absolute_url }}">{{ fruit.kind.name }}</a></h3>
-	            {% else %}
-		            <h3>{{ fruit.kind.name }}</h3>
-	            {% endif %}
-            {% endwith %}
+            <h3>{{ fruit.kind.name }}</h3>
 	        {% if fruit.catalogue == fruit.CATALOGUE.revival %}
                 <p>
                 {% blocktrans with url=fruit.user.get_absolute_url username=fruit.user.username trimmed %}
@@ -85,11 +79,6 @@
 		        <li><a href="{% url 'fruit:delete' fruit.id %}">{% trans 'Delete' %}</a></li>
 	        {% endif %}
 	        <li><a href="{% url 'fruit:add' %}">{% trans 'Add marker' %}</a></li>
-            {% with herbarium=fruit.kind.herbarium %}
-	            {% if herbarium %}
-	                <li><a href="{{ herbarium.get_absolute_url }}">{% trans 'Herbarium' %}</a></li>
-	            {% endif %}
-            {% endwith %}
         </ul>
         <hr>
     </div>

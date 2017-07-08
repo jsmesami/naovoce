@@ -2,17 +2,32 @@
 @import "clusters";
 
 html {
-	overflow-y: scroll;
+	overflow-x: hidden;
 }
 
 @-ms-viewport {
 	width: device-width;
 }
 
-body {
+.blurred(@radius: 5px) {
+	-webkit-filter: blur(@radius);
+	-moz-filter: blur(@radius);
+	-o-filter: blur(@radius);
+	-ms-filter: blur(@radius);
+	filter: blur(@radius);
+}
+
+body:before {
+	content: " ";
 	background-image: url("@{base-url}/img/bg.svg");
 	background-position: center -40px;
 	background-repeat: repeat-y;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+
+	.blurred;
 }
 
 @media (min-width: 768px) {
@@ -22,7 +37,6 @@ body {
 }
 
 textarea {
-	overflow-y: scroll;
     resize: none;
 }
 
@@ -66,28 +80,6 @@ h3 {
 
 h4, h5, h6 {
 	.heading-color(@brand-primary);
-}
-
-h2.claim {
-	margin-top: 30px;
-	text-align: center;
-}
-
-.call {
-	text-align: center;
-	margin: 30px 0 10px;
-	button {
-		min-width: 180px;
-	}
-}
-
-.footer {
-	h4 {
-		color: @brand-tertiary;
-	}
-	ul + h4 {
-		margin-top: 14px;
-	}
 }
 
 .panel-heading {
@@ -189,15 +181,13 @@ hr {
 
 #user-info {
 	background: @brand-success;
+	padding: 0 @grid-gutter-width/2;
 	p {
 		margin: 2px 0 4px 0;
-		font-size: 90%;
+		display: inline-block;
 		color: @text-success;
 		a {
 			color: @text-success;
-		}
-		.langsel {
-			float: right;
 		}
 	}
  	a.messages-count {
@@ -224,74 +214,6 @@ hr {
 
 #main-content {
 	padding-bottom: 20px;
-}
-
-#main-nav {
-	margin-bottom: 0;
-	border: 0;
-	.navbar-nav {
-		font-family: @headings-font-family;
-		.dropdown-menu {
-			min-width: 0;
-			left: -10px;
-			right: auto;
-			border: none;
-			box-shadow: none;
-			@media (min-width: @screen-xs-max) {
-				border: 1px dotted @brand-primary;
-				border-top: 1px solid white;
-			}
-			> li > a {
-				padding: 5px 20px;
-				color: @brand-primary;
-				&:active,
-				&:hover {
-					color: @brand-secondary;
-					background-color: transparent;
-				}
-			}
-		}
-	}
-	.navbar-toggle {
-		margin: 8px 0 0 15px;
-	}
-	#brand-logo {
-		display: inline-block;
-		margin: 15px 0 10px;
-		svg {
-			width: 82px;
-			height: 40px;
-		}
-		@media (min-width: @screen-xs-max) {
-			margin: 20px 0 15px;
-			svg {
-				width: 109px;
-				height: 53px;
-			}
-		}
-	}
-	.social {
-		text-align: right;
-		margin: 11px 0 15px;
-		@media (min-width: @screen-xs-max) {
-			margin: 23px 0 3px 0;
-		}
-		a {
-			width: 22px;
-			height: 22px;
-			margin: 14px 0 0 5px;
-			display: inline-block;
-			@media (min-width: @screen-xs-max) {
-				margin: 0 0 0 5px;
-			}
-			&:hover,
-			&:active {
-				svg path {
-					fill: darken(@brand-tertiary, 5%);
-				}
-			}
-		}
-	}
 }
 
 #catalogue {
@@ -461,19 +383,13 @@ hr {
 	font-size: 14px;
 	line-height: 45px;
 	padding: 0 15px;
-	border: 1px solid gray;
-	border-radius: 3px;
-	color: @brand-secondary;
-	background: white;
+	color: white;
+	background: @brand-secondary;
 	.fruit-icon-small {
 		position: relative;
 		top: 5px;
 		left: -5px;
 	}
-}
-
-hr.head-separator {
-	margin: 0;
 }
 
 ul.messages {
@@ -501,10 +417,6 @@ ul.errorlist.nonfield {
 		.alert;
 		.alert-danger;
 	}
-}
-
-a.read-more {
-	display: block;
 }
 
 .panel {
@@ -539,26 +451,6 @@ a.read-more {
 
 .fruit-icon-small {
 	.make-marker(25px);
-}
-
-.pills {
-	margin: 20px 0;
-	a {
-		.label;
-		line-height: 23px;
-		background-color: @brand-secondary;
-		&.active {
-			background-color: @brand-tertiary;
-		}
-	}
-}
-
-.explore-map {
-	display: block;
-	width: 100%;
-	height: 100px;
-	background: url("@{base-url}/img/screen.jpg") center center;
-	background-size: 720px 149px;
 }
 
 .detail-info {
@@ -670,126 +562,6 @@ a.read-more {
 	}
 }
 
-.img-in-text {
-	width: 100%;
-	margin: 15px 0;
-	@media (min-width: @screen-xs-max) {
-		margin: 7px @grid-gutter-width 10px 0;
-	}
-}
-
-.blog-preview img {
-	width: 100px;
-}
-
-.columned {
-	@media (min-width: @screen-xs-max) {
-		-webkit-column-count: 2;
-		-moz-column-count: 2;
-		column-count: 2;
-	}
-}
-
-.latest-entries {
-	h4 {
-		margin-top: 20px;
-	}
-	.fruit-description {
-		font-size: 90%;
-	}
-	.images-count a {
-		&:active,
-		&:hover {
-			text-decoration: none;
-		}
-	}
-}
-
-.latest-images {
-	margin: 0 -5px;
-	h3, hr {
-		margin-left: 5px;
-		margin-right: 5px;
-	}
-	a {
-		display: inline-block;
-		width: 100px;
-		padding: 5px;
-		float: left;
-	}
-	img {
-		.img-responsive;
-	}
-}
-
-.hall-of-fame:extend(.columned) {
-	padding-top: 10px;
-	li {
-		margin: 10px 0;
-		&:first-child {
-			margin: 0;
-		}
-	}
-	.avatar {
-		margin-right: 10px;
-		width: 30px;
-		height: 30px;
-	}
-}
-
-.herbarium-index:extend(.columned) {
-	a {
-		vertical-align: top;
-	}
-}
-
-.partners {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: flex-start;
-	margin: 0 -10px;
-	a {
-		margin: 10px;
-		height: 80px;
-		display: flex;
-	}
-	img {
-		align-self: center;
-	}
-}
-
-.social {
-	margin: 0;
-	.facebook, .twitter, div.donate {
-		float: left;
-		width: 70px;
-	}
-	div.donate a {
-		background: @brand-secondary;
-		color: white;
-		line-height: 21px;
-		display: block;
-		padding: 0 8px;
-		font-size: 12px;
-		margin: 0 10px 0 4px;
-		border-radius: 3px;
-		&:active,
-		&:hover {
-			background: darken(@brand-secondary, 5%);
-		}
-	}
-	span.donate {
-		display: block;
-		clear: left;
-		float: left;
-		margin-top: 10px;
-		@media (min-width: @screen-xs-max) {
-			display: inline;
-			float: none;
-		}
-	}
-}
-
 .comment:last-of-type {
 	margin-bottom: 20px;
 }
@@ -896,152 +668,7 @@ a.read-more {
 }
 
 
-.store-links {
-	margin-top: 12px;
-	a, img {
-		display: inline-block;
-		width: 150px;
-		margin-left: -5px;
-	}
-	.app-store img {
-		padding: 9px;
-	}
-	@media (min-width: @screen-xs-max) {
-		a, img {
-			width: 100%;
-		}
-	}
-}
-
-.media-coverage {
-	.media-item {
-		padding: 15px;
-		border: 1px dotted @brand-primary;
-		height: 420px;
-		overflow: hidden;
-		margin-bottom: 20px;
-		@media (max-width: @screen-xs-max) {
-			max-width: 210px;
-		}
-	}
-	.media-logo {
-		display: block;
-		max-height: 120px;
-		overflow: hidden;
-	}
-	.media-type {
-		float: left;
-	}
-	.media-date {
-		float: right;
-	}
-	.media-perex {
-		a {
-			color: @brand-primary;
-		}
-		a:active,
-		a:hover {
-			color: darken(@brand-primary, 15%)
-		}
-	}
-	.online {
-		a {
-			color: @brand-secondary;
-		}
-		a:active,
-		a:hover {
-			color: darken(@brand-secondary, 15%)
-		}
-	}
-	.printed {
-		a {
-			color: @brand-quaternary;
-		}
-		a:active,
-		a:hover {
-			color: darken(@brand-quaternary, 15%)
-		}
-	}
-	.broadcast {
-		a {
-			color: @brand-tertiary;
-		}
-		a:active,
-		a:hover {
-			color: darken(@brand-tertiary, 15%)
-		}
-	}
-}
-
 .leaflet-container .leaflet-control-attribution {
 	transform: rotate(270deg);
 	transform-origin: 9px 9px 0;
-}
-
-.donation {
-	text-align: center;
-	h3 {
-		color: @brand-primary;
-	}
-	.form-group {
-		margin: 20px 0;
-	}
-	.donation-amount {
-		label {
-			width: 75px;
-			height: 100px;
-			margin: 0;
-			position: relative;
-			overflow: hidden;
-			input {
-				width: 100%;
-				height: 100%;
-				margin: 0;
-				visibility: hidden;
-			}
-			&:after {
-				content: ' ';
-				width: 100%;
-				height: 100%;
-				position: absolute;
-				top: 0;
-				left: 0;
-				cursor: pointer;
-				background: white url("@{base-url}/img/donate-buttons.svg");
-			}
-			&#amount_300:after {
-				background-position: -75px 0;
-			}
-			&#amount_600:after {
-				background-position: -150px 0;
-			}
-			&#amount_1000:after {
-				background-position: -225px 0;
-			}
-		}
-	}
-	.donation-amount-custom {
-		input {
-			width: 100px;
-			display: inline-block;
-		}
-		button {
-			margin-left: 20px;
-		}
-	}
-}
-
-.banner {
-	margin-bottom: @grid-gutter-width/2;
-	h4 {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		color: white;
-		margin: @grid-gutter-width/2 @grid-gutter-width;
-		font-size: 20px;
-	}
-	h2 {
-		margin-top: 0;
-	}
 }

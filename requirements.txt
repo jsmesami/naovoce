@@ -4,7 +4,6 @@ CairoSVG>=1.0
 django-allauth>=0.23
 django-bootstrap-form>=3.2
 django-compressor>=1.5
-django-endless-pagination>=2
 django-ipware>=1.1
 django-modeltranslation>=0.10
 django-recaptcha>=1.2.1

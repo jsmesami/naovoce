@@ -1,4 +1,3 @@
-from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
@@ -26,9 +25,6 @@ class Herbarium(models.Model):
     @property
     def slug(self):
         return slugify(str(self))
-
-    def get_absolute_url(self):
-        return reverse('herbarium:detail', args=[self.id, self.slug])
 
     def __str__(self):
         return self.full_name or self.kind.name

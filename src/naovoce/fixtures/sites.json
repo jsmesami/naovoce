@@ -11,8 +11,16 @@
     "model": "sites.site",
     "pk": 2,
     "fields": {
-        "domain": "localhost",
+        "domain": "localhost:8000",
         "name": "localhost"
+    }
+},
+{
+    "model": "sites.site",
+    "pk": 3,
+    "fields": {
+        "domain": "staging.na-ovoce.cz",
+        "name": "staging"
     }
 }
 ]
