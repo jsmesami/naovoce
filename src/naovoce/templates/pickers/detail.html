@@ -9,69 +9,118 @@
 
 {% block pickers_active %}active{% endblock %}
 
-{% block content %}
-<div class="row detail-info">
-    <div class="col-sm-6 media">
-		<img class="pull-left avatar"
-		     src="{% avatar user bg_shade=0.3 %}"
-		     title="{{ user.username }}">
-	    <div class="media-body">
-            {% if user.resolution == user.RESOLUTION.picker %}
-	            <h3>{{ user.username }}</h3>
-			    <p>{% trans "Joined" %}: <strong>{{ user.date_joined }}</strong></p>
-            {% else %}
-	            {% if user.external_url %}
-	                <h3><a href="{{ user.external_url }}" target="_blank" rel="noopener noreferrer">{{ user.username }}</a></h3>
-                    <p>(<a href="{{ user.external_url }}" target="_blank" rel="noopener noreferrer">{% trans 'external source of markers' %}</a>)</p>
-	            {% else %}
-		            <h3>{{ user.username }}</h3>
-                    <p>({% trans 'external source of markers' %})</p>
-	            {% endif %}
-            {% endif %}
-			<p>{% trans "Markers added" %}: <strong>{{ user.fruit_count }}</strong></p>
-	    </div>
-    </div>
-	{% if user.motto %}
-    <div class="col-sm-12">
-	    <div class="motto">
-            <p><strong>Motto:</strong> {{ user.motto }}</p>
-	    </div>
-    </div>
-	{% endif %}
-</div>
-<div class="row">
-    <div class="col-sm-12">
-	    <div id="map-detail"></div>
-	</div>
-    <div class="col-sm-12">
-        <ul class="quick-links">
-	        <li><a href="{% url 'map' %}">{% trans 'Large map' %}</a></li>
-	        <li><a href="{% url 'fruit:add' %}">{% trans 'Add marker' %}</a></li>
-        </ul>
-    {% if user.is_authenticated and user == request.user %}
-        <hr>
-        <ul class="quick-links">
-		    <li><a href="{% url 'pickers:settings' user.id %}">{% trans 'Account settings' %}</a></li>
-		    <li><a href="{% url 'pickers:messages' user.id %}">{% trans 'My messages' %}</a></li>
-	        {% if user.has_usable_password %}
-		        <li><a href="{% url 'account_change_password' %}">{% trans 'Change password' %}</a></li>
-	        {% else %}
-		        <li><a href="{% url 'account_set_password' %}">{% trans 'Set password' %}</a></li>
-	        {% endif %}
-		    <li><a href="{% url 'socialaccount_connections' %}">{% trans 'Account connections' %}</a></li>
-        </ul>
-    {% endif %}
-    </div>
-</div>
+{% block body_class %}panel_open picker_detail{% endblock %}
 
+{% block body %}
+	{# get header #}
+	{% include 'inc/user_info.html' %}
+	
+	<div class="container-fluid">
+
+		<div class="row gold">
+			{# map object #}
+			<div id="map-detail" class="col-md-9 col-sm-7 col-xs-12"></div>
+
+			<div class="col-md-3 col-sm-5 the_panel">
+				{# arrow back to map #}
+				<a href="/map" class="back_to_map_quick"></a>
+
+				<div class="nano">
+				    <div class="nano-content">
+				    	<div class="detail-info inner_minor">
+							<img class="avatar" src="{% avatar user bg_shade=0.3 %}" title="{{ user.username }}">
+
+						    <div class="media-body">
+					            {% if user.resolution == user.RESOLUTION.picker %}
+						            <h1>{{ user.username }}</h1>
+
+						            {% if user.motto %}
+									    <div class="motto">
+								            "{{ user.motto }}"
+									    </div>
+									{% endif %}
+									
+									<div class="markers_added">
+										<label>{% trans "Markers added" %}</label>
+										<strong>{{ user.fruit_count }}</strong>
+									</div>
+
+					            {% else %}
+						            {% if user.external_url %}
+						                <h3>
+						                	<a href="{{ user.external_url }}" target="_blank" rel="noopener noreferrer">
+						                		{{ user.username }}
+						                	</a>
+						                </h3>
+					                    <p>
+					                    	(<a href="{{ user.external_url }}" target="_blank" rel="noopener noreferrer">
+					                    		{% trans 'external source of markers' %}
+					                   		</a>)
+					                   	</p>
+
+						            {% else %}
+							            <h3>
+							            	{{ user.username }}
+							            </h3>
+					                    <p>
+					                    	({% trans 'external source of markers' %})
+					                    </p>
+
+						            {% endif %}
+
+					            {% endif %}
+								
+								{% if user.is_authenticated and user == request.user %}
+							        <ul class="list">
+									    <li>
+									    	<a href="{% url 'pickers:settings' user.id %}">{% trans 'Account settings' %}</a>
+									    </li>
+									    <li>
+									    	<a href="{% url 'pickers:messages' user.id %}">{% trans 'My messages' %}</a>
+									    	{# message infobox #}
+									    	{% with num_msg=request.user.get_unread_messages.count %}
+											    {% if num_msg %}
+												    <a href="{% url 'pickers:messages' request.user.id %}" class="messages-count" title="{% blocktrans %}You have {{ num_msg }} unread messages{% endblocktrans %}.">
+													    {{ num_msg }}
+												    </a>
+											    {% endif %}
+										    {% endwith %}
+									    </li>
+								        {% if user.has_usable_password %}
+									        <li>
+									        	<a href="{% url 'account_change_password' %}">{% trans 'Change password' %}</a>
+									        </li>
+								        {% else %}
+									        <li>
+									        	<a href="{% url 'account_set_password' %}">{% trans 'Set password' %}</a>
+									        </li>
+								        {% endif %}
+									    <li><a href="{% url 'socialaccount_connections' %}">{% trans 'Account connections' %}</a></li>
+									    {# picker codex #}
+									    <li><a href="http://wordpress.na-ovoce.cz/kodex">{% trans 'Picker codex' %}</a></li>
+							        </ul>
+							    {% endif %}
+
+								<p class="joined">
+									{% trans "Joined" %}: {{ user.date_joined }}
+								</p>
+							</div>
+						</div>
+				    </div>
+				</div>
+			</div>
+		</div>
+	 
+	 </div>
+</div>
 {% endblock %}
 
 {% block css %}
-	{{ block.super }}
 	<link rel="stylesheet" href="{% static 'components/leaflet/dist/leaflet.css' %}">
 	<link rel="stylesheet" href="{% static 'components/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css' %}">
 	<link rel="stylesheet" href="{% static 'components/leaflet.markercluster/dist/MarkerCluster.css' %}">
 	<link rel="stylesheet" href="{% static 'components/leaflet.locatecontrol/dist/L.Control.Locate.css' %}">
+	{{ block.super }}
 {% endblock %}
 
 {% block scripts %}
@@ -86,6 +135,8 @@
 
 	{% compress js inline %}
 	<script type="text/coffeescript" charset="utf-8">
+	
+	$('#map-detail').fillViewport()
 
 	map = new Naovoce.Map 'map-detail'
 
@@ -97,4 +148,5 @@
 
 	</script>
 	{% endcompress %}
+	
 {% endblock %}

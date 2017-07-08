@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-10 23:20+0200\n"
-"PO-Revision-Date: 2016-12-07 13:26+0100\n"
+"POT-Creation-Date: 2017-05-25 14:32+0200\n"
+"PO-Revision-Date: 2017-05-25 14:33+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -16,112 +16,74 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.0.1\n"
 
-#: src/blog/admin.py:19
-msgid "blogs count"
-msgstr "počet blogů"
-
-#: src/blog/admin.py:34
-msgid "public"
-msgstr "veřejný"
-
-#: src/blog/models.py:15 src/fruit/models.py:34 src/naovoce/models.py:39
-#: src/newsletter/models.py:32
-msgid "name"
-msgstr "název"
-
-#: src/blog/models.py:28
-msgid "category"
-msgstr "kategorie"
-
-#: src/blog/models.py:29 src/blog/models.py:43
-msgid "categories"
-msgstr "kategorie"
-
-#: src/blog/models.py:38 src/naovoce/models.py:17 src/naovoce/models.py:44
-#: src/staticpage/models.py:8
-msgid "title"
-msgstr "titulek"
-
-#: src/blog/models.py:39 src/comments/admin.py:18 src/staticpage/models.py:9
-#: src/user/admin.py:55 src/user/models.py:168
+#: comments/admin.py:18 staticpage/models.py:9 user/admin.py:55
+#: user/models.py:168
 msgid "text"
 msgstr "text"
 
-#: src/blog/models.py:47
-msgid "public from"
-msgstr "veřejný od"
-
-#: src/blog/models.py:52 src/comments/models.py:13 src/gallery/models.py:42
-msgid "author"
-msgstr "autor"
-
-#: src/blog/models.py:74
-msgid "blog post"
-msgstr "článek"
-
-#: src/blog/models.py:75
-msgid "blog posts"
-msgstr "články"
-
-#: src/comments/admin.py:22
+#: comments/admin.py:22
 msgid "container"
 msgstr "kontejner"
 
-#: src/comments/forms.py:20 src/comments/utils.py:50
+#: comments/forms.py:20 comments/utils.py:50
 msgid "Comment not accepted."
 msgstr "Komentář nebyl přijat."
 
-#: src/comments/forms.py:27
+#: comments/forms.py:27
 msgid "You do not want to post empty comment, do you?"
 msgstr "Nechcete přece přidávat prázdný komentář, že ne?"
 
-#: src/comments/models.py:12 src/comments/models.py:36
+#: comments/models.py:12 comments/models.py:36
 msgid "comment"
 msgstr "komentář"
 
-#: src/comments/models.py:14
+#: comments/models.py:13 gallery/models.py:42
+msgid "author"
+msgstr "autor"
+
+#: comments/models.py:14
 msgid "author's IP address"
 msgstr "IP adresa autora"
 
-#: src/comments/models.py:15
+#: comments/models.py:15
 msgid "complaint"
 msgstr "stížnost"
 
-#: src/comments/models.py:16
+#: comments/models.py:16
 msgid "rejected"
 msgstr "zamítnuto"
 
-#: src/comments/models.py:37
+#: comments/models.py:37
 msgid "comments"
 msgstr "komentáře"
 
-#: src/comments/utils.py:45
+#: comments/utils.py:45
 msgid "Your complaint has been sent to site administrators."
 msgstr "Vaše stížnost byla zaslána administrátorům stránek."
 
-#: src/comments/utils.py:48
+#: comments/utils.py:48
 msgid "Thank you for your comment."
 msgstr "Děkujeme za váš komentář."
 
-#: src/comments/utils.py:53
+#: comments/utils.py:53
 msgid "You have to be signed-in to post comments."
 msgstr "Abyste mohli posílat komentáře, musíte se přihlásit."
 
-#: src/fruit/admin.py:25 src/fruit/models.py:33
+#: fruit/admin.py:25 fruit/models.py:33
 msgid "class"
 msgstr "třída"
 
-#: src/fruit/admin.py:31 src/fruit/models.py:36
+#: fruit/admin.py:31 fruit/models.py:36
 msgid "color"
 msgstr "barva"
 
-#: src/fruit/admin.py:36
+#: fruit/admin.py:36
 msgid "markers count"
 msgstr "počet značek"
 
-#: src/fruit/admin.py:61
+#: fruit/admin.py:61
 #, python-brace-format
 msgid ""
 "Site administrator deleted your <a href=\"{url}\">marker</a>. Reason of "
@@ -130,173 +92,176 @@ msgstr ""
 "Administrátor smazal vaši <a href=\"{url}\">značku</a>. Důvod smazání: "
 "{reason}"
 
-#: src/fruit/api/fields.py:21
+#: fruit/api/fields.py:21
 msgid "{} is not a valid Kind key."
 msgstr "{} není platný klíč."
 
-#: src/fruit/api/views.py:123 src/fruit/api/views.py:136
+#: fruit/api/views.py:123 fruit/api/views.py:136
 msgid "Cannot update once deleted object."
 msgstr "Dříve smazaný objekt nelze aktualizovat."
 
-#: src/fruit/forms.py:68
+#: fruit/forms.py:68
 msgid "Nothing selected"
 msgstr "Nic nevybráno"
 
-#: src/fruit/forms.py:83
+#: fruit/forms.py:83
 msgid "Is it a tree that you planted yourself?"
 msgstr "Jedná se o strom, který jste zasadili?"
 
-#: src/fruit/forms.py:91
+#: fruit/forms.py:91
 msgid "Latitude must be a number between -90 and 90."
 msgstr "Zeměpisná šířka musí být číslo mezi -90 a 90."
 
-#: src/fruit/forms.py:98
+#: fruit/forms.py:98
 msgid "Longitude must be a number between -180 and 180."
 msgstr "Zeměpisná délka musí být číslo mezi -180 a 180."
 
-#: src/fruit/forms.py:107
+#: fruit/forms.py:107
 msgid "Reason"
 msgstr "Důvod"
 
-#: src/fruit/forms.py:108
+#: fruit/forms.py:108
 msgid "Please describe reason of why you are deleting the marker."
 msgstr "Prosíme, popište důvody, které máte k smazání této značky."
 
-#: src/fruit/herbarium/models.py:13 src/fruit/models.py:65
-#: src/fruit/models.py:78
+#: fruit/herbarium/models.py:12 fruit/models.py:65 fruit/models.py:78
 msgid "kind"
 msgstr "druh"
 
-#: src/fruit/herbarium/models.py:15
+#: fruit/herbarium/models.py:14
 msgid "full name"
 msgstr "celé jméno"
 
-#: src/fruit/herbarium/models.py:16
+#: fruit/herbarium/models.py:15
 msgid "latin name"
 msgstr "latinský název"
 
-#: src/fruit/herbarium/models.py:17 src/fruit/models.py:90
+#: fruit/herbarium/models.py:16 fruit/models.py:90
 msgid "description"
 msgstr "popis"
 
-#: src/fruit/herbarium/models.py:19
+#: fruit/herbarium/models.py:18
 msgid "photo"
 msgstr "fotka"
 
-#: src/fruit/herbarium/models.py:23
+#: fruit/herbarium/models.py:22
 msgid "Illustrational photo"
 msgstr "Ilustrační fotka"
 
-#: src/fruit/herbarium/models.py:38 src/fruit/herbarium/models.py:49
+#: fruit/herbarium/models.py:34 fruit/herbarium/models.py:45
 msgid "herbarium item"
 msgstr "položka herbáře"
 
-#: src/fruit/herbarium/models.py:39
+#: fruit/herbarium/models.py:35
 msgid "herbarium items"
 msgstr "položky herbáře"
 
-#: src/fruit/herbarium/models.py:51
+#: fruit/herbarium/models.py:47
 msgid "ripening plant part"
 msgstr "dozrávající část rostliny"
 
-#: src/fruit/herbarium/models.py:54
+#: fruit/herbarium/models.py:50
 msgid "ripening start"
 msgstr "začátek dozrávání"
 
-#: src/fruit/herbarium/models.py:55
+#: fruit/herbarium/models.py:51
 msgid "Month when specified plant part ripening starts."
 msgstr "Měsíc, kdy určená část rostliny dozrává."
 
-#: src/fruit/herbarium/models.py:58
+#: fruit/herbarium/models.py:54
 msgid "ripening duration"
 msgstr "trvání zralosti"
 
-#: src/fruit/herbarium/models.py:59
+#: fruit/herbarium/models.py:55
 msgid "Duration of ripening in months."
 msgstr "Trvání zralosti v měsících."
 
-#: src/fruit/herbarium/models.py:65
+#: fruit/herbarium/models.py:61
 msgid "ripening season"
 msgstr "sezóna dozrávání"
 
-#: src/fruit/herbarium/models.py:66
+#: fruit/herbarium/models.py:62
 msgid "ripening seasons"
 msgstr "sezóny dozrávání"
 
-#: src/fruit/models.py:27
+#: fruit/models.py:27
 msgid "Trees"
 msgstr "Stromy"
 
-#: src/fruit/models.py:28
+#: fruit/models.py:28
 msgid "Bushes"
 msgstr "Keře"
 
-#: src/fruit/models.py:29
+#: fruit/models.py:29
 msgid "Herbs"
 msgstr "Bylinky"
 
-#: src/fruit/models.py:30
+#: fruit/models.py:30
 msgid "Nuts"
 msgstr "Ořechy"
 
-#: src/fruit/models.py:39
+#: fruit/models.py:34 newsletter/models.py:32
+msgid "name"
+msgstr "název"
+
+#: fruit/models.py:39
 msgid "Hex color triplet for map."
 msgstr "Hexadecimální triplet pro mapu."
 
-#: src/fruit/models.py:42
+#: fruit/models.py:42
 msgid "key"
 msgstr "klíč"
 
-#: src/fruit/models.py:46
+#: fruit/models.py:46
 msgid "ID for API and also index in the markers font"
 msgstr "ID pro API a také index ve fontu mapových značek"
 
-#: src/fruit/models.py:66
+#: fruit/models.py:66
 msgid "kinds"
 msgstr "druhy"
 
-#: src/fruit/models.py:76
+#: fruit/models.py:76
 msgid "latitude"
 msgstr "šířka"
 
-#: src/fruit/models.py:77
+#: fruit/models.py:77
 msgid "longitude"
 msgstr "délka"
 
-#: src/fruit/models.py:81
+#: fruit/models.py:81
 msgid "revival"
 msgstr "vracíme"
 
-#: src/fruit/models.py:84 src/user/models.py:75
+#: fruit/models.py:84 user/models.py:75
 msgid "resolution"
 msgstr "rozlišení"
 
-#: src/fruit/models.py:92
+#: fruit/models.py:92
 msgid ""
 "Please, provide as many information about the marker as you find relevant."
 msgstr "Prosíme, napište co nejvíce relevantních informací o této značce."
 
-#: src/fruit/models.py:96
+#: fruit/models.py:96
 msgid "deleted"
 msgstr "smazán"
 
-#: src/fruit/models.py:98
+#: fruit/models.py:98
 msgid "why deleted"
 msgstr "proč smazán"
 
-#: src/fruit/models.py:100
+#: fruit/models.py:100
 msgid "The tree has been cut down, not found etc."
 msgstr "Strom byl poražen, nenalezen apod."
 
-#: src/fruit/models.py:103 src/user/models.py:160
+#: fruit/models.py:103 user/models.py:160
 msgid "user"
 msgstr "uživatel"
 
-#: src/fruit/models.py:117 src/fruit/models.py:118
+#: fruit/models.py:117 fruit/models.py:118
 msgid "fruit"
 msgstr "ovoce"
 
-#: src/fruit/signals.py:19
+#: fruit/signals.py:19
 #, python-brace-format
 msgid ""
 "User <a href=\"{user_url}\">{user_name}</a> posted a <a href="
@@ -305,7 +270,7 @@ msgstr ""
 "Uživatel <a href=\"{user_url}\">{user_name}</a> vložil <a href="
 "\"{comment_url}\">komentář</a> pod vaši <a href=\"{fruit_url}\">značku</a>."
 
-#: src/fruit/signals.py:25
+#: fruit/signals.py:25
 #, python-brace-format
 msgid ""
 "User <a href=\"{user_url}\">{user_name}</a> <strong>posted a <a href="
@@ -316,16 +281,16 @@ msgstr ""
 "\"{comment_url}\">stížnost</a></strong> pod vaši <a href="
 "\"{fruit_url}\">značku</a>."
 
-#: src/fruit/signals.py:44
+#: fruit/signals.py:44
 msgid "A complaint has been made."
 msgstr "Byla učiněna stížnost."
 
-#: src/fruit/signals.py:45
+#: fruit/signals.py:45
 #, python-brace-format
 msgid "Please review the situation: https://na-ovoce.cz{url}"
 msgstr "Prosíme přezkoumejte situaci: https://na-ovoce.cz{url}"
 
-#: src/fruit/signals.py:60
+#: fruit/signals.py:60
 #, python-brace-format
 msgid ""
 "User <a href=\"{user_url}\">{user_name}</a> added a <a href="
@@ -334,152 +299,100 @@ msgstr ""
 "Uživatel <a href=\"{user_url}\">{user_name}</a> přidal <a "
 "href=“{image_url}\">fotku</a> pod vaši <a href=\"{fruit_url}\">značku</a>."
 
-#: src/fruit/views.py:30
+#: fruit/views.py:30
 msgid "Send comment as a complaint"
 msgstr "Přidat komentář jako stížnost"
 
-#: src/fruit/views.py:42
+#: fruit/views.py:42
 msgid "To add markers, please first sign in."
 msgstr "K přidávání značek je potřeba se přihlásit."
 
-#: src/fruit/views.py:53
+#: fruit/views.py:53
 msgid "Thank you, the marker has been added."
 msgstr "Děkujeme, značka byla přidána."
 
-#: src/fruit/views.py:72
+#: fruit/views.py:72
 msgid "Only the owner is allowed edit her marker."
 msgstr "Pouze vlastník je oprávněn upravovat své značky."
 
-#: src/fruit/views.py:75
+#: fruit/views.py:75
 msgid "This marker has been deleted and cannot be edited."
 msgstr "Tato značka byla smazána a nelze ji editovat."
 
-#: src/fruit/views.py:89
+#: fruit/views.py:89
 msgid "Thank you, your changes have been saved."
 msgstr "Děkujeme, vaše změny byly uloženy."
 
-#: src/fruit/views.py:110
+#: fruit/views.py:110
 msgid "The marker has been deleted."
 msgstr "Tato značka byla smazána."
 
-#: src/gallery/admin.py:40 src/gallery/models.py:64 src/gallery/models.py:70
+#: gallery/admin.py:40 gallery/models.py:64 gallery/models.py:70
 msgid "images"
 msgstr "obrázky"
 
-#: src/gallery/api/views.py:30 src/gallery/api/views.py:48
+#: gallery/api/views.py:30 gallery/api/views.py:48
 #, python-brace-format
 msgid "Content type {ct} is not supported."
 msgstr "Typ obsahu {ct} není podporován."
 
-#: src/gallery/forms.py:20 src/gallery/utils.py:41
+#: gallery/forms.py:20 gallery/utils.py:41
 msgid "Image not accepted."
 msgstr "Obrázek nebyl přijat."
 
-#: src/gallery/models.py:28 src/gallery/models.py:63
+#: gallery/models.py:28 gallery/models.py:63
 msgid "image"
 msgstr "obrázek"
 
-#: src/gallery/models.py:34
+#: gallery/models.py:34
 msgid "caption"
 msgstr "titulek"
 
-#: src/gallery/models.py:77
+#: gallery/models.py:77
 msgid "cover image"
 msgstr "hlavní obrázek"
 
-#: src/gallery/utils.py:39
+#: gallery/utils.py:39
 msgid "Thank you for adding an image."
 msgstr "Děkujeme za přidání obrázku."
 
-#: src/gallery/utils.py:44
+#: gallery/utils.py:44
 msgid "You have to be signed-in to add images."
 msgstr "Abyste mohli přidávat obrázky, musíte se přihlásit."
 
-#: src/naovoce/api/views.py:23
+#: naovoce/api/views.py:23
 msgid "Not found."
 msgstr "Nenalezeno."
 
-#: src/naovoce/feeds.py:35 src/naovoce/templates/_base.html:31
-msgid "Fresh fruit"
-msgstr "Čerstvé ovoce"
-
-#: src/naovoce/models.py:16 src/newsletter/models.py:163
-msgid "file"
-msgstr "soubor"
-
-#: src/naovoce/models.py:18
-msgid "You can assign a title for future reference."
-msgstr "Můžete přiřadit titulek pro pozdější referenci."
-
-#: src/naovoce/models.py:21
-msgid "upload"
-msgstr "nahraný soubor"
-
-#: src/naovoce/models.py:22
-msgid "uploads"
-msgstr "nahrané soubory"
-
-#: src/naovoce/models.py:34
-msgid "Online media"
-msgstr "Online média"
-
-#: src/naovoce/models.py:35
-msgid "Printed media"
-msgstr "Tištěná média"
-
-#: src/naovoce/models.py:36
-msgid "TV / Radio"
-msgstr "TV / Rádio"
-
-#: src/naovoce/models.py:40
-msgid "date published"
-msgstr "datum publikování"
-
-#: src/naovoce/models.py:41
-msgid "logo"
-msgstr "logo"
-
-#: src/naovoce/models.py:42
-msgid "type"
-msgstr "typ"
-
-#: src/naovoce/models.py:45
-msgid "perex"
-msgstr "perex"
-
-#: src/naovoce/models.py:46
-msgid "link"
-msgstr "odkaz"
-
-#: src/naovoce/models.py:53 src/naovoce/models.py:54
-msgid "media"
-msgstr "média"
-
-#: src/naovoce/templates/404.html:8
+#: naovoce/templates/404.html:8
 msgid "We are sorry, but there is no fruit here."
 msgstr "Je nám líto, ale zde žádné ovoce není."
 
-#: src/naovoce/templates/500.html:8
+#: naovoce/templates/500.html:8
 msgid "We are sorry, but something went wrong."
 msgstr "Je nám líto, ale něco se pokazilo."
 
-#: src/naovoce/templates/500.html:9
+#: naovoce/templates/500.html:9
 msgid "Admins were notified and the problem will be fixed soon."
 msgstr "Administrátoři byli informováni a problém bude brzy vyřešen."
 
-#: src/naovoce/templates/500.html:10
+#: naovoce/templates/500.html:10
 msgid "For any help, please contact"
 msgstr "Pro jakoukoli pomoc kontaktujte prosím"
 
-#: src/naovoce/templates/503.html:8
+#: naovoce/templates/503.html:8
 msgid "We are sorry, but the site is down."
 msgstr "Je nám líto, ale stránky jsou mimo provoz."
 
-#: src/naovoce/templates/503.html:9
+#: naovoce/templates/503.html:9
 msgid "Stay tuned, we'll be back as soon as possible."
 msgstr "Zůstaňte nám věrni, budeme brzy zpět."
 
-#: src/naovoce/templates/account/email/email_confirmation_message.txt:1
+#: naovoce/templates/_base.html:56
+msgid "Hi Armstrong, install our fruit app."
+msgstr ""
+
+#: naovoce/templates/account/email/email_confirmation_message.txt:1
 #, python-format
 msgid ""
 "Thanks for joining %(site_name)s, %(user_display)s!\n"
@@ -490,11 +403,11 @@ msgstr ""
 "\n"
 "K ověření e-mailové adresy navštivte tento odkaz: %(activate_url)s\n"
 
-#: src/naovoce/templates/account/email/email_confirmation_subject.txt:1
+#: naovoce/templates/account/email/email_confirmation_subject.txt:1
 msgid "Email Address Confirmation"
 msgstr "Ověření e-mailové adresy"
 
-#: src/naovoce/templates/account/email/password_reset_key_message.txt:1
+#: naovoce/templates/account/email/password_reset_key_message.txt:1
 #, python-format
 msgid ""
 "You are receiving this email because you or somebody else has requested a "
@@ -519,22 +432,22 @@ msgstr ""
 "\n"
 "Děkujeme, že používáte %(site_domain)s!\n"
 
-#: src/naovoce/templates/account/email/password_reset_key_subject.txt:1
-#: src/naovoce/templates/account/password_reset.html:6
-#: src/naovoce/templates/account/password_reset.html:9
-#: src/naovoce/templates/account/password_reset_done.html:6
-#: src/naovoce/templates/account/password_reset_done.html:9
+#: naovoce/templates/account/email/password_reset_key_subject.txt:1
+#: naovoce/templates/account/password_reset.html:6
+#: naovoce/templates/account/password_reset.html:9
+#: naovoce/templates/account/password_reset_done.html:6
+#: naovoce/templates/account/password_reset_done.html:9
 msgid "Password Reset"
 msgstr "Obnovení hesla"
 
-#: src/naovoce/templates/account/email_confirm.html:6
-#: src/naovoce/templates/account/email_confirm.html:9
-#: src/naovoce/templates/account/email_confirmed.html:6
-#: src/naovoce/templates/account/email_confirmed.html:9
+#: naovoce/templates/account/email_confirm.html:6
+#: naovoce/templates/account/email_confirm.html:9
+#: naovoce/templates/account/email_confirmed.html:6
+#: naovoce/templates/account/email_confirmed.html:9
 msgid "Confirm Email Address"
 msgstr "Potvrzení e-mailové adresy"
 
-#: src/naovoce/templates/account/email_confirm.html:15
+#: naovoce/templates/account/email_confirm.html:15
 #, python-format
 msgid ""
 "Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an email "
@@ -543,12 +456,12 @@ msgstr ""
 "Prosíme, potvrďte, že <a href=\"mailto:%(email)s\">%(email)s</a> je e-"
 "mailová adresa uživatele %(user_display)s."
 
-#: src/naovoce/templates/account/email_confirm.html:20
-#: src/naovoce/templates/inc/confirm.html:10
+#: naovoce/templates/account/email_confirm.html:20
+#: naovoce/templates/inc/confirm.html:10
 msgid "Confirm"
 msgstr "Potvrdit"
 
-#: src/naovoce/templates/account/email_confirm.html:27
+#: naovoce/templates/account/email_confirm.html:27
 #, python-format
 msgid ""
 "This email confirmation link has expired or is invalid. Please <a href="
@@ -557,7 +470,7 @@ msgstr ""
 "Tento ověřovací odkaz již vypršel, nebo není správný. Prosíme, <a href="
 "\"\"\"%(email_url)s\">zažádejte si o nový</a>."
 
-#: src/naovoce/templates/account/email_confirmed.html:13
+#: naovoce/templates/account/email_confirmed.html:13
 #, python-format
 msgid ""
 "You have confirmed that <a href=\"mailto:%(email)s\">%(email)s</a> is an "
@@ -566,35 +479,34 @@ msgstr ""
 "Potvrdili jste, že <a href=\"mailto:%(email)s\">%(email)s</a> je e-mailová "
 "adresa uživatele %(user_display)s."
 
-#: src/naovoce/templates/account/login.html:7
+#: naovoce/templates/account/login.html:7
 msgid "Sign In"
 msgstr "Přihlášení"
 
-#: src/naovoce/templates/account/login.html:13
-#: src/naovoce/templates/inc/footer.html:76
-#: src/naovoce/templates/inc/user_info.html:20
-#: src/naovoce/templates/inc/user_info.html:21
+#: naovoce/templates/account/login.html:13
+#: naovoce/templates/inc/user_info.html:35
+#: naovoce/templates/inc/user_info.html:36
 msgid "Sign in"
 msgstr "Přihlášení"
 
-#: src/naovoce/templates/account/login.html:16
+#: naovoce/templates/account/login.html:16
 msgid "You can sign in with <strong>Facebook</strong>"
 msgstr "Můžete se přihlásit <strong>Facebookem</strong>"
 
-#: src/naovoce/templates/account/login.html:23
+#: naovoce/templates/account/login.html:23
 msgid "Your username and password didn't match. Please try again."
-msgstr "Nesprávné uživatelské jméno a heslo. Zkuste to laskavě znovu."
+msgstr "Nesprávné uživatelské jméno a heslo. Zkuste to prosím znovu."
 
-#: src/naovoce/templates/account/login.html:31
+#: naovoce/templates/account/login.html:31
 msgctxt "infinitive"
 msgid "Sign in"
 msgstr "Přihlásit se"
 
-#: src/naovoce/templates/account/login.html:35
+#: naovoce/templates/account/login.html:35
 msgid "Remember me on this computer"
 msgstr "Zapamatovat si mě na tomto počítači"
 
-#: src/naovoce/templates/account/login.html:46
+#: naovoce/templates/account/login.html:46
 #, python-format
 msgid ""
 "If you have not created an account yet, then please <a class=\"alert-link\" "
@@ -603,44 +515,42 @@ msgstr ""
 "Pokud ještě nemáte účet, prosíme, <a class=\"alert-link\" href="
 "\"%(signup_url)s\">zaregistrujte se</a>."
 
-#: src/naovoce/templates/account/login.html:51
+#: naovoce/templates/account/login.html:51
 msgid "Did you forget your password?"
 msgstr "Zapoměli jste své heslo?"
 
-#: src/naovoce/templates/account/logout.html:5
+#: naovoce/templates/account/logout.html:5
 msgid "Sign Out"
 msgstr "Odhlášení"
 
-#: src/naovoce/templates/account/logout.html:8
-#: src/naovoce/templates/inc/footer.html:72
-#: src/naovoce/templates/inc/user_info.html:8
-#: src/naovoce/templates/inc/user_info.html:9
+#: naovoce/templates/account/logout.html:10
+#: naovoce/templates/inc/user_info.html:24
 msgid "Sign out"
 msgstr "Odhlášení"
 
-#: src/naovoce/templates/account/logout.html:9
+#: naovoce/templates/account/logout.html:11
 msgctxt "infinitive"
 msgid "Sign out"
 msgstr "Odhlásit se"
 
-#: src/naovoce/templates/account/logout.html:10
+#: naovoce/templates/account/logout.html:12
 msgid "Are you sure you want to sign out?"
 msgstr "Opravdu se chcete odhlásit?"
 
-#: src/naovoce/templates/account/password_change.html:6
-#: src/naovoce/templates/account/password_reset_from_key.html:6
-#: src/naovoce/templates/account/password_reset_from_key.html:24
-#: src/naovoce/templates/account/password_reset_from_key_done.html:5
+#: naovoce/templates/account/password_change.html:6
+#: naovoce/templates/account/password_reset_from_key.html:6
+#: naovoce/templates/account/password_reset_from_key.html:24
+#: naovoce/templates/account/password_reset_from_key_done.html:5
 msgid "Change Password"
 msgstr "Změnit heslo"
 
-#: src/naovoce/templates/account/password_change.html:12
-#: src/naovoce/templates/account/password_change.html:17
-#: src/naovoce/templates/pickers/detail.html:57
+#: naovoce/templates/account/password_change.html:12
+#: naovoce/templates/account/password_change.html:17
+#: naovoce/templates/pickers/detail.html:91
 msgid "Change password"
 msgstr "Změnit heslo"
 
-#: src/naovoce/templates/account/password_reset.html:16
+#: naovoce/templates/account/password_reset.html:16
 msgid ""
 "Forgotten your password? Enter your email address below, and we'll send you "
 "an email allowing you to reset it."
@@ -648,16 +558,16 @@ msgstr ""
 "Zapomněli jste heslo? Níže vložte svou e-mailovou adresu a my vám pošleme e-"
 "mail, který umožní obnovení hesla."
 
-#: src/naovoce/templates/account/password_reset.html:24
+#: naovoce/templates/account/password_reset.html:24
 msgid "Please contact us if you have any trouble resetting your password."
 msgstr ""
 "Prosíme, kontaktujte nás, pokud máte jakékoliv potíže s obnovením hesla."
 
-#: src/naovoce/templates/account/password_reset.html:25
+#: naovoce/templates/account/password_reset.html:25
 msgid "Reset My Password"
 msgstr "Vyžádat obnovení hesla"
 
-#: src/naovoce/templates/account/password_reset_done.html:17
+#: naovoce/templates/account/password_reset_done.html:17
 msgid ""
 "We have sent an email to you for verification. Follow the link provided to "
 "reset your password."
@@ -665,8 +575,8 @@ msgstr ""
 "Zaslali jsme vám evěřovací e-mail. Pro obnovení hesla navštivte odkaz v těle "
 "zprávy."
 
-#: src/naovoce/templates/account/password_reset_done.html:18
-#: src/naovoce/templates/account/verification_sent.html:13
+#: naovoce/templates/account/password_reset_done.html:18
+#: naovoce/templates/account/verification_sent.html:13
 msgid ""
 "If you don't receive the email in a few minutes, please check your spam "
 "folder."
@@ -674,8 +584,8 @@ msgstr ""
 "Pokud v průběhu několika minut e-mail neobdržíte, zkuste se se podívat do "
 "složky pro nevyžádanou poštu."
 
-#: src/naovoce/templates/account/password_reset_done.html:19
-#: src/naovoce/templates/account/verification_sent.html:14
+#: naovoce/templates/account/password_reset_done.html:19
+#: naovoce/templates/account/verification_sent.html:14
 msgid ""
 "Note that free mailing services, such as Gmail, may delay the message "
 "delivery."
@@ -683,11 +593,11 @@ msgstr ""
 "Vezměte v úvahu, že bezplatné e-mailové služby, jako např. Gmail nebo "
 "Seznam, mohou zdržet doručení zprávy."
 
-#: src/naovoce/templates/account/password_reset_from_key.html:11
+#: naovoce/templates/account/password_reset_from_key.html:11
 msgid "Bad Token"
 msgstr "Chybný ověřovací kód"
 
-#: src/naovoce/templates/account/password_reset_from_key.html:14
+#: naovoce/templates/account/password_reset_from_key.html:14
 #, python-format
 msgid ""
 "<p>The password reset link was invalid, possibly because it has already been "
@@ -697,495 +607,283 @@ msgstr ""
 "<p>Odkaz pro změnu hesla není platný, pravděpodobně již byl použit.</p> "
 "<p>Prosíme, <a href=\"%(passwd_reset_url)s\">zažádejte si o nový</a>.</p>"
 
-#: src/naovoce/templates/account/password_reset_from_key.html:28
+#: naovoce/templates/account/password_reset_from_key.html:28
 msgid "change password"
 msgstr "změnit heslo"
 
-#: src/naovoce/templates/account/password_reset_from_key_done.html:8
-#: src/naovoce/templates/account/verification_sent.html:8
+#: naovoce/templates/account/password_reset_from_key_done.html:8
+#: naovoce/templates/account/verification_sent.html:8
 msgid "Thank you!"
 msgstr "Děkujeme!"
 
-#: src/naovoce/templates/account/password_reset_from_key_done.html:9
+#: naovoce/templates/account/password_reset_from_key_done.html:9
 msgid "Your password is reset, you may now"
 msgstr "Vaše heslo je obnoveno, nyní se můžete"
 
-#: src/naovoce/templates/account/password_reset_from_key_done.html:10
+#: naovoce/templates/account/password_reset_from_key_done.html:10
 msgid "sign in"
 msgstr "přihlásit"
 
-#: src/naovoce/templates/account/password_set.html:6
+#: naovoce/templates/account/password_set.html:6
 msgid "Set Password"
 msgstr "Nastavit heslo"
 
-#: src/naovoce/templates/account/password_set.html:12
-#: src/naovoce/templates/account/password_set.html:17
-#: src/naovoce/templates/pickers/detail.html:59
+#: naovoce/templates/account/password_set.html:12
+#: naovoce/templates/account/password_set.html:17
+#: naovoce/templates/pickers/detail.html:95
 msgid "Set password"
 msgstr "Nastavit heslo"
 
-#: src/naovoce/templates/account/signup.html:7
-#: src/naovoce/templates/account/signup.html:13
-#: src/naovoce/templates/inc/footer.html:79
-#: src/naovoce/templates/inc/user_info.html:22
-#: src/naovoce/templates/inc/user_info.html:23
+#: naovoce/templates/account/signup.html:7
+#: naovoce/templates/account/signup.html:13
+#: naovoce/templates/inc/user_info.html:39
+#: naovoce/templates/inc/user_info.html:40
 msgid "Registration"
 msgstr "Registrace"
 
-#: src/naovoce/templates/account/signup.html:16
+#: naovoce/templates/account/signup.html:16
 msgid "You can sign up with <strong>Facebook</strong>"
 msgstr "Můžete se zaregistrovat <strong>Facebookem</strong>"
 
-#: src/naovoce/templates/account/signup.html:23
-#: src/naovoce/templates/socialaccount/signup.html:43
+#: naovoce/templates/account/signup.html:23
+msgid "By clicking on the register button you agree with the"
+msgstr "Kliknutím na tlačítko registrovat zároveň potvrzujete, že souhlasíte s"
+
+#: naovoce/templates/account/signup.html:23
+#: naovoce/templates/inc/user_info.html:53
+#: naovoce/templates/pickers/detail.html:100
+#, fuzzy
+#| msgid "Picker's Codex"
+msgid "Picker codex"
+msgstr "Kodex sběrače"
+
+#: naovoce/templates/account/signup.html:27
+#: naovoce/templates/socialaccount/signup.html:43
 msgid "Register"
 msgstr "Registrovat"
 
-#: src/naovoce/templates/account/signup.html:31
+#: naovoce/templates/account/signup.html:35
 #, python-format
 msgid ""
 "If you already have an account, please <a href=\"%(login_url)s\">sign in</a>."
 msgstr ""
 "Pokud již máte účet, prosíme <a href=\"%(login_url)s\">přihlaste se</a>."
 
-#: src/naovoce/templates/account/verification_sent.html:5
+#: naovoce/templates/account/verification_sent.html:5
 msgid "Verify Your Email Address"
 msgstr "Ověřte svou e-mailovou adresu"
 
-#: src/naovoce/templates/account/verification_sent.html:10
+#: naovoce/templates/account/verification_sent.html:10
 msgid "We have sent an email to you for verification."
 msgstr "Zaslali jsme vám ověřovací e-mail."
 
-#: src/naovoce/templates/account/verification_sent.html:11
+#: naovoce/templates/account/verification_sent.html:11
 msgid "Follow the link provided to finalize the signup process."
 msgstr "Pro dokončení registračního procesu navštivte odkaz v těle zprávy."
 
-#: src/naovoce/templates/admin/base_site.html:9
-msgid "site administration"
+#: naovoce/templates/admin/base_site.html:9
+#, fuzzy
+#| msgid "site administration"
+msgid "backend administration"
 msgstr "administrace stránek"
 
-#: src/naovoce/templates/base.html:35 src/naovoce/templates/inc/footer.html:44
-#: src/naovoce/templates/map.html:9
-msgid "Map"
-msgstr "Mapa"
-
-#: src/naovoce/templates/base.html:41
-msgid "Codex"
-msgstr "Kodex"
-
-#: src/naovoce/templates/base.html:44
-msgid "About Us"
-msgstr "O nás"
-
-#: src/naovoce/templates/base.html:46 src/naovoce/templates/inc/footer.html:55
-msgid "Our Team"
-msgstr "Náš team"
-
-#: src/naovoce/templates/base.html:47 src/naovoce/templates/inc/footer.html:56
-msgid "Partners"
-msgstr "Partneři"
-
-#: src/naovoce/templates/base.html:48 src/naovoce/templates/inc/footer.html:57
-msgid "Media"
-msgstr "Média"
-
-#: src/naovoce/templates/base.html:49 src/naovoce/templates/inc/footer.html:58
-msgid "Downloads"
-msgstr "Ke stažení"
-
-#: src/naovoce/templates/base.html:53
-msgid "Projects"
-msgstr "Projekty"
-
-#: src/naovoce/templates/base.html:55
-msgid "Orchards Popularization"
-msgstr "Popularizace sadů"
-
-#: src/naovoce/templates/base.html:56 src/naovoce/templates/inc/footer.html:49
-msgid "Mobile Application"
-msgstr "Mobilní aplikace"
-
-#: src/naovoce/templates/base.html:57
-msgid "Training Workshops"
-msgstr "Vzdělávací workshopy"
-
-#: src/naovoce/templates/base.html:58
-msgid "Conferences"
-msgstr "Konference"
-
-#: src/naovoce/templates/base.html:62 src/naovoce/templates/inc/footer.html:83
-msgid "Support Us"
-msgstr "Podpořte nás"
-
-#: src/naovoce/templates/base.html:64 src/naovoce/templates/inc/footer.html:85
-msgid "Financially"
-msgstr "Finančně"
-
-#: src/naovoce/templates/base.html:65 src/naovoce/templates/inc/footer.html:86
-msgid "Engage"
-msgstr "Zapojte se"
-
-#: src/naovoce/templates/base.html:66 src/naovoce/templates/inc/footer.html:87
-msgid "Zoot Goodness"
-msgstr "Dobro na Zootu"
-
-#: src/naovoce/templates/base.html:70
-#: src/naovoce/templates/fruit/detail.html:90
-#: src/naovoce/templates/fruit/herbarium.html:13
-#: src/naovoce/templates/fruit/herbarium.html:15
-#: src/naovoce/templates/inc/footer.html:48
-msgid "Herbarium"
-msgstr "Herbář"
-
-#: src/naovoce/templates/base.html:116
+#: naovoce/templates/base.html:48
 msgid "By using this site you agree to the use of cookies for analytics."
 msgstr ""
 "Používáním těchto stránek souhlasíte s využitím souborů cookie k analýzám."
 
-#: src/naovoce/templates/base.html:117
+#: naovoce/templates/base.html:49
 msgid "More information"
 msgstr "Více informací"
 
-#: src/naovoce/templates/base.html:118
+#: naovoce/templates/base.html:50
 msgid "Dismiss"
 msgstr "Pryč s tím"
 
-#: src/naovoce/templates/blog/index.html:9
-msgid ""
-"Loads of information about fruits and its processing, countryside trips, "
-"fruit tree care, interesting events and projects."
-msgstr ""
-"Spousta informací týkajících se ovoce a jeho zpracování, výletů krajinou, "
-"péče o ovocné stromy, zajímavých akcí a projektů."
-
-#: src/naovoce/templates/blog/index.html:20
-msgid "Categories"
-msgstr "Kategorie"
-
-#: src/naovoce/templates/blog/index.html:22
-#: src/naovoce/templates/fruit/herbarium.html:25
-#: src/naovoce/templates/media.html:13
-msgid "all"
-msgstr "vše"
-
-#: src/naovoce/templates/comments/inc/comments.html:30
+#: naovoce/templates/comments/inc/comments.html:20
 msgid "This comment has been rejected by moderator."
 msgstr "Tento komentář byl zamítnut moderátorem."
 
-#: src/naovoce/templates/comments/inc/form.html:17
-#: src/naovoce/templates/comments/inc/formjs.html:9
+#: naovoce/templates/comments/inc/form.html:17
+#: naovoce/templates/comments/inc/formjs.html:9
 msgid "Add your comment"
 msgstr "Přidejte svůj komentář"
 
-#: src/naovoce/templates/comments/inc/form.html:23
-#: src/naovoce/templates/gallery/inc/form.html:22
+#: naovoce/templates/comments/inc/form.html:23
+#: naovoce/templates/gallery/inc/form.html:26
 msgctxt "imperative"
 msgid "Sign in"
 msgstr "Přihlašte se"
 
-#: src/naovoce/templates/comments/inc/form.html:24
+#: naovoce/templates/comments/inc/form.html:24
 msgid "to add your comment"
 msgstr "k přidání komentáře"
 
-#: src/naovoce/templates/fruit/add.html:7
+#: naovoce/templates/fruit/add.html:7
 msgid "Add a Marker"
 msgstr "Přidat značku"
 
-#: src/naovoce/templates/fruit/add.html:15
+#: naovoce/templates/fruit/add.html:30
 msgid "You can add a marker here"
 msgstr "Zde můžete přidat značku"
 
-#: src/naovoce/templates/fruit/add.html:24
+#: naovoce/templates/fruit/add.html:34
 msgid "Please place the marker into the map"
 msgstr "Prosíme, přidejte značku do mapy,"
 
-#: src/naovoce/templates/fruit/add.html:25
+#: naovoce/templates/fruit/add.html:35
 msgid "or enter the coordinates in decimal format, eg.:"
 msgstr "nebo zadejte souřadnice v decimálním formátu, např.:"
 
-#: src/naovoce/templates/fruit/delete.html:6
+#: naovoce/templates/fruit/delete.html:6
 msgctxt "infinitive"
 msgid "Delete Marker"
 msgstr "Smazání značky"
 
-#: src/naovoce/templates/fruit/delete.html:12
+#: naovoce/templates/fruit/delete.html:14
 msgid "Delete marker"
 msgstr "Smazání značky"
 
-#: src/naovoce/templates/fruit/delete.html:15
+#: naovoce/templates/fruit/delete.html:17
 msgctxt "infinitive"
 msgid "Delete"
 msgstr "Smazat značku"
 
-#: src/naovoce/templates/fruit/detail.html:35
-#, python-format
-msgid "Returned to the land by <a href=\"%(url)s\">%(username)s</a>"
-msgstr "Váceno zemi uživatelem <a href=\"%(url)s\">%(username)s</a>"
-
-#: src/naovoce/templates/fruit/detail.html:40
-#: src/naovoce/templates/home.html:156 src/naovoce/templates/inc/mapjs.html:104
-msgid "Shared by"
-msgstr "Sdílí"
-
-#: src/naovoce/templates/fruit/detail.html:46
-msgid "Added"
-msgstr "Přidáno"
-
-#: src/naovoce/templates/fruit/detail.html:52
-msgid "Unknown address"
-msgstr "Neznámá adresa"
-
-#: src/naovoce/templates/fruit/detail.html:58
-msgid "This marker has been deleted"
-msgstr "Tato značka byla smazána"
-
-#: src/naovoce/templates/fruit/detail.html:60
-msgid "Reason of deletion"
-msgstr "Důvod smazání"
-
-#: src/naovoce/templates/fruit/detail.html:68
-#: src/naovoce/templates/inc/mapjs.html:108
-msgid "Description"
-msgstr "Popis"
-
-#: src/naovoce/templates/fruit/detail.html:82
-#: src/naovoce/templates/fruit/inc/fruitform.html:27
-#: src/naovoce/templates/pickers/detail.html:48
-msgid "Large map"
-msgstr "Velká mapa"
-
-#: src/naovoce/templates/fruit/detail.html:84
-msgid "Edit"
-msgstr "Upravit"
-
-#: src/naovoce/templates/fruit/detail.html:85
-msgid "Delete"
-msgstr "Smazat"
-
-#: src/naovoce/templates/fruit/detail.html:87
-#: src/naovoce/templates/fruit/inc/fruitform.html:23
-#: src/naovoce/templates/pickers/detail.html:49
-msgid "Add marker"
-msgstr "Přidat značku"
-
-#: src/naovoce/templates/fruit/edit.html:5
-msgid "Edit a Marker"
-msgstr "Upravit značku"
-
-#: src/naovoce/templates/fruit/edit.html:10
-msgid "You can edit your marker here"
-msgstr "Zde můžete upravit svou značku"
-
-#: src/naovoce/templates/fruit/herbarium.html:23
-msgid "Filter"
-msgstr "Filtr"
-
-#: src/naovoce/templates/fruit/inc/fruitform.html:25
-#: src/naovoce/templates/pickers/settings.html:47
-msgid "Save changes"
-msgstr "Uložit změny"
-
-#: src/naovoce/templates/gallery/browser.html:7
-#: src/naovoce/templates/gallery/index.html:6
-msgid "Gallery"
-msgstr "Galerie"
-
-#: src/naovoce/templates/gallery/browser.html:33
-msgid "Author"
-msgstr "Autor"
-
-#: src/naovoce/templates/gallery/browser.html:35
-msgid "added"
-msgstr "přidáno"
-
-#: src/naovoce/templates/gallery/browser.html:41
-msgid "Previous"
-msgstr "Předchozí"
-
-#: src/naovoce/templates/gallery/browser.html:46
-msgid "Next"
-msgstr "Následující"
-
-#: src/naovoce/templates/gallery/inc/form.html:8
-msgid "Choose a photo"
-msgstr "Vyberte fotku"
-
-#: src/naovoce/templates/gallery/inc/form.html:16
-#: src/naovoce/templates/gallery/inc/formjs.html:9
-msgid "Add a photo"
-msgstr "Přidejte fotku"
-
-#: src/naovoce/templates/gallery/inc/form.html:23
-msgid "to add a photo"
-msgstr "k přidání fotky"
-
-#: src/naovoce/templates/gallery/inc/link.html:19
-#, python-format
-msgid "Open in gallery"
-msgid_plural "%(images_count)s photos in gallery"
-msgstr[0] "Otevřít v galerii"
-msgstr[1] "%(images_count)s fotky v galerii"
-msgstr[2] "%(images_count)s fotek v galerii"
-
-#: src/naovoce/templates/home.html:12
-msgid ""
-"The web community platform &quot;Na ovoce&quot; aims to map fruit trees, "
-"fruit bushes and herbs in wild and public spaces."
-msgstr ""
-"Webová komunitní platforma &quot;Na ovoce&quot; si klade za cíl mapovat "
-"ovocné stromy, keře a bylinky ve volné přírodě a veřejném prostoru."
-
-#: src/naovoce/templates/home.html:26
-msgid "Add marker to the map"
-msgstr "Přidej značku do mapy"
-
-#: src/naovoce/templates/home.html:36 src/naovoce/templates/inc/footer.html:50
-msgid "Beneficial Eshop"
-msgstr "Benefiční eshop"
-
-#: src/naovoce/templates/home.html:42
-msgid "Our projects"
-msgstr "Naše projekty"
-
-#: src/naovoce/templates/home.html:47
-msgid "Prague orchards popularization"
-msgstr "Popularizace pražských ovocných sadů"
-
-#: src/naovoce/templates/home.html:53
-msgid "Mobile application development"
-msgstr "Vývoj mapovací aplikace"
-
-#: src/naovoce/templates/home.html:59
-msgid "Training workshops"
-msgstr "Vzdělávací workshopy"
-
-#: src/naovoce/templates/home.html:67
-msgid "Fruit News"
-msgstr "Ovocné novinky"
-
-#: src/naovoce/templates/home.html:86
-msgid "Top Contributors"
-msgstr "Nejaktivnější přispěvatelé"
-
-#: src/naovoce/templates/home.html:94 src/naovoce/templates/home.html.py:111
-#, python-format
-msgid "(one marker)"
-msgid_plural "(%(picker_fruit_count)s markers)"
-msgstr[0] "(jedna značka)"
-msgstr[1] "(%(picker_fruit_count)s značky)"
-msgstr[2] "(%(picker_fruit_count)s značek)"
-
-#: src/naovoce/templates/home.html:103
-msgid "Top Contributors Last Month"
-msgstr "Nejaktivnější za poslední měsíc"
-
-#: src/naovoce/templates/home.html:121
-#, python-format
-msgid ""
-"Kudos to all <strong>%(pickers_count)s</strong> pickers, that contributed "
-"<strong>%(fruit_count)s</strong> markers."
-msgstr ""
-"Děkujeme všem <strong>%(pickers_count)s</strong> sběračům, kteří přispěli "
-"<strong>%(fruit_count)s</strong> značkami."
-
-#: src/naovoce/templates/home.html:142
-msgid "Explore the Map"
-msgstr "Prozkoumejte mapu"
-
-#: src/naovoce/templates/home.html:147
-msgid "Latest Entries"
-msgstr "Poslední úlovky"
-
-#: src/naovoce/templates/home.html:180
-msgid "Latest photos"
-msgstr "Poslední fotky"
-
-#: src/naovoce/templates/inc/confirm.html:12
-#: src/naovoce/templates/pickers/settings.html:49
+#: naovoce/templates/fruit/delete.html:19 naovoce/templates/inc/confirm.html:12
+#: naovoce/templates/pickers/settings.html:48
 msgid "Back"
 msgstr "Zpět"
 
-#: src/naovoce/templates/inc/footer.html:6
-msgid "Contact"
-msgstr "Kontakt"
+#: naovoce/templates/fruit/detail.html:48
+#: naovoce/templates/gallery/browser.html:46
+msgid "Next"
+msgstr "Následující"
 
-#: src/naovoce/templates/inc/footer.html:29
-msgid "Mobile App"
-msgstr "Mobilní aplikace"
+#: naovoce/templates/fruit/detail.html:49
+#: naovoce/templates/gallery/browser.html:41
+msgid "Previous"
+msgstr "Předchozí"
 
-#: src/naovoce/templates/inc/footer.html:40
-msgid "Quick Links"
-msgstr "Rychlé odkazy"
+#: naovoce/templates/fruit/detail.html:181
+#, python-format
+msgid "Returned to the land by <a href=\"%(url)s\">%(username)s</a>"
+msgstr "Vráceno zemi uživatelem <a href=\"%(url)s\">%(username)s</a>"
 
-#: src/naovoce/templates/inc/footer.html:45 src/naovoce/templates/map.html:45
-msgid "Add Marker"
-msgstr "Přidávání"
+#: naovoce/templates/fruit/detail.html:188 naovoce/templates/inc/mapjs.html:103
+msgid "Shared by"
+msgstr "Sdílí"
 
-#: src/naovoce/templates/inc/footer.html:47
-msgid "Picker's Codex"
-msgstr "Kodex sběrače"
+#: naovoce/templates/fruit/detail.html:196
+msgid "Added"
+msgstr "Přidáno"
 
-#: src/naovoce/templates/inc/footer.html:59
-msgid "Privacy Policy"
-msgstr "Ochrana os. údajů"
+#: naovoce/templates/fruit/detail.html:203
+msgid "Unknown address"
+msgstr "Neznámá adresa"
 
-#: src/naovoce/templates/inc/footer.html:65
-msgid "User"
-msgstr "Uživatel"
+#: naovoce/templates/fruit/detail.html:209
+msgid "This marker has been deleted"
+msgstr "Tato značka byla smazána"
 
-#: src/naovoce/templates/inc/footer.html:69
-msgid "My Account"
-msgstr "Můj účet"
+#: naovoce/templates/fruit/detail.html:211
+msgid "Reason of deletion"
+msgstr "Důvod smazání"
 
-#: src/naovoce/templates/inc/footer.html:91
-msgid "Social Networks"
-msgstr "Sociální sítě"
+#: naovoce/templates/fruit/detail.html:220
+#: naovoce/templates/inc/user_info.html:59
+msgid "Herbarium"
+msgstr "Herbář"
 
-#: src/naovoce/templates/inc/footer.html:96
-msgid "Friends"
-msgstr "Přátelé"
+#: naovoce/templates/fruit/detail.html:227
+msgid "Edit"
+msgstr "Upravit"
 
-#: src/naovoce/templates/inc/footer.html:112
-msgid ""
-"<strong>Na-ovoce.cz</strong> is built using Open Source Software and is OSS "
-"itself, hosted on <a href=\"https://github.com/jsmesami/naovoce\" target="
-"\"_blank\" rel=\"noopener noreferrer\">GitHub</a>."
-msgstr ""
-"<strong>Na-ovoce.cz</strong> je vytvořeno pomocí otevřeného software a "
-"samotné je OS, hostovaný na <a href=\"https://github.com/jsmesami/naovoce\" "
-"target=\"_blank\" rel=\"noopener noreferrer\">GitHubu</a>."
+#: naovoce/templates/fruit/detail.html:232
+msgid "Delete"
+msgstr "Smazat"
 
-#: src/naovoce/templates/inc/mapjs.html:22
+#: naovoce/templates/fruit/edit.html:5
+msgid "Edit a Marker"
+msgstr "Upravit značku"
+
+#: naovoce/templates/fruit/edit.html:10
+msgid "You can edit your marker here"
+msgstr "Zde můžete upravit svou značku"
+
+#: naovoce/templates/fruit/inc/fruitform.html:20
+#: naovoce/templates/inc/mapjs.html:107
+msgid "Description"
+msgstr "Popis"
+
+#: naovoce/templates/fruit/inc/fruitform.html:27
+msgid "Add marker"
+msgstr "Přidat značku"
+
+#: naovoce/templates/fruit/inc/fruitform.html:29
+#: naovoce/templates/pickers/settings.html:46
+msgid "Save changes"
+msgstr "Uložit změny"
+
+#: naovoce/templates/gallery/browser.html:7
+#: naovoce/templates/gallery/index.html:6
+msgid "Gallery"
+msgstr "Galerie"
+
+#: naovoce/templates/gallery/browser.html:33
+msgid "Author"
+msgstr "Autor"
+
+#: naovoce/templates/gallery/browser.html:35
+msgid "added"
+msgstr "přidáno"
+
+#: naovoce/templates/gallery/inc/form.html:10
+msgid "Photo title"
+msgstr "Titulek fotky"
+
+#: naovoce/templates/gallery/inc/form.html:13
+msgid "Choose a photo"
+msgstr "Vyberte fotku"
+
+#: naovoce/templates/gallery/inc/form.html:19
+#: naovoce/templates/gallery/inc/formjs.html:9
+msgid "Add a photo"
+msgstr "Přidejte fotku"
+
+#: naovoce/templates/gallery/inc/form.html:29
+msgid "to add a photo"
+msgstr "k přidání fotky"
+
+#: naovoce/templates/inc/mapjs.html:21
 msgid "Fruit kind"
 msgstr "Druh ovoce"
 
-#: src/naovoce/templates/inc/mapjs.html:114
+#: naovoce/templates/inc/mapjs.html:113
 msgid "Address"
 msgstr "Adresa"
 
-#: src/naovoce/templates/inc/mapjs.html:188
+#: naovoce/templates/inc/mapjs.html:187
 msgid "Search for places or addresses"
 msgstr "Vyhledávání míst a adres"
 
-#: src/naovoce/templates/inc/mapjs.html:189
+#: naovoce/templates/inc/mapjs.html:188
 msgid "Location search"
 msgstr "Vyhledávání míst"
 
-#: src/naovoce/templates/inc/mapjs.html:207
+#: naovoce/templates/inc/mapjs.html:206
 msgid "Show me where I am"
 msgstr "Ukaž mi, kde jsem!"
 
-#: src/naovoce/templates/inc/mapjs.html:209
+#: naovoce/templates/inc/mapjs.html:208
 #, python-brace-format
 msgid "You are within {distance} {unit} from this point"
 msgstr "Od tohoto bodu jste vzdáleni cca {distance}{unit}."
 
-#: src/naovoce/templates/inc/social.html:19
-#: src/naovoce/templates/staticpage/support.html:48
+#: naovoce/templates/inc/social.html:19
 msgid "Donate"
 msgstr "Darujte"
 
-#: src/naovoce/templates/inc/social.html:22
+#: naovoce/templates/inc/social.html:22
 #, python-format
 msgid ""
 "Do you like what we do? Please consider a little <a href=\"%(url)s"
@@ -1194,16 +892,34 @@ msgstr ""
 "Líbí se vám, co děláme? Zvažte prosím malý <a href=\"%(url)s\">příspěvek</a> "
 "na naši práci."
 
-#: src/naovoce/templates/inc/user_info.html:6
+#: naovoce/templates/inc/user_info.html:14
+#| msgid "back to map"
+msgid "back to website"
+msgstr "zpět na stránku"
+
+#: naovoce/templates/inc/user_info.html:19
+msgid "back to map"
+msgstr "zpět do mapy"
+
+#: naovoce/templates/inc/user_info.html:24
 msgid "User profile"
 msgstr "Profil uživatele"
 
-#: src/naovoce/templates/inc/user_info.html:13
+#: naovoce/templates/inc/user_info.html:28
+#: naovoce/templates/pickers/detail.html:83
 #, python-format
 msgid "You have %(num_msg)s unread messages"
 msgstr "Máte nepřečtené zprávy (%(num_msg)s)"
 
-#: src/naovoce/templates/map.html:12
+#: naovoce/templates/inc/user_info.html:47
+msgid "Add Marker"
+msgstr "Přidat značku"
+
+#: naovoce/templates/map.html:10
+msgid "Map"
+msgstr "Mapa"
+
+#: naovoce/templates/map.html:14
 msgid ""
 "The &quot;Na ovoce&quot; map provides you with views of wild fruit trees, "
 "fruit bushes and herbs, whose fruits are available for free picking."
@@ -1211,124 +927,134 @@ msgstr ""
 "Mapa &quot;Na ovoce&quot; umožňuje zobrazení volně rostoucích ovocných "
 "stromů, keřů a bylinek, jejichž plody je možné si zdarma natrhat."
 
-#: src/naovoce/templates/map.html:23
+#: naovoce/templates/map.html:32
 msgid "mapping"
-msgstr "mapujeme"
+msgstr "mapujte"
 
-#: src/naovoce/templates/map.html:23
+#: naovoce/templates/map.html:36
+msgid ""
+"Do you know about a freely accessible fruit tree in your neighborhood?"
+"<br>Add it to our map."
+msgstr ""
+"Víte o volně přístupném ovocném stromu ve vašem okoli?<br>Přidejte ho do "
+"naší mapy."
+
+#: naovoce/templates/map.html:41
 msgid "planting"
-msgstr "sázíme"
+msgstr "sázejte"
 
-#: src/naovoce/templates/map.html:28
-msgid "filter"
-msgstr "filtr"
+#: naovoce/templates/map.html:45
+msgid "Have you planted a tree in public space?<br>Share it with others."
+msgstr ""
+"Zasadili jste strom na veřejném prostranství?<br>\n"
+"Podělte se o něj s ostatními."
 
-#: src/naovoce/templates/media.html:11
-msgid "Media types"
-msgstr "Typy médií"
+#: naovoce/templates/map.html:79
+msgid "Turn off filter"
+msgstr "Zrušit filtr"
 
-#: src/naovoce/templates/pickers/detail.html:21
-msgid "Joined"
-msgstr "Mapuje od"
-
-#: src/naovoce/templates/pickers/detail.html:25
-#: src/naovoce/templates/pickers/detail.html:28
-msgid "external source of markers"
-msgstr "externí zdroj značek"
-
-#: src/naovoce/templates/pickers/detail.html:31
+#: naovoce/templates/pickers/detail.html:44
 msgid "Markers added"
 msgstr "Počet značek"
 
-#: src/naovoce/templates/pickers/detail.html:54
+#: naovoce/templates/pickers/detail.html:57
+#: naovoce/templates/pickers/detail.html:66
+msgid "external source of markers"
+msgstr "externí zdroj značek"
+
+#: naovoce/templates/pickers/detail.html:76
 msgid "Account settings"
 msgstr "Nastavení účtu"
 
-#: src/naovoce/templates/pickers/detail.html:55
+#: naovoce/templates/pickers/detail.html:79
 msgid "My messages"
 msgstr "Mé zprávy"
 
-#: src/naovoce/templates/pickers/detail.html:61
-#: src/naovoce/templates/socialaccount/connections.html:12
+#: naovoce/templates/pickers/detail.html:98
+#: naovoce/templates/socialaccount/connections.html:12
 msgid "Account connections"
 msgstr "Propojení účtu"
 
-#: src/naovoce/templates/pickers/messages.html:5
-#: src/naovoce/templates/pickers/messages.html:10
+#: naovoce/templates/pickers/detail.html:105
+msgid "Joined"
+msgstr "Mapuje od"
+
+#: naovoce/templates/pickers/messages.html:5
+#: naovoce/templates/pickers/messages.html:14
 msgid "Messages"
 msgstr "Zprávy"
 
-#: src/naovoce/templates/pickers/messages.html:17
+#: naovoce/templates/pickers/messages.html:28
 msgid "You have no messages."
 msgstr "Nemáte žádné zprávy."
 
-#: src/naovoce/templates/pickers/settings.html:7
-#: src/naovoce/templates/pickers/settings.html:13
+#: naovoce/templates/pickers/settings.html:7
+#: naovoce/templates/pickers/settings.html:13
 msgid "Change account settings"
 msgstr "Změna nastavení účtu"
 
-#: src/naovoce/templates/pickers/settings.html:33
+#: naovoce/templates/pickers/settings.html:32
 msgid "Change avatar"
 msgstr "Změnit avatar"
 
-#: src/naovoce/templates/pickers/settings.html:39
+#: naovoce/templates/pickers/settings.html:38
 msgid "Delete avatar"
 msgstr "Smazat avatar"
 
-#: src/naovoce/templates/pickers/settings.html:55
+#: naovoce/templates/pickers/settings.html:54
 msgid "You are subscribed to newsletter."
 msgstr "Odebíráte náš newsletter."
 
-#: src/naovoce/templates/pickers/settings.html:56
+#: naovoce/templates/pickers/settings.html:55
 msgid "Unsubscribe"
 msgstr "Odhlásit"
 
-#: src/naovoce/templates/pickers/settings.html:60
+#: naovoce/templates/pickers/settings.html:59
 msgid "Not subscribed to our newsletter?"
 msgstr "Neodebíráte náš newsletter?"
 
-#: src/naovoce/templates/pickers/settings.html:61
+#: naovoce/templates/pickers/settings.html:60
 msgid "Subscribe"
 msgstr "Přihlašte se"
 
-#: src/naovoce/templates/socialaccount/authentication_error.html:5
-#: src/naovoce/templates/socialaccount/authentication_error.html:8
+#: naovoce/templates/socialaccount/authentication_error.html:5
+#: naovoce/templates/socialaccount/authentication_error.html:8
 msgid "Social Network Sign-in Failure"
 msgstr "Chyba sociální sítě při přihlašování"
 
-#: src/naovoce/templates/socialaccount/authentication_error.html:10
+#: naovoce/templates/socialaccount/authentication_error.html:10
 msgid ""
 "An error occurred while attempting to sign in with your social network "
 "account."
 msgstr ""
 "Nastala chyba při pokusu o přihlášení pomocí vašeho účtu na sociální síti."
 
-#: src/naovoce/templates/socialaccount/connections.html:6
+#: naovoce/templates/socialaccount/connections.html:6
 msgid "Account Connections"
 msgstr "Propojení účtu"
 
-#: src/naovoce/templates/socialaccount/connections.html:15
+#: naovoce/templates/socialaccount/connections.html:15
 msgid "You have no third party account connected"
 msgstr "Není připojen žádný účet třetí strany"
 
-#: src/naovoce/templates/socialaccount/connections.html:19
+#: naovoce/templates/socialaccount/connections.html:19
 msgid "You can sign in to your account using"
 msgstr "Ke svému účtu se můžete přihlašovat pomocí"
 
-#: src/naovoce/templates/socialaccount/connections.html:42
+#: naovoce/templates/socialaccount/connections.html:42
 msgid "Remove"
 msgstr "Odstranit"
 
-#: src/naovoce/templates/socialaccount/connections.html:46
+#: naovoce/templates/socialaccount/connections.html:46
 msgid "Add a third party account"
 msgstr "Přidat účet třetí strany"
 
-#: src/naovoce/templates/socialaccount/login_cancelled.html:5
-#: src/naovoce/templates/socialaccount/login_cancelled.html:8
+#: naovoce/templates/socialaccount/login_cancelled.html:5
+#: naovoce/templates/socialaccount/login_cancelled.html:8
 msgid "Sign-in Cancelled"
 msgstr "Přihlašování zrušeno"
 
-#: src/naovoce/templates/socialaccount/login_cancelled.html:12
+#: naovoce/templates/socialaccount/login_cancelled.html:12
 #, python-format
 msgid ""
 "You cancelled signing in using one of your existing accounts. If this was a "
@@ -1338,15 +1064,15 @@ msgstr ""
 "Pokud to nebylo záměrem, pokračujte prosím <a href=\"%(login_url)s\">k "
 "přihlášení</a>."
 
-#: src/naovoce/templates/socialaccount/signup.html:7
+#: naovoce/templates/socialaccount/signup.html:7
 msgid "Facebook Registration"
 msgstr "Facebooková registrace"
 
-#: src/naovoce/templates/socialaccount/signup.html:13
+#: naovoce/templates/socialaccount/signup.html:13
 msgid "Facebook registration"
 msgstr "Facebooková registrace"
 
-#: src/naovoce/templates/socialaccount/signup.html:18
+#: naovoce/templates/socialaccount/signup.html:18
 #, python-format
 msgid ""
 "You are about to use your %(provider_name)s account to login to "
@@ -1355,203 +1081,119 @@ msgstr ""
 "Chystáte se použít %(provider_name)s k přihlášení na %(site_name)s. "
 "Posledním krokem je vyplnění následujícího formuláře."
 
-#: src/naovoce/templates/staticpage/partners.html:33
-msgid "Kudos"
-msgstr "Poděkování"
-
-#: src/naovoce/templates/staticpage/partners.html:34
-msgid "Sincere thanks to Maik Allen for helping us with translations."
-msgstr "Srdečné poděkování Maikovi Allenovi za pomoc s překladem stránky."
-
-#: src/naovoce/templates/staticpage/support.html:14
-msgid "Support Us Now"
-msgstr "Podpořte nás teď"
-
-#: src/naovoce/templates/staticpage/support.html:37
-msgid "One Time"
-msgstr "Jednorázově"
-
-#: src/naovoce/templates/staticpage/support.html:41
-msgid "Monthly"
-msgstr "Měsíčně"
-
-#: src/naovoce/templates/staticpage/team.html:9
-msgid "Core Team"
-msgstr "Základní team"
-
-#: src/naovoce/urls.py:42
-msgid "^map/$"
-msgstr "^mapa/$"
-
-#: src/naovoce/urls.py:43
-msgid "^media(?:/(?P<type_slug>[^/]+))?/$"
-msgstr "^media(?:/(?P<type_slug>[^/]+))?/$"
-
-#: src/naovoce/urls.py:44
-msgid "^codex/$"
-msgstr "^kodex/$"
-
-#: src/naovoce/urls.py:48
-msgid "^about-us/$"
-msgstr "^o-nas/$"
-
-#: src/naovoce/urls.py:50
-msgid "^our-team/$"
-msgstr "^nas-team/$"
-
-#: src/naovoce/urls.py:52
-msgid "^partners/$"
-msgstr "^partneri/$"
-
-#: src/naovoce/urls.py:56
-msgid "^support-us/financially/$"
-msgstr "^podporte-nas/financne/$"
-
-#: src/naovoce/urls.py:65
-msgid "^support-us/engage/$"
-msgstr "^podporte-nas/zapojte-se/$"
-
-#: src/naovoce/urls.py:74
-msgid "^support-us/zoot/$"
-msgstr "^podporte-nas/zoot/$"
-
-#: src/naovoce/urls.py:84
-msgid "^support-us/$"
-msgstr "^podporte-nas/$"
-
-#: src/naovoce/urls.py:85
-msgid "^mobile-application/$"
-msgstr "^mobilni-aplikace/$"
-
-#: src/naovoce/urls.py:87
-msgid "^downloads/$"
-msgstr "^ke-stazeni/$"
-
-#: src/naovoce/urls.py:88
-msgid "^privacy-policy/$"
-msgstr "^ochrana-osobnich-udaju/$"
-
-#: src/naovoce/urls.py:89
-msgid "^prague-orchards-popularization/$"
-msgstr "^popularizace-prazskych-ovocnych-sadu/$"
-
-#: src/naovoce/urls.py:91
-msgid "^training-workshops/$"
-msgstr "^vzdelavaci-workshopy/$"
-
-#: src/naovoce/urls.py:93
-msgid "^mapping-application-development/$"
-msgstr "^vyvoj-mapovaci-aplikace/$"
-
-#: src/naovoce/urls.py:95
-msgid "^conferences/$"
-msgstr "^konference/$"
-
-#: src/newsletter/admin.py:32 src/newsletter/models.py:167
+#: newsletter/admin.py:32 newsletter/models.py:167
 msgid "assets"
 msgstr "součásti"
 
-#: src/newsletter/admin.py:41
+#: newsletter/admin.py:41
 msgid "Campaign has been sent to the mailing list."
 msgstr "Kampaň byla odeslána do seznamu příjemců."
 
-#: src/newsletter/admin.py:43
+#: newsletter/admin.py:43
 msgid "Campaign has not been sent to the mailing list"
 msgstr "Kampaň nebyla odeslána do seznamu příjemců."
 
-#: src/newsletter/models.py:33
+#: newsletter/models.py:33
 msgid "hash"
 msgstr "hash"
 
-#: src/newsletter/models.py:84
+#: newsletter/models.py:84
 msgid "recipient list"
 msgstr "seznam příjemců"
 
-#: src/newsletter/models.py:85
+#: newsletter/models.py:85
 msgid "recipient lists"
 msgstr "seznamy příjemců"
 
-#: src/newsletter/models.py:90
+#: newsletter/models.py:90
 msgid "subject"
 msgstr "předmět"
 
-#: src/newsletter/models.py:91
+#: newsletter/models.py:91
 msgid "plain text"
 msgstr "prostý text"
 
-#: src/newsletter/models.py:92
+#: newsletter/models.py:92
 msgid "html text"
 msgstr "html text"
 
-#: src/newsletter/models.py:94
+#: newsletter/models.py:94
 msgid "sent"
 msgstr "odesláno"
 
-#: src/newsletter/models.py:98
+#: newsletter/models.py:98
 msgid "subscriber lists"
 msgstr "seznamy odběratelů"
 
-#: src/newsletter/models.py:103
+#: newsletter/models.py:103
 msgid "from name"
 msgstr "jméno odesilatele"
 
-#: src/newsletter/models.py:109
+#: newsletter/models.py:109
 msgid "from email"
 msgstr "email odesilatele"
 
-#: src/newsletter/models.py:149 src/newsletter/models.py:155
+#: newsletter/models.py:149 newsletter/models.py:155
 msgid "campaign"
 msgstr "kampaň"
 
-#: src/newsletter/models.py:150
+#: newsletter/models.py:150
 msgid "campaigns"
 msgstr "kampaně"
 
-#: src/newsletter/models.py:166
+#: newsletter/models.py:163
+msgid "file"
+msgstr "soubor"
+
+#: newsletter/models.py:166
 msgid "asset"
 msgstr "součást"
 
-#: src/newsletter/templates/admin/newsletter/campaign/change_form.html:10
+#: newsletter/templates/admin/newsletter/campaign/change_form.html:10
 msgid "Save and send"
 msgstr "Uložit a poslat"
 
-#: src/newsletter/templates/admin/newsletter/campaign/change_form.html:12
+#: newsletter/templates/admin/newsletter/campaign/change_form.html:12
 msgid "Ready to send the campaign draft to the mailing list?"
 msgstr "Je kampaň připravena k odeslání do mailing listu?"
 
-#: src/newsletter/views.py:30
+#: newsletter/views.py:30
 msgid "You have been successfully subscribed to our newsletter."
 msgstr "Byli jste úspěšně přihlášeni k odběru našeho newsletteru."
 
-#: src/newsletter/views.py:32
+#: newsletter/views.py:32
 msgid "There has been an error subscribing you to our newsletter."
 msgstr "Stala se chyba při přihlašování k odběru newsletteru."
 
-#: src/newsletter/views.py:38
+#: newsletter/views.py:38
 msgid "You have been successfully unsubscribed from our newsletter."
 msgstr "Byli jste odhlášeni z odběru našeho newsletteru."
 
-#: src/newsletter/views.py:40
+#: newsletter/views.py:40
 msgid "There has been an error unsubscribing you from our newsletter."
 msgstr "Stala se chyba při odhlašování z odběru newsletteru."
 
-#: src/staticpage/models.py:10
+#: staticpage/models.py:8
+msgid "title"
+msgstr "titulek"
+
+#: staticpage/models.py:10
 msgid "meta description"
 msgstr "meta popisek"
 
-#: src/staticpage/models.py:13
+#: staticpage/models.py:13
 msgid "static page"
 msgstr "statická stránka"
 
-#: src/staticpage/models.py:14
+#: staticpage/models.py:14
 msgid "static pages"
 msgstr "statické stránky"
 
-#: src/user/adapters.py:29
+#: user/adapters.py:29
 msgid "Confirmation email has NOT been sent to {} (recipient refused)."
 msgstr "Potvrzovací e-mail NEBYL odeslán {} (adresát odmítnut)."
 
-#: src/user/adapters.py:35
+#: user/adapters.py:35
 msgid ""
 "\n"
 "Administrators have been notified."
@@ -1559,65 +1201,63 @@ msgstr ""
 "\n"
 "Administrátoři byli informováni."
 
-#: src/user/admin.py:18
+#: user/admin.py:18
 msgid "Personal info"
 msgstr "Osobní informace"
 
-#: src/user/admin.py:23
+#: user/admin.py:23
 msgid "Permissions"
 msgstr "Oprávnění"
 
-#: src/user/admin.py:26
+#: user/admin.py:26
 msgid "Important dates"
 msgstr "Důležitá data"
 
-#: src/user/api/signup/serializers.py:41
+#: user/api/signup/serializers.py:41
 msgid "A user is already registered with this e-mail address."
 msgstr "Uživatel s touto e-mailovou adresou je již registrován."
 
-#: src/user/api/signup/serializers.py:75
-#: src/user/api/token_auth/serializers.py:22
+#: user/api/signup/serializers.py:75 user/api/token_auth/serializers.py:22
 msgid "Facebook ID does not match."
 msgstr "Facebook ID neodpovídá."
 
-#: src/user/api/signup/serializers.py:80
-#: src/user/api/token_auth/serializers.py:26
+#: user/api/signup/serializers.py:80 user/api/token_auth/serializers.py:26
 msgid "User account is disabled."
 msgstr "Uživatelský účet je zakázán."
 
-#: src/user/api/signup/serializers.py:106
+#: user/api/signup/serializers.py:106
 msgid "Facebook authentication failed."
 msgstr "Autentikace facebookem selhala."
 
-#: src/user/api/token_auth/serializers.py:18
+#: user/api/token_auth/serializers.py:18
 msgid "Facebook account does not exist."
 msgstr "Facebookový účet neexistuje."
 
-#: src/user/api/token_auth/serializers.py:31
+#: user/api/token_auth/serializers.py:31
 msgid "Must include \"username\" and Facebook ID \"fcb_id\"."
 msgstr "Musí obsahovat \"username\" a facebookové ID \"fcb_id\"."
 
-#: src/user/api/token_auth/views.py:21
+#: user/api/token_auth/views.py:21
 msgid "User's email is not verified."
 msgstr "Uživatelův e-mail není ověřen."
 
-#: src/user/forms.py:12 src/user/forms.py:44 src/user/models.py:63
+#: user/forms.py:12 user/forms.py:44 user/models.py:63
 msgid "username"
 msgstr "uživatelské jméno"
 
-#: src/user/forms.py:15 src/user/forms.py:47
+#: user/forms.py:15 user/forms.py:47
 msgid "Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."
 msgstr "Vyžadováno. 30 znaků a méně. Pouze písmena, čísla a znaky @/./+/-/_."
 
-#: src/user/forms.py:17 src/user/forms.py:49
+#: user/forms.py:17 user/forms.py:49
 msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
 msgstr "Tato hodnota smí obsahovat pouze písmena, čísla a znaky @/./+/-/_."
 
-#: src/user/forms.py:53
+#: user/forms.py:53
 msgid "Password"
 msgstr "Heslo"
 
-#: src/user/forms.py:54
+#: user/forms.py:54
 msgid ""
 "Raw passwords are not stored, so there is no way to see this user's "
 "password, but you can change the password using <a href=\"password/\">this "
@@ -1626,11 +1266,11 @@ msgstr ""
 "Hesla nejsou uchovávána v čitelné podobě, heslo lze změnit <a href="
 "\"password/\">tímto formulářem</a>."
 
-#: src/user/forms.py:98
+#: user/forms.py:98
 msgid "Short text about you, that will appear in your profile."
 msgstr "Krátký text o vás, který se zobrazí na vašem profilu."
 
-#: src/user/forms.py:99
+#: user/forms.py:99
 msgid ""
 "You can change your profile picture by uploading custom image (up to 1 MB), "
 "or alternatively via <a href=\"http://gravatar.com\" rel=\"noopener "
@@ -1640,47 +1280,47 @@ msgstr ""
 "nebo prostřednictvím služby <a href=\"http://gravatar.com\" rel=\"noopener "
 "noreferrer\" target=\"_blank\">gravatar.com</a>."
 
-#: src/user/forms.py:106
+#: user/forms.py:106
 msgid "Username or e-mail"
 msgstr "Uživatelské jméno nebo e-mail"
 
-#: src/user/models.py:64
+#: user/models.py:64
 msgid "email address"
 msgstr "e-mail"
 
-#: src/user/models.py:66
+#: user/models.py:66
 msgid "first name"
 msgstr "jméno"
 
-#: src/user/models.py:67
+#: user/models.py:67
 msgid "last name"
 msgstr "příjmení"
 
-#: src/user/models.py:68
+#: user/models.py:68
 msgid "external URL"
 msgstr "externí URL"
 
-#: src/user/models.py:71
+#: user/models.py:71
 msgid "picker"
 msgstr "sběrač"
 
-#: src/user/models.py:72
+#: user/models.py:72
 msgid "external source"
 msgstr "externí zdroj"
 
-#: src/user/models.py:80
+#: user/models.py:80
 msgid "staff status"
 msgstr "personál"
 
-#: src/user/models.py:82
+#: user/models.py:82
 msgid "Designates whether the user can sign into this admin site."
 msgstr "Označuje, jestli se uživatel může přihlásit do administrátorské sekce."
 
-#: src/user/models.py:85
+#: user/models.py:85
 msgid "active"
 msgstr "aktivní"
 
-#: src/user/models.py:87
+#: user/models.py:87
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
@@ -1688,70 +1328,70 @@ msgstr ""
 "Označuje, jestli má být uživatel brán jako aktivní. Odškrtněte namísto "
 "mazání účtu."
 
-#: src/user/models.py:90
+#: user/models.py:90
 msgid "verified"
 msgstr "ověřeno"
 
-#: src/user/models.py:91
+#: user/models.py:91
 msgid "date joined"
 msgstr "přidal se"
 
-#: src/user/models.py:92
+#: user/models.py:92
 msgid "motto"
 msgstr "motto"
 
-#: src/user/models.py:102
+#: user/models.py:102
 msgid "avatar"
 msgstr "avatar"
 
-#: src/user/models.py:106
+#: user/models.py:106
 msgid "User avatar"
 msgstr "Avatar uživatele"
 
-#: src/user/models.py:161
+#: user/models.py:161
 msgid "users"
 msgstr "uživatelé"
 
-#: src/user/models.py:170
+#: user/models.py:170
 msgid "context"
 msgstr "kontext"
 
-#: src/user/models.py:171
+#: user/models.py:171
 msgid "Translation context for system messages"
 msgstr "Kontext pro překlad systémových zpráv"
 
-#: src/user/models.py:174
+#: user/models.py:174
 msgctxt "user.Message"
 msgid "read"
 msgstr "přečtená"
 
-#: src/user/models.py:175
+#: user/models.py:175
 msgctxt "Has been read or not."
 msgid "user.Message"
 msgstr "Byla přečtena nebo ne."
 
-#: src/user/models.py:179
+#: user/models.py:179
 msgctxt "user.Message"
 msgid "system"
 msgstr "systémová"
 
-#: src/user/models.py:180
+#: user/models.py:180
 msgid "System messages can be translated and can contain HTML."
 msgstr "Systémová zpráva může mít překlad a může obsahovat HTML."
 
-#: src/user/models.py:185
+#: user/models.py:185
 msgid "recipient"
 msgstr "příjemce"
 
-#: src/user/models.py:212
+#: user/models.py:212
 msgid "message"
 msgstr "zpráva"
 
-#: src/user/models.py:213
+#: user/models.py:213
 msgid "messages"
 msgstr "zprávy"
 
-#: src/user/signals.py:55
+#: user/signals.py:55
 #, python-brace-format
 msgid ""
 "Welcome! Before you start using this site, please take time to read our <a "
@@ -1760,29 +1400,317 @@ msgstr ""
 "Vítejte! Před tím, než začnete používat tyto stránky, prosíme, najděte si "
 "čas na přečtení našeho <a href=\"{url}\">kodexu</a>."
 
-#: src/user/views.py:59
+#: user/views.py:59
 msgid "Settings successfully updated."
 msgstr "Nastavení úspěšně upraveno."
 
-#: src/utils/fields.py:48
+#: utils/fields.py:48
 msgid "Please upload file up to {}. Your file size is {}."
 msgstr "Je povoleno nahrávat soubory do velikosti {}. Váš soubor má ale {}."
 
-#: src/utils/fields.py:54
+#: utils/fields.py:54
 msgid "File type not supported."
 msgstr "Tento typ souboru není podporován."
 
-#: src/utils/models.py:13
+#: utils/models.py:13
 msgid "created"
 msgstr "vytvořeno"
 
-#: src/utils/models.py:14
+#: utils/models.py:14
 msgid "modified"
 msgstr "změněno"
 
-#: src/utils/templatetags/truncate.py:16
+#: utils/templatetags/truncate.py:16
 msgid "Read more"
 msgstr "Čtěte více"
+
+#~ msgid "blogs count"
+#~ msgstr "počet blogů"
+
+#~ msgid "public"
+#~ msgstr "veřejný"
+
+#~ msgid "category"
+#~ msgstr "kategorie"
+
+#~ msgid "categories"
+#~ msgstr "kategorie"
+
+#~ msgid "public from"
+#~ msgstr "veřejný od"
+
+#~ msgid "blog post"
+#~ msgstr "článek"
+
+#~ msgid "blog posts"
+#~ msgstr "články"
+
+#~ msgid "Fresh fruit"
+#~ msgstr "Čerstvé ovoce"
+
+#~ msgid "You can assign a title for future reference."
+#~ msgstr "Můžete přiřadit titulek pro pozdější referenci."
+
+#~ msgid "upload"
+#~ msgstr "nahraný soubor"
+
+#~ msgid "uploads"
+#~ msgstr "nahrané soubory"
+
+#~ msgid "Online media"
+#~ msgstr "Online média"
+
+#~ msgid "Printed media"
+#~ msgstr "Tištěná média"
+
+#~ msgid "TV / Radio"
+#~ msgstr "TV / Rádio"
+
+#~ msgid "date published"
+#~ msgstr "datum publikování"
+
+#~ msgid "logo"
+#~ msgstr "logo"
+
+#~ msgid "type"
+#~ msgstr "typ"
+
+#~ msgid "perex"
+#~ msgstr "perex"
+
+#~ msgid "link"
+#~ msgstr "odkaz"
+
+#~ msgid "media"
+#~ msgstr "média"
+
+#~ msgid "Codex"
+#~ msgstr "Kodex"
+
+#~ msgid "About Us"
+#~ msgstr "O nás"
+
+#~ msgid "Our Team"
+#~ msgstr "Náš team"
+
+#~ msgid "Partners"
+#~ msgstr "Partneři"
+
+#~ msgid "Media"
+#~ msgstr "Média"
+
+#~ msgid "Downloads"
+#~ msgstr "Ke stažení"
+
+#~ msgid "Projects"
+#~ msgstr "Projekty"
+
+#~ msgid "Orchards Popularization"
+#~ msgstr "Popularizace sadů"
+
+#~ msgid "Mobile Application"
+#~ msgstr "Mobilní aplikace"
+
+#~ msgid "Training Workshops"
+#~ msgstr "Vzdělávací workshopy"
+
+#~ msgid "Support Us"
+#~ msgstr "Podpořte nás"
+
+#~ msgid "Financially"
+#~ msgstr "Finančně"
+
+#~ msgid "Engage"
+#~ msgstr "Zapojte se"
+
+#~ msgid "Zoot Goodness"
+#~ msgstr "Dobro na Zootu"
+
+#~ msgid ""
+#~ "Loads of information about fruits and its processing, countryside trips, "
+#~ "fruit tree care, interesting events and projects."
+#~ msgstr ""
+#~ "Spousta informací týkajících se ovoce a jeho zpracování, výletů krajinou, "
+#~ "péče o ovocné stromy, zajímavých akcí a projektů."
+
+#~ msgid "Categories"
+#~ msgstr "Kategorie"
+
+#~ msgid "all"
+#~ msgstr "vše"
+
+#~ msgid "Large map"
+#~ msgstr "Velká mapa"
+
+#~ msgid "Filter"
+#~ msgstr "Filtr"
+
+#~ msgid "Open in gallery"
+#~ msgid_plural "%(images_count)s photos in gallery"
+#~ msgstr[0] "Otevřít v galerii"
+#~ msgstr[1] "%(images_count)s fotky v galerii"
+#~ msgstr[2] "%(images_count)s fotek v galerii"
+
+#~ msgid ""
+#~ "The web community platform &quot;Na ovoce&quot; aims to map fruit trees, "
+#~ "fruit bushes and herbs in wild and public spaces."
+#~ msgstr ""
+#~ "Webová komunitní platforma &quot;Na ovoce&quot; si klade za cíl mapovat "
+#~ "ovocné stromy, keře a bylinky ve volné přírodě a veřejném prostoru."
+
+#~ msgid "Add marker to the map"
+#~ msgstr "Přidej značku do mapy"
+
+#~ msgid "Beneficial Eshop"
+#~ msgstr "Benefiční eshop"
+
+#~ msgid "Our projects"
+#~ msgstr "Naše projekty"
+
+#~ msgid "Prague orchards popularization"
+#~ msgstr "Popularizace pražských ovocných sadů"
+
+#~ msgid "Mobile application development"
+#~ msgstr "Vývoj mapovací aplikace"
+
+#~ msgid "Training workshops"
+#~ msgstr "Vzdělávací workshopy"
+
+#~ msgid "Fruit News"
+#~ msgstr "Ovocné novinky"
+
+#~ msgid "Top Contributors"
+#~ msgstr "Nejaktivnější přispěvatelé"
+
+#~ msgid "(one marker)"
+#~ msgid_plural "(%(picker_fruit_count)s markers)"
+#~ msgstr[0] "(jedna značka)"
+#~ msgstr[1] "(%(picker_fruit_count)s značky)"
+#~ msgstr[2] "(%(picker_fruit_count)s značek)"
+
+#~ msgid "Top Contributors Last Month"
+#~ msgstr "Nejaktivnější za poslední měsíc"
+
+#~ msgid ""
+#~ "Kudos to all <strong>%(pickers_count)s</strong> pickers, that contributed "
+#~ "<strong>%(fruit_count)s</strong> markers."
+#~ msgstr ""
+#~ "Děkujeme všem <strong>%(pickers_count)s</strong> sběračům, kteří přispěli "
+#~ "<strong>%(fruit_count)s</strong> značkami."
+
+#~ msgid "Explore the Map"
+#~ msgstr "Prozkoumejte mapu"
+
+#~ msgid "Latest Entries"
+#~ msgstr "Poslední úlovky"
+
+#~ msgid "Latest photos"
+#~ msgstr "Poslední fotky"
+
+#~ msgid "Contact"
+#~ msgstr "Kontakt"
+
+#~ msgid "Mobile App"
+#~ msgstr "Mobilní aplikace"
+
+#~ msgid "Quick Links"
+#~ msgstr "Rychlé odkazy"
+
+#~ msgid "Privacy Policy"
+#~ msgstr "Ochrana os. údajů"
+
+#~ msgid "User"
+#~ msgstr "Uživatel"
+
+#~ msgid "My Account"
+#~ msgstr "Můj účet"
+
+#~ msgid "Social Networks"
+#~ msgstr "Sociální sítě"
+
+#~ msgid "Friends"
+#~ msgstr "Přátelé"
+
+#~ msgid ""
+#~ "<strong>Na-ovoce.cz</strong> is built using Open Source Software and is "
+#~ "OSS itself, hosted on <a href=\"https://github.com/jsmesami/naovoce\" "
+#~ "target=\"_blank\" rel=\"noopener noreferrer\">GitHub</a>."
+#~ msgstr ""
+#~ "<strong>Na-ovoce.cz</strong> je vytvořeno pomocí otevřeného software a "
+#~ "samotné je OS, hostovaný na <a href=\"https://github.com/jsmesami/naovoce"
+#~ "\" target=\"_blank\" rel=\"noopener noreferrer\">GitHubu</a>."
+
+#~ msgid "filter"
+#~ msgstr "filtr"
+
+#~ msgid "Media types"
+#~ msgstr "Typy médií"
+
+#~ msgid "Kudos"
+#~ msgstr "Poděkování"
+
+#~ msgid "Sincere thanks to Maik Allen for helping us with translations."
+#~ msgstr "Srdečné poděkování Maikovi Allenovi za pomoc s překladem stránky."
+
+#~ msgid "Support Us Now"
+#~ msgstr "Podpořte nás teď"
+
+#~ msgid "One Time"
+#~ msgstr "Jednorázově"
+
+#~ msgid "Monthly"
+#~ msgstr "Měsíčně"
+
+#~ msgid "Core Team"
+#~ msgstr "Základní team"
+
+#~ msgid "^map/$"
+#~ msgstr "^mapa/$"
+
+#~ msgid "^media(?:/(?P<type_slug>[^/]+))?/$"
+#~ msgstr "^media(?:/(?P<type_slug>[^/]+))?/$"
+
+#~ msgid "^codex/$"
+#~ msgstr "^kodex/$"
+
+#~ msgid "^about-us/$"
+#~ msgstr "^o-nas/$"
+
+#~ msgid "^our-team/$"
+#~ msgstr "^nas-team/$"
+
+#~ msgid "^partners/$"
+#~ msgstr "^partneri/$"
+
+#~ msgid "^support-us/financially/$"
+#~ msgstr "^podporte-nas/financne/$"
+
+#~ msgid "^support-us/engage/$"
+#~ msgstr "^podporte-nas/zapojte-se/$"
+
+#~ msgid "^support-us/zoot/$"
+#~ msgstr "^podporte-nas/zoot/$"
+
+#~ msgid "^support-us/$"
+#~ msgstr "^podporte-nas/$"
+
+#~ msgid "^mobile-application/$"
+#~ msgstr "^mobilni-aplikace/$"
+
+#~ msgid "^downloads/$"
+#~ msgstr "^ke-stazeni/$"
+
+#~ msgid "^privacy-policy/$"
+#~ msgstr "^ochrana-osobnich-udaju/$"
+
+#~ msgid "^prague-orchards-popularization/$"
+#~ msgstr "^popularizace-prazskych-ovocnych-sadu/$"
+
+#~ msgid "^training-workshops/$"
+#~ msgstr "^vzdelavaci-workshopy/$"
+
+#~ msgid "^mapping-application-development/$"
+#~ msgstr "^vyvoj-mapovaci-aplikace/$"
 
 #~ msgid "Plant a tree"
 #~ msgstr "Zasaď strom"
@@ -1956,9 +1884,6 @@ msgstr "Čtěte více"
 
 #~ msgid "^map/(?P<kind>[0-9a-fA-F]{4})/$"
 #~ msgstr "^mapa/(?P<kind>[0-9a-fA-F]{4})/$"
-
-#~ msgid "back to map"
-#~ msgstr "zpět do mapy"
 
 #~ msgid "edit"
 #~ msgstr "upravit"

@@ -6,6 +6,8 @@ THUMBNAIL_DEBUG = DEBUG
 
 COMPRESS_ENABLED = False
 
+ALLOWED_HOSTS = 'localhost',
+
 SECRET_KEY = "**** Make this unique and don't share with anybody."
 
 # you may want to output emails to console:

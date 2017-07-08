@@ -9,7 +9,7 @@
 				{% endif %}
 					<button class="btn btn-default" type="submit">{{ cta|default:_('Confirm') }}</button>
 				{% if back %}
-					<a href="{{ back }}">{% trans 'Back' %}</a>
+					<a href="{{ back }}" class="back_link">{% trans 'Back' %}</a>
 				{% endif %}
 				{% if next %}
 					<input name="next" value="{{ next }}" type="hidden">

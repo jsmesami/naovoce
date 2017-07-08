@@ -10,6 +10,10 @@
     "leaflet.locatecontrol": "*",
     "font-awesome": "~4.5",
     "esri-leaflet": "~2",
-    "esri-leaflet-geocoder": "~2"
+    "esri-leaflet-geocoder": "~2",
+    "nanoscroller": "^0.8.7",
+    "prefixfree": "*",
+    "slick-carousel": "*",
+    "mobile-detect" : "*"
   }
 }

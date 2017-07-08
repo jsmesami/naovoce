@@ -8,29 +8,46 @@
 
 {% block map_active %}active{% endblock %}
 
-{% block content %}
-<div class="row">
-    <div class="col-sm-12">
-    {% block section %}
-        <h3>{% trans "You can add a marker here" %}</h3>
-    {% endblock %}
-    </div>
-    <div class="col-sm-12">
-	    <div id="map-detail"></div>
+{% block body_class %}add_fruit panel_open{% endblock %}
+
+{% block body %}
+	{# header #}
+	{% include 'inc/user_info.html' %}
+
+	<div class="container-fluid">
+		
+
+		<div class="row gold">
+		    
+			<div id="map-detail" class="col-md-9 col-sm-7 col-xs-12">
+			</div>
+
+		    <div class="col-md-3 col-sm-5 the_panel">
+			    <div class="nano">
+			    	<div class="nano-content">
+				    	<div class="inner_minor">
+						    <h1>
+						    	{% trans "You can add a marker here" %}
+						   	</h1>
+							
+				            <p class="description">
+					            {% trans 'Please place the marker into the map' %}
+					            {% trans 'or enter the coordinates in decimal format, eg.:'%} <code>{{ 14.449108|localize }}</code>
+				            </p>
+					        
+
+					        {% block form %}
+					        	{% include "fruit/inc/fruitform.html" with mode="add" %}
+					    	{% endblock %}
+						</div>
+				    </div>
+				 </div>
+		    </div>    
+		</div>
 	</div>
-    <div class="col-sm-12">
-        <div class="alert alert-warning">
-            <p>
-	            {% trans 'Please place the marker into the map' %}
-	            {% trans 'or enter the coordinates in decimal format, eg.:'%} <code>{{ 14.449108|localize }}</code>
-            </p>
-        </div>
-    </div>
-    {% block form %}
-        {% include "fruit/inc/fruitform.html" with mode="add" %}
-    {% endblock %}
-</div>
 {% endblock %}
+
+
 
 {% block css %}
 	{{ block.super }}
@@ -50,6 +67,8 @@
 
 	{% compress js inline %}
 	<script type="text/coffeescript" charset="utf-8">
+	# initialize map
+	$('#map-detail').fillViewport()
 
 	$lat = $('#id_latitude').change -> handleFruitForm()
 	$lng = $('#id_longitude').change -> handleFruitForm()
@@ -97,4 +116,5 @@
 
 	</script>
 	{% endcompress %}
+	
 {% endblock %}
