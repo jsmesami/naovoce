@@ -14,7 +14,7 @@
 {% block body %}
 	{# get header #}
 	{% include 'inc/user_info.html' %}
-	
+
 	<div class="container-fluid">
 
 		<div class="row gold">
@@ -39,7 +39,7 @@
 								            "{{ user.motto }}"
 									    </div>
 									{% endif %}
-									
+
 									<div class="markers_added">
 										<label>{% trans "Markers added" %}</label>
 										<strong>{{ user.fruit_count }}</strong>
@@ -69,7 +69,7 @@
 						            {% endif %}
 
 					            {% endif %}
-								
+
 								{% if user.is_authenticated and user == request.user %}
 							        <ul class="list">
 									    <li>
@@ -97,7 +97,7 @@
 								        {% endif %}
 									    <li><a href="{% url 'socialaccount_connections' %}">{% trans 'Account connections' %}</a></li>
 									    {# picker codex #}
-									    <li><a href="http://wordpress.na-ovoce.cz/kodex">{% trans 'Picker codex' %}</a></li>
+									    <li><a href="/web/kodex">{% trans 'Picker codex' %}</a></li>
 							        </ul>
 							    {% endif %}
 
@@ -110,7 +110,7 @@
 				</div>
 			</div>
 		</div>
-	 
+
 	 </div>
 </div>
 {% endblock %}
@@ -135,7 +135,7 @@
 
 	{% compress js inline %}
 	<script type="text/coffeescript" charset="utf-8">
-	
+
 	$('#map-detail').fillViewport()
 
 	map = new Naovoce.Map 'map-detail'
@@ -148,5 +148,5 @@
 
 	</script>
 	{% endcompress %}
-	
+
 {% endblock %}
