@@ -10,6 +10,7 @@ import naovoce.views
 
 
 urlpatterns = [
+    url(r'^$', RedirectView.as_view(permanent=True, url='/web/')),
     url(r'^fruitadmin/', include(admin.site.urls)),
     url(r'^api/v1/', include('naovoce.api.urls', namespace='api')),
     url(r'^fruit/', include('fruit.urls', namespace='fruit')),
