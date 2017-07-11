@@ -298,9 +298,8 @@ REST_FRAMEWORK = {
 
 CORS_ORIGIN_WHITELIST = (
     'na-ovoce.cz',
-    'naovoce.devel-2046.cz',
     'localhost:8000',
-    '127.0.0.1:8000'
+    '127.0.0.1:8000',
 )
 
 CORS_URLS_REGEX = r'^/api/.*$'
@@ -316,7 +315,7 @@ NOCAPTCHA = True
 
 ACCOUNT_SIGNUP_FORM_CLASS = 'user.forms.CaptchaSignupForm'
 
-NEWSLETTER_INSTALLATION_URL = 'http://newsletter.na-ovoce.cz'
+NEWSLETTER_INSTALLATION_URL = 'https://newsletter.na-ovoce.cz'
 NEWSLETTER_API_KEY = None           # must be set in instance-specific settings/local.py
 NEWSLETTER_BRAND_ID = 1             # must be set in instance-specific settings/local.py
 NEWSLETTER_DEFAULT_LIST_ID = None   # must be set in instance-specific settings/local.py
