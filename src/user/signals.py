@@ -56,7 +56,7 @@ def send_welcome_message(request, email_address, **kwargs):
         'please take time to read our <a href="{url}">codex</a>.'
     )
 
-    context = {'url': reverse('codex')}
+    context = {'url': 'http://na-ovoce.cz/web/kodex'}
 
     email_address.user.send_message(msg_template, context=context, system=True)
 
