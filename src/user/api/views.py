@@ -29,10 +29,15 @@ class UserList(generics.ListAPIView):
 
 
 class UserListTop(UserList):
+
     queryset = top_pickers()
+    serializer_class = serializers.TopUserSerializer
 
 
 class UserListTopLastMonth(UserList):
+
+    serializer_class = serializers.TopUserSerializer
+
     def get_queryset(self):
         last_month = datetime.date.today() - datetime.timedelta(365 / 12)
         return top_pickers(fruits__created__gte=last_month).exclude(fruit_count=0)

@@ -40,3 +40,13 @@ class VerboseUserSerializer(UserSerializer):
 
     class Meta(UserSerializer.Meta):
         fields = 'id username url active fruit_count fruit avatar motto'.split()
+
+
+class TopUserSerializer(UserSerializer):
+
+    fruit_count = serializers.IntegerField(read_only=True)
+
+    avatar = AvatarField()
+
+    class Meta(UserSerializer.Meta):
+        fields = 'id username url fruit_count avatar'.split()
