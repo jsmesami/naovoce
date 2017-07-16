@@ -8,8 +8,12 @@ from utils.fields import MonthsField
 class Herbarium(models.Model):
     """
     Additional information about mapped plants.
+    **This is a legacy model** maintained for the API
+    `new_url` field points to the new herbarium on the WP site.
     """
     kind = models.OneToOneField('fruit.Kind', verbose_name=_('kind'))
+
+    new_url = models.URLField(_('url to new herbarium'), blank=True)
 
     full_name = models.CharField(_('full name'), max_length=255, blank=True)
     latin_name = models.CharField(_('latin name'), max_length=255, blank=True)

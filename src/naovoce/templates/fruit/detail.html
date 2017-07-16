@@ -53,9 +53,9 @@
 						'max-height': $(window).height() - $('#user-info').height() + 'px'
 					})
 				}
-				
+
 				fix_carousel()
-			
+
 				$(window).bind('resize', function(e){
 				    window.resizeEvt;
 				    $(window).resize(function(){
@@ -97,7 +97,7 @@
 
 			map.fetchAddress center, (address) ->
 				$('.geo').text address
-			
+
 			</script>
 		{% endcompress %}
 	{% endif %}
@@ -118,12 +118,12 @@
 {% block body %}
 	{# get header #}
 	{% include 'inc/user_info.html' %}
-	
+
 	<div class="container-fluid">
 		<div class="row gold">
 			{# map object #}
 			<div id="map-detail" class="col-md-9 col-sm-7"></div>
-			
+
 			{# peak in the the box #}
 			{% if images %}
 				{% include 'gallery/inc/lookbook.html' %}
@@ -139,12 +139,12 @@
 						{# frit image/s #}
 						{% if images %}
 							{% with cover=container.get_cover_image %}
-								
+
 								{% if images|length == 1 %}
 									<a href="{{ cover.get_absolute_url }}" class="gallery-link">
 								{% else %}
 									<a href="{{ container.images_index_url }}" class="gallery-link">
-									
+
 								{% endif %}
 
 								{% thumbnail cover.image "400" as thumb %}
@@ -153,10 +153,10 @@
 
 									{% if images|length > 1 %}
 									<span class="number">{{ images|length }}</span>
-									{% endif %}								
+									{% endif %}
 								</a>
 							{% endwith %}
-						
+
 						{% endif %}
 
 						<div class="inner_minor">
@@ -196,7 +196,7 @@
 							    	{% trans "Added" %}: <strong>{{ fruit.created }}</strong>
 							    </div>
 						    </div>
-							
+
 							{# fruit geo data #}
 							{% if not fruit.deleted %}
 							    <div class="geo">
@@ -204,20 +204,20 @@
 							    	{{ fruit.latitude|floatformat:6|localize }};# &nbsp;{{ fruit.longitude|floatformat:6|localize }}
 							    	({% dms_coords fruit.latitude fruit.longitude %})
 							    </div>
-						
+
 							{% else %}
 								<h3>{% trans "This marker has been deleted" %}.</h3>
 							    {% if fruit.why_deleted %}
 						            <p>{% trans 'Reason of deletion' %}: <strong>{{ fruit.why_deleted }}</strong></p>
 							    {% endif %}
-						
+
 							{% endif %}
-							
+
 							{# user links #}
 							 <ul class="list">
 					            {% with herbarium=fruit.kind.herbarium %}
 						            {% if herbarium %}
-						                <li><a href="{{ herbarium.get_absolute_url }}">{% trans 'Herbarium' %}</a></li>
+						                <li><a href="{{ herbarium.new_url }}">{% trans 'Herbarium' %}</a></li>
 						            {% endif %}
 					            {% endwith %}
 
@@ -234,7 +234,7 @@
 							        </li>
 						        {% endif %}
 						    </ul>
-						  
+
 							{% include 'comments/inc/comments.html' %}
 							{% include 'gallery/inc/link.html' %}
 						</div>
@@ -245,5 +245,3 @@
 	</div>
 
 {% endblock %}
-
-
