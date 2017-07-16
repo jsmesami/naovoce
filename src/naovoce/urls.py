@@ -10,6 +10,14 @@ import naovoce.views
 
 
 urlpatterns = [
+    # Legacy URLs redirects
+    url(r'^gallery/blogpost\.*', RedirectView.as_view(permanent=True, url='/web/blog')),
+    url(r'^herbarium\.*', RedirectView.as_view(permanent=True, url='/web/herbar')),
+    url(r'^cs/$', RedirectView.as_view(permanent=True, url='/web')),
+    url(r'^en/$', RedirectView.as_view(permanent=True, url='/web')),
+    url(r'^cs/mapa/$', RedirectView.as_view(permanent=True, pattern_name='map')),
+    url(r'^en/map/$', RedirectView.as_view(permanent=True, pattern_name='map')),
+
     url(r'^$', RedirectView.as_view(permanent=True, url='/web/')),
     url(r'^fruitadmin/', include(admin.site.urls)),
     url(r'^api/v1/', include('naovoce.api.urls', namespace='api')),
@@ -21,12 +29,6 @@ urlpatterns = [
     url(r'^accounts/profile/$', user.views.accounts_profile),
     url(r'^robots\.txt$', utils.views.plain_text_view, dict(template_name='robots.txt'), name='robots'),
     url(r'^map/$', naovoce.views.map_view, name='map'),
-
-    url(r'^herbarium\.*', RedirectView.as_view(permanent=True, url='/web/herbar')),
-    url(r'^cs/$', RedirectView.as_view(permanent=True, url='/web')),
-    url(r'^en/$', RedirectView.as_view(permanent=True, url='/web')),
-    url(r'^cs/mapa/$', RedirectView.as_view(permanent=True, pattern_name='map')),
-    url(r'^en/map/$', RedirectView.as_view(permanent=True, pattern_name='map')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
