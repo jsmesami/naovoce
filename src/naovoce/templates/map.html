@@ -11,10 +11,8 @@
 {% endblock %}
 
 {% block meta_description %}
-	{% blocktrans trimmed %}
-		The &quot;Na ovoce&quot; map provides you with views of wild fruit trees, fruit bushes and herbs,
-		whose fruits are available for free picking.
-	{% endblocktrans %}
+S pomocí sběračské komunity mapujeme volně rostoucí ovocné stromy, keře a bylinky.
+Přečtěte si Kodex sběrače a mapujte s námi.
 {% endblock %}
 
 {% block map_active %}active{% endblock %}
@@ -81,7 +79,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 	</div>
 
 	{% endblock body %}
@@ -115,7 +113,7 @@
 			$('#map').fillViewport()
 
 			map = new Naovoce.Map 'map'
-			
+
 			new L.Hash map
 
 			markers_cache_key = '{{ catalogue.naovoce }}'
@@ -162,8 +160,8 @@
 							.loadMarkers '{% url 'api:fruit-list' %}?catalogue={{ catalogue.revival }}', markers_cache_key
 
 					false
-		
-		
+
+
 		</script>
 	{% endcompress %}
 {% endblock %}
