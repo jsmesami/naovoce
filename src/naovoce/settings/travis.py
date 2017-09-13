@@ -11,7 +11,7 @@ EMAIL_HOST_PASSWORD = ''
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'travis_ci_test',
         'USER': 'postgres',
         'PASSWORD': '',

@@ -1,5 +1,6 @@
 import random
 
+from django.contrib.gis.db.models import PointField
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.db import models
@@ -73,8 +74,7 @@ class ValidFruitQuerySet(models.QuerySet):
 
 
 class Fruit(TimeStampedModel, GalleryModel):
-    latitude = models.DecimalField(_('latitude'), max_digits=13, decimal_places=10)
-    longitude = models.DecimalField(_('longitude'), max_digits=13, decimal_places=10)
+    position = PointField(_('position'), null=True, blank=True, srid=4326)
     kind = models.ForeignKey(Kind, verbose_name=_('kind'), related_name='fruits')
     CATALOGUE = Choices(
         naovoce=(1000, 'naovoce'),

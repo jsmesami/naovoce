@@ -1,7 +1,9 @@
 from decimal import Decimal
 
+from django.contrib.gis.geos import Point
 from django.core.urlresolvers import reverse
 from django.db import transaction
+
 from rest_framework.test import APITestCase
 
 from user.models import FruitUser
@@ -54,8 +56,7 @@ class NaovoceAPITestCase(APITestCase):
         with transaction.atomic():
             cls.fruit_list = [
                 Fruit.objects.create(
-                    latitude=cls.fruit_data['lat'],
-                    longitude=cls.fruit_data['lng'],
+                    position=Point(float(cls.fruit_data['lng']), float(cls.fruit_data['lat'])),
                     kind=kind,
                     user=cls.yuri,
                 )
