@@ -34,6 +34,9 @@ Very basic local installation example:
 	nodeenv -p --prebuilt
 	npm install -g coffee-script less bower
 
+    # Install libffi (depencency of CairoSVG):
+    sudo apt install libffi-dev
+
 	# Install site and dependencies:
 	git clone https://github.com/jsmesami/naovoce.git
 	cd naovoce
