@@ -1,0 +1,34 @@
+sudo: false
+language: python
+env:
+  - DJANGO_VERSION="Django>=1.8,<1.9"
+  - DJANGO_VERSION="Django>=1.9,<1.10"
+  - DJANGO_VERSION="Django>=1.10,<1.11"
+  - DJANGO_VERSION="Django>=1.11,<1.12"
+  - DJANGO_VERSION='https://github.com/django/django/archive/master.tar.gz'
+python:
+  - "3.5"
+install:
+  - pip install -r requirements-base.txt
+  - pip install nodeenv
+  - pip install coveralls
+  - pip install flake8
+  - pip install -q "$DJANGO_VERSION"
+  - nodeenv -p --prebuilt
+  - npm install -g coffee-script less bower
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - (cd src/naovoce/settings && cp travis.py local.py)
+  - src/manage.py migrate
+script:
+  - cd src && python -Wall $VIRTUAL_ENV/bin/coverage run manage.py test
+after_script:
+  - coveralls
+addons:
+  postgresql: "9.5"
+matrix:
+   allow_failures:
+      - env: DJANGO_VERSION="Django>=1.9,<1.10"
+      - env: DJANGO_VERSION="Django>=1.10,<1.11"
+      - env: DJANGO_VERSION="Django>=1.11,<1.12"
+      - env: DJANGO_VERSION='https://github.com/django/django/archive/master.tar.gz'
