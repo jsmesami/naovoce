@@ -22,6 +22,7 @@ before_script:
   - src/manage.py migrate
 script:
   - cd src && python -Wall $VIRTUAL_ENV/bin/coverage run manage.py test
+  - flake8
 after_script:
   - coveralls
 addons:

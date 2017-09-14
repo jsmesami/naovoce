@@ -1,5 +1,5 @@
 # Save this file as local.py
-from .base import *
+from .base import *  # noqa
 
 SECRET_KEY = "**** Make this unique and don't share with anybody."
 

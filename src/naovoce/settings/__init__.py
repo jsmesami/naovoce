@@ -1,7 +1,8 @@
 from django.core.exceptions import ImproperlyConfigured
 
 try:
-    from .local import *
+    from .local import *  # noqa
+    from .local import ADMIN_APPS, DJANGO_APPS, EXTERNAL_APPS, LOCAL_APPS, SECRET_KEY
 except ImportError:
     raise ImproperlyConfigured('Please provide instance-specific settings/local.py '
                                '(see settings/local_example.py).')

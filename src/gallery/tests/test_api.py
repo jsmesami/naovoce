@@ -33,7 +33,7 @@ class TestImage(NaovoceAPITestCase):
                     author=getattr(cls, author),
                     **cls.image_data
                 )
-                for author in ('yuri '*5).split() + ('lara '*3).split()
+                for author in ('yuri ' * 5).split() + ('lara ' * 3).split()
             ]
 
         cls.image = cls.image_list[0]
