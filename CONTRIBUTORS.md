@@ -6,6 +6,7 @@ Project Contributors
 * [flaiming](https://github.com/flaiming)
 * [stlk](https://github.com/stlk)
 * [twentyfortysix](https://github.com/twentyfortysix)
+* [PetrDlouhy](https://github.com/PetrDlouhy)
 
 ## Ideas, events, design, copy...
 * Katka Kubánková
