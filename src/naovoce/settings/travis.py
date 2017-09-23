@@ -1,7 +1,7 @@
 # Save this file as local.py
 from .base import *  # noqa
 
-SECRET_KEY = "**** Make this unique and don't share with anybody."
+SECRET_KEY = "faketestkey"
 
 # Set correct credentials for production
 SERVER_EMAIL = ''
@@ -12,8 +12,8 @@ EMAIL_HOST_PASSWORD = ''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': '',
-        'USER': '',
+        'NAME': 'travis_ci_test',
+        'USER': 'postgres',
         'PASSWORD': '',
         'HOST': '',
         'PORT': '',
@@ -26,3 +26,5 @@ RECAPTCHA_USE_SSL = True
 
 NEWSLETTER_API_KEY = '****'
 NEWSLETTER_DEFAULT_LIST_ID = '****'
+
+SECURE_SSL_REDIRECT = False

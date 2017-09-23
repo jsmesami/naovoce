@@ -41,11 +41,13 @@ class NaovoceAPITestCase(APITestCase):
             username='yuri',
             email='yuri@example.com',
             password=cls.user_password,
+            is_email_verified=True,
         )
         cls.lara = FruitUser.objects.create_user(
             username='lara',
             email='lara@example.com',
             password=cls.user_password,
+            is_email_verified=True,
         )
 
         # create some fruit

@@ -1,5 +1,6 @@
 # Save this file as local.py
-from .base import *
+from .base import *  # noqa
+from .base import TEMPLATES
 
 DEBUG = True
 THUMBNAIL_DEBUG = DEBUG

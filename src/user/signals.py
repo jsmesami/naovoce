@@ -1,5 +1,4 @@
 from django.core.mail import mail_managers
-from django.core.urlresolvers import reverse
 from django.dispatch import receiver
 from django.utils.translation import ugettext_noop
 
