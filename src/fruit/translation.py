@@ -15,6 +15,7 @@ class HerbariumTranslationOptions(TranslationOptions):
 class SeasonTranslationOptions(TranslationOptions):
     fields = 'part',
 
+
 translator.register(Kind, KindTranslationOptions)
 translator.register(Herbarium, HerbariumTranslationOptions)
 translator.register(Season, SeasonTranslationOptions)

@@ -27,7 +27,7 @@ class Kind(models.Model):
         tree=(1000, _('Trees')),
         bush=(2000, _('Bushes')),
         herb=(3000, _('Herbs')),
-        nut =(4000, _('Nuts')),
+        nut=(4000, _('Nuts')),
     )
 
     cls = models.IntegerField(_('class'), choices=CLS.choices)
