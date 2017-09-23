@@ -16,7 +16,8 @@ Prerequisities:
 * Less
 * Bower
 
-You may also need to install Cairo (eg. `brew install cairo`) if it's not already in your system.
+You may also need to install Cairo (eg. `brew install cairo`) if it's not already in your system,
+together with it's dependencies, (eg. `sudo apt install libffi-dev`)
 
 
 Very basic local installation example:
@@ -33,9 +34,6 @@ Very basic local installation example:
 	pip install nodeenv
 	nodeenv -p --prebuilt
 	npm install -g coffee-script less bower
-
-    # Install libffi (depencency of CairoSVG):
-    sudo apt install libffi-dev
 
 	# Install site and dependencies:
 	git clone https://github.com/jsmesami/naovoce.git
