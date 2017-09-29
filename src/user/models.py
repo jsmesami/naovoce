@@ -19,7 +19,7 @@ from utils.choices import Choices
 from utils.fields import ContentTypeRestrictedImageField
 from utils.models import TimeStampedModel
 
-import newsletter.models as newsletter
+import newsletter.list as newsletter
 
 
 class UserManager(BaseUserManager):

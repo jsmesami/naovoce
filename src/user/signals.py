@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_noop
 from allauth.account.signals import user_signed_up, email_confirmed
 from allauth.socialaccount.signals import pre_social_login
 
-from newsletter.models import List, ClientError
+from newsletter.list import List, ClientError
 from .models import FruitUser
 
 

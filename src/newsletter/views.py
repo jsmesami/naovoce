@@ -3,19 +3,15 @@ import logging
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.http import require_POST
 
 from user.models import FruitUser
-from .models import Campaign, List, ClientError
+from .list import List, ClientError
 
 logger = logging.getLogger(__name__)
-
-
-def detail(request, pk):
-    return HttpResponse(get_object_or_404(Campaign, pk=pk).html_text)
 
 
 @require_POST
