@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Poedit 2.0.1\n"
 
-#: comments/admin.py:18 staticpage/models.py:9 user/admin.py:55
+#: comments/admin.py:18 user/admin.py:55
 #: user/models.py:168
 msgid "text"
 msgstr "text"
@@ -1170,22 +1170,6 @@ msgstr "Byli jste odhlášeni z odběru našeho newsletteru."
 #: newsletter/views.py:40
 msgid "There has been an error unsubscribing you from our newsletter."
 msgstr "Stala se chyba při odhlašování z odběru newsletteru."
-
-#: staticpage/models.py:8
-msgid "title"
-msgstr "titulek"
-
-#: staticpage/models.py:10
-msgid "meta description"
-msgstr "meta popisek"
-
-#: staticpage/models.py:13
-msgid "static page"
-msgstr "statická stránka"
-
-#: staticpage/models.py:14
-msgid "static pages"
-msgstr "statické stránky"
 
 #: user/adapters.py:29
 msgid "Confirmation email has NOT been sent to {} (recipient refused)."

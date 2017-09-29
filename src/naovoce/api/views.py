@@ -13,7 +13,6 @@ def api_root(request, format=None):
         'herbarium': reverse('api:herbarium-list', request=request, format=format),
         'kinds': reverse('api:kinds-list', request=request, format=format),
         'users': reverse('api:users-list', request=request, format=format),
-        'staticpages': reverse('api:staticpages-list', request=request, format=format),
     })
 
 

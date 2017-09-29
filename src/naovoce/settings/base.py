@@ -206,7 +206,6 @@ LOCAL_APPS = (
     'fruit',
     'fruit.herbarium',
     'newsletter',
-    'staticpage',
     'utils',
     'utils.i18n',
     'comments',
@@ -305,8 +304,6 @@ CORS_ORIGIN_WHITELIST = (
 CORS_URLS_REGEX = r'^/api/.*$'
 
 GALLERY_PUBLIC_CONTAINERS = 'fruit',
-
-STATICPAGE_API_ALLOWED_URLPATTERNS = 'codex', 'team', 'privacy'
 
 RECAPTCHA_PUBLIC_KEY = None     # must be set in instance-specific settings/local.py
 RECAPTCHA_PRIVATE_KEY = None    # must be set in instance-specific settings/local.py
