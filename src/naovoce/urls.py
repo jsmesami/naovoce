@@ -17,6 +17,8 @@ urlpatterns = [
     url(r'^en/$', RedirectView.as_view(permanent=True, url='/web')),
     url(r'^cs/mapa/$', RedirectView.as_view(permanent=True, pattern_name='map')),
     url(r'^en/map/$', RedirectView.as_view(permanent=True, pattern_name='map')),
+    url(r'^cs/kodex/$', RedirectView.as_view(permanent=True, url='/web/kodex')),
+    url(r'^en/codex/$', RedirectView.as_view(permanent=True, url='/web/kodex')),
 
     url(r'^$', RedirectView.as_view(permanent=True, url='/web/')),
     url(r'^fruitadmin/', include(admin.site.urls)),
