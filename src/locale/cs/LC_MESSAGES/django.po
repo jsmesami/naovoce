@@ -652,8 +652,6 @@ msgstr "Kliknutím na tlačítko registrovat zároveň potvrzujete, že souhlas�
 #: naovoce/templates/account/signup.html:23
 #: naovoce/templates/inc/user_info.html:53
 #: naovoce/templates/pickers/detail.html:100
-#, fuzzy
-#| msgid "Picker's Codex"
 msgid "Picker codex"
 msgstr "Kodex sběrače"
 
