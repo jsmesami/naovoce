@@ -48,7 +48,7 @@ Very basic local installation example:
 	cp naovoce/settings/local_[deploy|devel]_example.py naovoce/settings/local.py
 	vim naovoce/settings/local.py
 
-	# Create datbase to match your settings, eg.:
+	# Create database to match your settings, eg.:
 	psql -c "CREATE DATABASE naovoce OWNER=naovoce"
 	
 	# Populate database:
