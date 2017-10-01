@@ -19,7 +19,7 @@
     "model": "sites.site",
     "pk": 3,
     "fields": {
-        "domain": "staging.na-ovoce.cz",
+        "domain": "naovoce.jsmesami.cz",
         "name": "staging"
     }
 }
