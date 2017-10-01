@@ -29,7 +29,4 @@ addons:
   postgresql: "9.5"
 matrix:
    allow_failures:
-      - env: DJANGO_VERSION="Django>=1.9,<1.10"
-      - env: DJANGO_VERSION="Django>=1.10,<1.11"
-      - env: DJANGO_VERSION="Django>=1.11,<1.12"
       - env: DJANGO_VERSION='https://github.com/django/django/archive/master.tar.gz'
