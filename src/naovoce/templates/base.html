@@ -59,7 +59,7 @@
       		cookieHTML.slideUp()
       		year = new Date()
       		year.setTime(year.getTime() + 365*24*60*60*1000)
-      		document.cookie = "cookieMonster=fed; Path=/; Domain=.na-ovoce.cz; Expires=#{ year.toUTCString() }; Secure"
+      		document.cookie = "cookieMonster=fed; Path=/; Domain=.{{ DOMAIN }}; Expires=#{ year.toUTCString() }; Secure"
       		false
       </script>
     {% endcompress %}
