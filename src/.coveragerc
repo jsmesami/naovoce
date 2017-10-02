@@ -1,0 +1,8 @@
+[run]
+source =
+   .
+omit =
+   */migrations*
+plugins =
+    django_coverage_plugin
+branch = True
