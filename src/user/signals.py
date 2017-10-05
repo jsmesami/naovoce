@@ -6,7 +6,6 @@ from allauth.account.signals import user_signed_up, email_confirmed
 from allauth.socialaccount.signals import pre_social_login
 
 from newsletter.list import List, ClientError
-from .models import FruitUser
 
 
 @receiver(email_confirmed)
@@ -35,6 +34,7 @@ def user_signed_up_notification(request, user, **kwargs):
     """
     Notify managers that another user signed up.
     """
+    from .models import FruitUser
     subject = 'User {} has just registered'.format(user.username)
     body = 'Users count: {}'.format(
         FruitUser.objects.filter(

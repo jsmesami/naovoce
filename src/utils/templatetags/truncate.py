@@ -1,4 +1,4 @@
-from django.template.base import Library
+from django.template import Library
 from django.utils.text import Truncator
 from django.utils.translation import ugettext_lazy as _
 
