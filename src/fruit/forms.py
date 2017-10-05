@@ -1,6 +1,7 @@
 from collections import OrderedDict
 from itertools import chain
 from django import forms
+from django.contrib.gis.geos import Point
 from django.core.exceptions import ValidationError
 from django.forms import CheckboxInput
 from django.utils.encoding import force_text
@@ -57,6 +58,9 @@ class CatalogueWidget(CheckboxInput):
 
 
 class FruitForm(forms.ModelForm):
+    latitude = forms.FloatField()
+    longitude = forms.FloatField()
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -71,7 +75,7 @@ class FruitForm(forms.ModelForm):
 
     class Meta:
         model = Fruit
-        fields = 'latitude', 'longitude', 'kind', 'description', 'catalogue'
+        fields = 'latitude', 'longitude', 'position', 'kind', 'description', 'catalogue'
 
         widgets = {
             'description': forms.Textarea(attrs={'rows': 5}),
@@ -101,6 +105,11 @@ class FruitForm(forms.ModelForm):
 
     def clean_description(self):
         return self.cleaned_data['description'].strip()
+
+    def clean(self):
+        data = super().clean()
+        data['position'] = Point(float(data.pop('longitude')), float(data.pop('latitude')))
+        return data
 
 
 class FruitDeleteForm(forms.Form):

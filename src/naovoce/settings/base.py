@@ -198,6 +198,7 @@ DJANGO_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.postgres',
+    'django.contrib.gis',
 )
 
 LOCAL_APPS = (
@@ -223,7 +224,9 @@ EXTERNAL_APPS = (
     'allauth.socialaccount.providers.facebook',
     'captcha',
     'corsheaders',
+    'leaflet',
     'rest_framework',
+    'rest_framework_gis',
     'rest_framework.authtoken',
 )
 
