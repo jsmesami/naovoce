@@ -12,8 +12,8 @@ in the landscape.
 
 Prerequisities:
 
-* Python3.4+
-* PostgreSQL 9+
+* Python 3.4+
+* PostgreSQL 9+ with PostGIS and HStore
 * CoffeeScript
 * Less
 
@@ -51,8 +51,6 @@ Very basic local installation example:
 	psql -c "CREATE DATABASE naovoce OWNER=naovoce"
 	
 	# Populate database:
-	# If your DB user is not superuser, you my have to install HStore extension by hand
-	# in case it does not exist yet: CREATE EXTENSION IF NOT EXISTS hstore;
 	chmod u+x manage.py
 	./manage.py migrate
 	./manage.py loaddata naovoce/fixtures/sites.json
