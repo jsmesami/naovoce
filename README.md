@@ -16,7 +16,6 @@ Prerequisities:
 * PostgreSQL 9+
 * CoffeeScript
 * Less
-* Bower
 
 You may also need to install Cairo (eg. `brew install cairo`) if it's not already in your system,
 together with it's dependencies, (eg. `sudo apt install libffi-dev`)
@@ -35,13 +34,13 @@ Very basic local installation example:
 	# If you don't have (or want) node.js, you can install it into your virtualenv:
 	pip install nodeenv
 	nodeenv -p --prebuilt
-	npm install -g coffee-script less bower
+	npm install -g coffee-script less
 
 	# Install site and dependencies:
 	git clone https://github.com/jsmesami/naovoce.git
 	cd naovoce
 	pip install -r requirements.txt [-b ~/tmp]
-	bower install
+	npm install
 
 	# Create and edit local settings to match your setup: 
 	cd src
