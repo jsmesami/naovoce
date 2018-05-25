@@ -14,12 +14,10 @@ Prerequisities:
 
 * Python 3.4+
 * PostgreSQL 9+ with PostGIS and HStore
+* GEOS
+* Cairo
 * CoffeeScript
 * Less
-
-You may also need to install Cairo (eg. `brew install cairo`) if it's not already in your system,
-together with it's dependencies, (eg. `sudo apt install libffi-dev`)
-
 
 Very basic local installation example:
 

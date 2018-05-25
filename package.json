@@ -1,6 +1,6 @@
 {
   "homepage": "https://na-ovoce.cz",
-  "license" : "BSD-3-Clause",
+  "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
     "url": "https://github.com/jsmesami/naovoce"

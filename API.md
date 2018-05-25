@@ -207,7 +207,7 @@ This API endpoint can be used for both signing up and signing in.
                     "url": "https://na-ovoce.cz/api/v1/fruit/32112/"
                 }
             ],
-            "modified": []
+            "updated": []
         }
 
 
