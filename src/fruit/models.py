@@ -2,7 +2,7 @@ import random
 
 from django.contrib.gis.db.models import PointField
 from django.conf import settings
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.db import models
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
@@ -75,7 +75,11 @@ class ValidFruitQuerySet(models.QuerySet):
 
 class Fruit(TimeStampedModel, GalleryModel):
     position = PointField(_('position'), null=True, blank=True, srid=4326)
-    kind = models.ForeignKey(Kind, verbose_name=_('kind'), related_name='fruits')
+    kind = models.ForeignKey(
+        Kind, verbose_name=_('kind'),
+        related_name='fruits',
+        on_delete=models.CASCADE,
+    )
     CATALOGUE = Choices(
         naovoce=(1000, 'naovoce'),
         revival=(2000, _('revival')),
@@ -100,7 +104,12 @@ class Fruit(TimeStampedModel, GalleryModel):
         help_text=_('The tree has been cut down, not found etc.'),
     )
 
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_('user'), related_name='fruits')
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        verbose_name=_('user'),
+        related_name='fruits',
+        on_delete=models.CASCADE,
+    )
 
     objects = GalleryManager.from_queryset(ValidFruitQuerySet)()
 

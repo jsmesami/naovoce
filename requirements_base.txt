@@ -1,13 +1,13 @@
 Pillow>=3
 CairoSVG>=1.0
-django-allauth==0.23
+django-allauth>=0.36
 django-bootstrap-form>=3.2
 django-compressor>=1.5
 django-ipware>=1.1
 django-leaflet
-django-modeltranslation>=0.10
+django-modeltranslation>=0.13-beta1
 django-recaptcha>=1.2.1
-djangorestframework==3.3
+djangorestframework>=3.8
 djangorestframework-gis
 django-cors-headers>=2.0.2
 markdown2>=2.3

@@ -68,16 +68,16 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='herbarium',
             name='kind',
-            field=models.OneToOneField(to='fruit.Kind', verbose_name='kind'),
+            field=models.OneToOneField(to='fruit.Kind', verbose_name='kind', on_delete=models.CASCADE),
         ),
         migrations.AddField(
             model_name='fruit',
             name='kind',
-            field=models.ForeignKey(to='fruit.Kind', verbose_name='kind', related_name='fruits'),
+            field=models.ForeignKey(to='fruit.Kind', verbose_name='kind', related_name='fruits', on_delete=models.CASCADE),
         ),
         migrations.AddField(
             model_name='fruit',
             name='user',
-            field=models.ForeignKey(to=settings.AUTH_USER_MODEL, verbose_name='user', related_name='fruits'),
+            field=models.ForeignKey(to=settings.AUTH_USER_MODEL, verbose_name='user', related_name='fruits', on_delete=models.CASCADE),
         ),
     ]

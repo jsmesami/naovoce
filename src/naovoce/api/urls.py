@@ -3,6 +3,8 @@ from django.conf.urls import include, url
 from .views import api_root, api_handler_404
 
 
+app_name = "naovoce"
+
 urlpatterns = [
     url(r'^$', api_root, name='root'),
     url(r'^fruit/', include('fruit.api.urls')),

@@ -21,7 +21,7 @@ def get_comments_context(request, container, with_complaints=False, complaint_la
     CommentForm = comment_form_factory(with_complaints, complaint_label)
 
     if request.method == 'POST' and 'comment_form' in request.POST:
-        if request.user.is_authenticated():
+        if request.user.is_authenticated:
             form = CommentForm(request.POST)
             if form.is_valid():
                 is_complaint = form.cleaned_data.get('complaint', False)

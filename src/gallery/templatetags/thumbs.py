@@ -18,7 +18,7 @@ register = Library()
 
 
 @register.simple_tag(takes_context=True)
-@register.assignment_tag(takes_context=True, name='cache_thumb')
+@register.simple_tag(takes_context=True, name='cache_thumb')
 def get_thumb(context, img, w=None, h=None):
 
     if not img:

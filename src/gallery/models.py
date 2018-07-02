@@ -4,7 +4,7 @@ from uuid import uuid4
 from django.conf import settings
 from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 from django.contrib.contenttypes.models import ContentType
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.db import models
 from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
@@ -33,7 +33,10 @@ class Image(TimeStampedModel):
 
     caption = models.CharField(_('caption'), max_length=140, blank=True)
 
-    gallery_ct = models.ForeignKey(ContentType)
+    gallery_ct = models.ForeignKey(
+        ContentType,
+        on_delete=models.CASCADE,
+    )
     gallery_id = models.PositiveIntegerField()
     gallery = GenericForeignKey('gallery_ct', 'gallery_id')
 
@@ -42,6 +45,7 @@ class Image(TimeStampedModel):
         verbose_name=_('author'),
         related_name='images',
         blank=True, null=True,
+        on_delete=models.CASCADE,
     )
 
     def is_owner(self, user):

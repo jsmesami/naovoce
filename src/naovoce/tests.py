@@ -1,7 +1,7 @@
 from decimal import Decimal
 
 from django.contrib.gis.geos import Point
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.db import transaction
 
 from rest_framework.test import APITestCase
@@ -51,6 +51,8 @@ class NaovoceAPITestCase(APITestCase):
             password=cls.user_password,
             is_email_verified=True,
         )
+        cls.yuri.save()
+        cls.lara.save()
 
         # create some fruit
         with transaction.atomic():
