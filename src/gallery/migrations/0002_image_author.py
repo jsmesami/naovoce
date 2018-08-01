@@ -16,6 +16,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='image',
             name='author',
-            field=models.ForeignKey(to=settings.AUTH_USER_MODEL, blank=True, null=True, verbose_name='author', related_name='images'),
+            field=models.ForeignKey(to=settings.AUTH_USER_MODEL, blank=True, null=True, verbose_name='author', related_name='images', on_delete=models.CASCADE),
         ),
     ]

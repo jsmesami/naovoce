@@ -18,7 +18,7 @@ def get_gallery_context(request, container):
     public = container.is_gallery_public()
 
     if public and request.method == 'POST' and 'image_form' in request.POST:
-        if request.user.is_authenticated():
+        if request.user.is_authenticated:
             form = ImageUploadForm(request.POST, request.FILES)
             if form.is_valid():
                 if request.POST.get('token') == token:

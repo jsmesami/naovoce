@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
                 ('text', models.CharField(verbose_name='Message', max_length=255)),
                 ('read', models.BooleanField(help_text='Has been read or not.', default=False, verbose_name='Read')),
                 ('system', models.BooleanField(help_text='Is it safe for escaping or not.', default=False, verbose_name='System')),
-                ('recipient', models.ForeignKey(verbose_name='Message', related_name='messages', to=settings.AUTH_USER_MODEL)),
+                ('recipient', models.ForeignKey(verbose_name='Message', related_name='messages', to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)),
             ],
             options={
                 'verbose_name': 'message',
