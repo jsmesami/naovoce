@@ -1,7 +1,7 @@
 sudo: false
 language: python
 env:
-  - DJANGO_VERSION="Django>=2.0,<3.0"
+  - DJANGO_VERSION="Django>=2.0,<2.1"
   - DJANGO_VERSION='https://github.com/django/django/archive/master.tar.gz'
 python:
   - "3.6"
