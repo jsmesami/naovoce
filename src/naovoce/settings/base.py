@@ -231,7 +231,6 @@ EXTERNAL_APPS = (
 )
 
 ADMIN_APPS = (
-    'djamin',
     'django.contrib.admin',
 )
 
