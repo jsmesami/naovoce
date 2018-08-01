@@ -12,8 +12,8 @@ in the landscape.
 
 Prerequisities:
 
-* Python 3.4+
-* PostgreSQL 9+ with PostGIS and HStore
+* Python 3.6
+* PostgreSQL 9.6 with PostGIS and HStore
 * GEOS
 * Cairo
 * CoffeeScript
@@ -23,7 +23,7 @@ Very basic local installation example:
 
 	# Create and activate virtualenv with the latest Python 3 you have:
 	mkdir ~/.env
-	python3[.5] -m venv ~/.env/naovoce
+	python3.6 -m venv ~/.env/naovoce
 	source ~/.env/naovoce/bin/activate
 
 	# Upgrade pip:

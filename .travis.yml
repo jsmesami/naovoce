@@ -4,7 +4,7 @@ env:
   - DJANGO_VERSION="Django>=2.0,<3.0"
   - DJANGO_VERSION='https://github.com/django/django/archive/master.tar.gz'
 python:
-  - "3.5"
+  - "3.6"
 install:
   - pip install -r requirements_base.txt
   - pip install nodeenv
