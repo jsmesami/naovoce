@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError as DjangoValidationError
 from django.utils.translation import ugettext_lazy as _
 
 from requests.exceptions import HTTPError
@@ -31,7 +32,11 @@ class SignupSerializer(serializers.Serializer):
     )
 
     def validate_username(self, username):
-        return get_account_adapter().clean_username(username)
+        try:
+            return get_account_adapter().clean_username(username)
+        except DjangoValidationError:
+            raise serializers.ValidationError(
+                _("A user is already registered with this username."))
 
     def validate_email(self, email):
         email = get_account_adapter().clean_email(email)
