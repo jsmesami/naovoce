@@ -85,10 +85,10 @@ Přečtěte si Kodex sběrače a mapujte s námi.
 	{% endblock body %}
 
 	{% block css %}
-		<link rel="stylesheet" href="{% static 'components/leaflet/dist/leaflet.css' %}">
-		<link rel="stylesheet" href="{% static 'components/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css' %}">
-		<link rel="stylesheet" href="{% static 'components/leaflet.markercluster/dist/MarkerCluster.css' %}">
-		<link rel="stylesheet" href="{% static 'components/leaflet.locatecontrol/dist/L.Control.Locate.css' %}">
+		<link rel="stylesheet" href="{% static 'components/leaflet/leaflet.css' %}">
+		<link rel="stylesheet" href="{% static 'components/leaflet/esri-leaflet-geocoder.css' %}">
+		<link rel="stylesheet" href="{% static 'components/leaflet/MarkerCluster.css' %}">
+		<link rel="stylesheet" href="{% static 'components/leaflet/L.Control.Locate.css' %}">
 
 		{# our css after the leaflet bro #}
 		{{ block.super }}
@@ -96,12 +96,12 @@ Přečtěte si Kodex sběrače a mapujte s námi.
 
 	{% block scripts %}
 		{{ block.super }}
-		<script src="{% static 'components/leaflet/dist/leaflet.js' %}"></script>
-		<script src="{% static 'components/leaflet.locatecontrol/dist/L.Control.Locate.min.js' %}"></script>
-		<script src="{% static 'components/leaflet.markercluster/dist/leaflet.markercluster.js' %}"></script>
-		<script src="{% static 'components/esri-leaflet/dist/esri-leaflet.js' %}"></script>
-		<script src="{% static 'components/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.js' %}"></script>
-		<script src="{% static 'components/leaflet-hash/leaflet-hash.js' %}"></script>
+		<script src="{% static 'components/leaflet/leaflet.js' %}"></script>
+		<script src="{% static 'components/leaflet/L.Control.Locate.min.js' %}"></script>
+		<script src="{% static 'components/leaflet/leaflet.markercluster.js' %}"></script>
+		<script src="{% static 'components/leaflet/esri-leaflet.js' %}"></script>
+		<script src="{% static 'components/leaflet/esri-leaflet-geocoder.js' %}"></script>
+		<script src="{% static 'components/leaflet/leaflet-hash.js' %}"></script>
 
 		{% compress js inline %}
 			<script src="{% static 'coffee/kinds-filter.coffee' %}" type="text/coffeescript" charset="utf-8"></script>

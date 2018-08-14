@@ -116,20 +116,20 @@
 {% endblock %}
 
 {% block css %}
-	<link rel="stylesheet" href="{% static 'components/leaflet/dist/leaflet.css' %}">
-	<link rel="stylesheet" href="{% static 'components/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css' %}">
-	<link rel="stylesheet" href="{% static 'components/leaflet.markercluster/dist/MarkerCluster.css' %}">
-	<link rel="stylesheet" href="{% static 'components/leaflet.locatecontrol/dist/L.Control.Locate.css' %}">
+	<link rel="stylesheet" href="{% static 'components/leaflet/leaflet.css' %}">
+	<link rel="stylesheet" href="{% static 'components/leaflet/esri-leaflet-geocoder.css' %}">
+	<link rel="stylesheet" href="{% static 'components/leaflet/MarkerCluster.css' %}">
+	<link rel="stylesheet" href="{% static 'components/leaflet/L.Control.Locate.css' %}">
 	{{ block.super }}
 {% endblock %}
 
 {% block scripts %}
 	{{ block.super }}
-	<script src="{% static 'components/leaflet/dist/leaflet.js' %}"></script>
-	<script src="{% static 'components/leaflet.locatecontrol/dist/L.Control.Locate.min.js' %}"></script>
-	<script src="{% static 'components/leaflet.markercluster/dist/leaflet.markercluster.js' %}"></script>
-	<script src="{% static 'components/esri-leaflet/dist/esri-leaflet.js' %}"></script>
-	<script src="{% static 'components/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.js' %}"></script>
+	<script src="{% static 'components/leaflet/leaflet.js' %}"></script>
+	<script src="{% static 'components/leaflet/L.Control.Locate.min.js' %}"></script>
+	<script src="{% static 'components/leaflet/leaflet.markercluster.js' %}"></script>
+	<script src="{% static 'components/leaflet/esri-leaflet.js' %}"></script>
+	<script src="{% static 'components/leaflet/esri-leaflet-geocoder.js' %}"></script>
 
 	{% include 'inc/mapjs.html' %}
 
