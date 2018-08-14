@@ -1,8 +1,13 @@
+from user.api.serializers import UserSerializer
+
+from django.contrib.gis.geos import Point
+
+from gallery.api.fields import HyperlinkedGalleryField
+
 from rest_framework import serializers
 
-from user.api.serializers import UserSerializer
-from gallery.api.fields import HyperlinkedGalleryField
 from utils.api.fields import CachedHyperlinkedIdentityField
+
 from .fields import KindRelatedField
 from ..models import Fruit, Kind
 
@@ -18,17 +23,15 @@ class KindSerializer(serializers.ModelSerializer):
 
 
 class VerboseFruitSerializer(serializers.HyperlinkedModelSerializer):
-
-    lat = serializers.DecimalField(
-        max_digits=13,
-        decimal_places=10,
-        source='latitude',
-    )
-
     lng = serializers.DecimalField(
         max_digits=13,
         decimal_places=10,
-        source='longitude',
+        source='position.x',
+    )
+    lat = serializers.DecimalField(
+        max_digits=13,
+        decimal_places=10,
+        source='position.y',
     )
 
     kind = KindRelatedField()
@@ -48,6 +51,21 @@ class VerboseFruitSerializer(serializers.HyperlinkedModelSerializer):
     images_count = serializers.IntegerField(read_only=True)
 
     images = HyperlinkedGalleryField(gallery_ct='fruit')
+
+    def create(self, validated_data):
+        validated_data['position'] = Point(
+            float(validated_data['position']['x']),
+            float(validated_data['position']['y']),
+        )
+        return super().create(validated_data)
+
+    def update(self, instance, validated_data):
+        position = validated_data.pop('position')
+        if 'x' in position:
+            instance.position.x = position['x']
+        if 'y' in position:
+            instance.position.y = position['y']
+        return super().update(instance, validated_data)
 
     class Meta:
         model = Fruit

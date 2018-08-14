@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
                 ('image', sorl.thumbnail.fields.ImageField(upload_to=gallery.models.Image._upload_to, verbose_name='image')),
                 ('caption', models.CharField(blank=True, max_length=140, verbose_name='caption')),
                 ('gallery_id', models.PositiveIntegerField()),
-                ('gallery_ct', models.ForeignKey(to='contenttypes.ContentType')),
+                ('gallery_ct', models.ForeignKey(to='contenttypes.ContentType', on_delete=models.CASCADE)),
             ],
             options={
                 'ordering': ('-created',),

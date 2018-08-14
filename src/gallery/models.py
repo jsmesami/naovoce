@@ -2,10 +2,10 @@ import os
 from uuid import uuid4
 
 from django.conf import settings
-from django.core.urlresolvers import reverse
-from django.db import models
-from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 from django.contrib.contenttypes.models import ContentType
+from django.urls import reverse
+from django.db import models
 from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
@@ -33,15 +33,19 @@ class Image(TimeStampedModel):
 
     caption = models.CharField(_('caption'), max_length=140, blank=True)
 
-    gallery_ct = models.ForeignKey(ContentType)
+    gallery_ct = models.ForeignKey(
+        ContentType,
+        on_delete=models.CASCADE,
+    )
     gallery_id = models.PositiveIntegerField()
-    gallery = generic.GenericForeignKey('gallery_ct', 'gallery_id')
+    gallery = GenericForeignKey('gallery_ct', 'gallery_id')
 
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         verbose_name=_('author'),
         related_name='images',
         blank=True, null=True,
+        on_delete=models.CASCADE,
     )
 
     def is_owner(self, user):
@@ -65,7 +69,7 @@ class Image(TimeStampedModel):
 
 
 class GalleryModel(models.Model):
-    images = generic.GenericRelation(
+    images = GenericRelation(
         Image,
         verbose_name=_('images'),
         content_type_field='gallery_ct',

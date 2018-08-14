@@ -178,7 +178,7 @@ TEMPLATES = [
     },
 ]
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -198,6 +198,7 @@ DJANGO_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.postgres',
+    'django.contrib.gis',
 )
 
 LOCAL_APPS = (
@@ -222,12 +223,13 @@ EXTERNAL_APPS = (
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     'corsheaders',
+    'leaflet',
     'rest_framework',
+    'rest_framework_gis',
     'rest_framework.authtoken',
 )
 
 ADMIN_APPS = (
-    'djamin',
     'django.contrib.admin',
 )
 
@@ -298,6 +300,7 @@ CORS_ORIGIN_WHITELIST = (
     'na-ovoce.cz',
     'localhost:8000',
     '127.0.0.1:8000',
+    '0.0.0.0:3449',
 )
 
 CORS_URLS_REGEX = r'^/api/.*$'

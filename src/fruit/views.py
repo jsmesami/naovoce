@@ -2,7 +2,7 @@ from functools import wraps
 
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.http.response import HttpResponseForbidden, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.translation import ugettext, ugettext_lazy as _
@@ -38,7 +38,7 @@ def detail(request, fruit_id):
 
 
 def add(request):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         messages.warning(request, ugettext('To add markers, please first sign in.'))
         redir = '{}?next={}'.format(reverse('account_login'), reverse('fruit:add'))
         return HttpResponseRedirect(redir)

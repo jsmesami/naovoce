@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-25 14:32+0200\n"
+"POT-Creation-Date: 2018-08-13 21:05+0200\n"
 "PO-Revision-Date: 2017-05-25 14:33+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
@@ -18,8 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Poedit 2.0.1\n"
 
-#: comments/admin.py:18 user/admin.py:55
-#: user/models.py:168
+#: comments/admin.py:18 user/admin.py:55 user/models.py:168
 msgid "text"
 msgstr "text"
 
@@ -35,27 +34,27 @@ msgstr "Komentář nebyl přijat."
 msgid "You do not want to post empty comment, do you?"
 msgstr "Nechcete přece přidávat prázdný komentář, že ne?"
 
-#: comments/models.py:12 comments/models.py:36
+#: comments/models.py:12 comments/models.py:43
 msgid "comment"
 msgstr "komentář"
 
-#: comments/models.py:13 gallery/models.py:42
+#: comments/models.py:15 gallery/models.py:45
 msgid "author"
 msgstr "autor"
 
-#: comments/models.py:14
+#: comments/models.py:18
 msgid "author's IP address"
 msgstr "IP adresa autora"
 
-#: comments/models.py:15
+#: comments/models.py:19
 msgid "complaint"
 msgstr "stížnost"
 
-#: comments/models.py:16
+#: comments/models.py:20
 msgid "rejected"
 msgstr "zamítnuto"
 
-#: comments/models.py:37
+#: comments/models.py:44
 msgid "comments"
 msgstr "komentáře"
 
@@ -71,19 +70,19 @@ msgstr "Děkujeme za váš komentář."
 msgid "You have to be signed-in to post comments."
 msgstr "Abyste mohli posílat komentáře, musíte se přihlásit."
 
-#: fruit/admin.py:25 fruit/models.py:33
+#: fruit/admin.py:27 fruit/models.py:34
 msgid "class"
 msgstr "třída"
 
-#: fruit/admin.py:31 fruit/models.py:36
+#: fruit/admin.py:33 fruit/models.py:37
 msgid "color"
 msgstr "barva"
 
-#: fruit/admin.py:36
+#: fruit/admin.py:38
 msgid "markers count"
 msgstr "počet značek"
 
-#: fruit/admin.py:61
+#: fruit/admin.py:63
 #, python-brace-format
 msgid ""
 "Site administrator deleted your <a href=\"{url}\">marker</a>. Reason of "
@@ -100,164 +99,164 @@ msgstr "{} není platný klíč."
 msgid "Cannot update once deleted object."
 msgstr "Dříve smazaný objekt nelze aktualizovat."
 
-#: fruit/forms.py:68
+#: fruit/forms.py:32
 msgid "Nothing selected"
 msgstr "Nic nevybráno"
 
-#: fruit/forms.py:83
+#: fruit/forms.py:47
 msgid "Is it a tree that you planted yourself?"
 msgstr "Jedná se o strom, který jste zasadili?"
 
-#: fruit/forms.py:91
+#: fruit/forms.py:55
 msgid "Latitude must be a number between -90 and 90."
 msgstr "Zeměpisná šířka musí být číslo mezi -90 a 90."
 
-#: fruit/forms.py:98
+#: fruit/forms.py:62
 msgid "Longitude must be a number between -180 and 180."
 msgstr "Zeměpisná délka musí být číslo mezi -180 a 180."
 
-#: fruit/forms.py:107
+#: fruit/forms.py:76
 msgid "Reason"
 msgstr "Důvod"
 
-#: fruit/forms.py:108
+#: fruit/forms.py:77
 msgid "Please describe reason of why you are deleting the marker."
 msgstr "Prosíme, popište důvody, které máte k smazání této značky."
 
-#: fruit/herbarium/models.py:12 fruit/models.py:65 fruit/models.py:78
+#: fruit/herbarium/models.py:16 fruit/models.py:66 fruit/models.py:79
 msgid "kind"
 msgstr "druh"
 
-#: fruit/herbarium/models.py:14
+#: fruit/herbarium/models.py:20
+msgid "url to new herbarium"
+msgstr "url na nové herbarium"
+
+#: fruit/herbarium/models.py:22
 msgid "full name"
 msgstr "celé jméno"
 
-#: fruit/herbarium/models.py:15
+#: fruit/herbarium/models.py:23
 msgid "latin name"
 msgstr "latinský název"
 
-#: fruit/herbarium/models.py:16 fruit/models.py:90
+#: fruit/herbarium/models.py:24 fruit/models.py:94
 msgid "description"
 msgstr "popis"
 
-#: fruit/herbarium/models.py:18
+#: fruit/herbarium/models.py:26
 msgid "photo"
 msgstr "fotka"
 
-#: fruit/herbarium/models.py:22
+#: fruit/herbarium/models.py:30
 msgid "Illustrational photo"
 msgstr "Ilustrační fotka"
 
-#: fruit/herbarium/models.py:34 fruit/herbarium/models.py:45
+#: fruit/herbarium/models.py:42 fruit/herbarium/models.py:55
 msgid "herbarium item"
 msgstr "položka herbáře"
 
-#: fruit/herbarium/models.py:35
+#: fruit/herbarium/models.py:43
 msgid "herbarium items"
 msgstr "položky herbáře"
 
-#: fruit/herbarium/models.py:47
+#: fruit/herbarium/models.py:60
 msgid "ripening plant part"
 msgstr "dozrávající část rostliny"
 
-#: fruit/herbarium/models.py:50
+#: fruit/herbarium/models.py:63
 msgid "ripening start"
 msgstr "začátek dozrávání"
 
-#: fruit/herbarium/models.py:51
+#: fruit/herbarium/models.py:64
 msgid "Month when specified plant part ripening starts."
 msgstr "Měsíc, kdy určená část rostliny dozrává."
 
-#: fruit/herbarium/models.py:54
+#: fruit/herbarium/models.py:67
 msgid "ripening duration"
 msgstr "trvání zralosti"
 
-#: fruit/herbarium/models.py:55
+#: fruit/herbarium/models.py:68
 msgid "Duration of ripening in months."
 msgstr "Trvání zralosti v měsících."
 
-#: fruit/herbarium/models.py:61
+#: fruit/herbarium/models.py:74
 msgid "ripening season"
 msgstr "sezóna dozrávání"
 
-#: fruit/herbarium/models.py:62
+#: fruit/herbarium/models.py:75
 msgid "ripening seasons"
 msgstr "sezóny dozrávání"
 
-#: fruit/models.py:27
+#: fruit/models.py:28
 msgid "Trees"
 msgstr "Stromy"
 
-#: fruit/models.py:28
+#: fruit/models.py:29
 msgid "Bushes"
 msgstr "Keře"
 
-#: fruit/models.py:29
+#: fruit/models.py:30
 msgid "Herbs"
 msgstr "Bylinky"
 
-#: fruit/models.py:30
+#: fruit/models.py:31
 msgid "Nuts"
 msgstr "Ořechy"
 
-#: fruit/models.py:34 newsletter/models.py:32
+#: fruit/models.py:35
 msgid "name"
 msgstr "název"
 
-#: fruit/models.py:39
+#: fruit/models.py:40
 msgid "Hex color triplet for map."
 msgstr "Hexadecimální triplet pro mapu."
 
-#: fruit/models.py:42
+#: fruit/models.py:43
 msgid "key"
 msgstr "klíč"
 
-#: fruit/models.py:46
+#: fruit/models.py:47
 msgid "ID for API and also index in the markers font"
 msgstr "ID pro API a také index ve fontu mapových značek"
 
-#: fruit/models.py:66
+#: fruit/models.py:67
 msgid "kinds"
 msgstr "druhy"
 
-#: fruit/models.py:76
-msgid "latitude"
-msgstr "šířka"
-
 #: fruit/models.py:77
-msgid "longitude"
-msgstr "délka"
+msgid "position"
+msgstr "pozice"
 
-#: fruit/models.py:81
+#: fruit/models.py:85
 msgid "revival"
 msgstr "vracíme"
 
-#: fruit/models.py:84 user/models.py:75
+#: fruit/models.py:88 user/models.py:75
 msgid "resolution"
 msgstr "rozlišení"
 
-#: fruit/models.py:92
+#: fruit/models.py:96
 msgid ""
 "Please, provide as many information about the marker as you find relevant."
 msgstr "Prosíme, napište co nejvíce relevantních informací o této značce."
 
-#: fruit/models.py:96
+#: fruit/models.py:100
 msgid "deleted"
 msgstr "smazán"
 
-#: fruit/models.py:98
+#: fruit/models.py:102
 msgid "why deleted"
 msgstr "proč smazán"
 
-#: fruit/models.py:100
+#: fruit/models.py:104
 msgid "The tree has been cut down, not found etc."
 msgstr "Strom byl poražen, nenalezen apod."
 
-#: fruit/models.py:103 user/models.py:160
+#: fruit/models.py:109 user/models.py:160
 msgid "user"
 msgstr "uživatel"
 
-#: fruit/models.py:117 fruit/models.py:118
+#: fruit/models.py:126 fruit/models.py:127
 msgid "fruit"
 msgstr "ovoce"
 
@@ -327,7 +326,7 @@ msgstr "Děkujeme, vaše změny byly uloženy."
 msgid "The marker has been deleted."
 msgstr "Tato značka byla smazána."
 
-#: gallery/admin.py:40 gallery/models.py:64 gallery/models.py:70
+#: gallery/admin.py:40 gallery/models.py:68 gallery/models.py:74
 msgid "images"
 msgstr "obrázky"
 
@@ -340,7 +339,7 @@ msgstr "Typ obsahu {ct} není podporován."
 msgid "Image not accepted."
 msgstr "Obrázek nebyl přijat."
 
-#: gallery/models.py:28 gallery/models.py:63
+#: gallery/models.py:28 gallery/models.py:67
 msgid "image"
 msgstr "obrázek"
 
@@ -348,7 +347,7 @@ msgstr "obrázek"
 msgid "caption"
 msgstr "titulek"
 
-#: gallery/models.py:77
+#: gallery/models.py:81
 msgid "cover image"
 msgstr "hlavní obrázek"
 
@@ -360,7 +359,7 @@ msgstr "Děkujeme za přidání obrázku."
 msgid "You have to be signed-in to add images."
 msgstr "Abyste mohli přidávat obrázky, musíte se přihlásit."
 
-#: naovoce/api/views.py:23
+#: naovoce/api/views.py:22
 msgid "Not found."
 msgstr "Nenalezeno."
 
@@ -680,21 +679,19 @@ msgid "Follow the link provided to finalize the signup process."
 msgstr "Pro dokončení registračního procesu navštivte odkaz v těle zprávy."
 
 #: naovoce/templates/admin/base_site.html:9
-#, fuzzy
-#| msgid "site administration"
 msgid "backend administration"
 msgstr "administrace stránek"
 
-#: naovoce/templates/base.html:48
+#: naovoce/templates/base.html:51
 msgid "By using this site you agree to the use of cookies for analytics."
 msgstr ""
 "Používáním těchto stránek souhlasíte s využitím souborů cookie k analýzám."
 
-#: naovoce/templates/base.html:49
+#: naovoce/templates/base.html:52
 msgid "More information"
 msgstr "Více informací"
 
-#: naovoce/templates/base.html:50
+#: naovoce/templates/base.html:53
 msgid "Dismiss"
 msgstr "Pryč s tím"
 
@@ -860,19 +857,19 @@ msgstr "Druh ovoce"
 msgid "Address"
 msgstr "Adresa"
 
-#: naovoce/templates/inc/mapjs.html:187
+#: naovoce/templates/inc/mapjs.html:186
 msgid "Search for places or addresses"
 msgstr "Vyhledávání míst a adres"
 
-#: naovoce/templates/inc/mapjs.html:188
+#: naovoce/templates/inc/mapjs.html:187
 msgid "Location search"
 msgstr "Vyhledávání míst"
 
-#: naovoce/templates/inc/mapjs.html:206
+#: naovoce/templates/inc/mapjs.html:205
 msgid "Show me where I am"
 msgstr "Ukaž mi, kde jsem!"
 
-#: naovoce/templates/inc/mapjs.html:208
+#: naovoce/templates/inc/mapjs.html:207
 #, python-brace-format
 msgid "You are within {distance} {unit} from this point"
 msgstr "Od tohoto bodu jste vzdáleni cca {distance}{unit}."
@@ -891,7 +888,6 @@ msgstr ""
 "na naši práci."
 
 #: naovoce/templates/inc/user_info.html:14
-#| msgid "back to map"
 msgid "back to website"
 msgstr "zpět na stránku"
 
@@ -917,19 +913,11 @@ msgstr "Přidat značku"
 msgid "Map"
 msgstr "Mapa"
 
-#: naovoce/templates/map.html:14
-msgid ""
-"The &quot;Na ovoce&quot; map provides you with views of wild fruit trees, "
-"fruit bushes and herbs, whose fruits are available for free picking."
-msgstr ""
-"Mapa &quot;Na ovoce&quot; umožňuje zobrazení volně rostoucích ovocných "
-"stromů, keřů a bylinek, jejichž plody je možné si zdarma natrhat."
-
-#: naovoce/templates/map.html:32
+#: naovoce/templates/map.html:30
 msgid "mapping"
 msgstr "mapujte"
 
-#: naovoce/templates/map.html:36
+#: naovoce/templates/map.html:34
 msgid ""
 "Do you know about a freely accessible fruit tree in your neighborhood?"
 "<br>Add it to our map."
@@ -937,17 +925,17 @@ msgstr ""
 "Víte o volně přístupném ovocném stromu ve vašem okoli?<br>Přidejte ho do "
 "naší mapy."
 
-#: naovoce/templates/map.html:41
+#: naovoce/templates/map.html:39
 msgid "planting"
 msgstr "sázejte"
 
-#: naovoce/templates/map.html:45
+#: naovoce/templates/map.html:43
 msgid "Have you planted a tree in public space?<br>Share it with others."
 msgstr ""
 "Zasadili jste strom na veřejném prostranství?<br>\n"
 "Podělte se o něj s ostatními."
 
-#: naovoce/templates/map.html:79
+#: naovoce/templates/map.html:77
 msgid "Turn off filter"
 msgstr "Zrušit filtr"
 
@@ -1079,95 +1067,19 @@ msgstr ""
 "Chystáte se použít %(provider_name)s k přihlášení na %(site_name)s. "
 "Posledním krokem je vyplnění následujícího formuláře."
 
-#: newsletter/admin.py:32 newsletter/models.py:167
-msgid "assets"
-msgstr "součásti"
-
-#: newsletter/admin.py:41
-msgid "Campaign has been sent to the mailing list."
-msgstr "Kampaň byla odeslána do seznamu příjemců."
-
-#: newsletter/admin.py:43
-msgid "Campaign has not been sent to the mailing list"
-msgstr "Kampaň nebyla odeslána do seznamu příjemců."
-
-#: newsletter/models.py:33
-msgid "hash"
-msgstr "hash"
-
-#: newsletter/models.py:84
-msgid "recipient list"
-msgstr "seznam příjemců"
-
-#: newsletter/models.py:85
-msgid "recipient lists"
-msgstr "seznamy příjemců"
-
-#: newsletter/models.py:90
-msgid "subject"
-msgstr "předmět"
-
-#: newsletter/models.py:91
-msgid "plain text"
-msgstr "prostý text"
-
-#: newsletter/models.py:92
-msgid "html text"
-msgstr "html text"
-
-#: newsletter/models.py:94
-msgid "sent"
-msgstr "odesláno"
-
-#: newsletter/models.py:98
-msgid "subscriber lists"
-msgstr "seznamy odběratelů"
-
-#: newsletter/models.py:103
-msgid "from name"
-msgstr "jméno odesilatele"
-
-#: newsletter/models.py:109
-msgid "from email"
-msgstr "email odesilatele"
-
-#: newsletter/models.py:149 newsletter/models.py:155
-msgid "campaign"
-msgstr "kampaň"
-
-#: newsletter/models.py:150
-msgid "campaigns"
-msgstr "kampaně"
-
-#: newsletter/models.py:163
-msgid "file"
-msgstr "soubor"
-
-#: newsletter/models.py:166
-msgid "asset"
-msgstr "součást"
-
-#: newsletter/templates/admin/newsletter/campaign/change_form.html:10
-msgid "Save and send"
-msgstr "Uložit a poslat"
-
-#: newsletter/templates/admin/newsletter/campaign/change_form.html:12
-msgid "Ready to send the campaign draft to the mailing list?"
-msgstr "Je kampaň připravena k odeslání do mailing listu?"
-
-#: newsletter/views.py:30
+#: newsletter/views.py:26
 msgid "You have been successfully subscribed to our newsletter."
 msgstr "Byli jste úspěšně přihlášeni k odběru našeho newsletteru."
 
-#: newsletter/views.py:32
+#: newsletter/views.py:28
 msgid "There has been an error subscribing you to our newsletter."
 msgstr "Stala se chyba při přihlašování k odběru newsletteru."
 
-#: newsletter/views.py:38
+#: newsletter/views.py:34
 msgid "You have been successfully unsubscribed from our newsletter."
 msgstr "Byli jste odhlášeni z odběru našeho newsletteru."
 
-#: newsletter/views.py:40
+#: newsletter/views.py:36
 msgid "There has been an error unsubscribing you from our newsletter."
 msgstr "Stala se chyba při odhlašování z odběru newsletteru."
 
@@ -1195,19 +1107,23 @@ msgstr "Oprávnění"
 msgid "Important dates"
 msgstr "Důležitá data"
 
-#: user/api/signup/serializers.py:41
+#: user/api/signup/serializers.py:39
+msgid "A user is already registered with this username."
+msgstr "Uživatel s tímto uživatelským jménem je již registrován."
+
+#: user/api/signup/serializers.py:46
 msgid "A user is already registered with this e-mail address."
 msgstr "Uživatel s touto e-mailovou adresou je již registrován."
 
-#: user/api/signup/serializers.py:75 user/api/token_auth/serializers.py:22
+#: user/api/signup/serializers.py:80 user/api/token_auth/serializers.py:22
 msgid "Facebook ID does not match."
 msgstr "Facebook ID neodpovídá."
 
-#: user/api/signup/serializers.py:80 user/api/token_auth/serializers.py:26
+#: user/api/signup/serializers.py:85 user/api/token_auth/serializers.py:26
 msgid "User account is disabled."
 msgstr "Uživatelský účet je zakázán."
 
-#: user/api/signup/serializers.py:106
+#: user/api/signup/serializers.py:111
 msgid "Facebook authentication failed."
 msgstr "Autentikace facebookem selhala."
 
@@ -1365,15 +1281,15 @@ msgstr "Systémová zpráva může mít překlad a může obsahovat HTML."
 msgid "recipient"
 msgstr "příjemce"
 
-#: user/models.py:212
+#: user/models.py:213
 msgid "message"
 msgstr "zpráva"
 
-#: user/models.py:213
+#: user/models.py:214
 msgid "messages"
 msgstr "zprávy"
 
-#: user/signals.py:55
+#: user/signals.py:54
 #, python-brace-format
 msgid ""
 "Welcome! Before you start using this site, please take time to read our <a "
@@ -1405,6 +1321,76 @@ msgstr "změněno"
 #: utils/templatetags/truncate.py:16
 msgid "Read more"
 msgstr "Čtěte více"
+
+#~ msgid "latitude"
+#~ msgstr "šířka"
+
+#~ msgid "longitude"
+#~ msgstr "délka"
+
+#~ msgid ""
+#~ "The &quot;Na ovoce&quot; map provides you with views of wild fruit trees, "
+#~ "fruit bushes and herbs, whose fruits are available for free picking."
+#~ msgstr ""
+#~ "Mapa &quot;Na ovoce&quot; umožňuje zobrazení volně rostoucích ovocných "
+#~ "stromů, keřů a bylinek, jejichž plody je možné si zdarma natrhat."
+
+#~ msgid "assets"
+#~ msgstr "součásti"
+
+#~ msgid "Campaign has been sent to the mailing list."
+#~ msgstr "Kampaň byla odeslána do seznamu příjemců."
+
+#~ msgid "Campaign has not been sent to the mailing list"
+#~ msgstr "Kampaň nebyla odeslána do seznamu příjemců."
+
+#~ msgid "hash"
+#~ msgstr "hash"
+
+#~ msgid "recipient list"
+#~ msgstr "seznam příjemců"
+
+#~ msgid "recipient lists"
+#~ msgstr "seznamy příjemců"
+
+#~ msgid "subject"
+#~ msgstr "předmět"
+
+#~ msgid "plain text"
+#~ msgstr "prostý text"
+
+#~ msgid "html text"
+#~ msgstr "html text"
+
+#~ msgid "sent"
+#~ msgstr "odesláno"
+
+#~ msgid "subscriber lists"
+#~ msgstr "seznamy odběratelů"
+
+#~ msgid "from name"
+#~ msgstr "jméno odesilatele"
+
+#~ msgid "from email"
+#~ msgstr "email odesilatele"
+
+#~ msgid "campaign"
+#~ msgstr "kampaň"
+
+#~ msgid "campaigns"
+#~ msgstr "kampaně"
+
+#~ msgid "file"
+#~ msgstr "soubor"
+
+#~ msgid "asset"
+#~ msgstr "součást"
+
+#~ msgid "Save and send"
+#~ msgstr "Uložit a poslat"
+
+#~ msgid "Ready to send the campaign draft to the mailing list?"
+#~ msgstr "Je kampaň připravena k odeslání do mailing listu?"
 
 #~ msgid "blogs count"
 #~ msgstr "počet blogů"

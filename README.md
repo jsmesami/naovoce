@@ -12,21 +12,18 @@ in the landscape.
 
 Prerequisities:
 
-* Python3.4+
-* PostgreSQL 9+
+* Python 3.6
+* PostgreSQL 9.6 with PostGIS and HStore
+* GEOS
+* Cairo
 * CoffeeScript
 * Less
-* Bower
-
-You may also need to install Cairo (eg. `brew install cairo`) if it's not already in your system,
-together with it's dependencies, (eg. `sudo apt install libffi-dev`)
-
 
 Very basic local installation example:
 
 	# Create and activate virtualenv with the latest Python 3 you have:
 	mkdir ~/.env
-	python3[.5] -m venv ~/.env/naovoce
+	python3.6 -m venv ~/.env/naovoce
 	source ~/.env/naovoce/bin/activate
 
 	# Upgrade pip:
@@ -35,13 +32,13 @@ Very basic local installation example:
 	# If you don't have (or want) node.js, you can install it into your virtualenv:
 	pip install nodeenv
 	nodeenv -p --prebuilt
-	npm install -g coffee-script less bower
+	npm install -g coffee-script less
 
 	# Install site and dependencies:
 	git clone https://github.com/jsmesami/naovoce.git
 	cd naovoce
 	pip install -r requirements.txt [-b ~/tmp]
-	bower install
+	npm install
 
 	# Create and edit local settings to match your setup: 
 	cd src
@@ -52,8 +49,6 @@ Very basic local installation example:
 	psql -c "CREATE DATABASE naovoce OWNER=naovoce"
 	
 	# Populate database:
-	# If your DB user is not superuser, you my have to install HStore extension by hand
-	# in case it does not exist yet: CREATE EXTENSION IF NOT EXISTS hstore;
 	chmod u+x manage.py
 	./manage.py migrate
 	./manage.py loaddata naovoce/fixtures/sites.json

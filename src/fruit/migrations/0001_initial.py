@@ -21,8 +21,8 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
                 ('created', models.DateTimeField(editable=False, default=django.utils.timezone.now, verbose_name='created')),
                 ('modified', utils.fields.AutoDateTimeField(editable=False, default=django.utils.timezone.now, verbose_name='modified')),
-                ('latitude', models.DecimalField(decimal_places=10, verbose_name='latitude', max_digits=13)),
-                ('longitude', models.DecimalField(decimal_places=10, verbose_name='longitude', max_digits=13)),
+                ('latitude', models.DecimalField(decimal_places=10, verbose_name='latitude', max_digits=13, null=True)),
+                ('longitude', models.DecimalField(decimal_places=10, verbose_name='longitude', max_digits=13, null=True)),
                 ('description', models.TextField(verbose_name='description', help_text='Please, provide as many information about the marker as you find relevant.', blank=True)),
                 ('deleted', models.BooleanField(default=False, verbose_name='deleted')),
                 ('why_deleted', models.TextField(verbose_name='why deleted', help_text='The tree has been cut down, not found etc.', blank=True)),
@@ -68,16 +68,16 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='herbarium',
             name='kind',
-            field=models.OneToOneField(to='fruit.Kind', verbose_name='kind'),
+            field=models.OneToOneField(to='fruit.Kind', verbose_name='kind', on_delete=models.CASCADE),
         ),
         migrations.AddField(
             model_name='fruit',
             name='kind',
-            field=models.ForeignKey(to='fruit.Kind', verbose_name='kind', related_name='fruits'),
+            field=models.ForeignKey(to='fruit.Kind', verbose_name='kind', related_name='fruits', on_delete=models.CASCADE),
         ),
         migrations.AddField(
             model_name='fruit',
             name='user',
-            field=models.ForeignKey(to=settings.AUTH_USER_MODEL, verbose_name='user', related_name='fruits'),
+            field=models.ForeignKey(to=settings.AUTH_USER_MODEL, verbose_name='user', related_name='fruits', on_delete=models.CASCADE),
         ),
     ]

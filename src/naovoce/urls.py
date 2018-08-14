@@ -9,6 +9,8 @@ import user.views
 import naovoce.views
 
 
+app_name = "naovoce"
+
 urlpatterns = [
     # Legacy URLs redirects
     url(r'^gallery/blogpost\.*', RedirectView.as_view(permanent=True, url='/web/blog')),
@@ -21,7 +23,7 @@ urlpatterns = [
     url(r'^en/codex/$', RedirectView.as_view(permanent=True, url='/web/kodex')),
 
     url(r'^$', RedirectView.as_view(permanent=True, url='/web/')),
-    url(r'^fruitadmin/', include(admin.site.urls)),
+    url(r'^fruitadmin/', admin.site.urls),
     url(r'^api/v1/', include('naovoce.api.urls', namespace='api')),
     url(r'^fruit/', include('fruit.urls', namespace='fruit')),
     url(r'^gallery/', include('gallery.urls', namespace='gallery')),

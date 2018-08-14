@@ -1,12 +1,12 @@
 import random
 import re
 
+from django.conf import settings
+from django.template import Library
+from django.template.defaultfilters import stringfilter
+from django.template.loader import get_template
 from django.utils.encoding import force_str
 from django.utils.safestring import mark_safe
-from django.template.loader import get_template
-from django.template.base import Library
-from django.conf import settings
-from django.template.defaultfilters import stringfilter
 
 from sorl.thumbnail import get_thumbnail
 from sorl.thumbnail.templatetags.thumbnail import is_portrait
@@ -18,7 +18,7 @@ register = Library()
 
 
 @register.simple_tag(takes_context=True)
-@register.assignment_tag(takes_context=True, name='cache_thumb')
+@register.simple_tag(takes_context=True, name='cache_thumb')
 def get_thumb(context, img, w=None, h=None):
 
     if not img:

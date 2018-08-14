@@ -2,6 +2,7 @@ from django.conf.urls import url
 
 from . import views as fruit
 
+app_name = "fruit"
 
 urlpatterns = [
     url(r'^add/$', fruit.add, name='add'),

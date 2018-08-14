@@ -1,0 +1,45 @@
+{
+  "homepage": "https://na-ovoce.cz",
+  "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jsmesami/naovoce"
+  },
+  "dependencies": {
+    "frontend-dependencies": "0.2.1",
+    "jquery": "2.2.4",
+    "bootstrap": "3.3.7",
+    "leaflet": "1.0.0",
+    "leaflet-hash": "0.2.1",
+    "leaflet.markercluster": "1.1.0",
+    "leaflet.locatecontrol": "0.62.0",
+    "font-awesome": "4.5.0",
+    "esri-leaflet": "2.1.1",
+    "esri-leaflet-geocoder": "2.2.6",
+    "nanoscroller": "0.8.7",
+    "prefixfree": "1.0.0",
+    "slick-carousel": "1.8.1",
+    "mobile-detect": "1.3.7"
+  },
+  "frontendDependencies": {
+    "target": "src/naovoce/static/components",
+    "packages": [
+      "jquery",
+      "bootstrap",
+      "leaflet",
+      "leaflet-hash",
+      "leaflet.markercluster",
+      "leaflet.locatecontrol",
+      "font-awesome",
+      "esri-leaflet",
+      "esri-leaflet-geocoder",
+      "nanoscroller",
+      "prefixfree",
+      "slick-carousel",
+      "mobile-detect"
+    ]
+  },
+  "scripts": {
+    "postinstall": "./node_modules/.bin/frontend-dependencies"
+  }
+}

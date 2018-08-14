@@ -1,9 +1,8 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 
 from .views import HerbariumList
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^$', HerbariumList.as_view(), name='herbarium-list'),
-)
+]

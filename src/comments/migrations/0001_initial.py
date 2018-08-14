@@ -25,8 +25,8 @@ class Migration(migrations.Migration):
                 ('ip', models.GenericIPAddressField(null=True, verbose_name="author's IP address")),
                 ('rejected', models.BooleanField(default=False, verbose_name='rejected')),
                 ('object_id', models.PositiveIntegerField()),
-                ('author', models.ForeignKey(to=settings.AUTH_USER_MODEL, verbose_name='author')),
-                ('content_type', models.ForeignKey(to='contenttypes.ContentType')),
+                ('author', models.ForeignKey(to=settings.AUTH_USER_MODEL, verbose_name='author', on_delete=models.CASCADE)),
+                ('content_type', models.ForeignKey(to='contenttypes.ContentType', on_delete=models.CASCADE)),
             ],
             options={
                 'verbose_name_plural': 'comments',

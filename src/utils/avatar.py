@@ -4,7 +4,7 @@ import urllib.parse
 import cairosvg
 
 from django.core.cache import cache
-from django.template import loader, Context
+from django.template import loader
 from django.conf import settings
 
 from sorl.thumbnail import get_thumbnail
@@ -58,11 +58,11 @@ def get_avatar(request, user, size=None, bg_shade=0):
 
             template = loader.get_template('pickers/avatar.html')
 
-            icon = template.render(Context({
+            icon = template.render({
                 'size': size,
                 'bg': color.complementary().shade(bg_shade).hexcode() if bg_shade else 0,
                 'color': color.hexcode(),
-            }))
+            })
 
             with open(abs_path, 'wb') as f:
                 f.write(cairosvg.svg2png(bytestring=icon))

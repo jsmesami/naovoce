@@ -2,6 +2,8 @@ from django.contrib import admin
 from django.utils.translation import ugettext_noop, ugettext_lazy as _
 from django import forms
 
+from leaflet.admin import LeafletGeoAdmin
+
 from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 
 from gallery.admin import ImageAdminInline, GalleryAdminMixin
@@ -36,9 +38,9 @@ class KindAdmin(TranslationAdmin):
     _fruit_count.short_description = _('markers count')
 
 
-class FruitAdmin(GalleryAdminMixin, admin.ModelAdmin):
-    fields = 'latitude longitude kind catalogue description user deleted why_deleted cover_image'.split()
-    list_display = 'id __str__ latitude longitude user deleted images_count created'.split()
+class FruitAdmin(GalleryAdminMixin, LeafletGeoAdmin):
+    fields = 'position kind catalogue description user deleted why_deleted cover_image'.split()
+    list_display = 'id __str__ position user deleted images_count created'.split()
     list_filter = 'kind__name_cs deleted catalogue'.split()
     search_fields = 'id user__username user__email'.split()
     form = CoverImageAdminForm

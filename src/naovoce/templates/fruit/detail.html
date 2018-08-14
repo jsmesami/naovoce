@@ -86,7 +86,7 @@
 			# initialize map
 			$('#map-detail').fillViewport()
 
-			center = new L.LatLng({{ fruit.latitude|lower|unlocalize }}, {{ fruit.longitude|lower|unlocalize }})
+			center = new L.LatLng({{ fruit.position.y|lower|unlocalize }}, {{ fruit.position.x|lower|unlocalize }})
 
 			map = new Naovoce.Map 'map-detail'
 				.focusTo center
@@ -201,8 +201,8 @@
 							{% if not fruit.deleted %}
 							    <div class="geo">
 							    	{% trans "Unknown address" %}
-							    	{{ fruit.latitude|floatformat:6|localize }};# &nbsp;{{ fruit.longitude|floatformat:6|localize }}
-							    	({% dms_coords fruit.latitude fruit.longitude %})
+							    	{{ fruit.position.y|floatformat:6|localize }};# &nbsp;{{ fruit.position.x|floatformat:6|localize }}
+							    	({% dms_coords fruit.position.y fruit.position.x %})
 							    </div>
 
 							{% else %}

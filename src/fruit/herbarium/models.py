@@ -11,7 +11,11 @@ class Herbarium(models.Model):
     **This is a legacy model** maintained for the API
     `new_url` field points to the new herbarium on the WP site.
     """
-    kind = models.OneToOneField('fruit.Kind', verbose_name=_('kind'))
+    kind = models.OneToOneField(
+        'fruit.Kind',
+        verbose_name=_('kind'),
+        on_delete=models.CASCADE,
+    )
 
     new_url = models.URLField(_('url to new herbarium'), blank=True)
 
@@ -46,7 +50,12 @@ class Season(models.Model):
     The model currently does not support _locations_ in favor of simplicity - this shortcoming
     shoud be adressed when (and if) the target audience exceeds borders of Czechoslovakia.
     """
-    herb = models.ForeignKey(Herbarium, verbose_name=_('herbarium item'), related_name='seasons')
+    herb = models.ForeignKey(
+        Herbarium,
+        verbose_name=_('herbarium item'),
+        related_name='seasons',
+        on_delete=models.CASCADE,
+    )
 
     part = models.CharField(_('ripening plant part'), max_length=255)
 
