@@ -7,6 +7,7 @@ Project Contributors
 * [stlk](https://github.com/stlk)
 * [twentyfortysix](https://github.com/twentyfortysix)
 * [PetrDlouhy](https://github.com/PetrDlouhy)
+* [timthelion](https://github.com/timthelion)
 
 ## Ideas, events, design, copy...
 * Katka Kubánková
@@ -16,4 +17,4 @@ Project Contributors
 * František Marčík
 * Monika Křikavová
 * Jana Kosová
-* Tomáš Zdeblo
+* Tomáš Zděblo
