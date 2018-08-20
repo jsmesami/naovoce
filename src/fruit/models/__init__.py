@@ -1,6 +1,7 @@
 import random
 
 from .fruit import Fruit
+from .image import Image
 from .kind import Kind
 
 

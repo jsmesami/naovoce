@@ -3,17 +3,16 @@ from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from gallery.models import GalleryModel
 from utils.choices import Choices
 from utils.models import TimeStampedModel
 
 
 class ValidFruitQuerySet(models.QuerySet):
     def valid(self):
-        return self.prefetch_related('images').select_related('cover_image').exclude(deleted=True)
+        return self.exclude(deleted=True)
 
 
-class Fruit(TimeStampedModel, GalleryModel):
+class Fruit(TimeStampedModel):
     position = PointField(_('position'), null=True, blank=True, srid=4326)
     kind = models.ForeignKey(
         'fruit.Kind',
@@ -34,8 +33,7 @@ class Fruit(TimeStampedModel, GalleryModel):
     description = models.TextField(
         _('description'),
         blank=True,
-        help_text=_('Please, provide as many information about the marker '
-                    'as you find relevant.')
+        help_text=_('Please, provide as many information about the marker as you find relevant.')
     )
 
     deleted = models.BooleanField(_('deleted'), default=False, db_index=True)
