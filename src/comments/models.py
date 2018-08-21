@@ -40,6 +40,6 @@ class Comment(TimeStampedModel):
         return 'Comment #{c.id} by {c.author.username}'.format(c=self)
 
     class Meta:
-        verbose_name = _('comment')
-        verbose_name_plural = _('comments')
+        verbose_name = _('comment LEGACY')
+        verbose_name_plural = _('comments LEGACY')
         ordering = '-created',

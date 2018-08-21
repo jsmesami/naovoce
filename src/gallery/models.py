@@ -64,8 +64,8 @@ class Image(TimeStampedModel):
 
     class Meta:
         ordering = '-created',
-        verbose_name = _('image')
-        verbose_name_plural = _('images')
+        verbose_name = _('image LEGACY')
+        verbose_name_plural = _('images LEGACY')
 
 
 class GalleryModel(models.Model):

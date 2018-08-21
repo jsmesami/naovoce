@@ -12,7 +12,7 @@ def copy_images(apps, schema_editor):
     count = images.count()
 
     for n, img in enumerate(images, start=1):
-        print('copying {}/{}'.format(n, count))
+        print('copying image {}/{}'.format(n, count))
         with open(img.image.path, 'rb') as old_file:
             NewImage.objects.create(
                 fruit_id=img.gallery_id,

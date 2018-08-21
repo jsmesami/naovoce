@@ -1,10 +1,12 @@
 import random
 
+from .comment import Comment
 from .fruit import Fruit
 from .image import Image
 from .kind import Kind
 
 
+# TODO: Delete this after squashing migrations:
 def _get_random_key():
     """
     Chooses random key from Yi syllables Unicode range.
