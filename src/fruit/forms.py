@@ -9,6 +9,8 @@ from .models import Fruit, Kind
 
 
 class CatalogueWidget(CheckboxInput):
+    template_name = 'fruit/checkbox.html'  # Hotfix: widget gets otherwise rendered as required for unknown reason.
+
     def __init__(self):
         super().__init__(check_test=lambda val: val == Fruit.CATALOGUE.revival)
 
