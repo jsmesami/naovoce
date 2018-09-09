@@ -1,5 +1,0 @@
-User-agent: *
-
-Disallow: /accounts/
-{% load full_url %}{% url 'sitemap' as sitemap %}
-Sitemap: {% full_url sitemap %}

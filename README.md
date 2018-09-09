@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/jsmesami/naovoce.svg?branch=master)](https://travis-ci.org/jsmesami/naovoce)
 
-Na-ovoce.cz
-===========
+Na-ovoce.cz Backend
+===================
 
 Na ovoce aims to become a web community platform that maps fruit trees, fruit bushes and 
 herbs in wild and public spaces. At the same time its activities increase awareness 
@@ -13,11 +13,9 @@ in the landscape.
 Prerequisities:
 
 * Python 3.6
-* PostgreSQL 9.6 with PostGIS and HStore
+* PostgreSQL 9.6+ with PostGIS and HStore
 * GEOS
 * Cairo
-* CoffeeScript
-* Less
 
 Very basic local installation example:
 
@@ -28,11 +26,6 @@ Very basic local installation example:
 
 	# Upgrade pip:
 	pip install --upgrade pip
-	
-	# If you don't have (or want) node.js, you can install it into your virtualenv:
-	pip install nodeenv
-	nodeenv -p --prebuilt
-	npm install -g coffee-script less
 
 	# Install site and dependencies:
 	git clone https://github.com/jsmesami/naovoce.git

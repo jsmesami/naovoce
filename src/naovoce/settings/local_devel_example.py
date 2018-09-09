@@ -1,11 +1,8 @@
 # Save this file as local.py
 from .base import *  # noqa
-from .base import TEMPLATES
 
 DEBUG = True
 THUMBNAIL_DEBUG = DEBUG
-
-COMPRESS_ENABLED = False
 
 ALLOWED_HOSTS = 'localhost',
 
@@ -53,17 +50,6 @@ SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
 CSRF_COOKIE_HTTPONLY = False
 X_FRAME_OPTIONS = 'SAMEORIGIN'
-
-# enable template debugging
-TEMPLATES[0]['OPTIONS']['debug'] = DEBUG
-TEMPLATES[0]['OPTIONS']['loaders'] = [
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-]
-
-
-# pip install django-debug-toolbar
-# EXTERNAL_APPS = ('debug_toolbar',) + EXTERNAL_APPS
 
 # on a Mac, syslog sits on a different path
 # LOGGING['handlers']['syslog']['address'] = '/var/run/syslog'

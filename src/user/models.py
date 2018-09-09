@@ -4,7 +4,6 @@ from uuid import uuid4
 
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.contrib.postgres.fields import HStoreField
-from django.urls import reverse
 from django.db import models
 from django.utils import timezone
 from django.utils.formats import date_format
@@ -118,9 +117,6 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         return self.username
-
-    def get_absolute_url(self):
-        return reverse('pickers:detail', args=[self.pk, self.slug])
 
     def has_newsletter(self):
         mailing_list = newsletter.List.get_default()

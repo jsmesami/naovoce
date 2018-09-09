@@ -1,5 +1,0 @@
--r requirements.txt
-
-ipython>=4.0
-django-debug-toolbar>=1.4
-yet-another-django-profiler>=1.0.3

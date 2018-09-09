@@ -1,7 +1,0 @@
-<div class="form-group {% if field.errors %}has-error{% endif %}">
-	<input id="{{ field.id_for_label }}" name="{{ field.html_name }}" type="file" class="inputfile">
-	<label for="{{ field.id_for_label }}">{{ label|default:field.label }}</label>
-    {% for error in field.errors %}
-        <span class="help-block {{ form.error_css_class }}">{{ error }}</span>
-    {% endfor %}
-</div>

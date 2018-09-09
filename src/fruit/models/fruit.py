@@ -52,6 +52,10 @@ class Fruit(TimeStampedModel):
 
     objects = models.Manager.from_queryset(ValidFruitQuerySet)()
 
+    @property
+    def frontend_url(self):
+        return ''  # TODO
+
     def is_owner(self, user):
         return self.user.is_active and (self.user == user)
 

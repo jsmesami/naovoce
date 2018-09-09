@@ -1,14 +1,8 @@
 import os
 
-from django.contrib.messages import constants as messages
-
-
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
 
 DEBUG = False
-THUMBNAIL_DEBUG = DEBUG
-
-COMPRESS_ENABLED = True
 
 ALLOWED_HOSTS = '.na-ovoce.cz', '.na-ovoce.cz.'
 
@@ -24,7 +18,7 @@ DEFAULT_FROM_EMAIL = 'registration@na-ovoce.cz'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'naovoce',
         'CONN_MAX_AGE': 600,
         'USER': '',      # must be set in instance-specific settings/local.py
@@ -71,14 +65,6 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'naovoce/static')
 STATIC_URL = '/static/'
 
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
-)
-
-THUMBNAIL_PREFIX = 'CACHE/thumbnails/'
-
 LOCALE_PATHS = os.path.join(PROJECT_ROOT, 'locale'),
 
 ROOT_URLCONF = 'naovoce.urls'
@@ -94,8 +80,6 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_HTTPONLY = True
 X_FRAME_OPTIONS = 'DENY'
-
-TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 AUTH_USER_MODEL = 'user.FruitUser'
 
@@ -133,29 +117,9 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-COMPRESS_CSS_FILTERS = (
-    'compressor.filters.cssmin.CSSMinFilter',
-)
-
-COMPRESS_PRECOMPILERS = (
-    ('text/coffeescript', 'coffee --compile --stdio'),
-    ('text/less', 'lessc {infile} {outfile}'),
-)
-
-MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
-
-MESSAGE_TAGS = {
-    messages.SUCCESS: 'success alert-success',
-    messages.INFO: 'info alert-info',
-    messages.DEBUG: 'debug alert-info',
-    messages.WARNING: 'warning alert-warning',
-    messages.ERROR: 'error alert-danger',
-}
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(PROJECT_ROOT, 'naovoce/templates')],
         'OPTIONS': {
             'debug': DEBUG,
             'context_processors': [
@@ -166,13 +130,10 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'naovoce.context_processors.common',
             ],
             'loaders': [
-                ('django.template.loaders.cached.Loader', [
-                    'django.template.loaders.filesystem.Loader',
-                    'django.template.loaders.app_directories.Loader',
-                ]),
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
             ],
         },
     },
@@ -187,7 +148,6 @@ MIDDLEWARE = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'utils.i18n.middleware.ForceDefaultLanguageMiddleware',
 )
 
 DJANGO_APPS = (
@@ -207,17 +167,12 @@ LOCAL_APPS = (
     'fruit',
     'fruit.herbarium',
     'newsletter',
-    'utils',
-    'utils.i18n',
     'comments',
     'naovoce',
 )
 
 EXTERNAL_APPS = (
-    'sorl.thumbnail',
     'modeltranslation',
-    'compressor',
-    'bootstrapform',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -304,8 +259,6 @@ CORS_ORIGIN_WHITELIST = (
 )
 
 CORS_URLS_REGEX = r'^/api/.*$'
-
-GALLERY_PUBLIC_CONTAINERS = 'fruit',
 
 NEWSLETTER_INSTALLATION_URL = 'https://newsletter.na-ovoce.cz'
 NEWSLETTER_API_KEY = None           # must be set in instance-specific settings/local.py

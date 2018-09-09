@@ -6,7 +6,7 @@ env:
 python:
   - "3.6"
 install:
-  - pip install -r requirements_base.txt
+  - pip install -r requirements.txt
   - pip install nodeenv
   - pip install coveralls django-coverage-plugin
   - pip install flake8
@@ -19,7 +19,7 @@ before_script:
   - (cd src/naovoce/settings && cp travis.py local.py)
   - src/manage.py migrate
 script:
-  - cd src && python -Wall $VIRTUAL_ENV/bin/coverage run manage.py test
+  - cd src && python -Wall $VIRTUAL_ENV/bin/coverage run manage.py test naovoce
   - flake8 --ignore=W503
 after_script:
   - coveralls
