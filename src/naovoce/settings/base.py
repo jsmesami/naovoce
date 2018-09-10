@@ -150,7 +150,8 @@ MIDDLEWARE = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-DJANGO_APPS = (
+INSTALLED_APPS = (
+    # Django apps
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -159,9 +160,7 @@ DJANGO_APPS = (
     'django.contrib.sites',
     'django.contrib.postgres',
     'django.contrib.gis',
-)
-
-LOCAL_APPS = (
+    # local apps
     'user',
     'gallery',
     'fruit',
@@ -169,9 +168,7 @@ LOCAL_APPS = (
     'newsletter',
     'comments',
     'naovoce',
-)
-
-EXTERNAL_APPS = (
+    # external apps
     'modeltranslation',
     'allauth',
     'allauth.account',
@@ -182,9 +179,7 @@ EXTERNAL_APPS = (
     'rest_framework',
     'rest_framework_gis',
     'rest_framework.authtoken',
-)
-
-ADMIN_APPS = (
+    # admin
     'django.contrib.admin',
 )
 
@@ -251,12 +246,7 @@ REST_FRAMEWORK = {
     )
 }
 
-CORS_ORIGIN_WHITELIST = (
-    'na-ovoce.cz',
-    'localhost:8000',
-    '127.0.0.1:8000',
-    '0.0.0.0:3449',
-)
+CORS_ORIGIN_WHITELIST = 'na-ovoce.cz',
 
 CORS_URLS_REGEX = r'^/api/.*$'
 

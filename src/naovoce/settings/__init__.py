@@ -2,14 +2,11 @@ from django.core.exceptions import ImproperlyConfigured
 
 try:
     from .local import *  # noqa
-    from .local import ADMIN_APPS, DJANGO_APPS, EXTERNAL_APPS, LOCAL_APPS, SECRET_KEY
 except ImportError:
     raise ImproperlyConfigured('Please provide instance-specific settings/local.py '
-                               '(see settings/local_example.py).')
+                               '(see settings/local_[prod|dev]_example.py).')
 
-if SECRET_KEY.startswith('****'):
+if SECRET_KEY is None:
     from django.core.exceptions import ImproperlyConfigured
     raise ImproperlyConfigured('Please set SECRET_KEY in settings/local.py '
                                'to a unique, unpredictable value.')
-
-INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + EXTERNAL_APPS + ADMIN_APPS

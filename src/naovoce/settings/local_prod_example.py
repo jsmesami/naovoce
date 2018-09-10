@@ -1,7 +1,7 @@
 # Save this file as local.py
 from .base import *  # noqa
 
-SECRET_KEY = "**** Make this unique and don't share with anybody."
+SECRET_KEY = None  # Set a secret key!
 
 # Set correct credentials for production
 SERVER_EMAIL = ''
@@ -20,5 +20,5 @@ DATABASES = {
     }
 }
 
-NEWSLETTER_API_KEY = '****'
-NEWSLETTER_DEFAULT_LIST_ID = '****'
+NEWSLETTER_API_KEY = ''
+NEWSLETTER_DEFAULT_LIST_ID = ''

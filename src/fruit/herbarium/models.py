@@ -63,6 +63,7 @@ class Season(models.Model):
         _('ripening start'),
         help_text=_('Month when specified plant part ripening starts.'),
     )
+
     duration = MonthsField(
         _('ripening duration'),
         help_text=_('Duration of ripening in months.'),

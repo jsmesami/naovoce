@@ -4,15 +4,16 @@ from .base import *  # noqa
 DEBUG = True
 THUMBNAIL_DEBUG = DEBUG
 
+# Allow localhost for development
 ALLOWED_HOSTS = 'localhost',
 
-SECRET_KEY = "**** Make this unique and don't share with anybody."
+SECRET_KEY = None  # Set a secret key!
 
-# you may want to output emails to console:
+# You may want to output emails to console:
 # python -m smtpd -n -c DebuggingServer localhost:1025
 EMAIL_PORT = 1025
 
-# make sure you loaded sites fixture
+# Make sure you loaded sites fixture
 SITE_ID = 2
 
 # Set correct credentials for development
@@ -27,10 +28,10 @@ DATABASES = {
     }
 }
 
-NEWSLETTER_API_KEY = '****'
-NEWSLETTER_DEFAULT_LIST_ID = '****'
+NEWSLETTER_API_KEY = ''
+NEWSLETTER_DEFAULT_LIST_ID = ''
 
-# disable cache
+# Disable cache
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
@@ -50,6 +51,9 @@ SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
 CSRF_COOKIE_HTTPONLY = False
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+# Enable CORS for localhost
+CORS_ORIGIN_WHITELIST += 'localhost:8000',
 
 # on a Mac, syslog sits on a different path
 # LOGGING['handlers']['syslog']['address'] = '/var/run/syslog'

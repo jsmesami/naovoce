@@ -35,7 +35,7 @@ Very basic local installation example:
 
 	# Create and edit local settings to match your setup: 
 	cd src
-	cp naovoce/settings/local_[deploy|devel]_example.py naovoce/settings/local.py
+	cp naovoce/settings/local_[prod|dev]_example.py naovoce/settings/local.py
 	vim naovoce/settings/local.py
 
 	# Create database to match your settings, eg.:
