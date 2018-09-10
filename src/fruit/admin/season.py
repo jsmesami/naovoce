@@ -1,6 +1,5 @@
-from modeltranslation.admin import TranslationTabularInline
-
 from fruit.herbarium.models import Season
+from modeltranslation.admin import TranslationTabularInline
 
 
 class SeasonAdminInline(TranslationTabularInline):

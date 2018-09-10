@@ -1,16 +1,16 @@
 from django.db import models
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
-
 from utils.fields import MonthsField
 
 
 class Herbarium(models.Model):
-    """
-    Additional information about mapped plants.
+    """Additional information about mapped plants.
+
     **This is a legacy model** maintained for the API
     `new_url` field points to the new herbarium on the WP site.
     """
+
     kind = models.OneToOneField(
         'fruit.Kind',
         verbose_name=_('kind'),
@@ -44,12 +44,13 @@ class Herbarium(models.Model):
 
 
 class Season(models.Model):
-    """
-    Season during which a specified part of a plant is ripening. Note that this is undocumented
-    feature, which is here only to appease mobile app developers' requirement.
+    """Season during which a specified part of a plant is ripening.
+
+    Note that this is undocumented feature, which is here only to appease mobile app developers' requirement.
     The model currently does not support _locations_ in favor of simplicity - this shortcoming
     shoud be adressed when (and if) the target audience exceeds borders of Czechoslovakia.
     """
+
     herb = models.ForeignKey(
         Herbarium,
         verbose_name=_('herbarium item'),

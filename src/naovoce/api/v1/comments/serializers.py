@@ -1,12 +1,8 @@
-from rest_framework import serializers
-
 from fruit.models import Comment
+from rest_framework import serializers
 
 
 class CommentSerializer(serializers.ModelSerializer):
-
-    def save(self, **kwargs):
-        super().save(**kwargs)
 
     class Meta:
         model = Comment

@@ -1,13 +1,11 @@
-from naovoce.api.v1.users.serializers import UserSerializer
-
 from django.contrib.gis.geos import Point
-
+from fruit.models import Fruit, Kind
+from naovoce.api.v1.users.serializers import UserSerializer
 from rest_framework import serializers
 
-from fruit.models import Fruit, Kind
-from .fields import KindRelatedField
 from ..fields import CachedHyperlinkedIdentityField
 from ..images.fields import HyperlinkedGalleryField
+from .fields import KindRelatedField
 
 
 class KindSerializer(serializers.ModelSerializer):

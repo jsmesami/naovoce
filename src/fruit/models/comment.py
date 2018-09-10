@@ -1,7 +1,6 @@
 from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-
 from utils.models import TimeStampedModel
 
 
@@ -20,7 +19,7 @@ class Comment(TimeStampedModel):
     fruit = models.ForeignKey('fruit.Fruit', related_name='comments', on_delete=models.CASCADE)
 
     def __str__(self):
-        return 'Comment #{c.id} by {c.author.username}'.format(c=self)
+        return 'Comment #{pk} by {username}'.format(pk=self.pk, username=self.author.username)
 
     class Meta:
         verbose_name = _('comment')

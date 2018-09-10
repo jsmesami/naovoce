@@ -1,7 +1,6 @@
 from django.contrib import admin
-
 from fruit.herbarium.models import Herbarium
-from fruit.models import Comment, Image, Kind, Fruit
+from fruit.models import Comment, Fruit, Image, Kind
 
 from .comment import CommentAdmin
 from .fruit import FruitAdmin

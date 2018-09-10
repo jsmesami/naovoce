@@ -1,10 +1,8 @@
 from django.utils.translation import ugettext_lazy as _
-from rest_framework import relations
+from fruit.models import Kind
+from rest_framework import relations, serializers
 from rest_framework.exceptions import ValidationError
 from rest_framework.reverse import reverse
-from rest_framework import serializers
-
-from fruit.models import Kind
 
 
 class KindRelatedField(relations.RelatedField):

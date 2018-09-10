@@ -2,7 +2,7 @@ import hashlib
 import os
 from uuid import uuid4
 
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.contrib.postgres.fields import HStoreField
 from django.db import models
 from django.utils import timezone
@@ -11,21 +11,20 @@ from django.utils.functional import cached_property
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 from django.utils.text import slugify
-from django.utils.translation import ugettext, pgettext_lazy, ugettext_lazy as _
-
+from django.utils.translation import pgettext_lazy, ugettext
+from django.utils.translation import ugettext_lazy as _
+import newsletter.list as newsletter
 from utils.avatar import AVATAR_MAX_FILESIZE, AVATARS_URL
 from utils.choices import Choices
 from utils.fields import ContentTypeRestrictedImageField
 from utils.models import TimeStampedModel
 
-import newsletter.list as newsletter
-
 
 class UserManager(BaseUserManager):
+
     def _create_user(self, username, email, password, is_staff, is_superuser, **extra_fields):
-        """
-        Creates and saves a User with the given username, email and password.
-        """
+        """Create and save a User with the given username, email and password."""
+
         if not username:
             raise ValueError('A username must be set')
         if not email:
@@ -158,9 +157,8 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
 
 
 class Message(TimeStampedModel):
-    """
-    Represents simple database-stored messages for users.
-    """
+    """Represents simple database-stored messages for users."""
+
     text = models.CharField(_('text'), max_length=255)
     context = HStoreField(
         _('context'), blank=True, null=True,
@@ -189,7 +187,7 @@ class Message(TimeStampedModel):
         if self.system:
             if self.context:
                 try:
-                    text = format_html(text, **self.context)
+                    text = format_html(text, **dict(self.context))
                 except KeyError:
                     pass
             else:

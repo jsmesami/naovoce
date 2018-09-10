@@ -1,8 +1,7 @@
-from django.contrib.gis.db.models import PointField
 from django.conf import settings
+from django.contrib.gis.db.models import PointField
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-
 from utils.choices import Choices
 from utils.models import TimeStampedModel
 

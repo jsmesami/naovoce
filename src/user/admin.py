@@ -1,10 +1,10 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import ugettext_lazy as _
-
-from .forms import UserChangeForm, UserCreationForm, MessageAdminForm
-from .models import FruitUser, Message
 from utils import trim_words
+
+from .forms import MessageAdminForm, UserChangeForm, UserCreationForm
+from .models import FruitUser, Message
 
 
 class FruitUserAdmin(UserAdmin):

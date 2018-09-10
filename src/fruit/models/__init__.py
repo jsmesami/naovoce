@@ -10,9 +10,8 @@ __all__ = 'Comment', 'Fruit', 'Image', 'Kind'
 
 # TODO: Delete this after squashing migrations:
 def _get_random_key():
-    """
-    Chooses random key from Yi syllables Unicode range.
-    """
+    """Chooses random key from Yi syllables Unicode range."""
+
     return '{key:x}'.format(
         key=random.randint(0xA000, 0xA48C)
     )

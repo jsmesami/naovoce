@@ -1,7 +1,6 @@
 from django.conf.urls import include, url
 
-from .views import api_root, api_handler_404
-
+from .views import api_handler_404, api_root
 
 app_name = "naovoce"
 

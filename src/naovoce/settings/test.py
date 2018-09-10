@@ -1,4 +1,4 @@
-from .base import *  # noqa
+from .base import *  # noqa pylint: disable=W0401,W0614
 
 SECRET_KEY = 'dummy test key'
 

@@ -1,26 +1,24 @@
-from rest_framework import generics
-from rest_framework.exceptions import ValidationError
 from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import ugettext_lazy as _
-
 from fruit.models import Image
+from rest_framework import generics
+from rest_framework.exceptions import ValidationError
+
+from ..permissions import IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly
 from .serializers import ImageSerializer
-from ..permissions import IsOwnerOrReadOnly, IsAuthenticatedOrReadOnly
 
 
 class ImageDetail(generics.RetrieveUpdateDestroyAPIView):
-    """
-    Retreive, update or destroy specific Image resource.
-    """
+    """Retreive, update or destroy specific Image resource."""
+
     queryset = Image.objects.select_related('author')
     serializer_class = ImageSerializer
     permission_classes = IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly
 
 
 class ImageList(generics.ListCreateAPIView):
-    """
-    List or create Image resources.
-    """
+    """List or create Image resources."""
+
     serializer_class = ImageSerializer
     permission_classes = IsAuthenticatedOrReadOnly,
 

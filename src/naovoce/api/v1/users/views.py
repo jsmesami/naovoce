@@ -1,17 +1,16 @@
 import datetime
+from user.models import FruitUser
+from user.utils import fruit_counter, top_pickers
 
 from rest_framework import generics
 from rest_framework.response import Response
 
-from user.models import FruitUser
-from user.utils import fruit_counter, top_pickers
 from . import serializers
 
 
 class UserList(generics.ListAPIView):
-    """
-    List User resources.
-    """
+    """List User resources."""
+
     queryset = FruitUser.objects.all()
     serializer_class = serializers.UserSerializer
 
@@ -44,8 +43,7 @@ class UserListTopLastMonth(UserList):
 
 
 class UserDetail(generics.RetrieveAPIView):
-    """
-    Retreive specific User resource.
-    """
+    """Retreive specific User resource."""
+
     queryset = FruitUser.objects.annotate(**fruit_counter())
     serializer_class = serializers.VerboseUserSerializer

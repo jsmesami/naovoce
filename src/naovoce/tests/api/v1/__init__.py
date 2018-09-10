@@ -1,19 +1,16 @@
 from decimal import Decimal
+from user.models import FruitUser
 
 from django.contrib.gis.geos import Point
-from django.urls import reverse
 from django.db import transaction
-
+from django.urls import reverse
+from fruit.models import Fruit, Kind
 from rest_framework.test import APITestCase
-
-from user.models import FruitUser
-from fruit.models import Kind, Fruit
 
 
 class NaovoceAPITestCase(APITestCase):
-    """
-    Provides base for API tests
-    """
+    """Provides base for API tests."""
+
     fixtures = 'kinds.json',
 
     kind_keys = (

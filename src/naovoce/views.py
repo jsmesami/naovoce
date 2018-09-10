@@ -1,8 +1,7 @@
 from collections import defaultdict
 
 from django.shortcuts import render
-
-from fruit.models import Kind, Fruit
+from fruit.models import Fruit, Kind
 
 
 def map_view(request):

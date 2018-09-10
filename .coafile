@@ -1,0 +1,77 @@
+[all]
+files = src/**.py
+ignore = .pytest_cache/
+use_spaces = True
+indent_size = 4
+max_line_length = 120
+max_lines_per_file = 1000
+file_naming_convention = snake
+join_multiple_lines = False
+split_before_first_argument = True
+space_between_ending_comma_and_closing_bracket = True
+split_arguments_when_comma_terminated = True
+dedent_closing_brackets = True
+blank_line_before_nested_class_or_def = True
+radon_ranks_normal = D
+
+[all.python]
+language = python 3
+ignore += **/migrations/*.py
+
+[all.python.imports]
+bears = PyImportSortBear
+force_single_line_imports = False
+isort_multi_line_output = 3  # 3 means 'Vertical Hanging Indent'
+default_import_section = THIRDPARTY
+include_trailing_comma_in_import = True
+
+[all.python.docs]
+bears = PyDocStyleBear
+pydocstyle_ignore =
+  D100, D101, D102, D103, D104, D105,  # Missing docstrings
+  D202,  # No blank lines allowed after function docstring
+  D203,  # 1 blank line required before class docstring
+  D213,  # Multi-line docstring summary should start at the second line
+
+[all.python.linelength]
+bears = LineLengthBear
+
+[all.python.unused-code]
+bears = PyUnusedCodeBear
+ignore += **/__init__.py
+
+[all.python.code-style]
+bears = PEP8Bear
+
+[all.python.complexity]
+bears = RadonBear
+radon_ranks_major = F
+radon_ranks_normal = F
+
+[all.python.keywords]
+language = python
+bears = KeywordBear
+files = src/**.py
+keywords =
+    FIXME,
+    pdb.set_trace(),
+    sys.path.insert,
+    sys.path.append
+
+[all.spacing]
+bears = SpaceConsistencyBear
+
+[all.filenames]
+bears = FilenameBear
+
+[all.requirements]
+files = requirements/**.txt
+
+[all.requirements.safety]
+bears = PySafetyBear
+
+[all.requirements.pinning]
+bears = PinRequirementsBear
+
+[all.long-files]
+bears = LineCountBear

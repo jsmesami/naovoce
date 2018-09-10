@@ -1,19 +1,15 @@
-from django.core.exceptions import ValidationError as DjangoValidationError
-from django.utils.translation import ugettext_lazy as _
-
-from requests.exceptions import HTTPError
-
-from rest_framework import serializers
-from rest_framework import exceptions
-
 from allauth.account import app_settings as allauth_settings
 from allauth.account.adapter import get_adapter as get_account_adapter
+from allauth.account.utils import complete_signup, setup_user_email
 from allauth.socialaccount.adapter import get_adapter as get_socialaccount_adapter
-from allauth.account.utils import setup_user_email, complete_signup
 from allauth.socialaccount.helpers import complete_social_login
-from allauth.socialaccount.models import SocialAccount, SocialLogin, SocialToken, SocialApp
+from allauth.socialaccount.models import SocialAccount, SocialApp, SocialLogin, SocialToken
 from allauth.socialaccount.providers.facebook.views import fb_complete_login
 from allauth.utils import email_address_exists, get_username_max_length
+from django.core.exceptions import ValidationError as DjangoValidationError
+from django.utils.translation import ugettext_lazy as _
+from requests.exceptions import HTTPError
+from rest_framework import exceptions, serializers
 
 
 class SignupSerializer(serializers.Serializer):

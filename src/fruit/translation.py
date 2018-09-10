@@ -1,7 +1,7 @@
-from modeltranslation.translator import translator, TranslationOptions
+from modeltranslation.translator import TranslationOptions, translator
 
-from .models import Kind
 from .herbarium.models import Herbarium, Season
+from .models import Kind
 
 
 class KindTranslationOptions(TranslationOptions):

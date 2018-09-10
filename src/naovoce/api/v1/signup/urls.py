@@ -1,5 +1,4 @@
 from django.conf.urls import url
-
 from naovoce.api.v1.signup import views
 
 urlpatterns = [

@@ -1,5 +1,5 @@
 # Save this file as local.py
-from .base import *  # noqa
+from .base import *  # noqa pylint: disable=W0401,W0614
 
 DEBUG = True
 THUMBNAIL_DEBUG = DEBUG

@@ -2,16 +2,13 @@ import os
 import urllib.parse
 
 import cairosvg
-
+from django.conf import settings
 from django.core.cache import cache
 from django.template import loader
-from django.conf import settings
-
 from sorl.thumbnail import get_thumbnail
 
 from . import colors as col
 from .full_url import get_full_url
-
 
 AVATAR_SIZE_MIN = getattr(settings, 'AVATAR_SIZE_MIN', 20)
 AVATAR_SIZE_MAX = getattr(settings, 'AVATAR_SIZE_MAX', 200)

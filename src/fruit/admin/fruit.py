@@ -1,9 +1,9 @@
-from django.utils.translation import ugettext_noop, ugettext_lazy as _
-
+from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_noop
 from leaflet.admin import LeafletGeoAdmin
 
-from .image import ImageAdminInline
 from .comment import CommentAdminInline
+from .image import ImageAdminInline
 
 
 class FruitAdmin(LeafletGeoAdmin):

@@ -1,6 +1,5 @@
 from django.conf.urls import url
 
-
 from .views import GetAuthToken, GetAuthTokenFacebook
 
 urlpatterns = [

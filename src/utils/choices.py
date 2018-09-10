@@ -1,6 +1,6 @@
 class Choices:
-    """
-    Encapsulates the choices definitions and conversions.
+    """Encapsulates the choices definitions and conversions.
+
     Allows for using custom symbols for individual choices and stores
     choices as numbers in the database, instead of 1-letter strings.
     Original code @ https://github.com/tuttle/python-useful
@@ -23,6 +23,7 @@ class Choices:
         Payment.STATUS.name_of(200) -> 'success'
         Payment.STATUS.text_of(200) -> 'Paid OK'
     """
+
     def __init__(self, **kwargs):
         defs = kwargs.items()
 

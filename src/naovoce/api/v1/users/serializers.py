@@ -1,7 +1,8 @@
-from rest_framework import serializers
-
-from utils.avatar import get_avatar
 from user.models import FruitUser
+
+from rest_framework import serializers
+from utils.avatar import get_avatar
+
 from ..fruit.fields import HyperlinkedFruitField
 
 

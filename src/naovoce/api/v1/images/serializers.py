@@ -2,17 +2,15 @@ import base64
 import imghdr
 
 from django.core.files.base import ContentFile
+from fruit.models import Image
 from rest_framework import serializers
 
-from fruit.models import Image
 from ..users.serializers import UserSerializer
 
 
 class Base64ImageField(serializers.ImageField):
-    """
-    This field allows uploading an image either as a raw POST data or
-    Base64-encoded string within a json payload.
-    """
+    """Field that allows uploading an image either as a raw POST data or Base64-encoded string within a json payload."""
+
     def to_internal_value(self, data):
         # If data is a string, try to base64-decode it.
         if isinstance(data, str):
@@ -37,8 +35,7 @@ class Base64ImageField(serializers.ImageField):
 
 class ImageSerializer(serializers.HyperlinkedModelSerializer):
 
-    # whitelist of content types, automatically updated when
-    # HyperlinkedGalleryField is instantiated
+    # whitelist of content types, automatically updated when HyperlinkedGalleryField is instantiated
     gallery_ct_whitelist = set()
 
     image = Base64ImageField()

@@ -1,19 +1,20 @@
 import sys
 
-from rest_framework.serializers import HyperlinkedIdentityField
-from rest_framework.fields import CharField
-
 import markdown2
+from rest_framework.fields import CharField
+from rest_framework.serializers import HyperlinkedIdentityField
 
 
 class CachedHyperlinkedIdentityField(HyperlinkedIdentityField):
-    """
-    This is a performance wrapper for HyperlinkedIdentityField.
+    """A performance wrapper for HyperlinkedIdentityField.
+
     We save a ton of time by pre-computing the URL the first time it's
     accessed, to save calling reverse potentially thousands of times
     per request.
+
     nb. we are not using Django cache here because of performance.
     """
+
     ID_TOKEN = str(sys.maxsize)
     URL_CACHE = {}
 

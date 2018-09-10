@@ -1,20 +1,19 @@
-from ipware.ip import get_ip
-
 from django.contrib.contenttypes.models import ContentType
-from django.http.response import Http404
-from django.utils.translation import ugettext_lazy as _
 from django.core.cache import caches
 from django.core.exceptions import ValidationError
-from django.dispatch import receiver
-from django.db.models.signals import post_save, post_delete
 from django.db.models import Count
-from rest_framework import generics, status, permissions
+from django.db.models.signals import post_delete, post_save
+from django.dispatch import receiver
+from django.http.response import Http404
+from django.utils.translation import ugettext_lazy as _
+from fruit.models import Fruit, Kind
+from ipware.ip import get_ip
+from rest_framework import generics, permissions, status
 from rest_framework.decorators import api_view
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 
-from fruit.models import Fruit, Kind
 from . import serializers
 from ..comments.serializers import CommentSerializer
 from ..permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly
@@ -54,9 +53,8 @@ class CachedResponse(Response):
 
 
 class FruitList(generics.ListCreateAPIView):
-    """
-    List or create Fruit resources.
-    """
+    """List or create Fruit resources."""
+
     queryset = Fruit.objects.valid().select_related('kind').order_by('-created')
     permission_classes = IsAuthenticatedOrReadOnly,
 
@@ -86,8 +84,8 @@ class FruitList(generics.ListCreateAPIView):
         if not (user or catalogue):
             # Caching comb. of both kind & user would produce too many cache entries.
             return CachedResponse(kind or 'all', serializer.data)
-        else:
-            return Response(serializer.data)
+
+        return Response(serializer.data)
 
     def get_serializer_class(self):
         if self.request.method in permissions.SAFE_METHODS:
@@ -102,9 +100,8 @@ class FruitList(generics.ListCreateAPIView):
 
 
 class FruitDetail(generics.RetrieveUpdateDestroyAPIView):
-    """
-    Retreive, update or destroy specific Fruit resource.
-    """
+    """Retreive, update or destroy specific Fruit resource."""
+
     queryset = Fruit.objects\
         .select_related('kind', 'user')\
         .annotate(images_count=Count('images'))
@@ -143,9 +140,8 @@ class FruitDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class FruitComplaint(generics.CreateAPIView):
-    """
-    Use comment system to send a complaint on invalid Fruit marker
-    """
+    """Use comment system to send a complaint on invalid Fruit marker."""
+
     serializer_class = CommentSerializer
     permission_classes = IsAuthenticated,
 
@@ -162,18 +158,16 @@ class FruitComplaint(generics.CreateAPIView):
 
 
 class KindList(generics.ListAPIView):
-    """
-    List fruit Kinds resources.
-    """
+    """List fruit Kinds resources."""
+
     queryset = Kind.objects.order_by()
     serializer_class = serializers.KindSerializer
 
 
 @api_view()
 def fruit_list_diff(request, date, time):
-    """
-    Get difference since date and/or time specified.
-    """
+    """Get difference since date and/or time specified."""
+
     if not date:
         # The date is not mandatory in url regex, because otherwise we woudln't be able to
         # use URL template tag without knowing the date ahead (we get the date using JS).

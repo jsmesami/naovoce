@@ -1,5 +1,4 @@
 from django.utils.translation import ugettext_lazy as _
-
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.exceptions import PermissionDenied
@@ -9,9 +8,8 @@ from .serializers import AuthTokenFacebookSerializer
 
 
 class GetAuthToken(ObtainAuthToken):
-    """
-    Extends ObtainAuthToken to provide user ID in a response.
-    """
+    """Extends ObtainAuthToken to provide user ID in a response."""
+
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -28,7 +26,6 @@ class GetAuthToken(ObtainAuthToken):
 
 
 class GetAuthTokenFacebook(GetAuthToken):
-    """
-    Returns Auth token for user email and Facebook ID.
-    """
+    """Returns Auth token for user email and Facebook ID."""
+
     serializer_class = AuthTokenFacebookSerializer

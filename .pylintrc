@@ -1,0 +1,67 @@
+[MASTER]
+jobs=2
+max-line-length=120
+ignore=migrations
+
+[MESSAGES CONTROL]
+disable =
+  missing-docstring,
+  line-too-long,
+  invalid-name,
+  no-value-for-parameter,
+  no-member,
+  superfluous-parens,
+  wrong-import-order,
+  unused-argument,
+  broad-except,
+  relative-import,
+  bad-continuation,
+  wrong-import-position,
+  bare-except,
+  unused-variable,
+  unsubscriptable-object,
+  redefined-builtin,
+  no-self-argument,
+  no-self-use,
+  too-many-arguments,
+  too-many-locals,
+  protected-access,
+  unidiomatic-typecheck,
+  redefined-outer-name,
+  ungrouped-imports,
+  too-many-branches,
+  too-many-statements,
+  anomalous-backslash-in-string,
+  bad-classmethod-argument,
+  too-few-public-methods,
+  arguments-differ,
+  redefined-variable-type,
+  too-many-instance-attributes,
+  locally-disabled,
+  too-many-return-statements,
+  no-init,
+  too-many-nested-blocks,
+  abstract-method,
+  too-many-public-methods,
+  super-init-not-called,
+  consider-iterating-dictionary,
+  attribute-defined-outside-init,
+  too-many-lines,
+  len-as-condition,
+  unsupported-assignment-operation,
+  consider-using-ternary,
+  cyclic-import,
+  similarities,
+  inconsistent-return-statements, # checked by mypy
+  unbalanced-tuple-unpacking,
+  useless-object-inheritance,
+  trailing-comma-tuple,
+  too-many-ancestors,
+
+[REPORTS]
+output-format=colorized
+
+[FORMAT]
+logging-modules=
+  logging,
+  structlog,

@@ -1,7 +1,6 @@
-from rest_framework import serializers
-from rest_framework import fields
-
 from fruit.herbarium.models import Herbarium, Season
+from rest_framework import fields, serializers
+
 from ..fields import MarkdownField
 
 

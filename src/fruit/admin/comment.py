@@ -1,8 +1,6 @@
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
-
 from fruit.models import Comment
-
 from utils import trim_words
 
 

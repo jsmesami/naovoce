@@ -1,6 +1,5 @@
-import requests
-
 from django.conf import settings
+import requests
 
 
 def create_urls(**kwargs):

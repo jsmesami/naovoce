@@ -2,7 +2,7 @@ from django.db import migrations
 
 
 SQL = """
-UPDATE fruit_herbarium h SET new_url = 'https://na-ovoce.cz/web/herbar#' || k.key 
+UPDATE fruit_herbarium h SET new_url = 'https://na-ovoce.cz/web/herbar#' || k.key
 FROM fruit_kind k WHERE k.id = h.kind_id
 """
 

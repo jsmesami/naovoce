@@ -3,14 +3,12 @@ import random
 from django.db import models
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
-
 from utils.choices import Choices
 
 
 def _get_random_key():
-    """
-    Chooses random key from Yi syllables Unicode range.
-    """
+    """Choose random key from Yi syllables Unicode range."""
+
     return '{key:x}'.format(
         key=random.randint(0xA000, 0xA48C)
     )
@@ -49,7 +47,7 @@ class Kind(models.Model):
     def cls_name(self):
         return Kind.CLS.text_of(self.cls)
 
-    @staticmethod
+    @classmethod
     def cls_slug(cls):
         return slugify(str(Kind.CLS.text_of(cls)))
 

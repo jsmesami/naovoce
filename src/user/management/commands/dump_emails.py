@@ -1,8 +1,7 @@
 import sys
+from user.models import FruitUser
 
 from django.core.management import BaseCommand
-
-from user.models import FruitUser
 
 
 class Command(BaseCommand):
