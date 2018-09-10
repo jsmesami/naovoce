@@ -1,0 +1,16 @@
+Django>=2.0,<2.1
+Pillow
+CairoSVG
+django-allauth
+django-leaflet
+django-ipware
+django-modeltranslation>=0.13-beta1
+djangorestframework
+djangorestframework-gis
+django-cors-headers
+markdown2
+psycopg2-binary
+requests
+sorl-thumbnail
+python3-memcached
+psutil
