@@ -109,7 +109,7 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
     objects = UserManager.from_queryset(ActiveUserQuerySet)()
 
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = 'email',
+    REQUIRED_FIELDS = ('email',)
 
     def get_full_name(self):
         return ' '.join((self.first_name, self.last_name)).strip() or self.username
@@ -151,7 +151,7 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
         return '{}'.format(self.username)
 
     class Meta:
-        ordering = '-date_joined',
+        ordering = ('-date_joined',)
         verbose_name = _('user')
         verbose_name_plural = _('users')
 
@@ -203,6 +203,6 @@ class Message(TimeStampedModel):
         return self.formatted_text
 
     class Meta:
-        ordering = '-created',
+        ordering = ('-created',)
         verbose_name = _('message')
         verbose_name_plural = _('messages')

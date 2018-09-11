@@ -56,7 +56,7 @@ class FruitList(generics.ListCreateAPIView):
     """List or create Fruit resources."""
 
     queryset = Fruit.objects.valid().select_related('kind').order_by('-created')
-    permission_classes = IsAuthenticatedOrReadOnly,
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
     def list(self, request, *args, **kwargs):
         qs = self.filter_queryset(self.get_queryset())
@@ -143,7 +143,7 @@ class FruitComplaint(generics.CreateAPIView):
     """Use comment system to send a complaint on invalid Fruit marker."""
 
     serializer_class = CommentSerializer
-    permission_classes = IsAuthenticated,
+    permission_classes = (IsAuthenticated,)
 
     def perform_create(self, serializer):
         fruit = get_object_or_404(Fruit, pk=self.kwargs.get('pk'))

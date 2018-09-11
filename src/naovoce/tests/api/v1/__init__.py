@@ -11,7 +11,7 @@ from rest_framework.test import APITestCase
 class NaovoceAPITestCase(APITestCase):
     """Provides base for API tests."""
 
-    fixtures = 'kinds.json',
+    fixtures = ('kinds.json',)
 
     kind_keys = (
         'a1e4',  # Apple Tree

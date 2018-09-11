@@ -40,7 +40,7 @@ class FruitUserAdmin(UserAdmin):
         }),
     )
 
-    ordering = '-date_joined',
+    ordering = ('-date_joined',)
 
 
 class MessageAdmin(admin.ModelAdmin):

@@ -24,4 +24,4 @@ class Comment(TimeStampedModel):
     class Meta:
         verbose_name = _('comment')
         verbose_name_plural = _('comments')
-        ordering = '-created',
+        ordering = ('-created',)

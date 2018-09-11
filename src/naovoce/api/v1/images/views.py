@@ -20,7 +20,7 @@ class ImageList(generics.ListCreateAPIView):
     """List or create Image resources."""
 
     serializer_class = ImageSerializer
-    permission_classes = IsAuthenticatedOrReadOnly,
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
     def perform_create(self, serializer):
         gallery_ct = self.kwargs['gallery_ct']

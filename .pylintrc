@@ -55,7 +55,6 @@ disable =
   inconsistent-return-statements, # checked by mypy
   unbalanced-tuple-unpacking,
   useless-object-inheritance,
-  trailing-comma-tuple,
   too-many-ancestors,
 
 [REPORTS]

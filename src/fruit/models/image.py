@@ -44,6 +44,6 @@ class Image(TimeStampedModel):
         return filename + ext if len(filename) < 19 else '...{}'.format(filename[-16:] + ext)
 
     class Meta:
-        ordering = '-created',
+        ordering = ('-created',)
         verbose_name = _('image')
         verbose_name_plural = _('images')

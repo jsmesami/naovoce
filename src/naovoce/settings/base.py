@@ -65,7 +65,7 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'naovoce/static')
 STATIC_URL = '/static/'
 
-LOCALE_PATHS = os.path.join(PROJECT_ROOT, 'locale'),
+LOCALE_PATHS = (os.path.join(PROJECT_ROOT, 'locale'),)
 
 ROOT_URLCONF = 'naovoce.urls'
 
@@ -246,7 +246,7 @@ REST_FRAMEWORK = {
     )
 }
 
-CORS_ORIGIN_WHITELIST = 'na-ovoce.cz',
+CORS_ORIGIN_WHITELIST = ('na-ovoce.cz',)
 
 CORS_URLS_REGEX = r'^/api/.*$'
 

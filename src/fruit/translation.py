@@ -5,15 +5,15 @@ from .models import Kind
 
 
 class KindTranslationOptions(TranslationOptions):
-    fields = 'name',
+    fields = ('name',)
 
 
 class HerbariumTranslationOptions(TranslationOptions):
-    fields = 'full_name',
+    fields = ('full_name',)
 
 
 class SeasonTranslationOptions(TranslationOptions):
-    fields = 'part',
+    fields = ('part',)
 
 
 translator.register(Kind, KindTranslationOptions)
