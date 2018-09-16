@@ -60,7 +60,7 @@ pydocstyle==1.1.1         # via coala-bears
 pyflakes==1.4.0           # via autoflake, coala-bears
 pygments==2.2.0           # via coala, sphinx
 pylint==1.9.3
-pyparsing==2.2.0          # via packaging
+pyparsing==2.2.1          # via packaging
 pyprint==0.2.6            # via coala, coala-utils
 pyroma==2.2               # via coala-bears
 pytz==2018.5              # via babel

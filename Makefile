@@ -4,7 +4,10 @@ reqs:
 	pip-compile --upgrade --output-file ./requirements/dev.txt ./requirements/dev.in
 
 lint:
-	pylint src
+	pylint src tests
 
 coala:
 	coala --no-orig --apply-patches
+
+test:
+	PYTHONPATH=src pytest -v tests

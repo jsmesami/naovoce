@@ -1,5 +1,5 @@
 # Save this file as local.py
-from .base import *  # noqa pylint: disable=W0401,W0614
+from .base import *  # pylint: disable=W0401,W0614
 
 DEBUG = True
 THUMBNAIL_DEBUG = DEBUG
@@ -7,7 +7,7 @@ THUMBNAIL_DEBUG = DEBUG
 # Allow localhost for development
 ALLOWED_HOSTS = ('localhost',)
 
-SECRET_KEY = None  # !!Set a secret key!! noqa: F405
+SECRET_KEY = None  # !!Set a secret key!!
 
 # You may want to output emails to console:
 # python -m smtpd -n -c DebuggingServer localhost:1025
@@ -53,7 +53,7 @@ CSRF_COOKIE_HTTPONLY = False
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # Enable CORS for localhost
-CORS_ORIGIN_WHITELIST += ('localhost:8000',)  # noqa: F405
+CORS_ORIGIN_WHITELIST += ('localhost:8000',)
 
 # on a Mac, syslog sits on a different path
 # LOGGING['handlers']['syslog']['address'] = '/var/run/syslog'

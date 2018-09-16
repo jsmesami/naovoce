@@ -25,14 +25,14 @@ oauthlib==2.1.0           # via requests-oauthlib
 pillow==5.2.0
 psutil==5.4.7
 psycopg2-binary==2.7.5
-pycparser==2.18           # via cffi
+pycparser==2.19           # via cffi
 python3-memcached==1.51
 python3-openid==3.1.0     # via django-allauth
 pytz==2018.5              # via django
 requests-oauthlib==1.0.0  # via django-allauth
 requests==2.19.1
 six==1.11.0               # via djangorestframework-gis
-sorl-thumbnail==12.4.1
+sorl-thumbnail==12.5.0
 tinycss2==0.6.1           # via cairosvg, cssselect2
 urllib3==1.23             # via requests
 webencodings==0.5.1       # via tinycss2

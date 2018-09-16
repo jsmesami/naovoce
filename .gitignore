@@ -1,7 +1,8 @@
+naovoce.egg-info
 __pycache__
-/node_modules/
 *.swp
 *~
-
-# Coala
 *.orig
+.pytest_cache
+.coverage
+.tox

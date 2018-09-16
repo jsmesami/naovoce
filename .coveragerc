@@ -1,0 +1,12 @@
+[run]
+source = src
+omit =
+    */migrations*
+    */tests/*
+    */.tox/*
+data_file = .coverage
+plugins = django_coverage_plugin
+branch = True
+[report]
+show_missing = true
+precision = 2

@@ -12,7 +12,7 @@ in the landscape.
 
 Prerequisities:
 
-* Python 3.6
+* Python 3.5+
 * PostgreSQL 9.6+ with PostGIS and HStore
 * GEOS
 * Cairo
@@ -21,7 +21,7 @@ Very basic local installation example:
 
 	# Create and activate virtualenv with the latest Python 3 you have:
 	mkdir ~/.env
-	python3.6 -m venv ~/.env/naovoce
+	python3 -m venv ~/.env/naovoce
 	source ~/.env/naovoce/bin/activate
 
 	# Upgrade pip:
@@ -30,23 +30,24 @@ Very basic local installation example:
 	# Install site and dependencies:
 	git clone https://github.com/jsmesami/naovoce.git
 	cd naovoce
-	pip install -r requirements.txt [-b ~/tmp]
-	npm install
+	pip install -r requirements.txt
 
 	# Create and edit local settings to match your setup: 
-	cd src
-	cp naovoce/settings/local_[prod|dev]_example.py naovoce/settings/local.py
-	vim naovoce/settings/local.py
+	cp src/naovoce/settings/[prod|dev]_example.py src/naovoce/settings/local.py
+	vim src/naovoce/settings/local.py
 
 	# Create database to match your settings, eg.:
+	psql -c "CREATE USER naovoce WITH PASSWORD 'secret'"
 	psql -c "CREATE DATABASE naovoce OWNER=naovoce"
+	psql -c "CREATE EXTENSION postgis" naovoce
+	psql -c "CREATE EXTENSION hstore" naovoce
 	
 	# Populate database:
 	chmod u+x manage.py
-	./manage.py migrate
-	./manage.py loaddata naovoce/fixtures/sites.json
-	./manage.py loaddata fruit/fixtures/kinds.json
-	./manage.py createsuperuser
+	src/manage.py migrate
+	src/manage.py loaddata fixtures/sites.json
+	src/manage.py loaddata fixtures/kinds.json
+	src/manage.py createsuperuser
 	
 	# You may need to run collectstatic, if you point your STATIC_ROOT outside of the project:
-	./manage.py collectstatic
+	src/manage.py collectstatic

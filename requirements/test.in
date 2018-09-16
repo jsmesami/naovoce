@@ -1,0 +1,6 @@
+coveralls
+django-coverage-plugin
+funcy
+pytest
+pytest-cov
+pytest-django
