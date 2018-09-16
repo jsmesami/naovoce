@@ -10,7 +10,6 @@ from django.utils.formats import date_format
 from django.utils.functional import cached_property
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
-from django.utils.text import slugify
 from django.utils.translation import pgettext_lazy, ugettext
 from django.utils.translation import ugettext_lazy as _
 import newsletter.list as newsletter
@@ -138,10 +137,6 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
 
     def clear_messages(self):
         self.messages.filter(read=False).update(read=True)
-
-    @cached_property
-    def slug(self):
-        return slugify(self.username)
 
     @cached_property
     def hash(self):

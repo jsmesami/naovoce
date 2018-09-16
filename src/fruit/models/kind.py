@@ -1,7 +1,6 @@
 import random
 
 from django.db import models
-from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 from utils.choices import Choices
 
@@ -40,16 +39,8 @@ class Kind(models.Model):
     )
 
     @property
-    def slug(self):
-        return slugify(self.name)
-
-    @property
     def cls_name(self):
         return Kind.CLS.text_of(self.cls)
-
-    @classmethod
-    def cls_slug(cls):
-        return slugify(str(Kind.CLS.text_of(cls)))
 
     def __str__(self):
         return self.name

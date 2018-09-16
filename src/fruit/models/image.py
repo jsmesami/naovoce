@@ -31,7 +31,7 @@ class Image(TimeStampedModel):
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         verbose_name=_('author'),
-        related_name='images_tmp',
+        related_name='images',
         blank=True, null=True,
         on_delete=models.CASCADE,
     )

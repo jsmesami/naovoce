@@ -162,11 +162,11 @@ INSTALLED_APPS = (
     'django.contrib.gis',
     # local apps
     'user',
-    'gallery',
+    'gallery',  # TODO: Remove after squashing migrations
     'fruit',
-    'fruit.herbarium',
+    'fruit.herbarium',  # TODO: Remove after squashing migrations
     'newsletter',
-    'comments',
+    'comments',  # TODO: Remove after squashing migrations
     'naovoce',
     # external apps
     'modeltranslation',

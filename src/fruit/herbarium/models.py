@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 from utils.fields import MonthsField
 
@@ -29,10 +28,6 @@ class Herbarium(models.Model):
         null=True,
         help_text=_('Illustrational photo'),
     )
-
-    @property
-    def slug(self):
-        return slugify(str(self))
 
     def __str__(self):
         return self.full_name or self.kind.name
