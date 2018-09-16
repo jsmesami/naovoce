@@ -53,7 +53,7 @@ class Fruit(TimeStampedModel):
 
     @property
     def frontend_url(self):
-        return ''  # TODO
+        return ''  # TODO: Implement after setting frontend urls
 
     def is_owner(self, user):
         return self.user.is_active and (self.user == user)

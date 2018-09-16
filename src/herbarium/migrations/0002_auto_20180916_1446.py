@@ -4,7 +4,7 @@ from django.db import migrations
 
 
 def copy_herbarium(apps, schema_editor):
-    OldHerbarium = apps.get_model('fruit', 'Herbarium')
+    OldHerbarium = apps.get_model('fruit.herbarium', 'Herbarium')
     NewHerbarium = apps.get_model('herbarium', 'Herbarium')
 
     herbs = OldHerbarium.objects.all()
@@ -23,7 +23,7 @@ def copy_herbarium(apps, schema_editor):
 
 
 def copy_seasons(apps, schema_editor):
-    OldSeason = apps.get_model('fruit', 'Season')
+    OldSeason = apps.get_model('fruit.herbarium', 'Season')
     NewSeason = apps.get_model('herbarium', 'Season')
 
     seasons = OldSeason.objects.all()

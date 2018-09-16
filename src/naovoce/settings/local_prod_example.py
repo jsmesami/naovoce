@@ -1,7 +1,7 @@
 # Save this file as local.py
 from .base import *  # noqa pylint: disable=W0401,W0614
 
-SECRET_KEY = None  # Set a secret key!
+SECRET_KEY = None  # !!Set a secret key!! noqa: F405
 
 # Set correct credentials for production
 SERVER_EMAIL = ''

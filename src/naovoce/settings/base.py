@@ -72,7 +72,7 @@ ROOT_URLCONF = 'naovoce.urls'
 WSGI_APPLICATION = 'naovoce.wsgi.application'
 
 SSL_ENABLED = True
-SECURE_HSTS_SECONDS = 60 * 10  # TODO
+SECURE_HSTS_SECONDS = 60 * 10  # TODO: Set this to higher value after beta
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_SSL_REDIRECT = True

@@ -16,14 +16,8 @@ line_length=120
 multi_line_output=0
 lines_after_imports=2
 
-[*.less]
-indent_style = tab
-
-[*.coffee]
-indent_size = 2
-
-[*.json]
-indent_size = 2
-
 [*.md]
 trim_trailing_whitespace = false
+
+[Makefile*]
+indent_style = tab
