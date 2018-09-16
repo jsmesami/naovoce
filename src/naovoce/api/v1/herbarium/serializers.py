@@ -1,4 +1,4 @@
-from fruit.herbarium.models import Herbarium, Season
+from herbarium.models import Herbarium, Season
 from rest_framework import fields, serializers
 
 from ..fields import MarkdownField

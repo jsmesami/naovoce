@@ -1,4 +1,4 @@
-from fruit.herbarium.models import Herbarium
+from herbarium.models import Herbarium
 from rest_framework import generics
 
 from . import serializers

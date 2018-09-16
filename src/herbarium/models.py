@@ -4,20 +4,13 @@ from utils.fields import MonthsField
 
 
 class Herbarium(models.Model):
-    """Additional information about mapped plants.
-
-    **This is a legacy model** maintained for the API
-    `new_url` field points to the new herbarium on the WP site.
-    """
+    """Additional information about mapped plants."""
 
     kind = models.OneToOneField(
         'fruit.Kind',
         verbose_name=_('kind'),
-        related_name='herbarium_old',
         on_delete=models.CASCADE,
     )
-
-    new_url = models.URLField(_('url to new herbarium'), blank=True)
 
     full_name = models.CharField(_('full name'), max_length=255, blank=True)
     latin_name = models.CharField(_('latin name'), max_length=255, blank=True)
@@ -34,18 +27,12 @@ class Herbarium(models.Model):
         return self.full_name or self.kind.name
 
     class Meta:
-        app_label = 'fruit'
         verbose_name = _('herbarium item')
         verbose_name_plural = _('herbarium items')
 
 
 class Season(models.Model):
-    """Season during which a specified part of a plant is ripening.
-
-    Note that this is undocumented feature, which is here only to appease mobile app developers' requirement.
-    The model currently does not support _locations_ in favor of simplicity - this shortcoming
-    shoud be adressed when (and if) the target audience exceeds borders of Czechoslovakia.
-    """
+    """Season during which a specified part of a plant is ripening in Czech Republic."""
 
     herb = models.ForeignKey(
         Herbarium,
@@ -67,7 +54,6 @@ class Season(models.Model):
     )
 
     class Meta:
-        app_label = 'fruit'
-        unique_together = 'part', 'herb'
+        unique_together = ('part', 'herb')
         verbose_name = _('ripening season')
         verbose_name_plural = _('ripening seasons')

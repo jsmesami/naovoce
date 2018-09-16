@@ -168,6 +168,7 @@ INSTALLED_APPS = (
     'newsletter',
     'comments',  # TODO: Remove after squashing migrations
     'naovoce',
+    'herbarium',
     # external apps
     'modeltranslation',
     'allauth',
