@@ -13,13 +13,16 @@ def copy_images(apps, schema_editor):
 
     for n, img in enumerate(images, start=1):
         print('copying image {}/{}'.format(n, count))
-        with open(img.image.path, 'rb') as old_file:
-            NewImage.objects.create(
-                fruit_id=img.gallery_id,
-                image=ContentFile(old_file.read(), name=img.image.name),
-                caption=img.caption,
-                author=img.author,
-            )
+        try:
+            with open(img.image.path, 'rb') as old_file:
+                NewImage.objects.create(
+                    fruit_id=img.gallery_id,
+                    image=ContentFile(old_file.read(), name=img.image.name),
+                    caption=img.caption,
+                    author=img.author,
+                )
+        except FileNotFoundError:
+            print('File {} does not exist!'.format(img.image.path))
 
 
 class Migration(migrations.Migration):

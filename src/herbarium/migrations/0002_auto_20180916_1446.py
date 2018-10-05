@@ -3,43 +3,6 @@
 from django.db import migrations
 
 
-def copy_herbarium(apps, schema_editor):
-    OldHerbarium = apps.get_model('fruit.herbarium', 'Herbarium')
-    NewHerbarium = apps.get_model('herbarium', 'Herbarium')
-
-    herbs = OldHerbarium.objects.all()
-    count = herbs.count()
-
-    for n, h in enumerate(herbs, start=1):
-        print('copying herbarium item {}/{}'.format(n, count))
-
-        NewHerbarium.objects.create(
-            kind_id=h.kind_id,
-            full_name=h.full_name,
-            latin_name=h.latin_name,
-            description=h.description,
-            photo=h.photo,
-        )
-
-
-def copy_seasons(apps, schema_editor):
-    OldSeason = apps.get_model('fruit.herbarium', 'Season')
-    NewSeason = apps.get_model('herbarium', 'Season')
-
-    seasons = OldSeason.objects.all()
-    count = seasons.count()
-
-    for n, s in enumerate(seasons, start=1):
-        print('copying season {}/{}'.format(n, count))
-
-        NewSeason.objects.create(
-            herb_id=s.herb_id,
-            part=s.part,
-            start=s.start,
-            duration=s.duration,
-        )
-
-
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -48,6 +11,12 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(copy_herbarium),
-        migrations.RunPython(copy_seasons),
+        migrations.RunSQL('INSERT INTO herbarium_herbarium'
+                          '(id, full_name, full_name_cs, full_name_en, latin_name, description, photo, kind_id)'
+                          'SELECT id, full_name, full_name_cs, full_name_en, latin_name, description, photo, kind_id '
+                          'FROM fruit_herbarium'),
+        migrations.RunSQL('INSERT INTO herbarium_season'
+                          '(id, part, part_cs, part_en, start, duration, herb_id)'
+                          'SELECT id, part, part_cs, part_en, start, duration, herb_id '
+                          'FROM fruit_season'),
     ]
