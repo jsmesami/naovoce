@@ -6,6 +6,8 @@ import pytest
 
 from django.contrib.gis.geos import Point
 from django.core.management import call_command
+from django.db import connection
+from psycopg2.extensions import AsIs
 
 from fruit.models import Fruit, Kind
 
@@ -23,6 +25,11 @@ def django_db_setup(django_db_blocker):
 @pytest.fixture(autouse=True)
 def set_default_language(settings):
     settings.LANGUAGE_CODE = 'en'
+
+
+@pytest.fixture
+def truncate_table():
+    return lambda model: connection.cursor().execute('TRUNCATE TABLE %s CASCADE', [AsIs(model._meta.db_table)])
 
 
 @pytest.fixture

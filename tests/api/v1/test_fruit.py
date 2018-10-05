@@ -8,6 +8,8 @@ from rest_framework.fields import DateTimeField
 from rest_framework.reverse import reverse
 from rest_framework import status
 
+from fruit.models import Fruit
+
 
 def format_coord(coord):
     return '{:.10f}'.format(coord)
@@ -71,8 +73,9 @@ def is_fruit_list_valid(instances, response):
 
 
 @pytest.mark.django_db
-def test_fruit_list(client, new_fruit_list):
+def test_fruit_list(client, truncate_table, new_fruit_list):
     length = 5
+    truncate_table(Fruit)
     instances = new_fruit_list(length)
     response = client.get(reverse('api:fruit-list'))
 
@@ -82,12 +85,13 @@ def test_fruit_list(client, new_fruit_list):
 
 
 @pytest.mark.django_db
-def test_fruit_list_filtering(client, all_kinds, new_user, new_fruit_list):
+def test_fruit_list_filtering(client, truncate_table, all_kinds, new_user, new_fruit_list):
     kind_a = all_kinds[1]
     kind_b = all_kinds[2]
     user_a = new_user()
     user_b = new_user()
 
+    truncate_table(Fruit)
     instances_a = new_fruit_list(2, kind=kind_a, user=user_a)
     instances_b = new_fruit_list(2, kind=kind_a, user=user_b)
     instances_c = new_fruit_list(2, kind=kind_b, user=user_a)
@@ -113,9 +117,10 @@ def test_fruit_list_filtering(client, all_kinds, new_user, new_fruit_list):
 
 
 @pytest.mark.django_db
-def test_fruit_list_pagination(client, new_fruit_list):
+def test_fruit_list_pagination(client, truncate_table, new_fruit_list):
     length = 8
     step = 2
+    truncate_table(Fruit)
     new_fruit_list(length)
     list_url = reverse('api:fruit-list')
 
