@@ -1,4 +1,4 @@
-Copyright (c) 2014, Ondřej Nejedlý  
+Copyright (c) 2014-2019, Ondřej Nejedlý  
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are 

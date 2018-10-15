@@ -1,10 +1,10 @@
 from django.contrib.contenttypes.models import ContentType
 from django.core.cache import caches
-from django.core.exceptions import ValidationError
 from django.db.models import Count
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
-from django.http.response import Http404
+from django.utils import timezone
+from django.utils.dateparse import parse_datetime
 from django.utils.translation import ugettext_lazy as _
 from fruit.models import Fruit, Kind
 from ipware.ip import get_ip
@@ -30,7 +30,7 @@ class CachedResponse(Response):
     @property
     def rendered_content(self):
         # We cache json response only.
-        # Note that self.content-type is not set yet.
+        # Note that self.content_type is not set yet.
         if self.accepted_media_type == 'application/json':
             content = self.cache.get(self.cache_key)
             if not content:
@@ -82,7 +82,7 @@ class FruitList(generics.ListCreateAPIView):
         serializer = self.get_serializer(qs.iterator(), many=True)
 
         if not (user or catalogue):
-            # Caching comb. of both kind & user would produce too many cache entries.
+            # Caching all combinations of kind & user would produce too many cache entries.
             return CachedResponse(kind or 'all', serializer.data)
 
         return Response(serializer.data)
@@ -166,35 +166,32 @@ class KindList(generics.ListAPIView):
 
 @api_view()
 def fruit_list_diff(request, date, time):
-    """Get difference since date and/or time specified."""
+    """Get difference since date and (optional) time specified."""
 
-    if not date:
-        # The date is not mandatory in url regex, because otherwise we woudln't be able to
-        # use URL template tag without knowing the date ahead (we get the date using JS).
-        raise Http404
+    requested_datetime = ' '.join([date, time or '00:00:00'])
+    parsed_datetime = parse_datetime(requested_datetime)
 
-    since = ' '.join([date, time or '00:00:00'])
+    if parsed_datetime is None:
+        return Response(
+            data='Unable to parse datetime: ' + requested_datetime,
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
+    since = timezone.make_aware(parsed_datetime)
 
     fruit = Fruit.objects.order_by('-created').select_related('kind')
     context = {'request': request}
+
     data = {}
 
-    try:
-        data['created'] = serializers.FruitSerializer(
-            fruit.filter(created__gt=since, deleted=False).iterator(),
-            context=context, many=True).data
-        data['deleted'] = serializers.DeletedFruitSerializer(
-            fruit.filter(created__gt=since, deleted=True).iterator(),
-            context=context, many=True).data
-        data['updated'] = serializers.FruitSerializer(
-            fruit.filter(created__lte=since, modified__gt=since, deleted=False).iterator(),
-            context=context, many=True).data
-
-    except ValidationError as e:
-        # nonsensical date/time
-        return Response(
-            data=dict(detail=e),
-            status=status.HTTP_400_BAD_REQUEST,
-        )
+    data['created'] = serializers.FruitSerializer(
+        fruit.filter(created__gt=since, deleted=False).iterator(),
+        context=context, many=True).data
+    data['deleted'] = serializers.DeletedFruitSerializer(
+        fruit.filter(created__gt=since, deleted=True).iterator(),
+        context=context, many=True).data
+    data['updated'] = serializers.FruitSerializer(
+        fruit.filter(created__lte=since, modified__gt=since, deleted=False).iterator(),
+        context=context, many=True).data
 
     return Response(data)

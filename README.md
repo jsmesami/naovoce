@@ -43,11 +43,11 @@ Very basic local installation example:
 	psql -c "CREATE EXTENSION hstore" naovoce
 	
 	# Populate database:
-	chmod u+x manage.py
+	chmod u+x src/manage.py
 	src/manage.py migrate
 	src/manage.py loaddata fixtures/sites.json
 	src/manage.py loaddata fixtures/kinds.json
 	src/manage.py createsuperuser
 	
-	# You may need to run collectstatic, if you point your STATIC_ROOT outside of the project:
+	# In case you point your STATIC_ROOT outside of the project, you will need to run collectstatic:
 	src/manage.py collectstatic

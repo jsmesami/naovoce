@@ -8,7 +8,7 @@ Na-ovoce.cz, public API
 
 # Group Authorization Resource
 
-## Obtain Token [POST https://na-ovoce.cz/api/v1/token/]
+## Obtain Token [POST /token/]
 
 IMPORTANT: User registered with email and password has to confirm her email address by
 visiting the link that had been sent to her. Before that, she cannot obtain an auth token.
@@ -27,7 +27,7 @@ visiting the link that had been sent to her. Before that, she cannot obtain an a
             "id": 630
         }
 
-## Obtain Token for existing Facebook account [POST https://na-ovoce.cz/api/v1/token/facebook/]
+## Obtain Token for existing Facebook account [POST /token/facebook/]
 
 + Request (application/json)
 
@@ -45,7 +45,7 @@ visiting the link that had been sent to her. Before that, she cannot obtain an a
 
 # Group Sign Up Resource
 
-## Sign Up With Email [POST https://na-ovoce.cz/api/v1/signup/]
+## Sign Up With Email [POST /signup/]
 
 IMPORTANT: User registered with this method has to verify her email address by visiting
 a link that has been sent to her. Before that, she cannot be authenticated.
@@ -66,7 +66,7 @@ a link that has been sent to her. Before that, she cannot be authenticated.
             "username": "MasterPicker"
         }
 
-## Sign Up With Facebook [POST https://na-ovoce.cz/api/v1/signup/facebook/]
+## Sign Up With Facebook [POST /signup/facebook/]
 
 The client has to first obtain required user info (namely User Access Token) from Facebook.
 Token obtained in response (along with user ID) can be used for further authentication.
@@ -89,13 +89,13 @@ This API endpoint can be used for both signing up and signing in.
 
 # Group Fruit Resource
 
-## Fruit [https://na-ovoce.cz/api/v1/fruit/]
+## Fruit [/fruit/]
 
-### List Fruit [GET https://na-ovoce.cz/api/v1/fruit/{?kind,user}]
+### List Fruit [GET /fruit/{?kind_id,user_id}]
 
 + Parameters
-    + kind: `a1bb` (string, optional) - filters results by Kind (hex number)
-    + user: `1093` (number, optional) - filters results by User (integer)
+    + kind_id: `a1bb` (string, optional) - filters results by Kind (hex number)
+    + user_id: `1093` (number, optional) - filters results by User (integer)
 
 + Response 200 (application/json)
 
@@ -134,7 +134,7 @@ This API endpoint can be used for both signing up and signing in.
             }
         ]
 
-### Paginated Listing [GET https://na-ovoce.cz/api/v1/fruit/{?limit,offset}]
+### Paginated Listing [GET /fruit/{?limit,offset}]
 
 + Parameters
     + limit: `2` (number, optional) - pagination limit (integer)
@@ -166,7 +166,7 @@ This API endpoint can be used for both signing up and signing in.
             ]
         }
 
-### Differences Listing [GET https://na-ovoce.cz/api/v1/fruit/since/{date}/{time}/]
+### Differences Listing [GET /fruit/since/{date}/{time}/]
 
 + Parameters
     + date: `2016-03-07` (string) - date since when you want the diff (YYYY-MM-DD)
@@ -229,7 +229,7 @@ Response contains JSON payload with created object.
         }
     + Headers
 
-        Authorization: Token eb3e2b0367c2f99cf0380ef88127c2bf129c26a8
+            Authorization: Token eb3e2b0367c2f99cf0380ef88127c2bf129c26a8
 
 + Response 201 (application/json)
 
@@ -248,10 +248,10 @@ Response contains JSON payload with created object.
             }
         }
 
-## Fruit Detail [https://na-ovoce.cz/api/v1/fruit/{fruit}/]
+## Fruit Detail [/fruit/{fruit_id}/]
 
 + Parameters
-    + fruit: `31980` (number) - ID of the Fruit (integer)
+    + fruit_id: `31980` (number) - ID of the Fruit (integer)
 
 ### View Fruit Detail [GET]
 
@@ -288,7 +288,7 @@ Response contains JSON payload with updated object.
         }
     + Headers
 
-        Authorization: Token eb3e2b0367c2f99cf0380ef88127c2bf129c26a8
+            Authorization: Token eb3e2b0367c2f99cf0380ef88127c2bf129c26a8
 
 + Response 201 (application/json)
 
@@ -325,11 +325,11 @@ but it no longer appears in listings.
         }
     + Headers
 
-        Authorization: Token eb3e2b0367c2f99cf0380ef88127c2bf129c26a8
+            Authorization: Token eb3e2b0367c2f99cf0380ef88127c2bf129c26a8
 
 + Response 204
 
-### Send a Complaint [POST https://na-ovoce.cz/api/v1/fruit/{fruit}/complaint/]
+### Send a Complaint [POST /fruit/{fruit_id}/complaint/]
 
 To send a complaint on invalid Fruit marker.
 Reason of complaint (`text` field) must be specified. 
@@ -338,7 +338,7 @@ Response contains JSON payload with created object.
 + Authenticated
 
 + Parameters
-    + fruit: `31980` (number) - ID of the Fruit (integer)
+    + fruit_id: `31980` (number) - ID of the Fruit (integer)
 
 + Request (application/json)
 
@@ -347,7 +347,7 @@ Response contains JSON payload with created object.
         }
     + Headers
 
-        Authorization: Token eb3e2b0367c2f99cf0380ef88127c2bf129c26a8
+            Authorization: Token eb3e2b0367c2f99cf0380ef88127c2bf129c26a8
 
 + Response 201 (application/json)
 
@@ -355,7 +355,7 @@ Response contains JSON payload with created object.
             "text": "I hereby make a complaint!"
         }
 
-## Fruit Kinds [https://na-ovoce.cz/api/v1/fruit/kinds/]
+## Fruit Kinds [/fruit/kinds/]
 
 ### List Fruit Kinds [GET]
 
@@ -392,7 +392,7 @@ Available options are `cs` or `en`, `en` is default.
 
 # Group Users Resource
 
-## Users [https://na-ovoce.cz/api/v1/users/]
+## Users [/users/]
 
 ### List Users [GET]
 
@@ -402,24 +402,24 @@ Available options are `cs` or `en`, `en` is default.
             {
                 "id": 1093,
                 "name": "veerruu",
-                "url": "https://na-ovoce.cz/api/v1/users/1093/"
+                "url": "https://na-ovoce.cz/users/1093/"
             },
             {
                 "id": 1,
                 "name": "Ondra",
-                "url": "https://na-ovoce.cz/api/v1/users/1/"
+                "url": "https://na-ovoce.cz/users/1/"
             },
             {
                 "id": 786,
                 "name": "j.hofman",
-                "url": "https://na-ovoce.cz/api/v1/users/786/"
+                "url": "https://na-ovoce.cz/users/786/"
             }
         ]
 
-## User Detail [https://na-ovoce.cz/api/v1/users/{user}/]
+## User Detail [/users/{user_id}/]
 
 + Parameters
-    + user: `1093` (number) - ID of the User (integer)
+    + user_id: `1093` (number) - ID of the User (integer)
 
 ### View User Detail [GET]
 
@@ -438,25 +438,26 @@ Available options are `cs` or `en`, `en` is default.
 
 # Group Images Rersource
 
-## Images [https://na-ovoce.cz/api/v1/images/]
+## Images [/images/]
 
-### Delete Image [DELETE https://na-ovoce.cz/api/v1/images/{image}/]
+### Delete Image [DELETE /images/{image_id}/]
 
 + Authenticated and owner
 
 + Parameters
-    + image: `10384` (number) - ID of the Image (integer)
+    + image_id: `10384` (number) - ID of the Image (integer)
 
++ Request
     + Headers
 
-        Authorization: Token eb3e2b0367c2f99cf0380ef88127c2bf129c26a8
+            Authorization: Token eb3e2b0367c2f99cf0380ef88127c2bf129c26a8
 
 + Response 204
 
-### List Images of Fruit [GET https://na-ovoce.cz/api/v1/images/fruit/{fruit}/]
+### List Images of Fruit [GET /images/fruit/{fruit_id}/]
 
 + Parameters
-    + fruit: `31980` (number) - ID of the Fruit (integer)
+    + fruit_id: `31980` (number) - ID of the Fruit (integer)
 
 + Response 200 (application/json)
 
@@ -473,7 +474,7 @@ Available options are `cs` or `en`, `en` is default.
             }
         ]
 
-### Add Image to Fruit [POST https://na-ovoce.cz/api/v1/images/fruit/{fruit}/]
+### Add Image to Fruit [POST /images/fruit/{fruit_id}/]
 
 To add an Image associated to a Fruit.
 It takes a JSON object containing base64-encoded _image data_ and _caption_.
@@ -484,7 +485,7 @@ Response contains JSON payload with created object.
 + Authenticated
 
 + Parameters
-    + fruit: `31980` (number) - ID of the Fruit (integer)
+    + fruit_id: `31980` (number) - ID of the Fruit (integer)
 
 + Request (application/json)
 
@@ -494,7 +495,7 @@ Response contains JSON payload with created object.
         }
     + Headers
 
-        Authorization: Token eb3e2b0367c2f99cf0380ef88127c2bf129c26a8
+            Authorization: Token eb3e2b0367c2f99cf0380ef88127c2bf129c26a8
 
 + Response 201 (application/json)
 
@@ -505,13 +506,13 @@ Response contains JSON payload with created object.
             "author": {
                 "id": 1,
                 "username": "Ondra",
-                "url": "https://na-ovoce.cz/api/v1/api/v1/users/1/"
+                "url": "https://na-ovoce.cz/api/v1/users/1/"
             }
         }
 
 # Group Herbarium Resource
 
-## Herbarium [https://na-ovoce.cz/api/v1/herbarium/]
+## Herbarium [/herbarium/]
 
 ### List Items [GET]
 

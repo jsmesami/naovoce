@@ -1,8 +1,8 @@
-from django.conf.urls import url
+from django.urls import path
 
 from .views import GetAuthToken, GetAuthTokenFacebook
 
 urlpatterns = [
-    url(r'^$', GetAuthToken.as_view()),
-    url(r'^facebook/$', GetAuthTokenFacebook.as_view()),
+    path('', GetAuthToken.as_view()),
+    path('facebook/', GetAuthTokenFacebook.as_view()),
 ]

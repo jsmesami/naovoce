@@ -1,8 +1,9 @@
-naovoce.egg-info
 __pycache__
-*.swp
 *~
+*.egg-info
 *.orig
-.pytest_cache
+*.swp
 .coverage
+.coverage.*
+.pytest_cache
 .tox

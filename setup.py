@@ -1,12 +1,17 @@
 #!/usr/bin/env python
-
+import re
 from setuptools import setup, find_packages
 
+
+def read_requirements(req_file):
+    return [l for l in re.sub(r"\s*#.*\n", "\n", req_file.read()).splitlines() if l]
+
+
 with open("requirements/base.txt") as f:
-    REQUIREMENTS = f.read().splitlines()
+    REQUIREMENTS = read_requirements(f)
 
 with open("requirements/test.txt") as f:
-    TEST_REQUIREMENTS = f.read().splitlines()
+    TEST_REQUIREMENTS = read_requirements(f)
 
 setup(
     name="naovoce",

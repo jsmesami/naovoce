@@ -3,7 +3,9 @@ from functools import partial
 from operator import itemgetter
 
 import funcy
+from libfaketime import fake_time
 import pytest
+from datetime import date, timedelta
 from rest_framework.fields import DateTimeField
 from rest_framework.reverse import reverse
 from rest_framework import status
@@ -136,6 +138,37 @@ def test_fruit_list_pagination(client, truncate_table, new_fruit_list):
     assert response.status_code == status.HTTP_200_OK
     assert response.data['count'] == length
     assert len(response.data['results']) == 0
+
+
+@pytest.mark.django_db
+def test_fruit_list_difference(client, truncate_table, new_fruit_list):
+    truncate_table(Fruit)
+    old = (date.today() - timedelta(days=6)).strftime('%Y-%m-%d')
+    new = (date.today() - timedelta(days=3)).strftime('%Y-%m-%d')
+
+    with fake_time(old):
+        f1, *_ = new_fruit_list(4)
+
+    with fake_time(new):
+        f2, f3 = new_fruit_list(2)
+        f2.deleted = True
+        f2.save()
+        f1.save()
+
+    response = client.get(reverse('api:fruit-diff', args=[new]))
+
+    assert response.status_code == status.HTTP_200_OK
+    assert Fruit.objects.count() == 6
+
+    diff = response.json()
+    scenarios = (
+        ('created', f3),
+        ('deleted', f2),
+        ('updated', f1),
+    )
+    for state, instance in scenarios:
+        assert len(diff[state]) == 1
+        assert diff[state][0]['id'] == instance.id
 
 
 @pytest.mark.django_db
@@ -301,7 +334,7 @@ def test_fruit_delete(client, random_password, new_user, new_fruit):
 
     assert response.status_code == status.HTTP_204_NO_CONTENT
 
-    # We are still able to fetch the data, but in different shape
+    # We are still able to fetch the data, but in a different shape
     response = client.get(detail_url)
     response_data = response.json()
     expected = {

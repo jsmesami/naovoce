@@ -1,5 +1,7 @@
 from .base import *  # pylint: disable=W0401,W0614
 
+DEBUG = True
+
 SECRET_KEY = 'dummy test key'
 
 DATABASES = {

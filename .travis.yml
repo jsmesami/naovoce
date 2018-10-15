@@ -16,6 +16,7 @@ before_script:
   - psql -c "CREATE DATABASE naovoce OWNER=test" -U postgres postgres
   - psql -c "CREATE EXTENSION postgis" -U postgres naovoce
   - psql -c "CREATE EXTENSION hstore" -U postgres naovoce
+  - unset PYTHONPATH
 
 script:
   - tox
