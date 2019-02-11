@@ -43,11 +43,11 @@ class ContentTypeRestrictedFileField(models.FileField):
         if file and hasattr(file, 'content_type'):
             content_type = file.content_type
             if content_type in self.content_types:
-                if file._size > self.max_upload_size:
+                if file.size > self.max_upload_size:
                     raise forms.ValidationError(
                         _('Please upload file up to {}. Your file size is {}.').format(
                             filesizeformat(self.max_upload_size),
-                            filesizeformat(file._size)
+                            filesizeformat(file.size)
                         )
                     )
             else:
