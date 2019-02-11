@@ -23,8 +23,12 @@ class Herbarium(models.Model):
         help_text=_('Illustrational photo'),
     )
 
-    def __str__(self):
+    @property
+    def name(self):
         return self.full_name or self.kind.name
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = _('herbarium item')
@@ -55,5 +59,6 @@ class Season(models.Model):
 
     class Meta:
         unique_together = ('part', 'herb')
+        ordering = ('start', 'part')
         verbose_name = _('ripening season')
         verbose_name_plural = _('ripening seasons')

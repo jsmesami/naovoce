@@ -5,16 +5,13 @@ from ..fields import MarkdownField
 
 
 class SeasonSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Season
         fields = 'part start duration'.split()
 
 
 class HerbariumRawSerializer(serializers.ModelSerializer):
-
-    name = fields.ReadOnlyField(
-        source='kind.__str__',
-    )
 
     kind_key = fields.ReadOnlyField(
         source='kind.key',

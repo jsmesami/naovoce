@@ -16,7 +16,7 @@ django-cors-headers==2.4.0
 django-ipware==2.1.0
 django-leaflet==0.24.0
 django-modeltranslation==0.13b1
-django==2.1.5
+django==2.1.7
 djangorestframework-gis==0.14
 djangorestframework==3.9.1
 idna==2.8                 # via requests

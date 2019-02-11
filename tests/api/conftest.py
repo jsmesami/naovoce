@@ -9,6 +9,7 @@ from django.core.management import call_command
 from django.db import connection
 from psycopg2.extensions import AsIs
 
+from herbarium.models import Herbarium
 from fruit.models import Fruit, Kind
 
 
@@ -131,3 +132,9 @@ def new_fruit_list(random_position, random_kind, new_user):
         )
 
     return closure
+
+
+@pytest.fixture
+@pytest.mark.django_db
+def all_herbarium_items():
+    return Herbarium.objects.select_related('kind').prefetch_related('seasons')
