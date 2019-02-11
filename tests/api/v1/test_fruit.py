@@ -183,6 +183,16 @@ def test_fruit_detail(client, random_kind, new_fruit, new_user):
 
 
 @pytest.mark.django_db
+def test_fruit_detail_nonexistent_fruit(client, truncate_table):
+    truncate_table(Fruit)
+
+    response = client.get(reverse('api:fruit-detail', args=[1]))
+
+    assert response.status_code == status.HTTP_404_NOT_FOUND
+    assert response.json() == {'detail': 'Not found.'}
+
+
+@pytest.mark.django_db
 def test_fruit_create(client, random_password, new_user, fruit_request_data):
     password = random_password()
     user = new_user(password=password)

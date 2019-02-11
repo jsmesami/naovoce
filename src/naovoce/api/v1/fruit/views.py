@@ -1,4 +1,3 @@
-from django.contrib.contenttypes.models import ContentType
 from django.core.cache import caches
 from django.db.models import Count
 from django.db.models.signals import post_delete, post_save
@@ -151,9 +150,8 @@ class FruitComplaint(generics.CreateAPIView):
         serializer.save(
             author=self.request.user,
             ip=get_ip(self.request),
-            complaint=True,
-            content_type=ContentType.objects.get_for_model(fruit),
-            object_id=fruit.id,
+            is_complaint=True,
+            fruit=fruit,
         )
 
 
