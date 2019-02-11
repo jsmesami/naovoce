@@ -171,7 +171,6 @@ def test_fruit_list_difference(client, truncate_table, new_fruit_list):
         assert diff[state][0]['id'] == instance.id
 
 
-@pytest.mark.django_db
 def test_fruit_detail(client, random_kind, new_fruit, new_user):
     kind = random_kind()
     fruit = new_fruit(kind=kind, description='fruit')
@@ -192,7 +191,6 @@ def test_fruit_detail_nonexistent_fruit(client, truncate_table):
     assert response.json() == {'detail': 'Not found.'}
 
 
-@pytest.mark.django_db
 def test_fruit_create(client, random_password, new_user, fruit_request_data):
     password = random_password()
     user = new_user(password=password)
@@ -215,7 +213,6 @@ def test_fruit_create(client, random_password, new_user, fruit_request_data):
     }
 
 
-@pytest.mark.django_db
 @pytest.mark.parametrize('bad_args, error_msg', BAD_FRUIT_CRUD_ARGS)
 def test_fruit_create_bad_args(client, random_password, new_user, fruit_request_data, bad_args, error_msg):
     password = random_password()
@@ -229,7 +226,6 @@ def test_fruit_create_bad_args(client, random_password, new_user, fruit_request_
     assert response.json() == error_msg
 
 
-@pytest.mark.django_db
 @pytest.mark.parametrize(
     'missing_arg, error_msg', [
         ('kind', {'kind': ['This field is required.']}),
@@ -249,7 +245,6 @@ def test_fruit_create_missing_args(client, random_password, new_user, fruit_requ
     assert response.json() == error_msg
 
 
-@pytest.mark.django_db
 def test_fruit_create_unauthenticated(client, fruit_request_data):
     response = client.post(reverse('api:fruit-list'), fruit_request_data())
 
@@ -257,7 +252,6 @@ def test_fruit_create_unauthenticated(client, fruit_request_data):
     assert response.json() == {'detail': 'Authentication credentials were not provided.'}
 
 
-@pytest.mark.django_db
 def test_fruit_create_unauthorized(client, random_password, new_user, fruit_request_data):
     password = random_password()
     user = new_user(password=password, is_email_verified=False)
@@ -270,7 +264,6 @@ def test_fruit_create_unauthorized(client, random_password, new_user, fruit_requ
     assert response.json() == {'detail': 'You do not have permission to perform this action.'}
 
 
-@pytest.mark.django_db
 def test_fruit_update(client, random_password, new_user, new_fruit, fruit_request_data):
     password = random_password()
     author = new_user(password=password)
@@ -293,7 +286,6 @@ def test_fruit_update(client, random_password, new_user, new_fruit, fruit_reques
     assert modified_data == response.json()
 
 
-@pytest.mark.django_db
 @pytest.mark.parametrize('bad_args, error_msg', BAD_FRUIT_CRUD_ARGS)
 def test_fruit_update_bad_args(client, random_password, new_user, new_fruit, fruit_request_data, bad_args, error_msg):
     password = random_password()
@@ -312,7 +304,6 @@ def test_fruit_update_bad_args(client, random_password, new_user, new_fruit, fru
     assert response.json() == error_msg
 
 
-@pytest.mark.django_db
 def test_fruit_update_unauthorized(client, random_password, new_user, new_fruit, fruit_request_data):
     password = random_password()
     different_user = new_user(password=password)
@@ -330,7 +321,6 @@ def test_fruit_update_unauthorized(client, random_password, new_user, new_fruit,
     assert response.json() == {'detail': 'You do not have permission to perform this action.'}
 
 
-@pytest.mark.django_db
 def test_fruit_delete(client, random_password, new_user, new_fruit):
     password = random_password()
     author = new_user(password=password)
@@ -372,7 +362,6 @@ def test_fruit_modify_deleted(client, random_password, new_user, new_fruit):
         assert response.json() == {'detail': 'Cannot update once deleted object.'}
 
 
-@pytest.mark.django_db
 def test_fruit_delete_unauthorized(client, random_password, new_user, new_fruit):
     password = random_password()
     different_user = new_user(password=password)

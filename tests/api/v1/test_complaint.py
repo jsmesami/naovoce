@@ -9,7 +9,6 @@ REQUEST_DATA = {
 }
 
 
-@pytest.mark.django_db
 def test_complaint(client, random_password, new_user, new_fruit):
     password = random_password()
     user = new_user(password=password)
@@ -37,7 +36,6 @@ def test_complaint_nonexistent_fruit(client, truncate_table, random_password, ne
     assert response.json() == {'detail': 'Not found.'}
 
 
-@pytest.mark.django_db
 def test_complaint_unauthorized(client, new_fruit):
     fruit = new_fruit()
 
@@ -47,7 +45,6 @@ def test_complaint_unauthorized(client, new_fruit):
     assert response.json() == {'detail': 'Authentication credentials were not provided.'}
 
 
-@pytest.mark.django_db
 def test_complaint_missing_text(client, random_password, new_user, new_fruit):
     password = random_password()
     user = new_user(password=password)

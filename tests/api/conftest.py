@@ -28,6 +28,7 @@ def set_default_language(settings):
 
 
 @pytest.fixture
+@pytest.mark.django_db
 def truncate_table():
     return lambda model: connection.cursor().execute('TRUNCATE TABLE %s CASCADE', [AsIs(model._meta.db_table)])
 
