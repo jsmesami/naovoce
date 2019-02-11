@@ -68,7 +68,7 @@ BAD_FRUIT_CRUD_ARGS = [
 
 
 def is_fruit_list_valid(instances, response):
-    expected = (fruit_to_data(fruit, response) for fruit in instances)
+    expected = map(partial(fruit_to_data, response=response), instances)
     sort_by_id = partial(sorted, key=itemgetter('id'))
 
     return sort_by_id(expected) == sort_by_id(response.json())
