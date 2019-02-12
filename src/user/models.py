@@ -100,15 +100,13 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
     motto = models.CharField(_('motto'), max_length=255, blank=True)
 
     def _upload_avatar_to(self, filename):
+        mangled_name = uuid4().hex[:8] + os.path.splitext(filename)[1]
+
         return '{base}/{id}/{file}'.format(
             base=AVATARS['PATH_PREFIX'],
             id=self.id,
-            file=self._mangle_avatar_name(filename),
+            file=mangled_name,
         )
-
-    @staticmethod
-    def _mangle_avatar_name(filename):
-        return uuid4().hex[:8] + os.path.splitext(filename)[1]
 
     avatar = ContentTypeRestrictedImageField(
         _('avatar'),
