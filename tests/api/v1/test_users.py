@@ -1,9 +1,11 @@
 from functools import partial
 from operator import itemgetter
 
+import pytest
 from rest_framework.reverse import reverse
 from rest_framework import status
 
+from user.models import FruitUser
 from ..utils import render_url
 
 
@@ -15,7 +17,10 @@ def user_to_data(user, response):
     }
 
 
-def test_users_list(client, new_user):
+@pytest.mark.django_db
+def test_users_list(client, truncate_table, new_user):
+    truncate_table(FruitUser)
+
     new_users = [new_user() for _ in range(5)] + [
         new_user(is_email_verified=False, is_active=True),  # Additional unverified user
         new_user(is_email_verified=True, is_active=False),  # Additional inactive user
