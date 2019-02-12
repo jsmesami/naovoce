@@ -58,13 +58,21 @@ def random_email(random_string):
 @pytest.mark.django_db
 def new_user(django_user_model, random_username, random_email, random_password):
     def closure(**kwargs):
-        return django_user_model.objects.create_user(
+        is_active = kwargs.pop('is_active', True)
+
+        user = django_user_model.objects.create_user(
             username=kwargs.pop('username', random_username()),
             email=kwargs.pop('email', random_email()),
             password=kwargs.pop('password', random_password()),
             is_email_verified=kwargs.pop('is_email_verified', True),
             **kwargs
         )
+
+        if user.is_active != is_active:
+            user.is_active = is_active
+            user.save()
+
+        return user
 
     return closure
 

@@ -43,7 +43,7 @@ class UserListTopLastMonth(UserList):
 
 
 class UserDetail(generics.RetrieveAPIView):
-    """Retreive specific User resource."""
+    """Retrieve specific User resource."""
 
     queryset = FruitUser.objects.annotate(**fruit_counter())
     serializer_class = serializers.VerboseUserSerializer

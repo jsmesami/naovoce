@@ -11,6 +11,7 @@ from rest_framework.reverse import reverse
 from rest_framework import status
 
 from fruit.models import Fruit
+from ..utils import render_url
 
 
 def format_coord(coord):
@@ -19,10 +20,6 @@ def format_coord(coord):
 
 def format_time(time):
     return DateTimeField(format='%Y-%m-%d %H:%M:%S').to_representation(time)
-
-
-def render_url(response, viewname, *args):
-    return reverse(viewname, args=args, request=response.renderer_context['request'])
 
 
 def fruit_to_data(fruit, response):
@@ -304,6 +301,19 @@ def test_fruit_update_bad_args(client, random_password, new_user, new_fruit, fru
     assert response.json() == error_msg
 
 
+def test_fruit_update_unauthenticated(client, new_fruit, fruit_request_data):
+    fruit = new_fruit()
+
+    response = client.patch(
+        reverse('api:fruit-detail', args=[fruit.id]),
+        json.dumps(fruit_request_data()),
+        content_type='application/json'
+    )
+
+    assert response.status_code == status.HTTP_401_UNAUTHORIZED
+    assert response.json() == {'detail': 'Authentication credentials were not provided.'}
+
+
 def test_fruit_update_unauthorized(client, random_password, new_user, new_fruit, fruit_request_data):
     password = random_password()
     different_user = new_user(password=password)
@@ -360,6 +370,14 @@ def test_fruit_modify_deleted(client, random_password, new_user, new_fruit):
 
         assert response.status_code == status.HTTP_403_FORBIDDEN
         assert response.json() == {'detail': 'Cannot update once deleted object.'}
+
+
+def test_fruit_delete_unauthenticated(client, new_fruit):
+    fruit = new_fruit()
+    response = client.delete(reverse('api:fruit-detail', args=[fruit.id]))
+
+    assert response.status_code == status.HTTP_401_UNAUTHORIZED
+    assert response.json() == {'detail': 'Authentication credentials were not provided.'}
 
 
 def test_fruit_delete_unauthorized(client, random_password, new_user, new_fruit):
