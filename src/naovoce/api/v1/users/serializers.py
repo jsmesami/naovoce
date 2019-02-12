@@ -1,7 +1,6 @@
 from user.models import FruitUser
 
 from rest_framework import serializers
-from utils.avatar import get_avatar
 
 from ..fruit.fields import HyperlinkedFruitField
 
@@ -22,7 +21,7 @@ class AvatarField(serializers.HyperlinkedIdentityField):
         super().__init__('', **kwargs)
 
     def get_url(self, obj, view_name, request, format):
-        return get_avatar(request, obj)
+        return obj.get_avatar(request)
 
 
 class VerboseUserSerializer(UserSerializer):

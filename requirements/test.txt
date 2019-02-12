@@ -15,7 +15,8 @@ docopt==0.6.2             # via coveralls
 funcy==1.11
 idna==2.8                 # via requests
 libfaketime==1.2.1        # via pytest-libfaketime
-more-itertools==5.0.0     # via pytest
+more-itertools==6.0.0     # via pytest
+pathlib2==2.3.3           # via pytest
 pluggy==0.8.1             # via pytest
 py==1.7.0                 # via pytest
 pytest-cov==2.6.1
@@ -25,5 +26,5 @@ pytest==4.2.0
 python-dateutil==2.8.0    # via libfaketime
 pytz==2018.9              # via libfaketime
 requests==2.21.0          # via coveralls
-six==1.12.0               # via django-coverage-plugin, more-itertools, pytest, python-dateutil
+six==1.12.0               # via django-coverage-plugin, pathlib2, pytest, python-dateutil
 urllib3==1.24.1           # via requests

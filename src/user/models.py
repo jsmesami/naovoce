@@ -1,7 +1,9 @@
 import hashlib
 import os
+import urllib.parse
 from uuid import uuid4
 
+from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.contrib.postgres.fields import HStoreField
 from django.db import models
@@ -13,10 +15,19 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import pgettext_lazy, ugettext
 from django.utils.translation import ugettext_lazy as _
 import newsletter.list as newsletter
-from utils.avatar import AVATAR_MAX_FILESIZE, AVATARS_URL
+from sorl.thumbnail import get_thumbnail
 from utils.choices import Choices
 from utils.fields import ContentTypeRestrictedImageField
+from utils.full_url import get_full_url
 from utils.models import TimeStampedModel
+
+AVATARS = {
+    'SIZE': 240,
+    'MAX_FILE_SIZE': 1024 * 1024,  # 1 MB
+    'DEFAULT_AVATAR': os.path.join(settings.STATIC_ROOT, 'avatar.png'),
+    'PATH_PREFIX': 'avatars',
+    **getattr(settings, 'AVATARS', {}),
+}
 
 
 class UserManager(BaseUserManager):
@@ -89,11 +100,15 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
     motto = models.CharField(_('motto'), max_length=255, blank=True)
 
     def _upload_avatar_to(self, filename):
-        return '{base}/custom/{id}/{file}'.format(
-            base=AVATARS_URL,
+        return '{base}/{id}/{file}'.format(
+            base=AVATARS['PATH_PREFIX'],
             id=self.id,
             file=self._mangle_avatar_name(filename),
         )
+
+    @staticmethod
+    def _mangle_avatar_name(filename):
+        return uuid4().hex[:8] + os.path.splitext(filename)[1]
 
     avatar = ContentTypeRestrictedImageField(
         _('avatar'),
@@ -102,7 +117,7 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
         null=True,
         help_text=_("User avatar"),
         content_types=['image/png', 'image/jpeg', 'image/gif'],
-        max_upload_size=AVATAR_MAX_FILESIZE
+        max_upload_size=AVATARS['MAX_FILE_SIZE'],
     )
 
     objects = UserManager.from_queryset(ActiveUserQuerySet)()
@@ -116,13 +131,24 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
     def get_short_name(self):
         return self.username
 
+    def get_avatar(self, request):
+        size = AVATARS['SIZE']
+
+        if self.avatar:
+            img = get_thumbnail(self.avatar.file, '{}x{}'.format(size, size), crop='center', quality=90)
+            return get_full_url(request, img.url)
+
+        return 'https://secure.gravatar.com/avatar/{hash}?{params}'.format(
+            hash=self.hash,
+            params=urllib.parse.urlencode({
+                'd': get_full_url(request, AVATARS['DEFAULT_AVATAR']),
+                's': str(size),
+            }),
+        )
+
     def has_newsletter(self):
         mailing_list = newsletter.List.get_default()
         return mailing_list.is_subscribed(self) if mailing_list else False
-
-    @staticmethod
-    def _mangle_avatar_name(filename):
-        return uuid4().hex[:8] + os.path.splitext(filename)[1]
 
     def send_message(self, text, system=False, context=None):
         Message.objects.create(
@@ -177,7 +203,7 @@ class Message(TimeStampedModel):
     )
 
     @property
-    def formatted_text(self):
+    def text_formatted(self):
         text = ugettext(self.text)
         if self.system:
             if self.context:
@@ -195,7 +221,7 @@ class Message(TimeStampedModel):
         )
 
     def __str__(self):
-        return self.formatted_text
+        return self.text_formatted
 
     class Meta:
         ordering = ('-created',)

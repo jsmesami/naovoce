@@ -15,7 +15,6 @@ Prerequisities:
 * Python 3.5+
 * PostgreSQL 9.6+ with PostGIS and HStore
 * GEOS
-* Cairo
 
 Very basic local installation example:
 
