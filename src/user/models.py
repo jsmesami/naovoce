@@ -24,7 +24,7 @@ from utils.models import TimeStampedModel
 AVATARS = {
     'SIZE': 240,
     'MAX_FILE_SIZE': 1024 * 1024,  # 1 MB
-    'DEFAULT_AVATAR': os.path.join(settings.STATIC_ROOT, 'avatar.png'),
+    'DEFAULT_AVATAR_URL': os.path.join(settings.STATIC_URL, 'avatar.png'),
     'PATH_PREFIX': 'avatars',
     **getattr(settings, 'AVATARS', {}),
 }
@@ -139,7 +139,7 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
         return 'https://secure.gravatar.com/avatar/{hash}?{params}'.format(
             hash=self.hash,
             params=urllib.parse.urlencode({
-                'd': get_full_url(request, AVATARS['DEFAULT_AVATAR']),
+                'd': get_full_url(request, AVATARS['DEFAULT_AVATAR_URL']),
                 's': str(size),
             }),
         )

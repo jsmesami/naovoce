@@ -77,6 +77,12 @@ def new_user(django_user_model, random_username, random_email, random_password):
     return closure
 
 
+@pytest.fixture
+@pytest.mark.django_db
+def new_random_user_list(random_position, new_user):
+    return lambda length: [new_user() for _ in range(length)]
+
+
 @pytest.fixture(scope='session')
 @pytest.mark.django_db
 def all_kinds():
@@ -117,10 +123,14 @@ def fruit_request_data(all_kinds_keys):
 @pytest.mark.django_db
 def new_fruit(random_position, random_kind, new_user):
     def closure(**kwargs):
+        position = kwargs.pop('position', None)
+        kind = kwargs.pop('kind', None)
+        user = kwargs.pop('user', None)
+
         return Fruit.objects.create(
-            position=kwargs.pop('position', random_position()),
-            kind=kwargs.pop('kind', random_kind()),
-            user=kwargs.pop('user', new_user()),
+            position=position or random_position(),
+            kind=kind or random_kind(),
+            user=user or new_user(),
             **kwargs
         )
 
@@ -132,10 +142,16 @@ def new_fruit(random_position, random_kind, new_user):
 def new_fruit_list(random_position, random_kind, new_user):
     def closure(length, **kwargs):
         position = kwargs.pop('position', None)
-        kind = kwargs.pop('kind', random_kind())
-        user = kwargs.pop('user', new_user())
+        kind = kwargs.pop('kind', None)
+        user = kwargs.pop('user', None)
+
         return Fruit.objects.bulk_create(
-            Fruit(position=position or random_position(), kind=kind, user=user, **kwargs)
+            Fruit(
+                position=position or random_position(),
+                kind=kind or random_kind(),
+                user=user or new_user(),
+                **kwargs
+            )
             for _ in range(length)
         )
 

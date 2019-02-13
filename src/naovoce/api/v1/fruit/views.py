@@ -180,7 +180,7 @@ def fruit_list_diff(request, date, time):
     fruit = Fruit.objects.order_by('-created').select_related('kind')
     context = {'request': request}
 
-    data = {}
+    data = dict()
 
     data['created'] = serializers.FruitSerializer(
         fruit.filter(created__gt=since, deleted=False).iterator(),

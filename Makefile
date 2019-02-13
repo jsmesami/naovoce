@@ -15,4 +15,4 @@ coala:
 
 .PHONY: test
 test:
-	PYTHONPATH=src pytest -v --cov=src tests
+	PYTHONPATH=src pytest -vv --cov=src tests

@@ -64,11 +64,11 @@ BAD_FRUIT_CRUD_ARGS = [
 ]
 
 
-def is_fruit_list_valid(instances, response):
+def assert_is_fruit_list_valid(instances, response):
     expected = map(partial(fruit_to_data, response=response), instances)
     sort_by_id = partial(sorted, key=itemgetter('id'))
 
-    return sort_by_id(expected) == sort_by_id(response.json())
+    assert sort_by_id(expected) == sort_by_id(response.json())
 
 
 @pytest.mark.django_db
@@ -80,7 +80,7 @@ def test_fruit_list(client, truncate_table, new_fruit_list):
 
     assert response.status_code == status.HTTP_200_OK
     assert len(response.data) == 5
-    assert is_fruit_list_valid(instances, response)
+    assert_is_fruit_list_valid(instances, response)
 
 
 @pytest.mark.django_db
@@ -112,7 +112,7 @@ def test_fruit_list_filtering(client, truncate_table, all_kinds, new_user, new_f
 
         assert response.status_code == status.HTTP_200_OK
         assert len(response.data) == length
-        assert is_fruit_list_valid(instances, response)
+        assert_is_fruit_list_valid(instances, response)
 
 
 @pytest.mark.django_db

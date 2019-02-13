@@ -2,6 +2,7 @@ import datetime
 from user.models import FruitUser
 from user.utils import fruit_counter, top_pickers
 
+from django.utils import timezone
 from rest_framework import generics
 from rest_framework.response import Response
 
@@ -38,7 +39,7 @@ class UserListTopLastMonth(UserList):
     serializer_class = serializers.TopUserSerializer
 
     def get_queryset(self):
-        last_month = datetime.date.today() - datetime.timedelta(365 / 12)
+        last_month = timezone.make_aware(datetime.datetime.today() - datetime.timedelta(365 / 12))
         return top_pickers(fruits__created__gte=last_month).exclude(fruit_count=0)
 
 

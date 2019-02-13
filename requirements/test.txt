@@ -22,7 +22,7 @@ py==1.7.0                 # via pytest
 pytest-cov==2.6.1
 pytest-django==3.4.7
 pytest-libfaketime==0.1.2
-pytest==4.2.0
+pytest==4.2.1
 python-dateutil==2.8.0    # via libfaketime
 pytz==2018.9              # via libfaketime
 requests==2.21.0          # via coveralls
