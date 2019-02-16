@@ -1,74 +1,36 @@
 import json
 from functools import partial
-from operator import itemgetter
 
 import funcy
 from libfaketime import fake_time
 import pytest
 from datetime import date, timedelta
-from rest_framework.fields import DateTimeField
 from rest_framework.reverse import reverse
 from rest_framework import status
 
 from fruit.models import Fruit
-from ..utils import render_url
-
-
-def format_coord(coord):
-    return '{:.10f}'.format(coord)
-
-
-def format_time(time):
-    return DateTimeField(format='%Y-%m-%d %H:%M:%S').to_representation(time)
-
-
-def fruit_to_data(fruit, response):
-    return {
-        'id': fruit.id,
-        'lat': format_coord(fruit.position.y),
-        'lng': format_coord(fruit.position.x),
-        'kind': fruit.kind.key,
-        'time': format_time(fruit.created),
-        'url': render_url(response, 'api:fruit-detail', fruit.id),
-     }
-
-
-def fruit_to_verbose_data(fruit, response):
-    return {
-        'id': fruit.id,
-        'lat': format_coord(fruit.position.y),
-        'lng': format_coord(fruit.position.x),
-        'kind': fruit.kind.key,
-        'time': format_time(fruit.created),
-        'url': render_url(response, 'api:fruit-detail', fruit.id),
-        'description': fruit.description,
-        'user': {
-            'id': fruit.user.id,
-            'username': fruit.user.username,
-            'url': render_url(response, 'api:users-detail', fruit.user.id),
-        },
-        'images_count': 0,
-        'images': render_url(response, 'api:image-list', 'fruit', fruit.id)
-    }
+from .utils import sort_by_key
+from .utils.data import fruit_to_data, fruit_to_verbose_data
 
 
 BAD_FRUIT_CRUD_ARGS = [
-    ({'kind': 'nonexistent'}, {'kind': ['nonexistent is not a valid Kind key.']}),
-    ({'kind': ''}, {'kind': ['This field may not be null.']}),
-    ({'lat': 'NaN'}, {'lat': ['A valid number is required.']}),
-    ({'lat': ''}, {'lat': ['A valid number is required.']}),
-    ({'lat': '60.1234564567890'}, {'lat': ['Ensure that there are no more than 13 digits in total.']}),
-    ({'lng': 'NaN'}, {'lng': ['A valid number is required.']}),
-    ({'lng': ''}, {'lng': ['A valid number is required.']}),
-    ({'lng': '60.1234564567890'}, {'lng': ['Ensure that there are no more than 13 digits in total.']}),
+    ({'kind': 'nonexistent'},
+     {'kind': ['nonexistent is not a valid Kind key.']}),
+    ({'kind': ''},
+     {'kind': ['This field may not be null.']}),
+    ({'lat': 'NaN'},
+     {'lat': ['A valid number is required.']}),
+    ({'lat': ''},
+     {'lat': ['A valid number is required.']}),
+    ({'lat': '60.1234564567890'},
+     {'lat': ['Ensure that there are no more than 13 digits in total.']}),
+    ({'lng': 'NaN'},
+     {'lng': ['A valid number is required.']}),
+    ({'lng': ''},
+     {'lng': ['A valid number is required.']}),
+    ({'lng': '60.1234564567890'},
+     {'lng': ['Ensure that there are no more than 13 digits in total.']}),
 ]
-
-
-def assert_is_fruit_list_valid(instances, response):
-    expected = map(partial(fruit_to_data, response=response), instances)
-    sort_by_id = partial(sorted, key=itemgetter('id'))
-
-    assert sort_by_id(expected) == sort_by_id(response.json())
 
 
 @pytest.mark.django_db
@@ -76,11 +38,14 @@ def test_fruit_list(client, truncate_table, new_fruit_list):
     length = 5
     truncate_table(Fruit)
     instances = new_fruit_list(length)
+
     response = client.get(reverse('api:fruit-list'))
+
+    expected = map(partial(fruit_to_data, response=response), instances)
 
     assert response.status_code == status.HTTP_200_OK
     assert len(response.data) == 5
-    assert_is_fruit_list_valid(instances, response)
+    assert sort_by_key('id', expected) == sort_by_key('id', response.json())
 
 
 @pytest.mark.django_db
@@ -110,9 +75,11 @@ def test_fruit_list_filtering(client, truncate_table, all_kinds, new_user, new_f
     for instances, params, length in scenarios:
         response = client.get(reverse('api:fruit-list'), params)
 
+        expected = map(partial(fruit_to_data, response=response), instances)
+
         assert response.status_code == status.HTTP_200_OK
         assert len(response.data) == length
-        assert_is_fruit_list_valid(instances, response)
+        assert sort_by_key('id', expected) == sort_by_key('id', response.json())
 
 
 @pytest.mark.django_db
@@ -272,7 +239,7 @@ def test_fruit_update(client, random_password, new_user, new_fruit, fruit_reques
     response = client.patch(
         reverse('api:fruit-detail', args=[fruit.id]),
         json.dumps(request_data),
-        content_type='application/json'
+        content_type='application/json',
     )
     modified_data = {
         **fruit_to_verbose_data(fruit, response),
@@ -280,7 +247,7 @@ def test_fruit_update(client, random_password, new_user, new_fruit, fruit_reques
     }
 
     assert response.status_code == status.HTTP_200_OK
-    assert modified_data == response.json()
+    assert response.json() == modified_data
 
 
 @pytest.mark.parametrize('bad_args, error_msg', BAD_FRUIT_CRUD_ARGS)

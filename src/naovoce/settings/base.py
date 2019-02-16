@@ -1,6 +1,6 @@
 import os
 
-PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..'))
 
 DEBUG = False
 
@@ -59,13 +59,13 @@ LANGUAGES = (
     ('cs', 'Česky'),
 )
 
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'naovoce/media')
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'src/naovoce/media')
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'naovoce/static')
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'src/naovoce/static')
 STATIC_URL = '/static/'
 
-LOCALE_PATHS = (os.path.join(PROJECT_ROOT, 'locale'),)
+LOCALE_PATHS = (os.path.join(PROJECT_ROOT, 'src/locale'),)
 
 ROOT_URLCONF = 'naovoce.urls'
 
@@ -250,6 +250,12 @@ REST_FRAMEWORK = {
 CORS_ORIGIN_WHITELIST = ('na-ovoce.cz',)
 
 CORS_URLS_REGEX = r'^/api/.*$'
+
+FRUIT_IMAGE_MAX_FILESIZE = 5 * 1024 * 1024  # 5 MB
+FRUIT_IMAGE_ALLOWED_CONTENT_TYPES = ('image/jpeg',)
+
+AVATAR_IMAGE_MAX_FILESIZE = 1024 * 1024  # 1 MB
+AVATAR_IMAGE_ALLOWED_CONTENT_TYPES = 'image/jpeg', 'image/png', 'image/gif'
 
 NEWSLETTER_INSTALLATION_URL = 'https://newsletter.na-ovoce.cz'
 NEWSLETTER_API_KEY = None           # must be set in instance-specific settings/local.py

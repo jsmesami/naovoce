@@ -7,6 +7,7 @@ class IsAuthenticated(permissions.BasePermission):
             request.user
             and request.user.is_authenticated
             and request.user.is_email_verified
+            and request.user.is_active
         )
 
 
@@ -17,6 +18,7 @@ class IsAuthenticatedOrReadOnly(permissions.BasePermission):
             or request.user
             and request.user.is_authenticated
             and request.user.is_email_verified
+            and request.user.is_active
         )
 
 

@@ -1,16 +1,26 @@
+import base64
 import os
 import random
 import string
 
 import pytest
+from django.conf import settings
 
 from django.contrib.gis.geos import Point
+from django.core.files.base import ContentFile
 from django.core.management import call_command
 from django.db import connection
 from psycopg2.extensions import AsIs
 
 from herbarium.models import Herbarium
-from fruit.models import Fruit, Kind
+from fruit.models import Fruit, Kind, Image
+
+with open(os.path.join(settings.PROJECT_ROOT, 'tests/data/small_image.jpg'), 'rb') as image_file:
+    SMALL_IMAGE_DATA_JPG = image_file.read()
+
+
+with open(os.path.join(settings.PROJECT_ROOT, 'tests/data/larger_image.jpg'), 'rb') as image_file:
+    LARGER_IMAGE_DATA_JPG = image_file.read()
 
 
 @pytest.fixture(scope='session')
@@ -26,6 +36,11 @@ def django_db_setup(django_db_blocker):
 @pytest.fixture(autouse=True)
 def set_default_language(settings):
     settings.LANGUAGE_CODE = 'en'
+
+
+@pytest.fixture(autouse=True)
+def set_media_root(settings):
+    settings.MEDIA_ROOT = os.path.join(settings.PROJECT_ROOT, 'tests/media')
 
 
 @pytest.fixture
@@ -123,14 +138,14 @@ def fruit_request_data(all_kinds_keys):
 @pytest.mark.django_db
 def new_fruit(random_position, random_kind, new_user):
     def closure(**kwargs):
-        position = kwargs.pop('position', None)
-        kind = kwargs.pop('kind', None)
-        user = kwargs.pop('user', None)
+        position = kwargs.pop('position', random_position())
+        kind = kwargs.pop('kind', random_kind())
+        user = kwargs.pop('user', None) or new_user()
 
         return Fruit.objects.create(
-            position=position or random_position(),
-            kind=kind or random_kind(),
-            user=user or new_user(),
+            position=position,
+            kind=kind,
+            user=user,
             **kwargs
         )
 
@@ -141,15 +156,73 @@ def new_fruit(random_position, random_kind, new_user):
 @pytest.mark.django_db
 def new_fruit_list(random_position, random_kind, new_user):
     def closure(length, **kwargs):
-        position = kwargs.pop('position', None)
-        kind = kwargs.pop('kind', None)
-        user = kwargs.pop('user', None)
+        position = kwargs.pop('position', random_position())
+        kind = kwargs.pop('kind', random_kind())
+        user = kwargs.pop('user', None) or new_user()
 
         return Fruit.objects.bulk_create(
             Fruit(
-                position=position or random_position(),
-                kind=kind or random_kind(),
-                user=user or new_user(),
+                position=position,
+                kind=kind,
+                user=user,
+                **kwargs
+            )
+            for _ in range(length)
+        )
+
+    return closure
+
+
+@pytest.fixture
+def small_image_jpg():
+    return lambda: str(base64.b64encode(SMALL_IMAGE_DATA_JPG), encoding='ascii')
+
+
+@pytest.fixture
+def larger_image_jpg():
+    return lambda: str(base64.b64encode(LARGER_IMAGE_DATA_JPG), encoding='ascii')
+
+
+@pytest.fixture
+def small_image_png():
+    return lambda: 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z/C/HgAGgwJ/lK3Q6wAAAABJRU5ErkJggg=='
+
+
+@pytest.fixture
+@pytest.mark.django_db
+def new_image(small_image_jpg, new_user, random_string, new_fruit):
+    def closure(**kwargs):
+        image = kwargs.pop('image', None) or ContentFile(small_image_jpg(), name='image.jpg')
+        author = kwargs.pop('author', None) or new_user()
+        caption = kwargs.pop('caption', random_string(10))
+        fruit = kwargs.pop('fruit', None) or new_fruit(user=author)
+
+        return Image.objects.create(
+            image=image,
+            author=author,
+            caption=caption,
+            fruit=fruit,
+            **kwargs
+        )
+
+    return closure
+
+
+@pytest.fixture
+@pytest.mark.django_db
+def new_images_list(small_image_jpg, new_user, random_string, new_fruit):
+    def closure(length, **kwargs):
+        image = kwargs.pop('image', None) or ContentFile(small_image_jpg(), name='image.jpg')
+        author = kwargs.pop('author', None) or new_user()
+        caption = kwargs.pop('caption', random_string(10))
+        fruit = kwargs.pop('fruit', None) or new_fruit(user=author)
+
+        return Image.objects.bulk_create(
+            Image(
+                image=image,
+                author=author,
+                caption=caption,
+                fruit=fruit,
                 **kwargs
             )
             for _ in range(length)

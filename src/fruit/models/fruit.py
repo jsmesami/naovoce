@@ -56,7 +56,7 @@ class Fruit(TimeStampedModel):
         return ''  # TODO: Implement after setting frontend urls
 
     def is_owner(self, user):
-        return self.user.is_active and (self.user == user)
+        return self.user == user
 
     def __str__(self):
         return '{fruit.kind!s}'.format(fruit=self)

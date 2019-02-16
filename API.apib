@@ -440,20 +440,6 @@ Available options are `cs` or `en`, `en` is default.
 
 ## Images [/images/]
 
-### Delete Image [DELETE /images/{image_id}/]
-
-+ Authenticated and owner
-
-+ Parameters
-    + image_id: `10384` (number) - ID of the Image (integer)
-
-+ Request
-    + Headers
-
-            Authorization: Token eb3e2b0367c2f99cf0380ef88127c2bf129c26a8
-
-+ Response 204
-
 ### List Images of Fruit [GET /images/fruit/{fruit_id}/]
 
 + Parameters
@@ -478,8 +464,7 @@ Available options are `cs` or `en`, `en` is default.
 
 To add an Image associated to a Fruit.
 It takes a JSON object containing base64-encoded _image data_ and _caption_.
-Note: You do not have to send base64-encoded image data in JSON, 
-`application/x-www-form-urlencoded` data is also supported.
+Note: besides `application/json` content type, `application/x-www-form-urlencoded` is also supported.
 Response contains JSON payload with created object.
 
 + Authenticated
@@ -491,7 +476,7 @@ Response contains JSON payload with created object.
 
         {
             "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAQDAwQDAwQEAwQFBAQFBgoHBgYGBg0JCggKDw0QEA8NDw4RExgUERIXEg4PFRwVF",
-            "alt": "Look what I've found"
+            "caption": "Look what I've found"
         }
     + Headers
 
@@ -509,6 +494,20 @@ Response contains JSON payload with created object.
                 "url": "https://na-ovoce.cz/api/v1/users/1/"
             }
         }
+
+### Delete Image [DELETE /images/{image_id}/]
+
++ Authenticated and owner
+
++ Parameters
+    + image_id: `10384` (number) - ID of the Image (integer)
+
++ Request
+    + Headers
+
+            Authorization: Token eb3e2b0367c2f99cf0380ef88127c2bf129c26a8
+
++ Response 204
 
 # Group Herbarium Resource
 

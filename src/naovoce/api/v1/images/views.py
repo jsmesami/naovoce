@@ -1,15 +1,12 @@
-from django.contrib.contenttypes.models import ContentType
-from django.utils.translation import ugettext_lazy as _
 from fruit.models import Image
 from rest_framework import generics
-from rest_framework.exceptions import ValidationError
 
 from ..permissions import IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly
 from .serializers import ImageSerializer
 
 
 class ImageDetail(generics.RetrieveUpdateDestroyAPIView):
-    """Retreive, update or destroy specific Image resource."""
+    """Retrieve, update or destroy specific Image resource."""
 
     queryset = Image.objects.select_related('author')
     serializer_class = ImageSerializer
@@ -22,29 +19,13 @@ class ImageList(generics.ListCreateAPIView):
     serializer_class = ImageSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
 
+    def get_queryset(self):
+        return Image.objects.filter(fruit=self.kwargs['fruit_pk']).select_related('author')
+
     def perform_create(self, serializer):
-        gallery_ct = self.kwargs['gallery_ct']
-        if gallery_ct not in serializer.gallery_ct_whitelist:
-            raise ValidationError(_('Content type {ct} is not supported.').format(
-                ct=gallery_ct,
-            ))
-        # Future caveat:
-        # Querying ContentType only by model name will not work, if there is another
-        # model of the same name within a different app.
         kwargs = {
-            'gallery_ct': ContentType.objects.get(model=gallery_ct),
-            'gallery_id': self.kwargs['gallery_id'],
+            'fruit_id': self.kwargs.pop('fruit_pk'),
             'author': self.request.user,
+            **self.kwargs,
         }
         serializer.save(**kwargs)
-
-    def get_queryset(self):
-        gallery_ct = self.kwargs.get('gallery_ct')
-        gallery_id = self.kwargs.get('gallery_id')
-
-        if gallery_ct not in ImageSerializer.gallery_ct_whitelist:
-            raise ValidationError(_('Content type {ct} is not supported.').format(
-                ct=gallery_ct,
-            ))
-
-        return Image.objects.filter(gallery_ct__model=gallery_ct, gallery_id=gallery_id)

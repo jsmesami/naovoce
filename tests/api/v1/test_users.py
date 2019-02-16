@@ -1,6 +1,5 @@
 from datetime import date, timedelta
 from functools import partial
-from operator import itemgetter
 
 from libfaketime import fake_time
 import pytest
@@ -8,33 +7,8 @@ from rest_framework.reverse import reverse
 from rest_framework import status
 
 from user.models import FruitUser
-from ..utils import render_url
-
-
-def user_to_data(user, response):
-    return {
-        'id': user.id,
-        'username': user.username,
-        'url': render_url(response, 'api:users-detail', user.id),
-    }
-
-
-def top_user_to_data(user, response):
-    return {
-        **user_to_data(user, response),
-        'fruit_count': user.fruits.count(),
-        'avatar': user.get_avatar(response.renderer_context['request']),
-    }
-
-
-def user_detail_to_data(user, response):
-    return {
-        **top_user_to_data(user, response),
-        'fruit': render_url(response, 'api:fruit-list') + '?user={}'.format(user.id),
-        'active': user.is_active,
-        'motto': user.motto,
-        'url': render_url(response, 'api:users-detail', user.id),
-    }
+from .utils import sort_by_key
+from .utils.data import user_to_data, top_user_to_data, user_detail_to_data
 
 
 @pytest.mark.django_db
@@ -48,11 +22,10 @@ def test_users_list(client, truncate_table, new_random_user_list, new_user):
 
     response = client.get(reverse('api:users-list'))
 
-    sort_by_id = partial(sorted, key=itemgetter('id'))
     expected = map(partial(user_to_data, response=response), new_users)
 
     assert response.status_code == status.HTTP_200_OK
-    assert sort_by_id(response.json()) == sort_by_id(expected)
+    assert sort_by_key('id', response.json()) == sort_by_key('id', expected)
 
 
 @pytest.mark.django_db

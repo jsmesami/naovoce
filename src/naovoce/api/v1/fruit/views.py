@@ -54,7 +54,8 @@ class CachedResponse(Response):
 class FruitList(generics.ListCreateAPIView):
     """List or create Fruit resources."""
 
-    queryset = Fruit.objects.valid().select_related('kind').order_by('-created')
+    queryset = Fruit.objects.valid().only("kind", "position", "modified").select_related('kind').order_by('-created')
+
     permission_classes = (IsAuthenticatedOrReadOnly,)
 
     def list(self, request, *args, **kwargs):
@@ -99,11 +100,10 @@ class FruitList(generics.ListCreateAPIView):
 
 
 class FruitDetail(generics.RetrieveUpdateDestroyAPIView):
-    """Retreive, update or destroy specific Fruit resource."""
+    """Retrieve, update or destroy specific Fruit resource."""
 
-    queryset = Fruit.objects\
-        .select_related('kind', 'user')\
-        .annotate(images_count=Count('images'))
+    queryset = Fruit.objects.select_related('kind', 'user').annotate(images_count=Count('images'))
+
     permission_classes = IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly
 
     def get_serializer_class(self):

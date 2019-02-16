@@ -1,10 +1,10 @@
 from django.contrib.gis.geos import Point
 from fruit.models import Fruit, Kind
-from naovoce.api.v1.users.serializers import UserSerializer
 from rest_framework import serializers
+from rest_framework.relations import HyperlinkedIdentityField
 
 from ..fields import CachedHyperlinkedIdentityField
-from ..images.fields import HyperlinkedGalleryField
+from ..users.serializers import UserSerializer
 from .fields import KindRelatedField
 
 
@@ -46,7 +46,7 @@ class VerboseFruitSerializer(serializers.HyperlinkedModelSerializer):
 
     images_count = serializers.IntegerField(read_only=True)
 
-    images = HyperlinkedGalleryField(gallery_ct='fruit')
+    images = HyperlinkedIdentityField(view_name='api:image-list', lookup_url_kwarg='fruit_pk')
 
     def create(self, validated_data):
         validated_data['position'] = Point(

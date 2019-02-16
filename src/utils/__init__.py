@@ -1,19 +1,4 @@
-from itertools import chain, islice, tee
-import locale
-from operator import attrgetter, itemgetter
-
-
-def naturalsort(iterable, key=None):
-    """Locale-aware alphabetical string sorting.
-
-    Besides string, key can be index or argument name.
-    """
-    locale.setlocale(locale.LC_ALL, '')
-
-    _getter = itemgetter(key) if isinstance(key, int) else attrgetter(key) if key else str
-
-    # unicode collation doesn't work on development box with OSX for some reason.
-    return sorted(iterable, key=lambda obj: locale.strxfrm(_getter(obj)))
+import mimetypes
 
 
 def trim_words(s, max_chars, separator=' '):
@@ -26,10 +11,21 @@ def trim_words(s, max_chars, separator=' '):
     return s
 
 
-def to_linkedlist(iterable):
-    """Convert iterable into (prev, current, next) triplets."""
+# This is here because mimetypes.guess_extension() sometimes returns odd results.
+MIMETYPE_TO_EXTENSION = {
+    'image/jpeg': 'JPEG',
+    'image/png': 'PNG',
+    'image/gif': 'GIF',
+}
 
-    prevs, items, nexts = tee(iterable, 3)
-    prevs = chain([None], prevs)
-    nexts = chain(islice(nexts, 1, None), [None])
-    return zip(prevs, items, nexts)
+
+def guess_extension(mimetype):
+    ext = mimetypes.guess_extension(mimetype)
+    if ext is None:
+        return 'Unknown'
+
+    return ext[1:].upper()
+
+
+def extension_for_mimetype(mimetype):
+    return MIMETYPE_TO_EXTENSION.get(mimetype) or guess_extension(mimetype)

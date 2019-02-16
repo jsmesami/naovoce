@@ -1,44 +1,22 @@
-import base64
-import imghdr
+from functools import partial
 
-from django.core.files.base import ContentFile
+from django.conf import settings
 from fruit.models import Image
 from rest_framework import serializers
 
 from ..users.serializers import UserSerializer
-
-
-class Base64ImageField(serializers.ImageField):
-    """Field that allows uploading an image either as a raw POST data or Base64-encoded string within a json payload."""
-
-    def to_internal_value(self, data):
-        # If data is a string, try to base64-decode it.
-        if isinstance(data, str):
-            if 'data:' in data and ';base64,' in data:
-                header, data = data.split(';base64,')
-
-            try:
-                decoded_data = base64.b64decode(data)
-            except TypeError:
-                self.fail('invalid_image')
-
-            file_name = 'uploaded_image.' + self.guess_file_extension(decoded_data)
-
-            data = ContentFile(decoded_data, name=file_name)
-
-        return super().to_internal_value(data)
-
-    def guess_file_extension(self, image_data):
-        extension = imghdr.what(None, image_data)
-        return extension.lower() if extension else 'jpg'
+from ..validators import validate_file_size, validate_file_type
+from .fields import Base64ImageField
 
 
 class ImageSerializer(serializers.HyperlinkedModelSerializer):
 
-    # whitelist of content types, automatically updated when HyperlinkedGalleryField is instantiated
-    gallery_ct_whitelist = set()
-
-    image = Base64ImageField()
+    image = Base64ImageField(
+        validators=[
+            partial(validate_file_type, content_types=settings.FRUIT_IMAGE_ALLOWED_CONTENT_TYPES),
+            partial(validate_file_size, max_filesize=settings.FRUIT_IMAGE_MAX_FILESIZE),
+        ]
+    )
 
     author = UserSerializer(read_only=True)
 

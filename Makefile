@@ -16,3 +16,4 @@ coala:
 .PHONY: test
 test:
 	PYTHONPATH=src pytest -vv --cov=src tests
+	rm -rf tests/media/

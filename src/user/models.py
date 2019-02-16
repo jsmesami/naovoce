@@ -17,13 +17,11 @@ from django.utils.translation import ugettext_lazy as _
 import newsletter.list as newsletter
 from sorl.thumbnail import get_thumbnail
 from utils.choices import Choices
-from utils.fields import ContentTypeRestrictedImageField
 from utils.full_url import get_full_url
 from utils.models import TimeStampedModel
 
 AVATARS = {
     'SIZE': 240,
-    'MAX_FILE_SIZE': 1024 * 1024,  # 1 MB
     'DEFAULT_AVATAR_URL': os.path.join(settings.STATIC_URL, 'avatar.png'),
     'PATH_PREFIX': 'avatars',
     **getattr(settings, 'AVATARS', {}),
@@ -108,14 +106,12 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
             file=mangled_name,
         )
 
-    avatar = ContentTypeRestrictedImageField(
+    avatar = models.ImageField(
         _('avatar'),
         upload_to=_upload_avatar_to,
         blank=True,
         null=True,
         help_text=_("User avatar"),
-        content_types=['image/png', 'image/jpeg', 'image/gif'],
-        max_upload_size=AVATARS['MAX_FILE_SIZE'],
     )
 
     objects = UserManager.from_queryset(ActiveUserQuerySet)()
