@@ -1,34 +1,60 @@
-from allauth.socialaccount.models import SocialAccount
 from django.utils.translation import ugettext_lazy as _
+from facebook import GraphAPIError
 from rest_framework import serializers
+from user import constants
+from user.models import FruitUser
+
+from ..utils import facebook as fcb
 
 
 class AuthTokenFacebookSerializer(serializers.Serializer):
-    email = serializers.CharField(style={'input_type': 'email'})
-    fcb_id = serializers.CharField(style={'input_type': 'password'})
+    email = serializers.EmailField(
+        required=True,
+        allow_null=False,
+        max_length=constants.EMAIL_MAX_LENGTH,
+    )
+    fcb_id = serializers.CharField(
+        required=True,
+        allow_null=False,
+        max_length=constants.FCB_ID_MAX_LENGTH,
+    )
+
+    default_error_messages = {
+        'facebook_verification': _('Facebook verification failed: {context}'),
+        'user_does_not_exist': _('User with email {email} and Facebook ID {fcb_id} does not exist.'),
+        'user_disabled': _('User account with email {email} is disabled.'),
+    }
 
     def validate(self, attrs):
         email = attrs.get('email')
         fcb_id = attrs.get('fcb_id')
 
-        if email and fcb_id:
-            try:
-                account = SocialAccount.objects.get(user__email__iexact=email)
-            except SocialAccount.DoesNotExist:
-                msg = _('Facebook account does not exist.')
-                raise serializers.ValidationError(msg)
+        try:
+            user = FruitUser.objects.get(email__iexact=email, facebook__fcb_id=fcb_id)
+        except FruitUser.DoesNotExist:
+            self.fail('user_does_not_exist', email=email, fcb_id=fcb_id)
 
-            if account.uid != fcb_id:
-                msg = _('Facebook ID does not match.')
-                raise serializers.ValidationError(msg)
+        if not user.is_active:
+            self.fail('user_disabled', email=email)
 
-            if not account.user.is_active:
-                msg = _('User account is disabled.')
-                raise serializers.ValidationError(msg)
+        fcb_info = user.facebook
 
-            attrs['user'] = account.user
-        else:
-            msg = _('Must include "username" and Facebook ID "fcb_id".')
-            raise serializers.ValidationError(msg)
+        try:
+            fcb_user = fcb.verify_user(fcb_info.fcb_id, fcb_info.fcb_token)
+        except GraphAPIError as e:
+            self.fail('facebook_verification', context=e)
 
-        return attrs
+        return {
+            'user': user,
+            'fcb_user': fcb_user,
+            'fcb_token': fcb_info.fcb_token,
+            **attrs
+        }
+
+    def save(self, **kwargs):
+        fcb_user = self.validated_data['fcb_user']
+        user = self.validated_data['user']
+        fcb_id = self.validated_data['fcb_id']
+        fcb_token = self.validated_data['fcb_token']
+
+        return fcb.connect_user(fcb_user, user, fcb_id, fcb_token),

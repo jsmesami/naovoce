@@ -72,7 +72,9 @@ def test_users_list_top_users(client, truncate_table, new_fruit_list, new_user):
 
 
 @pytest.mark.django_db
-def test_users_list_top_users_last_month(client, new_user, new_fruit_list):
+def test_users_list_top_users_last_month(client, truncate_table, new_user, new_fruit_list):
+    truncate_table(FruitUser)
+
     user4 = new_user(username='aaa')
     user3 = new_user(username='ccc')
     user2 = new_user(username='bbb')

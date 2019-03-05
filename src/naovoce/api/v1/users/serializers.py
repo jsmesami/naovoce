@@ -1,6 +1,5 @@
-from user.models import FruitUser
-
 from rest_framework import serializers
+from user.models import FruitUser
 
 from ..fruit.fields import HyperlinkedFruitField
 

@@ -1,7 +1,8 @@
 from django.urls import path
-from naovoce.api.v1.signup import views
+
+from .views import UserSignup, UserSignupFacebook
 
 urlpatterns = [
-    path('', views.UserSignup.as_view(), name='signup'),
-    path('facebook/', views.UserSignupFacebook.as_view(), name='signup-fcb'),
+    path('', UserSignup.as_view(), name='signup'),
+    path('facebook/', UserSignupFacebook.as_view(), name='signup-fcb'),
 ]

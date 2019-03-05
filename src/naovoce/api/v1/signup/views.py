@@ -12,7 +12,7 @@ class UserSignup(APIView):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        user = serializer.save(self.request)
+        user = serializer.save()
 
         return Response({
             'id': user.id,
@@ -28,7 +28,7 @@ class UserSignupFacebook(APIView):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        user = serializer.save(self.request)
+        user = serializer.save()
 
         token, created = Token.objects.get_or_create(user=user)
 

@@ -109,7 +109,6 @@ def test_image_create_urlencoded(client, new_fruit_username_password, small_imag
         urlencode(request_data),
         content_type='application/x-www-form-urlencoded',
     )
-    print(response.json())
 
     assert response.status_code == status.HTTP_201_CREATED
 
@@ -119,14 +118,14 @@ def test_image_create_urlencoded(client, new_fruit_username_password, small_imag
     assert created_image_response == image_to_data(created_image, response)
 
 
-@pytest.mark.parametrize('additional_args, error_msg', CREATE_IMAGE_BAD_ARGS)
-def test_image_create_bad_args(client, new_fruit_username_password, small_image_jpg, additional_args, error_msg):
+@pytest.mark.parametrize('bad_args, error_msg', CREATE_IMAGE_BAD_ARGS)
+def test_image_create_bad_args(client, new_fruit_username_password, small_image_jpg, bad_args, error_msg):
     fruit, username, password = new_fruit_username_password()
 
     request_data = {
         'image': small_image_jpg(),
         'caption': 'caption',
-        **additional_args,
+        **bad_args,
     }
 
     assert client.login(username=username, password=password)

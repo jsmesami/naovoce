@@ -85,37 +85,7 @@ AUTH_USER_MODEL = 'user.FruitUser'
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
 )
-
-ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
-ACCOUNT_USERNAME_MIN_LENGTH = 3
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_UNIQUE_EMAIL = True
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
-ACCOUNT_SIGNUP_PASSWORD_VERIFICATION = False
-ACCOUNT_ADAPTER = 'user.adapters.AccountAdapter'
-SOCIALACCOUNT_EMAIL_VERIFICATION = 'none'
-SOCIALACCOUNT_AUTO_SIGNUP = False
-SOCIALACCOUNT_ADAPTER = 'user.adapters.SocialAccountAdapter'
-SOCIALACCOUNT_PROVIDERS = {
-    'facebook': {
-        'METHOD': 'oauth2',
-        'SCOPE': ['email'],
-        'VERIFIED_EMAIL': True,
-        'FIELDS': (
-            'id',
-            'email',
-            'name',
-            'first_name',
-            'last_name',
-            'verified',
-        ),
-        'EXCHANGE_TOKEN': True,
-        'VERSION': 'v2.9'
-    }
-}
 
 TEMPLATES = [
     {
@@ -171,10 +141,6 @@ INSTALLED_APPS = (
     'herbarium',
     # external apps
     'modeltranslation',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.facebook',
     'corsheaders',
     'leaflet',
     'rest_framework',
@@ -246,6 +212,8 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     )
 }
+
+PASSWORD_MIN_LENGTH = 8
 
 CORS_ORIGIN_WHITELIST = ('na-ovoce.cz',)
 

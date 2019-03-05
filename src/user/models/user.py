@@ -5,20 +5,18 @@ from uuid import uuid4
 
 from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
-from django.contrib.postgres.fields import HStoreField
+from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from django.utils import timezone
-from django.utils.formats import date_format
 from django.utils.functional import cached_property
-from django.utils.html import format_html
-from django.utils.safestring import mark_safe
-from django.utils.translation import pgettext_lazy, ugettext
 from django.utils.translation import ugettext_lazy as _
 import newsletter.list as newsletter
 from sorl.thumbnail import get_thumbnail
 from utils.choices import Choices
 from utils.full_url import get_full_url
-from utils.models import TimeStampedModel
+
+from .. import constants
+from .message import Message
 
 AVATARS = {
     'SIZE': 240,
@@ -35,6 +33,7 @@ class UserManager(BaseUserManager):
 
         if not username:
             raise ValueError('A username must be set')
+
         if not email:
             raise ValueError('Users must have an email address')
 
@@ -45,7 +44,6 @@ class UserManager(BaseUserManager):
             is_staff=is_staff,
             is_active=True,
             is_superuser=is_superuser,
-            last_login=now,
             date_joined=now,
             **extra_fields
         )
@@ -66,11 +64,11 @@ class ActiveUserQuerySet(models.QuerySet):
 
 
 class FruitUser(AbstractBaseUser, PermissionsMixin):
-    username = models.CharField(_('username'), max_length=30, unique=True)
-    email = models.EmailField(_('email address'), max_length=254, unique=True)
+    username = models.CharField(_('username'), max_length=constants.USERNAME_MAX_LENGTH, unique=True)
+    email = models.EmailField(_('email address'), max_length=constants.EMAIL_MAX_LENGTH, unique=True)
 
-    first_name = models.CharField(_('first name'), max_length=30, blank=True)
-    last_name = models.CharField(_('last name'), max_length=30, blank=True)
+    first_name = models.CharField(_('first name'), max_length=constants.FIRST_NAME_MAX_LENGTH, blank=True)
+    last_name = models.CharField(_('last name'), max_length=constants.LAST_NAME_MAX_LENGTH, blank=True)
     external_url = models.URLField(_('external URL'), blank=True)
 
     RESOLUTION = Choices(
@@ -129,16 +127,29 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
         size = AVATARS['SIZE']
 
         if self.avatar:
-            img = get_thumbnail(self.avatar.file, '{}x{}'.format(size, size), crop='center', quality=90)
-            return get_full_url(request, img.url)
+            try:
+                img = get_thumbnail(self.avatar.file, '{}x{}'.format(size, size), crop='center', quality=90)
+            except FileNotFoundError:
+                pass
+            else:
+                return get_full_url(request, img.url)
+
+        fallback = get_full_url(
+            request,
+            (self.facebook_info and self.facebook_info.picture_url) or AVATARS['DEFAULT_AVATAR_URL'],
+        )
 
         return 'https://secure.gravatar.com/avatar/{hash}?{params}'.format(
             hash=self.hash,
-            params=urllib.parse.urlencode({
-                'd': get_full_url(request, AVATARS['DEFAULT_AVATAR_URL']),
-                's': str(size),
-            }),
+            params=urllib.parse.urlencode(dict(d=fallback, s=str(size))),
         )
+
+    @property
+    def facebook_info(self):
+        try:
+            return self.facebook
+        except ObjectDoesNotExist:
+            return None
 
     def has_newsletter(self):
         mailing_list = newsletter.List.get_default()
@@ -169,55 +180,3 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
         ordering = ('-date_joined',)
         verbose_name = _('user')
         verbose_name_plural = _('users')
-
-
-class Message(TimeStampedModel):
-    """Represents simple database-stored messages for users."""
-
-    text = models.CharField(_('text'), max_length=255)
-    context = HStoreField(
-        _('context'), blank=True, null=True,
-        help_text=_('Translation context for system messages')
-    )
-    read = models.BooleanField(
-        pgettext_lazy('user.Message', 'read'),
-        help_text=pgettext_lazy('Has been read or not.', 'user.Message'),
-        default=False,
-    )
-    system = models.BooleanField(
-        pgettext_lazy('user.Message', 'system'),
-        help_text=_('System messages can be translated and can contain HTML.'),
-        default=False,
-    )
-    recipient = models.ForeignKey(
-        FruitUser,
-        verbose_name=_('recipient'),
-        related_name='messages',
-        on_delete=models.CASCADE,
-    )
-
-    @property
-    def text_formatted(self):
-        text = ugettext(self.text)
-        if self.system:
-            if self.context:
-                try:
-                    text = format_html(text, **dict(self.context))
-                except KeyError:
-                    pass
-            else:
-                text = mark_safe(text)
-
-        return format_html(
-            '<span class="date">{date}</span> {text}',
-            date=date_format(self.created, 'SHORT_DATE_FORMAT', use_l10n=True),
-            text=text,
-        )
-
-    def __str__(self):
-        return self.text_formatted
-
-    class Meta:
-        ordering = ('-created',)
-        verbose_name = _('message')
-        verbose_name_plural = _('messages')

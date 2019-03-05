@@ -4,6 +4,9 @@ omit =
     */migrations*
     */tests/*
     */.tox/*
+    src/manage.py
+    src/naovoce/wsgi.py
+    src/naovoce/settings/*_example.py
 data_file = .coverage
 plugins = django_coverage_plugin
 branch = True

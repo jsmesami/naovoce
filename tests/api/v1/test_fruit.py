@@ -14,19 +14,25 @@ from .utils.data import fruit_to_data, fruit_to_verbose_data
 
 
 BAD_FRUIT_CRUD_ARGS = [
-    ({'kind': 'nonexistent'},
-     {'kind': ['nonexistent is not a valid Kind key.']}),
+    ({'kind': None},
+     {'kind': ['This field may not be null.']}),
     ({'kind': ''},
      {'kind': ['This field may not be null.']}),
-    ({'lat': 'NaN'},
-     {'lat': ['A valid number is required.']}),
+    ({'kind': 'nonexistent'},
+     {'kind': ['nonexistent is not a valid Kind key.']}),
+    ({'lat': None},
+     {'lat': ['This field may not be null.']}),
     ({'lat': ''},
+     {'lat': ['A valid number is required.']}),
+    ({'lat': 'NaN'},
      {'lat': ['A valid number is required.']}),
     ({'lat': '60.1234564567890'},
      {'lat': ['Ensure that there are no more than 13 digits in total.']}),
-    ({'lng': 'NaN'},
-     {'lng': ['A valid number is required.']}),
+    ({'lng': None},
+     {'lng': ['This field may not be null.']}),
     ({'lng': ''},
+     {'lng': ['A valid number is required.']}),
+    ({'lng': 'NaN'},
      {'lng': ['A valid number is required.']}),
     ({'lng': '60.1234564567890'},
      {'lng': ['Ensure that there are no more than 13 digits in total.']}),
@@ -162,7 +168,11 @@ def test_fruit_create(client, random_password, new_user, fruit_request_data):
     assert client.login(username=user.username, password=password)
 
     request_data = fruit_request_data()
-    response = client.post(reverse('api:fruit-list'), request_data)
+    response = client.post(
+        reverse('api:fruit-list'),
+        request_data,
+        content_type='application/json',
+    )
 
     assert response.status_code == status.HTTP_201_CREATED
 
@@ -184,7 +194,11 @@ def test_fruit_create_bad_args(client, random_password, new_user, fruit_request_
 
     assert client.login(username=user.username, password=password)
 
-    response = client.post(reverse('api:fruit-list'), fruit_request_data(**bad_args))
+    response = client.post(
+        reverse('api:fruit-list'),
+        fruit_request_data(**bad_args),
+        content_type='application/json',
+    )
 
     assert response.status_code == status.HTTP_400_BAD_REQUEST
     assert response.json() == error_msg
@@ -203,14 +217,22 @@ def test_fruit_create_missing_args(client, random_password, new_user, fruit_requ
 
     assert client.login(username=user.username, password=password)
 
-    response = client.post(reverse('api:fruit-list'), funcy.omit(fruit_request_data(), [missing_arg]))
+    response = client.post(
+        reverse('api:fruit-list'),
+        funcy.omit(fruit_request_data(), [missing_arg]),
+        content_type='application/json',
+    )
 
     assert response.status_code == status.HTTP_400_BAD_REQUEST
     assert response.json() == error_msg
 
 
 def test_fruit_create_unauthenticated(client, fruit_request_data):
-    response = client.post(reverse('api:fruit-list'), fruit_request_data())
+    response = client.post(
+        reverse('api:fruit-list'),
+        fruit_request_data(),
+        content_type='application/json',
+    )
 
     assert response.status_code == status.HTTP_401_UNAUTHORIZED
     assert response.json() == {'detail': 'Authentication credentials were not provided.'}
@@ -222,7 +244,11 @@ def test_fruit_create_unauthorized(client, random_password, new_user, fruit_requ
 
     assert client.login(username=user.username, password=password)
 
-    response = client.post(reverse('api:fruit-list'), fruit_request_data())
+    response = client.post(
+        reverse('api:fruit-list'),
+        fruit_request_data(),
+        content_type='application/json',
+    )
 
     assert response.status_code == status.HTTP_403_FORBIDDEN
     assert response.json() == {'detail': 'You do not have permission to perform this action.'}
@@ -261,7 +287,7 @@ def test_fruit_update_bad_args(client, random_password, new_user, new_fruit, fru
     response = client.patch(
         reverse('api:fruit-detail', args=[fruit.id]),
         json.dumps(fruit_request_data(**bad_args)),
-        content_type='application/json'
+        content_type='application/json',
     )
 
     assert response.status_code == status.HTTP_400_BAD_REQUEST
@@ -274,7 +300,7 @@ def test_fruit_update_unauthenticated(client, new_fruit, fruit_request_data):
     response = client.patch(
         reverse('api:fruit-detail', args=[fruit.id]),
         json.dumps(fruit_request_data()),
-        content_type='application/json'
+        content_type='application/json',
     )
 
     assert response.status_code == status.HTTP_401_UNAUTHORIZED
@@ -291,7 +317,7 @@ def test_fruit_update_unauthorized(client, random_password, new_user, new_fruit,
     response = client.patch(
         reverse('api:fruit-detail', args=[fruit.id]),
         json.dumps(fruit_request_data()),
-        content_type='application/json'
+        content_type='application/json',
     )
 
     assert response.status_code == status.HTTP_403_FORBIDDEN
@@ -307,7 +333,11 @@ def test_fruit_delete(client, random_password, new_user, new_fruit):
 
     assert client.login(username=author.username, password=password)
 
-    response = client.delete(detail_url, json.dumps(request_args), content_type='application/json')
+    response = client.delete(
+        detail_url,
+        json.dumps(request_args),
+        content_type='application/json',
+    )
 
     assert response.status_code == status.HTTP_204_NO_CONTENT
 
@@ -333,7 +363,7 @@ def test_fruit_modify_deleted(client, random_password, new_user, new_fruit):
     assert client.login(username=author.username, password=password)
 
     for action in (client.delete, client.patch, client.put):
-        response = action(detail_url)
+        response = action(detail_url, content_type='application/json')
 
         assert response.status_code == status.HTTP_403_FORBIDDEN
         assert response.json() == {'detail': 'Cannot update once deleted object.'}
@@ -341,7 +371,10 @@ def test_fruit_modify_deleted(client, random_password, new_user, new_fruit):
 
 def test_fruit_delete_unauthenticated(client, new_fruit):
     fruit = new_fruit()
-    response = client.delete(reverse('api:fruit-detail', args=[fruit.id]))
+    response = client.delete(
+        reverse('api:fruit-detail', args=[fruit.id]),
+        content_type='application/json'
+    )
 
     assert response.status_code == status.HTTP_401_UNAUTHORIZED
     assert response.json() == {'detail': 'Authentication credentials were not provided.'}
@@ -354,7 +387,10 @@ def test_fruit_delete_unauthorized(client, random_password, new_user, new_fruit)
 
     assert client.login(username=different_user.username, password=password)
 
-    response = client.delete(reverse('api:fruit-detail', args=[fruit.id]))
+    response = client.delete(
+        reverse('api:fruit-detail', args=[fruit.id]),
+        content_type='application/json',
+    )
 
     assert response.status_code == status.HTTP_403_FORBIDDEN
     assert response.json() == {'detail': 'You do not have permission to perform this action.'}

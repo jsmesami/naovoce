@@ -1,10 +1,10 @@
 import datetime
-from user.models import FruitUser
-from user.utils import fruit_counter, top_pickers
 
 from django.utils import timezone
 from rest_framework import generics
 from rest_framework.response import Response
+from user.models import FruitUser
+from user.utils import fruit_counter, top_pickers
 
 from . import serializers
 

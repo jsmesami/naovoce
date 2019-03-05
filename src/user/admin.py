@@ -4,7 +4,11 @@ from django.utils.translation import ugettext_lazy as _
 from utils import trim_words
 
 from .forms import MessageAdminForm, UserChangeForm, UserCreationForm
-from .models import FruitUser, Message
+from .models import FacebookInfo, FruitUser, Message
+
+
+class FacebookInfoInline(admin.TabularInline):
+    model = FacebookInfo
 
 
 class FruitUserAdmin(UserAdmin):
@@ -28,8 +32,9 @@ class FruitUserAdmin(UserAdmin):
         }),
     )
 
-    list_display = 'username email first_name last_name is_staff is_active ' \
-                   'is_email_verified date_joined'.split()
+    list_display = (
+        'username email first_name last_name is_staff is_active is_email_verified _has_facebook date_joined'.split()
+    )
 
     list_filter = 'resolution is_staff is_superuser is_active is_email_verified groups'.split()
 
@@ -40,7 +45,14 @@ class FruitUserAdmin(UserAdmin):
         }),
     )
 
+    inlines = (FacebookInfoInline,)
+
     ordering = ('-date_joined',)
+
+    def _has_facebook(self, obj):
+        return bool(obj.facebook_info)
+    _has_facebook.short_description = 'fcb'
+    _has_facebook.boolean = True
 
 
 class MessageAdmin(admin.ModelAdmin):

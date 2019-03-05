@@ -1,12 +1,12 @@
-Django>=2.1,<2.2
+Django>=2.2,<2.3
 Pillow
-django-allauth
 django-leaflet
 django-ipware
 django-modeltranslation>=0.13-beta1
 djangorestframework
 djangorestframework-gis
 django-cors-headers
+facebook-sdk
 markdown2
 psycopg2-binary
 requests
