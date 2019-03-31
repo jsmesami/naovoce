@@ -111,5 +111,4 @@ class SignupFacebookSerializer(serializers.Serializer):
                     _('Facebook authentication failed.')
                 )
             else:
-                self.cleaned_data = self.validated_data  # Needed by save_user()
-                return get_socialaccount_adapter().save_user(request, login, self)
+                return get_socialaccount_adapter().save_user(request, login)

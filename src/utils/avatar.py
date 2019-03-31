@@ -37,8 +37,11 @@ def get_avatar(request, user, size=None, bg_shade=0):
 
     # use user-defined avatar
     if user.avatar:
-        img = get_thumbnail(user.avatar.file, '%dx%d' % (size, size), crop='center', quality=90)
-        return get_full_url(request, img.url)
+        try:
+            img = get_thumbnail(user.avatar.file, '%dx%d' % (size, size), crop='center', quality=90)
+            return get_full_url(request, img.url)
+        except FileNotFoundError:
+            return None
 
     # user cached gravatar
     filename = cache_key = '{pk:08d}-{size:03d}-{bg:03d}.png'.format(

@@ -133,20 +133,19 @@
 
 	{% include 'inc/mapjs.html' %}
 
-	{% compress js inline %}
-	<script type="text/coffeescript" charset="utf-8">
+    {% compress js inline %}
+    <script type="text/coffeescript" charset="utf-8">
 
-	$('#map-detail').fillViewport()
+        $('#map-detail').fillViewport()
 
-	map = new Naovoce.Map 'map-detail'
+        map = new Naovoce.Map 'map-detail'
 
-	map.loadMarkers('{% url 'api:fruit-list' %}?user={{ user.id }}')
-		.setView Naovoce.CENTER_CS
-		.setZoom 7
-		.addLocate()
-		.addSearch()
+        map.loadMarkers('{% url 'api:fruit-list' %}?user={{ user.id }}')
+            .setZoom 7
+            .addLocate()
+            .addSearch()
 
-	</script>
-	{% endcompress %}
+    </script>
+    {% endcompress %}
 
 {% endblock %}
