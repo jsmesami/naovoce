@@ -1,7 +1,6 @@
 import smtplib
 import logging
 
-from allauth.account.models import EmailAddress
 from allauth.account.utils import user_email, setup_user_email
 from allauth.account.adapter import get_adapter as get_account_adapter
 import allauth.socialaccount.models

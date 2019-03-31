@@ -16,4 +16,4 @@ def prepos(text):
     """
     Append nbsp after on-letter prepositions, so that they wrap.
     """
-    return _PREPOS_RE.sub('\g<1>\u00a0', text)
+    return _PREPOS_RE.sub('\g<1>\u00a0', text)  # noqa: disable=W605
