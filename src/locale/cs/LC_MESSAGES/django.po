@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-13 21:05+0200\n"
+"POT-Creation-Date: 2019-04-06 18:36+0200\n"
 "PO-Revision-Date: 2017-05-25 14:33+0200\n"
 "Last-Translator: jsmesami <jsmesami@gmail.com>\n"
 "Language-Team: \n"
@@ -70,11 +70,11 @@ msgstr "Děkujeme za váš komentář."
 msgid "You have to be signed-in to post comments."
 msgstr "Abyste mohli posílat komentáře, musíte se přihlásit."
 
-#: fruit/admin.py:27 fruit/models.py:34
+#: fruit/admin.py:27 fruit/models.py:40
 msgid "class"
 msgstr "třída"
 
-#: fruit/admin.py:33 fruit/models.py:37
+#: fruit/admin.py:33 fruit/models.py:43
 msgid "color"
 msgstr "barva"
 
@@ -82,7 +82,15 @@ msgstr "barva"
 msgid "markers count"
 msgstr "počet značek"
 
-#: fruit/admin.py:63
+#: fruit/admin.py:51 fruit/models.py:86
+msgid "position"
+msgstr "pozice"
+
+#: fruit/admin.py:55 fruit/models.py:55 fruit/models.py:109
+msgid "deleted"
+msgstr "smazán"
+
+#: fruit/admin.py:72
 #, python-brace-format
 msgid ""
 "Site administrator deleted your <a href=\"{url}\">marker</a>. Reason of "
@@ -99,31 +107,31 @@ msgstr "{} není platný klíč."
 msgid "Cannot update once deleted object."
 msgstr "Dříve smazaný objekt nelze aktualizovat."
 
-#: fruit/forms.py:32
+#: fruit/forms.py:34
 msgid "Nothing selected"
 msgstr "Nic nevybráno"
 
-#: fruit/forms.py:47
+#: fruit/forms.py:49
 msgid "Is it a tree that you planted yourself?"
 msgstr "Jedná se o strom, který jste zasadili?"
 
-#: fruit/forms.py:55
+#: fruit/forms.py:57
 msgid "Latitude must be a number between -90 and 90."
 msgstr "Zeměpisná šířka musí být číslo mezi -90 a 90."
 
-#: fruit/forms.py:62
+#: fruit/forms.py:64
 msgid "Longitude must be a number between -180 and 180."
 msgstr "Zeměpisná délka musí být číslo mezi -180 a 180."
 
-#: fruit/forms.py:76
+#: fruit/forms.py:78
 msgid "Reason"
 msgstr "Důvod"
 
-#: fruit/forms.py:77
+#: fruit/forms.py:79
 msgid "Please describe reason of why you are deleting the marker."
 msgstr "Prosíme, popište důvody, které máte k smazání této značky."
 
-#: fruit/herbarium/models.py:16 fruit/models.py:66 fruit/models.py:79
+#: fruit/herbarium/models.py:16 fruit/models.py:75 fruit/models.py:88
 msgid "kind"
 msgstr "druh"
 
@@ -139,7 +147,7 @@ msgstr "celé jméno"
 msgid "latin name"
 msgstr "latinský název"
 
-#: fruit/herbarium/models.py:24 fruit/models.py:94
+#: fruit/herbarium/models.py:24 fruit/models.py:103
 msgid "description"
 msgstr "popis"
 
@@ -187,76 +195,72 @@ msgstr "sezóna dozrávání"
 msgid "ripening seasons"
 msgstr "sezóny dozrávání"
 
-#: fruit/models.py:28
+#: fruit/models.py:34
 msgid "Trees"
 msgstr "Stromy"
 
-#: fruit/models.py:29
+#: fruit/models.py:35
 msgid "Bushes"
 msgstr "Keře"
 
-#: fruit/models.py:30
+#: fruit/models.py:36
 msgid "Herbs"
 msgstr "Bylinky"
 
-#: fruit/models.py:31
+#: fruit/models.py:37
 msgid "Nuts"
 msgstr "Ořechy"
 
-#: fruit/models.py:35
+#: fruit/models.py:41
 msgid "name"
 msgstr "název"
 
-#: fruit/models.py:40
+#: fruit/models.py:46
 msgid "Hex color triplet for map."
 msgstr "Hexadecimální triplet pro mapu."
 
-#: fruit/models.py:43
+#: fruit/models.py:49
 msgid "key"
 msgstr "klíč"
 
-#: fruit/models.py:47
+#: fruit/models.py:53
 msgid "ID for API and also index in the markers font"
 msgstr "ID pro API a také index ve fontu mapových značek"
 
-#: fruit/models.py:67
+#: fruit/models.py:76
 msgid "kinds"
 msgstr "druhy"
 
-#: fruit/models.py:77
-msgid "position"
-msgstr "pozice"
-
-#: fruit/models.py:85
+#: fruit/models.py:94
 msgid "revival"
 msgstr "vracíme"
 
-#: fruit/models.py:88 user/models.py:75
+#: fruit/models.py:97 user/models.py:75
 msgid "resolution"
 msgstr "rozlišení"
 
-#: fruit/models.py:96
+#: fruit/models.py:105
 msgid ""
 "Please, provide as many information about the marker as you find relevant."
 msgstr "Prosíme, napište co nejvíce relevantních informací o této značce."
 
-#: fruit/models.py:100
-msgid "deleted"
-msgstr "smazán"
-
-#: fruit/models.py:102
+#: fruit/models.py:111
 msgid "why deleted"
 msgstr "proč smazán"
 
-#: fruit/models.py:104
+#: fruit/models.py:113
 msgid "The tree has been cut down, not found etc."
 msgstr "Strom byl poražen, nenalezen apod."
 
-#: fruit/models.py:109 user/models.py:160
+#: fruit/models.py:118 user/models.py:160
 msgid "user"
 msgstr "uživatel"
 
-#: fruit/models.py:126 fruit/models.py:127
+#: fruit/models.py:132
+msgid "Kind {kind} has been deleted."
+msgstr "Druh {kind} byl smazán."
+
+#: fruit/models.py:149 fruit/models.py:150
 msgid "fruit"
 msgstr "ovoce"
 
@@ -764,7 +768,7 @@ msgstr "Předchozí"
 msgid "Returned to the land by <a href=\"%(url)s\">%(username)s</a>"
 msgstr "Vráceno zemi uživatelem <a href=\"%(url)s\">%(username)s</a>"
 
-#: naovoce/templates/fruit/detail.html:188 naovoce/templates/inc/mapjs.html:103
+#: naovoce/templates/fruit/detail.html:188 naovoce/templates/inc/mapjs.html:104
 msgid "Shared by"
 msgstr "Sdílí"
 
@@ -806,7 +810,7 @@ msgid "You can edit your marker here"
 msgstr "Zde můžete upravit svou značku"
 
 #: naovoce/templates/fruit/inc/fruitform.html:20
-#: naovoce/templates/inc/mapjs.html:107
+#: naovoce/templates/inc/mapjs.html:108
 msgid "Description"
 msgstr "Popis"
 
@@ -853,23 +857,23 @@ msgstr "k přidání fotky"
 msgid "Fruit kind"
 msgstr "Druh ovoce"
 
-#: naovoce/templates/inc/mapjs.html:113
+#: naovoce/templates/inc/mapjs.html:114
 msgid "Address"
 msgstr "Adresa"
 
-#: naovoce/templates/inc/mapjs.html:186
+#: naovoce/templates/inc/mapjs.html:187
 msgid "Search for places or addresses"
 msgstr "Vyhledávání míst a adres"
 
-#: naovoce/templates/inc/mapjs.html:187
+#: naovoce/templates/inc/mapjs.html:188
 msgid "Location search"
 msgstr "Vyhledávání míst"
 
-#: naovoce/templates/inc/mapjs.html:205
+#: naovoce/templates/inc/mapjs.html:206
 msgid "Show me where I am"
 msgstr "Ukaž mi, kde jsem!"
 
-#: naovoce/templates/inc/mapjs.html:207
+#: naovoce/templates/inc/mapjs.html:208
 #, python-brace-format
 msgid "You are within {distance} {unit} from this point"
 msgstr "Od tohoto bodu jste vzdáleni cca {distance}{unit}."
@@ -1083,11 +1087,11 @@ msgstr "Byli jste odhlášeni z odběru našeho newsletteru."
 msgid "There has been an error unsubscribing you from our newsletter."
 msgstr "Stala se chyba při odhlašování z odběru newsletteru."
 
-#: user/adapters.py:29
+#: user/adapters.py:32
 msgid "Confirmation email has NOT been sent to {} (recipient refused)."
 msgstr "Potvrzovací e-mail NEBYL odeslán {} (adresát odmítnut)."
 
-#: user/adapters.py:35
+#: user/adapters.py:38
 msgid ""
 "\n"
 "Administrators have been notified."
@@ -1139,23 +1143,23 @@ msgstr "Musí obsahovat \"username\" a facebookové ID \"fcb_id\"."
 msgid "User's email is not verified."
 msgstr "Uživatelův e-mail není ověřen."
 
-#: user/forms.py:12 user/forms.py:44 user/models.py:63
+#: user/forms.py:10 user/forms.py:42 user/models.py:63
 msgid "username"
 msgstr "uživatelské jméno"
 
-#: user/forms.py:15 user/forms.py:47
+#: user/forms.py:13 user/forms.py:45
 msgid "Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."
 msgstr "Vyžadováno. 30 znaků a méně. Pouze písmena, čísla a znaky @/./+/-/_."
 
-#: user/forms.py:17 user/forms.py:49
+#: user/forms.py:15 user/forms.py:47
 msgid "This value may contain only letters, numbers and @/./+/-/_ characters."
 msgstr "Tato hodnota smí obsahovat pouze písmena, čísla a znaky @/./+/-/_."
 
-#: user/forms.py:53
+#: user/forms.py:51
 msgid "Password"
 msgstr "Heslo"
 
-#: user/forms.py:54
+#: user/forms.py:52
 msgid ""
 "Raw passwords are not stored, so there is no way to see this user's "
 "password, but you can change the password using <a href=\"password/\">this "
@@ -1164,11 +1168,11 @@ msgstr ""
 "Hesla nejsou uchovávána v čitelné podobě, heslo lze změnit <a href="
 "\"password/\">tímto formulářem</a>."
 
-#: user/forms.py:98
+#: user/forms.py:88
 msgid "Short text about you, that will appear in your profile."
 msgstr "Krátký text o vás, který se zobrazí na vašem profilu."
 
-#: user/forms.py:99
+#: user/forms.py:89
 msgid ""
 "You can change your profile picture by uploading custom image (up to 1 MB), "
 "or alternatively via <a href=\"http://gravatar.com\" rel=\"noopener "
@@ -1178,7 +1182,7 @@ msgstr ""
 "nebo prostřednictvím služby <a href=\"http://gravatar.com\" rel=\"noopener "
 "noreferrer\" target=\"_blank\">gravatar.com</a>."
 
-#: user/forms.py:106
+#: user/forms.py:96
 msgid "Username or e-mail"
 msgstr "Uživatelské jméno nebo e-mail"
 

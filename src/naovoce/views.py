@@ -6,7 +6,7 @@ from fruit.models import Kind, Fruit
 
 
 def map_view(request):
-    kinds = Kind.objects.all()
+    kinds = Kind.objects.valid()
 
     kinds_by_class = defaultdict(list)
     for k in kinds:

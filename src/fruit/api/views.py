@@ -7,7 +7,7 @@ from django.core.cache import caches
 from django.core.exceptions import ValidationError
 from django.dispatch import receiver
 from django.db.models.signals import post_save, post_delete
-from django.db.models import Count
+from django.db.models import Count, Q
 from rest_framework import generics, status, permissions
 from rest_framework.decorators import api_view
 from rest_framework.exceptions import PermissionDenied
@@ -111,7 +111,7 @@ class FruitDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly
 
     def get_serializer_class(self):
-        if self.get_object().deleted:
+        if self.get_object().is_deleted:
             return serializers.VerboseDeletedFruitSerializer
 
         return serializers.VerboseFruitSerializer
@@ -119,7 +119,7 @@ class FruitDetail(generics.RetrieveUpdateDestroyAPIView):
     def destroy(self, request, *args, **kwargs):
         # We never really delete Fruit, just set its status to deleted.
         instance = self.get_object()
-        if instance.deleted:
+        if instance.is_deleted:
             raise PermissionDenied(_('Cannot update once deleted object.'))
 
         instance.deleted = True
@@ -132,7 +132,7 @@ class FruitDetail(generics.RetrieveUpdateDestroyAPIView):
         # We cannot update fruit that has been deleted
         partial = kwargs.pop('partial', False)
         instance = self.get_object()
-        if instance.deleted:
+        if instance.is_deleted:
             raise PermissionDenied(_('Cannot update once deleted object.'))
 
         serializer = self.get_serializer(instance, data=request.data, partial=partial)
@@ -187,13 +187,13 @@ def fruit_list_diff(request, date, time):
 
     try:
         data['created'] = serializers.FruitSerializer(
-            fruit.filter(created__gt=since, deleted=False).iterator(),
+            fruit.filter(deleted=False, kind__deleted=False, created__gt=since).iterator(),
             context=context, many=True).data
         data['deleted'] = serializers.DeletedFruitSerializer(
-            fruit.filter(created__gt=since, deleted=True).iterator(),
+            fruit.filter(Q(deleted=True) | Q(kind__deleted=True), created__gt=since).iterator(),
             context=context, many=True).data
         data['updated'] = serializers.FruitSerializer(
-            fruit.filter(created__lte=since, modified__gt=since, deleted=False).iterator(),
+            fruit.filter(deleted=False, kind__deleted=False, created__lte=since, modified__gt=since).iterator(),
             context=context, many=True).data
 
     except ValidationError as e:

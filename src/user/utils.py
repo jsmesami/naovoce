@@ -1,6 +1,6 @@
 import datetime
 
-from django.db.models import Count, Case, When
+from django.db.models import Count, Case, When, Q
 
 from fruit.models import Fruit
 from .models import FruitUser
@@ -8,7 +8,7 @@ from .models import FruitUser
 
 def fruit_counter(**filters):
     return {
-        'fruit_count': Count(Case(When(fruits__deleted=False, then=1, **filters)))
+        'fruit_count': Count(Case(When(Q(fruits__deleted=False) & Q(fruits__kind__deleted=False), then=1, **filters)))
     }
 
 

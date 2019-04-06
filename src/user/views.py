@@ -26,7 +26,7 @@ def profile(request, pk, slug=None):
 
     return render(request, 'pickers/detail.html', {
         'user': user,
-        'kinds': Kind.objects.all(),
+        'kinds': Kind.objects.valid(),
     })
 
 

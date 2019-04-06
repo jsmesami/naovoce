@@ -19,8 +19,8 @@ class KindModelForm(forms.ModelForm):
 
 
 class KindAdmin(TranslationAdmin):
-    fields = 'cls name color key'.split()
-    list_display = 'name _class _color _fruit_count key'.split()
+    fields = 'cls name color key deleted'.split()
+    list_display = 'name _class _color _fruit_count key deleted'.split()
 
     def _class(self, obj):
         return obj.CLS.text_of(obj.cls)
@@ -40,16 +40,25 @@ class KindAdmin(TranslationAdmin):
 
 class FruitAdmin(GalleryAdminMixin, LeafletGeoAdmin):
     fields = 'position kind catalogue description user deleted why_deleted cover_image'.split()
-    list_display = 'id __str__ position user deleted images_count created'.split()
-    list_filter = 'kind__name_cs deleted catalogue'.split()
+    list_display = 'id __str__ _position user _deleted images_count created'.split()
+    list_filter = 'kind__name_cs catalogue'.split()
     search_fields = 'id user__username user__email'.split()
     form = CoverImageAdminForm
     inlines = ImageAdminInline,
 
+    def _position(self, obj):
+        return '{}, {}'.format(obj.position.x, obj.position.y)
+    _position.short_description = _('position')
+
+    def _deleted(self, obj):
+        return obj.is_deleted
+    _deleted.short_description = _('deleted')
+    _deleted.boolean = True
+
     def get_object(self, request, object_id, from_field=None):
         fruit = super().get_object(request, object_id)
         if fruit:
-            fruit._was_deleted = fruit.deleted
+            fruit._was_deleted = fruit.is_deleted
         return fruit
 
     def save_model(self, request, obj, form, change):
@@ -57,7 +66,7 @@ class FruitAdmin(GalleryAdminMixin, LeafletGeoAdmin):
             obj.user = request.user
         obj.save()
 
-        if not getattr(obj, '_was_deleted', False) and obj.deleted:
+        if not getattr(obj, '_was_deleted', False) and obj.is_deleted:
             # Inform user that we have deleted her marker.
             msg_template = ugettext_noop(
                 'Site administrator deleted your <a href="{url}">marker</a>. '

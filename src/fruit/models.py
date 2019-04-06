@@ -22,6 +22,11 @@ def _get_random_key():
     )
 
 
+class ValidKindsQuerySet(models.QuerySet):
+    def valid(self):
+        return self.exclude(deleted=True)
+
+
 class Kind(models.Model):
 
     CLS = Choices(
@@ -46,6 +51,9 @@ class Kind(models.Model):
         default=_get_random_key,
         help_text=_('ID for API and also index in the markers font')
     )
+    deleted = models.BooleanField(_('deleted'), default=False, db_index=True)
+
+    objects = models.Manager.from_queryset(ValidKindsQuerySet)()
 
     @property
     def slug(self):
@@ -70,7 +78,7 @@ class Kind(models.Model):
 
 class ValidFruitQuerySet(models.QuerySet):
     def valid(self):
-        return self.exclude(deleted=True)
+        return self.exclude(models.Q(deleted=True) | models.Q(kind__deleted=True))
 
 
 class Fruit(TimeStampedModel, GalleryModel):
@@ -112,6 +120,20 @@ class Fruit(TimeStampedModel, GalleryModel):
     )
 
     objects = GalleryManager.from_queryset(ValidFruitQuerySet)()
+
+    @property
+    def is_deleted(self):
+        return self.deleted or self.kind.deleted
+
+    @property
+    def reason_of_deletion(self):
+        if self.kind.deleted:
+            return _('Kind {kind} has been deleted.').format(kind=self.kind.name)
+
+        if self.deleted:
+            return self.why_deleted
+
+        return ''
 
     def is_owner(self, user):
         return self.user.is_active and (self.user == user)

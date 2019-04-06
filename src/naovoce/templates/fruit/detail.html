@@ -22,7 +22,7 @@
 	{% include 'comments/inc/formjs.html' %}
 	{% include 'gallery/inc/formjs.html' %}
 
-	{% if not fruit.deleted %}
+	{% if not fruit.is_deleted %}
 		<script src="{% static 'components/leaflet/leaflet.js' %}"></script>
 		<script src="{% static 'components/leaflet/L.Control.Locate.min.js' %}"></script>
 		<script src="{% static 'components/leaflet/esri-leaflet.js' %}"></script>
@@ -198,7 +198,7 @@
 						    </div>
 
 							{# fruit geo data #}
-							{% if not fruit.deleted %}
+							{% if not fruit.is_deleted %}
 							    <div class="geo">
 							    	{% trans "Unknown address" %}
 							    	{{ fruit.position.y|floatformat:6|localize }};# &nbsp;{{ fruit.position.x|floatformat:6|localize }}
@@ -207,8 +207,8 @@
 
 							{% else %}
 								<h3>{% trans "This marker has been deleted" %}.</h3>
-							    {% if fruit.why_deleted %}
-						            <p>{% trans 'Reason of deletion' %}: <strong>{{ fruit.why_deleted }}</strong></p>
+							    {% if fruit.reason_of_deletion %}
+						            <p>{% trans 'Reason of deletion' %}: <strong>{{ fruit.reason_of_deletion }}</strong></p>
 							    {% endif %}
 
 							{% endif %}

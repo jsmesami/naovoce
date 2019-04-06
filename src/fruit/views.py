@@ -20,7 +20,7 @@ def _get_fruit(pk):
 def detail(request, fruit_id):
     fruit = _get_fruit(fruit_id)
     context = {
-        'kinds': Kind.objects.all(),
+        'kinds': Kind.objects.valid(),
         'fruit': fruit,
     }
     context.update(get_comments_context(
@@ -56,7 +56,7 @@ def add(request):
         form = FruitForm()
 
     context = {
-        'kinds': Kind.objects.all(),
+        'kinds': Kind.objects.valid(),
         'form': form,
     }
 
@@ -71,7 +71,7 @@ def _editor(func):
         if not (fruit.user.id == request.user.id):
             return HttpResponseForbidden(_('Only the owner is allowed edit her marker.'))
 
-        if fruit.deleted:
+        if fruit.is_deleted:
             return HttpResponseForbidden(_('This marker has been deleted and cannot be edited.'))
 
         return func(request, fruit)
@@ -90,7 +90,7 @@ def edit(request, fruit):
         return redirect(fruit)
 
     context = {
-        'kinds': Kind.objects.all(),
+        'kinds': Kind.objects.valid(),
         'fruit': fruit,
         'form': form,
     }

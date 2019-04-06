@@ -289,18 +289,6 @@
 },
 {
     "fields": {
-        "key": "a1bb",
-        "name_cs": "Medv\u011bd\u00ed \u010desnek",
-        "name_en": "Wild Garlic",
-        "color": "669D24",
-        "name": "Medv\u011bd\u00ed \u010desnek",
-        "cls": 3000
-    },
-    "model": "fruit.kind",
-    "pk": 28
-},
-{
-    "fields": {
         "key": "a116",
         "name_cs": "D\u0159\u00edn",
         "name_en": "Cornel",

@@ -26,7 +26,7 @@ class FruitForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
 
         groups = OrderedDict()
-        for kind in Kind.objects.all():
+        for kind in Kind.objects.valid():
             cls_name = Kind.CLS.text_of(kind.cls)
             groups.setdefault(cls_name, [])
             groups[cls_name].append((kind.pk, kind.name))
