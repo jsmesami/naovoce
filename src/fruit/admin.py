@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.html import format_html
 from django.utils.translation import ugettext_noop, ugettext_lazy as _
 from django import forms
 
@@ -29,13 +30,16 @@ class KindAdmin(TranslationAdmin):
 
     def _color(self, obj):
         color_html = '<div class="cbox" style="background:#{color}"></div> #{color}'
-        return color_html.format(color=obj.color)
+        return format_html(color_html, color=obj.color)
     _color.short_description = _('color')
     _color.allow_tags = True
 
     def _fruit_count(self, obj):
         return obj.fruits.count()
     _fruit_count.short_description = _('markers count')
+
+    def has_delete_permission(self, request, obj=None):
+        return False
 
 
 class FruitAdmin(GalleryAdminMixin, LeafletGeoAdmin):
@@ -60,6 +64,9 @@ class FruitAdmin(GalleryAdminMixin, LeafletGeoAdmin):
         if fruit:
             fruit._was_deleted = fruit.is_deleted
         return fruit
+
+    def has_delete_permission(self, request, obj=None):
+        return False
 
     def save_model(self, request, obj, form, change):
         if not obj.user:

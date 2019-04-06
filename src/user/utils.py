@@ -1,6 +1,6 @@
 import datetime
 
-from django.db.models import Count, Case, When, Q
+from django.db.models import Count, Case, When
 
 from fruit.models import Fruit
 from .models import FruitUser
