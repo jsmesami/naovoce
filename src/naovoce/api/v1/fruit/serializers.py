@@ -15,7 +15,7 @@ class KindSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Kind
-        fields = 'key', 'name', 'col', 'cls'
+        fields = 'key name col cls'.split()
 
 
 class VerboseFruitSerializer(serializers.HyperlinkedModelSerializer):
@@ -77,9 +77,15 @@ class FruitSerializer(VerboseFruitSerializer):
 
 class VerboseDeletedFruitSerializer(VerboseFruitSerializer):
 
-    deleted = serializers.BooleanField(read_only=True)
+    deleted = serializers.SerializerMethodField()
 
-    why_deleted = serializers.CharField(read_only=True)
+    why_deleted = serializers.SerializerMethodField()
+
+    def get_deleted(self, obj):
+        return obj.is_deleted
+
+    def get_why_deleted(self, obj):
+        return obj.reason_of_deletion
 
     class Meta:
         model = VerboseFruitSerializer.Meta.model

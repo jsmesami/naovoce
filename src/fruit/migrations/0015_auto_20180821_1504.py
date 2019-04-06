@@ -6,6 +6,7 @@ from django.db import migrations
 def copy_comments(apps, schema_editor):
     OldComment = apps.get_model('comments', 'Comment')
     NewComment = apps.get_model('fruit', 'Comment')
+    Fruit = apps.get_model('fruit', 'Fruit')
 
     comments = OldComment.objects.filter(content_type__model='fruit')
     count = comments.count()
@@ -13,20 +14,21 @@ def copy_comments(apps, schema_editor):
     for n, com in enumerate(comments, start=1):
         print('copying comment {}/{}'.format(n, count))
 
-        NewComment.objects.create(
-            fruit_id=com.object_id,
-            text=com.text,
-            author=com.author,
-            ip=com.ip,
-            is_complaint=com.complaint,
-            is_rejected=com.rejected,
-        )
+        if Fruit.objects.filter(id=com.object_id).exists():
+            NewComment.objects.create(
+                fruit_id=com.object_id,
+                text=com.text,
+                author=com.author,
+                ip=com.ip,
+                is_complaint=com.complaint,
+                is_rejected=com.rejected,
+            )
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('fruit', '0013_comment'),
+        ('fruit', '0014_comment'),
         ('comments', '0003_added_indexes'),
     ]
 

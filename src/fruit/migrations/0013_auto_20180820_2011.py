@@ -29,7 +29,7 @@ def copy_images(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('fruit', '0011_auto_20180820_2008'),
+        ('fruit', '0012_auto_20180820_2008'),
         ('gallery', '0004_alter_image_field'),
     ]
 

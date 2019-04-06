@@ -8,7 +8,7 @@ from utils.models import TimeStampedModel
 
 class ValidFruitQuerySet(models.QuerySet):
     def valid(self):
-        return self.exclude(deleted=True)
+        return self.exclude(models.Q(deleted=True) | models.Q(kind__deleted=True))
 
 
 class Fruit(TimeStampedModel):
@@ -34,14 +34,12 @@ class Fruit(TimeStampedModel):
         blank=True,
         help_text=_('Please, provide as many information about the marker as you find relevant.')
     )
-
     deleted = models.BooleanField(_('deleted'), default=False, db_index=True)
     why_deleted = models.TextField(
         _('why deleted'),
         blank=True,
         help_text=_('The tree has been cut down, not found etc.'),
     )
-
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         verbose_name=_('user'),
@@ -50,6 +48,20 @@ class Fruit(TimeStampedModel):
     )
 
     objects = models.Manager.from_queryset(ValidFruitQuerySet)()
+
+    @property
+    def is_deleted(self):
+        return self.deleted or self.kind.deleted
+
+    @property
+    def reason_of_deletion(self):
+        if self.kind.deleted:
+            return _('Kind {kind} has been deleted.').format(kind=self.kind.name)
+
+        if self.deleted:
+            return self.why_deleted
+
+        return ''
 
     @property
     def frontend_url(self):

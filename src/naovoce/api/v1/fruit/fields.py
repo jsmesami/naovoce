@@ -7,7 +7,7 @@ from rest_framework.reverse import reverse
 
 class KindRelatedField(relations.RelatedField):
 
-    queryset = Kind.objects.all()
+    queryset = Kind.objects.valid()
 
     def to_representation(self, value):
         return value.key

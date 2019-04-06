@@ -50,14 +50,15 @@ def test_fruit_list(client, truncate_table, new_fruit_list):
     expected = map(partial(fruit_to_data, response=response), instances)
 
     assert response.status_code == status.HTTP_200_OK
-    assert len(response.data) == 5
+    assert len(response.data) == length
     assert sort_by_key('id', expected) == sort_by_key('id', response.json())
 
 
 @pytest.mark.django_db
-def test_fruit_list_filtering(client, truncate_table, all_kinds, new_user, new_fruit_list):
-    kind_a = all_kinds[1]
-    kind_b = all_kinds[2]
+def test_fruit_list_filtering(client, truncate_table, valid_kinds, new_user, new_fruit_list):
+    kinds = valid_kinds()
+    kind_a = kinds[1]
+    kind_b = kinds[2]
     user_a = new_user()
     user_b = new_user()
 
@@ -141,8 +142,28 @@ def test_fruit_list_difference(client, truncate_table, new_fruit_list):
         assert diff[state][0]['id'] == instance.id
 
 
-def test_fruit_detail(client, random_kind, new_fruit, new_user):
-    kind = random_kind()
+@pytest.mark.django_db
+def test_fruit_list_difference_kind_deleted(client, truncate_table, deleted_kinds, new_fruit):
+    truncate_table(Fruit)
+    kind = deleted_kinds().first()
+    yesterday = (date.today() - timedelta(days=1)).strftime('%Y-%m-%d')
+
+    with fake_time(yesterday):
+        fruit = new_fruit(kind=kind, deleted=False)
+
+    response = client.get(reverse('api:fruit-diff', args=[yesterday]))
+
+    assert response.status_code == status.HTTP_200_OK
+    assert Fruit.objects.count() == 1
+
+    diff = response.json()
+
+    assert len(diff['deleted']) == 1
+    assert diff['deleted'][0]['id'] == fruit.id
+
+
+def test_fruit_detail(client, random_valid_kind, new_fruit, new_user):
+    kind = random_valid_kind()
     fruit = new_fruit(kind=kind, description='fruit')
 
     response = client.get(reverse('api:fruit-detail', args=[fruit.id]))
@@ -187,6 +208,25 @@ def test_fruit_create(client, random_password, new_user, fruit_request_data):
     }
 
 
+def test_fruit_create_deleted_kind(client, random_password, new_user, fruit_request_data, deleted_kinds_keys):
+    password = random_password()
+    user = new_user(password=password)
+    deleted_kind_key = deleted_kinds_keys()[0]
+
+    assert client.login(username=user.username, password=password)
+
+    request_data = fruit_request_data(kind=deleted_kind_key)
+
+    response = client.post(
+        reverse('api:fruit-list'),
+        request_data,
+        content_type='application/json',
+    )
+
+    assert response.status_code == status.HTTP_400_BAD_REQUEST
+    assert response.json() == {'kind': ['{key} is not a valid Kind key.'.format(key=deleted_kind_key)]}
+
+
 @pytest.mark.parametrize('bad_args, error_msg', BAD_FRUIT_CRUD_ARGS)
 def test_fruit_create_bad_args(client, random_password, new_user, fruit_request_data, bad_args, error_msg):
     password = random_password()
@@ -227,6 +267,7 @@ def test_fruit_create_missing_args(client, random_password, new_user, fruit_requ
     assert response.json() == error_msg
 
 
+@pytest.mark.django_db
 def test_fruit_create_unauthenticated(client, fruit_request_data):
     response = client.post(
         reverse('api:fruit-list'),
@@ -358,6 +399,21 @@ def test_fruit_modify_deleted(client, random_password, new_user, new_fruit):
     password = random_password()
     author = new_user(password=password)
     fruit = new_fruit(user=author, deleted=True)
+    detail_url = reverse('api:fruit-detail', args=[fruit.id])
+
+    assert client.login(username=author.username, password=password)
+
+    for action in (client.delete, client.patch, client.put):
+        response = action(detail_url, content_type='application/json')
+
+        assert response.status_code == status.HTTP_403_FORBIDDEN
+        assert response.json() == {'detail': 'Cannot update once deleted object.'}
+
+
+def test_fruit_modify_deleted_kind(client, random_password, new_user, new_fruit, deleted_kinds):
+    password = random_password()
+    author = new_user(password=password)
+    fruit = new_fruit(kind=deleted_kinds().first(), user=author, deleted=False)
     detail_url = reverse('api:fruit-detail', args=[fruit.id])
 
     assert client.login(username=author.username, password=password)

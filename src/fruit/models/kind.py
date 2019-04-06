@@ -13,6 +13,11 @@ def _get_random_key():
     )
 
 
+class ValidKindsQuerySet(models.QuerySet):
+    def valid(self):
+        return self.exclude(deleted=True)
+
+
 class Kind(models.Model):
 
     CLS = Choices(
@@ -37,6 +42,9 @@ class Kind(models.Model):
         default=_get_random_key,
         help_text=_('ID for API and also index in the markers font')
     )
+    deleted = models.BooleanField(_('deleted'), default=False, db_index=True)
+
+    objects = models.Manager.from_queryset(ValidKindsQuerySet)()
 
     @property
     def cls_name(self):

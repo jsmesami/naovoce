@@ -42,6 +42,14 @@ def django_db_setup(django_db_blocker):
         call_command('loaddata', os.path.join(fixtures_dir, 'sites.json'))
 
 
+@pytest.fixture(scope='session')
+@pytest.mark.django_db
+def delete_one_kind(random_valid_kind):
+    kind = random_valid_kind()
+    kind.deleted = True
+    kind.save()
+
+
 @pytest.fixture(autouse=True)
 def set_default_language(settings):
     settings.LANGUAGE_CODE = 'en'
@@ -172,22 +180,34 @@ def new_random_user_list(random_position, new_user):
     return lambda length: [new_user() for _ in range(length)]
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture
 @pytest.mark.django_db
-def all_kinds():
-    return Kind.objects.all()
-
-
-@pytest.fixture(scope='session')
-@pytest.mark.django_db
-def all_kinds_keys(all_kinds):
-    return all_kinds.values_list('key', flat=True)
+def valid_kinds():
+    return lambda: Kind.objects.valid()  # pylint: disable=unnecessary-lambda
 
 
 @pytest.fixture
 @pytest.mark.django_db
-def random_kind(all_kinds_keys):
-    return lambda: Kind.objects.get(key=random.choice(all_kinds_keys))
+def valid_kinds_keys(valid_kinds):
+    return lambda: valid_kinds().values_list('key', flat=True)
+
+
+@pytest.fixture
+@pytest.mark.django_db
+def random_valid_kind(valid_kinds_keys):
+    return lambda: Kind.objects.get(key=random.choice(valid_kinds_keys()))
+
+
+@pytest.fixture
+@pytest.mark.django_db
+def deleted_kinds():
+    return lambda: Kind.objects.filter(deleted=True)
+
+
+@pytest.fixture
+@pytest.mark.django_db
+def deleted_kinds_keys(deleted_kinds):
+    return lambda: deleted_kinds().values_list('key', flat=True)
 
 
 @pytest.fixture
@@ -196,10 +216,10 @@ def random_position():
 
 
 @pytest.fixture
-def fruit_request_data(all_kinds_keys):
+def fruit_request_data(valid_kinds_keys):
     def closure(**kwargs):
         return {
-            'kind': kwargs.pop('kind', all_kinds_keys[0]),
+            'kind': kwargs.pop('kind', valid_kinds_keys()[0]),
             'lat': kwargs.pop('lat', '6{:0.10f}'.format(random.random())),
             'lng': kwargs.pop('lng', '5{:0.10f}'.format(random.random())),
             'description': kwargs.pop('description', 'fruit'),
@@ -210,10 +230,10 @@ def fruit_request_data(all_kinds_keys):
 
 @pytest.fixture
 @pytest.mark.django_db
-def new_fruit(random_position, random_kind, new_user):
+def new_fruit(random_position, random_valid_kind, new_user):
     def closure(**kwargs):
         position = kwargs.pop('position', random_position())
-        kind = kwargs.pop('kind', random_kind())
+        kind = kwargs.pop('kind', random_valid_kind())
         user = kwargs.pop('user', None) or new_user()
 
         return Fruit.objects.create(
@@ -228,10 +248,10 @@ def new_fruit(random_position, random_kind, new_user):
 
 @pytest.fixture
 @pytest.mark.django_db
-def new_fruit_list(random_position, random_kind, new_user):
+def new_fruit_list(random_position, random_valid_kind, new_user):
     def closure(length, **kwargs):
         position = kwargs.pop('position', random_position())
-        kind = kwargs.pop('kind', random_kind())
+        kind = kwargs.pop('kind', random_valid_kind())
         user = kwargs.pop('user', None) or new_user()
 
         return Fruit.objects.bulk_create(

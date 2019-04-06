@@ -7,7 +7,7 @@ import fruit.models.image
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('fruit', '0016_auto_20180916_1442'),
+        ('fruit', '0017_auto_20180916_1442'),
     ]
 
     operations = [

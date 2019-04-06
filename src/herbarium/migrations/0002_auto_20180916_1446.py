@@ -7,7 +7,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('herbarium', '0001_initial'),
-        ('fruit', '0016_auto_20180916_1442'),
+        ('fruit', '0017_auto_20180916_1442'),
     ]
 
     operations = [

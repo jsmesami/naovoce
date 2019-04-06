@@ -1,5 +1,5 @@
 from django.core.cache import caches
-from django.db.models import Count
+from django.db.models import Count, Q
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
 from django.utils import timezone
@@ -54,7 +54,7 @@ class CachedResponse(Response):
 class FruitList(generics.ListCreateAPIView):
     """List or create Fruit resources."""
 
-    queryset = Fruit.objects.valid().only("kind", "position", "modified").select_related('kind').order_by('-created')
+    queryset = Fruit.objects.valid().only('kind', 'position', 'modified').select_related('kind').order_by('-created')
 
     permission_classes = (IsAuthenticatedOrReadOnly,)
 
@@ -107,7 +107,7 @@ class FruitDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly
 
     def get_serializer_class(self):
-        if self.get_object().deleted:
+        if self.get_object().is_deleted:
             return serializers.VerboseDeletedFruitSerializer
 
         return serializers.VerboseFruitSerializer
@@ -115,7 +115,7 @@ class FruitDetail(generics.RetrieveUpdateDestroyAPIView):
     def destroy(self, request, *args, **kwargs):
         # We never really delete Fruit, just set its status to deleted.
         instance = self.get_object()
-        if instance.deleted:
+        if instance.is_deleted:
             raise PermissionDenied(_('Cannot update once deleted object.'))
 
         instance.deleted = True
@@ -128,7 +128,7 @@ class FruitDetail(generics.RetrieveUpdateDestroyAPIView):
         # We cannot update fruit that has been deleted
         partial = kwargs.pop('partial', False)
         instance = self.get_object()
-        if instance.deleted:
+        if instance.is_deleted:
             raise PermissionDenied(_('Cannot update once deleted object.'))
 
         serializer = self.get_serializer(instance, data=request.data, partial=partial)
@@ -158,7 +158,7 @@ class FruitComplaint(generics.CreateAPIView):
 class KindList(generics.ListAPIView):
     """List fruit Kinds resources."""
 
-    queryset = Kind.objects.order_by()
+    queryset = Kind.objects.valid().order_by()
     serializer_class = serializers.KindSerializer
 
 
@@ -183,13 +183,13 @@ def fruit_list_diff(request, date, time):
     data = dict()
 
     data['created'] = serializers.FruitSerializer(
-        fruit.filter(created__gt=since, deleted=False).iterator(),
+        fruit.filter(deleted=False, kind__deleted=False, created__gt=since).iterator(),
         context=context, many=True).data
     data['deleted'] = serializers.DeletedFruitSerializer(
-        fruit.filter(created__gt=since, deleted=True).iterator(),
+        fruit.filter(Q(deleted=True) | Q(kind__deleted=True), created__gt=since).iterator(),
         context=context, many=True).data
     data['updated'] = serializers.FruitSerializer(
-        fruit.filter(created__lte=since, modified__gt=since, deleted=False).iterator(),
+        fruit.filter(deleted=False, kind__deleted=False, created__lte=since, modified__gt=since).iterator(),
         context=context, many=True).data
 
     return Response(data)
