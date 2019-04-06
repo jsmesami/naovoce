@@ -8,7 +8,7 @@ from .models import FruitUser
 
 def fruit_counter(**filters):
     return {
-        'fruit_count': Count(Case(When(Q(fruits__deleted=False) & Q(fruits__kind__deleted=False), then=1, **filters)))
+        'fruit_count': Count(Case(When(fruits__deleted=False, fruits__kind__deleted=False, then=1, **filters)))
     }
 
 
