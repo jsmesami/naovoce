@@ -3,7 +3,6 @@ import os
 import random
 import string
 
-import facebook
 import pytest
 from django.conf import settings
 
@@ -15,7 +14,6 @@ from psycopg2.extensions import AsIs
 
 from herbarium.models import Herbarium
 from fruit.models import Fruit, Kind, Image
-from user.models import FacebookInfo
 
 with open(os.path.join(settings.PROJECT_ROOT, 'tests/data/small_image.jpg'), 'rb') as image_file:
     SMALL_IMAGE_DATA_JPG = image_file.read()
@@ -23,13 +21,6 @@ with open(os.path.join(settings.PROJECT_ROOT, 'tests/data/small_image.jpg'), 'rb
 
 with open(os.path.join(settings.PROJECT_ROOT, 'tests/data/larger_image.jpg'), 'rb') as image_file:
     LARGER_IMAGE_DATA_JPG = image_file.read()
-
-FCB_ID = '110045436843169'
-FCB_TOKEN = (
-    'EAADvcY7nZCq8BAGbU0JMgZCaOPtQZBZBuioYJcIghkoFu2A26HWWzykYhcnVYY6ihNZBVh'
-    'QlHFpnMeZBAhpobEA6bGTLbPw3Fqbfsv8SfgsP2augzlcWFcZCe2uDDs9DP6f3PNZBZAM0c'
-    'OnwxdhzRorxugOfO1EHJuyw2jhcQMZCzJVCfhq8FWpb40CmFPwg1WNQbtktW11hOiggZDZD'
-)
 
 
 @pytest.fixture(scope='session')
@@ -41,13 +32,10 @@ def django_db_setup(django_db_blocker):
         call_command('loaddata', os.path.join(fixtures_dir, 'kinds.json'))
         call_command('loaddata', os.path.join(fixtures_dir, 'sites.json'))
 
-
-@pytest.fixture(scope='session')
-@pytest.mark.django_db
-def delete_one_kind(random_valid_kind):
-    kind = random_valid_kind()
-    kind.deleted = True
-    kind.save()
+        # Delete one kind:
+        kind = random.choice(Kind.objects.valid())
+        kind.deleted = True
+        kind.save()
 
 
 @pytest.fixture(autouse=True)
@@ -87,71 +75,6 @@ def random_email(random_string):
 
 
 @pytest.fixture
-def signup_email_request_data(random_email, random_username, random_password):
-    def closure(**kwargs):
-        return {
-            'email': kwargs.pop('email', random_email()),
-            'username': kwargs.pop('username', random_username()),
-            'password': kwargs.pop('password', random_password()),
-        }
-
-    return closure
-
-
-@pytest.fixture
-def signup_facebook_request_data(random_email):
-    def closure(**kwargs):
-        return {
-            'email': kwargs.pop('email', random_email()),
-            'fcb_id': kwargs.pop('fcb_id', FCB_ID),
-            'fcb_token': kwargs.pop('fcb_token', FCB_ID),
-        }
-
-    return closure
-
-
-@pytest.fixture
-@pytest.mark.django_db
-def new_facebook_info(new_user):
-    def closure(**kwargs):
-        return FacebookInfo.objects.create(
-            user=kwargs.pop('user', None) or new_user(),
-            fcb_id=kwargs.pop('fcb_id', FCB_ID),
-            fcb_token=kwargs.pop('fcb_token', FCB_TOKEN),
-            **kwargs
-        )
-
-    return closure
-
-
-@pytest.fixture
-def mock_facebook(monkeypatch):
-    def closure(fails=False, **overrides):
-        def get_object(*args, **kwargs):
-            if fails:
-                raise facebook.GraphAPIError('Facebook error')
-
-            return {
-                'first_name': overrides.pop('first_name', 'Isaac'),
-                'last_name': overrides.pop('last_name', 'Asimov'),
-                'id': overrides.pop('fcb_id', FCB_ID),
-                'picture': {
-                    'data': {
-                        'height': 200,
-                        'is_silhouette': True,
-                        'url': 'https://platform-lookaside.fbsbx.com/platform/profilepic/'
-                               '?asid=110045436843169&height=200&width=200&ext=1556829832&hash=AeSLD93lbSjc5t96',
-                        'width': 200,
-                    },
-                },
-            }
-
-        monkeypatch.setattr(facebook.GraphAPI, 'get_object', get_object)
-
-    return closure
-
-
-@pytest.fixture
 @pytest.mark.django_db
 def new_user(django_user_model, random_username, random_email, random_password):
     def closure(**kwargs):
@@ -170,6 +93,19 @@ def new_user(django_user_model, random_username, random_email, random_password):
             user.save()
 
         return user
+
+    return closure
+
+
+@pytest.fixture
+def user_auth(random_password, new_user):
+    def closure(**kwargs):
+        password = kwargs.pop('password', random_password())
+        user = kwargs.pop('user', None) or new_user(password=password)
+        return {
+            'username': user.username,
+            'password': password,
+        }
 
     return closure
 
@@ -329,3 +265,11 @@ def new_images_list(small_image_jpg, new_user, random_string, new_fruit):
 @pytest.mark.django_db
 def all_herbarium_items():
     return Herbarium.objects.select_related('kind').prefetch_related('seasons')
+
+
+@pytest.fixture
+def bad_method_response():
+    def closure(method):
+        return {'detail': 'Method "{method}" not allowed.'.format(method=method.upper())}
+
+    return closure

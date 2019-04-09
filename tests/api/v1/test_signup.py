@@ -4,6 +4,7 @@ from django.conf import settings
 from rest_framework import status
 from rest_framework.reverse import reverse
 
+from .utils import HTTP_METHODS
 from user import constants
 from user.models import FruitUser
 
@@ -35,6 +36,18 @@ SIGNUP_BAD_ARGS = [
     ({'password': 'abc'},
      {'password': ['Ensure this field has at least {} characters.'.format(settings.PASSWORD_MIN_LENGTH)]}),
 ]
+
+
+@pytest.fixture
+def signup_email_request_data(random_email, random_username, random_password):
+    def closure(**kwargs):
+        return {
+            'email': kwargs.pop('email', random_email()),
+            'username': kwargs.pop('username', random_username()),
+            'password': kwargs.pop('password', random_password()),
+        }
+
+    return closure
 
 
 @pytest.mark.django_db
@@ -117,3 +130,18 @@ def test_signup_user_exists(client, new_user, signup_email_request_data, existin
 
     assert response.status_code == status.HTTP_400_BAD_REQUEST
     assert response.json() == error_msg
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize('bad_method', HTTP_METHODS - {'post', 'options'})
+def test_signup_bad_methods(client, signup_email_request_data, bad_method, bad_method_response):
+    request_data = signup_email_request_data()
+
+    response = getattr(client, bad_method)(
+        reverse('api:signup'),
+        request_data,
+        content_type='application/json',
+    )
+
+    assert response.status_code == status.HTTP_405_METHOD_NOT_ALLOWED
+    assert response.json() == bad_method_response(bad_method)

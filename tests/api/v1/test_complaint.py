@@ -2,6 +2,7 @@ import pytest
 from rest_framework import status
 from rest_framework.reverse import reverse
 
+from .utils import HTTP_METHODS
 from fruit.models import Fruit, Comment
 
 TEXT_MAX_LENGTH = Comment._meta.get_field('text').max_length
@@ -20,13 +21,13 @@ REQUEST_DATA = {
 }
 
 
-def test_complaint(client, truncate_table, random_password, new_user, new_fruit):
+def test_complaint(client, truncate_table, random_password, new_user, new_fruit, user_auth):
     truncate_table(Comment)
     password = random_password()
     user = new_user(password=password)
     fruit = new_fruit()
 
-    assert client.login(username=user.username, password=password)
+    assert client.login(**user_auth(user=user, password=password))
 
     response = client.post(
         reverse('api:fruit-complaint', args=[fruit.id]),
@@ -46,12 +47,10 @@ def test_complaint(client, truncate_table, random_password, new_user, new_fruit)
 
 
 @pytest.mark.django_db
-def test_complaint_nonexistent_fruit(client, truncate_table, random_password, new_user):
+def test_complaint_nonexistent_fruit(client, truncate_table, user_auth):
     truncate_table(Fruit)
-    password = random_password()
-    user = new_user(password=password)
 
-    assert client.login(username=user.username, password=password)
+    assert client.login(**user_auth())
 
     response = client.post(
         reverse('api:fruit-complaint', args=[1]),
@@ -77,12 +76,10 @@ def test_complaint_unauthorized(client, new_fruit):
 
 
 @pytest.mark.parametrize('bad_args, error_msg', BAD_COMPLAINT_CREATE_ARGS)
-def test_complaint_bad_args(client, random_password, new_user, new_fruit, bad_args, error_msg):
-    password = random_password()
-    user = new_user(password=password)
+def test_complaint_bad_args(client, user_auth, new_fruit, bad_args, error_msg):
     fruit = new_fruit()
 
-    assert client.login(username=user.username, password=password)
+    assert client.login(**user_auth())
 
     response = client.post(
         reverse('api:fruit-complaint', args=[fruit.id]),
@@ -92,3 +89,19 @@ def test_complaint_bad_args(client, random_password, new_user, new_fruit, bad_ar
 
     assert response.status_code == status.HTTP_400_BAD_REQUEST
     assert response.json() == error_msg
+
+
+@pytest.mark.parametrize('bad_method', HTTP_METHODS - {'post', 'options'})
+def test_complaint_bad_methods(client, new_fruit, user_auth, bad_method, bad_method_response):
+    fruit = new_fruit()
+
+    assert client.login(**user_auth())
+
+    response = getattr(client, bad_method)(
+        reverse('api:fruit-complaint', args=[fruit.id]),
+        REQUEST_DATA,
+        content_type='application/json',
+    )
+
+    assert response.status_code == status.HTTP_405_METHOD_NOT_ALLOWED
+    assert response.json() == bad_method_response(bad_method)

@@ -1,10 +1,20 @@
+import facebook
 import pytest
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from rest_framework.reverse import reverse
 
+from .utils import HTTP_METHODS
 from user import constants
-from user.models import FruitUser
+from user.models import FruitUser, FacebookInfo
+
+FCB_ID = '110045436843169'
+
+FCB_TOKEN = (
+    'EAADvcY7nZCq8BAGbU0JMgZCaOPtQZBZBuioYJcIghkoFu2A26HWWzykYhcnVYY6ihNZBVh'
+    'QlHFpnMeZBAhpobEA6bGTLbPw3Fqbfsv8SfgsP2augzlcWFcZCe2uDDs9DP6f3PNZBZAM0c'
+    'OnwxdhzRorxugOfO1EHJuyw2jhcQMZCzJVCfhq8FWpb40CmFPwg1WNQbtktW11hOiggZDZD'
+)
 
 TOKEN_BAD_ARGS = [
     ({'email': 'e' * (constants.EMAIL_MAX_LENGTH + 1)},
@@ -31,6 +41,59 @@ SIGNUP_BAD_ARGS = TOKEN_BAD_ARGS + [
     ({'fcb_token': ''},
      {'fcb_token': ['This field may not be blank.']}),
 ]
+
+
+@pytest.fixture
+def signup_facebook_request_data(random_email):
+    def closure(**kwargs):
+        return {
+            'email': kwargs.pop('email', random_email()),
+            'fcb_id': kwargs.pop('fcb_id', FCB_ID),
+            'fcb_token': kwargs.pop('fcb_token', FCB_ID),
+        }
+
+    return closure
+
+
+@pytest.fixture
+@pytest.mark.django_db
+def new_facebook_info(new_user):
+    def closure(**kwargs):
+        return FacebookInfo.objects.create(
+            user=kwargs.pop('user', None) or new_user(),
+            fcb_id=kwargs.pop('fcb_id', FCB_ID),
+            fcb_token=kwargs.pop('fcb_token', FCB_TOKEN),
+            **kwargs
+        )
+
+    return closure
+
+
+@pytest.fixture
+def mock_facebook(monkeypatch):
+    def closure(fails=False, **overrides):
+        def get_object(*args, **kwargs):
+            if fails:
+                raise facebook.GraphAPIError('Facebook error')
+
+            return {
+                'first_name': overrides.pop('first_name', 'Isaac'),
+                'last_name': overrides.pop('last_name', 'Asimov'),
+                'id': overrides.pop('fcb_id', FCB_ID),
+                'picture': {
+                    'data': {
+                        'height': 200,
+                        'is_silhouette': True,
+                        'url': 'https://platform-lookaside.fbsbx.com/platform/profilepic/'
+                               '?asid=110045436843169&height=200&width=200&ext=1556829832&hash=AeSLD93lbSjc5t96',
+                        'width': 200,
+                    },
+                },
+            }
+
+        monkeypatch.setattr(facebook.GraphAPI, 'get_object', get_object)
+
+    return closure
 
 
 @pytest.mark.django_db
@@ -171,6 +234,25 @@ def test_facebook_signup_fcb_verification_failed(client, signup_facebook_request
     assert response.json() == {'non_field_errors': ['Facebook verification failed: Facebook error']}
 
 
+@pytest.mark.parametrize('bad_method', HTTP_METHODS - {'post', 'options'})
+@pytest.mark.django_db
+def test_facebook_signup_bad_methods(
+    client, signup_facebook_request_data, mock_facebook, bad_method, bad_method_response
+):
+    request_data = signup_facebook_request_data()
+
+    mock_facebook()
+
+    response = getattr(client, bad_method)(
+        reverse('api:signup-fcb'),
+        request_data,
+        content_type='application/json',
+    )
+
+    assert response.status_code == status.HTTP_405_METHOD_NOT_ALLOWED
+    assert response.json() == bad_method_response(bad_method)
+
+
 def test_facebook_token(client, new_facebook_info, mock_facebook):
     fcb_info = new_facebook_info()
     existing_user = fcb_info.user
@@ -297,3 +379,24 @@ def test_facebook_token_fcb_verification_failed(client, new_facebook_info, mock_
 
     assert response.status_code == status.HTTP_400_BAD_REQUEST
     assert response.json() == {'non_field_errors': ['Facebook verification failed: Facebook error']}
+
+
+@pytest.mark.parametrize('bad_method', HTTP_METHODS - {'post', 'options'})
+def test_facebook_token_bad_methods(client, new_facebook_info, mock_facebook, bad_method, bad_method_response):
+    fcb_info = new_facebook_info()
+    existing_user = fcb_info.user
+    request_data = {
+        'email': existing_user.email,
+        'fcb_id': fcb_info.fcb_id,
+    }
+
+    mock_facebook()
+
+    response = getattr(client, bad_method)(
+        reverse('api:token-fcb'),
+        request_data,
+        content_type='application/json',
+    )
+
+    assert response.status_code == status.HTTP_405_METHOD_NOT_ALLOWED
+    assert response.json() == bad_method_response(bad_method)

@@ -4,6 +4,9 @@ from rest_framework.fields import DateTimeField
 from rest_framework.reverse import reverse
 
 
+HTTP_METHODS = {'get', 'post', 'put', 'delete', 'options', 'trace', 'patch'}
+
+
 def render_view_url(response, viewname, *args):
     return reverse(viewname, args=args, request=response.renderer_context['request'])
 

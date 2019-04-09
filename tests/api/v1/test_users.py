@@ -7,7 +7,7 @@ from rest_framework.reverse import reverse
 from rest_framework import status
 
 from user.models import FruitUser
-from .utils import sort_by_key
+from .utils import sort_by_key, HTTP_METHODS
 from .utils.data import user_to_data, top_user_to_data, user_detail_to_data
 
 
@@ -26,6 +26,14 @@ def test_users_list(client, truncate_table, new_random_user_list, new_user):
 
     assert response.status_code == status.HTTP_200_OK
     assert sort_by_key('id', response.json()) == sort_by_key('id', expected)
+
+
+@pytest.mark.parametrize('bad_method', HTTP_METHODS - {'get', 'options'})
+def test_users_list_bad_methods(client, new_user, bad_method, bad_method_response):
+    response = getattr(client, bad_method)(reverse('api:users-list'))
+
+    assert response.status_code == status.HTTP_405_METHOD_NOT_ALLOWED
+    assert response.json() == bad_method_response(bad_method)
 
 
 @pytest.mark.django_db
@@ -106,3 +114,13 @@ def test_user_detail(client, new_user):
 
     assert response.status_code == status.HTTP_200_OK
     assert response.json() == user_detail_to_data(user, response)
+
+
+@pytest.mark.parametrize('bad_method', HTTP_METHODS - {'get', 'options'})
+def test_user_detail_bad_methods(client, new_user, bad_method, bad_method_response):
+    user = new_user()
+
+    response = getattr(client, bad_method)(reverse('api:users-detail', args=[user.id]))
+
+    assert response.status_code == status.HTTP_405_METHOD_NOT_ALLOWED
+    assert response.json() == bad_method_response(bad_method)
