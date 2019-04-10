@@ -8,11 +8,13 @@ from ..utils import facebook as fcb
 
 
 class AuthTokenFacebookSerializer(serializers.Serializer):
+
     email = serializers.EmailField(
         required=True,
         allow_null=False,
         max_length=constants.EMAIL_MAX_LENGTH,
     )
+
     fcb_id = serializers.CharField(
         required=True,
         allow_null=False,

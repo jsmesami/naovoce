@@ -53,7 +53,7 @@ CSRF_COOKIE_HTTPONLY = False
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # Enable CORS for localhost
-CORS_ORIGIN_WHITELIST += ('localhost:8000',)
+CORS_ORIGIN_WHITELIST += ('http://localhost:8000',)
 
 # on a Mac, syslog sits on a different path
 # LOGGING['handlers']['syslog']['address'] = '/var/run/syslog'

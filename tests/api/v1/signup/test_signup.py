@@ -1,53 +1,11 @@
 import funcy
 import pytest
-from django.conf import settings
 from rest_framework import status
 from rest_framework.reverse import reverse
 
-from .utils import HTTP_METHODS
-from user import constants
+from . import SIGNUP_BAD_ARGS
+from ..utils import HTTP_METHODS
 from user.models import FruitUser
-
-SIGNUP_BAD_ARGS = [
-    ({'username': None},
-     {'username': ['This field may not be null.']}),
-    ({'username': ''},
-     {'username': ['This field may not be blank.']}),
-    ({'username': 'user\x00name'},
-     {'username': ['Null characters are not allowed.']}),
-    ({'username': 'u' * (constants.USERNAME_MAX_LENGTH + 1)},
-     {'username': ['Ensure this field has no more than {} characters.'.format(constants.USERNAME_MAX_LENGTH)]}),
-    ({'email': None},
-     {'email': ['This field may not be null.']}),
-    ({'email': ''},
-     {'email': ['This field may not be blank.']}),
-    ({'email': 'invalid'},
-     {'email': ['Enter a valid email address.']}),
-    ({'email': 'invalid@'},
-     {'email': ['Enter a valid email address.']}),
-    ({'email': 'invalid@domain'},
-     {'email': ['Enter a valid email address.']}),
-    ({'email': '@domain.com'},
-     {'email': ['Enter a valid email address.']}),
-    ({'password': None},
-     {'password': ['This field may not be null.']}),
-    ({'password': ''},
-     {'password': ['This field may not be blank.']}),
-    ({'password': 'abc'},
-     {'password': ['Ensure this field has at least {} characters.'.format(settings.PASSWORD_MIN_LENGTH)]}),
-]
-
-
-@pytest.fixture
-def signup_email_request_data(random_email, random_username, random_password):
-    def closure(**kwargs):
-        return {
-            'email': kwargs.pop('email', random_email()),
-            'username': kwargs.pop('username', random_username()),
-            'password': kwargs.pop('password', random_password()),
-        }
-
-    return closure
 
 
 @pytest.mark.django_db

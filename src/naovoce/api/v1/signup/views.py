@@ -6,6 +6,7 @@ from . import serializers
 
 
 class UserSignup(APIView):
+
     serializer_class = serializers.SignupSerializer
 
     def post(self, request, *args, **kwargs):
@@ -22,6 +23,7 @@ class UserSignup(APIView):
 
 
 class UserSignupFacebook(APIView):
+
     serializer_class = serializers.SignupFacebookSerializer
 
     def post(self, request, *args, **kwargs):

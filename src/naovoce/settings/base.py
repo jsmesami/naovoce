@@ -215,7 +215,7 @@ REST_FRAMEWORK = {
 
 PASSWORD_MIN_LENGTH = 8
 
-CORS_ORIGIN_WHITELIST = ('na-ovoce.cz',)
+CORS_ORIGIN_WHITELIST = ('https://na-ovoce.cz',)
 
 CORS_URLS_REGEX = r'^/api/.*$'
 

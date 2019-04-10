@@ -5,8 +5,8 @@ import pytest
 from rest_framework.reverse import reverse
 from rest_framework import status
 
-from .utils import sort_by_key, HTTP_METHODS
-from .utils.data import kind_to_data
+from . import kind_to_data
+from ..utils import sort_by_key, HTTP_METHODS
 
 
 @pytest.mark.django_db

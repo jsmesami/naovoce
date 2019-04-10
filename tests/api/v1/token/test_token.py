@@ -6,25 +6,8 @@ from rest_framework.authtoken.models import Token
 from rest_framework.reverse import reverse
 from rest_framework.test import APIClient
 
-from .utils import HTTP_METHODS
-from user import constants
-
-TOKEN_BAD_ARGS = [
-    ({'username': 'u' * (constants.USERNAME_MAX_LENGTH + 1)},
-     {'non_field_errors': ['Unable to log in with provided credentials.']}),
-    ({'username': None},
-     {'username': ['This field may not be null.']}),
-    ({'username': ''},
-     {'username': ['This field may not be blank.']}),
-    ({'password': 'bad_password'},
-     {'non_field_errors': ['Unable to log in with provided credentials.']}),
-    ({'password': 'p' * (constants.PASSWORD_MAX_LENGTH + 1)},
-     {'non_field_errors': ['Unable to log in with provided credentials.']}),
-    ({'password': None},
-     {'password': ['This field may not be null.']}),
-    ({'password': ''},
-     {'password': ['This field may not be blank.']}),
-]
+from . import TOKEN_BAD_ARGS
+from ..utils import HTTP_METHODS
 
 
 def test_obtain_token(client, random_password, new_user, user_auth):

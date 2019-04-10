@@ -16,6 +16,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class AvatarField(serializers.HyperlinkedIdentityField):
+
     def __init__(self, **kwargs):
         super().__init__('', **kwargs)
 

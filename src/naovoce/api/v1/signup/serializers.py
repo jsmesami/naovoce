@@ -20,6 +20,7 @@ class SignupSerializer(serializers.ModelSerializer):
             ),
         ],
     )
+
     email = serializers.EmailField(
         max_length=constants.EMAIL_MAX_LENGTH,
         validators=[
@@ -29,6 +30,7 @@ class SignupSerializer(serializers.ModelSerializer):
             ),
         ],
     )
+
     password = serializers.CharField(
         write_only=True,
         min_length=settings.PASSWORD_MIN_LENGTH,
@@ -55,11 +57,13 @@ class SignupFacebookSerializer(serializers.Serializer):
         allow_null=False,
         max_length=constants.EMAIL_MAX_LENGTH,
     )
+
     fcb_id = serializers.CharField(
         required=True,
         allow_null=False,
         max_length=constants.FCB_ID_MAX_LENGTH,
     )
+
     fcb_token = serializers.CharField(
         required=True,
         allow_null=False,

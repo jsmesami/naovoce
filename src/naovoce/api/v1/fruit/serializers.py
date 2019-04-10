@@ -11,6 +11,7 @@ from .fields import KindRelatedField
 class KindSerializer(serializers.ModelSerializer):
 
     col = serializers.CharField(source='color')
+
     cls = serializers.CharField(source='cls_name')
 
     class Meta:
@@ -19,11 +20,13 @@ class KindSerializer(serializers.ModelSerializer):
 
 
 class VerboseFruitSerializer(serializers.HyperlinkedModelSerializer):
+
     lng = serializers.DecimalField(
         max_digits=13,
         decimal_places=10,
         source='position.x',
     )
+
     lat = serializers.DecimalField(
         max_digits=13,
         decimal_places=10,
@@ -53,14 +56,18 @@ class VerboseFruitSerializer(serializers.HyperlinkedModelSerializer):
             float(validated_data['position']['x']),
             float(validated_data['position']['y']),
         )
+
         return super().create(validated_data)
 
     def update(self, instance, validated_data):
         position = validated_data.pop('position')
+
         if 'x' in position:
             instance.position.x = position['x']
+
         if 'y' in position:
             instance.position.y = position['y']
+
         return super().update(instance, validated_data)
 
     class Meta:
