@@ -189,10 +189,6 @@
                 providers: [arcgisOnline]
                 useMapBounds: false
 
-            {# Do not display attributions, they are in the footer. #}
-            searchControl.getAttribution = -> ''
-            searchControl.addTo @
-
             results = new L.LayerGroup().addTo @
 
             searchControl.on 'results', -> results.clearLayers()
