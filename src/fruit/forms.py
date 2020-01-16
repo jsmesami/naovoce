@@ -31,7 +31,7 @@ class FruitForm(forms.ModelForm):
             groups.setdefault(cls_name, [])
             groups[cls_name].append((kind.pk, kind.name))
         self.fields['kind'].choices = [
-            ('', [(_('Nothing selected'), 'F00D')])
+            ('', [(0, _('Nothing selected'))])
         ] + [(cls, kind) for cls, kind in groups.items()]
 
     class Meta:

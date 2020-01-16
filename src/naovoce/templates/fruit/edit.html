@@ -6,8 +6,8 @@
 
 {% block map_active %}active{% endblock %}
 
-{% block section %}
-    <h3>{% trans "You can edit your marker here" %}</h3>
+{% block form_title %}
+    <h1>{% trans "You can edit your marker here" %}</h1>
 {% endblock %}
 
 {% block form %}
@@ -15,9 +15,9 @@
 {% endblock %}
 
 {% block edit %}
-	center = new L.LatLng {{ fruit.position.y|lower|unlocalize }}, {{ fruit.position.x|lower|unlocalize }}
-	marker = new Naovoce.Marker center, '{{ fruit.kind.key }}'
-	map.addLayer marker
-		.focusTo center
-		.saveState()
+    center = new L.LatLng {{ fruit.position.y|lower|unlocalize }}, {{ fruit.position.x|lower|unlocalize }}
+    marker = new Naovoce.Marker center, '{{ fruit.kind.key }}'
+    map.addLayer marker
+        .focusTo center
+        .saveState()
 {% endblock %}

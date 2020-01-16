@@ -142,6 +142,7 @@
 
         map.loadMarkers('{% url 'api:fruit-list' %}?user={{ user.id }}')
             .setZoom 7
+            .loadState()
             .addLocate()
             .addSearch()
 

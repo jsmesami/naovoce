@@ -9,15 +9,13 @@
 		{{ form.kind|bootstrap }}
 	</div>
 	<div class="col-sm-6">
-		{{ form.latitude|bootstrap }}
-		{# <input class=" form-control" id="id_latitude" max="90" min="-90" name="latitude" step="1e-10" type="number" placeholder="{% trans 'latitude' %}" value="{{ fruit.latitude|lower|unlocalize }}"> #}
+		 <input class="form-control" id="id_latitude" max="90" min="-90" name="latitude" step="1e-10" type="number" value="{{ fruit.position.y|unlocalize }}">
 	</div>
 	<div class="col-sm-6">
-		{{ form.longitude|bootstrap }}
-		{# <input class=" form-control" id="id_longitude" max="180" min="-180" name="longitude" step="1e-10" type="number" placeholder="{% trans 'longitude' %}" value="{{ fruit.longitude|lower|unlocalize }}"> #}
+		 <input class="form-control" id="id_longitude" max="180" min="-180" name="longitude" step="1e-10" type="number"  value="{{ fruit.position.x|unlocalize }}">
 	</div>
 	<div class="col-sm-12">
-		<textarea class=" form-control" cols="40" id="id_description" name="description" rows="5" placeholder="{% trans 'Description' %}"></textarea>
+		<textarea class="form-control" cols="40" id="id_description" name="description" rows="5" placeholder="{% trans 'Description' %}"></textarea>
 	</div>
 	<div class="col-sm-12">
 		{{ form.catalogue|bootstrap }}

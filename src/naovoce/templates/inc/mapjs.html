@@ -23,8 +23,14 @@
         '{{ k.key }}':
             icon: new MarkerIcon('{{ k.color }}', '{{ k.key }}')
             name: '{{ k.name }}'
+            id: {{ k.pk }}
         {% endfor %}
 
+    KIND_ID_TO_KEY =
+        0: 'F00D'
+        {% for k in kinds %}
+        {{ k.pk }}: '{{ k.key }}'
+        {% endfor %}
 
     getDMSCoords = (lat, lng) ->
         DD2DMS = (dd) ->
@@ -44,8 +50,8 @@
             super latlng, icon: KINDS[kind].icon
             @kind = kind
 
-        setIcon: (kind) ->
-            super KINDS[kind].icon
+        setIcon: (kind_id) ->
+            super KINDS[KIND_ID_TO_KEY[kind_id]].icon
 
 
     class FruitPopup extends L.Popup

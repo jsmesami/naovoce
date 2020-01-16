@@ -35,18 +35,18 @@
 			// lookbook stuff
 			$(document).ready(function(){
 
-				var lookbook = $('.lookbook')
+				var lookbook = $('.lookbook');
 
 				$('a.gallery-link,a.close_lookbook').click(function (e) {
 					e.preventDefault();
-					$('#map-detail,.lookbook,.close_lookbook_holder').toggleClass('swap')
+					$('#map-detail,.lookbook,.close_lookbook_holder').toggleClass('swap');
 					// as the slick loads the content dynamically and the lookbook is hidden first,
 					// we have to refresh its memory a bit
 					lookbook.slick('refresh')
 				});
 
-				var next_text = '{% trans "Next" %}'
-				var prev_text = '{% trans "Previous" %}'
+				var next_text = '{% trans "Next" %}';
+				var prev_text = '{% trans "Previous" %}';
 
 				function fix_carousel(){
 					$('.lookbook,.lookbook img').css({
@@ -54,7 +54,7 @@
 					})
 				}
 
-				fix_carousel()
+				fix_carousel();
 
 				$(window).bind('resize', function(e){
 				    window.resizeEvt;
