@@ -50,6 +50,18 @@
 {
     "fields": {
         "key": "a1d1",
+        "name_cs": "Myrobal\u00e1n",
+        "name_en": "Cherry Plum",
+        "color": "ED592C",
+        "name": "Myrobal\u00e1n",
+        "cls": 1000
+    },
+    "model": "fruit.kind",
+    "pk": 5
+},
+{
+    "fields": {
+        "key": "a2f3",
         "name_cs": "Mirabelka",
         "name_en": "Yellow Plum",
         "color": "FFD800",
@@ -57,7 +69,7 @@
         "cls": 1000
     },
     "model": "fruit.kind",
-    "pk": 5
+    "pk": 6
 },
 {
     "fields": {
@@ -69,7 +81,7 @@
         "cls": 1000
     },
     "model": "fruit.kind",
-    "pk": 6
+    "pk": 7
 },
 {
     "fields": {
@@ -81,7 +93,7 @@
         "cls": 1000
     },
     "model": "fruit.kind",
-    "pk": 7
+    "pk": 8
 },
 {
     "fields": {
@@ -93,7 +105,7 @@
         "cls": 2000
     },
     "model": "fruit.kind",
-    "pk": 8
+    "pk": 9
 },
 {
     "fields": {
@@ -105,7 +117,7 @@
         "cls": 2000
     },
     "model": "fruit.kind",
-    "pk": 9
+    "pk": 10
 },
 {
     "fields": {
@@ -117,7 +129,7 @@
         "cls": 2000
     },
     "model": "fruit.kind",
-    "pk": 10
+    "pk": 11
 },
 {
     "fields": {
@@ -129,7 +141,7 @@
         "cls": 2000
     },
     "model": "fruit.kind",
-    "pk": 11
+    "pk": 12
 },
 {
     "fields": {
