@@ -20,7 +20,7 @@ ADMINS = MANAGERS = (
 
 EMAIL_SUBJECT_PREFIX = '[Na ovoce] '
 
-DEFAULT_FROM_EMAIL = 'registration@na-ovoce.cz'
+DEFAULT_FROM_EMAIL = 'server@na-ovoce.cz'
 
 DATABASES = {
     'default': {
