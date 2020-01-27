@@ -6,7 +6,6 @@ django-compressor>=1.5
 django-ipware>=1.1
 django-leaflet
 django-modeltranslation>=0.13-beta1
-django-recaptcha>=1.2.1
 djangorestframework>=3.8
 djangorestframework-gis
 django-cors-headers>=2.0.2
