@@ -1,3 +1,4 @@
+from captcha.fields import CaptchaField
 from django import forms
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.utils.translation import ugettext_noop, ugettext_lazy as _
@@ -66,6 +67,13 @@ class UserChangeForm(forms.ModelForm):
 
     def clean_password(self):
         return self.initial["password"]
+
+
+class CaptchaSignupForm(forms.Form):
+    captcha = CaptchaField()
+
+    def signup(self, request, user):
+        pass
 
 
 class MessageAdminForm(forms.ModelForm):

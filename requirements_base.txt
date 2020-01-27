@@ -10,6 +10,7 @@ django-recaptcha>=1.2.1
 djangorestframework>=3.8
 djangorestframework-gis
 django-cors-headers>=2.0.2
+django-simple-captcha>=0.5.12
 markdown2>=2.3
 psycopg2-binary>=2.6
 requests>=2.11

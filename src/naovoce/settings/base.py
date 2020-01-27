@@ -112,6 +112,7 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 ACCOUNT_SIGNUP_PASSWORD_VERIFICATION = False
 ACCOUNT_ADAPTER = 'user.adapters.AccountAdapter'
+ACCOUNT_SIGNUP_FORM_CLASS = 'user.forms.CaptchaSignupForm'
 SOCIALACCOUNT_EMAIL_VERIFICATION = 'none'
 SOCIALACCOUNT_AUTO_SIGNUP = False
 SOCIALACCOUNT_ADAPTER = 'user.adapters.SocialAccountAdapter'
@@ -218,6 +219,7 @@ EXTERNAL_APPS = (
     'modeltranslation',
     'compressor',
     'bootstrapform',
+    'captcha',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
