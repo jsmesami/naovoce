@@ -299,10 +299,9 @@ REST_FRAMEWORK = {
 }
 
 CORS_ORIGIN_WHITELIST = (
-    'na-ovoce.cz',
-    'localhost:8000',
-    '127.0.0.1:8000',
-    '0.0.0.0:3449',
+    'https://na-ovoce.cz',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
 )
 
 CORS_URLS_REGEX = r'^/api/.*$'
