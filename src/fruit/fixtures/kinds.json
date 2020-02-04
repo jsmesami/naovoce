@@ -61,18 +61,6 @@
 },
 {
     "fields": {
-        "key": "a2f3",
-        "name_cs": "Mirabelka",
-        "name_en": "Yellow Plum",
-        "color": "FFD800",
-        "name": "Mirabelka",
-        "cls": 1000
-    },
-    "model": "fruit.kind",
-    "pk": 6
-},
-{
-    "fields": {
         "key": "a2c9",
         "name_cs": "\u0160vestka",
         "name_en": "Plum Tree",
