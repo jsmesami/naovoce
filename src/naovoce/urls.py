@@ -24,7 +24,6 @@ urlpatterns = [
 
     url(r'^$', RedirectView.as_view(permanent=True, url='/web/')),
     url(r'^fruitadmin/', admin.site.urls),
-    url(r'^captcha/', include('captcha.urls')),
     url(r'^api/v1/', include('naovoce.api.urls', namespace='api')),
     url(r'^fruit/', include('fruit.urls', namespace='fruit')),
     url(r'^gallery/', include('gallery.urls', namespace='gallery')),

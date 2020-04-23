@@ -35,8 +35,11 @@
 				<link rel="stylesheet" href="{% static 'less/naovoce.less' %}" type="text/less" media="screen, projection" charset="utf-8">
 			{% endcompress %}
 		{% endblock %}
-		
+
 		{% block analytics %}
+		{% endblock %}
+
+		{% block recaptcha %}
 		{% endblock %}
 	</head>
 	<body class="{% block body_class %}{% endblock %}">

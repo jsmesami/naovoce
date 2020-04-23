@@ -1,4 +1,4 @@
-from captcha.fields import CaptchaField
+from snowpenguin.django.recaptcha3.fields import ReCaptchaField
 from django import forms
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.utils.translation import ugettext_noop, ugettext_lazy as _
@@ -70,7 +70,7 @@ class UserChangeForm(forms.ModelForm):
 
 
 class CaptchaSignupForm(forms.Form):
-    captcha = CaptchaField()
+    captcha = ReCaptchaField()
 
     def signup(self, request, user):
         pass

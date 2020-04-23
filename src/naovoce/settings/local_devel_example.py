@@ -73,3 +73,9 @@ TEMPLATES[0]['OPTIONS']['loaders'] = [
 #     'rest_framework.renderers.JSONRenderer',
 #     'rest_framework.renderers.BrowsableAPIRenderer',
 # )
+
+# Disable ReCaptcha:
+os.environ['RECAPTCHA_DISABLE'] = 'True'
+# with development keys ReCaptcha token is always null
+# RECAPTCHA_PRIVATE_KEY = '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'
+# RECAPTCHA_PUBLIC_KEY = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'

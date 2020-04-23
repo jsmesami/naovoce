@@ -219,7 +219,7 @@ EXTERNAL_APPS = (
     'modeltranslation',
     'compressor',
     'bootstrapform',
-    'captcha',
+    'snowpenguin.django.recaptcha3',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -314,3 +314,8 @@ NEWSLETTER_BRAND_ID = 1             # must be set in instance-specific settings/
 NEWSLETTER_DEFAULT_LIST_ID = None   # must be set in instance-specific settings/local.py
 NEWSLETTER_DEFAULT_FROM_EMAIL = 'newsletter@na-ovoce.cz'
 NEWSLETTER_DEFAULT_FROM_NAME = 'Na ovoce newsletter'
+
+RECAPTCHA_PRIVATE_KEY = None  # must be set in instance-specific settings/local.py
+RECAPTCHA_PUBLIC_KEY = None   # must be set in instance-specific settings/local.py
+RECAPTCHA_DEFAULT_ACTION = 'generic'
+RECAPTCHA_SCORE_THRESHOLD = 0.5
