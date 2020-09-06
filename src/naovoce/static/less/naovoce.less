@@ -518,10 +518,10 @@ a.messages-count {
 
 .leaflet-container {
 	.leaflet-control-attribution {
-		background-color: transparent;
 		a {
-			background-color: transparent !important;
-			box-shadow: 0 0 1rem rgba(55, 55, 55, 0.0) !important;
+			display: inline;
+			background-color: #fff !important;
+			border-radius: 0 !important;
 			color: @ground !important;
 		}
 	}
@@ -1211,6 +1211,10 @@ article{
 	}
 }
 
+.leaflet-bottom.leaflet-right {
+	right: 0;
+}
+
 .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
 	border: 0;
 }
@@ -1805,13 +1809,16 @@ article{
 		left: 1rem;
 	}
 
-	// roteate made by
 	.leaflet-control-attribution {
+		bottom: 0;
+		position: absolute;
+		right: 0;
+		transform-origin: bottom right;
 		transform: rotate(-90deg);
-		right: -10rem;
-		bottom: 11rem;
+		translate: 0px -340px;
 	}
 }
+
 @media (max-width: 768px) {
 	body{
 		.panel_toggle {

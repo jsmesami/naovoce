@@ -83,6 +83,7 @@
                 minZoom: 5,
 
             super id,
+                attributionControl: false
                 layers: [L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', params)]
 
             if L.markerClusterGroup?
@@ -98,9 +99,6 @@
                 @markerLayerGroup = new L.layerGroup().addTo @
                 @markerLayerGroup.addLayers = (layers) ->
                     @addLayer l for l in layers
-
-            {# Remove default attributions. #}
-            @.attributionControl.setPrefix('');
 
             @markers = {}
 
@@ -213,9 +211,9 @@
             @
 
         addAttribution: (text) ->
-            @addControl L.control.attribution
-                prefix: text or 'Map data &copy; OpenStreetMap contributors'
-                position: 'bottomleft'
+            attr = L.control.attribution
+                position: 'bottomright'
+            @addControl attr.addAttribution text or 'Map data &copy; OpenStreetMap contributors'
             @
 
 </script>
