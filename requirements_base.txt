@@ -10,7 +10,7 @@ djangorestframework==3.11.0
 djangorestframework-gis==0.15
 django-cors-headers==3.2.1
 django-recaptcha3==0.2.0
-markdown2==2.3.8
+markdown2==2.3.10
 psycopg2-binary==2.8.4
 requests==2.22.0
 sorl-thumbnail==12.5.0
