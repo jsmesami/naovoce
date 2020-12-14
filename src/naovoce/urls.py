@@ -20,7 +20,7 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
     url(r'^accounts/profile/$', user.views.accounts_profile),
     url(r'^robots\.txt$', utils.views.plain_text_view, dict(template_name='robots.txt'), name='robots'),
-    url(r'^map/$', naovoce.views.map_view, name='map'),
+    url(r'^$', naovoce.views.map_view, name='map'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
