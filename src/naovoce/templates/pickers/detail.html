@@ -23,7 +23,7 @@
 
 			<div class="col-md-3 col-sm-5 the_panel">
 				{# arrow back to map #}
-				<a href="/map" class="back_to_map_quick"></a>
+				<a href="{% url 'map' %}" class="back_to_map_quick"></a>
 
 				<div class="nano">
 				    <div class="nano-content">
@@ -97,7 +97,7 @@
 								        {% endif %}
 									    <li><a href="{% url 'socialaccount_connections' %}">{% trans 'Account connections' %}</a></li>
 									    {# picker codex #}
-									    <li><a href="/web/kodex">{% trans 'Picker codex' %}</a></li>
+									    <li><a href="https://www.na-ovoce.cz/kodex">{% trans 'Picker codex' %}</a></li>
 							        </ul>
 							    {% endif %}
 

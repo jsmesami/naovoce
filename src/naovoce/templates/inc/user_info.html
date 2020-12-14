@@ -4,18 +4,18 @@
 <div id="user-info">
 	<div id="wurst">
 		{# the logo #}
-		<a href="/web" rel="home" class="logo">
+		<a href="https://www.na-ovoce.cz/" rel="home" class="logo">
 			<img src="{% static 'img/na-ovoce.svg' %}" alt="na-ovoce">
 		</a>
 
 		<div id="ham">
 			{# back to website #}
-			<a href="/web" class="back-to-web btn btn_alternate">
+			<a href="https://www.na-ovoce.cz/" class="back-to-web btn btn_alternate">
 				{% trans 'back to website' %}
 			</a>
 
 			{# go back to the Map index #}
-			<a href="/map/" class="back-to-map btn">
+			<a href="{% url 'map' %}" class="back-to-map btn">
 				{% trans 'back to map' %}
 			</a>
 
@@ -55,7 +55,7 @@
 		    -->
 
 		    {# Herbarium #}
-		    <a href="/web/herbar" class="btn herbarium">
+		    <a href="https://www.na-ovoce.cz/herbar" class="btn herbarium">
 		    	{% trans 'Herbarium' %}
 		    </a>
 	    </div>

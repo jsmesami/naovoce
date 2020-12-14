@@ -44,5 +44,5 @@ You can still contribute!
 
 ## Join the community
 
-* help with [the fieldwork](https://na-ovoce.cz/web/podporte-nas-zapojte-se)
+* help with [the fieldwork](https://www.na-ovoce.cz/podporte-nas-zapojte-se)
 * add some fruit to the map:)

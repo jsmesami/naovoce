@@ -15,7 +15,7 @@
 		<form class="panel-body" action='' method="post">{% csrf_token %}
 			{{ form|bootstrap }}
 			<input class="btn btn-danger" value="{% trans 'Delete' context 'infinitive' %}" type="submit">
-			<a href="/map" class="back_link">
+			<a href="{% url 'map' %}" class="back_link">
 				{% trans 'Back' %}
 			</a>
 		</form>
