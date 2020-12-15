@@ -12,7 +12,7 @@ def get_gallery_object(model, gallery_id):
     try:
         gallery_ct = ContentType.objects.get(model=model)
         return gallery_ct.get_object_for_this_type(id=gallery_id)
-    except ObjectDoesNotExist:
+    except (ObjectDoesNotExist, AttributeError):
         raise Http404
 
 
