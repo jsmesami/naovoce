@@ -12,7 +12,7 @@ in the landscape.
 
 Prerequisities:
 
-* Python 3.6
+* Python 3.6+
 * PostgreSQL 9.6 with PostGIS and HStore
 * GEOS
 * Cairo
