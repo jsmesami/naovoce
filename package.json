@@ -29,7 +29,7 @@
         "target": "src/naovoce/static/components/leaflet"
       },
       "leaflet.markercluster": {
-        "version": "1.3.0",
+        "version": "1.4.1",
         "src": "{dist/MarkerCluster.css,dist/leaflet.markercluster.js}",
         "target": "src/naovoce/static/components/leaflet"
       },

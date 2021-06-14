@@ -140,7 +140,7 @@ COMPRESS_CSS_FILTERS = (
 
 COMPRESS_PRECOMPILERS = (
     ('text/coffeescript', 'coffee --compile --stdio'),
-    ('text/less', 'lessc {infile} {outfile}'),
+    ('text/less', 'lessc -m=always {infile} {outfile}'),
 )
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
