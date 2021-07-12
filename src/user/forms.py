@@ -10,8 +10,8 @@ class UserCreationForm(forms.ModelForm):
         label=_("username"),
         max_length=30,
         regex=r"^[\w.@+-]+$",
-        help_text=_("Required. 30 characters or fewer. " "Letters, digits and @/./+/-/_ only."),
-        error_messages={"invalid": _("This value may contain only letters, " "numbers and @/./+/-/_ characters.")},
+        help_text=_("Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."),
+        error_messages={"invalid": _("This value may contain only letters, numbers and @/./+/-/_ characters.")},
     )
     password1 = forms.CharField(label="Password", widget=forms.PasswordInput)
     password2 = forms.CharField(label="Password confirmation", widget=forms.PasswordInput)
@@ -40,8 +40,8 @@ class UserChangeForm(forms.ModelForm):
         label=_("username"),
         max_length=30,
         regex=r"^[\w.@+-]+$",
-        help_text=_("Required. 30 characters or fewer. " "Letters, digits and @/./+/-/_ only."),
-        error_messages={"invalid": _("This value may contain only letters, " "numbers and @/./+/-/_ characters.")},
+        help_text=_("Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."),
+        error_messages={"invalid": _("This value may contain only letters, numbers and @/./+/-/_ characters.")},
     )
     password = ReadOnlyPasswordHashField(
         label=_("Password"),

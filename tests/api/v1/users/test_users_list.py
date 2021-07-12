@@ -30,7 +30,7 @@ def test_users_list(client, truncate_table, new_random_user_list, new_user):
 
 
 @pytest.mark.parametrize("bad_method", HTTP_METHODS - {"get", "options"})
-def test_users_list_bad_methods(client, new_user, bad_method, bad_method_response):
+def test_users_list_bad_methods(client, bad_method, bad_method_response):
     response = getattr(client, bad_method)(reverse("api:users-list"))
 
     assert response.status_code == status.HTTP_405_METHOD_NOT_ALLOWED

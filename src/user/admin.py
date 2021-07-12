@@ -35,7 +35,7 @@ class FruitUserAdmin(UserAdmin):
         (
             _("Permissions"),
             {
-                "fields": "resolution is_active is_staff is_superuser " "groups user_permissions".split(),
+                "fields": "resolution is_active is_staff is_superuser groups user_permissions".split(),
             },
         ),
         (
@@ -47,7 +47,7 @@ class FruitUserAdmin(UserAdmin):
     )
 
     list_display = (
-        "username email first_name last_name " "is_staff is_active is_email_verified " "_has_facebook date_joined"
+        "username email first_name last_name is_staff is_active is_email_verified " "_has_facebook date_joined"
     ).split()
 
     list_filter = "resolution is_staff is_superuser is_active is_email_verified groups".split()

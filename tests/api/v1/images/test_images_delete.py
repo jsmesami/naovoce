@@ -14,7 +14,7 @@ def test_image_delete(client, random_password, new_user, new_image):
     assert response.status_code == status.HTTP_204_NO_CONTENT
 
 
-def test_image_delete_unauthenticated(client, random_password, new_user, new_image):
+def test_image_delete_unauthenticated(client, new_user, new_image):
     user = new_user()
     image = new_image(author=user)
 

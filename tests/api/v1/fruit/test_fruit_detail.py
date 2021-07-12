@@ -7,7 +7,7 @@ from fruit.models import Fruit
 from . import fruit_to_verbose_data
 
 
-def test_fruit_detail(client, random_valid_kind, new_fruit, new_user):
+def test_fruit_detail(client, random_valid_kind, new_fruit):
     kind = random_valid_kind()
     fruit = new_fruit(kind=kind, description="fruit")
 

@@ -14,7 +14,7 @@ CREATE_IMAGE_BAD_ARGS = [
     ({"image": None}, {"image": ["This field may not be null."]}),
     (
         {"image": "rubbish"},
-        {"image": ["Upload a valid image. The file you uploaded was either not an image " "or a corrupted image."]},
+        {"image": ["Upload a valid image. The file you uploaded was either not an image or a corrupted image."]},
     ),
 ]
 

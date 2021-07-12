@@ -21,7 +21,7 @@ def test_herbarium_list(client, all_herbarium_items):
 
 
 @pytest.mark.parametrize("bad_method", HTTP_METHODS - {"get", "options"})
-def test_herbarium_list_bad_methods(client, all_herbarium_items, bad_method, bad_method_response):
+def test_herbarium_list_bad_methods(client, bad_method, bad_method_response):
     response = getattr(client, bad_method)(reverse("api:herbarium-list"))
 
     assert response.status_code == status.HTTP_405_METHOD_NOT_ALLOWED

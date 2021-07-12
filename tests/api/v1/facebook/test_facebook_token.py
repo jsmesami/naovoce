@@ -57,7 +57,7 @@ def test_facebook_token_missing_user(client, truncate_table, random_email):
     }
 
 
-def test_facebook_token_wrong_fcb_id(client, new_facebook_info, new_user):
+def test_facebook_token_wrong_fcb_id(client, new_facebook_info):
     fcb_info = new_facebook_info()
     request_data = {
         "email": fcb_info.user.email,

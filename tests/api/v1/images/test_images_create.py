@@ -124,7 +124,7 @@ def test_image_create_unsupported_content_type(client, new_fruit_username_passwo
     assert response.json() == {"image": ["Only JPEG files are allowed."]}
 
 
-def test_image_create_missing_args(client, new_fruit_username_password, small_image_jpg):
+def test_image_create_missing_args(client, new_fruit_username_password):
     fruit, username, password = new_fruit_username_password()
 
     assert client.login(username=username, password=password)

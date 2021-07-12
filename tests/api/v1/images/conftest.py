@@ -27,7 +27,7 @@ def larger_image_jpg():
 
 @pytest.fixture
 def small_image_png():
-    return lambda: "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z" "/C/HgAGgwJ/lK3Q6wAAAABJRU5ErkJggg=="
+    return lambda: "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z/C/HgAGgwJ/lK3Q6wAAAABJRU5ErkJggg=="
 
 
 @pytest.fixture

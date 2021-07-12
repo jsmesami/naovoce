@@ -33,7 +33,7 @@ def test_kinds_list_some_deleted(client, deleted_kinds_keys):
 
 @pytest.mark.django_db
 @pytest.mark.parametrize("bad_method", HTTP_METHODS - {"get", "options"})
-def test_kinds_list_bad_methods(client, valid_kinds, bad_method, bad_method_response):
+def test_kinds_list_bad_methods(client, bad_method, bad_method_response):
     response = getattr(client, bad_method)(reverse("api:kinds-list"))
 
     assert response.status_code == status.HTTP_405_METHOD_NOT_ALLOWED
