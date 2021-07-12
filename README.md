@@ -12,8 +12,8 @@ in the landscape.
 
 Prerequisities:
 
-* Python 3.5+
-* PostgreSQL 9.6+ with PostGIS and HStore
+* Python 3.9+
+* PostgreSQL 12+ with PostGIS and HStore
 * GEOS
 
 Very basic local installation example:

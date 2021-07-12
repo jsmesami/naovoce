@@ -2,13 +2,13 @@ from django.db import models
 
 
 # TODO: Delete this after squashing migrations:
-class Herbarium(models.Model):
+class Herbarium(models.Model):  # noqa:DJ08
     class Meta:
-        db_table = 'fruit_herbarium'
+        db_table = "fruit_herbarium"
         managed = False
 
 
-class Season(models.Model):
+class Season(models.Model):  # noqa:DJ08
     class Meta:
-        db_table = 'fruit_season'
+        db_table = "fruit_season"
         managed = False

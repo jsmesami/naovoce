@@ -1,5 +1,6 @@
 import facebook
 from funcy import get_in
+
 from user import constants
 from user.models import FacebookInfo, FruitUser
 
@@ -7,27 +8,27 @@ from user.models import FacebookInfo, FruitUser
 def verify_user(fcb_id, fcb_token):
     return facebook.GraphAPI(access_token=fcb_token).get_object(
         id=fcb_id,
-        fields='first_name, last_name, picture.type(large)',
+        fields="first_name, last_name, picture.type(large)",
     )
 
 
 def get_picture_url(fcb_user):
-    if get_in(fcb_user, ['picture', 'data', 'is_silhouette']):
-        return ''
+    if get_in(fcb_user, ["picture", "data", "is_silhouette"]):
+        return ""
 
-    return get_in(fcb_user, ['picture', 'data', 'url'], '')
+    return get_in(fcb_user, ["picture", "data", "url"], "")
 
 
 def get_first_name(fcb_user):
-    return fcb_user.get('first_name', '')[:constants.FIRST_NAME_MAX_LENGTH]
+    return fcb_user.get("first_name", "")[: constants.FIRST_NAME_MAX_LENGTH]
 
 
 def get_last_name(fcb_user):
-    return fcb_user.get('last_name', '')[:constants.LAST_NAME_MAX_LENGTH]
+    return fcb_user.get("last_name", "")[: constants.LAST_NAME_MAX_LENGTH]
 
 
 def generate_unique_username(fcb_user):
-    nickname = get_first_name(fcb_user) or get_last_name(fcb_user) or 'Picker'
+    nickname = get_first_name(fcb_user) or get_last_name(fcb_user) or "Picker"
     unique_username = nickname
     count = 1
 
@@ -80,7 +81,7 @@ def connect_user(fcb_user, user, fcb_id, fcb_token):
             fcb_token=fcb_token,
             picture_url=get_picture_url(fcb_user),
             raw_data=fcb_user,
-        )
+        ),
     )
 
     return user

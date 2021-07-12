@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from fruit.models import Comment, Fruit, Image, Kind
 
 from .comment import CommentAdmin

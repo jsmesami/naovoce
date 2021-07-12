@@ -6,18 +6,20 @@ from rest_framework.reverse import reverse
 
 
 @api_view()
-def api_root(request, format=None):
-    return Response({
-        'fruit': reverse('api:fruit-list', request=request, format=format),
-        'herbarium': reverse('api:herbarium-list', request=request, format=format),
-        'kinds': reverse('api:kinds-list', request=request, format=format),
-        'users': reverse('api:users-list', request=request, format=format),
-    })
+def api_root(request, format=None):  # noqa:A002
+    return Response(
+        {
+            "fruit": reverse("api:fruit-list", request=request, format=format),
+            "herbarium": reverse("api:herbarium-list", request=request, format=format),
+            "kinds": reverse("api:kinds-list", request=request, format=format),
+            "users": reverse("api:users-list", request=request, format=format),
+        }
+    )
 
 
 @api_view()
-def api_handler_404(request, format=None):
+def api_handler_404(request, format=None):  # noqa:A002
     return Response(
-        data=dict(detail=_('Not found.')),
+        data=dict(detail=_("Not found.")),
         status=status.HTTP_404_NOT_FOUND,
     )

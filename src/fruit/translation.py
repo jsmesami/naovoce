@@ -4,7 +4,7 @@ from .models import Kind
 
 
 class KindTranslationOptions(TranslationOptions):
-    fields = ('name',)
+    fields = ("name",)
 
 
 translator.register(Kind, KindTranslationOptions)

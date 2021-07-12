@@ -11,15 +11,15 @@ class Base64ImageField(serializers.ImageField):
 
     def to_internal_value(self, data):
         if isinstance(data, str):
-            if 'data:' in data and ';base64,' in data:
-                header, data = data.split(';base64,')
+            if "data:" in data and ";base64," in data:
+                header, data = data.split(";base64,")
 
             try:
                 decoded_data = base64.b64decode(data)
             except (TypeError, binascii.Error):
-                self.fail('invalid_image')
+                self.fail("invalid_image")
 
-            file_name = 'uploaded_image.' + self.guess_file_extension(decoded_data)
+            file_name = "uploaded_image." + self.guess_file_extension(decoded_data)
 
             data = ContentFile(decoded_data, name=file_name)
 
@@ -28,4 +28,4 @@ class Base64ImageField(serializers.ImageField):
     @staticmethod
     def guess_file_extension(image_data):
         extension = imghdr.what(None, image_data)
-        return extension.lower() if extension else 'jpg'
+        return extension.lower() if extension else "jpg"

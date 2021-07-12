@@ -8,7 +8,7 @@ djangorestframework-gis
 django-cors-headers
 facebook-sdk
 markdown2
-psycopg2-binary
+psycopg2-binary<2.9
 requests
 sorl-thumbnail
 python3-memcached

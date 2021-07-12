@@ -3,6 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from facebook import GraphAPIError
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
+
 from user import constants
 from user.models import FruitUser
 
@@ -16,7 +17,7 @@ class SignupSerializer(serializers.ModelSerializer):
         validators=[
             UniqueValidator(
                 queryset=FruitUser.objects.all(),
-                message=_('User with this username already exists.'),
+                message=_("User with this username already exists."),
             ),
         ],
     )
@@ -26,7 +27,7 @@ class SignupSerializer(serializers.ModelSerializer):
         validators=[
             UniqueValidator(
                 queryset=FruitUser.objects.all(),
-                message=_('User with this email already exists.')
+                message=_("User with this email already exists."),
             ),
         ],
     )
@@ -39,15 +40,15 @@ class SignupSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user = FruitUser.objects.create_user(
-            username=validated_data['username'],
-            email=validated_data['email'],
-            password=validated_data['password'],
+            username=validated_data["username"],
+            email=validated_data["email"],
+            password=validated_data["password"],
         )
         return user
 
     class Meta:
         model = FruitUser
-        fields = 'id username email password'.split()
+        fields = "id username email password".split()
 
 
 class SignupFacebookSerializer(serializers.Serializer):
@@ -71,28 +72,25 @@ class SignupFacebookSerializer(serializers.Serializer):
     )
 
     default_error_messages = {
-        'facebook_verification': _('Facebook verification failed: {context}'),
+        "facebook_verification": _("Facebook verification failed: {context}"),
     }
 
     def validate(self, attrs):
-        fcb_id = attrs.get('fcb_id')
-        fcb_token = attrs.get('fcb_token')
+        fcb_id = attrs.get("fcb_id")
+        fcb_token = attrs.get("fcb_token")
 
         try:
             fcb_user = fcb.verify_user(fcb_id, fcb_token)
         except GraphAPIError as e:
-            self.fail('facebook_verification', context=e)
+            self.fail("facebook_verification", context=e)
 
-        return {
-            'fcb_user': fcb_user,
-            **attrs
-        }
+        return {"fcb_user": fcb_user, **attrs}
 
     def save(self, **kwargs):
-        email = self.validated_data['email']
-        fcb_user = self.validated_data['fcb_user']
-        fcb_id = self.validated_data['fcb_id']
-        fcb_token = self.validated_data['fcb_token']
+        email = self.validated_data["email"]
+        fcb_user = self.validated_data["fcb_user"]
+        fcb_id = self.validated_data["fcb_id"]
+        fcb_token = self.validated_data["fcb_token"]
 
         try:
             user = FruitUser.objects.get(email__iexact=email)

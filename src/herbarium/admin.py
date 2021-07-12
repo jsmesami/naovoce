@@ -11,7 +11,7 @@ class SeasonAdminInline(TranslationTabularInline):
 
 class HerbariumAdmin(admin.ModelAdmin):
     model = Herbarium
-    list_display = 'kind full_name latin_name'.split()
+    list_display = "kind full_name latin_name".split()
     inlines = (SeasonAdminInline,)
 
 

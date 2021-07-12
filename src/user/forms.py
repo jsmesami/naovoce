@@ -7,20 +7,18 @@ from .models import FruitUser, Message
 
 class UserCreationForm(forms.ModelForm):
     username = forms.RegexField(
-        label=_('username'),
+        label=_("username"),
         max_length=30,
-        regex=r'^[\w.@+-]+$',
-        help_text=_("Required. 30 characters or fewer. "
-                    "Letters, digits and @/./+/-/_ only."),
-        error_messages={'invalid': _("This value may contain only letters, "
-                                     "numbers and @/./+/-/_ characters.")},
+        regex=r"^[\w.@+-]+$",
+        help_text=_("Required. 30 characters or fewer. " "Letters, digits and @/./+/-/_ only."),
+        error_messages={"invalid": _("This value may contain only letters, " "numbers and @/./+/-/_ characters.")},
     )
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
+    password1 = forms.CharField(label="Password", widget=forms.PasswordInput)
+    password2 = forms.CharField(label="Password confirmation", widget=forms.PasswordInput)
 
     class Meta:
         model = FruitUser
-        fields = '__all__'
+        fields = "__all__"
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
@@ -39,30 +37,30 @@ class UserCreationForm(forms.ModelForm):
 
 class UserChangeForm(forms.ModelForm):
     username = forms.RegexField(
-        label=_('username'),
+        label=_("username"),
         max_length=30,
-        regex=r'^[\w.@+-]+$',
-        help_text=_('Required. 30 characters or fewer. '
-                    'Letters, digits and @/./+/-/_ only.'),
-        error_messages={'invalid': _('This value may contain only letters, '
-                                     'numbers and @/./+/-/_ characters.')},
+        regex=r"^[\w.@+-]+$",
+        help_text=_("Required. 30 characters or fewer. " "Letters, digits and @/./+/-/_ only."),
+        error_messages={"invalid": _("This value may contain only letters, " "numbers and @/./+/-/_ characters.")},
     )
     password = ReadOnlyPasswordHashField(
-        label=_('Password'),
-        help_text=_('Raw passwords are not stored, so there is no way to see '
-                    'this user\'s password, but you can change the password '
-                    'using <a href="password/">this form</a>.'),
+        label=_("Password"),
+        help_text=_(
+            "Raw passwords are not stored, so there is no way to see "
+            "this user's password, but you can change the password "
+            'using <a href="password/">this form</a>.'
+        ),
     )
 
     class Meta:
         model = FruitUser
-        fields = '__all__'
+        fields = "__all__"
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        f = self.fields.get('user_permissions', None)
+        f = self.fields.get("user_permissions", None)
         if f is not None:
-            f.queryset = f.queryset.select_related('content_type')
+            f.queryset = f.queryset.select_related("content_type")
 
     def clean_password(self):
         return self.initial["password"]
@@ -71,7 +69,7 @@ class UserChangeForm(forms.ModelForm):
 class MessageAdminForm(forms.ModelForm):
     class Meta:
         model = Message
-        fields = '__all__'
+        fields = "__all__"
         widgets = {
-            'text': forms.Textarea(attrs={'rows': 5, 'cols': 86, 'maxlength': 255}),
+            "text": forms.Textarea(attrs={"rows": 5, "cols": 86, "maxlength": 255}),
         }

@@ -2,9 +2,10 @@ import pytest
 from rest_framework import status
 from rest_framework.reverse import reverse
 
-from . import REQUEST_DATA, BAD_COMPLAINT_CREATE_ARGS
+from fruit.models import Comment, Fruit
+
 from ..utils import HTTP_METHODS
-from fruit.models import Fruit, Comment
+from . import BAD_COMPLAINT_CREATE_ARGS, REQUEST_DATA
 
 
 def test_complaint(client, truncate_table, random_password, new_user, new_fruit, user_auth):
@@ -16,9 +17,9 @@ def test_complaint(client, truncate_table, random_password, new_user, new_fruit,
     assert client.login(**user_auth(user=user, password=password))
 
     response = client.post(
-        reverse('api:fruit-complaint', args=[fruit.id]),
+        reverse("api:fruit-complaint", args=[fruit.id]),
         REQUEST_DATA,
-        content_type='application/json',
+        content_type="application/json",
     )
 
     assert response.status_code == status.HTTP_201_CREATED
@@ -28,7 +29,7 @@ def test_complaint(client, truncate_table, random_password, new_user, new_fruit,
 
     assert comment.fruit_id == fruit.id
     assert comment.author_id == user.id
-    assert comment.text == REQUEST_DATA['text']
+    assert comment.text == REQUEST_DATA["text"]
     assert comment.is_complaint is True
 
 
@@ -39,54 +40,54 @@ def test_complaint_nonexistent_fruit(client, truncate_table, user_auth):
     assert client.login(**user_auth())
 
     response = client.post(
-        reverse('api:fruit-complaint', args=[1]),
+        reverse("api:fruit-complaint", args=[1]),
         REQUEST_DATA,
-        content_type='application/json',
+        content_type="application/json",
     )
 
     assert response.status_code == status.HTTP_404_NOT_FOUND
-    assert response.json() == {'detail': 'Not found.'}
+    assert response.json() == {"detail": "Not found."}
 
 
 def test_complaint_unauthorized(client, new_fruit):
     fruit = new_fruit()
 
     response = client.post(
-        reverse('api:fruit-complaint', args=[fruit.id]),
+        reverse("api:fruit-complaint", args=[fruit.id]),
         REQUEST_DATA,
-        content_type='application/json',
+        content_type="application/json",
     )
 
     assert response.status_code == status.HTTP_401_UNAUTHORIZED
-    assert response.json() == {'detail': 'Authentication credentials were not provided.'}
+    assert response.json() == {"detail": "Authentication credentials were not provided."}
 
 
-@pytest.mark.parametrize('bad_args, error_msg', BAD_COMPLAINT_CREATE_ARGS)
+@pytest.mark.parametrize("bad_args, error_msg", BAD_COMPLAINT_CREATE_ARGS)
 def test_complaint_bad_args(client, user_auth, new_fruit, bad_args, error_msg):
     fruit = new_fruit()
 
     assert client.login(**user_auth())
 
     response = client.post(
-        reverse('api:fruit-complaint', args=[fruit.id]),
+        reverse("api:fruit-complaint", args=[fruit.id]),
         bad_args,
-        content_type='application/json',
+        content_type="application/json",
     )
 
     assert response.status_code == status.HTTP_400_BAD_REQUEST
     assert response.json() == error_msg
 
 
-@pytest.mark.parametrize('bad_method', HTTP_METHODS - {'post', 'options'})
+@pytest.mark.parametrize("bad_method", HTTP_METHODS - {"post", "options"})
 def test_complaint_bad_methods(client, new_fruit, user_auth, bad_method, bad_method_response):
     fruit = new_fruit()
 
     assert client.login(**user_auth())
 
     response = getattr(client, bad_method)(
-        reverse('api:fruit-complaint', args=[fruit.id]),
+        reverse("api:fruit-complaint", args=[fruit.id]),
         REQUEST_DATA,
-        content_type='application/json',
+        content_type="application/json",
     )
 
     assert response.status_code == status.HTTP_405_METHOD_NOT_ALLOWED

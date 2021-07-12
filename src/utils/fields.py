@@ -17,9 +17,11 @@ class ContentTypeRestrictedImageField(models.ImageField):
 
 class MonthsField(models.PositiveSmallIntegerField):
     def __init__(self, *args, **kwargs):
-        kwargs.update(dict(
-            default=1,
-            validators=[MaxValueValidator(12), MinValueValidator(1)],
-            choices=zip(range(1, 13), range(1, 13)),
-        ))
+        kwargs.update(
+            dict(
+                default=1,
+                validators=[MaxValueValidator(12), MinValueValidator(1)],
+                choices=zip(range(1, 13), range(1, 13)),
+            )
+        )
         super().__init__(*args, **kwargs)

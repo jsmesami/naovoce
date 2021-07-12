@@ -1,17 +1,17 @@
-from .base import *  # pylint: disable=W0401,W0614
+from .base import *  # noqa:F401,F403
 
 DEBUG = True
 
-SECRET_KEY = 'dummy test key'
+SECRET_KEY = "dummy test key"
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'naovoce',
-        'USER': 'test',
-        'PASSWORD': 'test',
-        'HOST': '',
-        'PORT': '',
+    "default": {
+        "ENGINE": "django.contrib.gis.db.backends.postgis",
+        "NAME": "naovoce",
+        "USER": "test",
+        "PASSWORD": "test",
+        "HOST": "",
+        "PORT": "",
     }
 }
 

@@ -15,11 +15,13 @@ class UserSignup(APIView):
 
         user = serializer.save()
 
-        return Response({
-            'id': user.id,
-            'username': user.username,
-            'email': user.email,
-        })
+        return Response(
+            {
+                "id": user.id,
+                "username": user.username,
+                "email": user.email,
+            }
+        )
 
 
 class UserSignupFacebook(APIView):
@@ -34,7 +36,9 @@ class UserSignupFacebook(APIView):
 
         token, created = Token.objects.get_or_create(user=user)
 
-        return Response({
-            'token': token.key,
-            'id': user.id,
-        })
+        return Response(
+            {
+                "token": token.key,
+                "id": user.id,
+            }
+        )

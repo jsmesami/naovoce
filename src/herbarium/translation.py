@@ -4,11 +4,11 @@ from .models import Herbarium, Season
 
 
 class HerbariumTranslationOptions(TranslationOptions):
-    fields = ('full_name',)
+    fields = ("full_name",)
 
 
 class SeasonTranslationOptions(TranslationOptions):
-    fields = ('part',)
+    fields = ("part",)
 
 
 translator.register(Herbarium, HerbariumTranslationOptions)

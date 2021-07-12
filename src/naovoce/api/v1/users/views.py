@@ -3,6 +3,7 @@ import datetime
 from django.utils import timezone
 from rest_framework import generics
 from rest_framework.response import Response
+
 from user.models import FruitUser
 from user.utils import fruit_counter, top_pickers
 
@@ -15,7 +16,7 @@ class UserList(generics.ListAPIView):
     queryset = FruitUser.objects.all()
     serializer_class = serializers.UserSerializer
 
-    def list(self, request, *args, **kwargs):
+    def list(self, request, *args, **kwargs):  # noqa:A003
         qs = self.filter_queryset(self.get_queryset())
 
         page = self.paginate_queryset(qs)

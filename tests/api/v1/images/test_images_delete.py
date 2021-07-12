@@ -9,7 +9,7 @@ def test_image_delete(client, random_password, new_user, new_image):
 
     assert client.login(username=user.username, password=password)
 
-    response = client.delete(reverse('api:image-detail', args=[image.id]))
+    response = client.delete(reverse("api:image-detail", args=[image.id]))
 
     assert response.status_code == status.HTTP_204_NO_CONTENT
 
@@ -18,10 +18,10 @@ def test_image_delete_unauthenticated(client, random_password, new_user, new_ima
     user = new_user()
     image = new_image(author=user)
 
-    response = client.delete(reverse('api:image-detail', args=[image.id]))
+    response = client.delete(reverse("api:image-detail", args=[image.id]))
 
     assert response.status_code == status.HTTP_401_UNAUTHORIZED
-    assert response.json() == {'detail': 'Authentication credentials were not provided.'}
+    assert response.json() == {"detail": "Authentication credentials were not provided."}
 
 
 def test_image_delete_unauthorized(client, random_password, new_user, new_image):
@@ -31,7 +31,7 @@ def test_image_delete_unauthorized(client, random_password, new_user, new_image)
 
     assert client.login(username=different_user.username, password=password)
 
-    response = client.delete(reverse('api:image-detail', args=[image.id]))
+    response = client.delete(reverse("api:image-detail", args=[image.id]))
 
     assert response.status_code == status.HTTP_403_FORBIDDEN
-    assert response.json() == {'detail': 'You do not have permission to perform this action.'}
+    assert response.json() == {"detail": "You do not have permission to perform this action."}

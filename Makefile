@@ -5,15 +5,19 @@ reqs:
 	pip-compile --upgrade --output-file ./requirements/lint.txt ./requirements/lint.in
 	pip-compile --upgrade --output-file ./requirements/test.txt ./requirements/test.in
 
+.PHONY: isort
+isort:
+	isort --skip migrations --profile django -e -m 3 -w 120 src tests
+
+.PHONY: black
+black:
+	black --exclude migrations -l 120 src tests
+
 .PHONY: lint
 lint:
-	PYTHONPATH=src pylint src tests
-
-.PHONY: coala
-coala:
-	coala --no-orig --apply-patches
+	flake8 src tests
 
 .PHONY: test
 test:
-	PYTHONPATH=src pytest -vv --cov=src tests
+	PYTHONPATH=src pytest -vv --ds=naovoce.settings.test --cov=src tests
 	rm -rf tests/media/
