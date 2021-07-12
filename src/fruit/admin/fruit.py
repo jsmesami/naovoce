@@ -13,8 +13,7 @@ class FruitAdmin(LeafletGeoAdmin):
     inlines = ImageAdminInline, CommentAdminInline
 
     def get_object(self, request, object_id, from_field=None):
-        fruit = super().get_object(request, object_id)
-        if fruit:
+        if fruit := super().get_object(request, object_id):
             fruit._was_deleted = fruit.is_deleted
         return fruit
 
@@ -24,7 +23,7 @@ class FruitAdmin(LeafletGeoAdmin):
         obj.save()
 
         if not getattr(obj, "_was_deleted", False) and obj.is_deleted:
-            # Inform user that we have deleted her marker.
+            # Inform user that we have deleted their marker.
             msg_template = ugettext_noop(
                 'Site administrator deleted your <a href="{url}">marker</a>. ' "Reason of deletion: {reason}"
             )

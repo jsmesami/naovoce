@@ -20,8 +20,7 @@ MIMETYPE_TO_EXTENSION = {
 
 
 def guess_extension(mimetype):
-    ext = mimetypes.guess_extension(mimetype)
-    if ext is None:
+    if not (ext := mimetypes.guess_extension(mimetype)):
         return "Unknown"
 
     return ext[1:].upper()

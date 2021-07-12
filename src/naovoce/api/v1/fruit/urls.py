@@ -3,7 +3,7 @@ from django.urls import path, re_path
 from .views import FruitComplaint, FruitDetail, FruitList, KindList, fruit_list_diff
 
 urlpatterns = [
-    path(r"", FruitList.as_view(), name="fruit-list"),
+    path("", FruitList.as_view(), name="fruit-list"),
     path("<int:pk>/", FruitDetail.as_view(), name="fruit-detail"),
     path("<int:pk>/complaint/", FruitComplaint.as_view(), name="fruit-complaint"),
     re_path(

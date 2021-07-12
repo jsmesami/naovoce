@@ -10,8 +10,8 @@ Na-ovoce.cz, public API
 
 ## Obtain Token [POST /token/]
 
-IMPORTANT: User registered with email and password has to confirm her email address by
-visiting the link that had been sent to her. Before that, she cannot obtain an auth token.
+IMPORTANT: User registered with email and password has to confirm their email address by
+visiting the link that had been sent to them. Before that, she cannot obtain an auth token.
 
 + Request (application/json)
 
@@ -47,8 +47,8 @@ visiting the link that had been sent to her. Before that, she cannot obtain an a
 
 ## Sign Up With Email [POST /signup/]
 
-IMPORTANT: User registered with this method has to verify her email address by visiting
-a link that has been sent to her. Before that, she cannot be authenticated.
+IMPORTANT: User registered with this method has to verify their email address by visiting
+a link that has been sent to them. Before that, she cannot be authenticated.
 
 Email must be at least 8 characters long.
 
@@ -215,7 +215,7 @@ This API endpoint can be used for both signing up and signing in.
 
 ### Add Fruit [POST https://na-ovoce.cz/api/v1/fruit/]
 
-To create a POI. 
+To create a POI.
 It takes a JSON object containing _location_ (max 13 characters for the degrees), _kind_ and _description_ (optional) of the POI.
 Response contains JSON payload with created object.
 
@@ -312,10 +312,10 @@ Response contains JSON payload with updated object.
 
 ### Delete Fruit [DELETE]
 
-Deleted fruit remains in the database. 
+Deleted fruit remains in the database.
 With `why_deleted` field you can specify the reason why you are deleting it.
 You should encourage users to do so, although it's optional.
-You can still GET the fruit to know the reason of deletion, 
+You can still GET the fruit to know the reason of deletion,
 but it no longer appears in listings.
 
 + Authenticated and owner
@@ -334,7 +334,7 @@ but it no longer appears in listings.
 ### Send a Complaint [POST /fruit/{fruit_id}/complaint/]
 
 To send a complaint on invalid Fruit marker.
-Reason of complaint (`text` field) must be specified. 
+Reason of complaint (`text` field) must be specified.
 Response contains JSON payload with created object.
 
 + Authenticated

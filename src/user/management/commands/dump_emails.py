@@ -15,8 +15,7 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
-        filename = options["output"]
-        if filename:
+        if filename := options["output"]:
             out = open(filename, "w+")  # noqa:SIM115
         else:
             out = sys.stdout

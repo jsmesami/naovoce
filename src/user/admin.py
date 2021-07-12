@@ -12,6 +12,7 @@ class FacebookInfoInline(admin.TabularInline):
     model = FacebookInfo
 
 
+@admin.register(FruitUser)
 class FruitUserAdmin(UserAdmin):
     form = UserChangeForm
     add_form = UserCreationForm
@@ -72,6 +73,7 @@ class FruitUserAdmin(UserAdmin):
     _has_facebook.boolean = True
 
 
+@admin.register(Message)
 class MessageAdmin(admin.ModelAdmin):
     model = Message
     form = MessageAdminForm
@@ -83,7 +85,3 @@ class MessageAdmin(admin.ModelAdmin):
         return trim_words(obj.text, 80)
 
     _text.short_description = _("text")
-
-
-admin.site.register(FruitUser, FruitUserAdmin)
-admin.site.register(Message, MessageAdmin)

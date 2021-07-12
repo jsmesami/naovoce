@@ -32,8 +32,7 @@ class CachedResponse(Response):
         # We cache json response only.
         # Note that self.content_type is not set yet.
         if self.accepted_media_type == "application/json":
-            content = self.cache.get(self.cache_key)
-            if not content:
+            if not (content := self.cache.get(self.cache_key)):
                 content = super().rendered_content
                 self.cache.set(self.cache_key, content)
         else:
@@ -62,20 +61,16 @@ class FruitList(generics.ListCreateAPIView):
     def list(self, request, *args, **kwargs):  # noqa:A003
         qs = self.filter_queryset(self.get_queryset())
 
-        catalogue = request.query_params.get("catalogue")
-        if catalogue:
+        if catalogue := request.query_params.get("catalogue"):
             qs = qs.filter(catalogue=int(catalogue))
 
-        user = request.query_params.get("user")
-        if user:
+        if user := request.query_params.get("user"):
             qs = qs.filter(user__id=int(user))
 
-        kind = request.query_params.get("kind")
-        if kind:
+        if kind := request.query_params.get("kind"):
             qs = qs.filter(kind__key=kind)
 
-        page = self.paginate_queryset(qs)
-        if page is not None:
+        if (page := self.paginate_queryset(qs)) is not None:
             serializer = self.get_serializer(page, many=True)
             return self.get_paginated_response(serializer.data)
 
