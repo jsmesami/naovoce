@@ -45,7 +45,7 @@ class UserManager(BaseUserManager):
             is_active=True,
             is_superuser=is_superuser,
             date_joined=now,
-            **extra_fields
+            **extra_fields,
         )
         user.set_password(password)
         user.save(using=self._db)
@@ -131,7 +131,7 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
             try:
                 img = get_thumbnail(
                     self.avatar.file,
-                    "{}x{}".format(size, size),
+                    f"{size}x{size}",
                     crop="center",
                     quality=90,
                 )
@@ -180,7 +180,7 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
         return hashlib.md5(self.email.lower().encode("ascii", "ignore")).hexdigest()
 
     def __str__(self):
-        return "{}".format(self.username)
+        return f"{self.username}"
 
     class Meta:
         ordering = ("-date_joined",)

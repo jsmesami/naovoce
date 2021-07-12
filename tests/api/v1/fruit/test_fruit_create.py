@@ -48,7 +48,7 @@ def test_fruit_create_deleted_kind(client, random_password, new_user, fruit_requ
     )
 
     assert response.status_code == status.HTTP_400_BAD_REQUEST
-    assert response.json() == {"kind": ["{key} is not a valid Kind key.".format(key=deleted_kind_key)]}
+    assert response.json() == {"kind": [f"{deleted_kind_key} is not a valid Kind key."]}
 
 
 @pytest.mark.parametrize("bad_args, error_msg", BAD_FRUIT_CRUD_ARGS)

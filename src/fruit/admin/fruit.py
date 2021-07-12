@@ -35,7 +35,7 @@ class FruitAdmin(LeafletGeoAdmin):
             obj.user.send_message(msg_template, context=context, system=True)
 
     def _position(self, obj):
-        return "{}, {}".format(obj.position.x, obj.position.y)
+        return f"{obj.position.x}, {obj.position.y}"
 
     _position.short_description = _("position")
 

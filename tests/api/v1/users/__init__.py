@@ -20,7 +20,7 @@ def top_user_to_data(user, response):
 def user_detail_to_data(user, response):
     return {
         **top_user_to_data(user, response),
-        "fruit": render_view_url(response, "api:fruit-list") + "?user={}".format(user.id),
+        "fruit": render_view_url(response, "api:fruit-list") + f"?user={user.id}",
         "active": user.is_active,
         "motto": user.motto,
         "url": render_view_url(response, "api:users-detail", user.id),

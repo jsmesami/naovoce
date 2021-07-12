@@ -20,7 +20,7 @@ class Comment(TimeStampedModel):
     fruit = models.ForeignKey("fruit.Fruit", related_name="comments", on_delete=models.CASCADE)
 
     def __str__(self):
-        return "Comment #{pk} by {username}".format(pk=self.pk, username=self.author.username)
+        return f"Comment #{self.pk} by {self.author.username}"
 
     class Meta:
         verbose_name = _("comment")

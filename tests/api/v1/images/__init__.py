@@ -8,7 +8,7 @@ CAPTION_MAX_LENGTH = Image._meta.get_field("caption").max_length
 CREATE_IMAGE_BAD_ARGS = [
     (
         {"caption": "c" * (CAPTION_MAX_LENGTH + 1)},
-        {"caption": ["Ensure this field has no more than {} characters.".format(CAPTION_MAX_LENGTH)]},
+        {"caption": [f"Ensure this field has no more than {CAPTION_MAX_LENGTH} characters."]},
     ),
     ({"caption": None}, {"caption": ["This field may not be null."]}),
     ({"image": None}, {"image": ["This field may not be null."]}),

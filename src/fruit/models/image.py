@@ -12,10 +12,7 @@ class Image(TimeStampedModel):
     def _upload_to(self, filename):
         mangled_name = uuid4().hex + os.path.splitext(filename)[1]
 
-        return "fruit/{id}/images/{file}".format(
-            id=self.fruit_id,
-            file=mangled_name,
-        )
+        return f"fruit/{self.fruit_id}/images/{mangled_name}"
 
     image = models.ImageField(_("image"), upload_to=_upload_to)
 

@@ -8,7 +8,7 @@ BAD_COMPLAINT_CREATE_ARGS = [
     ({"text": ""}, {"text": ["This field may not be blank."]}),
     (
         {"text": "x" * (TEXT_MAX_LENGTH + 1)},
-        {"text": ["Ensure this field has no more than {} characters.".format(TEXT_MAX_LENGTH)]},
+        {"text": [f"Ensure this field has no more than {TEXT_MAX_LENGTH} characters."]},
     ),
 ]
 

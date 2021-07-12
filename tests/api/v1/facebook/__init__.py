@@ -5,7 +5,7 @@ TOKEN_BAD_ARGS = [
         {"email": "e" * (constants.EMAIL_MAX_LENGTH + 1)},
         {
             "email": [
-                "Ensure this field has no more than {} characters.".format(constants.EMAIL_MAX_LENGTH),
+                f"Ensure this field has no more than {constants.EMAIL_MAX_LENGTH} characters.",
                 "Enter a valid email address.",
             ]
         },
@@ -14,7 +14,7 @@ TOKEN_BAD_ARGS = [
     ({"email": ""}, {"email": ["This field may not be blank."]}),
     (
         {"fcb_id": "i" * (constants.FCB_ID_MAX_LENGTH + 1)},
-        {"fcb_id": ["Ensure this field has no more than {} characters.".format(constants.FCB_ID_MAX_LENGTH)]},
+        {"fcb_id": [f"Ensure this field has no more than {constants.FCB_ID_MAX_LENGTH} characters."]},
     ),
     ({"fcb_id": None}, {"fcb_id": ["This field may not be null."]}),
     ({"fcb_id": ""}, {"fcb_id": ["This field may not be blank."]}),
@@ -23,7 +23,7 @@ TOKEN_BAD_ARGS = [
 SIGNUP_BAD_ARGS = TOKEN_BAD_ARGS + [
     (
         {"fcb_token": "t" * (constants.FCB_TOKEN_MAX_LENGTH + 1)},
-        {"fcb_token": ["Ensure this field has no more than {} characters.".format(constants.FCB_TOKEN_MAX_LENGTH)]},
+        {"fcb_token": [f"Ensure this field has no more than {constants.FCB_TOKEN_MAX_LENGTH} characters."]},
     ),
     ({"fcb_token": None}, {"fcb_token": ["This field may not be null."]}),
     ({"fcb_token": ""}, {"fcb_token": ["This field may not be blank."]}),

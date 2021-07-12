@@ -72,7 +72,7 @@ class Fruit(TimeStampedModel):
         return self.user == user
 
     def __str__(self):
-        return "{fruit.kind!s}".format(fruit=self)
+        return f"{self.kind!s}"
 
     class Meta:
         verbose_name = _("fruit")

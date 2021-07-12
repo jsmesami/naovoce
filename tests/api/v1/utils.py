@@ -12,11 +12,11 @@ def render_view_url(response, viewname, *args):
 
 def get_full_url(response, url):
     server = response.renderer_context["request"].META["SERVER_NAME"]
-    return "http://{}{}".format(server, url)
+    return f"http://{server}{url}"
 
 
 def format_coord(coord):
-    return "{:.10f}".format(coord)
+    return f"{coord:.10f}"
 
 
 def format_time(time):
