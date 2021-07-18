@@ -77,8 +77,8 @@ class FruitUserAdmin(UserAdmin):
 class MessageAdmin(admin.ModelAdmin):
     model = Message
     form = MessageAdminForm
-    list_display = "_text created read system recipient".split()
-    list_filter = "read system".split()
+    list_display = "_text created is_read is_system recipient".split()
+    list_filter = "is_read is_system".split()
     search_fields = "recipient__username recipient__email".split()
 
     def _text(self, obj):

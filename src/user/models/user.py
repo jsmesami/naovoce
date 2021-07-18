@@ -161,19 +161,19 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
         mailing_list = newsletter.List.get_default()
         return mailing_list.is_subscribed(self) if mailing_list else False
 
-    def send_message(self, text, system=False, context=None):
+    def send_message(self, text, is_system=False, context=None):
         Message.objects.create(
             text=text,
-            system=system,
+            is_system=is_system,
             context=context,
             recipient=self,
         )
 
     def get_unread_messages(self):
-        return self.messages.filter(read=False)
+        return self.messages.filter(is_read=False)
 
     def clear_messages(self):
-        self.messages.filter(read=False).update(read=True)
+        self.messages.filter(is_read=False).update(is_read=True)
 
     @cached_property
     def hash(self):  # noqa:A003

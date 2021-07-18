@@ -20,12 +20,12 @@ class Message(TimeStampedModel):
         null=True,
         help_text=_("Translation context for system messages"),
     )
-    read = models.BooleanField(
+    is_read = models.BooleanField(
         pgettext_lazy("user.Message", "read"),
         help_text=pgettext_lazy("Has been read or not.", "user.Message"),
         default=False,
     )
-    system = models.BooleanField(
+    is_system = models.BooleanField(
         pgettext_lazy("user.Message", "system"),
         help_text=_("System messages can be translated and can contain HTML."),
         default=False,
@@ -40,7 +40,7 @@ class Message(TimeStampedModel):
     @property
     def text_formatted(self):
         text = ugettext(self.text)
-        if self.system:
+        if self.is_system:
             if self.context:
                 with suppress(KeyError):
                     text = format_html(text, **dict(self.context))

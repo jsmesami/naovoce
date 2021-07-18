@@ -25,13 +25,13 @@ class FruitAdmin(LeafletGeoAdmin):
         if not getattr(obj, "_was_deleted", False) and obj.is_deleted:
             # Inform user that we have deleted their marker.
             msg_template = ugettext_noop(
-                'Site administrator deleted your <a href="{url}">marker</a>. ' "Reason of deletion: {reason}"
+                "Site administrator deleted your <a href='{url}'>marker</a>. Reason of deletion: {reason}"
             )
             context = dict(
                 url=obj.frontend_url,
                 reason=obj.why_deleted,
             )
-            obj.user.send_message(msg_template, context=context, system=True)
+            obj.user.send_message(msg_template, context=context, is_system=True)
 
     def _position(self, obj):
         return f"{obj.position.x}, {obj.position.y}"
