@@ -1,15 +1,17 @@
 from django.conf import settings
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _, ugettext_noop
 
 from utils.models import TimeStampedModel
 
-COMPLAINT_MSG = (
+COMPLAINT_MSG = ugettext_noop(
     "User <a href='{user_url}'>{user_name}</a> "
     "<strong>posted a complaint</strong> under your <a href='{fruit_url}'>marker</a>."
 )
 
-COMMENT_MSG = "User <a href='{user_url}'>{user_name}</a> posted a comment under your <a href='{fruit_url}'>marker</a>."
+COMMENT_MSG = ugettext_noop(
+    "User <a href='{user_url}'>{user_name}</a> posted a comment under your <a href='{fruit_url}'>marker</a>."
+)
 
 
 class Comment(TimeStampedModel):

@@ -33,9 +33,8 @@ def test_complaint(client, truncate_table, random_password, new_user, new_fruit,
     assert comment.text == REQUEST_DATA["text"]
     assert comment.is_complaint is True
 
-    messages = fruit_user.messages
-    assert messages.count() == 1
-    assert messages.last().text_formatted == complaint_text(fruit)
+    assert fruit_user.messages.count() == 2  # Welcome message and complaint
+    assert fruit_user.messages.order_by("created").last().text_formatted == complaint_text(fruit)
 
 
 @pytest.mark.django_db

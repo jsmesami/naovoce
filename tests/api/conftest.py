@@ -1,14 +1,19 @@
 import os
 import random
 import string
+from datetime import date
 
 import pytest
+from django.conf import settings
 from django.contrib.gis.geos import Point
 from django.core.management import call_command
 from django.db import connection
+from django.utils.formats import date_format
+from django.utils.html import format_html
 from psycopg2.extensions import AsIs
 
 from fruit.models import Fruit, Kind
+from user.models.user import WELCOME_MESSAGE
 
 
 @pytest.fixture(scope="session")
@@ -60,6 +65,18 @@ def random_username(random_string):
 @pytest.fixture
 def random_email(random_string):
     return lambda: "{}@{}.com".format(random_string(6), random_string(6))
+
+
+@pytest.fixture()
+def welcome_message():
+    def closure():
+        return format_html(
+            "<span class='date'>{date}</span> {text}",
+            date=date_format(date.today(), "SHORT_DATE_FORMAT", use_l10n=True),
+            text=format_html(WELCOME_MESSAGE, url=settings.CODEX_URL),
+        )
+
+    return closure
 
 
 @pytest.fixture

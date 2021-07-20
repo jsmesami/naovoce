@@ -10,7 +10,7 @@ from . import SIGNUP_BAD_ARGS
 
 
 @pytest.mark.django_db
-def test_signup(client, signup_email_request_data):
+def test_signup(client, signup_email_request_data, welcome_message):
     request_data = signup_email_request_data()
 
     response = client.post(
@@ -33,10 +33,12 @@ def test_signup(client, signup_email_request_data):
     }
 
     assert user.is_email_verified is False
-    assert user.messages.count() == 0
     assert request_data["email"] == expected["email"]
     assert request_data["username"] == expected["username"]
     assert response.json() == expected
+
+    assert user.messages.count() == 1
+    assert user.messages.last().text_formatted == welcome_message()
 
 
 @pytest.mark.django_db

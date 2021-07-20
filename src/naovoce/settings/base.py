@@ -209,6 +209,8 @@ REST_FRAMEWORK = {
 
 FRONTEND_URLS = {"user-detail": "/user/{id}/", "fruit-detail": "/fruit/{id}/"}
 
+CODEX_URL = "https://www.na-ovoce.cz/kodex"
+
 PASSWORD_MIN_LENGTH = 8
 
 CORS_ORIGIN_WHITELIST = ("https://na-ovoce.cz",)

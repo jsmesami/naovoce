@@ -10,7 +10,7 @@ from . import SIGNUP_BAD_ARGS
 
 
 @pytest.mark.django_db
-def test_facebook_signup(client, truncate_table, signup_facebook_request_data, mock_facebook):
+def test_facebook_signup(client, truncate_table, signup_facebook_request_data, mock_facebook, welcome_message):
     truncate_table(FruitUser)
     request_data = signup_facebook_request_data()
 
@@ -35,6 +35,9 @@ def test_facebook_signup(client, truncate_table, signup_facebook_request_data, m
     assert response.json() == expected
     assert user.facebook.fcb_id == request_data["fcb_id"]
     assert user.facebook.fcb_token == request_data["fcb_token"]
+
+    assert user.messages.count() == 1
+    assert user.messages.last().text_formatted == welcome_message()
 
 
 @pytest.mark.django_db
@@ -66,6 +69,8 @@ def test_facebook_signup_user_exists(client, truncate_table, new_user, signup_fa
     assert existing_user.facebook.fcb_token == request_data["fcb_token"]
     assert existing_user.is_email_verified is True
 
+    assert existing_user.messages.count() == 1
+
 
 def test_facebook_signup_fcb_info_exists(client, new_facebook_info, signup_facebook_request_data, mock_facebook):
     fcb_info = new_facebook_info()
@@ -94,6 +99,8 @@ def test_facebook_signup_fcb_info_exists(client, new_facebook_info, signup_faceb
     assert response.json() == expected
     assert user.facebook.fcb_id == request_data["fcb_id"]
     assert user.facebook.fcb_token == request_data["fcb_token"]
+
+    assert user.messages.count() == 1
 
 
 @pytest.mark.parametrize(

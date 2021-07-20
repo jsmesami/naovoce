@@ -7,9 +7,10 @@ from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
+from django.db.models.signals import post_save
 from django.utils import timezone
 from django.utils.functional import cached_property
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _, ugettext_noop
 from sorl.thumbnail import get_thumbnail
 
 import newsletter.list as newsletter
@@ -18,6 +19,10 @@ from utils.full_url import get_full_url
 
 from .. import constants
 from .message import Message
+
+WELCOME_MESSAGE = ugettext_noop(
+    "Welcome! Before you start using this site, please take time to read our <a href='{url}'>codex</a>."
+)
 
 AVATARS = {
     "SIZE": 240,
@@ -69,6 +74,7 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
 
     first_name = models.CharField(_("first name"), max_length=constants.FIRST_NAME_MAX_LENGTH, blank=True)
     last_name = models.CharField(_("last name"), max_length=constants.LAST_NAME_MAX_LENGTH, blank=True)
+    # URL to reference special users (external source resolution):
     external_url = models.URLField(_("external URL"), blank=True)
 
     RESOLUTION = Choices(
@@ -185,7 +191,15 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return f"{self.username}"
 
+    @classmethod
+    def post_create(cls, sender, instance, created, *args, **kwargs):
+        if created:
+            instance.send_message(text=WELCOME_MESSAGE, is_system=True, context=dict(url=settings.CODEX_URL))
+
     class Meta:
         ordering = ("-date_joined",)
         verbose_name = _("user")
         verbose_name_plural = _("users")
+
+
+post_save.connect(FruitUser.post_create, sender=FruitUser)
