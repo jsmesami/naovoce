@@ -7,7 +7,7 @@ SECRET_KEY = "dummy test key"
 DATABASES = {
     "default": {
         "ENGINE": "django.contrib.gis.db.backends.postgis",
-        "NAME": "naovoce",
+        "NAME": "naovoce2",
         "USER": "test",
         "PASSWORD": "test",
         "HOST": "",

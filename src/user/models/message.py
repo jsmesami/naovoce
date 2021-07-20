@@ -48,7 +48,7 @@ class Message(TimeStampedModel):
                 text = mark_safe(text)
 
         return format_html(
-            '<span class="date">{date}</span> {text}',
+            "<span class='date'>{date}</span> {text}",
             date=date_format(self.created, "SHORT_DATE_FORMAT", use_l10n=True),
             text=text,
         )

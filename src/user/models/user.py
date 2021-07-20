@@ -124,6 +124,9 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
     def get_short_name(self):
         return self.username
 
+    def get_absolute_url(self):
+        return settings.FRONTEND_URLS.get("user-detail").format(id=self.id)
+
     def get_avatar(self, request):
         size = AVATARS["SIZE"]
 

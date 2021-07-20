@@ -28,7 +28,7 @@ class FruitAdmin(LeafletGeoAdmin):
                 "Site administrator deleted your <a href='{url}'>marker</a>. Reason of deletion: {reason}"
             )
             context = dict(
-                url=obj.frontend_url,
+                url=obj.get_absolute_url(),
                 reason=obj.why_deleted,
             )
             obj.user.send_message(msg_template, context=context, is_system=True)

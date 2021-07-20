@@ -64,12 +64,11 @@ class Fruit(TimeStampedModel):
 
         return ""
 
-    @property
-    def frontend_url(self):
-        return ""  # TODO: Implement after setting frontend urls
-
     def is_owner(self, user):
         return self.user == user
+
+    def get_absolute_url(self):
+        return settings.FRONTEND_URLS.get("fruit-detail").format(id=self.id)
 
     def __str__(self):
         return f"{self.kind!s}"

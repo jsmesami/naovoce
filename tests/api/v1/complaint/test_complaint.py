@@ -8,11 +8,12 @@ from ..utils import HTTP_METHODS
 from . import BAD_COMPLAINT_CREATE_ARGS, REQUEST_DATA
 
 
-def test_complaint(client, truncate_table, random_password, new_user, new_fruit, user_auth):
+def test_complaint(client, truncate_table, random_password, new_user, new_fruit, user_auth, complaint_text):
     truncate_table(Comment)
     password = random_password()
     user = new_user(password=password)
-    fruit = new_fruit()
+    fruit_user = new_user()
+    fruit = new_fruit(user=fruit_user)
 
     assert client.login(**user_auth(user=user, password=password))
 
@@ -31,6 +32,10 @@ def test_complaint(client, truncate_table, random_password, new_user, new_fruit,
     assert comment.author_id == user.id
     assert comment.text == REQUEST_DATA["text"]
     assert comment.is_complaint is True
+
+    messages = fruit_user.messages
+    assert messages.count() == 1
+    assert messages.last().text_formatted == complaint_text(fruit)
 
 
 @pytest.mark.django_db

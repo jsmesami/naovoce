@@ -17,7 +17,7 @@ DEFAULT_FROM_EMAIL = "registration@na-ovoce.cz"
 DATABASES = {
     "default": {
         "ENGINE": "django.contrib.gis.db.backends.postgis",
-        "NAME": "naovoce",
+        "NAME": "naovoce2",
         "CONN_MAX_AGE": 600,
         "USER": "",  # must be set in instance-specific settings/local.py
         "PASSWORD": "",
@@ -206,6 +206,8 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.TokenAuthentication",
     ),
 }
+
+FRONTEND_URLS = {"user-detail": "/user/{id}/", "fruit-detail": "/fruit/{id}/"}
 
 PASSWORD_MIN_LENGTH = 8
 
