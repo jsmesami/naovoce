@@ -20,6 +20,20 @@ class ClientError(RuntimeError):
     pass
 
 
+class DummyList:
+    def subscribe(self, user):
+        pass
+
+    def unsubscribe(self, user):
+        pass
+
+    def subscription_status(self, user):
+        pass
+
+    def is_subscribed(self, user):
+        pass
+
+
 class List:
     def __init__(self, list_id):
         self.hash = list_id
@@ -50,13 +64,16 @@ class List:
 
         return True
 
-    def is_subscribed(self, user):
+    def subscription_status(self, user):
         form = dict(
             api_key=settings.NEWSLETTER_API_KEY,
             email=user.email,
             list_id=self.hash,
         )
-        ret = requests.post(API.status, data=form).content.decode()
+        return requests.post(API.status, data=form).content.decode()
+
+    def is_subscribed(self, user):
+        ret = self.subscription_status(user)
 
         if ret == "Subscribed":
             return True
@@ -65,6 +82,5 @@ class List:
         else:
             raise ClientError(ret)
 
-    @classmethod
-    def get_default(cls):
-        return cls(settings.NEWSLETTER_DEFAULT_LIST_ID)
+
+DEFAULT_LIST = DummyList() if settings.NEWSLETTER_DEBUG else List(settings.NEWSLETTER_DEFAULT_LIST_ID)

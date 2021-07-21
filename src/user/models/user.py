@@ -1,4 +1,5 @@
 import hashlib
+import logging
 import os
 import urllib.parse
 from uuid import uuid4
@@ -6,6 +7,7 @@ from uuid import uuid4
 from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.mail import mail_managers
 from django.db import models
 from django.db.models.signals import post_save
 from django.utils import timezone
@@ -19,6 +21,8 @@ from utils.full_url import get_full_url
 
 from .. import constants
 from .message import Message
+
+logger = logging.getLogger(__name__)
 
 WELCOME_MESSAGE = ugettext_noop(
     "Welcome! Before you start using this site, please take time to read our <a href='{url}'>codex</a>."
@@ -195,6 +199,20 @@ class FruitUser(AbstractBaseUser, PermissionsMixin):
     def post_create(cls, sender, instance, created, *args, **kwargs):
         if created:
             instance.send_message(text=WELCOME_MESSAGE, is_system=True, context=dict(url=settings.CODEX_URL))
+            try:
+                newsletter.DEFAULT_LIST.subscribe(instance)
+            except newsletter.ClientError as code:
+                logger.error(f"Newsletter subscription failed with code {code} for user {instance}")
+
+            reg_subj = f"user {instance.username} has just registered."
+            reg_body = "Users count: {}".format(
+                cls.objects.filter(
+                    is_active=True,
+                    is_email_verified=True,
+                ).count()
+            )
+            logger.info(f"{reg_subj} {reg_body}")
+            mail_managers(reg_subj, reg_body)
 
     class Meta:
         ordering = ("-date_joined",)

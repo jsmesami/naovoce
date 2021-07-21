@@ -223,6 +223,7 @@ FRUIT_IMAGE_ALLOWED_CONTENT_TYPES = ("image/jpeg",)
 AVATAR_IMAGE_MAX_FILESIZE = 1024 * 1024  # 1 MB
 AVATAR_IMAGE_ALLOWED_CONTENT_TYPES = "image/jpeg", "image/png", "image/gif"
 
+NEWSLETTER_DEBUG = True  # Set to False in production
 NEWSLETTER_INSTALLATION_URL = "https://newsletter.na-ovoce.cz"
 NEWSLETTER_API_KEY = None  # must be set in instance-specific settings/local.py
 NEWSLETTER_BRAND_ID = 1  # must be set in instance-specific settings/local.py
