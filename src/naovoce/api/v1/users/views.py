@@ -5,7 +5,7 @@ from rest_framework import generics
 from rest_framework.response import Response
 
 from user.models import FruitUser
-from user.utils import fruit_counter, top_pickers
+from user.utils import fruit_counter, top_users
 
 from . import serializers
 
@@ -31,7 +31,7 @@ class UserList(generics.ListAPIView):
 
 class UserListTop(UserList):
 
-    queryset = top_pickers()
+    queryset = top_users()
     serializer_class = serializers.TopUserSerializer
 
 
@@ -41,7 +41,7 @@ class UserListTopLastMonth(UserList):
 
     def get_queryset(self):
         last_month = timezone.make_aware(datetime.datetime.today() - datetime.timedelta(365 / 12))
-        return top_pickers(fruits__created__gte=last_month).exclude(fruit_count=0)
+        return top_users(fruits__created__gte=last_month).exclude(fruit_count=0)
 
 
 class UserDetail(generics.RetrieveAPIView):
