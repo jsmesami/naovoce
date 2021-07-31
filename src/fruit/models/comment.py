@@ -1,8 +1,13 @@
+import logging
+
 from django.conf import settings
 from django.db import models
+from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _, ugettext_noop
 
 from utils.models import TimeStampedModel
+
+logger = logging.getLogger(__name__)
 
 COMPLAINT_MSG = ugettext_noop(
     "User <a href='{user_url}'>{user_name}</a> "
@@ -45,7 +50,22 @@ class Comment(TimeStampedModel):
 
         super().save(**kwargs)
 
+    @classmethod
+    def post_create(cls, sender, instance, created, *args, **kwargs):
+        if created:
+            logger.info(
+                "{what} on fruit {fruit_id} created by user {user!s} ({is_fruit_owner} fruit owner).".format(
+                    what="Complaint" if instance.is_complaint else "Comment",
+                    fruit_id=instance.fruit_id,
+                    user=instance.author,
+                    is_fruit_owner="IS" if instance.author == instance.fruit.user else "NOT",
+                )
+            )
+
     class Meta:
         verbose_name = _("comment")
         verbose_name_plural = _("comments")
         ordering = ("-created",)
+
+
+post_save.connect(Comment.post_create, sender=Comment)

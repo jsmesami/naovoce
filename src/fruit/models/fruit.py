@@ -1,10 +1,15 @@
+import logging
+
 from django.conf import settings
 from django.contrib.gis.db.models import PointField
 from django.db import models
+from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
 from utils.choices import Choices
 from utils.models import TimeStampedModel
+
+logger = logging.getLogger(__name__)
 
 
 class ValidFruitQuerySet(models.QuerySet):
@@ -73,6 +78,20 @@ class Fruit(TimeStampedModel):
     def __str__(self):
         return f"{self.kind!s}"
 
+    @classmethod
+    def post_create(cls, sender, instance, created, *args, **kwargs):
+        if created:
+            logger.info(
+                "Fruit {fruit_id} of kind {kind!s} created by user {user!s}.".format(
+                    fruit_id=instance.id,
+                    kind=instance.kind,
+                    user=instance.user,
+                )
+            )
+
     class Meta:
         verbose_name = _("fruit")
         verbose_name_plural = _("fruit")
+
+
+post_save.connect(Fruit.post_create, sender=Fruit)

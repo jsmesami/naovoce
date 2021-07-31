@@ -1,11 +1,15 @@
+import logging
 import os
 from uuid import uuid4
 
 from django.conf import settings
 from django.db import models
+from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
 from utils.models import TimeStampedModel
+
+logger = logging.getLogger(__name__)
 
 
 class Image(TimeStampedModel):
@@ -30,6 +34,7 @@ class Image(TimeStampedModel):
     )
 
     def is_owner(self, user):
+        """For permissions to modify image"""
         return self.author == user
 
     def __str__(self):
@@ -40,3 +45,17 @@ class Image(TimeStampedModel):
         ordering = ("-created",)
         verbose_name = _("image")
         verbose_name_plural = _("images")
+
+    @classmethod
+    def post_create(cls, sender, instance, created, *args, **kwargs):
+        if created:
+            logger.info(
+                "Image for fruit {fruit_id} created by user {user!s} ({is_fruit_owner} fruit owner).".format(
+                    fruit_id=instance.fruit_id,
+                    user=instance.author,
+                    is_fruit_owner="IS" if instance.author == instance.fruit.user else "NOT",
+                )
+            )
+
+
+post_save.connect(Image.post_create, sender=Image)
