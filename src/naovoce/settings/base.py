@@ -205,6 +205,7 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
     ),
+    "EXCEPTION_HANDLER": "naovoce.api.v1.views.api_exception_handler",
 }
 
 FRONTEND_URLS = {"user-detail": "/user/{id}/", "fruit-detail": "/fruit/{id}/"}
