@@ -33,18 +33,20 @@
 						    <div class="media-body">
 					            {% if user.resolution == user.RESOLUTION.picker %}
 						            <h1>{{ user.username }}</h1>
+                                    {% if user.is_active %}
+                                        {% if user.motto %}
+                                            <div class="motto">
+                                                "{{ user.motto }}"
+                                            </div>
+                                        {% endif %}
 
-						            {% if user.motto %}
-									    <div class="motto">
-								            "{{ user.motto }}"
-									    </div>
-									{% endif %}
-
-									<div class="markers_added">
-										<label>{% trans "Markers added" %}</label>
-										<strong>{{ user.fruit_count }}</strong>
-									</div>
-
+                                        <div class="markers_added">
+                                            <label>{% trans "Markers added" %}</label>
+                                            <strong>{{ user.fruit_count }}</strong>
+                                        </div>
+                                    {% else %}
+                                        <p>Účet byl deaktivován</p>
+                                    {% endif %}
 					            {% else %}
 						            {% if user.external_url %}
 						                <h3>
@@ -100,10 +102,11 @@
 									    <li><a href="https://www.na-ovoce.cz/kodex">{% trans 'Picker codex' %}</a></li>
 							        </ul>
 							    {% endif %}
-
-								<p class="joined">
-									{% trans "Joined" %}: {{ user.date_joined }}
-								</p>
+                                {% if request.user.is_active %}
+                                    <p class="joined">
+                                        {% trans "Joined" %}: {{ user.date_joined|date:"SHORT_DATE_FORMAT" }}
+                                    </p>
+                                {% endif %}
 							</div>
 						</div>
 				    </div>

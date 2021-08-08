@@ -78,7 +78,7 @@ class Kind(models.Model):
 
 class ValidFruitQuerySet(models.QuerySet):
     def valid(self):
-        return self.exclude(models.Q(deleted=True) | models.Q(kind__deleted=True))
+        return self.exclude(models.Q(deleted=True) | models.Q(kind__deleted=True) | models.Q(user__is_active=False))
 
 
 class Fruit(TimeStampedModel, GalleryModel):
