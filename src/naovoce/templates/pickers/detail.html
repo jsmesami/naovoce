@@ -102,7 +102,7 @@
 									    <li><a href="https://www.na-ovoce.cz/kodex">{% trans 'Picker codex' %}</a></li>
 							        </ul>
 							    {% endif %}
-                                {% if request.user.is_active %}
+                                {% if user.is_active %}
                                     <p class="joined">
                                         {% trans "Joined" %}: {{ user.date_joined|date:"SHORT_DATE_FORMAT" }}
                                     </p>
