@@ -1,12 +1,11 @@
 #!/usr/bin/env python
 import re
-from setuptools import setup, find_packages
+
+from setuptools import find_packages, setup
 
 
 def read_requirements(req_file):
-    return [
-        line for line in re.sub(r"\s*#.*\n", "\n", req_file.read()).splitlines() if line
-    ]
+    return [line for line in re.sub(r"\s*#.*\n", "\n", req_file.read()).splitlines() if line]
 
 
 with open("requirements/base.txt") as f:
@@ -26,11 +25,11 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/jsmesami/naovoce",
     author="Ondřej Nejedlý",
-    author_email="software@na-ovoce.cz",
+    author_email="jsmesami@gmail.com",
     license="MIT License",
     packages=find_packages(),
     entry_points={"console_scripts": ["naovoce=naovoce.manage:main"]},
-    python_requires=">=3.8",
+    python_requires=">=3.9",
     install_requires=REQUIREMENTS,
     tests_require=TEST_REQUIREMENTS,
     include_package_data=True,
@@ -38,12 +37,11 @@ setup(
     classifiers=[
         "Environment :: Web Environment",
         "Framework :: Django",
-        "Framework :: Django :: 3.2",
         "Development Status :: 3 - Alpha",
         "Operating System :: OS Independent",
         "Topic :: Internet :: WWW/HTTP",
         "Topic :: Internet :: WWW/HTTP :: Dynamic Content"
         "License :: OSI Approved :: MIT License"
-        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
     ],
 )

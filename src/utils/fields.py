@@ -10,11 +10,6 @@ class AutoDateTimeField(models.DateTimeField):
         return timezone.now()
 
 
-# TODO: Delete this after squashing migrations:
-class ContentTypeRestrictedImageField(models.ImageField):
-    pass
-
-
 class MonthsField(models.PositiveSmallIntegerField):
     def __init__(self, *args, **kwargs):
         kwargs.update(

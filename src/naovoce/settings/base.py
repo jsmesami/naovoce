@@ -8,7 +8,7 @@ ALLOWED_HOSTS = ".na-ovoce.cz", ".na-ovoce.cz."
 
 SECRET_KEY = None  # must be set in instance-specific settings/local.py
 
-ADMINS = MANAGERS = (("Ondra Nejedlý", "software@na-ovoce.cz"),)
+ADMINS = MANAGERS = (("Ondřej Nejedlý", "team@na-ovoce.cz"),)
 
 EMAIL_SUBJECT_PREFIX = "[Na ovoce] "
 
@@ -46,7 +46,7 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-TIME_ZONE = "Europe/Prague"
+TIME_ZONE = "UTC"
 
 LANGUAGE_CODE = "cs"
 
@@ -70,7 +70,7 @@ ROOT_URLCONF = "naovoce.urls"
 WSGI_APPLICATION = "naovoce.wsgi.application"
 
 SSL_ENABLED = True
-SECURE_HSTS_SECONDS = 60 * 10  # TODO: Set this to higher value after beta
+SECURE_HSTS_SECONDS = 518400  # 6 days
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_SSL_REDIRECT = True
@@ -128,11 +128,8 @@ INSTALLED_APPS = (
     "django.contrib.gis",
     # local apps
     "user",
-    "gallery",  # TODO: Remove after squashing migrations
     "fruit",
-    "fruit.herbarium",  # TODO: Remove after squashing migrations
     "newsletter",
-    "comments",  # TODO: Remove after squashing migrations
     "naovoce",
     "herbarium",
     # external apps

@@ -2,7 +2,7 @@ Project Contributors
 ====================
 
 ## Software
-* Ondra Nejedlý ([@jsmesami](https://twitter.com/jsmesami/)) - maintainer
+* Ondřej Nejedlý ([@jsmesami](https://twitter.com/jsmesami/)) - maintainer
 * [flaiming](https://github.com/flaiming)
 * [stlk](https://github.com/stlk)
 * [twentyfortysix](https://github.com/twentyfortysix)
@@ -10,7 +10,7 @@ Project Contributors
 * [timthelion](https://github.com/timthelion)
 * [niccokunzmann](https://github.com/niccokunzmann)
 
-## Ideas, events, design, copy...
+## The people
 * Katka Kubánková
 * Edita Hornová
 * Tomáš Dvořák
@@ -19,3 +19,8 @@ Project Contributors
 * Monika Křikavová
 * Jana Kosová
 * Tomáš Zděblo
+* Markéta Vrbová
+* Tereza Weissová 
+* Alice Jirásková 
+* Lenka Linhartová 
+* Denisa Šimlová 
