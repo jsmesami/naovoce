@@ -63,3 +63,7 @@ CORS_ORIGIN_WHITELIST += ("http://localhost:8000",)  # noqa:F405
 #     'rest_framework.renderers.JSONRenderer',
 #     'rest_framework.renderers.BrowsableAPIRenderer',
 # )
+
+# Might be necessary for PostGis installed with Homebrew on a Mac:
+# GDAL_LIBRARY_PATH = '/opt/homebrew/opt/gdal/lib/libgdal.dylib'
+# GEOS_LIBRARY_PATH = '/opt/homebrew/opt/geos/lib/libgeos_c.dylib'

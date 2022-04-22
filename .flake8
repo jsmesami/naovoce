@@ -4,3 +4,4 @@ max_complexity = 15
 max_line_length = 120
 exclude = migrations,local.py
 show_source = true
+ignore = SIM905,W503
