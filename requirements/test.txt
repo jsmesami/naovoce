@@ -6,7 +6,7 @@
 #
 attrs==21.4.0
     # via pytest
-certifi==2021.10.8
+certifi==2022.12.7
     # via requests
 charset-normalizer==2.0.12
     # via requests
@@ -16,13 +16,13 @@ coverage[toml]==6.3.2
     #   django-coverage-plugin
     #   pytest-cov
 coveralls==3.3.1
-    # via -r ./requirements/test.in
+    # via -r test.in
 django-coverage-plugin==2.0.2
-    # via -r ./requirements/test.in
+    # via -r test.in
 docopt==0.6.2
     # via coveralls
 funcy==1.17
-    # via -r ./requirements/test.in
+    # via -r test.in
 idna==3.3
     # via requests
 iniconfig==1.1.1
@@ -39,16 +39,16 @@ pyparsing==3.0.8
     # via packaging
 pytest==7.1.1
     # via
-    #   -r ./requirements/test.in
+    #   -r test.in
     #   pytest-cov
     #   pytest-django
     #   pytest-libfaketime
 pytest-cov==3.0.0
-    # via -r ./requirements/test.in
+    # via -r test.in
 pytest-django==4.5.2
-    # via -r ./requirements/test.in
+    # via -r test.in
 pytest-libfaketime==0.1.2
-    # via -r ./requirements/test.in
+    # via -r test.in
 python-dateutil==2.8.2
     # via libfaketime
 pytz==2022.1
