@@ -1,4 +1,4 @@
-Django>=2.2,<2.3
+Django>=2.2,<3.3
 Pillow
 django-leaflet
 django-ipware
